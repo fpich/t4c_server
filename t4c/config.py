@@ -45,3 +45,6 @@ class ServerConfig:
     # original l'envoie juste avant la liste (26) pour piloter l'affichage
     # de l'option "Nouveau personnage" du client.
     max_characters_per_account: int = 3
+    # Étape 9 : persistance SQLite (schéma T4C.mdb porté). Chaîne vide = mémoire.
+    # Un chemin (ex. "t4c.sqlite3") active la sauvegarde des comptes/personnages.
+    database_path: str = ""

@@ -232,3 +232,22 @@ serveur 1.25. Éléments exploitables pour le développement :
 - **Logs/** : exemples de format de logs du serveur original (World.log…).
 - **`t4c_fr.elng`** : fichier de langue serveur — la numérotation des chaînes
   (`_DEFAULT_STR`) correspond aux messages envoyés au client.
+
+## Étape 9 — persistance SQLite (schéma T4C.mdb porté)
+
+Nouveau module `t4c/persistence.py` : comptes et personnages persistés dans
+SQLite, schéma directement porté de la base Access `T4C.mdb` du serveur
+original (`T4Cusers`, `PlayingCharacters` avec position/stats/niveau/or/XP).
+La persistance est activée par `--database` (`t4c.sqlite3` par défaut via
+`run_server.py`, chaîne vide = mémoire uniquement). La création (25) sauvegarde
+le personnage, le chargement (13) restaure la position sauvegardée, et les
+déplacements la mettent à jour.
+
+## Étape 10 — boucle de jeu minimale (mouvements 1-8, position 9)
+
+Formats confirmés depuis `RQFUNC_PlayerMove` original :
+- **9 (RQ_GetPlayerPos)** : réponse `i16 X, i16 Y, i16 monde`.
+- **1-8 (RQ_Move*)** : acceptés uniquement en jeu ; le monde de développement
+  n'ayant ni carte ni collisions, tout déplacement est accepté. Le serveur
+  répond l'événement `__EVENT_OBJECT_MOVED` (id 1) : `i16 X, i16 Y`.
+La position est persistée à chaque mouvement (si `--database` actif).

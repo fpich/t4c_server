@@ -45,6 +45,9 @@ class PacketDispatcher:
             PacketID.FROM_PREINGAME_TO_INGAME,
             handle_from_preingame_to_ingame,
         )
+        for move_id in MOVE_OFFSETS:
+            self.register(move_id, handle_player_move)
+        self.register(PacketID.GET_PLAYER_POS, handle_player_move)
         self.register(
             PacketID.MAX_CHARACTERS_PER_ACCOUNT_INFO,
             handle_max_characters_per_account_info,
@@ -419,6 +422,8 @@ async def handle_create_player(
         if not server.characters.create(session.account, character):
             result = 3
             character = None
+        elif server.persistence is not None:
+            server.persistence.save_character(session.account, character)
     response = PacketWriter(PacketID.CREATE_PLAYER)
     response.write_u8(result)
     if character is not None:
@@ -470,7 +475,12 @@ async def handle_toggle_page(
 
 
 def _write_ingame_stats(
-    writer: "PacketWriter", character: "Character", unit_id: int
+    writer: "PacketWriter",
+    character: "Character",
+    unit_id: int,
+    x: int = 0,
+    y: int = 0,
+    world: int = 0,
 ) -> None:
     """Sérialise la charge utile de RQ_PutPlayerInGame (format original).
 
@@ -486,9 +496,9 @@ def _write_ingame_stats(
     now = datetime.now()
     writer.write_u8(0)  # résultat : 0 = chargé
     writer.write_i32(unit_id)
-    writer.write_i16(0)  # X
-    writer.write_i16(0)  # Y
-    writer.write_i16(0)  # monde
+    writer.write_i16(x)
+    writer.write_i16(y)
+    writer.write_i16(world)
     writer.write_i32(character.hp)
     writer.write_i32(character.max_hp)
     writer.write_i16(character.mana)
@@ -555,8 +565,19 @@ async def handle_put_player_in_game(
     session.active_character = character.name
     session.unit_id = (session.unit_id or 0) + 1
     session.state = SessionState.PRE_INGAME
+    if server.persistence is not None:
+        pos = server.persistence.position(character.name)
+        if pos is not None:
+            session.pos_x, session.pos_y, session.pos_world = pos
     response = PacketWriter(PacketID.PUT_PLAYER_IN_GAME)
-    _write_ingame_stats(response, character, session.unit_id)
+    _write_ingame_stats(
+        response,
+        character,
+        session.unit_id,
+        session.pos_x,
+        session.pos_y,
+        session.pos_world,
+    )
     server.send_packet(session.address, response)
     log.info(
         "MONDE personnage chargé nom=%r compte=%r ID=%d client=%s -> %s",
@@ -595,4 +616,71 @@ async def handle_from_preingame_to_ingame(
         session.active_character,
         result,
         session.state.name,
+    )
+
+
+# Directions de RQ_PlayerMove (tfc_main.h / DIR::MOVE originaux).
+# Le monde 2D de T4C : X croît vers l'est, Y croît vers le sud.
+MOVE_OFFSETS: dict[int, tuple[int, int]] = {
+    int(PacketID.MOVE_NORTH): (0, -1),
+    int(PacketID.MOVE_NORTH_EAST): (1, -1),
+    int(PacketID.MOVE_EAST): (1, 0),
+    int(PacketID.MOVE_SOUTH_EAST): (1, 1),
+    int(PacketID.MOVE_SOUTH): (0, 1),
+    int(PacketID.MOVE_SOUTH_WEST): (-1, 1),
+    int(PacketID.MOVE_WEST): (-1, 0),
+    int(PacketID.MOVE_NORTH_WEST): (-1, -1),
+}
+
+
+async def handle_player_move(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requêtes 1-9 (RQ_PlayerMove / RQ_GetPlayerPos).
+
+    Confirmé depuis RQFUNC_PlayerMove original :
+      - 9 (position) : réponse i16 X, i16 Y, i16 monde, sans condition d'état.
+      - 1-8 (mouvements) : uniquement si le joueur est en jeu ; le serveur
+        original envoie les objets périphériques (rien dans notre monde vide)
+        puis l'événement __EVENT_OBJECT_MOVED (id 1) : i16 X, i16 Y puis les
+        informations de l'unité. Notre monde de développement n'ayant ni carte
+        ni collisions, tout déplacement est accepté.
+    """
+    if packet.packet_id == int(PacketID.GET_PLAYER_POS):
+        response = PacketWriter(PacketID.GET_PLAYER_POS)
+        response.write_i16(session.pos_x)
+        response.write_i16(session.pos_y)
+        response.write_i16(session.pos_world)
+        server.send_packet(session.address, response)
+        log.debug(
+            "POSITION client=%s (%d,%d,%d)",
+            session.address,
+            session.pos_x,
+            session.pos_y,
+            session.pos_world,
+        )
+        return
+    if session.state is not SessionState.IN_WORLD:
+        return
+    dx, dy = MOVE_OFFSETS[packet.packet_id]
+    session.pos_x += dx
+    session.pos_y += dy
+    if server.persistence is not None and session.active_character:
+        server.persistence.save_position(
+            session.active_character, session.pos_x, session.pos_y, session.pos_world
+        )
+    # Événement __EVENT_OBJECT_MOVED (id 1) : i16 X, i16 Y.
+    event = PacketWriter(1)
+    event.write_i16(session.pos_x)
+    event.write_i16(session.pos_y)
+    server.send_packet(session.address, event)
+    session.move_requests += 1
+    log.info(
+        "MOUVEMENT client=%s perso=%r -> (%d,%d,%d) requêtes=%d",
+        session.address,
+        session.active_character,
+        session.pos_x,
+        session.pos_y,
+        session.pos_world,
+        session.move_requests,
     )

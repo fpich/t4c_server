@@ -49,5 +49,9 @@ class ClientSession:
     put_in_game_requests: int = 0
     enter_world_requests: int = 0
     unit_id: int | None = None
+    pos_x: int = 0
+    pos_y: int = 0
+    pos_world: int = 0
+    move_requests: int = 0
     page_toggled: bool = False
     active_character: str | None = None

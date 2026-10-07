@@ -1,15 +1,12 @@
 # docker compose — CLIENT T4C fenêtré (VNC/noVNC).
-# Le serveur est choisi via T4C_SERVER_HOST :
-#   - t4c-python  (serveur Python du dépôt — réseau docker 't4cnet')
-#   - une IP externe (VM XP, serveur original...)
+# Le serveur T4C Python tourne directement sur l'hôte :
+#     bash start_server.sh          (dans le dépôt, sur l'hôte)
+# Le conteneur le joint via host.docker.internal (par défaut).
+# Pour pointer ailleurs (VM XP, autre machine) :
+#     T4C_SERVER_HOST=192.168.1.x docker compose -f compose.client.yaml up -d
 # Usage :
 #   T4C_SERVER_HOST=192.168.1.x docker compose -f compose.client.yaml up -d --build
 #   puis http://<hôte>:6080/vnc.html
-networks:
-  t4cnet:
-    name: t4cnet
-    external: true
-
 services:
   t4c-client:
     build:
@@ -18,7 +15,7 @@ services:
     image: t4c-client:125
     container_name: t4c-client
     environment:
-      T4C_SERVER_HOST: "${T4C_SERVER_HOST:-t4c-python}"
+      T4C_SERVER_HOST: "${T4C_SERVER_HOST:-host.docker.internal}"
       WINEDEBUG: "-all"
       PULSE_SERVER: "${PULSE_SERVER:-host.docker.internal:4713}"
     ports:
@@ -27,7 +24,5 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     restart: unless-stopped
-    networks:
-      - t4cnet
     stdin_open: true
     tty: true

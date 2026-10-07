@@ -23,7 +23,7 @@ EOF
 }
 
 PREFIX=""
-LANGUAGE="french"
+LANGUAGE="English"
 while (($#)); do
     case "$1" in
         --prefix)

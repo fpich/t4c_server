@@ -71,7 +71,11 @@ rsync -a "$CLIENT_SRC"/ "$CLIENT_DIR"/ 2>/dev/null || cp -r "$CLIENT_SRC"/. "$CL
 
 # ---------------------------------------------------------------- registre
 step "5/6 Configuration (langue FR, WebPatch désactivé, serveur $SERVER_IP)"
-wine reg add 'HKCU\Software\Vircom\T4C' /v Language /t REG_SZ /d french /f >/dev/null 2>&1
+# Language=English : le contournement GOA documenté (étape 4) — possible car
+# english.elng est présent dans le dossier client (copie du français : le client
+# prend le chemin réseau "anglais" mais affiche les textes français).
+# Avec french, le client FR retombe sur l'ancien écran GOA après le login.
+wine reg add 'HKCU\Software\Vircom\T4C' /v Language /t REG_SZ /d English /f >/dev/null 2>&1
 wine reg add 'HKCU\Software\Vircom\T4C' /v WebPatchDisabled /t REG_DWORD /d 1 /f >/dev/null 2>&1
 # le serveur de jeu : l'IP donnée (l'hôte où tourne start_server.sh)
 printf 'Serveur T4C Local\n%s\n%s\nBienvenue !\nServeur T4C Local\nhttp://localhost\n' \

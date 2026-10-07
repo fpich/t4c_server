@@ -786,9 +786,23 @@ async def handle_get_near_items(
     développement ne contient aucun objet.
     """
     session.near_items_requests += 1
+    # Flux exact de l'original (RQFUNC_GetNearItems, TFCMessagesHandler) :
+    # 1) packet_inview_units -> événement __EVENT_OBJECT_APPEARED_LIST (16) :
+    #    i16 nombre d'unités, puis par unité i16 X, i16 Y + informations.
+    #    Monde vide : nombre = 0 — mais l'événement DOIT partir,
+    #    sinon le client reste sur écran noir au chargement (commentaire
+    #    original : 'Sends this to ensure player wont get stuck in a
+    #    black screen when loading').
+    # 2) puis le corps du 60 lui-même.
+    event = PacketWriter(16)  # __EVENT_OBJECT_APPEARED_LIST
+    event.write_i16(0)        # aucune unité en vue
+    server.send_packet(session.address, event)
     response = PacketWriter(PacketID.GET_NEAR_ITEMS)
     server.send_packet(session.address, response)
-    log.info("OBJETS à proximité : aucun client=%s", session.address)
+    log.info(
+        "VUE unités en vue : 0 (événement 16 envoyé avant le 60) client=%s",
+        session.address,
+    )
 
 
 async def handle_get_online_player_list(

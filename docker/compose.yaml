@@ -1,0 +1,28 @@
+# docker compose pour le serveur T4C original sous Wine.
+# Usage :
+#   docker compose up -d --build
+#   docker compose logs -f
+services:
+  t4c-server:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: t4c-server:125
+    container_name: t4c-server
+    # Le serveur original écoute en UDP 11677 (0x2D9D confirmé dans le binaire).
+    ports:
+      - "0.0.0.0:11677:11677/udp"
+    environment:
+      T4C_PORT: "11677"
+      WINEDEBUG: "-all"
+    volumes:
+      # Persistance : comptes/personnages (T4C.mdb) et logs du serveur.
+      - t4c_db:/opt/t4c/db
+      - t4c_logs:/opt/t4c/Logs
+    restart: unless-stopped
+    stdin_open: false
+    tty: false
+
+volumes:
+  t4c_db:
+  t4c_logs:

@@ -1,0 +1,42 @@
+REGEDIT4
+
+; Clés minimales requises par T4C Server.exe (vérifiées par analyse du
+; binaire : "Could not open registry key Software\Vircom\The 4th Coming
+; Server\{Network,GeneralConfig,Authentication} required by T4C Server").
+; Sans T4CSetup.cpl, on écrit directement ces valeurs.
+
+[HKEY_LOCAL_MACHINE\Software\Vircom\The 4th Coming Server\Network]
+; Ports par défaut confirmés dans le binaire (push 0x2D9D = 11677).
+"RECV_PORT"=dword:00002d9d
+"SEND_PORT"=dword:00002d9d
+"LocalUserMax"=dword:00000064
+"RemoteUserMax"=dword:00000064
+
+[HKEY_LOCAL_MACHINE\Software\Vircom\The 4th Coming Server\GeneralConfig]
+; 0 = pas de fenêtre de message bloquante en tête (exécution console/serveur).
+"Language"="French"
+"MaxCharactersPerAccount"=dword:00000003
+
+[HKEY_LOCAL_MACHINE\Software\Vircom\The 4th Coming Server\Authentication]
+; 1 = ODBC (authentification sur la base Access T4C.mdb via DSN).
+; (0 = interne/RADIUS non configuré ; 2 = GOA.)
+"AuthenticationMethod"=dword:00000001
+"ODBC_DSN"="T4CUsers"
+"ODBC_DB_USER"=""
+"ODBC_DB_PWD"=""
+"ODBC_TABLE"="T4Cusers"
+"ODBC_NAME_FLD"="Account"
+"ODBC_PWD_FLD"="Password"
+"ODBC_WHERE"=""
+
+[HKEY_LOCAL_MACHINE\Software\Vircom\The 4th Coming Server\ExtensionDLLs]
+; NPCDLL0..n : DLLs chargées au démarrage (le serveur refuse de démarrer
+; sans NPC — "Cannot find any NPC DLL. Server is useless without NPCs").
+"NPCDLL0"="NPC Arakas.dll"
+"NPCDLL1"="NPC WindHowl.dll"
+"NPCDLL2"="NPC RavensDust.dll"
+"NPCDLL3"="NPC Stoneheim.dll"
+"NPCDLL4"="NPC Remort.dll"
+"NPCDLL5"="NPC AddOn.dll"
+"NPCDLL6"="NPCs.dll"
+"NPCDLL7"="NPC AddOns.dll"

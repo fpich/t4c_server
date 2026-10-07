@@ -17,9 +17,9 @@
 
 FROM debian:trixie-slim
 
-ENV WINEDEBUG=-all \
-    WINEPREFIX=/opt/wineprefix \
+ENV WINEPREFIX=/opt/wineprefix \
     WINEARCH=win32 \
+    XDG_RUNTIME_DIR=/tmp/xdg \
     WINE_NO_PROXY=1
 
 # Wine 32 bits (le binaire est un PE32 i386) + cabextract pour winetricks

@@ -8,7 +8,9 @@ set -Eeuo pipefail
 
 export WINEPREFIX=/opt/wineprefix
 export WINEARCH=win32
-export WINEDEBUG="${WINEDEBUG:--all}"
+export WINEDEBUG="${WINEDEBUG:-err+all,fixme-all,trace-none}"
+export XDG_RUNTIME_DIR=/tmp/xdg
+mkdir -p /tmp/xdg
 export DISPLAY=
 T4C_DIR=/opt/t4c
 DB_DIR=/opt/t4c/db
@@ -47,4 +49,14 @@ cp -f "$DB_DIR/T4C.mdb" "$T4C_DIR/T4C.mdb" 2>/dev/null || true
 
 echo "[t4c] démarrage du serveur (UDP ${T4C_PORT:-11677})..."
 cd "$T4C_DIR"
-exec wine "T4C Server.exe" 2>&1
+set +e
+wine "T4C Server.exe" 2>&1
+code=$?
+echo "[t4c] T4C Server.exe terminé (code $code)"
+if [ "$code" -ne 0 ]; then
+    echo "[t4c] tentative de diagnostic :"
+    wine --version 2>&1 | head -2
+    ls -la "$T4C_DIR/T4C Server.exe" 2>&1
+    sleep 5
+fi
+exit $code

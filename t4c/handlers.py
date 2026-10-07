@@ -830,22 +830,23 @@ async def handle_get_near_items(
 async def handle_get_online_player_list(
     server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
 ) -> None:
-    """Requête 62 : joueurs en ligne.
+    """Requête 62 : RQ_GetSkillStatPoints (BINAIRE prouvé @ 0x481fb0).
 
-    Format confirmé depuis CPlayerManager::PacketUserList :
-      i16 nombre, puis par joueur : CString compte, CString nom du perso.
-    Un seul joueur est en ligne : nous-mêmes.
+    Désassemblage authentique :
+        packet << (short)[user->self+0x174]   <- points de stats
+        packet << (short)GetSkillPoints()     <- points de compétences
+        SendPlayerMessage
+
+    (Confondu avec GetOnlinePlayerList dans un premier temps — le vrai
+    handler envoie DEUX i16 : stat points puis skill points.)
     """
     session.online_list_requests += 1
     response = PacketWriter(PacketID.GET_ONLINE_PLAYER_LIST)
-    response.write_i16(1)
-    response.write_text(session.account or "")
-    response.write_text(session.active_character or "")
+    response.write_i16(0)   # points de stats
+    response.write_i16(15)  # points de compétences (défaut création)
     server.send_packet(session.address, response)
     log.info(
-        "JOUEURS en ligne : 1 (%r / %r) client=%s",
-        session.account,
-        session.active_character,
+        "POINTS stat=0 compétences=15 client=%s",
         session.address,
     )
 

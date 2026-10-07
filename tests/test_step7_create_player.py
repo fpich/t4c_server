@@ -134,7 +134,7 @@ class Step7CreatePlayerTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(reader.read_u8(), 1)
         name_len = reader.read_u8()
         self.assertEqual(reader.read_bytes(name_len), b"Fabien")
-        self.assertEqual(reader.read_i16(), 0)  # race
+        self.assertEqual(reader.read_i16(), 10011)  # apparence __PLAYER_PUPPET
         self.assertEqual(reader.read_i16(), 1)  # level
         self.assertEqual(reader.remaining, 0)
 

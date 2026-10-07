@@ -9,10 +9,19 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 
 
+# Apparences des joueurs (RaceListing.h du serveur original).
+PLAYER_PUPPET = 10011          # __PLAYER_PUPPET (homme)
+PLAYER_FEMALE_PUPPET = 10012   # __PLAYER_FEMALE_PUPPET (femme)
+
+
 @dataclass(slots=True)
 class Character:
     name: str
-    race: int = 0
+    # Apparence (RaceListing.h : __PLAYER_PUPPET). Le champ 'race' du
+    # paquet 26 est l'APPARENCE (PlayerManager.cpp:427 ModifyPlayer
+    # avec GetAppearance) — sans valeur valide le client n'affiche pas
+    # le modèle 3D dans l'écran de sélection.
+    race: int = PLAYER_PUPPET
     level: int = 1
     # packet_stats layout: AGI, END, INT, luck, STR, wil, WIS.
     agi: int = 10

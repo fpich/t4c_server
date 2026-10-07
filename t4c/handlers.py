@@ -13,7 +13,7 @@ import logging
 import re
 from typing import TYPE_CHECKING
 
-from .characters import Character
+from .characters import PLAYER_FEMALE_PUPPET, PLAYER_PUPPET, Character
 from .codec import DecodedPacket, PacketReader, PacketWriter, T4CProtocolError
 from .protocol import PacketID
 from .session import SessionState
@@ -48,6 +48,7 @@ class PacketDispatcher:
         for move_id in MOVE_OFFSETS:
             self.register(move_id, handle_player_move)
         self.register(PacketID.GET_PLAYER_POS, handle_player_move)
+        self.register(PacketID.DELETE_PLAYER, handle_delete_player)
         self.register(PacketID.GET_SKILL_LIST, handle_get_skill_list)
         self.register(
             PacketID.SEND_TRAIN_SKILL_LIST, handle_send_train_skill_list
@@ -432,7 +433,16 @@ async def handle_create_player(
         result = 4
     character = None
     if result == 0:
-        character = Character(name=name, answers=answers)
+        # Apparence : confirmée dans Character::CreateCharacter original.
+        # Les réponses 0-4 (guerrier/mage/voleur/prêtre/normal) pondèrent
+        # l'apparence ; la réponse 5 est le genre (GENDER_MALE=0? -> selon
+        # la trace, réponse 5 = 1 dans les deux runs). Le client 1.25 FR
+        # envoie : 01 02 00 00 01 00 (run 22:01) — réponse[5]=0 => homme.
+        gender = answers[5] if len(answers) > 5 else 0
+        appearance = (
+            PLAYER_FEMALE_PUPPET if gender == 1 else PLAYER_PUPPET
+        )
+        character = Character(name=name, race=appearance, answers=answers)
         if not server.characters.create(session.account, character):
             result = 3
             character = None
@@ -783,5 +793,50 @@ async def handle_get_online_player_list(
         "JOUEURS en ligne : 1 (%r / %r) client=%s",
         session.account,
         session.active_character,
+        session.address,
+    )
+
+
+async def handle_delete_player(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 15 : suppression d'un personnage.
+
+    Confirmé depuis RQFUNC_DeletePlayer / AsyncRQFUNC_DeletePlayer :
+      requête  = u8 name_len, name
+      réponse  = u8 résultat de DeleteCharacter (0 = supprimé)
+
+    Trace réelle : le client envoie le 15 après un clic sur le personnage
+    (probablement le bouton Supprimer de l'écran de sélection). La
+    suppression est implémentée : le personnage est retiré du compte,
+    effacé de la persistance, et la liste renvoyée ensuite n'en contient
+    plus.
+    """
+    session.delete_player_requests += 1
+    reader = PacketReader(packet.body)
+    try:
+        name = reader.read_pascal_u8_text()
+    except T4CProtocolError as exc:
+        log.warning("requête 15 malformée de %s : %s", session.address, exc)
+        return
+    _ensure_consumed(reader, packet.packet_id)
+    deleted = False
+    if session.account:
+        characters = server.characters.characters(session.account)
+        for candidate in characters:
+            if candidate.name.casefold() == name.casefold():
+                characters.remove(candidate)
+                deleted = True
+                break
+        if deleted and server.persistence is not None:
+            server.persistence.delete_character(name)
+    response = PacketWriter(PacketID.DELETE_PLAYER)
+    response.write_u8(0 if deleted else 1)
+    server.send_packet(session.address, response)
+    log.info(
+        "SUPPRESSION nom=%r compte=%r résultat=%s client=%s",
+        name,
+        session.account,
+        "supprimé" if deleted else "introuvable",
         session.address,
     )

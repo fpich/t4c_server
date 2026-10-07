@@ -143,6 +143,14 @@ class Persistence:
         self._db.commit()
         return True
 
+    def delete_character(self, name: str) -> bool:
+        cur = self._db.execute(
+            "DELETE FROM PlayingCharacters WHERE PlayerName = ? COLLATE NOCASE",
+            (name,),
+        )
+        self._db.commit()
+        return cur.rowcount > 0
+
     def save_position(self, name: str, x: int, y: int, world: int) -> None:
         self._db.execute(
             "UPDATE PlayingCharacters SET wlX = ?, wlY = ?, wlWorld = ? "

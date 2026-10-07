@@ -30,7 +30,8 @@ RUN dpkg --add-architecture i386 \
     && apt-get install -y --no-install-recommends \
         wine wine32:i386 wine64 \
         cabextract \
-        winetricks \
+        curl \
+        ca-certificates \
         winbind \
         xvfb \
         xauth \
@@ -42,6 +43,11 @@ RUN dpkg --add-architecture i386 \
 # Fichiers du serveur original (copiés depuis ressources/T4C_Server)
 # Le contexte de build est la racine du dépôt.
 COPY ressources/T4C_Server/ /opt/t4c/
+
+# winetricks : absent des dépôts Debian 13, on récupère le script officiel.
+RUN curl -L -o /usr/local/bin/winetricks \
+      https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks \
+    && chmod +x /usr/local/bin/winetricks
 
 # MFC42 : T4C Server.exe importe MFC42.DLL (confirmé par err:module:import_dll).
 # Wine ne fournit pas les MFC ; winetricks mfc42 installe les redistributables

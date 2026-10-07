@@ -34,16 +34,38 @@ bold() { printf '\033[1m%s\033[0m\n' "$*"; }
 step() { printf '\n\033[1m==> %s\033[0m\n' "$*"; }
 
 # ---------------------------------------------------------------- dépendances
-step "1/6 Vérification des dépendances système"
-MISSING=()
-for cmd in wine wine64; do command -v "$cmd" >/dev/null || MISSING+=("$cmd"); done
-if ((${#MISSING[@]})); then
-    bold "Installation des paquets Wine (32+64 bits) — mot de passe sudo requis :"
-    sudo dpkg --add-architecture i386
-    sudo apt-get update
-    sudo apt-get install -y wine wine32:i386 wine64 winetricks cabextract
+step "1/6 Installation des dépendances système (Wine + graphique 32 bits)"
+# Tout le nécessaire en une passe :
+#  - wine 32 bits (le client est un PE32 i386)
+#  - libGL/libGLU 32 bits : SANS elles, Wine n'a pas d'OpenGL -> le client
+#    meurt au changement de mode vidéo ("Failed to load libGL.so.1",
+#    "Failed to find a suitable pixel format" — confirmé sur p50/NVIDIA)
+#  - bibliothèque NVIDIA 32 bits si carte NVIDIA (détectée via nvidia-smi)
+#  - winetricks + cabextract (MFC42)
+bold "Installation des paquets — mot de passe sudo requis :"
+sudo dpkg --add-architecture i386
+sudo apt-get update
+sudo apt-get install -y \
+    wine wine32:i386 wine64 winetricks cabextract \
+    libgl1:i386 libgl1-mesa-dri:i386 libglu1-mesa:i386 \
+    mesa-utils
+
+# Carte NVIDIA : ajouter la lib GL 32 bits du pilote en place.
+if command -v nvidia-smi >/dev/null 2>&1; then
+    NV_VER="$(nvidia-smi --query-gpu=driver_version --format=csv,noheader 2>/dev/null | head -1 | cut -d. -f1)"
+    if [ -n "${NV_VER:-}" ]; then
+        echo "Carte NVIDIA détectée (pilote $NV_VER) — installation de libnvidia-gl-$NV_VER:i386"
+        sudo apt-get install -y "libnvidia-gl-$NV_VER:i386" \
+            || echo "ATTENTION : libnvidia-gl-$NV_VER:i386 introuvable — OpenGL 32 bits restera sur Mesa (peut suffire)"
+    fi
 fi
-command -v winetricks >/dev/null || { sudo apt-get install -y winetricks; }
+
+# Vérification : libGL 32 bits présente ?
+if [ -f /usr/lib/i386-linux-gnu/libGL.so.1 ] || ldconfig -p | grep -q "i386.*libGL.so.1"; then
+    bold "libGL 32 bits : OK"
+else
+    echo "ATTENTION : libGL 32 bits toujours absente — le client ne pourra pas s'afficher." >&2
+fi
 
 # ---------------------------------------------------------------- préfixe
 step "2/6 Préparation du préfixe Wine 32 bits : $PREFIX"

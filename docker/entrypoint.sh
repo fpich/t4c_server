@@ -84,7 +84,7 @@ for i in 1 2 3 4 5 6 7 8 9 10; do
     sleep 1
 done
 export DISPLAY=:99
-WINEDEBUG=-all script -qec "wine \"T4C Server.exe\"" /tmp/server-console.log >/dev/null 2>&1 &
+WINEDEBUG=-all wine "T4C Server.exe" > /tmp/server-console.log 2>&1 &
 SERVER_PID=$!
 
 # Fenêtre de licence éventuelle : la détecter et cliquer OK automatiquement.

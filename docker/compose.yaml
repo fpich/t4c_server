@@ -23,8 +23,11 @@ services:
       - t4c_db:/opt/t4c/db
       - t4c_logs:/opt/t4c/Logs
     restart: unless-stopped
-    stdin_open: false
-    tty: false
+    # TTY réel requis : T4C Server.exe exige une console interactive et
+    # sort proprement (code 0) sans elle. Confirmé par test : avec -it,
+    # le serveur démarre et écoute sur 11677/11678.
+    stdin_open: true
+    tty: true
 
 volumes:
   t4c_db:

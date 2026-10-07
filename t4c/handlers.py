@@ -607,15 +607,9 @@ async def handle_put_player_in_game(
         session.pos_world,
     )
     server.send_packet(session.address, response)
-    # Puppet du joueur (Character::PacketPuppetInfo, envoyé par
-    # packet_inview_units au propriétaire) : le client a besoin du
-    # modèle 3D du personnage pour le rendre au centre de l'écran.
-    # Format : i32 ID puis 9 × i16 apparences d'équipement (0 = rien).
-    puppet = PacketWriter(PacketID.PUPPET_INFORMATION)
-    puppet.write_i32(session.unit_id)
-    for _ in range(9):  # body, feet, gloves, helm, legs, armes D/G, cape
-        puppet.write_i16(0)
-    server.send_packet(session.address, puppet)
+    # Désassemblage 1.25 : AsyncRQFUNC_PutPlayerInGame (@ 0x47b48d) envoie
+    # UNIQUEMENT la réponse 13 — pas de puppet. Le puppet (68) n'est envoyé
+    # que par packet_inview_units quand des unités sont en vue.
     log.info(
         "MONDE personnage chargé nom=%r compte=%r ID=%d client=%s -> %s",
         character.name,
@@ -638,12 +632,14 @@ async def handle_from_preingame_to_ingame(
     """
     session.enter_world_requests += 1
     result = 0
-    status_writer = None
     if session.state is SessionState.PRE_INGAME:
         session.state = SessionState.IN_WORLD
-        # L'original envoie PacketStatus juste après la mise en jeu
-        # (TFCMessagesHandler.cpp:1545) : le client en a besoin pour
-        # construire son interface. Sans lui, crash à l'affichage.
+        # Flux authentique du binaire 1.25 (RQFUNC_FromPreInGameToInGame
+        # @ 0x47b750) : après PutPlayerInGame réussi ->
+        #   1. PacketStatus envoyé           [0x41f5a0 puis SendPlayerMessage]
+        #   2. si apparence == 10011/10012 (puppet) : PacketPuppetInfo envoyé
+        #      puis BroadcastPopup          [0x40faf0]
+        #   3. réponse 46 (u8 résultat)
         character = None
         if session.account:
             for candidate in server.characters.characters(session.account):
@@ -653,6 +649,17 @@ async def handle_from_preingame_to_ingame(
         if character is not None:
             status_writer = _write_status(character)
             server.send_packet(session.address, status_writer)
+            if character.race in (10011, 10012):
+                puppet = PacketWriter(PacketID.PUPPET_INFORMATION)
+                puppet.write_i32(session.unit_id or 0)
+                for _ in range(9):
+                    puppet.write_i16(0)
+                server.send_packet(session.address, puppet)
+                log.info(
+                    "PUPPET envoyé au 46 (apparence=%d) client=%s",
+                    character.race,
+                    session.address,
+                )
     elif session.state is SessionState.IN_WORLD:
         result = 1
     else:
@@ -803,27 +810,16 @@ async def handle_get_near_items(
     #    original : 'Sends this to ensure player wont get stuck in a
     #    black screen when loading').
     # 2) puis le corps du 60 lui-même.
-    # L'événement 16 contient les unités apparues — le JOUEUR lui-même
-    # en fait partie (PutPlayerInGame l'a ajouté au monde juste avant ;
-    # c'est ce que l'original sérialise via packet_inview_units).
-    # Format Unit::PacketUnitInformation : i16 apparence, i32 ID,
-    # i8 radiance, i8 statut, i8 %HP.
-    event = PacketWriter(16)  # __EVENT_OBJECT_APPEARED_LIST
-    event.write_i16(1)        # une unité : le joueur
-    event.write_i16(session.pos_x)
-    event.write_i16(session.pos_y)
-    event.write_i16(10011)    # apparence __PLAYER_PUPPET
-    event.write_i32(session.unit_id or 0)
-    event.write_i8(0)         # radiance
-    event.write_i8(0)         # statut
-    event.write_i8(100)       # %HP (pleine santé)
-    server.send_packet(session.address, event)
+    # Désassemblage du binaire 1.25 (RQFUNC_GetNearItems @ 0x483530) :
+    #   read = packet_inview_units(WL, packet, range=0x14, self)
+    #   si read <= 0 : packet.Destroy(); packet << 60 (corps vide)
+    #   SendPlayerMessage(packet)
+    # L'événement 16 n'est envoyé QUE si des unités existent autour ;
+    # notre monde de développement n'en contient aucune -> 60 corps vide,
+    # exactement comme l'original.
     response = PacketWriter(PacketID.GET_NEAR_ITEMS)
     server.send_packet(session.address, response)
-    log.info(
-        "VUE le joueur apparaît dans la scène (événement 16 : 1 unité) client=%s",
-        session.address,
-    )
+    log.info("VUE monde vide : 60 corps vide (comportement 1.25) client=%s", session.address)
 
 
 async def handle_get_online_player_list(

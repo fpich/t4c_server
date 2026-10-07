@@ -1,74 +1,50 @@
-# Serveur T4C original dans Docker
+# Docker — trois compose séparés, un rôle chacun
 
-Exécute le **vrai binaire** `ressources/T4C_Server/T4C Server.exe` (Vircom, 1999)
-sous Wine dans Debian 13 (trixie), avec `docker compose`.
+## 1. compose.python.yaml — SERVEUR PYTHON (recommandé) ✅
 
-## Démarrage
+La réimplémentation du dépôt (48 tests verts : bootstrap complet, comptes,
+personnages, mouvements, persistance SQLite). Conteneur trivial :
+Debian 13 + Python stdlib, zéro Wine.
 
 ```bash
 cd docker
-docker compose up -d --build
-docker compose logs -f t4c-server
+docker compose -f compose.python.yaml up -d --build
+docker compose -f compose.python.yaml logs -f
+# persistance : volume t4c_python_db -> /data/t4c.sqlite3
 ```
 
-Le serveur écoute sur **UDP 11677** (0.0D9D, valeur par défaut confirmée par
-analyse du binaire) et est joignable depuis l'extérieur (`0.0.0.0`).
+## 2. compose.client.yaml — CLIENT fenêtré (VNC/noVNC) ✅
 
-## Ce que fait le conteneur
-
-1. Installe Wine 32 bits (le binaire est un PE32 i386).
-2. Copie l'intégralité de `ressources/T4C_Server/` (exécutables, DLLs NPC,
-   `t4c_fr.elng`, `T4C.mdb`...).
-3. `entrypoint.sh` :
-   - initialise le préfixe Wine,
-   - importe `T4C-server.reg` : les clés
-     `HKLM\Software\Vircom\The 4th Coming Server\{Network,GeneralConfig,
-     Authentication,ExtensionDLLs}` que le binaire exige au démarrage
-     (découvertes par analyse des chaînes du binaire : « Could not open
-     registry key ... required by T4C Server »),
-   - déclare le DSN ODBC `T4C Server Authentication` vers `T4C.mdb`
-     (le serveur authentifie les comptes via ODBC — chaînes `ODBC_DSN`,
-     `ODBC_TABLE=T4CUsers` confirmées dans le binaire),
-   - lance `wine "T4C Server.exe"` en avant-plan.
-
-## Persistance
-
-- `t4c_db` (volume) : `T4C.mdb` — comptes et personnages. Initialisée depuis
-  la mdb vierge du dépôt au premier démarrage.
-- `t4c_logs` (volume) : logs du serveur (World.log, ...).
-
-## Base de données : pourquoi pas SQLite ?
-
-Le binaire original **parle exclusivement ODBC** (chaînes confirmées :
-`ODBC_DSN`, `ODBC_TABLE`, `SELECT AccountName, UserID FROM PlayingCharacters
-WHERE PlayerName='%s'`...) et requête la base Access `T4C.mdb` via Jet.
-SQLite n'est pas un pilote ODBC installable dans Wine sans winetricks
-supplémentaires. La persistance est donc assurée par la mdb dans le volume.
-
-Pour un backend SQLite natif, c'est le serveur Python du dépôt
-(`run_server.py --database t4c.sqlite3`) qui le fournit (étape 9).
-
-## Réglages
-
-| Variable | Défaut | Rôle |
-|---|---|---|
-| `T4C_PORT` | `11677` | port UDP (aussi fixé dans le .reg `RECV_PORT`/`SEND_PORT` — modifiez les deux en cohérence) |
-
-## Dépannage
+Wine + t4c.exe du dossier t4c_client_fr, affiché dans le navigateur.
+Le serveur cible se choisit par variable :
 
 ```bash
-# voir la console du serveur (l'intro/license s'affiche au démarrage)
-docker compose logs t4c-server
+cd docker
+docker network create t4cnet 2>/dev/null
+# vers le serveur Python (réseau Docker, par défaut) :
+docker compose -f compose.client.yaml up -d --build
+# ... puis http://<IP-hôte>:6080/vnc.html (mot de passe VNC : t4c)
 
-# vérifier que le port écoute
-docker compose exec t4c-server ss -lun | grep 11677
-
-# forcer la recréation du préfixe Wine
-docker compose down
-docker volume rm docker_t4c_db
-docker compose up -d --build
+# ou vers une IP externe (VM XP avec le serveur original, autre machine) :
+T4C_SERVER_HOST=192.168.1.x docker compose -f compose.client.yaml up -d
 ```
 
-Note : `T4CShell.exe` (arrêt propre, maintenance de la base) est également
-disponible dans le conteneur :
-`docker compose exec t4c-server wine T4CShell.exe -shutdown now`
+Son : VNC ne transporte pas l'audio ; la sortie Wine est routée vers
+PulseAudio de l'hôte :
+  pactl load-module module-native-protocol-tcp auth-ip-acl='127.0.0.1;172.17.0.0/16;172.18.0.0/16'
+
+## 3. compose.original-server.yaml — SERVEUR ORIGINAL (expérimental) ⚠️
+
+T4C Server.exe (binaire Vircom 1999) sous Wine. Beaucoup progressé
+(win32, Xvfb+xauth, MFC42, ODBC 32 bits, TTY, compte admin auto) mais
+le binaire exige une console interactive réelle : en conteneur détaché
+il démarre puis se ferme (boucle). La VM XP l'héberge de façon fiable.
+Conservé pour reprise ultérieure.
+
+## Architecture cible
+
+```
+[t4c-python conteneur]  <-réseau t4cnet->  [t4c-client conteneur]
+        (protocole validé)                      -> noVNC :6080 (navigateur)
+        (SQLite persistée)                      -> son : PulseAudio hôte
+```

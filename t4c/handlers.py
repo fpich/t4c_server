@@ -13,6 +13,7 @@ import logging
 import re
 from typing import TYPE_CHECKING
 
+from .characters import Character
 from .codec import DecodedPacket, PacketReader, PacketWriter, T4CProtocolError
 from .protocol import PacketID
 from .session import SessionState
@@ -37,6 +38,11 @@ class PacketDispatcher:
         self.register(PacketID.AUTHENTICATE_SERVER_VERSION, handle_authenticate_server_version)
         self.register(PacketID.EXIT_GAME, handle_exit_game)
         self.register(PacketID.GET_PERSONAL_PC_LIST, handle_get_personal_pc_list)
+        self.register(PacketID.CREATE_PLAYER, handle_create_player)
+        self.register(
+            PacketID.MAX_CHARACTERS_PER_ACCOUNT_INFO,
+            handle_max_characters_per_account_info,
+        )
 
     def register(self, packet_id: int, handler: PacketHandler) -> None:
         packet_id = int(packet_id)
@@ -315,33 +321,118 @@ async def handle_exit_game(
 async def handle_get_personal_pc_list(
     server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
 ) -> None:
-    """Request 26: return the account's character list.
+    """Requête 26 : liste des personnages du compte.
 
-    The original server serializes the response as:
+    Le serveur original envoie d'abord le paquet 103 (nombre maximal de
+    personnages par compte) pour piloter l'option « Nouveau personnage »,
+    puis sérialise la liste ainsi :
       u8 count
-      repeated count times:
-        u8 name_len, name bytes, u16 field_a, u16 field_b
-
-    Persistence/character creation is the next milestone.  For now an
-    authenticated development account owns zero characters, which is a valid
-    response and lets the stock client advance to its character-creation UI.
+      répété count fois : u8 name_len, name, i16 race, i16 level
     """
     session.character_list_requests += 1
     if packet.body:
         log.debug(
-            "request 26 from %s unexpectedly carries %d body byte(s): %s",
+            "requête 26 de %s avec %d octet(s) inattendu(s) : %s",
             session.address,
             len(packet.body),
             packet.body.hex(" "),
         )
-
+    max_writer = PacketWriter(PacketID.MAX_CHARACTERS_PER_ACCOUNT_INFO)
+    max_writer.write_u8(server.characters.max_per_account)
+    server.send_packet(session.address, max_writer)
+    characters = (
+        server.characters.characters(session.account) if session.account else []
+    )
     response = PacketWriter(PacketID.GET_PERSONAL_PC_LIST)
-    response.write_u8(0)
+    response.write_u8(len(characters))
+    for character in characters:
+        encoded = character.name.encode("cp1252")
+        response.write_u8(len(encoded)).write_bytes(encoded)
+        response.write_i16(character.race)
+        response.write_i16(character.level)
+    server.send_packet(session.address, response)
+    log.info(
+        "PERSONNAGES client=%s compte=%r nombre=%d max=%d requêtes=%d",
+        session.address,
+        session.account,
+        len(characters),
+        server.characters.max_per_account,
+        session.character_list_requests,
+    )
+
+
+async def handle_max_characters_per_account_info(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 103 : nombre maximal de personnages par compte (u8)."""
+    response = PacketWriter(PacketID.MAX_CHARACTERS_PER_ACCOUNT_INFO)
+    response.write_u8(server.characters.max_per_account)
     server.send_packet(session.address, response)
 
+
+async def handle_create_player(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 25 : création d'un personnage.
+
+    Format confirmé depuis le gestionnaire RQ_CreatePlayer original :
+      requête  = 6 × u8 réponses du questionnaire, u8 name_len, name
+      réponse  = u8 résultat, puis Character::packet_stats :
+                 i8 AGI, i8 END, i8 INT, i8 luck, i8 STR, i8 wil, i8 WIS,
+                 i32 max HP, i32 HP, i16 max mana, i16 mana
+    Le résultat 0 est la branche succès du serveur original ; les autres
+    valeurs signalent les échecs de création (état, nom, quota).
+    """
+    session.create_player_requests += 1
+    reader = PacketReader(packet.body)
+    try:
+        answers = tuple(reader.read_u8() for _ in range(6))
+        name = reader.read_pascal_u8_text()
+    except T4CProtocolError as exc:
+        log.warning("requête 25 malformée de %s : %s", session.address, exc)
+        return
+    _ensure_consumed(reader, packet.packet_id)
+    result = 0
+    if session.state is not SessionState.CHARACTER_MENU or not session.account:
+        result = 1
+    elif not _name_is_syntactically_valid(name):
+        result = 2
+    elif (
+        server.characters.name_exists(name)
+        or name.casefold() in server.reserved_names
+    ):
+        result = 3
+    elif (
+        len(server.characters.characters(session.account))
+        >= server.characters.max_per_account
+    ):
+        result = 4
+    character = None
+    if result == 0:
+        character = Character(name=name, answers=answers)
+        if not server.characters.create(session.account, character):
+            result = 3
+            character = None
+    response = PacketWriter(PacketID.CREATE_PLAYER)
+    response.write_u8(result)
+    if character is not None:
+        session.active_character = character.name
+        response.write_i8(character.agi)
+        response.write_i8(character.end)
+        response.write_i8(character.intelligence)
+        response.write_i8(0)
+        response.write_i8(character.strength)
+        response.write_i8(0)
+        response.write_i8(character.wisdom)
+        response.write_i32(character.max_hp)
+        response.write_i32(character.hp)
+        response.write_i16(character.max_mana)
+        response.write_i16(character.mana)
+    server.send_packet(session.address, response)
     log.info(
-        "PERSONNAGES client=%s nombre=0 requêtes=%d version_ok=%s",
+        "CRÉATION nom=%r compte=%r résultat=%d client=%s",
+        name,
+        session.account,
+        result,
         session.address,
-        session.character_list_requests,
-        session.protocol_version_accepted,
     )

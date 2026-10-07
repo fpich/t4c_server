@@ -7,6 +7,7 @@ import logging
 import time
 
 from .codec import DecodedPacket, PacketWriter, T4CProtocolError, decode_datagram
+from .characters import CharacterStore
 from .config import ServerConfig
 from .handlers import PacketDispatcher
 from .protocol import packet_name
@@ -33,6 +34,7 @@ class T4CServerProtocol(asyncio.DatagramProtocol):
         self.dispatcher = dispatcher or PacketDispatcher()
         self.sessions: dict[Address, ClientSession] = {}
         self.reserved_names: set[str] = set()
+        self.characters = CharacterStore(max_per_account=config.max_characters_per_account if config else 3)
 
     def connection_made(self, transport: asyncio.BaseTransport) -> None:
         self.transport = transport  # type: ignore[assignment]

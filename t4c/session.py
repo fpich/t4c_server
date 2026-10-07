@@ -42,4 +42,5 @@ class ClientSession:
     protocol_version_accepted: bool = False
     character_list_requests: int = 0
     exit_game_requests: int = 0
+    create_player_requests: int = 0
     active_character: str | None = None

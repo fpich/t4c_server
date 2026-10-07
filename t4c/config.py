@@ -41,3 +41,7 @@ class ServerConfig:
     # comportement exact du client FR/GOA n'est pas complètement neutralisé.
     # Le serveur et ses textes visibles restent néanmoins en français.
     default_language: int = 0
+    # Paquet 103 : nombre maximal de personnages par compte. Le serveur
+    # original l'envoie juste avant la liste (26) pour piloter l'affichage
+    # de l'option "Nouveau personnage" du client.
+    max_characters_per_account: int = 3

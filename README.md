@@ -166,3 +166,18 @@ Pour tester explicitement l'interface française :
 
 Si le client revient sur l'écran GOA, remettez `English`; cela n'empêche pas le
 serveur, le MOTD et les futurs dialogues de jeu d'être en français.
+
+## Étape 7 — création de personnage (paquet 25)
+
+Le format a été confirmé à partir du gestionnaire `RQ_CreatePlayer` du serveur
+original (réponses du questionnaire + nom en pascal-string u8, réponse
+`u8 résultat` suivie de `Character::packet_stats`). La liste de personnages
+(paquet 26) est désormais réelle et persistante par compte (en mémoire), et le
+serveur envoie d'abord le paquet 103 (nombre maximal de personnages par compte)
+exactement comme l'original, afin de piloter l'option « Nouveau personnage ».
+
+Sérialisation du paquet 26 confirmée : `u8 count`, puis pour chaque personnage
+`u8 name_len, name, i16 race, i16 level`.
+
+Le stockage (`t4c/characters.py`) est volontairement en mémoire pour l'instant ;
+la persistance sur disque est le prochain jalon.

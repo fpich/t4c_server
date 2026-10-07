@@ -36,6 +36,7 @@ VIEW_RANGE = 0x14  # 20 tuiles
 EVENT_OBJECT_MOVED = 1
 EVENT_OBJECT_REMOVED = 11
 EVENT_UNIT_POPUP = 0x2714  # 10004
+EVENT_UNIT_TALK = 27
 
 
 def _write_unit_information(w, character: Character, unit_id: int) -> None:
@@ -152,3 +153,58 @@ def broadcast_object_removed(
         removed.write_u8(0)
         removed.write_i32(session.unit_id)
         server.send_packet(other.address, removed)
+
+
+def broadcast_unit_talk(
+    server: "T4CServerProtocol",
+    session: "ClientSession",
+    text: str,
+    *,
+    direction: int = 0,
+    style: int = 0,
+) -> None:
+    """S2C 27 (Unit::Talk @0x48C3E0) : diffuse la parole d'un joueur en vue.
+
+    Format confirmé : u32 speakerUnitId, u8 direction, u32 colorOrStyle,
+    u8 speakerFlag, CString text, CString speakerName.
+    """
+    if session.unit_id is None:
+        return
+    speaker_name = session.active_character or ""
+    targets = [session] + [
+        other
+        for other in _other_in_world_sessions(server, session)
+        if _in_view(other.pos_x, other.pos_y, session.pos_x, session.pos_y)
+    ]
+    for target in targets:
+        talk = PacketWriter(EVENT_UNIT_TALK)
+        talk.write_i32(session.unit_id)
+        talk.write_u8(direction)
+        talk.write_u32(style)
+        talk.write_u8(1)  # speakerFlag : (field_73 != 1) ? 1 : 0 côté original
+        talk.write_text(text)
+        talk.write_text(speaker_name)
+        server.send_packet(target.address, talk)
+    log.info(
+        "PAROLE %r de %s (%d cible(s))",
+        text[:60],
+        speaker_name,
+        len(targets),
+    )
+
+
+def send_server_message(
+    server: "T4CServerProtocol", session: "ClientSession", text: str
+) -> None:
+    """S2C 63 (SERVER_MESSAGE) : message système à un joueur.
+
+    Valeurs standards du serveur original : catégorie=30, style=3.
+    """
+    message = PacketWriter(EVENT_SERVER_MESSAGE)
+    message.write_i16(30)  # catégorie
+    message.write_i16(3)   # style
+    message.write_text(text)
+    server.send_packet(session.address, message)
+
+
+EVENT_SERVER_MESSAGE = 63

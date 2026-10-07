@@ -47,6 +47,9 @@ class PacketID(IntEnum):
     ITEM_NAME_REQUEST = 59        # client @0x433C7B : u32 itemId
     USE_SPELL_UNIT = 32           # client @0x455BF0 : u16 spellId, u16 x, u16 y, u32 targetUnitId
     USE_SKILL_UNIT = 42           # client @0x415C00 : u16 skillId, u16 x, u16 y, u32 targetUnitId
+    LOCAL_TALK_REQUEST = 30       # client -> serveur : u16 x, u16 y, u32 fieldA, u8 dir, u32 style, CString text
+    UNIT_TALK = 27                # serveur -> client : parole au-dessus d'une unité
+    SERVER_MESSAGE = 63           # serveur -> client : u16 catégorie, u16 style, CString texte
     RETURN_TO_MENU = 38
     GET_TIME = 45
     FROM_PREINGAME_TO_INGAME = 46

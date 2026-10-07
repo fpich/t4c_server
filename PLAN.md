@@ -20,22 +20,22 @@
 
 ## Phase 1 — Fondations de gameplay
 
-### 1.1 Modèle de données d'inventaire
-- [ ] `Item` dataclass : `unit_id`, `template_id`, `name`, `quantity`, `price`, `equip_slot`, `is_unique`
-- [ ] Persistance des items (table `items` par personnage : sac + 13 slots d'équipement)
-- [ ] Remplir 18/19 avec le vrai contenu
-- [ ] Brancher 21 (équiper → maj slot + renvoyer 19), 22 (déséquiper), 23 (utiliser)
-- **Validation** : ouvrir le sac en jeu, équiper/déséquiper un objet, reconnexion → inventaire conservé
+### 1.1 Modèle de données d'inventaire ✅ (2026-10-08)
+- [x] `Item` dataclass : `unit_id`, `template_id`, `name`, `quantity`, `price`, `equip_slot`, `is_unique` (`t4c/items.py`)
+- [x] Persistance des items (table `CharacterItems` par personnage : sac + 13 slots d'équipement)
+- [x] Remplir 18/19 avec le vrai contenu
+- [x] Brancher 21 (équiper → maj slot + renvoyer 19), 22 (déséquiper), 23 (utiliser — potion de soin consommable)
+- **Validation** : ✅ tests `test_step12_inventory_chat.py` (roundtrip persistance, équiper/déséquiper, consommation) — à confirmer en jeu client
 
 ### 1.2 Or et stats persistants
 - [ ] `gold`, XP, HP/mana réels dans la base ; le 13 et le 43 les reflètent
 - **Validation** : tuer/acheter modifie l'or, relog le conserve
 
-### 1.3 Chat local
-- [ ] C2S 30 (LOCAL_TALK) → diffusion S2C 27 (Unit::Talk) aux joueurs en vue
-- [ ] S2C 63 (SERVER_MESSAGE cat=30 style=3) pour les messages système
+### 1.3 Chat local ✅ (2026-10-08)
+- [x] C2S 30 (LOCAL_TALK) → diffusion S2C 27 (Unit::Talk) aux joueurs en vue + émetteur (`world.broadcast_unit_talk`)
+- [x] S2C 63 (SERVER_MESSAGE cat=30 style=3) disponible (`world.send_server_message`)
 - [ ] Paquet 29 : observer en trace avant d'implémenter (sémantique non résolue)
-- **Validation** : deux clients, taper un message, le voir au-dessus des deux personnages
+- **Validation** : ✅ tests (diffusion aux joueurs en vue, pas aux hors-vue) — à confirmer en jeu client
 
 ## Phase 2 — Monde vivant
 

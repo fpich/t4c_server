@@ -9,6 +9,7 @@ import sqlite3
 from pathlib import Path
 
 from .characters import Character
+from .items import BACKPACK_SLOT, Inventory, Item
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS T4Cusers (
@@ -44,6 +45,14 @@ CREATE TABLE IF NOT EXISTS PlayingCharacters (
     Gender INTEGER NOT NULL DEFAULT 0,
     Karma INTEGER NOT NULL DEFAULT 0,
     FOREIGN KEY (UserID) REFERENCES T4Cusers(ID)
+);
+
+CREATE TABLE IF NOT EXISTS CharacterItems (
+    ItemUnitID INTEGER PRIMARY KEY AUTOINCREMENT,
+    CharacterName TEXT NOT NULL,
+    TemplateID INTEGER NOT NULL,
+    Quantity INTEGER NOT NULL DEFAULT 1,
+    EquipSlot INTEGER NOT NULL DEFAULT -1
 );
 """
 
@@ -166,3 +175,45 @@ class Persistence:
             (name,),
         ).fetchone()
         return (row["wlX"], row["wlY"], row["wlWorld"]) if row else None
+
+    # --- inventaire ----------------------------------------------------
+    def inventory(self, name: str) -> Inventory | None:
+        """Reconstruit l'inventaire (sac + équipement) d'un personnage."""
+        rows = self._db.execute(
+            "SELECT ItemUnitID, TemplateID, Quantity, EquipSlot "
+            "FROM CharacterItems WHERE CharacterName = ? COLLATE NOCASE "
+            "ORDER BY ItemUnitID",
+            (name,),
+        ).fetchall()
+        if rows is None:
+            return None
+        inv = Inventory()
+        for row in rows:
+            item = Item(
+                unit_id=row["ItemUnitID"],
+                template_id=row["TemplateID"],
+                quantity=row["Quantity"],
+                equip_slot=row["EquipSlot"],
+            )
+            if row["EquipSlot"] == BACKPACK_SLOT:
+                inv.backpack.append(item)
+            else:
+                inv.equipment[row["EquipSlot"]] = item
+        if rows:
+            inv._next_unit_id = max(r["ItemUnitID"] for r in rows) + 1
+        return inv
+
+    def save_inventory(self, name: str, inv: Inventory) -> None:
+        """Remplace l'inventaire persisté par l'état en mémoire."""
+        self._db.execute(
+            "DELETE FROM CharacterItems WHERE CharacterName = ? COLLATE NOCASE",
+            (name,),
+        )
+        for item in list(inv.backpack) + list(inv.equipment.values()):
+            self._db.execute(
+                "INSERT INTO CharacterItems "
+                "(CharacterName, TemplateID, Quantity, EquipSlot) "
+                "VALUES (?, ?, ?, ?)",
+                (name, item.template_id, item.quantity, item.equip_slot),
+            )
+        self._db.commit()

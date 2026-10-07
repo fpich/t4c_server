@@ -14,6 +14,7 @@ import re
 from typing import TYPE_CHECKING
 
 from .characters import PLAYER_FEMALE_PUPPET, PLAYER_PUPPET, START_POS, Character
+from .items import EQUIPMENT_SLOT_ORDER, Inventory, Item, starting_inventory
 from .codec import DecodedPacket, PacketReader, PacketWriter, T4CProtocolError
 from .protocol import PacketID
 from .session import SessionState
@@ -70,6 +71,7 @@ class PacketDispatcher:
         self.register(PacketID.USE_SPELL_UNIT, handle_use_spell_unit)
         self.register(PacketID.USE_SKILL_UNIT, handle_use_skill_unit)
         self.register(PacketID.ITEM_NAME_REQUEST, handle_item_name_request)
+        self.register(PacketID.LOCAL_TALK_REQUEST, handle_local_talk)
 
     def register(self, packet_id: int, handler: PacketHandler) -> None:
         packet_id = int(packet_id)
@@ -602,6 +604,9 @@ async def handle_put_player_in_game(
     session.active_character = character.name
     session.unit_id = (session.unit_id or 0) + 1
     session.state = SessionState.PRE_INGAME
+    # Inventaire : chargé depuis la persistance, sinon inventaire de création.
+    session.inventory = None
+    _session_inventory(server, session)
     # Position de départ officielle (Character.cpp:117) ; remplacée par la
     # position persistée si elle existe. (0,0,0) est hors carte -> crash
     # du client à l'affichage du monde.
@@ -1028,6 +1033,29 @@ async def handle_get_status(
     log.info("STATUT renvoyé (demande en jeu) client=%s", session.address)
 
 
+def _session_inventory(
+    server: "T4CServerProtocol", session: "ClientSession"
+) -> Inventory | None:
+    """Inventaire du personnage actif (memoïsé dans la session)."""
+    if session.inventory is None and session.active_character:
+        if server.persistence is not None:
+            session.inventory = server.persistence.inventory(session.active_character)
+        if session.inventory is None:
+            session.inventory = starting_inventory()
+    return session.inventory
+
+
+def _persist_inventory(
+    server: "T4CServerProtocol", session: "ClientSession"
+) -> None:
+    if (
+        server.persistence is not None
+        and session.active_character
+        and session.inventory is not None
+    ):
+        server.persistence.save_inventory(session.active_character, session.inventory)
+
+
 async def handle_view_backpack(
     server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
 ) -> None:
@@ -1037,14 +1065,24 @@ async def handle_view_backpack(
       u8 headerFlag, u32 headerValue, u16 count,
       puis par objet : u16 templateField, u32 unitId,
       u16 baseField, u32 quantity, u32 uniqueData.
-    Sac vide : header (flag=0, value=0) + count=0.
     """
+    inventory = _session_inventory(server, session)
     response = PacketWriter(PacketID.VIEW_BACKPACK)
     response.write_u8(0)     # headerFlag
-    response.write_u32(0)   # headerValue
-    response.write_i16(0)    # aucun objet
+    response.write_u32(0)    # headerValue
+    items = list(inventory.backpack) if inventory else []
+    response.write_i16(len(items))
+    for item in items:
+        template = item.template
+        response.write_i16(template.appearance)  # templateField
+        response.write_i32(item.unit_id)
+        response.write_i16(template.base_field)
+        response.write_i32(item.quantity)
+        response.write_u32(0)   # uniqueData (non unique)
     server.send_packet(session.address, response)
-    log.info("SAC À DOS vide client=%s", session.address)
+    log.info(
+        "SAC À DOS %d objet(s) client=%s", len(items), session.address
+    )
 
 
 # Ordre fixe des slots consommés par le handler client du paquet 19
@@ -1065,6 +1103,28 @@ def _write_empty_equipment_slot(w: PacketWriter) -> None:
     w.write_text("")        # displayName
 
 
+def _write_equipment_slot(w: PacketWriter, item: Item | None) -> None:
+    """Une entrée d'équipement (PacketSingleEquip confirmé) :
+    u32 unitId, u16 templateField, u16 baseField, u16 quantity,
+    u32 uniqueData, CString displayName. item=None => entrée vide.
+    """
+    if item is None:
+        w.write_u32(0)
+        w.write_i16(0)
+        w.write_i16(0)
+        w.write_i16(0)
+        w.write_u32(0)
+        w.write_text("")
+        return
+    template = item.template
+    w.write_u32(item.unit_id)
+    w.write_i16(template.appearance)
+    w.write_i16(template.base_field)
+    w.write_i16(item.quantity)
+    w.write_u32(0)   # uniqueData (non unique)
+    w.write_text(template.name)
+
+
 async def handle_view_equiped(
     server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
 ) -> None:
@@ -1073,14 +1133,17 @@ async def handle_view_equiped(
     Format confirmé par le handler client @0x49942B :
       u8 rangedAttack, puis 13 entrées dans l'ordre de slots fixe
       0,2,3,4,6,7,8,9,11,12,14,15,1.
-    Rien d'équipé : rangedAttack=0 et 13 entrées vides.
     """
+    inventory = _session_inventory(server, session)
     response = PacketWriter(PacketID.VIEW_EQUIPED)
     response.write_u8(0)    # rangedAttack
-    for _ in EQUIPMENT_SLOT_ORDER:
-        _write_empty_equipment_slot(response)
+    equipped = inventory.equipment if inventory else {}
+    for slot in EQUIPMENT_SLOT_ORDER:
+        _write_equipment_slot(response, equipped.get(slot))
     server.send_packet(session.address, response)
-    log.info("ÉQUIPÉ rien (13 slots vides) client=%s", session.address)
+    log.info(
+        "ÉQUIPÉ %d slot(s) occupé(s) client=%s", len(equipped), session.address
+    )
 
 
 async def handle_get_chatter_user_list(
@@ -1125,11 +1188,20 @@ async def handle_equip_item(
         log.warning("requête 21 malformée de %s : %s", session.address, exc)
         return
     _ensure_consumed(reader, packet.packet_id)
-    log.info(
-        "ÉQUIPER ignoré (inventaire non implémenté) item=%d client=%s",
-        item_unit_id,
-        session.address,
-    )
+    inventory = _session_inventory(server, session)
+    if inventory is None:
+        return
+    if not inventory.equip(item_unit_id):
+        log.info(
+            "ÉQUIPER refusé item=%d (introuvable/non équipable) client=%s",
+            item_unit_id,
+            session.address,
+        )
+        return
+    _persist_inventory(server, session)
+    # Le client rafraîchit son équipement depuis un 19 complet.
+    await handle_view_equiped(server, session, packet)
+    log.info("ÉQUIPER item=%d client=%s", item_unit_id, session.address)
 
 
 async def handle_unequip_slot(
@@ -1146,11 +1218,15 @@ async def handle_unequip_slot(
         log.warning("requête 22 malformée de %s : %s", session.address, exc)
         return
     _ensure_consumed(reader, packet.packet_id)
-    log.info(
-        "DÉSÉQUIPER ignoré (inventaire non implémenté) slot=%d client=%s",
-        slot,
-        session.address,
-    )
+    inventory = _session_inventory(server, session)
+    if inventory is None:
+        return
+    if not inventory.unequip(slot):
+        log.info("DÉSÉQUIPER refusé slot=%d (vide) client=%s", slot, session.address)
+        return
+    _persist_inventory(server, session)
+    await handle_view_equiped(server, session, packet)
+    log.info("DÉSÉQUIPER slot=%d client=%s", slot, session.address)
 
 
 async def handle_use_item(
@@ -1170,8 +1246,27 @@ async def handle_use_item(
         log.warning("requête 23 malformée de %s : %s", session.address, exc)
         return
     _ensure_consumed(reader, packet.packet_id)
+    inventory = _session_inventory(server, session)
+    if inventory is None:
+        return
+    item = inventory.find(item_unit_id)
+    if item is None:
+        log.info("UTILISER OBJET introuvable item=%d client=%s", item_unit_id, session.address)
+        return
+    # Effet minimal de développement : potion de soin (template 2)
+    if item.template_id == 2:
+        consumed = inventory.consume(item_unit_id, 1)
+        if consumed:
+            _persist_inventory(server, session)
+            log.info(
+                "POTION utilisée item=%d (reste=%d) client=%s",
+                item_unit_id,
+                item.quantity,
+                session.address,
+            )
+            return
     log.info(
-        "UTILISER OBJET ignoré (inventaire non implémenté) item=%d (%d,%d) client=%s",
+        "UTILISER OBJET sans effet item=%d (%d,%d) client=%s",
         item_unit_id,
         x,
         y,
@@ -1257,3 +1352,33 @@ async def handle_item_name_request(
     response.write_text("")
     server.send_packet(session.address, response)
     log.info("NOM OBJET vide item=%d client=%s", item_id, session.address)
+
+
+async def handle_local_talk(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 30 (client -> serveur @0x47FC90) : parole locale.
+
+    Corps confirmé (passe V5) : u16 x, u16 y, u32 fieldA, u8 direction,
+    u32 colorOrStyle, CString text. Diffusée en S2C 27 aux joueurs en vue
+    (et à l'émetteur, comme Unit::Talk côté original).
+    """
+    if session.state is not SessionState.IN_WORLD:
+        return
+    reader = PacketReader(packet.body)
+    try:
+        x = reader.read_u16()
+        y = reader.read_u16()
+        field_a = reader.read_u32()
+        direction = reader.read_u8()
+        style = reader.read_u32()
+        text = reader.read_text()
+    except T4CProtocolError as exc:
+        log.warning("requête 30 malformée de %s : %s", session.address, exc)
+        return
+    _ensure_consumed(reader, packet.packet_id)
+    if not text:
+        return
+    world.broadcast_unit_talk(
+        server, session, text, direction=direction, style=style & 0xFF
+    )

@@ -7,6 +7,8 @@ from enum import Enum, auto
 import time
 from typing import TypeAlias
 
+from .items import Inventory
+
 Address: TypeAlias = tuple[str, int]
 
 
@@ -60,3 +62,4 @@ class ClientSession:
     online_list_requests: int = 0
     page_toggled: bool = False
     active_character: str | None = None
+    inventory: Inventory | None = None

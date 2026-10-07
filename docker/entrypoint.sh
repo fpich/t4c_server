@@ -14,10 +14,9 @@ mkdir -p /tmp/xdg
 
 # Le serveur crée une fenêtre (licence/splash) au démarrage : Xvfb fournit
 # un display virtuel, sinon nodrv_CreateWindow -> sortie code 53.
-echo "[t4c] démarrage de Xvfb (display virtuel)..."
-Xvfb :99 -screen 0 1024x768x16 -nolisten tcp >/dev/null 2>&1 &
-export DISPLAY=:99
-sleep 1
+# xvfb-run garantit que le serveur X tourne AVANT Wine (Xvfb lancé à la
+# main peut mourir silencieusement — cause des déchargements winex11.drv).
+echo "[t4c] display virtuel via xvfb-run..."
 T4C_DIR=/opt/t4c
 DB_DIR=/opt/t4c/db
 
@@ -73,8 +72,8 @@ cp -f "$DB_DIR/T4C.mdb" "$T4C_DIR/T4C.mdb" 2>/dev/null || true
 echo "[t4c] démarrage du serveur (UDP ${T4C_PORT:-11677})..."
 cd "$T4C_DIR"
 set +e
-echo "[t4c] lancement avec traçage des DLL (err+module,loaddll)..."
-WINEDEBUG=err+module,err+loader,loaddll wine "T4C Server.exe" 2>&1 | head -100
+echo "[t4c] lancement du serveur..."
+WINEDEBUG=err+all,-loaddll xvfb-run -a -s "-screen 0 1024x768x16" wine "T4C Server.exe" 2>&1 | head -150
 code=${PIPESTATUS[0]}
 echo "[t4c] T4C Server.exe terminé (code $code)"
 if [ "$code" -ne 0 ]; then

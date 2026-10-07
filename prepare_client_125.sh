@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
-# Historical Dialsoft/Vircom 1.25 French clients can enter the old GOA
-# registration front-end after the MOTD instead of continuing the game login.
-# The known workaround is HKCU\Software\Vircom\T4C -> Language = English.
+# The 1.25 FR client loads "<Language>.elng" at startup (registry value
+# HKCU\Software\Vircom\T4C\Language, default "English" hardcoded in t4c.exe).
+# A pure French installation only ships french.elng, so the key MUST be
+# "french"; an absent key falls back to English and the client dies with
+# "Cannot open language file: English.elng" right after version auth (it
+# then sends packet 20 and exits).
 #
 # This script only changes that one value inside the selected Wine prefix.
 
@@ -20,7 +23,7 @@ EOF
 }
 
 PREFIX=""
-LANGUAGE="English"
+LANGUAGE="french"
 while (($#)); do
     case "$1" in
         --prefix)

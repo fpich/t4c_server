@@ -209,3 +209,26 @@ Formats confirmés depuis `AsyncRQFUNC_PutPlayerInGame` et
 La position (0,0,0), l'XP, l'or et les seuils de niveau sont des valeurs de
 développement ; la carte, les collisions et les unités sont les prochains
 jalons.
+
+## Ressources originales du serveur (dépôt)
+
+`ressources/T4C_Server/` contient désormais la distribution originale du
+serveur 1.25. Éléments exploitables pour le développement :
+
+- **`T4C.mdb`** : base Access (Jet DB) du serveur. Schéma de persistance
+  complet récupéré :
+  - `T4Cusers` : comptes (Account, Password, Account_type, Expired…)
+  - `PlayingCharacters` : personnages (UserID, PlayerName, AccountName, wlX/Y/World,
+    nClass, CurrentHP/MaxHP, mana, Strength/Endurance/Agility/Intelligence/
+    WillPower/Wisdom/Luck, CurrentLevel, Gold, Appearance, Gender, XP,
+    StatPnts/SkillPnts, Karma, guilde, …)
+  - `PlayerItems`, `PlayerSkills`, `PlayerSpells` : inventaire/sorts/compétences
+  - `guildz`, `guildplayers`, `Guildboard` : guildes
+  - `OnlineUsers`, `OfflineMessages`, `MessageDispatch` : présence/messagerie
+  Ce schéma servira de référence pour la persistance du serveur Python
+  (SQLite) — jalon « étape 9 : persistance ».
+- **`Documents/T4C server manuel fr.doc`** : manuel d'exploitation français.
+- **`Motd.txt`** : format du MOTD original (texte brut multi-lignes).
+- **Logs/** : exemples de format de logs du serveur original (World.log…).
+- **`t4c_fr.elng`** : fichier de langue serveur — la numérotation des chaînes
+  (`_DEFAULT_STR`) correspond aux messages envoyés au client.

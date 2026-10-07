@@ -68,12 +68,14 @@ class Step10PlayerMoveTests(unittest.IsolatedAsyncioTestCase):
         }
         for move_id, (dx, dy) in offsets.items():
             server = CaptureServer(ServerConfig())
-            session = in_world_session(0, 0)
+            # Position de départ non-bord : le serveur borne x/y à 0..0x0C00
+            # (le client refuse toute coordonnée négative en u16).
+            session = in_world_session(512, 512)
             handled = await server.dispatcher.dispatch(
                 server, session, move_packet(move_id)
             )
             self.assertTrue(handled, move_id)
-            self.assertEqual((session.pos_x, session.pos_y), (dx, dy), move_id)
+            self.assertEqual((session.pos_x, session.pos_y), (512 + dx, 512 + dy), move_id)
 
     async def test_move_ignored_when_not_in_world(self):
         server = CaptureServer(ServerConfig())

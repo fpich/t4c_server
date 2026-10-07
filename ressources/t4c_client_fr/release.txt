@@ -1,0 +1,612 @@
+*** Version 1.25d Official Release (08/29/03 -- 17:00 EST) ***
+
+FIX: A tentative fix to correct a server crash that occurs during PvP combat. 
+
+*** Version 1.25c Official Release (04/28/03 -- 17:00 EST) ***
+
+FIX: A server crash caused by an exploit has been corrected.
+
+*** Version 1.25b Official Release (10/25/02 -- 17:00 EST) ***
+
+FIX: The Vicars (Asgoth, Ramiel, Kervian and Vharmes), Jormungand, Fenrir and Hel no longer give experience 
+points per damage dealt. 
+FIX: The portal in the mountains leading to Makrsh P'Tangh's lair has been relocated. 
+FIX: The Wizard's Vale portal spell now works properly. 
+MOD: The protection given by the Belt of unstable protection has been toned down. 
+MOD: The abilities of the celestial armor have been slightly toned down. 
+
+*** Version 1.25a Official Release (08/20/02 -- 17:00 EST) ***
+
+FIX: The "Wrath of the Ancients" aura spell now remains on your character once you earn it. 
+FIX: The duplicated chests & doors in the Oracle zone should be resolved.
+FIX: It is no longer possible to enter Nomad's house door by going through the inexistant blocking. 
+FIX: The client no longer crashes if the player clicks on the unstable gem's status icon. 
+FIX: The runed stone tablet should now work properly. 
+FIX: A door has been added in Efnisien's house. 
+FIX: During the rescue of High Priest Gunthar, it was possible to visit a clone in his study room. 
+FIX: A few typos introduced in the Addon quests have been corrected. 
+
+*** Version 1.25 Official Release (06/18/02 -- 17:00 EST) ***
+
+FIX: The CTRL-A and CTRL-W map quit button no longer lead to the first screen of F1. 
+FIX: The Tutorial should no longer be started when a player remorts. 
+FIX: A new utility "t4c tweak" has been made available and will the removal of the seraph effect upon entrance.
+FIX: The unlimited light bug has been corrected. 
+FIX: It is now possible to attain the 3rd remort!
+
+*** Version 1.24 Official Release (03/25/02 -- 17:00 EST) ***
+
+FIX: The give karma bug has been removed from Mordrick Warstone. 
+FIX: The group bug exploit in the XP Colosseum has been resolved. 
+FIX: Malaar in WindHowl should no longer give you free karma if the user dropped the gold before confirming. 
+FIX: The F12 screenshot macro has been removed from this key. It has been put on CTRL-H instead. 
+FIX: There has been some work done on how the font is displayed at the screen. You should not see much difference but if you encounter a problem, please report it. 
+
+*** Version 1.23 Official Release (09/17/01 -- 17:00 EST) ***
+
+FIX: Madrigan's mad house locked door problem has been corrected.
+FIX: Archibald no longer talks to the character that he just teleported away. 
+FIX: Glaenshenmilandira no longer cuts the conversation when she talks about her Purifiers.
+FIX: Using the bonesword of the berserker & the screaming helm of Ogrimar no longer reduces the skill level below 0. 
+FIX: The scroll of barrier now has a spell effect associated with its usage. 
+FIX: The crazed nurses now give experience points when hit.
+FIX: The drum and the royal key in Reynen's chest should spawn more often. 
+FIX: The ring of the forester should spawn less often. 
+FIX: The cedar longbow has been added on the Lord of the Shops.
+FIX: The ring of the Seraph is now set to be destroyed at Seraph. We apologize for the inconvenience but it was meant this way. 
+FIX: Using a raindrop with a macro now works properly. 
+FIX: Corrected the minor exploit concerning the Red-Eyed Centaurs and the mind control talismans. 
+FIX: Idas' wager game has been removed but it might return in the future someday. 
+FIX: A slew of typos have been corrected.
+FIX: A bunch of graphical & blocking errors in the mapping have been corrected.
+NEW: Due to popular demand: the Colosseum has had a complete makeover.
+
+Here are the changes:
+  * The layout of the Colosseum has been modified to accomodate spectators (players).
+  * To prevent abuse, the Colosseum monsters NO LONGER give experience points.
+  * It is possible for a GM to temporarily remove the ability of the Colosseum Clerk to summon new monsters.
+  * A new battlefield has been added: the Battleground. This place has NO monsters, only players willing to fight.
+  * The Battleground, like the Colosseum, can also accomodate spectators.
+
+NEW: A new NPC named Evelyn has been added to the game. 
+NEW: A local map can be displayed by pressing CTRL-A and a world map by pressing CTRL-W. 
+NEW: There is now a tutorial to lower the learning curve for new players. To disable it, type 'help off' and to re-enable it, type 'help on'. 
+NEW: New, more useful F1 help screens have been implemented. 
+
+
+*** Version 1.22 Official Release (08/01/01 -- 17:00 EST) ***
+
+FIX: The invisible barrier that kept monsters from leaving Orkanis castle has been removed. 
+FIX: The area in the colosseum has been enlarged.
+FIX: The "PvP holes" problem in Lighthaven has been corrected. 
+FIX: The sword of might can no longer be sold.
+FIX: The Unholy Blessing spell no longer harms the monster casting it.
+FIX: The cord of treachery now has the appearance of a belt.
+FIX: The mithril bastard sword now has the same appearance in the backpack and in hands.
+FIX: The bonus & duration given by the raindrop/raincloak are capped at 25 raindrops. 
+FIX: Some blocking errors have been fixed.
+FIX: Right-clicking on the left side of the interface now returns the correct message.
+
+*** Version 1.21 Official Release (05/18/01 -- 17:00 EST) ***
+
+FIX: Corrected several miscellaneous typos and other glitches in NPC speeches.
+FIX: The Tomb Raider quest (which can only be done once) now gives 5000 XPs.
+FIX: Keyword "Nightingale" wasn't working properly on Balork. It now does.
+FIX: Some quest items (Letter of Kalir, Letter of Jamar and Crown of Corruption) could be lost, hence breaking the quest for which they were devised. They can no longer be lost/dropped.
+FIX: Using multiple spaces in a name can no longer be used to usurp someone else's character name in the game.
+FIX: Items that can't be dropped or junk no longer have any weight.
+FIX: Malaar no longer mentions the Mato Forest.
+FIX: Some blocking errors have been fixed.
+FIX: Some graphic errors on the map have been fixed.
+FIX: A flaw in the paging system would allow you to page someone and force his account to be disconnected from the server. This has been corrected.
+FIX: King Theodore's letter of introduction (when you first connect to the game) is back.
+FIX: Torches didn't light up when you entered the game; you had to use a second one for it to work.
+FIX: There is now a system message to let you know if you've failed to pick a lock.
+FIX: Monsignore Damien didn't acknowledge swearing allegiance to Ogrimar and kept taking 50k GPs over and over.
+FIX: Monsignore Damien can remove the Elvenbane from your backpack after you've taken care of Shadeen.
+FIX: Ctrl-A and Ctrl-W are once more available in T4C.
+FIX: The Lesser Drain spell had no projectile graphie. It now does (it's a black ball).
+FIX: A fatal bug in the Blade of Ruins quest has been fixed. Amandra would improperly set a flag to a certain value regardless of your answer to a question she asked, which corrupted the quest.
+FIX: Objects that were no-drop and no-junk, and which aren't necessary to quests can now be junked.
+FIX: The dragon no longer disappears when it heals players (the spell effect was removed because it caused the error).
+NEW: There is now a BUGS channel hard-coded into the server. Anyone can shout in it and the comments are recorded in the shout logs; no one who is in that channel gets spammed by the various bug shouts (it’s all private).
+
+*** Version 1.20d Official Release (04/18/01 -- 15:00 EST) ***
+
+FIX: Corrected several miscellaneous typos and other glitches in NPC speeches.
+FIX: The full charge of the Ring of the Forester and the Hammer of True Sight could be duplicated (but not anymore).
+FIX: Using the Hide skill could cause graphics problems (doors in the middle of nowhere, walls sheared off their buildings, etc.).
+FIX: An exploit with the Pick Lock skill has been resolved.
+FIX: Some NPCs addressed Seraphs as "humans." They no longer do so.
+FIX: Some NPCs in the game gave erroneous requirement for the Rob skill (which is actually Peek 25%).
+FIX: The Ring of Darkness generated light.
+FIX: It's no longer possible to exit the game to increase the difficulty level of the Colosseum without fighting the monsters in it.
+FIX: There is now an XP cap on the XPs that can be earned from a kill. This cap is equal to 5% of what a player needs to go from the beginning of his current level to the next.
+FIX: Some characters with the Rob skill and the Sanctuary spell could exploit the combination by making themselves invulnerable. They can no longer do so (Robbing can only be done if the character is *not* suffering from "attack exhaust," a condition that occurs during the Sanctuary spell).
+FIX: A bug allowed a hidden item to remain invisible permanently.
+FIX: Some "hooked" spells (such as Kingsnake Poison) could prevent you from talking properly to some NPCs.
+FIX: There was an invisible object the size of a rock in a cavern (it's been removed).
+FIX: Some trainers in Stoneheim were still using the old training system (pre-dating the new interface).
+FIX: A cheat allowed players to "summon" an infinity of Sweepers, as long as you hadn't killed one before.
+FIX: A cheat allowed players to get unlimited Belladona Berries by repeatedly killing Greyleaf.
+FIX: Vampire Wings can no longer be sold.
+FIX: The "Save Password" setting was turned off automatically regardless of the previous setting.
+FIX: After Webpatching, the client would crash and not restart.
+FIX: The letter of introduction from the king (at the beginning of the game) has been removed.
+FIX: J1 Permit (Madrigan's Madhouse) wasn't being dropped properly (as in, not at all). It's now available.
+FIX: Your account could stay active on the server for 45-60 seconds after having quit the game.
+FIX: You couldn't click on a Potion of Tranquility to re-drink it when its effect was fading (blinking).
+FIX: Spells Minor Combat Sense, Mana Surge, and Major Combat Sense caused the cursor to switch to "combat cursor" over the caster, which was just confusing and wrong.
+FIX: NPC Iago Caballero's begin speech (to evil characters) said he must purify you, but would just break the conversation and go away.
+FIX: Lord Stonecrest's Terror spell was messed up (MOB Terror Spell Effect instead of MOB Terror Spell).
+FIX: Corrected some vagueness in the description of the following spells: Moon Aura, Star Aura, and Sun Aura.
+FIX: Dispel no longer affects the following player/monster/item spells: Entangle, Petrification, Terror, Quicksands, Peaceful Night, Silence of the Lambs, Stone, Hell Chains, and Crystal Sword of Might's effect.
+FIX: Brother Niuss has been fixed so he collects gold normally for his healing services.
+FIX: Potion of Reversal has been removed from the game.
+FIX: Some crashes & deadlock situations which occured while exiting the game should no longer occur.
+FIX: Character outline now updated at level up.
+FIX: Some bug reports hinted that brightness control didn't work properly. Actually, it does, but only in High Graphics mode; in Low Graphics, it has no effect.
+FIX: A notice may inform some WinNT4 users that music & sound are no longer officially supported (they still work for now, and will as long as we can manage it, but that may change in the future).
+
+*** Version 1.20c Official Release (01/22/01 -- 15:00 EST) ***
+
+FIX: Music bug.
+
+*** Version 1.20b Official Release (01/10/01 -- 15:00 EST) ***
+
+FIX: Corrected some typos & keyword problems in the game or on some NPCs (Lothan, Malaar, Delvar Irongrip).
+FIX: Corrected gender-specific word on Laren.
+FIX: Corrected graphical bugs in the game.
+FIX: Sanctuary spell now protects from Mana Burst.
+FIX: Monsignore Damien failed to retrieve Shadeen's earrings after the quest was completed.
+FIX: After you did the Chronicles of Doom quest, Shadeen (keyword: Missions) would still talk about the Scroll of Evil Deed instead of admitting she had no more mission to give you.
+FIX: Zhakar now checks if you've finished the good quest on Raven's Dust and are still carrying Royal Keys. If so, he removes them since they're no longer useful to you and only take up inventory space.
+FIX: The CLIENT.GP file kept growing and could become quite large over time. It is now erased every time you start T4C.
+FIX: The Colosseum (remort area) has been adjusted to prevent overly fast character leveling.
+FIX: Mirymwen Featherfoot should have had a dagger instead of a longsword.
+FIX: Mana Surge was considered a "harmful" spell (the sword cursor would appear over the caster).
+FIX: There was an odd patch of blue water near the upper wall of Madrigan's Madhouse, just sitting there in the darkness.
+FIX: In Madrigan's Madhouse, there were problems with items and/or NPCs stuck behind/through doors.
+FIX: Midnight Shrouds no longer drop in the Forest of No Return. Seraphs who got them prior to this patch can now drop them (they were previously undroppable).
+FIX: You could click on the Potion of Heroism (use item), but it had no effect (like many quest items). You can no longer "use" it, only carry it for quest purposes.
+FIX: The following items can no longer be sold: Skeleton Bone, Golden Chalice, Tarantula Eyes, Chaos Key, Twisted Key, Runic Scripting Kit, Magic Scripting Kit, and Decaying Bat Wings.
+FIX: If you didn't have the Green Gemstone of the Forest Spirit when killing Greyleaf, you wouldn't get the message confirming receipt of the Belladona Berries.
+FIX: The Drachenstaff is now two-handed.
+FIX: A wooden sign near the Centaur area on Stoneheim gave no directions; it now does.
+FIX: There was a gender-specific message confirming you'd joined someone's group. It's been rewritten to remove the offensive term.
+FIX: During a Seraph's entrance, a non-attack cursor would suddenly become an attack cursor.
+FIX: Talking during combat with an NPC would interrupt combat.
+FIX: When right-clicking on the Agility icon, it said AGI limits how high you could train your Attack & Dodge skills, which is no longer true. This has been corrected.
+FIX: Elysana Blackrose wouldn't take the Flask of Bluish Liquid even though she kept begging everyone for it (even people not on the relevant quest). The good news is that she now recognizes the flask again and takes it if you offer it to her.
+FIX: Liurn Clar would say he was taking 10,000 GPs from your inventory, but would actually only take 1,300 GPs.
+FIX: Ancient Ring would stay in backpack, unusable, even after Bones of Ogrimar quest was completed.
+FIX: Ghundarg Rumblefoot would get attacked by the snakes he was summoning.
+
+*** Version 1.20 Official Release (12/19/00 -- 11:00 EST) ***
+
+FIX: Corrected some typos on various NPCs.
+FIX: We made some improvements to the grass to reduce the pattern effect it could produce.
+FIX: Upon dying, Rogue Mages didn't explode (as they should have). The explosion effect would appear on the player character instead (causing no damage other than psychological).
+FIX: Music now changes properly around Silversky. Prior to the fix, the outdoors music would play inside the castle.
+FIX: Macros are now wiped at remort (since some may be linked to spells the character no longer has).
+FIX: The quests that were blocked on Raven's Dust have now been unblocked.
+FIX: If you get an unusual error (class not registered, execution failed, etc.), a popup box appears to remind you to use the SAFE MODE to start the game.
+FIX: The Gem of Destiny used to vanish after the remort (it didn't affect gameplay, but it was distressing all the same).
+
+*** Version 1.19a Release (12/12/00 -- 17:00 EST) ***
+
+FIX: The Silver Feather can no longer be dropped, stolen or junked.
+FIX: Dispel now only affects "negative" spell effects on the target; it can't dispel "positive" effects. It can also be cast in haven areas (temples), where it couldn't be cast before because of PvP restrictions.
+FIX: The sound bug that caused client crashes is now fixed. If you've used the MusicOff.reg file to turn your music option OFF, you can use the MusicOn.reg file to turn it back on.
+FIX: Darkfang no longer calls you "human" after you've become a Seraph.
+
+*** Version 1.19 Release (12/05/00 -- 14:00 EST) ***
+
+FIX: Corrected graphical & blocking bugs.
+FIX: Corrected some random crashes at logon.
+FIX: Some small sections of no-PvP zones didn't prevent PvP properly. They work fine now.
+FIX: Illusion Weavers once more weave illusions (i.e. they once more summon the right monsters).
+FIX: The automatic "send report" feature has been removed from the client.
+FIX: To prevent abuse of the Meditate skill (whose intent is for someone to *stop* walking, meditate and regain mana), there is now some movement exhaustion linked to its use.
+FIX: The new interface now fully supports left-handed mouse.
+FIX: The percentage of bonus to the Archery skill given by bows and Minor Combat Sense has been adjusted (it was calculated on the modified skill, not the base skill).
+FIX: When a skill was put in a macro, it didn't have the correct description (right-click).
+FIX: A bug allowed PKillers to slay users while they were "in transit" after using a teleportation scroll or a spell of Recall (often using Mana Burst).
+FIX: Balork once again responds properly to keyword "Bye."
+FIX: The client no longer leaves a 65Mb temp file in the client directory after a successful install.
+FIX: Using a banker, there was a way to create unlimited gold (but one piece at a time). We've fixed that.
+FIX: A cheat allowed players to remain invisible even if they attacked or cast spells.
+FIX: The CLEAR MACRO button in the Macros menu wasn't working right, creating problems with assigning macros in general.
+FIX: Rain of Fire and Chain Lightning should no longer harm the caster.
+FIX: Items dropped at PC death caused problems (visible in backpack, but couldn't be sold, dropped, junked or equipped).
+FIX: After casting Sanctuary, a cheat allowed users to get rid of the exhaustion but not of the effect (thus being able to attack while invincible).
+FIX: During patching, it may happen that some files cannot be created. This is sometimes due to MSIE's cache being too full. For instructions on how to delete your cache, visit the Troubleshooting section of our Demo Center.
+FIX: When "Log NPC Text" option was turned off, PC texts were no longer logged; they now are.
+FIX: A cheat allowed a player to hide near a wall and be immune to spell attacks from other players.
+FIX: We've increased the time it takes before NPCs break conversation with you (it was reportedly too short).
+FIX: Skill "Teach" boxes now display name, description and requirements. Skill "Train" boxes only display name and description.
+FIX: During the remort, you will lose all of your quest items, but your normal items will remain. (Don't worry if you don't know--yet--what a remort is.)
+FIX: Casting spells while walking could sometimes prevent the spell from being cast properly. We've fixed that.
+FIX: Peasant/Thief/NPCs with non-puppet appearance now have a puppet appearance.
+FIX: The interface wouldn't give an error messge if you tried learning/training while not having enough gold for it.
+FIX: Healing used to interrupt auto-combat. Now, you can cast it without interruptions; you can also re-cast any effect you currently have on you without losing auto-combat.
+FIX: Added "energy ball" effect (various colors) to all non-projectile spells.
+FIX: A bug caused an item flag to be lost when the item was dropped to the ground, causing an interruption of the Vault Raid quest (given by Shadeen) on Raven's Dust.
+FIX: Channel settings (names, colors, etc.) weren't being saved correctly.
+FIX: The character used to rotate on himself when casting a spell on itself. This should no longer happen.
+FIX: Fixed map bugs in the wasp cave.
+FIX: There were situations where you could have full health and still have a yellowish outline. This should no longer happen.
+FIX: It was still possible for someone in no-page mode to page someone using the dialogue bar at the bottom of the interface. We've fixed that. It can no longer be done.
+FIX: If you get error 03 during the installation of your client, you'll get a notice explaining that the missing files will be downloaded when you first connect to the game.
+FIX: The guard in Windhowl would call female characters "Sir." He no longer does this.
+FIX: Arcane Scrolls can now be sold to Chryseida Yolangda (Stoneheim character).
+FIX: Fake shouting problem resolved.
+BUG: Reintroduced (temporarily) the graphic glitch where a spell effect remains stationary even if the target is moving. The previous fix (in v1.18b) was causing too many client crashes in v1.19. We'll correct that for v1.20.
+NEW: If you are installing the T4C client on a Win2000 computer that doesn't have SP1, you'll get a warning informing you the game may not work properly (you may pursue the installation if you wish).
+
+*** Version 1.18 Release (10/27/00 -- 12:00 EST) ***
+
+FIX: Some people were generating grouping requests against their attackers to defend themselves. There is now a delay to generate grouping requests on one player.
+FIX: A weakness in the game allowed attackers to bash on someone who was teleporting away after the teleportation process had started. This no longer occurs.
+FIX: Some very creative gamers used the Drain spells  (Lesser Drain, Drain Life, Greater Drain, Soul Steal) against undeads (to heal them) to earn ludicrous amounts of XPs. That wasn't the intent of the Drain Life spells and has been fixed.
+FIX: The Sanctuary spell could be exploited to gain one minute of complete invulnerability. This is no longer possible.
+FIX: A bug in the blocking system allowed shrewd players to skim near walls and be immune to spells.
+FIX: If you dropped a charged item (with, say, only 1 of its 10 charges left) and picked it up, it was recharged to its maximum uses (back up to 10 charges). This has been corrected.
+
+*** Version 1.17 Release (10/16/00 -- 10:00 EST) ***
+
+FIX: The "send bug report" was causing invalid pointer errors and has been removed.
+FIX: The "fake shout" exploit, which allowed someone to impersonate someone else in shouts, has been fixed.
+FIX: The First Aid bug that caused a crash has been fixed.
+FIX: Login box improved.
+
+*** Version 1.16 Release (07/31/00 -- 11:00 EST) ***
+
+FIX: Shift-click no longer allows player characters to turn invisible.
+FIX: Skill descriptions are now available when right-clicking on them in the character sheet menu.
+FIX: Previously, if someone cast a spell (except for healing spells) on someone else (including monsters or the caster himself) in the same screen as you, it would automatically put you into combat mode against that person. This no longer happens.
+FIX: Corpses no longer disappear, unless you start lagging.
+FIX: Antelopes no longer drop (erroneously) rough emeralds. Those items have been removed from the game (for now).
+FIX: Bows used to benefit from the same STR bonus for damage as warriors; they now have their own set of bonuses (mostly based on AGI, also slightly based on STR).
+FIX: You now get the correct system messages when you're missing either the bow or the quiver you need to properly use ranged weapons.
+FIX: Targetting problems have been resolved.
+FIX: The spell Minor Combat Sense now affects Archery as well as the Attack skill.
+FIX: The following items now affect the Archery skill as well as the Attack skill: Crude orcish necklace, Ring of accuracy, Amulet of precision, Ring of confidence, Orcish wristband, & Minotaur clan ring. You must first UNEQUIP them, then re-equip them to benefit from the "new" bonus.
+FIX: The online context-sensitive help has been updated for the spells that now also affect the Archery skill.
+FIX: All login box information is now saved immediately upon pressing the connect button.
+FIX: Item names that are too long (in Buy/Sell boxes) are now clipped; you can see the full name by right-clicking on the name (which will also display the item's requirements at the same time).
+FIX: [FRENCH VERSION ONLY] Le graphique pour le carquois pour les flèches en os a été corrigé.
+FIX: [FRENCH VERSION ONLY] Le mode graphique "haute qualité" fonctionne désormais comme il faut et peut être sélectionné par le joueur.
+FIX: [FRENCH VERSION ONLY] Changé "Prochain niveau!" pour "Vous avez gagné un niveau!" et "clic double" pour "double clic".
+FIX: [FRENCH VERSION ONLY] "Dodge" et "Attack" sont maintenant traduits en français.
+FYI: Just like melee combat, ranged weapons are affected by the following skills: Armor Piercing, Powerful Blow & Stun Blow.
+
+*** Version 1.15 Release (07/20/00 -- 14:00 EST) ***
+
+FIX: Corrected graphical bugs.
+FIX: Corrected numerous typos on NPCs.
+FIX: Corrected some blocking issues.
+FIX: Resolved "invalid pointer" problem.
+FIX: NPC Gwen no longer babbles (she was repeating herself).
+FIX: Spells in auto-combat stop working if the target goes invisible or hides successfully.
+FIX: Resolved one occurrence of the Dead Player Standing problem.
+FIX: There is now a system message explaining that you can't drop an item (when the item is no-drop in the database).
+FIX: Prevented the cheat that allowed permanent spell effects.
+FIX: It's no longer necessary to activate combat mode (ctrl-c) to fight Jarko.
+FIX: Brother Harforr said he would charge you X GPs for heals, but failed to take the gold (he takes it, now).
+FIX: The safe in Silversky can no longer be attacked.
+FIX: These items can now be sold to any vendor in the game (they couldn't before): Jade Ring of Sorcery, Ethereal Amulet, Tower Shield and Nature's Garb.
+FIX: Re-casting a spell or reusing an item from the effect icon (top left of the screen) now works perfectly.
+FIX: Integrated club weapon appearance into the game.
+FIX: Jarko's Spellbook (item) is now non-droppable.
+FIX: NPC Gwel used to sell all ringmail items except ringmail girdle.
+FIX: The game no longer says "Level Up" when you enter the game.
+FIX: Liurn Clar now charges 100 GP * your level to teleport you to Raven's Dust instead of the old flat fee of 10,000 GPs.
+FIX: Some monster (demon, atrocity) names were displayed too low and overlapped on the monster's graphics.
+FIX: You can now click on an item effect (i.e. torch) to re-use that item (if there's still one in your backpack). You also get a message telling you how many you have left in your inventory.
+FIX: Properly implemented AGI requirements within the game (you'll get error messages if you don't have enough AGI to equip/use an item).
+FIX: Spell "Plague" now has a description (right-click).
+FIX: Removed halo around shop signs.
+FIX: Turn Undead now more powerful if the character has spent over 2 pts of WIS per level (on average).
+FIX: If a file is missing, an improved error message asks you to run the Safe Mode.
+FIX: Untrapped a Taunting Horror that spawned in a mountain.
+FIX: A bug prevented WebDownload.DLL from properly copying SETUP.EXE in Win98.
+FIX: Rondy no longer becomes invisible after attacking you.
+FIX: Improved the link to the players' manual on the website (there was a problem when upgrading/switching versions).
+FIX: There is no more silence between two different music zones.
+FIX: It's no longer possible to cast the Poison spell from within a no-PvP area.
+FIX: The Poison spell (water element) wasn't doing as much damage as it should have against certain water-vulnerable creatures.
+FIX: Acknowledgement message now confirms you've really learned the spell you were trying to learn.
+FIX: The rules for experience loss due to character death have been modified. The penalty is now applied ONLY to the XP acquired since you last went up a level.
+FIX: Modified opening hours of some NPCs. Now open 24 hours a day: Boreas, Mithrand & Greyar Eedy. Now only asleep a 1/3 of the time (instead of half the time): Celydia, Rhodar, Taliron and Kiadus.
+FIX: Modified the red cape to use the new cape graphic.
+FIX: Monsignor Damien now responds properly to you when swearing allegiance to Ogrimar.
+FIX: It is no longer possible to put gold as a macro.
+FIX: The inn sign has been adjusted so that it's still "readable" when flipped.
+NEW: RANGED WEAPONS!!!
+NEW: In-game speech now has a black outline to make it more legible over pale backgrounds.
+NEW: The chat interface channel now displays the number of users in any channel (and the Main Channel displays the number of users currently online).
+
+*** Version 1.11 Release (06/06/00 -- 11:00 EST) ***
+
+FIX: Corrected numerous typos on Raven's Dust NPCs.
+FIX: Corrected some visual bugs in the new interface.
+FIX: Client now loads graphics much faster at the beginning and during the game.
+FIX: Poison & Poison Arrow effect icon was shown on the caster, not on the target who was taking the damage.
+FIX: Casting on a creature, then clicking on an NPC caused involuntary casting on the NPC.
+FIX: You can no longer kill sundials.
+FIX: Right-clicking on gold (on the ground or in the backpack) now displays the amount of gold pieces.
+FIX: Portals & sundials can no longer be targeted by attack spells.
+FIX: Boosted stats are displayed in a different color in the character sheet.
+FIX: Upon entering the game, the client sometimes (erroneously) displayed "Level Up!"
+FIX: Lothan is a mage of *water*, not *air*, and now responds accordingly.
+FIX: Agility now has a direct impact on hitting and dodging in combat. When the Archery skill & ranged weapons are implemented, it will also be key attribute for archers.
+
+*** Version 1.10 Release (05/05/00 -- 16:00 EST) ***
+
+FIX: Corrected typos, various graphical glitches & unreachable items.
+FIX: Gave the correct appearances to items that were different on the ground and in the backpack.
+FIX: Shift-attack is back. Use the Shift key to prevent your character from moving while attacking.
+FIX: Music volume issues resolved.
+FIX: Some NPCs' speech were incorrect (wrong gender references).
+FIX: Zhakar is no longer occasionally immune to spells.
+FIX: Some crashes could occur during Alt-F4.
+FIX: Auto-combat (auto spell casting) didn't stop when the target left the screen.
+FIX: Resolved PK problem in haven areas.
+FIX: Rain of Fire has a visual effect.
+FIX: List of online users now appears faster.
+FIX: Some barely visible item was blocking some spells, giving the impression they were "exploding" without reasons.
+FIX: Crash in loading puppet while quitting the game.
+FIX: Leana (Drardos's wive) would spawn in Rondy's house. She has now returned to her husband's home.
+FIX: Help screens not synchro with the game. While in F1 help screens, the client accumulated data packets, then everything/everyone would zoom on the screen.
+FIX: Improved WebPatch's resume functions.
+FIX: The sound FX weren't substantially affected by the sound FX slider in the Options menu.
+FIX: The button that would set transparency on/off in the Options menu didn't work consistently.
+FIX: Character name is now validated *BEFORE* answering all the character creation questions, not *AFTER*.
+FIX: Smoothing path-to-floor improved throughout the game.
+FIX: Switching spells during auto-spell-combat required you to open your spellbook twice.
+FIX: There were sometimes too many weapon sound FX per attack (1 attack, 2-4 sounds).
+FIX: Problems with sound FX of Earthquake spells have been resolved.
+FIX: Problems with the appearance of the steel-reinforced warhammer have been resolved.
+FIX: Wall graphic bug fixed. Characters were visible through "black holes" when walking alongside the wall.
+FIX: Upon startup, if a non-game sound was using the audio hardware (such as an MP3 playing), the T4C client couldn't detect the sound hardware and music couldn't be initialized.
+FIX: Earthen Strength (spell) is now INT/WIS-based, not level-based.
+FIX: If you press Ctrl-C from combat mode, the sword icon went away, but you sometimes stayed in combat mode.
+FIX: Lesser Drain spell cast on invulnerable NPCs was reversed and could hurt the caster (not anymore).
+FIX: Doors animations & sounds are better synchronized.
+FIX: Rhodar Heatforge and Nahfur Bloodhammer now spawn in different buildings (unlike previously).
+FIX: Liurn Clar now sends you to Raven's Dust using the keyword "SEND" once, then you must use "TELEPORT" and pay 10,000 gold pieces every time.
+FIX: When using a skill, after selecting the target, the latter disappeared in a puff of smoke similar to what it did when there was a dead monster standing problem.
+FIX: Metanas (inn bouncer) was being spawned outside the inn; he now spawns inside.
+FIX: Made some adjustments in the F1 help screens to cover new interface features & commands.
+FIX: On portals, the text displayed by right-clicking on it was too low.
+FIX: Lord Sunrock will no longer take all the diamonds from your inventory (under specific circumstances), only one.
+FIX: Major update of the players' manual.
+FIX: Mana Burst (spell) could hurt invincible NPCs.
+NEW: Added Nightbreed, Demon Trees & Wererats in Anrak's formerly deserted basement (Raven's Dust).
+NEW: New interface is implemented. It now supports group play, chat channels and macros. Check the Players' Manual for details.
+NEW: Updated all healers and added visual effects for healing & sanctuary spells, & private system message when healed.
+NEW: When a spell is cast and ready to go (i.e. you must select a target), the icon now has a special shape to indicate that you must select your target.
+NEW: Road and shop signs now help you find your way on Arakas & Raven's Dust.
+NEW: Added a Safe Mode to the client that solves ALL installation problems automatically.
+NEW: Updated all healers and added visual effects for healing & sanctuary spells, & private system message when healed.
+FIX: ALT-TAB is BACK!
+BUG: ALT-TAB doesn't work perfectly! Use at your own risks.
+BUG: Windows 2000 is not supported and the game will not install on that platform (for now).
+
+*** Version 1.09 Release (02/01/00 -- 16:00 EST) ***
+
+FIX: Spellbook problem on page 5 (and above) fixed. The top spell of that page (and others) can now be used normally.
+
+*** Version 1.08 Release (01/12/00 -- 16:00 EST) ***
+
+FIX: Blocking PvP did not work properly when there were too many users at the same coordinate.
+FIX: Attacking in no-PvP areas no longer spams your screen.
+FIX: Improved Dead Monster Standing problems (i.e. fewer double-monster deaths, fewer double-gold rewards for only one kill, etc.).
+FIX: Solved many problems related to video accelerator card.
+FIX: Release Notes window was no longer popping automatically at logon.
+FIX: Client wouldn't resolve the IP address at login and would force you to re-click on Enter a second time to finally connect to the server.
+FIX: Hardware requirements for High Graphics now specified upon selecting that mode at startup.
+FIX: Skills menu no longer appears after equipping an item that boosts a skill.
+FIX: Due to popular demand, the XP bar in High Graphics mode is now blood red.
+FIX: Combat mode icon (sword) once more appears when you toggle Ctrl-C.
+FIX: If you entered your username & password prior to WebPatch patching some new files, you had to re-enter it once more after (it didn't "remember" what you had entered).
+
+*** Version 1.07 Release (12/14/99 -- 14:20 EST) ***
+
+FIX: Corrected clickable areas of all potions.
+FIX: High Metal Hand Axe +2 now boosts the attack skill.
+FIX: Music would go up when you moved into another music zone in the game.
+FIX: When casting Rain of Fire (spell) on no target, the PC turns south and cast once in the air.
+FIX: When a crash occurs at loading, an automatic email is sent to Vircom (you must answer a yes/no question first).
+FIX: NPC text would sometimes "flash" by too fast to be read.
+FIX: Ctrl-left click to re-cast the last spell did not work perfectly; this is fixed.
+FIX: Map & graphics corrections.
+FIX: When purchasing an item which you can't afford, the inventory box no longer pops up automatically.
+FIX: When T4C crashed and tried to automatically send Vircom a bug report by email, there was a problem with internationalization & foreign (Korean) characters in the user's name. This is no longer a problem.
+FIX: Corrected minotaur graphic in combat.
+FIX: Hand cursor graphic glitch has been corrected.
+FIX: The server does not consider your character in-game until the client has finished entering the game and confirms to the server he is ready to play.
+FIX: Reduced duration of black screen after loading.
+FIX: When starting the game for the first time, while waiting to select a PC, music decompression delays could cause a disconnect from the server and create an "infinite" delay (i.e. "Please Wait" forever).
+FIX: Some bridge graphics problems have been resolved (where the railings were no longer visible).
+FIX: At character creation, the chosen name is checked immediately to see if it is taken (before, you had to answer several questions before being told that).
+FIX: When pressing F1 to get the help menu, the cursor and the palette were messed up.
+FIX: Rapid clicking on doors caused them to open and close too fast. You can no longer close doors. The server closes them automatically after 10 seconds.
+FIX: Keys now have charges (limited number of uses). Message "Your <item name> crumbles to dust" is displayed when the item "vanishes" from the backpack (i.e. when charges are all used up).
+FIX: Some NPCS (Halam, Iroual Knowall and Thorbin Wildheart) now respond to keyword "karma" and give you a general indication of your karma attribute.
+FIX: With 65,000 colors capabilities, menus can now have their own brightness that doesn't affect the surroundings (prior to this, opening a menu in a cave would light up the whole area).
+FIX: HP, MP and XP bars have been slightly improved in High Graphics mode (65,000 colors).
+FIX: The following NPCs have been puppetized: Fali, Geena, Kilhiam, Moonrock, Gwen, Mirak Nira, Annabelle, Lyria, Adriana, Amandra, Celestina Waterbreeze, Celydia, Elysana Blackrose, Leana, Princess Delilah and Thea.
+FIX: Some item boosts were broken/defective.
+FIX: If the game generates a GP file, a box pops up to ask if you want to send it to Vircom (please do send it, it's important to us to get that information.)
+FIX: File security.chk no longer necessary (or present) in T4C client directory (made useless with WebPatch feature).
+NEW: Introduction of limited 65,000 colors capability. High & Low Quality available (High Quality requires PII 266); High Quality can be selected by checking the box in the connect screen. Documented in Players Manual.
+NEW: Introduction of the webpatch, a new & improved patching system that should eliminate all looping (proxy supported).
+NEW: Anti-aliasing of the font now makes reading easier in the game.
+NEW: Auto-combat is now available. Documented in T4C Players Manual.
+BUG: Alt-tab disabled (Windows problems prevent its complete & successful implementation).
+BUG: When equipping an item that boosts a skill, the skill box pops up. This is a temporary glitch that will remain until at least version 1.08.
+BUG: On WinNT, after installing, patching and finally entering the game, it could happen that there was no text in the main menu. Rebooting will fix the problem.
+
+*** Version 1.06 Release (10/07/99 -- 10:00 EDT) ***
+
+FIX: When a player was killed in PvP and the death packet was lost, a client crash would occur if the attacking player kept on attacking the "dead" player.
+FIX: Ctrl-left click to re-cast the last spell did not work anymore; this is fixed.
+FIX: Corrected T4C Players Manual to give correct requirements for the skill Armor Penetration.
+
+*** Version 1.05 Release (09/29/99 -- 12:00 EDT) ***
+
+FIX: Client lag fixed.
+FIX: Corrected music problem in Raven's Dust's crypt.
+FIX: Black tiles removed/corrected.
+FIX: Graphics smoothing corrected (wherever applicable).
+FIX: Clickable area of the safe in Silversky has been corrected.
+FIX: Double-clicking on an item in the sell box now properly sells the item before closing the box. The backpack no longer opens after a transaction.
+FIX: Entrance of caverns under Anrak Brownbark's house has been fixed.
+FIX: Fighting a new monster immediately after killing another one was sometimes not working right (it does now).
+FIX: When teleporting, if music was set to "0", it would start playing again anyway.
+FIX: There was an occasional and inadvertent swapping of the PAGES ON/OFF feature.
+
+*** Version 1.04 Release (09/16/99 -- 16:00 EDT) ***
+
+FIX: Willpower and Luck are both removed from character creation and from the user interface (Ctrl-S).
+FIX: Willpower & Luck points in excess of 10 (for each attribute) are returned to you as attribute points; you can spend them normally.
+FIX: Modifications to the Pick Lock, Peek & Rob skills to compensate disappearance of Willpower & Luck. Pick Lock reqs are now Lvl 12/Agi 40. Peek reqs are now Lvl 5/Agi 30. Rob reqs are now Lvl 17/Agi 50.
+FIX: Trainers Shadow (Lighthaven), Lyria (Arakas) and Baldric Silverknife (Raven's Dust) have been modified to accomodate the removal of Luck from the game.
+FIX: Items Ring of Chance, Pendant of Luck and Amulet of Ironwill will become obsolete (they were boosting attributes that no longer exist). For a short period, they will have a full resale value as compensation for their upcoming deletion. If you have such an item, sell it before we destroy it.
+FIX: Players' Manual edited to reflect the removal of Willpower and Luck from the game.
+FIX: Graphical bugs fixed (black squares, wrong/missing graphics, etc.).
+FIX: Minor blocking corrections done where necessary.
+FIX: Music zones properly implemented on Raven's Dust.
+FIX: Added spells listing in Players' Manual.
+FIX: The safe in Silversky castle was moved slightly so it isn't hidden by the castle's walls.
+FIX: Improvement to lag detection features provides additional data: network icon flashes briefly if your ping is bad.
+FIX: Targetting on brown rat has been slightly adjusted for improved accuracy.
+FIX: Bank robbery quest fixed.
+FIX: The price of healing potions wasn't correctly set. You would have seen a price of 100 on the screen, but 125 gold pieces were actually deducted from your pouch. The correct price listed is now 125 gold pieces.
+FIX: The resell values for the mana potions and mana elixirs have been slightly increased.
+FIX: Some lag issues have been resolved.
+FIX: Fine Steel Scimitar +2 has been fixed.
+NEW: User-friendly feature gives you the opportunity to send Vircom various info files (*.log, *.GP, operating system, user name, server name etc.) upon entering the game if a crash or problem occured during your last game session.
+
+*** Version 1.03a Release (09/07/99 -- 16:00 EDT) ***
+
+FIX: Damage cause by monsters' spell has been slightly reduced.
+FIX: AC spells now use Int & Wis, so they should increase slightly for mages.
+FIX: Selling did not work properly for certain item types.
+
+*** Version 1.03 Release (08/26/99 -- 16:00 EDT) ***
+
+FIX: Music could make the client crash.
+FIX: Some map bugs have been corrected.
+FIX: Some lag issues have been resolved.
+NEW: Network & connectivity icons (lower right of screen) help debugging lag issues.
+NEW: System message appears when karma goes up or down (doesn't say how much, just that it does).
+
+*** Version 1.02 Release (08/12/99 -- 16:00 EDT) ***
+
+FIX: Various graphics problems (walls, smoothing, monsters, etc) at various coordinates.
+FIX: Message "unnamed object" when clicking on an empty chest.
+FIX: Zhakar's speech.
+FIX: Turn Undead spell now does progressive damage.
+FIX: Backpack full (when receiving quest items).
+FIX: Hardened leather armor was still dropping as random loot item.
+FIX: Double-clicking difficulties.
+FIX: Errors in attributes when characters created at location 0,0,0.
+FIX: MOTD word wrap problems.
+FIX: Leather Belt of Survival could not be equipped.
+FIX: Ring of the Initiate could not be equipped.
+FIX: Hitting the mouse button was faster than holding it when attacking.
+FIX: Monsters did not turn around when casting spells.
+FIX: Head bobbing with ringmail helmet.
+
+*** Version 1.01 Release (07/26/99 -- 12:00 EDT) ***
+
+FIX: Only one backpack update is sent when buying multiple items.
+FIX: The Rob skill can no longer be used in a safe haven.
+FIX: Blackblood has a pod and will respawn a while after he is slain.
+FIX: Fixed smoothing problems around houses and road in all islands.
+FIX: Fixed selling type on Large shield.
+FIX: Scarab protector can be equipped.
+FIX: King Theodore XIII was not spawning due to blocking. He also no longer sleepwalks.
+FIX: Samuel now gives a Scarab Protector (waist position) instead of scarab of protection
+FIX: Modified Rhodar Heatforge's Goblin Slayer. He will now ask you to slay at least 500 goblins before he'll sell you the sword.
+FIX: Removed the Link between Brownbark and Anrak. Anrak is no longer Brownbark's son.
+FIX: Several graphics bugs fixed.
+FIX: Fixed/improved keywords responses on NPCs
+FIX: Monster magical resistance adjusted.
+FIX: Monster spells fixed.
+FIX: Spellbook problems fixed.
+FIX: Clickable area improved (when walking and attacking).
+FIX: Hard to drop items.
+FIX: Many typos fixed.
+FIX: Weight check added to "rob" command.
+FIX: Brightness (Black Screen) fixed.
+FIX: XP bar problem when over level 100.
+FIX: First aid is now self only.
+FIX: Dead mobs still attacking when dead.
+FIX: CTRL-C stays on (don't have to turn it off and on again).
+FIX: The pelt didn't have an appearance of pelt. 
+FIX: Zhakar's creation should spawn correctly.
+FIX: Added check on Safe to prevent Gold and XP exploit 
+FIX: The Orcish Arch Mage no longer has the appearance of an Atrocity. 
+FIX: The Portal should no longer be attacked by Minotaurs.
+FIX: The kraanian milipede no longer drop the bugged chests. 
+FIX: It is now possible to exit the Lost Dungeon by using the new Minotaur Portal.
+FIX: Temporarily removed ALL the signs in the map. New "talking" signs caused problems.
+FIX: All Goblin and Atrocity mini-bosses have a new appearance.
+FIX: Added all new item appearances in the database.  
+FIX: The Nature's Garb has been fixed.
+FIX: Brother Kiran, Fali and some other NPCs of the 1st island should no longer speak in gender specific-terms.
+FIX: NPCs that give XP should now trigger level up when needed.
+FIX: Dodge penalty on armor now works.
+FIX: Shops/trainers now allow >64k gold prices.
+FIX: NPC/Creature popping should now work correctly.
+FIX: All elemental resistances and powers should now work properly.
+FIX: Scarab Protector no longer has the appearance of necklace.
+FIX: Drunk in Windhowl no longer a vendor. 
+FIX: Brownbark should be able to speak normally now that the Flag bug is fixed. 
+FIX: The Plate Leggings can now be dropped on the ground.
+FIX: Highlight bug on Reynen Aspicdart. 
+FIX: Menark will teleport you directly to the prison when he 'summons' the guards. 
+FIX: Rondy is now able to fight without going into invisible mode. 
+FIX: The box of jewels should look like a box now.
+FIX: Grimish's minor quest now gives a reward.
+FIX: Removed the old brown blocks in the grey dungeon.
+FIX: Added more intuitive keywords to lead users to Mordrick's quest. 
+FIX: Map modifications: 
+     * The torches in the dungeon have been updated. 
+     * There is now an alternate bridge near Lighthaven.
+     * All reported bugs should now be fixed. 
+FIX: Modified Grimish and Doremas's quest so that it is more intuitive. 
+FIX: Reduced the amount of monster pods in the Lost Dungeon, under the castle of Bane, in the Cave of Specters.
+FIX: All NPCs that weren't spawning due to blocking.
+FIX: The orcish arch mage quest should be fixed. 
+FIX: Keep the patch server in memory when using a proxy server.
+FIX: The quest involving Zhakar should be fixed. 
+FIX: The black market (WindHowl on NPC Ttayh Mark) has been re- designed.
+FIX: In MOTD, exceedingly long strings (40+ characters) could generate an error message.
+FIX: The price for the Book of Warfare has been increased to 15,000 gold pieces. This fixes the gold bug exploit where one user would buy a Book of Warfare, exchange it for a Blade of Sharpness and  sell it for a higher price.
+FIX: Giant wasp idle when attacking 
+FIX: The Turn Undead spell has been revised. Power of spell now based on average WIS points purchased per level.
+FIX: Modified Adriana's speech so that her quest is more intuitive.
+FIX: Monster modifications:
+     * The Silver Axe and Bludgeon weapons deal a little more damage against undead monsters. 
+     * The Goblin Slayer sword deals a little more damage against  goblins.      
+     * Removed the dead fishes on monsters. 
+     * We have done a huge clean-up in the monster listing.
+     * Removed some kraanian pods near water and gave them the  poison arrow spell.
+     * Added alot of mini-bosses. (see the mini-bosses listing) 
+     * Some monsters and NPCs now have the appearance of the old  player appearances. 
+     * FIX: Skeleton warriors and skeleton guardians shouldn't  fight between each other anymore.            
+FIX: Removed cemetery fences and replaced them with wooden fences. This should take care of all the black squares.
+NEW: Sundials should tell time when you click on them. Note: They will not work during the night for obvious reasons.
+NEW: Weapons can now deal exhaust.
+NEW: An exhaustion message is sent when a player is more than 2 seconds walking exhausted.
+NEW: New weapon system and new weapons have been created and implemented in the game. NPCs, chests and monsters have been updated accordingly.
+NEW: New armor (including shields) system and new armors have been created and implemented in the game. NPCs, chests and monsters have been updated accordingly.
+NEW: Female Puppet with sounds
+BUG: Gray Mage -- Cannot attack them without CTRL-C
+
+*** Version 1.00 Base Release (05/11/99 -- 19:00 EDT) ***

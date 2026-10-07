@@ -650,9 +650,12 @@ async def handle_from_preingame_to_ingame(
             status_writer = _write_status(character)
             server.send_packet(session.address, status_writer)
             if character.race in (10011, 10012):
+                # Client (binaire @0x49E0AF) : u32 ID puis EXACTEMENT 8×u16
+                # (8 lectures @0x49E0C9..0x49E11C). 9 champs désalignaient
+                # le parseur (2 octets de trop).
                 puppet = PacketWriter(PacketID.PUPPET_INFORMATION)
                 puppet.write_i32(session.unit_id or 0)
-                for _ in range(9):
+                for _ in range(8):
                     puppet.write_i16(0)
                 server.send_packet(session.address, puppet)
                 log.info(

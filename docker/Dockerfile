@@ -22,13 +22,18 @@ ENV WINEPREFIX=/opt/wineprefix \
     XDG_RUNTIME_DIR=/tmp/xdg \
     WINE_NO_PROXY=1
 
-# Wine 32 bits (le binaire est un PE32 i386) + cabextract pour winetricks
+# Wine 32 bits (le binaire est un PE32 i386) + unixODBC/MDBTools pour le
+# DSN ODBC "T4C Server Authentication" (le serveur authentifie via ODBC
+# vers T4C.mdb ; Wine route les appels ODBC vers unixODBC côté Linux).
 RUN dpkg --add-architecture i386 \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
         wine wine32:i386 wine64 \
         cabextract \
         winbind \
+        unixodbc \
+        libmdbodbc1 \
+        mdbtools \
     && rm -rf /var/lib/apt/lists/*
 
 # Fichiers du serveur original (copiés depuis ressources/T4C_Server)

@@ -36,14 +36,31 @@ fi
 # Le binaire ouvre le DSN ODBC "T4C Server Authentication".
 # On déclare un DSN utilisateur pointant vers la mdb du volume via le
 # pilote MDAC/Jet intégré à Wine (regedit direct dans ODBC.ini de Wine).
-cat > "$WINEPREFIX/drive_c/windows/odbc.ini" <<EOF
+# DSN ODBC "T4C Server Authentication" (nom par défaut confirmé dans le
+# binaire à 0x503f64). Wine route les appels ODBC vers unixODBC : le pilote
+# MDB est fourni par mdbtools. odbcinst.ini déclare le pilote côté système.
+cat > /etc/odbcinst.ini <<'ODBCINST'
+[MDBTools]
+Description=MDBTools Access Driver
+Driver=/usr/lib/x86_64-linux-gnu/odbc/libmdb.so
+Setup=/usr/lib/x86_64-linux-gnu/odbc/libmdbodbc.so
+FileUsage=1
+UsageCount=1
+ODBCINST
+cat > /etc/odbc.ini <<'ODBCINI'
+[T4C Server Authentication]
+Driver=MDBTools
+DBQ=/opt/t4c/db/T4C.mdb
+ODBCINI
+# et le même DSN vu depuis Windows (C:\odbc.ini)
+cat > "$WINEPREFIX/drive_c/odbc.ini" <<'WODBC'
 [ODBC Data Sources]
-T4C Server Authentication=Microsoft Access Driver (*.mdb)
+T4C Server Authentication=MDBTools
 
 [T4C Server Authentication]
-Driver=Microsoft Access Driver (*.mdb)
-DBQ=C:\\opt\\t4c\\db\\T4C.mdb
-EOF
+Driver=MDBTools
+DBQ=C:\opt\t4c\db\T4C.mdb
+WODBC
 # maj du .mdb principal aussi : certains chemins utilisent la mdb du répertoire
 cp -f "$DB_DIR/T4C.mdb" "$T4C_DIR/T4C.mdb" 2>/dev/null || true
 

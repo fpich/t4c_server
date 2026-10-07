@@ -1,0 +1,43 @@
+~ T4C Serveur Fr. 1.0 Full ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Une interface simple d'utilisation afin d'installer tous les outils,           T
+aides, fichiers dont vous avez besoin en quelques clicks !                         4
+L'installation fait tout automatiquement, en plus de sa, elles                            C
+vous apporte les meilleurs aides que vous pouvez connaitre !                                  S
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Un seul inconvéniant, tout ceci n'est pas très légal !                       The /   | th
+Même s'il est impossible (ou quasi) de se faire avoir !                             ¯¯| Comming
+IL FAUT PRENDRE VOS RESPENSSABILITEES EN ACCEPTANT !                         Serveur
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Cette Version:
+	-Installe T4C Serveur
+	-Configure T4C Serveur en Fr
+	-Copie une Database Vièrge
+	-Copie les WDA Traduits
+	-Copie les ELNG Corrigés
+	-Installe les Editeurs:
+	  -T4C Editor 1.00D Fr
+	  -T4C Storm Editor 0.66
+	-Installe T4C Database Manager
+	-Configure T4C Database Manager
+	-Installe les Aides:
+	  -Aide-SysOp-Fr
+	  -Aide-Animateur-Fr
+	-Installe les consoles de décodage/encodage
+	(utilisables avec le click droit sur chaques fichiers types: elng/wda/vsf !)
+	-Installe les Documents:
+	  -Bible Anim. GOA (FR)
+	  -Commandes GM
+	  -T4C Editor (FR)
+	  -Carte d'Althéa (FLASH)
+	  -T4C Server Manual (FR)
+	-Créer des raccourcis très intéressant
+
+	LE TOUT DYNAMIQUEMENT !
+
+A venir (Peut-être):
+	2.0:
+	Elle permettra l'installation de T4C Serveur
+	sous les deux languages (FR & EN) !
+	(Avec toutes les aides, les raccourcis etc...
+	traduits en anglais !)

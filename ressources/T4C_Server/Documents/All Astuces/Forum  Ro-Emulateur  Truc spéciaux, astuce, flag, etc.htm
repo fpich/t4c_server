@@ -1,0 +1,644 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0063)http://ro-emul.t4cunlimited.com/lofiversion/index.php/t853.html -->
+<HTML lang=en xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>Forum : Ro-Emulateur > Truc spéciaux, astuce, flag, etc</TITLE>
+<META http-equiv=content-type content="text/html; charset=iso-8859-1">
+<META content=index,follow name=robots><LINK rev=stylesheet media=screen 
+href="Forum  Ro-Emulateur  Truc spéciaux, astuce, flag, etc_fichiers/lofiscreen.css" 
+rel=stylesheet><LINK rev=stylesheet media=handheld 
+href="Forum  Ro-Emulateur  Truc spéciaux, astuce, flag, etc_fichiers/lofihandheld.css" 
+rel=stylesheet><LINK rev=stylesheet media=print 
+href="Forum  Ro-Emulateur  Truc spéciaux, astuce, flag, etc_fichiers/lofiprint.css" 
+rel=stylesheet>
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR></HEAD>
+<BODY>
+<DIV id=ipbwrapper>
+<DIV id=ipbcontent>
+<DIV class=postwrapper>
+<DIV class=posttopbar>
+<DIV class=postname>Ranger</DIV>
+<DIV class=postdate>Jul 4 2004, 05:21 AM</DIV></DIV>
+<DIV class=postcontent><SPAN style="COLOR: red">EDITING TOOL</SPAN><BR><BR>Voila 
+ce qui se rapporte a l'éditeur T4C :<BR><BR><BR><BR><SPAN 
+style="COLOR: red">Variables ET : </SPAN><BR>equipcount - Renvoie le nombre d'un 
+objet donné porté par le pnj <BR>itemcount - idem pour un objet de l'inventaire 
+<BR>target.viewflag - valeur du flag de l'utilisateur <BR>self.viewflag - valeur 
+du flag du pnj <BR>target.true_spell - / <BR>target.true_skill - / 
+<BR>target.spell - / <BR>target.skill - / <BR>target.gold - Or que porte 
+l'utilisateur <BR>self.gold - Or que porte le pnj <BR>target.type - / 
+<BR>self.alerte SMS - CA du pnj <BR>target.alerte SMS - CA de l'utilisateur 
+<BR>target.true_light - Puissance lumière de base de l'utilisateur (100 + pts 
+séraphes) <BR>target.true_dark - Puissance necro de base de l'utilisateur (100 + 
+pts séraphes) <BR>target.true_earth - Puissance terre de base de l'utilisateur 
+(100 + pts séraphes) <BR>target.true_water - Puissance eau de base de 
+l'utilisateur (100 + pts séraphes) <BR>target.true_fire - Puissance feu de base 
+de l'utilisateur (100 + pts séraphes) <BR>target.true_r_air - Résistance air de 
+base de l'utilisateur (100 + pts séraphes) <BR>target.true_r_light - Résistance 
+lumière de base de l'utilisateur (100 + pts séraphes) <BR>target.true_r_dark - 
+Résistance nécro de base de l'utilisateur (100 + pts séraphes) 
+<BR>target.true_r_earth - Résistance terre de base de l'utilisateur (100 + pts 
+séraphes) <BR>target.true_r_water - Résistance eau de base de l'utilisateur (100 
++ pts séraphes) <BR>target.true_r_fire - Résistance feu de base de l'utilisateur 
+(100 + pts séraphes) <BR>target.true_dodge - Esquive pure de l'utilisateur 
+<BR>target.true_attack - Attaque pure de l'utilisateur <BR>target.true_agi - 
+Dextérité pure de l'utilisateur <BR>target.true_wis - Sagesse pure de 
+l'utilisateur <BR>target.true_end - Endurance pure de l'utilisateur 
+<BR>target.true_str - Force pure de l'utilisateur <BR>target.true_int - 
+Intellect pur de l'utilisateur <BR>self.true_light - Puissance lumière pure du 
+pnj <BR>self.true_dark - " nécro <BR>self.true_earth - " terre 
+<BR>self.true_water - " eau <BR>self.true_fire - " feu <BR>self.true_air - " air 
+<BR>self.true_r_light - Résistance pure à la lumière du pnj <BR>self.true_r_dark 
+- " nécro <BR>self.true_r_earth - " terre <BR>self.true_r_water - " eau 
+<BR>self.true_r_fire - " feu <BR>self.true_r_air - " air <BR>self.true_dodge - 
+Esquive pure du pnj <BR>self.true_attack - attaque pure du pnj <BR>self.true_agi 
+- Dextérité pure du pnj <BR>self.true_wis - Sagesse pure du pnj 
+<BR>self.true_end - endurance pure du pnj <BR>self.true_str - force pure du pnj 
+<BR>self.true_int - intellect pur du pnj <BR>target.r_dark - Résistance nécro 
+boostée de l'utilisateur (base + items) <BR>target.r_light - " lumière 
+<BR>target.r_air - " air <BR>target.r_earth - " terre <BR>target.r_fire - " feu 
+<BR>target.r_water - " eau <BR>target.dark - Puissance nécro boostée de 
+l'utilisateur (base + items) <BR>target.light - " lumière <BR>target.water - " 
+eau <BR>target.air - " air <BR>target.fire - " feu <BR>target.earth - " terre 
+<BR>self.r_light - <BR>self.r_dark - <BR>self.r_earth - <BR>self.r_fire - 
+<BR>self.r_water - <BR>self.r_air - <BR>self.dark - <BR>self.light - 
+<BR>self.earth - <BR>self.water - <BR>self.fire - <BR>self.air - <BR>arrow_dmg - 
+<BR>target.level - <BR>target.element - <BR>target.dodge - <BR>target.attack - 
+<BR>target.maxmana - <BR>target.mana - <BR>target.maxhp - <BR>target.hp - 
+<BR>target.agi - <BR>target.wis - <BR>target.end - <BR>target.str - 
+<BR>target.int - <BR>self.level - <BR>self.dodge - <BR>self.attack - 
+<BR>self.maxmana - <BR>self.mana - <BR>self.maxhp - <BR>self.hp - <BR>self.maxhp 
+- <BR>self.agi - <BR>self.wis - <BR>self.end - <BR>self.str - <BR>self.int - 
+<BR>target.true_skill() - <BR>target.skill() - <BR>equipcount() - 
+<BR>itemcount() - <BR>target.viewflag() - <BR>self.viewflag() - <BR>true_skill() 
+- <BR>skill() - <BR>target.range - <BR><BR><BR><SPAN style="COLOR: red">Cartes 
+des coordonnées : </SPAN><BR><A 
+href="http://membres.lycos.fr/jeansuifou/maps.php?niv=0" 
+target=_blank>http://membres.lycos.fr/jeansuifou/maps.php?niv=0</A> (Main map) 
+<BR><A href="http://membres.lycos.fr/jeansuifou/maps.php?niv=1" 
+target=_blank>http://membres.lycos.fr/jeansuifou/maps.php?niv=1</A> (Dungeons) 
+<BR><A href="http://membres.lycos.fr/jeansuifou/maps.php?niv=2" 
+target=_blank>http://membres.lycos.fr/jeansuifou/maps.php?niv=2</A> (Caverns) 
+<BR><A href="http://membres.lycos.fr/jeansuifou/maps.php?niv=3" 
+target=_blank>http://membres.lycos.fr/jeansuifou/maps.php?niv=3</A> (World 3) 
+<BR><BR><BR><BR><SPAN style="COLOR: red">Truc avec L'éditing tool 
+:</SPAN><BR><B>-Item count:</B><BR>IF 
+(Target.itemcount(3001)&gt;=1<BR>ex:<BR>IF(Target.itemcount(ID de 
+l'anneau)&gt;=1 pour 1 anneau<BR>Say text: Voila votre clef!!!<BR>Take item Iron 
+ring<BR>Give item *Nom de tas clef*<BR>Breakconversation si tu veut quil quite 
+la coversation apres<BR>Else<BR>Say Text Désolé vous ne posédé plus 
+d'anneau<BR>BreakConversation <BR><BR><B>-Incrementation de flag:</B><BR>tu veut 
+faire que le pnj augmente le flag de +1 a chaque fois bin c'est tout simple tu 
+prend le pnj tu fait set flag (30560, target.viewflag( 30560) +1)<BR>En fait 
+dans la premiere partie tu met le flag que tu veut modifier et dans la seconde 
+tu ajoute +1 a la valeur déjà existante<BR><BR><B>-probleme des mots en blanc 
+qui depassent:</B><BR>entourer chaque mot de "" plutot que le groupe de mots en 
+entier.<BR>mettre "commandant" "leopold" xxx au lieu de "commandant léopold", 
+xxx<BR><BR><B>-Teleportation fixe:</B><BR>Un item de typ pancarte (ex. pawnshop) 
+peut etre programme pour teleporter et emettre une voix bleue<BR>nickel pour 
+faire qqch du genre 'prononcez cette formule pour etre 
+teleporte'<BR><BR><B>-Mots cles imbriques:</B><BR>essaye de faire avec les flag 
+et de mettre comme mot clef soit masse de skraugbashor, soit oui dans un meme 
+keyword C'est à dire avec Or tu met masse de skraugbashor puis Add puis tu met 
+oui puis Add et tu fait tout avec des flag mais qu'un keyword<BR><BR>Tu met au 
+debut<BR><BR>If (target.viewflag(doitdireoui) = 0<BR>(code de la masse de 
+skraugbashor<BR>Quand tu a fini tu fait Set flag (doitdireoui) = 1<BR><BR>Else 
+If (target.viewflag(doitdireoui) = 1<BR>(code du mot clef oui)<BR>Set flag 
+(doitdireoui) = 0<BR><BR>End if <BR><BR><B>-Pnj Attente (comme Zakhar qui prend 
+1h pour le rituel):</B><BR>tu crée un nouveau sort et tu fait edit effect puis 
+tu clique sur set flag tu fait ajouter tu double clique tu choisi le flag et la 
+valeur que tu ve mettre.<BR>le joueur va voir le pnj &gt; le pnj lui lance un 
+sort qui dure 1H et qui a la fin donne un flag &gt; si le joueur a le flag, le 
+pnj veut bien l'envoyer quelque part<BR><BR>tu crée un nouveau sort et tu fait 
+edit effect puis tu clique sur set flag tu fait ajouter tu double clique tu 
+choisi le flag et la valeur que tu ve mettre<BR><BR>OU<BR><BR>spell 1- SpellHook 
+-&shy;&shy;&shy;&gt; OnTimer -&gt; spell 2<BR>spell 2- effet -&gt; 
+setflag()<BR><BR><BR><B>-Item + gemme (style amu du renouveau):</B><BR>Il te 
+faut crée un sort et dans sucess tu met 
+if(equipcount(iddelitem)=1?100:0)<BR><BR>Ensuite tu peut mettre un spell hook si 
+tu veut sa depent du sort que tu ve mettre.<BR><BR>L'item que tu porte tu le 
+crée normalement, tu met rien a spells<BR>La Gemme que tu active tu la crée et 
+dans spells tu met le sort que ta créer.<BR>Tu met Trigger : On Use et charge -1 
+et la sa doit marcher<BR><BR><B>-Une arme qui ne fonctionne que sur 1 type de 
+monstre:</B><BR>il suffit de regarder comme vircom a fait avec l'editeur pour le 
+pourfendeur d'elfe, et utiliser la meme "astuce":<BR><BR>Shadeen a 5050 resist 
+light<BR>et l'arme lance un sort qui fait les dégats 
+suivant:<BR>if(target.r_light=5050?-(1d25000+37500+self.int*100+self.str*100):0)<BR><BR>Bref 
+l'arme ne fait des degats QUE sur les monstre avec 5050 ressit light (degats 
+proche des poings "nus" donc pour les autres).<BR><BR><B>-Lettres de 
+change:</B><BR>==&gt; Creer un pj a Stonecrest, qui en echange de l'or vous 
+donne des<BR>lettres.un petit exemple<BR>say : Echange Lettre 500<BR>If ( 
+target.gold &gt;=500 )<BR>give item : Lettre 500<BR>set flag "lettre 500" to : 
+(target.viewflag( lettre 500 ))+1<BR>Take gold : 500<BR>Else<BR>say text : Vous 
+n'avez pas assez d'argent.<BR><BR><B>-Pierre de Destinee monde 3:</B><BR>J'ai 
+fais un systeme plus simple de pierre de rapel.<BR><BR>Elle fonctionne comme un 
+parchemin (double clic dessus) a usage<BR>ilimitee.<BR><BR>Et avec ce principe 
+tu peus faire enormement de pierre differente pour<BR>n'importe qu'elle 
+endroit.<BR><BR>tu creer une pierre,tu lui met le sort (teleport je crois),tu 
+met des<BR>cordonner pour le sort,tu met "on use" , et quantiter -1,tu 
+peus<BR>egalement choisir que cette pierre soit detruite a la 
+renaissance,et<BR>tu la met a vendre sur un pnj de ta 4eme ile,sa simplifira 
+beaucoup de<BR>chose.<BR><BR><B>-flag de l'or en banque:</B><BR>flag 30026, le 
+flag qui determine cb vous avez d'or en banque.<BR><BR><B>-Placement des PNJs et 
+Mobs sur la carte:</B><BR>c'est pas compliqué, tu créer un hive dans lequel tu 
+places ton pnj dans "Spawned creatures" tu donnes un nom au hive, ce que tu 
+veux, tu remplis les 4 champs : tu mets 1 partout par exemple puis tu l'ajoutes 
+dans les hive, ensuite en bas tu séléctionnes le hive que tu viens de créer tu 
+indiques la position d'où tu veux qu'il respawn et tu l'ajoutes, ensuite tu 
+sauvegardes les modifications tu lances ton serveur et tu va là ou il devrait 
+respawn, si il ne respawn pas soit c'est que ton pnj est mal fait (skin?) soit 
+c'est que tu as le flag god_no_monsters...<BR><BR><B>-Radius du spawn de 
+mobs:</B><BR>kan tu le crée avec t4c editor fo ke tu mette la variable Emerge 
+Range a la distance ke tu veu ki bouge !! En faite Emerge Range c la limite de 
+dépalcement de tes Mobs !! Si tu veu pas ki spawn ailleurs qu'aux coordonnees 
+precises que tu as donne fo la mettre a 0.<BR><BR><B>-Recompense XP pour la mort 
+de X mobs:</B><BR>Tout d'abord, crée ton monstre... (cf : Tutorial pour crée un 
+mob)<BR>Quand c'est fait, tu crée un flag avec le nom que tu veux...<BR>Tu 
+retourne chez le mob,<BR>Dans Death and rewards, tu ajoute le flag que tu as 
+crée plus haut et tu coche auto-incrémente...<BR>Now tu va chez ton pnj<BR>Là, 
+je vais écrire en quelque chose de lisible 
+:<BR><BR>(if(target.viewflag(TONFLAG))=X)<BR>==&gt; givexp (Y)<BR>==&gt; 
+set(target.viewflag(TONFLAG) to 0)<BR>Else (if(target.viewflag)&lt;=X)<BR>==&gt; 
+saytext : Vous n'avez pas tuer assez de monstre.<BR><BR>Voilà, X est le nombre 
+de mobs qu'il doit tuer et Y le nomde d'xp que ton pnj donnera...Et à chaque 
+fois que le type en retue X, ben il redonne, encore et encore, l'xp 
+).<BR>A:<BR>perso j'ai fait d'une autre maniere car j'ai du mal a cerner le coup 
+de "set flag" donc :<BR>Quand le pj vien voir le pnj il dis son mot clef :<BR>( 
+je repend ton scrip en y modifiant se que je fait ^^ 
+)<BR>-(if(target.viewflag(TONFLAG))&gt;=X) #Verifie que le gars a bien tuer plus 
+de X mob<BR>==&gt; givexp (Y) #donne l'xp voulu<BR>==&gt; 
+set(target.viewflag(TONFLAG) to target.viewflag-target.viewflag) # met le flag 
+du pj a 0 ( pour eviter que le gar ne refasse la quete sans avoir tuer de 
+monstre)<BR>-Else (if(target.viewflag)&lt;=X) # si le mec a tuer un nombre 
+inferieur de mob que celui que tu souhaite<BR>==&gt; saytext : Vous n'avez pas 
+tuer assez de monstre. #reponse du pnj si le pj n'a pas tuer assez de 
+mob<BR><BR>j'ai juste modifier 2 truc pour le IF, il faut que tu mette 
+toujourstarget.viewflag(TONFLAG))&gt;=X sinon le pnj va croire que ( pour X =10 
+) si le pj a tuer 12 monstre qu'il n'en a pas tuer assez ..<BR>Je sais aps si je 
+me fait comprendre<BR><BR>[edit] Tu as aussi la possibliter de donner un certain 
+nombre d'xp en fonction du nombre de victime du pj :<BR>givexp (Y) : Y = 
+target.viewflag*Z Z = nombre d'xp par victime<BR><BR><B>-PNJ immobile, editeur 
+de Chaotikmind (storm):</B><BR><BR>Tout d'abord ouvrez l'edition de map de 
+Chaotikmind<BR>Mettre un pixel blanc ( comme dans les Temple et entouré le de 
+pixel gris (traverser impossible tel que les mur)<BR>sa doit vous donner quelque 
+chose comme sa sur 3*3 pixel<BR>gris gris gris<BR>gris blanc gris<BR>gris gris 
+gris<BR><BR>Avec l editeur vous voyez les coordonées<BR>notée celle du pixel 
+blanc par exemple : 2600,3000,0<BR>Sauvé et lancer le jeu<BR>tapper summon 
+mosnter lenom at 2600,2999,0<BR>Il faut decaler de 1 pixel vers le basles 
+coordonée Y (de la form X,Y,Z)<BR><BR>(Petit bug de decalage dans l editeur 
+?)<BR><BR>Et voila, alors le pnj ne bougera pas.<BR><BR><B>-PnJ Teleporteur 
+f(level):</B><BR><BR>if (target.level&lt;15)<BR>say Désolé, vous ne pouvez pas y 
+allez.<BR><BR>Else if (target.gold&lt;target.level*1000)<BR>say Désolé, vous 
+n'avez pas assez d'argent.<BR>break conversation<BR><BR>else if 
+(target.level&gt;=15)<BR>takegold (target.level*1000)<BR>say Tout est en ordre, 
+nous pouvons procéder à la téléportation.<BR>téléport to 250, 1250, 3<BR>break 
+conversation. <BR><BR>end if<BR><BR><B>-Recompense pour la mort d'un monstre a 
+usage unique:</B><BR><BR>[initial text] if Target.viewfalg (idflag01) 
+&gt;=10000<BR>say text : vous avez deja fais la quete alors bebye....<BR>break 
+conversasion<BR>else if Target.viewflag (idflag01) &gt;=1 &lt;10000<BR>say text 
+: felicitation mon ami voile votre recompense.<BR>give item : (un item)<BR>give 
+xp (4546546576846)<BR>set falg(idflag01) to 10000<BR>break conversasion<BR>else 
+: allez tuer le monstre et je vous recompenserez.<BR><BR><BR>a ton monstre to 
+met flag (idflag01) +1 auto-increment.<BR><BR>quand le pj tue le monstre son 
+flag monte a 1<BR>quand il recoit la recompense il monte a 10000<BR>et si il 
+retue le monstre il monte a 10001 alors il redonne pas la 
+recompense.<BR><BR><BR><B>-Activer et desactiver le PlaneWalking:</B><BR>dans 
+regedit: HKEY_LOCAL_MACHINE &gt; software &gt; vircom &gt; the 4th comming 
+server &gt; GeneralConfig &gt; ACK_DOPPELGANGER met la valeur à 
+1<BR><BR><B>-Escaliers teleporteurs:</B><BR>BOn, j'vais tenter de vous expliqué 
+ça. Pour faire un escalier, on procède en 2 étapes. On commence par dessiner 
+l'escalier et ensuite on le fais téléporter. Commencer par ouvrir votre map 
+client en BMP et d'aller voir à un endroit où il y a déjà un escalier (C.F. Le 
+temple de LH). Vous allez voir que l'escalier côté client est représenté par une 
+seule pixel. Vous notez le R.V.B (Rouge-Vert-Bleu (La couleur quoi)) de cette 
+pixel. Ensuite, vous mettez cette pixel ou vous voulez et sa ajoutera un 
+escalier. Ensuite, il faut faire la même chose avec la map serveur : Pour qu'il 
+y est une collision sur ton escalier. Pour faire un teleport, tu utilise 
+l'éditeur de Chaotikmind (Merci ) et tu va dans la section téléport. Suffis 
+d'ajouter les coordonnés de ton escalier + ceux d'où tu veux te téléporter. Je 
+suis pas certain que l'éditeur de Chaotikmind permette de mettre des nouveaux 
+teleports pour l'instant, mais au pire vous pouvez toujours aller l'ajouter 
+directement dans le t4c world.wda.<BR><BR><B>-Porte Teleporteuse:</B><BR>Pour la 
+porte qui empêche de passer avant un certain level, c'est tout a fait possible 
+via notre éditeur de Vircom préféré. Il suffit de faire une porte qui téléporte 
+de l'autre côté (Comme celle au fond du temple), car de toute façon une porte 
+qui ouvre serait débile, car un ami qui a le niveau requis pourrait ouvrir la 
+porte à un level 1 qui pourrait renaître ensuite. Comment faire cette porte? Tu 
+commence par créer l'item Porte. Ensuite, tu lui met un sort qui s'active avec 
+On Disturbed (Quand tu clique dessus). Ce sort, active un autre sort (Spell 
+Hook) de cette manière :<BR><BR>-Hooked Spell : Le nom du2ième sort qui se fait 
+activer par le premier.<BR>-Hook : On Timer<BR>-Hook Chance% : 
+if(self.level&gt;=X?100:0) X représente le level minimum pour que la porte 
+téléporte<BR>-Initial Delay : 1000<BR><BR>Le deuxième sort sera activé seulement 
+si le personnage est du level X ou plus. COmme tu l'as sans doute deviné, tu 
+programme le deuxième sort pour qu'il téléporte de l'autre côté de la porte. 
+<BR><BR><B>-Puissance de l'aura:</B><BR>Le sort de remort aura fonctionne en 
+coordination avec un flag : 30419<BR>plus la valeur de ce flag est élevé, plus 
+l'aura sera puissante... Si elle est à 0, le sort est 
+absent...<BR><BR><B>-Questions Oui/Non:</B><BR><BR>d'abort il te faut crée un 
+flag :<BR>Misc. Editors -&gt; Flags<BR>tu crée un flag nommé 
+PNJNAME_QUESTIONxxx<BR><BR>ensuite dans l'editeur d'action de ton pnj 
+:<BR><BR>{*} InitialText<BR>| SetFlag(ID_de_PNJNAME_QUESTIONxxx,0)<BR>| 
+SayText(Bonjour, blablabla)<BR><BR>{*} aide<BR>| IF( 
+target.viewflag(ID_de_PNJNAME_QUESTIONxxx) = 0)<BR>- | 
+SetFlag(ID_de_PNJNAME_QUESTIONxxx,1)<BR>- | SayText(Voulez vous m'aider?)<BR>| 
+ELSE<BR>- | SayText(Voulez-vous m'aider oui ou non?)<BR>| ENDIF<BR><BR>{*} 
+oui<BR>| IF( target.viewflag(ID_de_PNJNAME_QUESTIONxxx) = 1)<BR>- | 
+SetFlag(ID_de_PNJNAME_QUESTIONxxx,0)<BR>- | SayText(Merveilleux ! Alors 
+blablabla)<BR>| ENDIF<BR><BR>{*} non<BR>| IF( 
+target.viewflag(ID_de_PNJNAME_QUESTIONxxx) = 1)<BR>- | 
+SetFlag(ID_de_PNJNAME_QUESTIONxxx,0)<BR>- | SayText(C'est fort dommage, 
+blablabla)<BR>| ENDIF<BR><BR>{*} autre mots<BR>| IF( 
+target.viewflag(ID_de_PNJNAME_QUESTIONxxx) = 1)<BR>- | SayText(Voulez-vous 
+m'aider oui ou non?)<BR>| ENDIF<BR><BR><B>-Créer des armes qui ne font des 
+dégats qu'en PVP ou PVM:</B><BR>Arme qui ne font des degat qu'en 
+PVP:<BR>if(target.type=1?Degat:0)<BR>Arme qui ne font des degat qu'en 
+PVM:<BR>if(target.type=1?0:Degat)<BR>Bien entendu ce n'est pas valable que pour 
+les armes, également pour les sorts et autres.<BR>(Merci à Stephy) </DIV></DIV>
+<DIV class=postwrapper>
+<DIV class=posttopbar>
+<DIV class=postname>Ranger</DIV>
+<DIV class=postdate>Jul 30 2004, 03:59 PM</DIV></DIV>
+<DIV class=postcontent><SPAN style="COLOR: red"><SPAN 
+style="FONT-SIZE: 14pt; LINE-HEIGHT: 100%">Modification des VSFs 
+</SPAN></SPAN>By MasterJ <BR><BR>!!!!!AVANT TOUTE MODIFICATION SAUVER VOS 
+.VSF!!!!!<BR><BR>Outils à avoir:<BR>-un éditeur de .vsf<BR>-un 
+viewer(visualisateur) de .vsf<BR>-un bout de papier<BR>-bin forcéement de quoi 
+écrire lol<BR>-en toute logique le fichier t4gamefile14.vsf<BR>ainsi que bien 
+sur votre fichier .vsf dans<BR>lequel vous avez vos nouveautés<BR><BR><BR>Tout 
+d'abord il faut prendre le .vsf t4cgamefile14.vsf.<BR>Ensuite l'ouvrir avec un 
+visualisateur de .vsf ou un autre programme<BR>qui permet de voir/éditer le 
+.vsf.<BR><BR>Puis noté sur un papier le répertoire que vous voulez 
+modifié.<BR><BR>un petit exemple<BR>vous voulez modifier la cape rouge par la 
+bleue.<BR>dans le .vsf original le dossier s'appelle par exemple redcape<BR>noté 
+bien le redcape.<BR>ensuite plus long à faire ouvrir le dossier de la cape 
+et<BR>noté TOUS les noms des sprites (y en a pas mal en plus)<BR>puis fermer 
+votre vsf<BR><BR>prenez maintenant, un éditeur cette fois, de vsf<BR>ouvrez 
+votre .vsf ou se trouve la cape bleue (par exemple t4cgame.vsf)<BR>admettons que 
+le dossier de la cape bleue s'appelle bluecape .<BR>prenez votre fameux bout de 
+papier avec les infos du .vsf original<BR><BR>vous avez noté redcape comme nom 
+de dossier? et bien renommer<BR>alors le dossier de la cape bleu en 
+redcape.<BR>faites de même avec les noms des sprites (je sais c\'est 
+long)<BR>puis ensuite sauver votre modification sous le nom de 
+:<BR>t4cgamefile14.vsf accepter de remplacer le .vsf qui existe déjà par votre 
+modif.<BR>ensuite lancé votre serveur t4c connecter vous dessus et essayer de 
+summon une cape, vous aurez une cape bleue.<BR><BR><SPAN 
+style="COLOR: red"><SPAN style="FONT-SIZE: 14pt; LINE-HEIGHT: 100%">Double 
+compatibilité (1.25/1.26)</SPAN></SPAN><BR>Autoriser les connection de clients 
+de versions differentes: <BR><BR>Bon prener le bloc note et crée un fichier 
+curvers.txt et inscriver 125 dedans. sauvegarder le dans votre répertoire de 
+démarage du jeu. <BR>Ensuite rennomer le curvers.dta <BR><BR>De cette facon pas 
+besoins de changer la version 1.25 a 1.26 du serveur il les prend en charge tous 
+les 2 <BR><BR>Pour remédier au probleme de registre utiliser 
+Allt4c.<BR><BR><SPAN style="COLOR: red"><SPAN 
+style="FONT-SIZE: 14pt; LINE-HEIGHT: 100%">Problème de son 
+1.26</SPAN></SPAN><BR><BR>Ce post est le début d'une série, j'ai en effet une 
+masse de textes en provenance de ce forum, l'ennui c'est que je n'ai jamais ou 
+presque les auteurs, je vais donc commencer à reposter et si quelqun se 
+reconnait, j'ajouterai son nom. <BR><BR>J'ai réussi a regler le probleme du son. 
+<BR>Il faut downloader les 2 patch 125to126.rtp et 126to127.rtp <BR>les 
+installer dans le webpatch a la bonne place puisque que se sont des patch. 
+<BR>Pour un bon fonctionnement du client a la base appres décompilation il y a 
+plusieur <BR>référence a C:\\Gamesreview\\L4P &amp;lt;-----------Installation 
+<BR><BR>Pour que le patch se download de votre webpatch passer le curvers.dta de 
+124 a 125 a 126 a 127 <BR>et revenire a 125 <BR><BR>Pour recrée la décompression 
+du son effacer le fichier T4CGamefile.vsb <BR>Pour empecher la décompression en 
+loop il faut le fichier vbsinfo.txt <BR>(Note si vous cliquer sur votre fichier 
+pour le registre vous enlever les dèrnière config du reg) <BR>le sauvegarder a 
+la fin seulement, changer juste le french pour english <BR><BR>Pour ceux qui 
+dise qu'il ne voit pas les nouvel objets une chose est biens importante il faut 
+<BR>utiliser le L4p.exe comme client non le t4c non le cliente non le game. 
+<BR><BR>Pour le son il n'y a plus de probleme a la teleportation!<BR><BR><SPAN 
+style="COLOR: red"><SPAN style="FONT-SIZE: 14pt; LINE-HEIGHT: 100%">Renaitre 
+manuellement</SPAN></SPAN><BR><BR>Renaitre manuellement <BR>Il faut suivre c 
+demarche a la lettre sinon ca ne marche pas <BR><BR>1- on verifie le nombre de 
+rennai quil est rendu en fesant : view user's flag 30419 <BR><BR>2- ensuite on 
+fait : set user's flag 30419 to 1 (euh vous pouvez mettre 0 ou 1 ou 2 aussi 
+aucunne importance en autten que ca depasse pas 2) <BR><BR>3- on summon 
+ganenelthorn et la personne a reborn doit le tuer. <BR><BR>4- on est devant 
+loracle la personne qui reborn doit dire ready to reborn SANS DIRE YES TOUT 
+SUITE <BR><BR>5- vous faites: set user's flag 30419 to 3 (ex: vous metter 3 pour 
+faire sa 4 reborn, vous remettez son nombre de reborn au quelle il etai rendu 
+autrement dit) <BR><BR>6- vous lui dites de dire yes et le tour est jouer 
+<BR><BR>ps: il est pas possible de se faire auto-reborn on peut pas rentrer des 
+commande et parler a loracle en meme temp <BR><BR>ps2: il ni a pas de limitte de 
+reborn.... mais je conseillerait de pas en mettre plus que 14 faut quand meme 
+pas abuser lol <BR><BR>ps3: le flag 30142 ( __QUEST_FIXED_ALIGNMENT) détermine 
+arrivé devant l'oracle, si tu est evil (-1) ou good (1) <BR><BR>PS4: le flag 
+30416 si tu le set a 1 c'est comme si tu avais tué Gabriel<BR><BR><SPAN 
+style="COLOR: red"><SPAN style="FONT-SIZE: 14pt; LINE-HEIGHT: 100%">Modifier des 
+maps client/serveur</SPAN></SPAN><BR><BR>------------------ <BR>MODIFIÉ MAP 
+CLIENT: <BR>-Décompresser avec le programme. <BR>-Modifié avec un logiciel de 
+dessin (J\'utilise photoshop CS) et sauvegardé en BMP (RVB 16 bits). 
+<BR>-Recompresser avec le programme. <BR>----------------- <BR>MODIFIÉ MAP 
+SERVEUR: <BR>-Décompresser avec le programme de Shenron. <BR>-Modifié avec un 
+logiciel de dessin (J\'utilise photoshop CS) et sauvegardé en BMP (RVB 24 bits 
+Avec les lignes inversées (Flip Row order)). <BR>-Recompresser avec le logiciel 
+de Shenron. <BR>----------------- <BR><BR>*Je procède de la manière suivante. Je 
+fais modifie ma map client dabord et une fois que j'ai terminé, je copie 
+l'endroit que j\'ai modifier et le colle dans la map serveur. Ensuite il me 
+reste juste à changer les couleurs pour celle requis dans la map serveur. Sa 
+fonctionne à perfection et c\'est très rapide. <BR><BR>*Le programme de Shenrion 
+doit être éxecuter en command-line! <BR>Donc voilà la méthode la plus facile de 
+le faire : <BR>-Tu met le programme et les WDAs direct dans C: <BR>-Démmarer - 
+Éxecuter <BR>-Tu tape : cmd <BR>Ou : command.com <BR>Ou : command <BR>-Une 
+fenêtre dos ouvre et tu y tape : C: <BR>-Ensuite tu fais les commandes du 
+programme qui sont : <BR>ExtractBMP E x <BR>ExtractBMP R x <BR>(x = le chiffre 
+de la map (0,1,2,3)) <BR>(E = Extraire) <BR>(R = Remplacer)<BR><BR><SPAN 
+style="FONT-SIZE: 14pt; LINE-HEIGHT: 100%"><SPAN style="COLOR: red">Création de 
+nouveaux sanctuaires</SPAN></SPAN><BR><BR>Allez je lache une petite astuce sympa 
+pour faire que votre pnj réponde au mot "sanctuaire" et vous l'attribue la ou 
+vous voulez... <BR><BR>Dans un premier temps vous créez le pnj par la méthode 
+classique...(je reviendrai pas sur tout ca) <BR><BR>Ensuite vous créez un flag 
+Sanctuaire..l'editeur va lui attribuer un flag (par exemple 30015). <BR><BR>Donc 
+dans notre cher T4C edit.wda il vous suffit de trouver la valeur du flag 30015 
+dans notre exemple et de la remplacer par la valeur officiel du Sanctuaire soit 
+20020... <BR><BR>A noter que toutes ces modif doivent se faire par 
+l'intermédiaire d'un éditeur hexa ! <BR><BR>Et voila c'est tout simple. 
+<BR><BR><BR>je vais achever mon pnc et apres j'essayerai d'expliquer comment 
+faire le pnc et le flag <BR><BR>1 creer un sort sans boost maius qui donne un 
+effet sur vous <BR><BR>2 creer un flag avec T4C Editor qui donnera une valeur 
+lui meme (xxxxx) <BR><BR>3 creer un npc <BR><BR>Initial text <BR>say text 
+(Bienvenue en ce lieu je peut "lier" votre ame ici) <BR><BR>default text <BR>say 
+text ( ce que vous voulez) <BR><BR>keyword (lier) <BR>say text (cela vous 
+coutera xxxxx gold etes vous d'accord "oui") <BR><BR>keyword (oui) <BR>say text 
+(votrez ame est liee en ce lieu ...........) <BR>TakeGold( XXXXX ) <BR>SetFlag( 
+le flag que vous aurez creer ,on le change apres) <BR>CatSpell( le sort que vous 
+avez creer) <BR><BR>keyword (Adieu) <BR>say text (au revoir.......) <BR>ensuite 
+sauvegarder et fermer T4c Editor <BR><BR>4 decrypter fichier NPCs.WDA avec 
+Wdadecrypt.EXE qui est dans le dossier de votre serveur (sans oublier de faire 
+une sauvegarde du fichier avant) <BR>puis la vous ouvrer votre fichier NPCs.WDA 
+avec un editeur Hexa et vous rechercher le nom de votre NPC vous aurez aussi la 
+valeur du flag que vous avez creer ,ca vous le changer par celle ci 20020. 
+<BR>Ensuite vous sauvegarder et vous recrypter le fichier pour le remettre dans 
+votre dossier serveur. <BR><BR>une fois ca fait vous ouvrer de nouveau T4C 
+Editor et editer votre NPC <BR>la vous reediter le SetFlag et vous lui attribuer 
+la valeur trouvee par la formule qui est simple <BR><BR>en fait , on apelle N le 
+nombre que l\'on veut obtenir, x,y,z les coordonnées, sachant que z =0,1,2 ou 3 
+<BR><BR>Et donc : n = x * 1048576 + y * 256 + z <BR><BR>exemle positin dans le 
+jeu est 1925,103,3 <BR>vous faite x:1925 x 1048576 + <BR>y: 103 x 256 + <BR>z : 
+soit 0,1,2,3 selon ou vous etes dans le jeu <BR>ce qui nous donne ici n 
+2018535171 <BR><BR>vous sauver le tout et fermer T4C Editor <BR>et il ne reste 
+plus qu\'a tester dans le jeu chez moi ca marche très bien <BR><BR>A: <BR>Bon, 
+tout d'abord, vous aurez besoin d'un crypteur / décrypteur de fichier .wda 
+<BR>EN voici un : <BR>WDA_Crypt <BR><BR>Maintenant, pour commencer, vous devez 
+creer un flag. Son nom et sa valeur n\'as pas réellement d\'importance. <BR>Par 
+exemple : <BR>Flag sanctuaire Ile2 <BR>Nom : Sanctuaire Ile 2 <BR>ID : 31000 
+<BR><BR>Maintenant creer en un deuxieme, pour verifier si le sanctuaire est deja 
+celui la. <BR>Par exemple : <BR>Flag sanctuaire ile 2 ok <BR>Nom : Sanctuaire 
+ile 2 ok <BR>ID : 31001 <BR><BR>Bon, maintenant supposons que vous voulez avoir 
+1500,500,3 comme nouveau sanctuaire.. <BR>Premierement, creez un PNJ. Le but de 
+ce PNJ est d'atribuer un sanctuaire au personnage, et que si son sancuaire est 
+déja a cet endroit, dire un text disant qu'il a deja son sanctuaire a cet 
+endroit. <BR>Le sanctuaire peut etre changer à l'aide de la forumle : (X * 
+1048576) + (Y * 256) + W <BR>Exemple : <BR><BR>Nom Drizzt <BR>Initial text : 
+Blabla <BR>Défaut text : Blabla <BR>Sanctuaire : <BR>Code: 
+<BR>If(target.viewflag(31001)=0 ) // On vérifie ici si son sanctuaire est deja a 
+cet endroit) <BR>Say text ( Votre sanctuaire est maintenant rendu ici ! ) 
+<BR>SetFlag( 31000, ((1500 * 1048576) + (500 * 256) + 3) // On met la formule 
+pour les coordonner du sanctuaire <BR>SetFlag(31001, 1) // On met le flag de 
+verification si le santuaire est la a 1, pour lors de la verfication dire que 
+oui son sanctuaire est la. <BR>End If <BR>If(Target.viewflag(31001)=1 ) <BR>Say 
+text ( Votre sanctuaire est déja ici, sur ile 2. ) <BR>End IF 
+<BR><BR><BR>Maintenant, le principal est fait, mais le flag 31000 n\'est pas le 
+flag des sanctuaire. <BR>C'est la que vous utiliser le décrypteur de wda. 
+<BR>Prenez le fichier Npcs.wda, et apporter le sur T4C_WDA_Crypt.exe 
+<BR>Maintenant, ouvrez le fichier, mais avec un editeur Hexadécimal (UltraEdit 
+32 par exemple) <BR>Chercher le PNJ, et modifier la valeur du flag 31000 pour 
+20020 , qui est le flag des sanctuaire. <BR>Enregistrer, puis redeplacer 
+npcs.wda sur T4C_WDA_Crypt.exe pour réencrypter le fichier. <BR><BR>Voila, 
+maintenant le PNJ peut changer les sanctuaire ! <BR><BR>A2: <BR>il y a mieux que 
+cela, tu utilise l'editeur de chaotik, tu ajoute le flag 20020, et voila... tu 
+reprend l'editeur normale et ho miracle ya le flag 20020 d'ajouté. <BR><BR>testé 
+et approuvé ca fonctionne... =)))<BR><BR><SPAN style="COLOR: red"><SPAN 
+style="FONT-SIZE: 14pt; LINE-HEIGHT: 100%">PNJ Banquier</SPAN></SPAN><BR><BR>En 
+fait c'est assez simple et ca peut être la même chose pour d'autres pnj aussi. 
+<BR>Pour cela il suffit de faire une copie de Npcs.dll en Npcs2.dll ensuite je 
+désassemble le Npcs2.dll et je vois ici : <BR><BR>* Possible StringData Ref from 
+Data Obj "[3050]Mithrand" <BR>| <BR>:10021EE6 BFD4640510 mov edi, 100564D4 
+<BR>:10021EEB F2 repnz <BR>:10021EEC AE scasb <BR>:10021EED F7D1 not ecx 
+<BR>:10021EEF 2BF9 sub edi, ecx <BR>:10021EF1 8BC1 mov eax, ecx <BR>:10021EF3 
+8BF7 mov esi, edi <BR>:10021EF5 C1E902 shr ecx, 02 <BR>:10021EF8 8BFA mov edi, 
+edx <BR>:10021EFA F3 repz <BR>:10021EFB A5 movsd <BR>:10021EFC 8BC8 mov ecx, eax 
+<BR>:10021EFE 83E103 and ecx, 00000003 <BR>:10021F01 F3 repz <BR>:10021F02 A4 
+movsb <BR>:10021F03 5F pop edi <BR>:10021F04 5E pop esi <BR>:10021F05 
+C7435C910B0000 mov [ebx+5C], 00000B91 * <BR>:10021F0C C7436045040000 mov 
+[ebx+60], 00000445 * <BR>:10021F13 C7436400000000 mov [ebx+64], 00000000 * 
+<BR>:10021F1A C7833401000001000000 mov dword ptr [ebx+00000134], 00000001 
+<BR>:10021F24 5B pop ebx <BR>:10021F25 C3 ret 
+<BR><BR>------------------------------------------------------- <BR><BR>mov 
+[ebx+5C], 00000B91 * --&amp;gt; en décimal 2961 (valeur de respawn X) <BR>mov 
+[ebx+60], 00000445 * --&amp;gt; en décimal 1093 (valeur de respawn Y) <BR>mov 
+[ebx+64], 00000000 * --&amp;gt; en décimal 0 (valeur de respawn monde) 
+<BR><BR>Donc si on veut faire un autre pnj banquier (un 2ième Mithrand) on 
+change ces valeurs par les siennes. <BR>On peut aussi changer son nom en 
+remplacant tout les strings '[3050]Mithrand' par le nom qu'on veut. <BR>A savoir 
+que si vous changer de nom assurez vous qu\'il fasse moins de caractères que 
+celui d\'origine et remplacez donc le reste par des 00. <BR><BR>Exemple : 
+<BR><BR>000564D2 0000 5B33 3035 305D 4D69 7468 7261 6E64 0000 ..[3050]Mithrand.. 
+<BR><BR>Deviendrait si mon Pnj s'appelle Kiki : <BR><BR>000564D2 0000 564D4 4B69 
+6B69 0000 0000 0000 0000 0000 Kiki.......... <BR><BR>Quand cela est fait, vous 
+ajouter le Npcs2.dll à votre serveur. <BR><BR>J'ai testé et ca marche mais seul 
+problème c'est que son texte reste le même. <BR>A l'occase, je chercherai aussi 
+le moyen de changer le skin et son texte. <BR><BR>A1: <BR><BR>Juste une question 
+les valeurs a changer sont juste les points de respawn ?? comme par exemple 
+1785,928,3 si je converti ca me donne <BR><BR>1785 (6F9) , 928(3A0), 3(3) , si 
+je comprend bien enfin <BR><BR>ce qui me donne dans hex workshop 
+<BR><BR>:10021F05 C7435CF9060000 mov [ebx+5C], 000006F9 * <BR>:10021F0C 
+C74360A0030000 mov [ebx+60], 000003A0 * <BR>:10021F13 C7436403000000 mov 
+[ebx+64], 00000003 * </DIV></DIV>
+<DIV class=postwrapper>
+<DIV class=posttopbar>
+<DIV class=postname>Stephy</DIV>
+<DIV class=postdate>Aug 24 2004, 09:53 PM</DIV></DIV>
+<DIV class=postcontent>Tenez encore autre chose que j'ai trouver 
+<!--emo&:)--><IMG style="VERTICAL-ALIGN: middle" alt=smile.gif 
+src="Forum  Ro-Emulateur  Truc spéciaux, astuce, flag, etc_fichiers/smile.gif" 
+border=0><!--endemo--><BR><BR><SPAN style="COLOR: red">Objet Maudit 
+!</SPAN><BR>Voici un tuto pour crée une arme Armure Maudite et en extra une 
+quête qui l’accompagne : )<BR><SPAN style="COLOR: blue">42573: ID de 
+l’arme<BR>50105: Flag: Objet maudit</SPAN><BR><BR><SPAN style="COLOR: green">Les 
+Sorts:</SPAN><BR>1)<BR>Name: Item : Arme Maudite vie<BR>Mental Exhaust (ms): 
+0<BR>Movement Exhaust (ms): 0<BR>Attack Exhaust (ms): 0<BR>Duration (ms): 
+0<BR>Timer Frequency (ms): 0<BR>Success %: 100<BR>Mana Cost: 0<BR>Attack Type: 
+Physical Attack<BR>Area Range: 0<BR>Target Type: Target self<BR>Element: 
+None<BR>Line of sight: Non-Coché<BR>Visual Effect: None<BR>Spell Blast Target 
+Visual Effect: None<BR>Icon: &lt;none&gt;<BR>Attack spell: Non-Coché<BR>PVP 
+Check: Non-Coché<BR>Edit Description…:<BR>-Rien<BR>Edit Requirements…:<BR>-Min. 
+Level: 0<BR>-Min. Wisdom: 0<BR>Min. Intelligence: 0<BR>Required Spells: 
+Rien<BR>Edit Effects…:<BR>-Spell Hook:<BR>.Hooked spell: Item : Arme Maudite vie 
+hook<BR>.Hook: OnTimer<BR>.Hook chance %: 100<BR>.Initial delay (ms): 
+500<BR>2)<BR>Name: Item : Arme Maudite vie<BR>Mental Exhaust (ms): 0<BR>Movement 
+Exhaust (ms): 0<BR>Attack Exhaust (ms): 0<BR>Duration (ms): 60000<BR>Timer 
+Frequency (ms): 0<BR>Success %: 
+If(itemcount(42573)&gt;=1?100:If(equipcount(42573)&gt;=1?100:0))<BR>Mana Cost: 
+0<BR>Attack Type: Physical Attack<BR>Area Range: 0<BR>Target Type: Target 
+self<BR>Element: None<BR>Line of sight: Non-Coché<BR>Visual Effect: 
+None<BR>Spell Blast Target Visual Effect: None<BR>Icon: Dark defense<BR>Attack 
+spell: Non-Coché<BR>PVP Check: Non-Coché<BR>Edit Description…:<BR>-Vous avez été 
+maudi par un Objet<BR>Edit Requirements…:<BR>-Min. Level: 0<BR>-Min. Wisdom: 
+0<BR>Min. Intelligence: 0<BR>Required Spells: Rien<BR>Edit 
+Effects…:<BR>-Attribute Boost:<BR>.Rien<BR>.max hp<BR>.-(self.maxhp/2)<BR>-Set 
+Flag :<BR>.Objet Maudit<BR>.1<BR>-Spell Hook:<BR>.Hooked spell: Item : Arme 
+Maudite vie<BR>.Hook: OnTimer<BR>.Hook chance %: 100<BR>.Initial delay (ms): 
+60000<BR>Voila les sorts sont configuré<BR><BR><SPAN 
+style="COLOR: green">L’Objet :</SPAN><BR>Item structure: Weapon<BR>Name: Epée de 
+damnation<BR>Appearance: Weapon: Darksword<BR>Sell Type: Junk<BR>Sell Price: 
+0<BR>Weight: 7<BR>Equip Position: Weapon (right)<BR>Min. Int.: 21<BR>Min. Wis.: 
+24<BR>Item Location: Où vous voulez<BR>Cannot:<BR>.Junk: Coché<BR>.Drop: 
+Coché<BR>.Rob: Coché<BR>.Get: Non-Coché<BR>.Hide: Non-Coché<BR>Other:<BR>.Junk 
+at remort: Non-Coché<BR>.Can be summoned: Non-Coché<BR>.Item is unique: 
+Coché<BR>Damage Roll: 1d12+17<BR>Dealt Exhaust: 
+if(787-self.agi/250*787/2&lt;600?600:787-self.agi/250*787/2)+1d394<BR>Ranged 
+Weapon: Non-Coché<BR>Req. Strength: 59<BR>Req. Attack skill: 0<BR>Req. Agility: 
+0<BR>alerte SMS: 0<BR>Dodge Malus: 0<BR>Min. Endurance: 0<BR>Edit 
+Boosts:<BR>.Boosted Stat: Attack<BR>.Boost Value: 15<BR>.Min. Intellect: 
+0<BR>.Min. Wisdom: 0<BR>Edit Spells:<BR>.Spell: Item : Arme Maudite 
+vie<BR>.Trigger: On Disturbed<BR>.Min. Level: 0<BR>.Charges: -1<BR>Voila l’objet 
+est configuré<BR><BR><SPAN style="COLOR: green">Le PNJ:</SPAN><BR>Name: Manilo 
+Theria<BR>Boud creature: PNJ : Erios<BR>Code:<BR>-Initial 
+Text:<BR>.IF(target.viewflag(50105)&gt;=1)<BR>..SayText: Oh Je sens une 
+malédiction pesant sur vous ! Voulez vous que je chercher ce qui vous "maudit" 
+?<BR>.ELSE IF(target.viewflag(50105)&lt;1)<BR>..SayText: Bonjour<BR>.END 
+IF<BR>-Default Text:<BR>.SayText: Quoi ?<BR>-Adieu:<BR>.SayText: Au 
+revoir<BR>.BreakConversation<BR>-Maudit:<BR>.IF(target.viewflag(50105)&gt;=1)<BR>..IF(target.viewflag(50105)&gt;=2)<BR>…IF(target.gold&gt;=2000)<BR>….SayText: 
+Voila vous êtes plus sous la malédiction "*Jette l'objets 
+maudit*"<BR>….TakeItem: Epee de damnation<BR>…ELSE 
+IF(target.gold&lt;2000)<BR>….SayText: Vous n'avez pas assez d'or !<BR>…END 
+IF<BR>..ELSE IF(target.viewflag(50105)&lt;2)<BR>…SayText: Oh vous avez bien un 
+objet qui vous "maudit" si vous voulez être démaudit vous devrait me payer 2000 
+pièces d'or !<BR>…SetFlag(50105,2)<BR>..END IF<BR>.ELSE 
+IF(target.viewflag(50105)&lt;1)<BR>..SayText: Quoi ?<BR>.END IF<BR>Voila le PNJ 
+est configuré<BR><BR>Maintenant il ne vous reste plus qua mettre l’objet en drop 
+d’un monstre ou d’un coffre et de place le pnj sur la carte<BR><BR>Bon Amusement 
+! </DIV></DIV>
+<DIV class=postwrapper>
+<DIV class=posttopbar>
+<DIV class=postname>Macumba</DIV>
+<DIV class=postdate>Aug 30 2004, 12:40 AM</DIV></DIV>
+<DIV class=postcontent>J'ai trouvé le temps d'améliorer un peu ce que j'avait 
+commencé y'a longtemps ^^<BR><BR><A 
+href="http://membres.lycos.fr/macumba/stock/" 
+target=_blank>http://membres.lycos.fr/macumba/stock/</A><BR><BR>J'y ai aussi mit 
+les programmes qu'on trouve ici... si les auteurs souhaitent que je les retire 
+y'a qu'a me demander en mp et je le ferait <!--emo&:)--><IMG 
+style="VERTICAL-ALIGN: middle" alt=smile.gif 
+src="Forum  Ro-Emulateur  Truc spéciaux, astuce, flag, etc_fichiers/smile.gif" 
+border=0><!--endemo--><BR><BR>en bas de la page il y a un lien vers mon ptit 
+mémo editing tool que j'ai un peu continué avec les idées prises dans le post 
+initial et reformulées correctement pour plus de compréhension... </DIV></DIV>
+<DIV class=postwrapper>
+<DIV class=posttopbar>
+<DIV class=postname>yebor</DIV>
+<DIV class=postdate>Sep 1 2004, 01:24 PM</DIV></DIV>
+<DIV class=postcontent>Un autre ajout que j'ai fait : <BR><BR><SPAN 
+style="FONT-SIZE: 14pt; LINE-HEIGHT: 100%"><SPAN style="COLOR: red">Supression 
+du bug des amu 1.25</SPAN></SPAN><BR><BR>On utilisera l'amulette de Regénération 
+pour l'exemple après c'est pareil pour les autres<BR><BR>Il vous faut tout 
+d'abord créer un flag :<BR><BR>#Verif Amulet Regeneration <BR>ID : 
+30600<BR><BR><I>C'est un exemple vous pouvez changer le nom et vous devrez 
+prendre votre ID</I><BR><BR>Ensuite vous faite un copier du sort Item Amulet of 
+Regeneration (Il est peut être déjà crée si vous avez modifier les textes pour 
+le mettre en francais)<BR><BR>ID : 10786<BR>Name : Objet Amulette de 
+Regénération<BR>Success : 
+if(equipcount(41864)=1?if(self.viewflag(30600)=0?100:0):0)<BR><BR>Edit 
+Description : Regénération: Reconstitue graduellement les points de vie du 
+joueur.<BR><BR>Edit Effect :<BR><BR><U><B>- Attribute boost</B></U><BR>Realtime 
+Update : Rien<BR>Modified Stat : Mana<BR>Boost Formula : -25<BR><BR><B><U>- 
+Dispel</U></B><BR>Dispel Spell : Item Amulet of rejuvenation<BR>Success : 
+100<BR><BR>Voila faite un copier du sort Item Amulet of Regeneration Hook 
+maintenant<BR><BR>ID : 10787<BR>Name : Objet Amulette de Regénération 
+hook<BR><BR>Cette opération permet de modifier le sort en fait<BR><BR>Edit 
+Effects :<BR><BR><B><U>- Health Modifier</U></B><BR>Target Health Modifier 
+Formula : 5<BR>Radial Spell Damage : 0<BR>Effect Sucess : 100<BR><BR><B><U>- Set 
+flag </U></B><BR>Flag : #Verif Amulet Regeneration <BR>Flag Value : 
+1<BR><BR>Ensuite vous devez crée un nouveau sort <BR><BR>Name : Objet Amulette 
+de Regénération hook 2<BR>ID : Généré automatiquement<BR>Le reste vous mettez 0 
+partout, à Success vous mettez 100 <BR>Attack Type : Physical Attack<BR>Target 
+Type : Target self<BR>Le reste vous mettez none partout et vous cochez aucune 
+des 3 cases<BR><BR>Edit description vide et Edit Requirement Vide<BR><BR>Edit 
+Effects :<BR><BR><B><U>- Set flag</U></B><BR>Flag : #Verif Amulet Regeneration 
+<BR>Flag Value : 0<BR><BR>Voila enregistrez et revenez au premier sort : Objet 
+Amulette de Regénération<BR><BR>Allez dans Edit Flag et supprimez les spell Hook 
+si il y'en a deja puis remettez en un nouveau :<BR>Hooked Spell : Objet Amulette 
+de Regénération hook<BR>Hook : OnTimer<BR>Hook Chance : 100<BR>Initial Delay : 
+500<BR><BR>Puis encore un autre avec<BR>Hooked Spell : Objet Amulette de 
+Regénération hook<BR>Hook : OnTimer<BR>Hook Chance : 100<BR>Initial Delay : 
+300000<BR><BR>Voila vous devrez attendre 5 minutes pour pouvoir relancer la 
+gemme, si vous voulez modifier cette valeur par une minute par exemple au lieu 
+des 5 vous mettez 60000 au lieu de 300000 et si vous voulez mettre 10 minutes 
+vous mettez 600000 <!--emo&;)--><IMG style="VERTICAL-ALIGN: middle" alt=wink.gif 
+src="Forum  Ro-Emulateur  Truc spéciaux, astuce, flag, etc_fichiers/wink.gif" 
+border=0><!--endemo--> </DIV></DIV>
+<DIV class=postwrapper>
+<DIV class=posttopbar>
+<DIV class=postname>Jean Suifou</DIV>
+<DIV class=postdate>Sep 8 2004, 01:43 PM</DIV></DIV>
+<DIV class=postcontent>dans ce post, je vais vous expliquer les modifications à 
+faire pour modifier le facteur multiplicateur des XP recu lors de l'activation 
+du flag : GOD_BOOST_XP<BR><BR><U><B>démarche de recherche</B></U> ( uniquement 
+pour ceux qui veulent en savoir un peut plus )<BR><BR>Dans un premier temps, 
+chercher le nom du flag, remonter à la fonction qui l'utilise.<BR><BR><!--c1-->
+<DIV class=codetop>CODE</DIV>
+<DIV class=codemain><!--ec1-->mov &nbsp; &nbsp; eax, [ebp+FlagName]<BR>push 
+&nbsp; &nbsp;offset aGod_boost_xp; char *<BR>push &nbsp; &nbsp;eax &nbsp; &nbsp; 
+&nbsp; &nbsp; &nbsp; ; char *<BR>call &nbsp; &nbsp;ds:_stricmp<BR>add &nbsp; 
+&nbsp; esp, 8<BR>test &nbsp; &nbsp;eax, eax<BR>jnz &nbsp; &nbsp; short 
+loc_xxxxxxxx<BR>push &nbsp; &nbsp;1<BR>mov &nbsp; &nbsp; ecx, edi<BR>call &nbsp; 
+&nbsp;?SetGodMode@Players@@QAEXH@Z; Players::SetGodMode(int)<BR>mov &nbsp; 
+&nbsp; ecx, edi<BR>call &nbsp; &nbsp;?GetGodFlags@Players@@QAE_KXZ; 
+Players::GetGodFlags(void)<BR>or &nbsp; &nbsp; &nbsp;edx, 200h<BR>push &nbsp; 
+&nbsp;edx<BR>push &nbsp; &nbsp;eax<BR>mov &nbsp; &nbsp; ecx, edi<BR>call &nbsp; 
+&nbsp;?SetGodFlags@Players@@QAEX_K@Z; Players::SetGodFlags(unsigned 
+__int64)<BR>push &nbsp; &nbsp;offset aGodWillNowRece; "God will now receive a 
+lot more XP from"...<BR><!--c2--></DIV><!--ec2--><BR><BR>vous remarquerai la 
+ligne apres avoir regarder la fonction GetGodFlags : "or edx, 200h"<BR>cela nous 
+indique que les flag sont utiliser par l'intermédiaire d'un mask binaire. Donc 
+il doit utiliser : "and edx,200h"<BR>pour savoir si le flag est mit.<BR><BR>on 
+va donc rechercher la valeur 0x200 et regarder quand elle est utilisé avec un 
+"and edx,200h", pour cela on à 2 occurence.<BR><BR>une dans " 
+NPCstructure::OnHit" et l'autre dans "NPCstructure::OnDeath"<BR><BR>et l'on 
+remarquera de toute évidence :<BR><!--c1-->
+<DIV class=codetop>CODE</DIV>
+<DIV class=codemain><!--ec1-->and &nbsp; &nbsp; edx, 200h<BR>xor &nbsp; &nbsp; 
+eax, eax<BR>or &nbsp; &nbsp; &nbsp;eax, edx<BR>jz &nbsp; &nbsp; &nbsp;short 
+loc_xxxxxxxx<BR>mov &nbsp; &nbsp; eax, dword ptr [ebp+xxxxxxxx]<BR>push &nbsp; 
+&nbsp;0<BR>push &nbsp; &nbsp;10<BR>push &nbsp; &nbsp;eax<BR>push &nbsp; 
+&nbsp;ebx<BR>call &nbsp; 
+&nbsp;__allmul<!--c2--></DIV><!--ec2--><BR><BR><U><B>Les modification à 
+appliquer</B></U> :<BR><BR>prennez un éditeur hexadécimal : <BR>rechercher la 
+séquence que vous trouvererai 2 fois<BR><!--c1-->
+<DIV class=codetop>CODE</DIV>
+<DIV class=codemain><!--ec1-->81 E2 00 02 00 00 33 C0 0B C2 74<!--c2--></DIV><!--ec2--><BR><BR>dans ces séquences remplacer les VV par la 
+valeur en hexadecimal !<BR>et ne changer pas la valeur des autre octets.<BR><!--c1-->
+<DIV class=codetop>CODE</DIV>
+<DIV class=codemain><!--ec1-->81 E2 00 02 00 00 33 C0 0B C2 74 XX 8B 4D XX 6A 00 
+6A VV 50 53<!--c2--></DIV><!--ec2--><BR><BR>càd 10 = 0A<BR><BR><U><B>Programme 
+permettant de faire ces modifications</B></U> : <BR><BR>( pour l'instant aucun 
+)<BR>PS: si vous avez un programme qui permet de faire cette modification esiter 
+pas à le signaler <!--emo&;)--><IMG style="VERTICAL-ALIGN: middle" alt=wink.gif 
+src="Forum  Ro-Emulateur  Truc spéciaux, astuce, flag, etc_fichiers/wink.gif" 
+border=0><!--endemo--><BR><BR><SPAN style="COLOR: red">Vivi : Zou en post it, 
+merci beaucoup</SPAN> </DIV></DIV>
+<DIV class=postwrapper>
+<DIV class=posttopbar>
+<DIV class=postname>Jean Suifou</DIV>
+<DIV class=postdate>Sep 13 2004, 07:29 PM</DIV></DIV>
+<DIV class=postcontent><SPAN style="FONT-SIZE: 14pt; LINE-HEIGHT: 100%"><SPAN 
+style="COLOR: red">Flag de Puissance et de Resistance</SPAN></SPAN><BR><BR>Air 
+Resist = 20030<BR>Water Resist = 20031<BR>Fire Resist = 20032<BR>Earth Resist = 
+20033<BR>Light Resist = 20037<BR>Dark Resist = 20038<BR><BR>Air Power = 
+20041<BR>Water Power = 20042<BR>Fire Power = 20043<BR>Earth Power = 
+20044<BR>Light Power = 20039<BR>Dark Power = 20040<BR><BR>Ceci vous permettra de 
+modifier les puissance/resistance des joueurs par l'intermédiaire d'un PNJ <!--emo&;)--><IMG style="VERTICAL-ALIGN: middle" alt=wink.gif 
+src="Forum  Ro-Emulateur  Truc spéciaux, astuce, flag, etc_fichiers/wink.gif" 
+border=0><!--endemo--><BR><BR>Remarque : Les flag ont une valeur de 100 en 
+dessous des valeur disponible normalement <BR>exemple :<BR>20041 = 0 (self.air = 
+100) =&gt; resistance air normal<BR>20041 &lt; 0 (self.air &lt; 100) =&gt; 
+resistance air reduite<BR>20041 &gt; 0 (self.air &gt; 100) =&gt; resistance air 
+boosté<BR><BR>SetFlag(200xx,val);<BR><BR><SPAN 
+style="FONT-SIZE: 14pt; LINE-HEIGHT: 100%"><SPAN style="COLOR: red">Autres 
+Flags</SPAN></SPAN><BR><BR>Inivisibility_Flag = 20050<BR>Hide_Flag = 
+20051<BR><BR>PS : a creuser, doit y en avoir d'autre dans les parrages <!--emo&;)--><IMG style="VERTICAL-ALIGN: middle" alt=wink.gif 
+src="Forum  Ro-Emulateur  Truc spéciaux, astuce, flag, etc_fichiers/wink.gif" 
+border=0><!--endemo--> </DIV></DIV></DIV>
+</DIV>
+</BODY></HTML>

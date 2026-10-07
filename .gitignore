@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Base locale du serveur (données de jeu — ne pas versionner)
+*.sqlite3
+
+# Ombres Windows / Wine
+Thumbs.db
+desktop.ini

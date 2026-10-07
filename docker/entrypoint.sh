@@ -69,6 +69,18 @@ WODBC
 # maj du .mdb principal aussi : certains chemins utilisent la mdb du répertoire
 cp -f "$DB_DIR/T4C.mdb" "$T4C_DIR/T4C.mdb" 2>/dev/null || true
 
+# --- Compte admin/admin (super admin) créé automatiquement au 1er démarrage ---
+if mdb-tables "$DB_DIR/T4C.mdb" 2>/dev/null | grep -q "T4Cusers" \
+   && ! mdb-sql -p "$DB_DIR/T4C.mdb" "SELECT Account FROM T4Cusers WHERE Account='admin'" 2>/dev/null | grep -q admin; then
+    echo "[t4c] création du compte admin/admin (super admin)..."
+    mdb-sql -p "$DB_DIR/T4C.mdb" \
+      "INSERT INTO T4Cusers (Account, Password, Account_type, Expired, FullName, Email, CreationDate, RevisionDate) VALUES ('admin', 'admin', 0, 0, 'Administrateur', '', NOW, NOW)" \
+      2>&1 | head -3 || echo "[t4c] ATTENTION : INSERT mdb-sql a échoué — créer le compte via T4C Database Manager (VM XP) si le login refuse"
+    cp -f "$DB_DIR/T4C.mdb" "$T4C_DIR/T4C.mdb" 2>/dev/null || true
+else
+    echo "[t4c] compte admin déjà présent (ou table absente)."
+fi
+
 echo "[t4c] démarrage du serveur (UDP ${T4C_PORT:-11677})..."
 cd "$T4C_DIR"
 set +e

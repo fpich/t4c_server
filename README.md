@@ -252,28 +252,20 @@ Formats confirmés depuis `RQFUNC_PlayerMove` original :
   répond l'événement `__EVENT_OBJECT_MOVED` (id 1) : `i16 X, i16 Y`.
 La position est persistée à chaque mouvement (si `--database` actif).
 
-## Lancer le client sous Wine (installation automatique)
+## Client
 
-Un script unique installe tout (Wine 32 bits, MFC42, préfixe dédié,
-langue FR, WebPatch désactivé, serverlist) et lance le jeu en fenêtré :
+Le client T4C 1.25 FR s'installe dans une VM Windows (XP de préférence —
+environnement natif du jeu, affichage et son garantis). Le dossier
+`ressources/t4c_client_fr/` contient l'installation complète.
 
-```bash
-# installation + lancement (le serveur doit tourner avant) :
-bash start_server.sh                     # terminal 1
-bash install_client_wine.sh              # terminal 2
+Dans la VM :
+1. Copier le dossier `ressources/t4c_client_fr/` (ex. dans C:\\T4C\\)
+2. Importer la configuration registre (contournement GOA + WebPatch off) :
+   reg add "HKCU\\Software\\Vircom\\T4C" /v Language /t REG_SZ /d English /f
+   reg add "HKCU\\Software\\Vircom\\T4C" /v WebPatchDisabled /t REG_DWORD /d 1 /f
+3. Éditer `serverlist.txt` : lignes 2-3 = IP de la machine serveur
+   (celle où tourne `bash start_server.sh`)
+4. Lancer `t4c.exe`, choisir le serveur, se connecter
 
-# ou en deux temps :
-bash install_client_wine.sh --install   # une seule fois
-bash t4c.sh                             # ensuite, pour jouer
-
-# t4c.sh accepte aussi :
-#   bash t4c.sh --server 192.168.1.x    # autre serveur
-#   bash t4c.sh --window 800x600        # autre taille de fenêtre
-
-# options :
-#   --prefix /chemin   préfixe Wine dédié (défaut ~/.wine-t4c)
-#   --server IP        IP du serveur T4C (défaut 127.0.0.1)
-```
-
-Plus de Docker pour le client : Wine tourne directement, avec affichage,
-son et performances natifs de la machine.
+Le serveur écoute sur 0.0.0.0:11677 — joignable depuis la VM par
+l'IP de l'hôte (réseau en bridge ou NAT avec redirection).

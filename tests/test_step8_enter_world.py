@@ -100,12 +100,15 @@ class Step8PutPlayerInGameTests(unittest.IsolatedAsyncioTestCase):
         self.assertIs(session.state, SessionState.IN_WORLD)
         self.assertEqual(session.enter_world_requests, 1)
         # Flux authentique (binaire 1.25 @ 0x47b750) : PacketStatus (43)
-        # puis PuppetInfo (68, apparence puppet) puis la confirmation 46.
+        # puis PuppetInfo (68, apparence puppet), la vue monde (16) et la
+        # confirmation 46.
         status = decode_reply(server.sent[1][1])
         self.assertEqual(status.packet_id, PacketID.GET_STATUS)
         puppet = decode_reply(server.sent[2][1])
         self.assertEqual(puppet.packet_id, PacketID.PUPPET_INFORMATION)
-        reply = decode_reply(server.sent[3][1])
+        inview = decode_reply(server.sent[3][1])
+        self.assertEqual(inview.packet_id, 16)
+        reply = decode_reply(server.sent[4][1])
         self.assertEqual(reply.packet_id, PacketID.FROM_PREINGAME_TO_INGAME)
         self.assertEqual(PacketReader(reply.body).read_u8(), 0)
 

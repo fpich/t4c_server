@@ -17,6 +17,7 @@ from .characters import PLAYER_FEMALE_PUPPET, PLAYER_PUPPET, START_POS, Characte
 from .codec import DecodedPacket, PacketReader, PacketWriter, T4CProtocolError
 from .protocol import PacketID
 from .session import SessionState
+from . import world
 
 if TYPE_CHECKING:
     from .server import T4CServerProtocol
@@ -325,6 +326,10 @@ async def handle_exit_game(
     n'est considéré actif.
     """
     session.exit_game_requests += 1
+    # Diffusion multi-joueurs : les autres sessions voient le joueur disparaître
+    # (paquet 11) avant la remise à zéro de la session.
+    if session.state is SessionState.IN_WORLD:
+        world.broadcast_object_removed(server, session)
     if packet.body:
         log.debug(
             "requête 20 avec %d octet(s) inattendu(s) client=%s corps=%s",
@@ -681,6 +686,11 @@ async def handle_from_preingame_to_ingame(
                     character.race,
                     session.address,
                 )
+        # Monde multi-joueurs : le nouveau joueur reçoit les unités déjà en
+        # jeu (paquet 16), et les joueurs en vue le voient apparaître
+        # (paquet 0x2714).
+        world.send_inview_units(server, session)
+        world.broadcast_unit_popup(server, session)
     elif session.state is SessionState.IN_WORLD:
         result = 1
     else:
@@ -769,6 +779,8 @@ async def handle_player_move(
     event.write_i8(0)                 # statut
     event.write_i8(100)               # %HP
     server.send_packet(session.address, event)
+    # Diffusion multi-joueurs : les autres sessions en vue voient le mouvement.
+    world.broadcast_object_moved(server, session)
     session.move_requests += 1
     log.info(
         "MOUVEMENT client=%s perso=%r -> (%d,%d,%d) requêtes=%d",

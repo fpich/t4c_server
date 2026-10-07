@@ -42,3 +42,19 @@ REGEDIT4
 "NPCDLL5"="NPC AddOn.dll"
 "NPCDLL6"="NPCs.dll"
 "NPCDLL7"="NPC AddOns.dll"
+
+; — Mode mise à jour (WebPatch) désactivé —
+; Le serveur annonce au client (paquet 91) ses serveurs de patch.
+; Valeurs vides => le client n'essaie pas de se mettre à jour.
+[HKEY_LOCAL_MACHINE\Software\Vircom\The 4th Coming Server\Paths]
+"WebPatch_URL"=""
+"WebPatch_User"=""
+"WebPatch_Pwd"=""
+"WebPatch_ImageFile"=""
+
+; Liste des serveurs de patch secondaires : vide = aucun.
+[HKEY_LOCAL_MACHINE\Software\Vircom\The 4th Coming Server\PatchServers]
+"OtherServer1_IP"=""
+
+; Le binaire écrit 'startup.log' à sa racine : y retrouver le diagnostic complet
+; en cas d'échec au démarrage (ex: 'Wrong license key').

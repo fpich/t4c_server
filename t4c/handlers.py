@@ -830,23 +830,34 @@ async def handle_get_near_items(
 async def handle_get_online_player_list(
     server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
 ) -> None:
-    """Requête 62 : RQ_GetSkillStatPoints (BINAIRE prouvé @ 0x481fb0).
+    """Requête 62 : RQ_SendSpellList (liste des sorts).
 
-    Désassemblage authentique :
-        packet << (short)[user->self+0x174]   <- points de stats
-        packet << (short)GetSkillPoints()     <- points de compétences
-        SendPlayerMessage
-
-    (Confondu avec GetOnlinePlayerList dans un premier temps — le vrai
-    handler envoie DEUX i16 : stat points puis skill points.)
+    tfc_main.h : #define RQ_SendSpellList 62 (et GetSkillStatPoints = 52 !).
+    Format (source Character::packet_spells + binaire 0x481fb0) :
+      char bUpdate (1 = mise à jour sans réaffichage),
+      short mana, short maxMana,
+      short nombre de sorts, puis par sort : id, points, CString nom, CString desc.
+    Un nouveau personnage ne connaît aucun sort : liste vide.
     """
     session.online_list_requests += 1
+    character = None
+    if session.account:
+        for candidate in server.characters.characters(session.account):
+            if candidate.name == session.active_character:
+                character = candidate
+                break
+    mana = character.mana if character else 30
+    max_mana = character.max_mana if character else 30
     response = PacketWriter(PacketID.GET_ONLINE_PLAYER_LIST)
-    response.write_i16(0)   # points de stats
-    response.write_i16(15)  # points de compétences (défaut création)
+    response.write_u8(1)          # bUpdate : ne pas réafficher la fenêtre
+    response.write_i16(mana)
+    response.write_i16(max_mana)
+    response.write_i16(0)         # aucun sort connu
     server.send_packet(session.address, response)
     log.info(
-        "POINTS stat=0 compétences=15 client=%s",
+        "SORTS bUpdate=1 mana=%d maxMana=%d nombre=0 client=%s",
+        mana,
+        max_mana,
         session.address,
     )
 

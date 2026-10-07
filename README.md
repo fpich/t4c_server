@@ -263,8 +263,12 @@ bash start_server.sh                     # terminal 1
 bash install_client_wine.sh              # terminal 2
 
 # ou en deux temps :
-bash install_client_wine.sh --install
-bash install_client_wine.sh --run --server 127.0.0.1
+bash install_client_wine.sh --install   # une seule fois
+bash t4c.sh                             # ensuite, pour jouer
+
+# t4c.sh accepte aussi :
+#   bash t4c.sh --server 192.168.1.x    # autre serveur
+#   bash t4c.sh --window 800x600        # autre taille de fenêtre
 
 # options :
 #   --prefix /chemin   préfixe Wine dédié (défaut ~/.wine-t4c)

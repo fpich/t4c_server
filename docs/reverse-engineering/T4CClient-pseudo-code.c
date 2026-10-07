@@ -1512,3 +1512,482 @@ void HandlePacket75_ChannelList(TFCPacket &p)
  * transport UDP 12 octets documente dans la section precedente reste, lui,
  * LITTLE-ENDIAN.
  */
+
+
+// =============================================================================
+// 20. MONDE VISIBLE, MOUVEMENT ET COMBAT -- PASSE V4
+// =============================================================================
+// Sources croisees :
+//   client t4c.exe : handlers @0x49AB44, 0x49B02C, 0x49B8BD,
+//                    0x49B934, 0x49BAC6, 0x49E6B4, 0x49EEC4,
+//                    0x49EF62, 0x49EBFF
+//   serveur original : RQ_PlayerMove @0x47A170,
+//                      Unit::PacketUnitInformation @0x48F560,
+//                      Unit::PacketPopup @0x48F8A0,
+//                      WorldMap::packet_inview_units @0x4B0C40,
+//                      WorldMap::packet_peripheral_units @0x4AF770,
+//                      Broadcast::BCObjectChanged @0x40FB60,
+//                      Broadcast::BCObjectRemoved @0x40FC00,
+//                      Broadcast::BCAttack @0x40FCA0,
+//                      Broadcast::BCMiss @0x40FD90,
+//                      Broadcast::BCSkillUsed @0x40FE60.
+//
+// Rappel : les entiers du TFCPacket applicatif sont big-endian.
+// =============================================================================
+
+
+// -----------------------------------------------------------------------------
+// 20.1 Bloc commun d'information d'une unite visible
+// -----------------------------------------------------------------------------
+
+struct WireUnitInformation
+{
+    uint16_t appearance;   // GetAppearance() tronque/serialise en u16
+    uint32_t unitId;       // Unit::GetID(), champ Unit+0x78
+    int8_t   radiance;     // Unit::GetRadiance(), borne a [-100,+100]
+    uint8_t  status;       // Unit::GetStatus()
+    uint8_t  hpPercent;    // 0 si maxHP==0, sinon 100*HP/maxHP
+};
+
+// [CONFIRME] Serveur @0x48F560.
+void Unit_PacketUnitInformation(Unit *self, TFCPacket& p)
+{
+    // vtable+0x2C == GetAppearance() dans cette hierarchie.
+    p.write_u16_be((uint16_t)self->GetAppearance());
+
+    p.write_u32_be(self->GetID());
+
+    // GetRadiance() @0x48D660 fait exactement :
+    //   baseRadiance = *(int8_t *)(self + 0xAF)
+    //   result = baseRadiance + GetBoost(11)
+    //   clamp(result, -100, +100)
+    int radiance = self->GetRadiance();
+    if (radiance < -100) radiance = -100;
+    if (radiance >  100) radiance =  100;
+    p.write_u8((uint8_t)(int8_t)radiance);
+
+    p.write_u8(self->GetStatus());
+
+    uint32_t maxHp = self->GetMaxHP();
+    uint8_t hpPct = 0;
+    if (maxHp != 0)
+        hpPct = (uint8_t)((self->GetHP() * 100u) / maxHp);
+    p.write_u8(hpPct);
+}
+
+
+// -----------------------------------------------------------------------------
+// 20.2 Mouvement client -> serveur : paquets 1..8
+// -----------------------------------------------------------------------------
+
+/*
+ * [CONFIRME] Le client choisit une direction 1..8 puis cree un TFCPacket dont
+ * le PREMIER et seul champ est cette direction. C'est donc directement l'ID du
+ * paquet; il n'y a aucun payload supplementaire.
+ *
+ * Correspondance originale DIR::MOVE :
+ *   1 N, 2 NE, 3 E, 4 SE, 5 S, 6 SW, 7 W, 8 NW.
+ *
+ * Avant l'envoi, le client fait une prediction/collision locale. Le serveur
+ * reste autoritaire et recalcule le mouvement via Character::MoveUnit().
+ */
+void Client_SendMove(uint16_t direction)
+{
+    if (direction < 1 || direction > 8)
+        return;
+
+    if (!ClientLocalMovementAllows(direction))
+        return;
+
+    TFCPacket p;
+    p.write_u16_be(direction);   // packet ID == direction
+    SendApplicationPacket(p);
+}
+
+
+// -----------------------------------------------------------------------------
+// 20.3 RQ_PlayerMove cote serveur original @0x47A170
+// -----------------------------------------------------------------------------
+
+/*
+ * Cette reconstruction est utile pour comprendre ce que le CLIENT attend en
+ * retour. Le serveur original utilise le meme handler pour les requetes 1..9.
+ */
+void RQFUNC_PlayerMove(ServerRequestContext *ctx, uint16_t requestId)
+{
+    Character *player = ctx->player;
+
+    // Requete 9 = position absolue courante.
+    if (requestId == 9)
+    {
+        WorldPos pos = player->GetPos();
+
+        TFCPacket reply;
+        reply.write_u16_be(9);
+        reply.write_u16_be((uint16_t)pos.x);
+        reply.write_u16_be((uint16_t)pos.y);
+        reply.write_u16_be((uint16_t)pos.world);
+        player->SendPacket(reply);
+        return;
+    }
+
+    if (!ctx->isInWorld)
+        return;
+
+    // Le binaire contient aussi des controles de cadence/etat avant le switch.
+    // Ils ne sont pas tous renommes ici.
+    WorldPos oldPos = player->GetPos();
+    WorldPos newPos = oldPos;
+
+    switch (requestId)
+    {
+        case 1: newPos = player->MoveUnit(DIR_N,  0, true, true); break;
+        case 2: newPos = player->MoveUnit(DIR_NE, 0, true, true); break;
+        case 3: newPos = player->MoveUnit(DIR_E,  0, true, true); break;
+        case 4: newPos = player->MoveUnit(DIR_SE, 0, true, true); break;
+        case 5: newPos = player->MoveUnit(DIR_S,  0, true, true); break;
+        case 6: newPos = player->MoveUnit(DIR_SW, 0, true, true); break;
+        case 7: newPos = player->MoveUnit(DIR_W,  0, true, true); break;
+        case 8: newPos = player->MoveUnit(DIR_NW, 0, true, true); break;
+        default: return;
+    }
+
+    if (newPos != oldPos)
+    {
+        // [CONFIRME] le serveur verifie les "hives"/zones qui entrent dans le
+        // champ de vision et peut pousser packet_peripheral_units().
+        WorldMap *map = ResolveWorldMap(newPos.world);
+        if (map)
+            map->VerifyPeripheralHives(oldPos, (DIR::MOVE)requestId);
+    }
+
+    // [CONFIRME] Le paquet 1 N'EST PAS seulement (x,y).
+    // Il contient ensuite tout WireUnitInformation.
+    TFCPacket moved;
+    moved.write_u16_be(1);                 // __EVENT_OBJECT_MOVED
+    moved.write_u16_be((uint16_t)newPos.x);
+    moved.write_u16_be((uint16_t)newPos.y);
+    Unit_PacketUnitInformation(player, moved);
+    player->SendPacket(moved);             // chemin virtuel +0x14C
+}
+
+
+// -----------------------------------------------------------------------------
+// 20.4 Paquet 9 serveur -> client : position courante
+// Client @0x49AB44
+// -----------------------------------------------------------------------------
+
+struct S2C_PlayerPosition_9
+{
+    uint16_t x;
+    uint16_t y;
+    uint16_t world;
+};
+
+void HandlePacket9_PlayerPosition(TFCPacket& p)
+{
+    S2C_PlayerPosition_9 m;
+    m.x     = p.read_u16_be();
+    m.y     = p.read_u16_be();
+    m.world = p.read_u16_be();
+
+    // [CONFIRME] le client effectue des controles de bornes avant d'accepter.
+    // x/y sont compares a 0..0x0C00 et world a la taille de la liste des mondes.
+    if (m.x > 0x0C00 || m.y > 0x0C00 || !WorldIndexExists(m.world))
+        return;
+
+    SetLocalPlayerPosition(m.x, m.y, m.world);
+}
+
+
+// -----------------------------------------------------------------------------
+// 20.5 Paquet 1 serveur -> client : OBJECT_MOVED / unite individuelle
+// Client @0x49B02C
+// -----------------------------------------------------------------------------
+
+struct S2C_ObjectMoved_1
+{
+    uint16_t x;
+    uint16_t y;
+    WireUnitInformation unit;
+};
+
+WireUnitInformation ReadWireUnitInformation(TFCPacket& p)
+{
+    WireUnitInformation u{};
+    u.appearance = p.read_u16_be();
+    u.unitId     = p.read_u32_be();
+    u.radiance   = (int8_t)p.read_u8();
+    u.status     = p.read_u8();
+    u.hpPercent  = p.read_u8();
+    return u;
+}
+
+void HandlePacket1_ObjectMoved(TFCPacket& p)
+{
+    S2C_ObjectMoved_1 m{};
+    m.x = p.read_u16_be();
+    m.y = p.read_u16_be();
+    m.unit = ReadWireUnitInformation(p);
+
+    // [CONFIRME] certains codes d'apparence "speciaux" sont remappes par le
+    // client vers des ressources graphiques internes (ex. 0x2711..0x2714).
+    uint16_t displayAppearance = ClientRemapSpecialAppearance(m.unit.appearance);
+
+    // Le handler met ensuite a jour/cree l'entree correspondante dans le monde.
+    World_UpdateSingleUnit(
+        m.unit.unitId,
+        m.x,
+        m.y,
+        displayAppearance,
+        m.unit.radiance,
+        m.unit.status,
+        m.unit.hpPercent);
+}
+
+
+// -----------------------------------------------------------------------------
+// 20.6 Paquet 16 serveur -> client : liste des unites en vue
+// Client @0x49BAC6, serveur WorldMap::packet_inview_units @0x4B0C40
+// -----------------------------------------------------------------------------
+
+struct S2C_InViewUnits_16
+{
+    uint16_t count;
+    // repeated count times:
+    //   u16 x;
+    //   u16 y;
+    //   WireUnitInformation unit;
+};
+
+void HandlePacket16_InViewUnits(TFCPacket& p)
+{
+    uint16_t count = p.read_u16_be();
+
+    for (uint16_t i = 0; i < count; ++i)
+    {
+        uint16_t x = p.read_u16_be();
+        uint16_t y = p.read_u16_be();
+        WireUnitInformation u = ReadWireUnitInformation(p);
+
+        if (u.unitId == GetLocalUnitId())
+            continue;
+
+        World_AddOrRefreshVisibleUnit(
+            u.unitId,
+            x,
+            y,
+            ClientRemapSpecialAppearance(u.appearance),
+            u.radiance,
+            u.status,
+            u.hpPercent);
+    }
+}
+
+/*
+ * Generation serveur equivalente :
+ *
+ *   packet << (u16)16;
+ *   packet << (u16)visibleCount;
+ *   for (Unit *u : visible) {
+ *       WorldPos pos = u->GetPos();
+ *       packet << (u16)pos.x << (u16)pos.y;
+ *       u->PacketUnitInformation(packet);
+ *   }
+ *
+ * La composante world n'est pas repetee pour chaque unite du paquet 16.
+ */
+
+
+// -----------------------------------------------------------------------------
+// 20.7 Paquet 11 serveur -> client : suppression/disparition d'une unite
+// Client @0x49B8BD, Broadcast::BCObjectRemoved @0x40FC00
+// -----------------------------------------------------------------------------
+
+struct S2C_ObjectRemoved_11
+{
+    uint8_t  reasonOrReserved; // le serveur original envoie toujours 0 ici
+    uint32_t unitId;
+};
+
+void HandlePacket11_ObjectRemoved(TFCPacket& p)
+{
+    uint8_t reason = p.read_u8();
+    uint32_t unitId = p.read_u32_be();
+    (void)reason;
+
+    if (unitId != GetLocalUnitId())
+        World_RemoveUnit(unitId);           // appel client @0x50A230
+}
+
+
+// -----------------------------------------------------------------------------
+// 20.8 Paquet 12 serveur -> client : changement d'apparence
+// Client @0x49B934, Broadcast::BCObjectChanged @0x40FB60
+// -----------------------------------------------------------------------------
+
+struct S2C_ObjectChanged_12
+{
+    uint16_t appearance;
+    uint32_t unitId;
+};
+
+void HandlePacket12_ObjectChanged(TFCPacket& p)
+{
+    uint16_t appearance = p.read_u16_be();
+    uint32_t unitId = p.read_u32_be();
+
+    appearance = ClientRemapSpecialAppearance(appearance);
+    if (unitId != GetLocalUnitId())
+        World_ChangeUnitAppearance(unitId, appearance);
+}
+
+
+// -----------------------------------------------------------------------------
+// 20.9 Famille combat 1-x : IDs 0x2711..0x2714
+// -----------------------------------------------------------------------------
+// Les traces debug du client les appellent explicitement :
+//   0x2711 -> "PAK = 1-1"
+//   0x2712 -> "PAK = 1-2"
+//   0x2713 -> "PAK = 1-3"
+//   0x2714 -> "PAK = 1-4"
+// -----------------------------------------------------------------------------
+
+
+// 0x2711 / 10001 -- ATTACK
+// Serveur Broadcast::BCAttack @0x40FCA0
+// Client handler @0x49E6B4
+struct S2C_Attack_10001
+{
+    uint32_t attackerUnitId;
+    uint32_t targetUnitId;
+    uint8_t  reserved0;      // serveur = 0
+    uint8_t  reserved1;      // serveur = 0
+    int8_t   attackType;     // parametre char de BCAttack
+    uint16_t pos1X;
+    uint16_t pos1Y;
+    uint16_t pos2X;
+    uint16_t pos2Y;
+};
+
+void HandlePacket10001_Attack(TFCPacket& p)
+{
+    S2C_Attack_10001 a{};
+    a.attackerUnitId = p.read_u32_be();
+    a.targetUnitId   = p.read_u32_be();
+    a.reserved0      = p.read_u8();
+    a.reserved1      = p.read_u8();
+    a.attackType     = (int8_t)p.read_u8();
+    a.pos1X          = p.read_u16_be();
+    a.pos1Y          = p.read_u16_be();
+    a.pos2X          = p.read_u16_be();
+    a.pos2Y          = p.read_u16_be();
+
+    // Le client s'assure que les deux unites existent dans son monde visuel,
+    // positionne/rafraichit leurs representations si necessaire, puis determine
+    // l'orientation d'attaque a partir du delta entre les positions.
+    Combat_EnsureVisible(a.attackerUnitId, a.pos1X, a.pos1Y);
+    Combat_EnsureVisible(a.targetUnitId,   a.pos2X, a.pos2Y);
+
+    int facing = DirectionFromDelta(
+        (int)a.pos2X - (int)a.pos1X,
+        (int)a.pos2Y - (int)a.pos1Y);
+    Combat_PlayAttack(a.attackerUnitId, a.targetUnitId, a.attackType, facing);
+}
+
+
+// 0x2712 / 10002 -- MISS
+// Serveur Broadcast::BCMiss @0x40FD90
+// Client handler @0x49EF62
+struct S2C_Miss_10002
+{
+    uint32_t attackerUnitId;
+    uint32_t targetUnitId;
+    uint16_t pos1X;
+    uint16_t pos1Y;
+    uint16_t pos2X;
+    uint16_t pos2Y;
+};
+
+void HandlePacket10002_Miss(TFCPacket& p)
+{
+    S2C_Miss_10002 m{};
+    m.attackerUnitId = p.read_u32_be();
+    m.targetUnitId   = p.read_u32_be();
+    m.pos1X          = p.read_u16_be();
+    m.pos1Y          = p.read_u16_be();
+    m.pos2X          = p.read_u16_be();
+    m.pos2Y          = p.read_u16_be();
+
+    Combat_PlayMiss(m.attackerUnitId, m.targetUnitId,
+                    m.pos1X, m.pos1Y, m.pos2X, m.pos2Y);
+}
+
+
+// 0x2713 / 10003 -- SKILL_USED
+// Serveur Broadcast::BCSkillUsed @0x40FE60
+// Client handler @0x49EEC4
+struct S2C_SkillUsed_10003
+{
+    uint16_t skillId;
+    uint16_t reserved;       // serveur original = 0
+};
+
+void HandlePacket10003_SkillUsed(TFCPacket& p)
+{
+    uint16_t skillId  = p.read_u16_be();
+    uint16_t reserved = p.read_u16_be();
+    (void)reserved;
+
+    Combat_OnSkillVisual(skillId);
+}
+
+
+// 0x2714 / 10004 -- POPUP / apparition ponctuelle
+// Serveur Unit::PacketPopup @0x48F8A0
+// Client handler @0x49EBFF
+struct S2C_UnitPopup_10004
+{
+    uint16_t x;
+    uint16_t y;
+    WireUnitInformation unit;
+};
+
+void HandlePacket10004_UnitPopup(TFCPacket& p)
+{
+    uint16_t x = p.read_u16_be();
+    uint16_t y = p.read_u16_be();
+    WireUnitInformation u = ReadWireUnitInformation(p);
+
+    World_ShowPopupOrTransientUnit(
+        u.unitId, x, y, ClientRemapSpecialAppearance(u.appearance),
+        u.radiance, u.status, u.hpPercent);
+}
+
+
+// -----------------------------------------------------------------------------
+// 20.10 Correction directe pour le prototype Python actuel
+// -----------------------------------------------------------------------------
+
+/*
+ * Le prototype Python envoyait jusqu'ici, apres un mouvement, seulement :
+ *
+ *     packet 1 + i16 x + i16 y
+ *
+ * Or le client 1.25 lit obligatoirement :
+ *
+ *     packet 1
+ *     u16 x
+ *     u16 y
+ *     u16 appearance
+ *     u32 unitId
+ *     i8  radiance
+ *     u8  status
+ *     u8  hpPercent
+ *
+ * Il faut donc completer le paquet 1 pour une compatibilite stricte.
+ * Le meme bloc UnitInformation doit etre reutilise pour le paquet 16 et le
+ * paquet 0x2714.
+ */
+
+// Fin passe V4.

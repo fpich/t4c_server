@@ -605,6 +605,16 @@ async def handle_put_player_in_game(
         pos = server.persistence.position(character.name)
         if pos is not None:
             session.pos_x, session.pos_y, session.pos_world = pos
+    # Une position persistée hors bornes (ex. y négatif d'une session
+    # précédente) est invalide pour le client : x/y sont lus en u16 et
+    # bornés à 0x0C00. On recale sur la position de départ officielle.
+    if not (0 <= session.pos_x <= 0x0C00 and 0 <= session.pos_y <= 0x0C00):
+        log.warning(
+            "position persistée hors bornes (%d,%d) -> retour à START_POS",
+            session.pos_x,
+            session.pos_y,
+        )
+        session.pos_x, session.pos_y, session.pos_world = START_POS
     response = PacketWriter(PacketID.PUT_PLAYER_IN_GAME)
     _write_ingame_stats(
         response,
@@ -733,6 +743,12 @@ async def handle_player_move(
     dx, dy = MOVE_OFFSETS[packet.packet_id]
     session.pos_x += dx
     session.pos_y += dy
+    # Bornes acceptées par le client : x/y en u16 et comparés à 0x0C00
+    # (handler paquet 9 @0x49AB44 ; paquet 13 lit x/y en u16). Une position
+    # négative sérialisée en u16 (ex. -3 -> 0xFFFD) fait crasher le client
+    # au chargement du monde.
+    session.pos_x = max(0, min(session.pos_x, 0x0C00))
+    session.pos_y = max(0, min(session.pos_y, 0x0C00))
     if server.persistence is not None and session.active_character:
         server.persistence.save_position(
             session.active_character, session.pos_x, session.pos_y, session.pos_world

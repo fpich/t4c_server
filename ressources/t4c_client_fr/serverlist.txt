@@ -1,6 +1,6 @@
-AmalGame-Online : Memoria
-memoria.servegame.com
-memoria.servegame.com
-Bienvenue sur le serveur Mémoria... Toute l'équipe vous souhaite "Bon jeu"!
-AmalGame-Online
-http://www.AmalGame-Online.net
+Serveur T4C Local
+192.168.1.50
+192.168.1.50
+Bienvenue sur le serveur T4C local !
+Serveur T4C Local
+http://localhost

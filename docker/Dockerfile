@@ -31,6 +31,7 @@ RUN dpkg --add-architecture i386 \
         wine wine32:i386 wine64 \
         cabextract \
         winbind \
+        xvfb \
         unixodbc \
         odbc-mdbtools \
         mdbtools \

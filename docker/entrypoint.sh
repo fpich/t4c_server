@@ -11,7 +11,13 @@ export WINEARCH=win32
 export WINEDEBUG="${WINEDEBUG:-err+all,fixme-all,trace-none}"
 export XDG_RUNTIME_DIR=/tmp/xdg
 mkdir -p /tmp/xdg
-export DISPLAY=
+
+# Le serveur crée une fenêtre (licence/splash) au démarrage : Xvfb fournit
+# un display virtuel, sinon nodrv_CreateWindow -> sortie code 53.
+echo "[t4c] démarrage de Xvfb (display virtuel)..."
+Xvfb :99 -screen 0 1024x768x16 -nolisten tcp >/dev/null 2>&1 &
+export DISPLAY=:99
+sleep 1
 T4C_DIR=/opt/t4c
 DB_DIR=/opt/t4c/db
 

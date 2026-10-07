@@ -10,7 +10,7 @@ networks:
 services:
   t4c-python:
     build:
-      context: ../..
+      context: ${T4C_REPO_DIR:-..}
       dockerfile: docker/python-server/Dockerfile
     image: t4c-python:latest
     container_name: t4c-python

@@ -13,7 +13,7 @@ networks:
 services:
   t4c-client:
     build:
-      context: ../..
+      context: ${T4C_REPO_DIR:-..}
       dockerfile: docker/Dockerfile.client
     image: t4c-client:125
     container_name: t4c-client

@@ -189,3 +189,23 @@ liste de personnages. Le code original le nomme `RQ_TogglePage` : un seul u8
 d'état, bascule d'affichage d'une page du client, **aucune réponse
 applicative** (l'ACK transport suffit). Le serveur l'enregistre désormais au
 lieu de le signaler comme inconnu.
+
+## Étape 8 — entrée en monde (paquets 13 et 46)
+
+Formats confirmés depuis `AsyncRQFUNC_PutPlayerInGame` et
+`RQFUNC_FromPreInGameToInGame` du serveur original :
+
+- **13** : requête = `u8 name_len, name` ; réponse = `u8 résultat` (0 = chargé,
+  1 = échec) puis, si chargé : `i32 ID, i16 X/Y/monde, i32 HP/HPmax,
+  i16 mana/manaMax, i32 XP (hi/lo), i32 XP niveau suivant (hi/lo),
+  i16 STR/END/AGI/wil/WIS/INT/luck, heure (comme GET_TIME),
+  i32 or, i16 niveau, i32 XP niveau précédent (hi/lo)`.
+  Après succès, la session passe en `PRE_INGAME`.
+- **46** : réponse = `u8 résultat` (0 = OK, 1 = déjà en jeu). Le monde de
+  développement étant vide, aucune unité en vue n'est sérialisée (comportement
+  du serveur original quand `packet_inview_units` ne renvoie rien). La session
+  passe en `IN_WORLD`.
+
+La position (0,0,0), l'XP, l'or et les seuils de niveau sont des valeurs de
+développement ; la carte, les collisions et les unités sont les prochains
+jalons.

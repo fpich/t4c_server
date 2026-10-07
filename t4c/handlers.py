@@ -40,6 +40,11 @@ class PacketDispatcher:
         self.register(PacketID.GET_PERSONAL_PC_LIST, handle_get_personal_pc_list)
         self.register(PacketID.CREATE_PLAYER, handle_create_player)
         self.register(PacketID.TOGGLE_PAGE, handle_toggle_page)
+        self.register(PacketID.PUT_PLAYER_IN_GAME, handle_put_player_in_game)
+        self.register(
+            PacketID.FROM_PREINGAME_TO_INGAME,
+            handle_from_preingame_to_ingame,
+        )
         self.register(
             PacketID.MAX_CHARACTERS_PER_ACCOUNT_INFO,
             handle_max_characters_per_account_info,
@@ -461,4 +466,133 @@ async def handle_toggle_page(
         session.address,
         session.page_toggled,
         session.toggle_page_requests,
+    )
+
+
+def _write_ingame_stats(
+    writer: "PacketWriter", character: "Character", unit_id: int
+) -> None:
+    """Sérialise la charge utile de RQ_PutPlayerInGame (format original).
+
+    u8 résultat, i32 ID unité, i16 X, i16 Y, i16 monde,
+    i32 HP, i32 HP max, i16 mana, i16 mana max,
+    i32 XP hi, i32 XP lo, i32 XP prochain niveau hi/lo,
+    i16 STR, i16 END, i16 AGI, i16 wil, i16 WIS, i16 INT, i16 luck,
+    heure (6 champs comme GET_TIME), i32 or, i16 niveau,
+    i32 XP niveau précédent hi/lo.
+    """
+    from datetime import datetime
+
+    now = datetime.now()
+    writer.write_u8(0)  # résultat : 0 = chargé
+    writer.write_i32(unit_id)
+    writer.write_i16(0)  # X
+    writer.write_i16(0)  # Y
+    writer.write_i16(0)  # monde
+    writer.write_i32(character.hp)
+    writer.write_i32(character.max_hp)
+    writer.write_i16(character.mana)
+    writer.write_i16(character.max_mana)
+    writer.write_i32(0)  # XP hi
+    writer.write_i32(0)  # XP lo
+    writer.write_i32(0)  # XP prochain niveau hi
+    writer.write_i32(0)  # XP prochain niveau lo
+    writer.write_i16(character.strength)
+    writer.write_i16(character.end)
+    writer.write_i16(character.agi)
+    writer.write_i16(0)  # wil
+    writer.write_i16(character.wisdom)
+    writer.write_i16(character.intelligence)
+    writer.write_i16(0)  # luck
+    writer.write_i8(now.second)
+    writer.write_i8(now.minute)
+    writer.write_i8(now.hour)
+    writer.write_i8(now.weekday())
+    writer.write_i8(now.day)
+    writer.write_i8(now.month)
+    writer.write_i16(now.year)
+    writer.write_i32(0)  # or
+    writer.write_i16(character.level)
+    writer.write_i32(0)  # XP niveau précédent hi
+    writer.write_i32(0)  # XP niveau précédent lo
+
+
+async def handle_put_player_in_game(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 13 : charger un personnage et entrer en pré-jeu.
+
+    Confirmé depuis AsyncRQFUNC_PutPlayerInGame original :
+      requête  = u8 name_len, name
+      réponse  = u8 résultat (0 = chargé), puis _write_ingame_stats
+    En cas d'échec le serveur original n'envoie que l'u8 résultat non nul.
+    """
+    session.put_in_game_requests += 1
+    reader = PacketReader(packet.body)
+    try:
+        name = reader.read_pascal_u8_text()
+    except T4CProtocolError as exc:
+        log.warning("requête 13 malformée de %s : %s", session.address, exc)
+        return
+    _ensure_consumed(reader, packet.packet_id)
+    character = None
+    if session.account:
+        for candidate in server.characters.characters(session.account):
+            if candidate.name.casefold() == name.casefold():
+                character = candidate
+                break
+    if character is None:
+        response = PacketWriter(PacketID.PUT_PLAYER_IN_GAME)
+        response.write_u8(1)  # échec de chargement
+        server.send_packet(session.address, response)
+        log.info(
+            "MONDE chargement refusé nom=%r compte=%r client=%s",
+            name,
+            session.account,
+            session.address,
+        )
+        return
+    session.active_character = character.name
+    session.unit_id = (session.unit_id or 0) + 1
+    session.state = SessionState.PRE_INGAME
+    response = PacketWriter(PacketID.PUT_PLAYER_IN_GAME)
+    _write_ingame_stats(response, character, session.unit_id)
+    server.send_packet(session.address, response)
+    log.info(
+        "MONDE personnage chargé nom=%r compte=%r ID=%d client=%s -> %s",
+        character.name,
+        session.account,
+        session.unit_id,
+        session.address,
+        session.state.name,
+    )
+
+
+async def handle_from_preingame_to_ingame(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 46 : confirmation d'entrée en jeu.
+
+    Confirmé depuis RQFUNC_FromPreInGameToInGame original : la réponse est
+    u8 résultat (0 = OK, 1 = déjà en jeu). La liste des unités en vue
+    (packet_inview_units) est vide dans notre monde de développement,
+    le serveur original n'envoie alors que l'u8 résultat.
+    """
+    session.enter_world_requests += 1
+    if session.state is SessionState.PRE_INGAME:
+        result = 0
+        session.state = SessionState.IN_WORLD
+    elif session.state is SessionState.IN_WORLD:
+        result = 1
+    else:
+        result = 1
+    response = PacketWriter(PacketID.FROM_PREINGAME_TO_INGAME)
+    response.write_u8(result)
+    server.send_packet(session.address, response)
+    log.info(
+        "MONDE entrée en jeu client=%s perso=%r résultat=%d -> %s",
+        session.address,
+        session.active_character,
+        result,
+        session.state.name,
     )

@@ -1,0 +1,558 @@
+A:visited, A:active {
+        text-decoration:none;
+        font-weight:bold;
+        color:#000000;
+}
+A:link {
+        text-decoration:none;
+        font-weight:bold;
+        color:#000000;
+}
+A:hover {
+        color: #FE5000;
+        text-decoration: underline;
+}
+input {
+        font-size: small;
+        color:#000000;
+        background-color:#FFFFFF;
+        margin: 0;
+        font-family:Verdana;
+}
+img {
+        border:0px;
+}
+.menu {
+        font-size:x-small;
+        text-align:left;
+}
+.entete {
+        font-size:small;
+        text-align:left;
+}
+.titre {
+        font-size:small;
+        text-align:center;
+        font-weight:bold;
+        width:118px;
+        height:35px;
+}
+.bas {
+        text-align:center;
+        font-size:x-small;
+        margin:1em;
+        border:1px;
+}
+.headernews {
+        text-align:center;
+        padding:2em;
+        width: 95%;
+        border-collapse: collapse;
+}
+.leftnews {
+        text-align:left;
+        font-weight:bold;
+        border: 1px solid #000000;
+        background-color:#FFAD09;
+        border-right-width:2px;
+        width:50%;
+}
+.rightnews {
+        text-align:right;
+        font-style:italic;
+        border: 1px solid #000000;
+        background-color:#FFAD09;
+        border-left-width:2px;
+        width:50%;
+}
+.newsjaune {
+        text-align:left;
+        font-size: small;
+        background-color:#FECE62;
+        border: 1px solid #000000;
+        padding: 1em;
+}
+.newsclair {
+        text-align:left;
+        font-size: small;
+        background-color:#FCE1A6;
+        border: 1px solid #000000;
+        padding: 1em;
+}
+.source {
+        font-weight:normal;
+}
+.basgauche {
+        font-weight:bold;
+        text-align:left;
+        border: 1px solid #000000;
+        background-color:#FFAD09;
+        border-right-width:2px;
+        width:50%;
+}
+.basdroite {
+        font-weight:bold;
+        text-align:left;
+        border: 1px solid #000000;
+        background-color:#FFAD09;
+        border-left-width:2px;
+        width:50%;
+}
+.newsprecsuiv {
+        font-size: x-small;
+}
+.tabcenter {
+        text-align:center;
+}
+.orange {
+        background-color:#FFAD08;
+        border-top: #FFFFFF 1px;
+        border-left: #FFFFFF 1px;
+}
+.jaune {
+        background-color:#FFCE63;
+        border-top: #FFFFFF 1px;
+        border-left: #FFFFFF 1px;
+}
+.clair {
+        background-color:#FCE1A6;
+        border-top: #FFFFFF 1px;
+        border-left: #FFFFFF 1px;
+}
+.blanc {
+        background-color:#FFFFFF;
+}
+.comments {
+        background-color:#C6C6C6;
+        width:100%;
+}
+.enteteitem {
+        text-align:center;
+        font-weight:bold;
+        width:100%;
+}
+.specsitem {
+        text-align:center;
+        width:100%;
+}
+.caracs {
+        width:50%;
+}
+.labelcarac {
+        background-color:#FFCE63;
+        text-align:left;
+        font-weight:bold;
+        width:50%;
+        margin-right:10%;
+}
+.carac {
+        background-color:#FCE1A6;
+        text-align:left;
+        width:50%;
+}
+.taille {
+        width:80%;
+}
+.stats {
+        width:100%;
+}
+.taillestats {
+        width:45%;
+}
+.imagestats {
+        width:10%;
+}
+.normal {
+        font-weight:normal;
+}
+.infoposter {
+        width:20%;
+}
+.comps {
+        width:90%;
+        border-width:1px solid;
+        border: 1px solid #000000;
+        border-collapse: collapse;
+}
+.compnom {
+        text-align:left;
+        font-weight:bold;
+        border: 1px solid #000000;
+        border-right: 1px solid #FFAD08;
+        border-collapse: collapse;
+}
+.compen {
+        font-weight:normal;
+        font-style:italic;
+}
+.droite {
+        text-align:right;
+        border: 1px solid #000000;
+        border-collapse: collapse;
+}
+.infocomp {
+        background-color:#FCE1A6;
+        padding:0;
+        border: 1px solid #000000;
+        border-collapse: collapse;
+}
+.orangecomp {
+        background-color:#FFAD08;
+        border: 1px solid #000000;
+        border-collapse: collapse;
+}
+.jaunecomp {
+        background-color:#FFCE63;
+        border: 1px solid #000000;
+        border-collapse: collapse;
+        border-top: 1px solid #000000;
+}
+.claircomp {
+        background-color:#FCE1A6;
+        border: 1px solid #000000;
+        border-collapse: collapse;
+}
+.compstat {
+        border: 1px solid #000000;
+        width:325px;
+        border-collapse: collapse;
+}
+.newsupdate {
+        font-size:x-small;
+        text-align:left;
+        font-style:italic;
+}
+.claircompgauche {
+        border-right: 1px solid #FCE1A6;
+        border-collapse: collapse;
+        border-bottom: 1px solid #FCE1A6;
+        padding:1em;
+}
+.claircompdroite {
+        text-align:right;
+        border: 1px solid #000000;
+        border-collapse: collapse;
+        border-bottom: 1px solid #FCE1A6;
+        border-left: 1px solid #FCE1A6;
+        padding:1em;
+}
+.claircompgauchebas {
+        border-right: 1px solid #FCE1A6;
+        border-collapse: collapse;
+        border-bottom: 1px solid #000000;
+        padding:1em;
+}
+.claircompdroitebas {
+        text-align:right;
+        border: 1px solid #000000;
+        border-collapse: collapse;
+        border-bottom: 1px solid #000000;
+        border-left: 1px solid #FCE1A6;
+        padding:1em;
+}
+.intitulebijoux {
+        text-align:center;
+        font-size:normal;
+        font-weight:bold;
+        padding:1em;
+}
+.tabbijoux {
+    	margin-left: auto;
+        margin-right: auto;
+}
+.claircompdroitebas {
+        text-align:right;
+        border: 1px solid #000000;
+        border-collapse: collapse;
+        border-bottom: 1px solid #000000;
+        border-left: 1px solid #FCE1A6;
+        padding:1em;
+}
+.claircompdroitebas {
+        text-align:right;
+        border: 1px solid #000000;
+        border-collapse: collapse;
+        border-bottom: 1px solid #000000;
+        border-left: 1px solid #FCE1A6;
+        padding:1em;
+}
+
+.jaunetab {
+        background-color:#FFCE63;
+        border-collapse: collapse;
+}
+.clairtab {
+        background-color:#FCE1A6;
+        border-collapse: collapse;
+}
+.tabcentre {
+        text-align:center;
+        border: 1px solid #000000;
+        border-collapse: collapse;
+}
+.tabintitule {
+        text-align:left;
+        border-collapse: collapse;
+        border: 1px solid #000000;
+}
+.linkrd A:visited {
+        color:#009966;
+}
+.linkrd A:active {
+        color:#009966;
+}
+.linkrd A:link {
+        color:#009966;
+}
+.linksh A:visited {
+        color:#0066FF;
+}
+.linksh A:active {
+        color:#0066FF;
+}
+.linksh A:link {
+        color:#0066FF;
+}
+.linkser A:visited {
+        color:#FF6600;
+}
+.linkser A:active {
+        color:#FF6600;
+}
+.linkser A:link {
+        color:#FF6600;
+}
+.linkgm A:visited {
+        color:#FF0000;
+}
+.linkgm A:active {
+        color:#FF0000;
+}
+.linkgm A:link {
+        color:#FF0000;
+}
+.linkadd A:visited {
+        color:#9900CC;
+}
+.linkadd A:active {
+        color:#9900CC;
+}
+.linkadd A:link {
+        color:#9900CC;
+}
+.orangearc {
+        background-color:#FFAD08;
+        border: 1px solid #000000;
+        border-collapse: collapse;
+}
+.x {
+        border-collapse: collapse;
+        border: 1px solid #000000;
+}
+.linkterre A:visited {
+        color:#009966;
+}
+.linkterre A:active {
+        color:#009966;
+}
+.linkterre A:link {
+        color:#009966;
+}
+.linkeau A:visited {
+        color:#0000BB;
+}
+.linkeau A:active {
+        color:#0000BB;
+}
+.linkeau A:link {
+        color:#0000BB;
+}
+.linklumiere A:visited {
+        color:#5EB7B6;
+}
+.linklumiere A:active {
+        color:#5EB7B6;
+}
+.linklumiere A:link {
+        color:#5EB7B6;
+}
+.linkfeu A:visited {
+        color:#FF0000;
+}
+.linkfeu A:active {
+        color:#FF0000;
+}
+.linkfeu A:link {
+        color:#FF0000;
+}
+.linkarcanes A:visited {
+        color:#9900CC;
+}
+.linkarcanes A:active {
+        color:#9900CC;
+}
+.linkarcanes A:link {
+        color:#9900CC;
+}
+.linkair A:visited {
+        color:#999999;
+}
+.linkair A:active {
+        color:#999999;
+}
+.linkair A:link {
+        color:#999999;
+}
+.tab {
+        text-align:center;
+        font-size: x-small;
+        border: 1px solid #000000;
+        border-collapse: collapse;
+}
+.tab2 {
+        text-align:left;
+        font-size: x-small;
+        border: 1px solid #000000;
+        border-collapse: collapse;
+}
+.quete {
+        text-align:left;
+        padding: 1em;
+        border: 1px solid #000000;
+}
+.item {
+        color:#009966;
+        font-weight:bold;
+}
+.word {
+        font-weight:bold;
+}
+.monstre {
+        color:#FF0000;
+        font-weight:bold;
+}
+.pnj {
+        color:#0066FF;
+        font-weight:bold;
+}
+.linkrd {
+        color:#009966;
+        font-weight:bold;
+}
+.linksh {
+        color:#0066FF;
+        font-weight:bold;
+}
+.linkser {
+        color:#FF6600;
+        font-weight:bold;
+}
+.linkgm {
+        color:#FF0000;
+        font-weight:bold;
+
+}
+.linkadd {
+        color:#9900CC;
+        font-weight:bold;
+}
+.linkar {
+        font-weight:bold;
+}
+.centerwelcome {
+        text-align:center;
+}
+.lieu {
+        font-size: x-small;
+}
+.lieu A {
+        text-decoration:none;
+        font-weight:normal;
+        color:#000000;
+}
+.lieu A:hover {
+        color: #FE5000;
+        font-weight:normal;
+        text-decoration: underline;
+}
+.lieudetail A:link {
+        text-decoration:none;
+        font-weight:normal;
+        color:#000000;
+}
+.lieudetail A:hover {
+        color: #FE5000;
+        font-weight:normal;
+        text-decoration: underline;
+}
+.infopostercomment {
+        width:20%;
+        border-bottom: 0px;
+        border-bottom-width:0px;
+        border-collapse: collapse;
+}
+.jaunecomment {
+        background-color:#FFCE63;
+        border-top: #FFFFFF 1px;
+        border-left: #FFFFFF 1px;
+        border-collapse: collapse;
+}
+.claircomment {
+        background-color:#FCE1A6;
+        border-top: #FFFFFF 1px;
+        border-left: #FFFFFF 1px;
+        border-collapse: collapse;
+}
+.y {
+        border-collapse: collapse;
+        border: 1px solid #000000;
+        text-align:center;
+}
+.tableaucouleurs {
+        padding:2em;
+        width:32%;
+}
+.tabcouleurs {
+        text-align:center;
+        font-size: small;
+        border: 1px solid #000000;
+        border-collapse: collapse;
+}
+.linkterre {
+        color:#009966;
+        font-weight:bold;
+}
+.linkeau {
+        color:#0000BB;
+        font-weight:bold;
+}
+.linklumiere {
+        color:#5EB7B6;
+        font-weight:bold;
+}
+.linkfeu {
+        color:#FF0000;
+        font-weight:bold;
+}
+.linkarcanes {
+        color:#9900CC;
+        font-weight:bold;
+}
+.linkair {
+        color:#999999;
+        font-weight:bold;
+}
+.linknecro {
+        font-weight:bold;
+}
+.cat {
+        font-weight:bold;
+        font-size:normal;
+        color:crimson;
+}
+.tabcat {
+        border-collapse: collapse;
+        border: 1px solid #000000;
+        margin:1em;
+        padding:1em;
+}

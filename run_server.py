@@ -23,6 +23,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="only accept --account/--password instead of any non-empty login",
     )
+    parser.add_argument(
+        "--database",
+        default="t4c.sqlite3",
+        help="chemin SQLite de persistance (schéma T4C.mdb porté) ; vide = mémoire uniquement",
+    )
     parser.add_argument("--debug", action="store_true", help="enable debug logging")
     return parser.parse_args()
 
@@ -42,6 +47,7 @@ async def main() -> None:
         protocol_version=args.protocol_version,
         motd=args.motd,
         default_language=args.default_language,
+        database_path=args.database,
     )
 
     loop = asyncio.get_running_loop()

@@ -7,6 +7,8 @@ import logging
 import time
 
 from .codec import DecodedPacket, PacketWriter, T4CProtocolError, decode_datagram
+from .characters import CharacterStore
+from .persistence import Persistence
 from .config import ServerConfig
 from .handlers import PacketDispatcher
 from .protocol import packet_name
@@ -33,6 +35,23 @@ class T4CServerProtocol(asyncio.DatagramProtocol):
         self.dispatcher = dispatcher or PacketDispatcher()
         self.sessions: dict[Address, ClientSession] = {}
         self.reserved_names: set[str] = set()
+        self.characters = CharacterStore(max_per_account=config.max_characters_per_account if config else 3)
+        # Étape 9 : couche de persistance optionnelle (SQLite, schéma T4C.mdb).
+        self.persistence: Persistence | None = None
+        if config and config.database_path:
+            self.persistence = Persistence(config.database_path)
+            for account, characters in self.persistence_accounts().items():
+                for character in characters:
+                    self.characters._by_account.setdefault(account.casefold(), []).append(character)
+
+    def persistence_accounts(self) -> dict[str, list]:
+        if self.persistence is None:
+            return {}
+        accounts: dict[str, list] = {}
+        for row in self.persistence._db.execute("SELECT Account FROM T4Cusers"):
+            acct = row["Account"]
+            accounts[acct] = self.persistence.characters(acct)
+        return accounts
 
     def connection_made(self, transport: asyncio.BaseTransport) -> None:
         self.transport = transport  # type: ignore[assignment]

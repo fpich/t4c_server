@@ -1,0 +1,400 @@
+*** Version 4.00 OFFICIAL RELEASE (02/06/04 -- 01:45 GMT+1) ***
+Pas de fichier release pour cette version.
+
+
+*** Version 3.341 OFFICIAL RELEASE (07/05/04 -- 20:45 GMT+1) ***
+FIX: Correction d'un bug d'affichage de page lors de la mise à jour.
+
+
+*** Version 3.341 OFFICIAL RELEASE (07/05/04 -- 19:25 GMT+1) ***
+NEW: Ajout d'un bouton "Démarrer Serveur" dans le menu.
+NEW: Ajout d'une PUB en bas du programme.
+MOD: Augmentation de différents temps de sauvegarde de la base de donnée.
+MOD: Modification de la page de changement du nombre de renaissances.
+MOD: Modification de la page d'ajout d'objet sur un personnage.
+
+
+*** Version 3.33 OFFICIAL RELEASE (29/04/04 -- 11:47 GMT+1) ***
+FIX: Le programme s'affiche de nouveau dans la barre des taches.
+FIX: L'ajout d'un Banquier fonctionne désormais correctement.
+FIX: Retrait d'un sort "Empoisonnement" lors de l'ajout de catégorie de sorts.
+FIX: L’ouverture de la feuille de configuration du programme ne bug plus.
+FIX: La feuille de sauvegarde ne s'ouvre plus en feuille modale.
+MOD: La barre de menu a été un peu décalée vers la droite.
+MOD: Modification du timer de la sauvegarde de la BDD.
+MOD: Modification des différents temps de sauvegarde de la BDD.
+MOD: Modification du code pour afficher l'icône dans le systray.
+MOD: Retour à la valeur 0 de la ProgressBar de SaveBDD à chaque sauvegarde.
+MOD: Modification des boutons de la feuille de sauvegarde de base de donnée.
+MOD: Sélection automatique du plus petit temps de sauvegarde lors du démarrage de la feuille SaveBDD.
+MOD: Modification du bug lors de l'ajout du sort "Drake's Blade of Vengeance"
+MOD: Retrait de l'ocx « prjocx.ocx »
+MOD: Retrait de l'ocx  « ocx_download.ocx »
+MOD: Retrait de l'ocx « chrono.ocx »
+
+
+*** Version 3.32 OFFICIAL RELEASE (22/04/04 -- 12:16 GMT+1) ***
+NEW: Vous pourrez désormais supprimer les personnages d'un compte.
+MOD: Le programme vous demandera si vous voulez vérifié une eventuelle mise à jour tout les 7 jours.
+FIX: Réajustement des combobox dans certaines feuilles.
+FIX: L'icone dans le systray ne reste plus présente si l'on ferme T4C DBM avec Fichier>Fermer.
+
+
+*** Version 3.31 OFFICIAL RELEASE (22/04/04 -- 12:16 GMT+1) ***
+FIX: Correction du bug lors de l'ouverture de la feuille de Sauvegarde.
+MOD: Le programme ne cherche plus si une mise à jour est disponible à chaque démarrage. (Systeme de MAJ en cour de reprogrammation)
+FIX: Correction de quelques bug mineurs.
+
+
+*** Version 3.30 OFFICIAL RELEASE (04/04/04 -- 00:50 GMT+1) ***
+NEW: Ajout de texte dans les textbox du menu principal.
+NEW: Ajout d'un bouton rechercher dans la partie "Liste Utilisateurs".
+MOD: Possibilité de définir la date d'expiration à "Jamais" lors de la création d'un compte.
+MOD: Suppression de l'outils Scripts qui devenait obsolète et ne servait plus à grand chose.
+MOD: Modification de la condition d'ouverture des raccourcis dans la partie "Configuration".
+FIX: Oubli de quelques sorts dans l'ajout par catégorie corrigé.
+FIX: Correction d'un bug d'affichage du bouton "Sauvegarder" dans la partie de sauvegarde de la base de donnée.
+FIX: Correction d'un bug dans l'Ajout de personnage prédéfinis.
+FIX: Correction d'un bug de crash dans l'attribution d'une GuildHouse.
+FIX: Correction d'un bug dans la détection du type de la base dans la feuille GuildHouse.
+FIX: Les flags GM ne sont plus transferer d'un compte à l'autre lors d'un transfert de compte.
+
+
+*** Version 3.29 OFFICIAL RELEASE (04/04/04 -- 00:50 GMT+1) ***
+FIX: Le Bug de l'erreur '0' n'a plus lieu d'être.
+FIX: Le programme pouvais planter si Windows n'était pas installé sur le disque C.
+FIX: Une erreur de type '13' pouvait apparaître lors de la création d'un compte.
+
+
+*** Version 3.28 OFFICIAL RELEASE (28/03/04 -- 14:05 GMT+1) ***
+Pas de fichier release pour cette version.
+
+
+*** Version 3.271 OFFICIAL RELEASE (21/03/04 -- 18:00 GMT+1) ***
+FIX: Correction d'un objet en modal qui crasher.
+
+
+*** Version 3.27 OFFICIAL RELEASE (21/03/04 -- 16:50 GMT+1) ***
+FIX: Correction du bug de lancement.
+
+
+*** Version 3.26 OFFICIAL RELEASE (20/03/04 -- 19:18 GMT+1) ***
+MOD: Modification du code de lancement
+MOD: Retrai de l'enregistrement.
+MOD: Modification du menu. (Ajout d'icone)
+MOD: Modification du texte des mises à jours.
+MOD: Modification du "status" d'un compte dans la feuille Lockout.
+FIX: Correction du bug sur l'ajout d'un sort si un compte différent est sélectionner.
+FIX: Correction d'un bug pouvant faire crasher le programme dans la partie sanctuaire.
+FIX: Correction d'un bug pouvant faire crasher le programme dans la partie guild house.
+FIX: Rajout du code pour Wiper la BDD (Avait été enlevé par Inadvertance)
+FIX: L'ajout d'un Banquier ne bug plus si on oubli de modifier son nom.
+
+
+*** Version 3.25 OFFICIAL RELEASE (13/03/04 -- 11:48 GMT+1) ***
+FIX: Correction du bug lors de l'ajout d'une personne dans une GuildHouse. (2ème Partie)
+
+
+*** Version 3.24 OFFICIAL RELEASE (10/03/04 -- 20:52 GMT+1) ***
+FIX: Correction du bug lors de l'ajout d'une personne dans une GuildHouse.
+
+*** Version 3.23 OFFICIAL RELEASE (10/03/04 -- 14:52 GMT+1) ***
+NEW: Nouveau design.
+NEW: Ajout d'un raccourci vers la sauvegarde de la base de donnée dans le menu.
+NEW: Possibilité d'ajouté un Banquier en modifiant le fichier NPCs.dll
+NEW: Ajout d'une intervale de 10 secondes pour la sauvegarde de la base de donnée.
+MOD: Retrai de la page de statistiques. (Démarrage plus rapide)
+MOD: Modification du menu.
+MOD: Séparation de la feuille de modification du nombre de renaissances et du PlaneWalking et Colosseum.
+FIX: Vous ne pouvez plus éditer le texte dans le textbox d'A Propos.
+FIX: L'ajout de caractères spéciaux dans le textbox du nom est corrigé.
+FIX: Le Programme ne plante plus lorsqu'on ajoute deux sanctuaires succéssifs.
+FIX: Le Programme ne plante plus si les clés DoppelGanger et Colosseum ne sont pas détectées.
+
+
+*** Version 3.22 OFFICIAL RELEASE (01/03/04 -- 16:30 GMT+1) ***
+Pas de fichier release pour cette version.
+
+
+*** Version 3.2 OFFICIAL RELEASE (29/02/04 -- 16:30 GMT+1) ***
+NEW: Possibilité d'activé ou de désactivé le PlaneWalking.
+NEW: Possibilité d'activé ou de désactivé le colosseum.
+NEW: Possibilité de voir et d'editer les résistances et puissances magiques.
+NEW: Ajout de l'option "Tout supprimer" dans les sortilèges.
+NEW: Ajout de l'option "Tout supprimer" dans l'inventaire d'un personnage.
+FIX: Correction du bug lors de l'ajout d'un sanctuaire succéssif.
+FIX: Ajout d'un code pour ne pas permettre d'ajouter des lettres la ou il ne faut pas.
+FIX: Le programme ne plante plus quand on clique sur la listbox de droite dans le transfert des personnages.
+FIX: Le probleme concernant l'ajout de même sorts est résolu.
+FIX: Oubli du sort "Vol d'âme" dans les catégories de sorts résolu.
+FIX: Le probleme concernant l'ajout de même flag est résolu.
+FIX: Problème au niveau des OCX résolu.
+FIX: Problème au niveau de l'ouverture du forum dans la feuille d'enregistrement résolu.
+FIX: Correction au niveau des fenetres d'appearance résolu.
+MOD: Les boutons "MAX" et "?" sont présent dans la fenêtre de configuration du Super-Porteur.
+MOD: Selection du premier personnage d'un compte si le personnage existe dans chaque combobox.
+MOD: Dans le menu "Divers" s'appelle "Personnage".
+MOD: Modification de la fenêtre "A Propos".
+MOD: Possibilité de minimiser la fenêtre "Sauvegarde de la Base de Donnée".
+
+
+*** Version 3.1 OFFICIAL RELEASE (22/02/04 -- 15:00 GMT+1) ***
+NEW: Possibilité de transferer un personnage sur un compte différent. (Flag / Sorts etc. compris)
+FIX: Le programme ne plante plus quand on édite la quantité d'un objet deux fois de suite.
+FIX: Correction du bug d'ajout du sort "Vortex vers Bois-Creux".
+MOD: Certains méssages de confirmations ne s'affiche plus dans des MSGBOX mais dans la barre de taches.
+
+
+*** Version 3.01 OFFICIAL RELEASE (21/02/04 -- 19:00 GMT+1) ***
+FIX: Problème dans la feuille principale pour les tabulations réglé.
+FIX: Possibilité de réduire le programme via le bouton "_" de T4C Database Manager.
+MOD: Modification de la police des boutons.
+MOD: Le programme peut désormais créer des comptes avec seulement le login et le mot de passe.
+MOD: Le lancement du serveur ne se fait plus par T4C Watch mais par la console de T4C Server.
+
+
+*** Version 3.00 OFFICIAL RELEASE (17/02/04 -- 22:50 GMT+1) ***
+NEW: Ajout de plusieurs bouton "Annuler" dans certains forms ou il devait être présent.
+FIX: Correction du problème sur la suppréssion des flags.
+FIX: Correction du programme "Update" qui pouvait causé des erreurs d'exécutions 70.
+FIX: Correction du méssage de confirmation dans la modif. des flags qui étai trop long.
+FIX: Si un compte n'était pas sélectionner dans la partie lockout le programme crasher.
+FIX: Correction d'un problème de texte dans la partie lockout.
+FIX: Correction du problème de Release.txt et motd.txt. (Saut de ligne)
+MOD: Modification de la mise en page pour l'ajouts des sorts sur un compte utilisateur.
+MOD: Modification de certains méssages d'erreur et de confirmation.
+MOD: La partie "Modifications Serveur & Client" a été changé en "Modification Serveur"
+
+
+*** Version 2.81 OFFICIAL RELEASE (14/02/04 -- 20:30 GMT+1) ***
+Pas de fichier release pour cette version.
+
+
+*** Version 2.80 OFFICIAL RELEASE (14/02/04 -- 16:00 GMT+1) ***
+Pas de fichier release pour cette version.
+
+
+*** Version 2.77 OFFICIAL RELEASE (04/02/04 -- 18:00 GMT+1) ***
+NEW: Le programme se lancera même si une connection internet n'a pas été trouvée.
+FIX: Correction de quelques bugs.
+FIX: Changement de serveur SQL pour les licenses. Merci à Andrew ;)
+
+
+*** Version 2.76 OFFICIAL RELEASE (04/02/04 -- 18:00 GMT+1) ***
+FIX: Correction du bug de form en modal lors de la mise à jour.
+FIX: Correction d'un oubli au niveau de la feuille pour s'enregistrer.
+
+
+*** Version 2.75 OFFICIAL RELEASE (03/02/04 -- 22:00 GMT+1) ***
+NEW: Possibilité d'editer les compétences.
+FIX: La compétence "Esquive" ne bug plus.
+FIX: Le démarrage de T4C DBM est plus rapide. (Changement de serveur et nouveau protocole)
+FIX: Réajustement de la fenêtre d'edition des flags.
+MOD: Modification de l'image centrale. (Bah oui j'aime le changement :P)
+
+
+*** Version 2.74 OFFICIAL RELEASE (30/01/04 -- 23:00 GMT+1) ***
+ANNONCE: Aucun fichier release pour cette version.
+
+
+*** Version 2.73 OFFICIAL RELEASE (29/01/04 -- 20:40 GMT+1) ***
+FIX: Correction du bug de la BDR.
+
+
+*** Version 2.72 OFFICIAL RELEASE (29/01/04 -- 20:01 GMT+1) ***
+NEW: Ajout d'un système d'enregistrement.
+NEW: Ajout de protections.
+
+
+*** Version 2.71 OFFICIAL RELEASE (24/01/04 -- 10:00 GMT+1) ***
+NEW: Possibilité d'Ajout et de Suppréssion des Compétences.
+MOD: Modification de la taille de l'image dans la feuille principale.
+MOD: Modification de la fenêtre "A Propos"
+MOD: Suppréssion du bouton "Support" qui amené au forum.
+FIX: Le programme démarre plus vite
+FIX: Modification de "Tutoriel" en "Configuration du Programme"
+
+
+*** Version 2.7 OFFICIAL RELEASE (21/01/04 -- 18:00 GMT+1) ***
+MOD: Modification des graphismes pour rendre encore plus joulie :)
+FIX: Enregistrement de la DLL 'prjocx.ocx' si l'erreur est détectée.
+
+
+*** Version 2.63 OFFICIAL RELEASE (17/01/04 -- 12:00 GMT+1) ***
+FIX: Correction du bug lors du changement de renaissances qui affichait un rapport de bug.
+
+
+*** Version 2.62 OFFICIAL RELEASE (15/01/04 -- 20:50 GMT+1) ***
+FIX: Correction de la DLL Manquante "VB6STKIT.DLL"
+
+
+*** Version 2.61 OFFICIAL RELEASE (15/01/04 -- 20:20 GMT+1) ***
+FIX: Tentative de correction de l'erreur "339 - Le composant 'prjocx.ocx'ou une de ses dépendances n\'est pas correctement enregistré: un fichier est absent ou incorrect."
+
+
+*** Version 2.6 OFFICIAL RELEASE (14/01/04 -- 18:00 GMT+1) ***
+ANNONCE: Aucun fichier release pour cette version.
+
+
+*** Version 2.52 OFFICIAL RELEASE (30/12/03 -- 16:50 GMT+1) ***
+NEW: Possibilité d'ajouter un sortilège via son ID.
+NEW: Possibilité de modifier la quantité d'objet dans l'inventaire.
+NEW: Ajouts des Locations LH, WH, SS et SC pour le sanctuaire.
+MOD: Traduction des flags anglais en français commencée.
+MOD: Méssages d'erreurs plus explicite.
+FIX: L'ajout du sort "Révélation" ne bug plus.
+FIX: Bug concernant la création du flag en banque et l'ajout d'or résolu.
+
+
+*** Version 2.51 OFFICIAL RELEASE (28/12/03 -- 16:30 GMT+1) ***
+NEW: Téléchargement automatique d'un méssage du serveur.
+FIX: Réactivation des statistiques.
+
+
+*** Version 2.5 OFFICIAL RELEASE (28/12/03 -- 14:30 GMT+1) ***
+NEW: Modification du Design de T4C Database Manager
+NEW: Ajout de flag paramétrable : Teleport / Invincible et PVP Off pour le Super-Porteur.
+NEW: Possibilité de sauvegarder la base de donnée automatiquement a intervalle de temps régulier.
+NEW: Possibilité de mettre les valeurs max aux personnages dans les Statistiques Personnages.
+NEW: Ajout de la configuration du chemin d'accès de l'utilitaire Scripts.
+NEW: Possibilité de changer le nom d'un personnage déjà créer.
+NEW: Possibilité de supprimer les sorts déjà présents sur un personnage.
+NEW: Ajout d'une protection contre les doublons dans les comptes utilisateurs.
+MOD: Suppression des chemin "French" et "English" Language dans les chemins d'accès généraux.
+FIX: Bug à la suppression d'un compte corriger.
+FIX: Il n'y a plus de doublons dans la liste des sorts. (Ajouts 1 à 1)
+FIX: La liste des Portails et des Vortex a été développé.
+FIX: L'ajout de flag aux comptes ne Bug plus (SysOP)
+FIX: Dans la partie sanctuaire la valeur du Flag ne se supprimais pas.
+FIX: Certains objets légaux étaient dans la partie objets illégaux. Ce n'est plus le cas.
+FIX: Le dromadaire n'est plus un chameau ;)
+FIX: La licorne n'est plus un Pégase ;)
+FIX: Le compactage de la base de donnée ne bug plus.
+FIX: L'icône dans le Systray ne bug plus
+FIX: Vous pouvez désormais minimiser toutes les fenêtres.
+
+
+*** Version 2.4 OFFICIAL RELEASE (23/12/03 -- 01:30 GMT+1) ***
+ANNONCE: Récupération du CD de Visual Basic - Reprise du Developpement ;)
+NEW: Ajout d'une icone dans le systray. (Possibilité de minimiser)
+NEW: Possibilité de voir l'adresse mail dans l'Aperçu et les utilisateurs en ligne.
+NEW: Implantation d'un systeme de sécuritée permettant de désactivé le programme à tout moment.
+NEW: Dans les Statistiques des Personnages, il vous est désormais possible de mettre les valeurs max.
+NEW: Dans les Statistiques des Personnages, il vous est désormais possible de voir le skin choisi.
+NEW: Il vous est désormais possible de modifier votre sanctuaire. (Merci à Phraidres)
+MOD: Les label de l'inventaire concernant l'Or ont été intervertis.
+MOD: Modification de l'aspect de la fenêtre permettant de choisir le chemin de la base de donnée.
+FIX: Une valeur maximale a été fixé à la quantitée d'objet à ajouté dans l'inventaire.
+FIX: Probleme des mise à jour résolu.
+FIX: Changement d'adresse Mail dans la fenêtre A Propos
+FIX: Résolution de plusieurs bug.
+
+
+*** Version 2.3 OFFICIAL RELEASE (12/12/03 -- 11:00 GMT+1) ***
+NEW: Possibilité d'afficher les statistiques des personnages et de les modifiés.
+NEW: Nouveau utilitaire permettant de créer des Scripts Personnages.
+MOD: Ajouts d'images.
+FIX: Le bug de la valeur max dans la banque est résolu. Valeur MAX = "2147483647"
+FIX: Protection contre plantage si la BDD n'est pas remplie : Effectuée.
+FIX: Réorganisation des menus.
+
+
+*** Version 2.2 OFFICIAL RELEASE (10/12/03 -- 17:59 GMT+1) ***
+NEW: Possibilité de modifié le nombre de renaissances d'un joueur.
+NEW: Possibilité de supprimer un compte utilisateur.
+NEW: Recherche d'une mise à jour automatiquement au démarrage du programme.
+NEW: La partie ajouts de sorts pour les comptes Super-Porteur terminée.
+MOD: Vous pouvez désormais voir si un compte est déjà locké ou non. (Bug résolu)
+MOD: La gestion des flags utilisateurs (del/add/edit) sont désormais ensemble.
+MOD: Ajout d'une valeur maximale pour les stats du compte Super-Porteur. (65500)
+MOD: Modification de l'Image dans la partie modification serveur.
+FIX: Bugs rapportés corrigés.
+
+
+*** Version 2.1 OFFICIAL RELEASE (07/12/03 -- 21:30 GMT+1) ***
+NEW: Vous pouvez désormais voir et éditer l'inventaire des personnages.
+MOD: Les Settings ne se supprime plus à chaque mise à jour.
+FIX: Bug divers corrigés.
+
+
+*** Version 2.0a OFFICIAL RELEASE (07/12/03 -- 08:50 GMT+1) ***
+NEW: Possibilité de locker / delocker un compte utilisateur
+NEW: Possibilité de définir les sorts qui seront ajouté au SP automatiquement.
+MOD: Déplacement de l'onglet modification dans le menu contextuel.
+FIX: Bug dans le drive pour le choix des path corrigé.
+FIX: Bug dans la modification du serveur corrigé.
+FIX: Bug qui afficher tout les personnages dans les combo corrigé.
+FIX: L'oubli d'ajout de la configuration des chemins d'accès généraux est corrigé.
+
+
+*** Version 2.0 OFFICIAL RELEASE (06/12/03 -- 20:00 GMT+1) ***
+MOD: Modification du tutorial.
+MOD: Modification de la fenêtre de configuration du chemin de la Base de Donnée.
+NEW: Possibilité d'ajouté des flags à un compte déjà créer.
+NEW: Possibilité de supprimer des flags à un compte déjà créer.
+NEW: Possibilité de voir un Aperçu des flags pour un compte utilisateur.
+NEW: Protection contre les "plantages" commencée. (Si fichiers INI manquant alors on quitte)
+FIX: Correction de quelques bugs mineurs.
+FIX: La fenêtre de configuration de la mule a été réalignée.
+
+
+*** Version 1.9c OFFICIAL RELEASE (04/12/03 -- 19:00 GMT+1) ***
+FIX: Statistique fonctionnel.
+
+
+*** Version 1.9b OFFICIAL RELEASE (04/12/03 -- 17:54 GMT+1) ***
+NEW: Possibilité de changer le nombre de renaissances par défaut du serveur.
+NEW: Nouvel onglet "Support", pour aller directement sur le Forum officiel.
+NEW: Statistique de l'utilisation du programme en test. (Utile pour Raziel)
+FIX: Toutes les fenêtres s'ouvrent maintenant au centre. (Problème petite résolution)
+FIX: Problème d'ouverture du client et de T4C Editor fixé.
+FIX: L'image dans la partie modification ne dépasse plus de la zone.
+FIX: Problème au niveau du calendrier et des dates d'expirations fixé.
+
+
+*** Version 1.9 OFFICIAL RELEASE (02/12/03 -- 15:00 GMT +1) ***
+ANNONCE: Reprise du développement de T4C Database Manager.
+ANNONCE: Première version distribuable sur Internet.
+NEW: Possibilité de lancer le Client T4C. (Création d'un fichier LauchT4C.bat)
+NEW: Ajout d'Images.
+FIX: Bug sur les flag Modérateur résolu.
+FIX: Quelques bugs de traduction corrigés.
+FIX: Problème au niveau de l'Emprisonnement résolu.
+VERSION FUTURE: Possibilité d'éteindre le serveur.
+VERSION FUTURE: Les settings ne serreront plus supprimés à chaque mise à jour.
+VERSION FUTURE: Possibilité de définir les nombres de renaissances.
+VERSION FUTURE: Possibilité de voir les flags d'un joueur. (Utile pour voir s'il y a un tricheur)
+VERSION FUTURE: Trieur de Log intégré à T4C Database Manager.
+
+
+*** Version 1.8 (23/11/03 -- 23:08 GMT +1) ***
+NEW: L'interface a été changée pour être plus conviviale.
+NEW: Possibilité d'ajouter les sorts un à un.
+FIX: Emprisonner & Libérer a été modifié.
+
+
+*** Version 1.7b (22/11/03 -- 17:26 GMT +1) ***
+FIX: La protection des BDD par mot de passe engendrai des problèmes. Cette option a été retirée.
+FIX: Les super-porteurs ne fonctionnaient pas correctement. Ce problème est résolu.
+
+*** Version 1.7a (22/11/03 -- 11:09 GMT +1) ***
+FIX: Quelques bugs de traductions étaient présents.
+
+
+*** Version 1.7 (20/11/03 -- 00:15 GMT +1) ***
+NEW: Possibilité de mettre à jour le programme.
+NEW: Vous pouvez maintenant ouvrir les bases de données protégées par MDP.
+
+
+*** Version 1.6 (17/11/03 -- 12:45 GMT +1) ***
+NEW: Possibilité de créer un compte SP en même temps qu'un compte Principal.
+NEW: Possibilité de choisir la date d'expiration via un mini calendrier.
+NEW: L'Aperçu des comptes est fonctionnel.
+NEW: La liste des utilisateurs en ligne fonctionne parfaitement.
+NEW: La possibilité de Wipé la base de donnée fonctionne.
+NEW: L'intégration des sorts dans les personnages est opérationnelle.
+NEW: Un tutorial a été ajouté afin de faciliter l'installation de T4C DM 1.6.
+NEW: Un nouveau raccourci a été ajouter "Démarrer serveur T4C"
+NEW: Les raccourcis F1,F2.. Ont été rajoutés afin d'aller dans les onglets.
+FIX: Bug de la réparation de BDD Fixé. (Nouveau DAO 3.6)
+FIX: Les base de données au format 97 / 2000 / 2002 / 2003 sont accepter.

@@ -1,0 +1,341 @@
+<h3><a name="_Toc12175347">. IF</a> (Si)</h3>
+
+<p class=MsoNormal style='text-align:justify'>Cette instruction marque le
+commencement d'une condition. Le code entre IF et son rapport assorti END est
+exécuté une fois si la condition indiquée dans IF est vraie. </p>
+
+<p class=MsoBodyText>Paramètre(s)</p>
+
+<p class=MsoBodyText style='margin-left:36.0pt'>Expression Conditionnelle:
+C'est une formule de boost. Le bloc de code sera exécuté seulement si c'est
+vrai.</p>
+
+<h3><a name="_Toc12175348">. ELSE IF</a> (Sinon…si)</h3>
+
+<p class=MsoNormal style='text-align:justify'>Cette instruction marque le
+commencement d'une condition supplémentaire dans le cas où une condition
+précédente n'a pas été rencontrée. Le code entre ELSE IF et on rapport assorti
+END n'est exécutable qu'une fois, si la condition indiquée est vraie. </p>
+
+<p class=MsoBodyText>Paramètre(s)</p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify'>Expression
+Conditionnelle: C'est une formule de boost. Le bloc de code sera exécuté
+seulement si c'est vrai.</p>
+
+<p class=MsoNormal style='text-align:justify'>Remarque</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'>Cette
+instruction est essentiellement la même: </p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+lang=EN-GB style='font-family:"Courier New"'>IF ( Conditional ) </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+lang=EN-GB style='font-family:"Courier New"'>ELSE<br>
+            IF ( Conditional ) </span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+lang=EN-GB style='font-family:"Courier New"'>      </span><span
+style='font-family:"Courier New"'>ENDIF</span></p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'><span
+style='font-family:"Courier New"'>ENDIF</span></p>
+
+<h3><a name="_Toc12175349">. ELSE</a> (Sinon)</h3>
+
+<p class=MsoBodyText>Cette instruction marque le commencement d'une sélection
+d'instructions à être exécuté quand la condition indiquée dans le rapport (IF)
+si l'action est fausse, plutôt que vrai. </p>
+
+<h3><a name="_Toc12175350">. FOR</a> (POUR)</h3>
+
+<p class=MsoNormal>Cette instruction marque le commencement d'une boucle faite
+par incrémentation la Valeur de Départ par 1 jusqu'à la Fin la de la Valeur est atteinte.  </p>
+
+<p class=MsoNormal>Paramètre(s)</p>
+
+<p class=MsoNormal style='text-indent:36.0pt'>Variable: Le nom de la variable</p>
+
+<p class=MsoNormal style='text-indent:36.0pt'>Valeur de départ: Une formule de
+boost définissant la valeur de départ </p>
+
+<p class=MsoNormal style='text-indent:36.0pt'>Valeur de fin: Une formule de
+boost définissant la fin valeur</p>
+
+<p class=MsoNormal style='text-align:justify'>Remarque</p>
+
+<p class=MsoNormal style='text-indent:36.0pt'>         La déclaration “END FOR”
+est toujours compléments d’instruction.</p>
+
+<h3><a name="_Toc12175351">. WHILE</a> (Tant que)</h3>
+
+<p class=MsoNormal style='text-align:justify'>Cette instruction montre le
+commencement de l'événement conditionnelle : &quot;loop&quot; (permet de
+relancer plusieurs fois un même code), commandant de ce fait les fluts de code
+contenue dans le block d'instruction &quot;WHILE&quot; (tant que...). le code
+situer entre l'instruction &quot;While&quot; et la marque &quot;END&quot; (fin
+de commande) est une action répéter tant que la condition spécifier est vrais. </p>
+
+<p class=MsoNormal style='text-align:justify'>Paramètre(s) </p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify'>Expression
+Conditionnelle: C'est une formule de boost. Le bloc de code sera exécuté
+jusqu'à ce que cette condition ne soit plus vraie. </p>
+
+<p class=MsoNormal style='text-align:justify'>Remarque</p>
+
+<p class=MsoNormal style='text-align:justify'>         Le rapport &quot;END
+WHILE&quot; complète toujours une instruction.       </p>
+
+<h3>. Nomination</h3>
+
+<p class=MsoBodyText>Cette instruction assigne une valeur à une variable. </p>
+
+<p class=MsoNormal style='text-align:justify'>Paramètre(s)</p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify'>Variable:
+C'est le nom de la variable qui sera disponible dans le PNJ par le var() la
+variable formule de boost. </p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify'>Value: C'est
+une Formule de Boost qui sera utilisée pour calculer une valeur à laquelle la
+variable sera mise.</p>
+
+<h3><a name="_Toc12175353">. GiveItem</a> (DonnerObjet)</h3>
+
+<p class=MsoBodyText>Cette instruction donne des objets choisis aux joueurs. </p>
+
+<p class=MsoNormal>Paramètre(s)</p>
+
+<p class=MsoNormal>         Item To Give: C'est un objet choisi de la liste
+déroulante d'objets. </p>
+
+<p class=MsoNormal>Remarque</p>
+
+<p class=MsoNormal style='margin-left:36.0pt'>Cette instruction contourne la
+limite d'encombrement; on donnera l'objet aux joueurs même s'ils sont
+surchargés.  </p>
+
+<p class=MsoNormal style='margin-top:0cm;margin-right:0cm;margin-bottom:0cm;
+margin-left:36.0pt;margin-bottom:.0001pt'>&nbsp;</p>
+
+<h3><a name="_Toc12175354">. GiveXP</a> (DonnerXP)</h3>
+
+<p class=MsoNormal style='text-align:justify'>Cette instruction donne aux
+joueurs la quantité de points d'expérience indiqués dans le paramètre.</p>
+
+<p class=MsoNormal style='text-align:justify'>Paramètre(s)</p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify'>XP To Give:
+C'est une formule de boost spécifiant la quantité d'expérience indique donné
+aux joueurs. Si cette valeur est négative, les points d'expérience seront
+soustraits des joueurs. </p>
+
+<p class=MsoNormal style='text-align:justify'>Remarque</p>
+
+<p class=MsoNormal style='text-align:justify;text-indent:36.0pt'>Les joueurs ne
+peuvent pas perdre un niveau en perdant des points d'expérience.</p>
+
+<h3><a name="_Toc12175355">. SetFlag</a> (SelectionFlag)</h3>
+
+<p class=MsoNormal style='text-align:justify'>Cette instruction met un flag
+particulier aux joueurs avec une valeur indiquée. </p>
+
+<p class=MsoNormal style='text-align:justify'>Paramètre(s) </p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify'>Flag to set:
+C'est un flag choisi dans la liste des flags. Si un flag exigé n'existe pas,
+vous pouvez le créer en utilisant l'éditeur de flag. </p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify'>The flag's
+value: C'est une formule de boost qui a l'habitude de calculer une valeur à
+laquelle le flag sera mis. </p>
+
+<h3><a name="_Toc12175356">. HealPlayer</a> (GuérirJoueur)</h3>
+
+<p class=MsoNormal style='text-align:justify'>Cette instruction guérit des
+joueurs par le nombre de points de vie indiqués dans le paramètre.</p>
+
+<p class=MsoNormal style='text-align:justify'>Paramètre(s)</p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify'>HP To Heal:
+C'est une formule de boost spécifiant la quantité des points de vie qui doivent
+être guéris. </p>
+
+<h3><a name="_Toc12175357">. SayText</a> (DireTexte)</h3>
+
+<p class=MsoNormal>Cette instruction est faite pour que les PNJs communiques
+avec les joueurs. </p>
+
+<p class=MsoNormal>Paramètre(s)</p>
+
+<p class=MsoNormal>         Texte: Les mots qu'un PNJ dit aux joueurs. </p>
+
+<p class=MsoNormal>Remarque</p>
+
+<p class=MsoNormal style='margin-left:36.0pt'>Les mots-clés doivent être
+entourés par des guillemets (&quot;&quot;) pour être mis en évidence dans le
+speech du PNJ.</p>
+
+<h3><a name="_Toc12175358">. BreakConversation</a> (CasserConversation)</h3>
+
+<p class=MsoBodyText>Cette instruction finit les conversations entre les PNJs
+et les joueurs. Si les joueurs veulent parler aux PNJs de nouveau, ils devront
+re-cliquer sur les PNJs. Tout les PNJs doivent avoir au moins un
+&quot;BreakConversation&quot; l'utilisation du keyword(mot-clé) &quot;Adieu&quot;.
+</p>
+
+<p class=MsoNormal style='text-align:justify'>Remarque </p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify'>Les joueurs ne
+peuvent plus faire défiler le texte d'un PNJ une fois qu'une conversation est
+terminée. Donc, les PNJs doivent dire pas plus que 5-6 mots avant que l'on ne
+rencontre un &quot;BreakConversation&quot;; autrement les joueurs ne seront pas
+capables de voir la fin du speech(discours) du PNJ. </p>
+
+<h3><a name="_Toc12175359">. FightPlayer</a> (CombattreJoueur)</h3>
+
+<p class=MsoNormal style='text-align:justify'>Cette instruction est fais pour
+que les PNJs attaquent les joueurs. Les PNJs resteront agressifs tant que les
+joueurs laisserons la scène.</p>
+
+<p class=MsoNormal style='text-align:justify'>Remarque</p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify'>Cette
+instruction finit aussi des conversations. Donc, les PNJs doivent dire pas plus
+de 5-6 mots avant que l'on ne rencontre la commande du combat; autrement les
+joueurs ne seront pas capables de voir la fin du speech(discours) du PNJ.</p>
+
+<h3><a name="_Toc12175360">. TakeItem</a> (PrendreObjet)</h3>
+
+<p class=MsoNormal>Cette instruction enlève des objets choisis aux joueurs. </p>
+
+<p class=MsoNormal>Paramètre(s)</p>
+
+<p class=MsoNormal>         Item To Take: C'est un objet choisi de la liste
+déroulante d'objets.</p>
+
+<h3><a name="_Toc12175361">. Teleport</a></h3>
+
+<p class=MsoNormal style='text-align:justify'>Cette instruction téléporte des
+joueurs aux coordonnées définies dans les paramètres. </p>
+
+<p class=MsoNormal style='text-align:justify'>Paramètre(s)</p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify'>X Position:
+C'est une formule de boost indiquant la coordonnée d'axe X. La valeur doit être
+entre 1 et 3072. </p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify'>Y Position:
+C'est une formule de boost indiquant la coordonnée d'axe Y. La valeur doit être
+entre 1 et 3072. </p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify'>World: C'est
+une formule de boost indiquant le monde. La valeur doit être 0, 1 ou bien 2.</p>
+
+<p class=MsoNormal style='text-align:justify'>Remarque</p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify'>Si les joueurs
+sont envoyés dans une structure de blocage (exemple à l'intérieur d'un mur),
+ils peuvent être bloqués. Utilisez des coordonnées statiques (par exemple :
+1400,400,0) est plus sûr.. </p>
+
+<h3><a name="_Toc12175362">. CastSpell</a> (JeterSort)</h3>
+
+<p class=MsoNormal>Cette instruction fais par les PNJs permet de jeter des
+sorts spécifiques. </p>
+
+<p class=MsoNormal>Paramètre(s)</p>
+
+<p class=MsoNormal style='margin-left:36.0pt'>Spell To Cast: C'est le sort,
+choisi de la liste déroulante des sorts, qui seront lancés.</p>
+
+<h3><a name="_Toc12175363">. CastSpellOnNPC</a> (JeterSortSurPNJ)</h3>
+
+<p class=MsoNormal>Cette instruction fais par les PNJs permet de jeter des
+sorts spécifiques sur eux. </p>
+
+<p class=MsoNormal>Paramètre(s)</p>
+
+<p class=MsoNormal style='margin-left:36.0pt'>Spell To Cast: C'est le sort,
+choisi de la liste déroulante des sorts, qui seront lancés.</p>
+
+<h3><a name="_Toc12175364">. GiveGold</a> (DonnerOr)</h3>
+
+<p class=MsoNormal>Cette instruction donne aux joueurs la quantité d'or indiqué
+dans le paramètre.</p>
+
+<p class=MsoNormal>Paramètre(s)</p>
+
+<p class=MsoNormal style='margin-left:36.0pt'>Gold To Give: C'est une formule
+de boost spécifiant la quantité d'or que l'on doit donner.</p>
+
+<h3><a name="_Toc12175365">. TakeGold</a> (PrendreOr)</h3>
+
+<p class=MsoNormal>Cette instruction retire des joueurs la quantité d'or
+indiqué dans le paramètre.</p>
+
+<p class=MsoNormal>Paramètre(s)</p>
+
+<p class=MsoNormal style='margin-left:36.0pt'>Gold To Take: C'est une formule
+de boost spécifiant la quantité d'or qui doit être pris.</p>
+
+<p class=MsoNormal>Remarque</p>
+
+<p class=MsoNormal style='margin-left:36.0pt'>Si les joueurs n'ont pas assez
+d'or, tout l'or qu'ils ont sera pris. S'ils n'ont pas d'or, rien ne sera pris. </p>
+
+<h3><a name="_Toc12175366">. DisplayItemsSoldByNPC</a>
+(AfficherObjetsVenduParPNJ)</h3>
+
+<p class=MsoNormal style='text-align:justify'>Cette instruction montre
+l'interface &quot;Acheter&quot; des PNJs aux joueurs; il inscrit tous les objets
+que les PNJs peuvent vendre. </p>
+
+<p class=MsoNormal style='text-align:justify'>Remarque</p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify'>La fenêtre
+&quot;Editer marchand&quot; doit être configuré; autrement les PNJs n'auront
+rien à vendre. Double-clic sur cette instruction pour ouvrir la fenêtre
+&quot;Editer marchand&quot;.</p>
+
+<h3><a name="_Toc12175367">. DisplayItemsBoughtByNPC</a>
+(AfficherObjetsAcheterParPNJ)</h3>
+
+<p class=MsoNormal style='text-align:justify'>Cette instruction montre
+l'interface &quot;Vendre&quot; des PNJs aux joueurs; il inscrit les tous les
+objets du joueur que le PNJ désire acheter. </p>
+
+<p class=MsoNormal style='text-align:justify'>Remarque</p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify'><a
+name="_Toc12175368">La fenêtre &quot;Editer marchand&quot; doit être configuré;
+autrement les PNJs ne serons pas intéressés par les objets des joueurs.
+Double-clic sur cette instruction pour ouvrir la fenêtre &quot;Editer
+marchand&quot;.</a></p>
+
+<h3>. DisplayTrainedSkills (AfficherEntraînerCompétences)</h3>
+
+<p class=MsoBodyText>Cette instruction montre l'interface &quot;Entraîner
+compétence&quot; des PNJs aux joueurs. </p>
+
+<p class=MsoNormal style='text-align:justify'>Remarque      </p>
+
+<p class=MsoNormal style='margin-left:36.0pt;text-align:justify'>la fenêtre
+&quot;Editer entraîneur&quot; doit être configuré; autrement les PNJs n'auront
+rien à entraîner. Double-clic sur cette instruction pour ouvrir la fenêtre
+&quot;Editer entraîneur&quot;. </p>
+
+<h3><a name="_Toc12175369">. DisplayTaughtSkills</a>
+(AfficherApprendreCompétences)</h3>
+
+<p class=MsoNormal style='text-align:justify'>Cette instruction montre
+l’interface “Apprendre compétences/sorts” des PNJs aux joueurs. </p>
+
+<p class=MsoNormal style='text-align:justify'>Remarque</p>
+
+<p class=MsoNormal style='margin-left:21.6pt;text-align:justify'>La fenêtre
+&quot;Editer entraîneur&quot; doit être configuré; autrement les PNJs n'aurons
+pas de compétences/sorts à apprendre. Double-clic sur cette instruction pour
+ouvrir la fenêtre &quot;Editer entraîneur&quot;.</p>

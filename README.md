@@ -166,3 +166,114 @@ Pour tester explicitement l'interface française :
 
 Si le client revient sur l'écran GOA, remettez `English`; cela n'empêche pas le
 serveur, le MOTD et les futurs dialogues de jeu d'être en français.
+
+## Étape 7 — création de personnage (paquet 25)
+
+Le format a été confirmé à partir du gestionnaire `RQ_CreatePlayer` du serveur
+original (réponses du questionnaire + nom en pascal-string u8, réponse
+`u8 résultat` suivie de `Character::packet_stats`). La liste de personnages
+(paquet 26) est désormais réelle et persistante par compte (en mémoire), et le
+serveur envoie d'abord le paquet 103 (nombre maximal de personnages par compte)
+exactement comme l'original, afin de piloter l'option « Nouveau personnage ».
+
+Sérialisation du paquet 26 confirmée : `u8 count`, puis pour chaque personnage
+`u8 name_len, name, i16 race, i16 level`.
+
+Le stockage (`t4c/characters.py`) est volontairement en mémoire pour l'instant ;
+la persistance sur disque est le prochain jalon.
+
+## Étape 7.1 — paquet 89 (RQ_TogglePage)
+
+La capture réelle du client 1.25 envoie le paquet 89 (corps `01`) juste avant la
+liste de personnages. Le code original le nomme `RQ_TogglePage` : un seul u8
+d'état, bascule d'affichage d'une page du client, **aucune réponse
+applicative** (l'ACK transport suffit). Le serveur l'enregistre désormais au
+lieu de le signaler comme inconnu.
+
+## Étape 8 — entrée en monde (paquets 13 et 46)
+
+Formats confirmés depuis `AsyncRQFUNC_PutPlayerInGame` et
+`RQFUNC_FromPreInGameToInGame` du serveur original :
+
+- **13** : requête = `u8 name_len, name` ; réponse = `u8 résultat` (0 = chargé,
+  1 = échec) puis, si chargé : `i32 ID, i16 X/Y/monde, i32 HP/HPmax,
+  i16 mana/manaMax, i32 XP (hi/lo), i32 XP niveau suivant (hi/lo),
+  i16 STR/END/AGI/wil/WIS/INT/luck, heure (comme GET_TIME),
+  i32 or, i16 niveau, i32 XP niveau précédent (hi/lo)`.
+  Après succès, la session passe en `PRE_INGAME`.
+- **46** : réponse = `u8 résultat` (0 = OK, 1 = déjà en jeu). Le monde de
+  développement étant vide, aucune unité en vue n'est sérialisée (comportement
+  du serveur original quand `packet_inview_units` ne renvoie rien). La session
+  passe en `IN_WORLD`.
+
+La position (0,0,0), l'XP, l'or et les seuils de niveau sont des valeurs de
+développement ; la carte, les collisions et les unités sont les prochains
+jalons.
+
+## Ressources originales du serveur (dépôt)
+
+`ressources/T4C_Server/` contient désormais la distribution originale du
+serveur 1.25. Éléments exploitables pour le développement :
+
+- **`T4C.mdb`** : base Access (Jet DB) du serveur. Schéma de persistance
+  complet récupéré :
+  - `T4Cusers` : comptes (Account, Password, Account_type, Expired…)
+  - `PlayingCharacters` : personnages (UserID, PlayerName, AccountName, wlX/Y/World,
+    nClass, CurrentHP/MaxHP, mana, Strength/Endurance/Agility/Intelligence/
+    WillPower/Wisdom/Luck, CurrentLevel, Gold, Appearance, Gender, XP,
+    StatPnts/SkillPnts, Karma, guilde, …)
+  - `PlayerItems`, `PlayerSkills`, `PlayerSpells` : inventaire/sorts/compétences
+  - `guildz`, `guildplayers`, `Guildboard` : guildes
+  - `OnlineUsers`, `OfflineMessages`, `MessageDispatch` : présence/messagerie
+  Ce schéma servira de référence pour la persistance du serveur Python
+  (SQLite) — jalon « étape 9 : persistance ».
+- **`Documents/T4C server manuel fr.doc`** : manuel d'exploitation français.
+- **`Motd.txt`** : format du MOTD original (texte brut multi-lignes).
+- **Logs/** : exemples de format de logs du serveur original (World.log…).
+- **`t4c_fr.elng`** : fichier de langue serveur — la numérotation des chaînes
+  (`_DEFAULT_STR`) correspond aux messages envoyés au client.
+
+## Étape 9 — persistance SQLite (schéma T4C.mdb porté)
+
+Nouveau module `t4c/persistence.py` : comptes et personnages persistés dans
+SQLite, schéma directement porté de la base Access `T4C.mdb` du serveur
+original (`T4Cusers`, `PlayingCharacters` avec position/stats/niveau/or/XP).
+La persistance est activée par `--database` (`t4c.sqlite3` par défaut via
+`run_server.py`, chaîne vide = mémoire uniquement). La création (25) sauvegarde
+le personnage, le chargement (13) restaure la position sauvegardée, et les
+déplacements la mettent à jour.
+
+## Étape 10 — boucle de jeu minimale (mouvements 1-8, position 9)
+
+Formats confirmés depuis `RQFUNC_PlayerMove` original :
+- **9 (RQ_GetPlayerPos)** : réponse `i16 X, i16 Y, i16 monde`.
+- **1-8 (RQ_Move*)** : acceptés uniquement en jeu ; le monde de développement
+  n'ayant ni carte ni collisions, tout déplacement est accepté. Le serveur
+  répond l'événement `__EVENT_OBJECT_MOVED` (id 1) : `i16 X, i16 Y`.
+La position est persistée à chaque mouvement (si `--database` actif).
+
+## Lancer le client sous Wine (installation automatique)
+
+Un script unique installe tout (Wine 32 bits, MFC42, préfixe dédié,
+langue FR, WebPatch désactivé, serverlist) et lance le jeu en fenêtré :
+
+```bash
+# installation + lancement (le serveur doit tourner avant) :
+bash start_server.sh                     # terminal 1
+bash install_client_wine.sh              # terminal 2
+
+# ou en deux temps :
+bash install_client_wine.sh --install   # une seule fois
+bash t4c.sh                             # ensuite, pour jouer
+
+# t4c.sh accepte aussi :
+#   bash t4c.sh --server 192.168.1.x    # autre serveur
+#   bash t4c.sh --window 800x600        # autre taille de fenêtre
+
+# options :
+#   --prefix /chemin   préfixe Wine dédié (défaut ~/.wine-t4c)
+#   --server IP        IP du serveur T4C (défaut 127.0.0.1)
+```
+
+Plus de Docker pour le client : Wine tourne directement, avec affichage,
+son et performances natifs de la machine.

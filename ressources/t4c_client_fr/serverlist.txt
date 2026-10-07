@@ -1,0 +1,6 @@
+Serveur T4C Local
+192.168.1.50
+192.168.1.50
+Bienvenue sur le serveur T4C local !
+Serveur T4C Local
+http://localhost

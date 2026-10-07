@@ -1,0 +1,750 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Aide T4C - FR</title>
+<style type="text/css">
+BODY {
+	FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Verdana, Helvetica, Arial
+}
+TD {
+	FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Verdana, Helvetica, Arial
+}
+A:link {
+	FONT-SIZE: 11px; COLOR: #4e71f4; FONT-FAMILY: Verdana, Helvetica, Arial; TEXT-DECORATION: none
+}
+A:visited {
+	FONT-SIZE: 11px; COLOR: #4e71f4; FONT-FAMILY: Verdana, Helvetica, Arial; TEXT-DECORATION: none
+}
+A:hover {
+	FONT-SIZE: 11px; COLOR: #FFFFFF; FONT-FAMILY: Verdana, Helvetica, Arial; background-color: #4e71f4;
+}
+.Color1 {
+      COLOR: #999999
+}
+</style>
+</head>
+
+<body>
+<center>
+<table width="80%" border="2" bgcolor="#E6F4FF">
+<tr>
+<td bordercolor="#00CCFF">
+  <center><p><strong>Comment Utiliser T4C Server &amp; Pleins d'Astuces !</strong></p></center>
+  <a href="Aide-Fr.htm#Bien">Bienvenue.</a><br>
+  <br>
+  <a href="Aide-Fr.htm#1">I. Utiliser le Serveur.</a><br>
+  <a href="Aide-Fr.htm#11">I.1. Configurer le Serveur.</a><br>
+  <a href="Aide-Fr.htm#11a">I.1.a. Création des comptes.</a><br>
+  <a href="Aide-Fr.htm#11b">I.1.b. Configuration du registre avec T4CSetup.cpl
+  (opérationnel d'origine).</a><br>
+  <a href="Aide-Fr.htm#12">I.2. Lancement du Serveur.</a><br>
+  <a href="Aide-Fr.htm#13">I.3. Connections du Client sur le Serveur.</a><br>
+  <br>
+  <a href="Aide-Fr.htm#2">II. Secrets du Serveur.</a><br>
+  <a href="Aide-Fr.htm#21">II.1. Installer un Serveur T4C <strong><span
+  style='font-family:Verdana'>manuellement</span></strong> (pour le fun).</a><br>
+  <a href="Aide-Fr.htm#21a">II.1.a. Copie des fichiers.</a><br>
+  <a href="Aide-Fr.htm#21b">II.1.b. Installation de la Database dans le
+  registre ODBC.</a><br>
+  <a href="Aide-Fr.htm#21c">II.1.c. Configuration du registre avec T4CSetup.cpl
+  &amp; le Reg déjà préparer.</a><br>
+  <a href="Aide-Fr.htm#21d">II.1.d. Création des comptes.</a><br>
+  <a href="Aide-Fr.htm#21e">II.1.e. Création d'un raccourci permettant de faire
+  fonctionner T4C Serveur.</a><br>
+  <a href="Aide-Fr.htm#22">II.2. Faire un Serveur disponible à touts
+  internautes sans se faire &quot;avoir&quot; par &quot;les keufs&quot;.</a><br>
+  <a href="Aide-Fr.htm#22a">II.2.a. Création d'un DNS.</a><br>
+  <a href="Aide-Fr.htm#22b">II.2.b. Création d'un Site (facultatif mais
+  intéressant ^-^).</a><br>
+  <a href="Aide-Fr.htm#23">II.3. Utiliser le WebPatch.</a><br>
+  <a href="Aide-Fr.htm#23a">II.3.a. Générer le fichier webpatch.image avec tous
+  les fichiers dont il a besoin.</a><br>
+  <a href="Aide-Fr.htm#23b">II.3.b. Hébergement de webpatch.image avec tous les
+  fichiers par Apache.</a><br>
+  <a href="Aide-Fr.htm#23c">II.3.c. Configuration du registre de T4C Serveur
+  avec T4CSetup.cpl .</a><br>
+  <a href="Aide-Fr.htm#24">II.4. Motd (Message du Jour).</a><br>
+  <a href="Aide-Fr.htm#25">II.5. Patch T4C (très pratique pour les nioubz).</a><br>
+  <a href="Aide-Fr.htm#25a">II.5.a. Configuration de serverlist.txt .</a><br>
+  <a href="Aide-Fr.htm#25b">II.5.b. Configuration du commentaire.</a><br>
+  <a href="Aide-Fr.htm#25c">II.5.c. Compilation.</a><br>
+  <br>
+  <a href="Aide-Fr.htm#3">III. Secrets du Client.</a><br>
+  <a href="Aide-Fr.htm#31">III.1 Où trouver se fabuleux client ?</a><br>
+  <a href="Aide-Fr.htm#32">III.2 Les Paramètres lors du lancement du Client.</a><br>
+  <a href="Aide-Fr.htm#33">III.3 Virer la lenteur de la sourie après un Alt + Tab.</a><br>
+  <a href="Aide-Fr.htm#34">III.4 Un ecran noir apparait après le chargement de la map t4c.</a><br>
+  <br>
+  <a href="Aide-Fr.htm#4">IV. Editer le jeux.</a><br>
+  <a href="Aide-Fr.htm#41">IV.1 Editer les Maps.</a><br>
+  <a href="Aide-Fr.htm#42">IV.2 Créer un/des Monstre(s).</a><br>
+  <a href="Aide-Fr.htm#43">IV.3 Créer un/des PNJ(s).</a><br>
+  <a href="Aide-Fr.htm#44">IV.4 Summon d'un Monstre ou PNJ.</a><br>
+  <br>
+  <a href="Aide-Fr.htm#5">V. Astuces afin de mieux créer ou éditer.</a><br>
+  <a href="Aide-Fr.htm#51">V.1 Liste des skins monstres/objets/sorts et icones (par Yebor).</a><br>
+  <a href="Aide-Fr.htm#52">V.2 Liste des commandes gm, flags et coordonées (Stripée par Kalis).</a><br>
+  <a href="Aide-Fr.htm#53">V.3 Liste des instructions et variables connues pour l'ET.</a><br>
+  <a href="Aide-Fr.htm#54">V.4 Documents officiels sur le serveur, l'editeur et l'animation.</a><br>
+  <a href="Aide-Fr.htm#55">V.5 La Soluce de T4C en complète.</a><br>
+  <a href="Aide-Fr.htm#56">V.6 Décoder/Encoder facilement un fichier vsf/wda/elng.</a><br>
+  <a href="Aide-Fr.htm#57">V.7 Pleins d'astuces l'une sur l'autres, bonne lecture ! (Trouvails de T4C-Serveur.fr.st).<br>
+  <br>
+  <a href="Aide-Fr.htm#Bien" name="bien">Bienvenue.</a><br>
+  Se faire un Serveur T4C, c'est pas compliqué, Pour la toute première partie,
+  un ptit café et de la patience (mwé: 30min-1heure pour les débutants) est la
+  meilleur formule !<br>
+  <br>
+  Je voudrait juste attirer l'attention sur le mot <b>Serve(u)r</b>, les termes
+  Serveur et Server (Sans le <b>U</b>) veulent dire exactement la même chose, l'un est
+  en Anglais, l'autre est en Français !<br>
+  Donc, Serveur &gt; Français, Server &gt; Anglais. C'était juste au cas où
+  vous vous serriez poser cette question !<br>
+  <br>
+  <a name=1></a><a href="Aide-Fr.htm#1"><span style='mso-bookmark:1'><span
+  style='font-size:8.5pt;font-family:Verdana'>I. Utiliser le Serveur .</span></span></a><span
+  style='font-size:8.5pt;font-family:Verdana;color:black'><br>
+  Si c'est la première fois que vous installez un Serveur, je pense fort que
+  c'est la partie la plus intéressante pour vous ! GOGOGOGO !<br>
+  Mais aussi, c'est que vous avez certainement installé mon Pack, passons donc
+  directement à la configuration du Serveur !<br>
+  <br>
+  <a name=11></a><a href="Aide-Fr.htm#11">I.1. Configurer le Serveur .</a><br>
+  Donc, je le disais, configurer le Serveur pour pouvoir l'utiliser !<br>
+  <br>
+  <a name=11a></a><a href="Aide-Fr.htm#11a">I.1.a. Creation des comptes .</a><br>
+  La solution la plus simple, dont vous pouvez comprendre par vous même
+  &agrave; partir de l'interface .<br>
+  Il sagit de T4C Database Manager que se pack inclu !<br>
+  (Démarrer > Tous Les Programmes > T4C Serveur > Configuration > T4C Database Manager)<br>
+  C'est un programme simple d'utilisation, dans l'onglet <b>Ajouter un Compte</b> sous <b>Compte Principal</b>,
+  inscrivez ce qui est demandé puis cliquez sur <b>Créer</b>, ET VOILA !<br>
+  (Faites au moin un compte pour l'<b>Admin</b> !)<br>
+  <b>Remarque:</b> pour regler les options des differents types de comptes, vous pouvez le faire a partir du menu 
+  <b>Options</b> !<br>
+  <br>
+  Pour ceux qui ne veulent pas proceder comme en haut, vous avez les anciennes traditions en-dessous ^^ ! :<br>
+  Il faut alors se munir de <b>Microsoft Access 2000</b>
+  ou <b>2003</b> ou plus.<br>
+  Une fois installé, ouvrez <st1:PersonName ProductID="la Database" u1:st="on">la
+  <b>Database</b></st1:PersonName> (Démarrer &gt; Tous Les Programmes &gt; T4C Serveur
+  &gt; Configuration &gt; Database) avec <b>Access</b>. (si le programme dit qu'il
+  peut y avoir des expressions qui peuvent nuir vôtre PC, ouvrir quand même.)<br>
+  Double cliquez sur <st1:PersonName ProductID="la Table T" u1:st="on">la Table
+  <b>T4Cusers.</b><br>
+  Inscrivez au minimum <b>Account</b> et <b>Password</b> pour créer le compte (faites au
+  minimum, un compte pour l'<b>Admin</b>.) enregistrez, puis quitter.<br>
+  <br>
+  <a name=11b></a><a href="Aide-Fr.htm#11b"><span style='mso-bookmark:11b'>I.1.b.
+  Configuration du registre avec T4CSetup.cpl (opérationnel d'origine) .</span></a><br>
+  Ouvrir T4CSetup.cpl (Démarrer &gt; Tous Les Programmes &gt; T4C Serveur &gt;
+  Configuration &gt; T4C Setup ou par le Panneau de Configurations).<br>
+  Si vous ne souhaitez pas être <b>Super Utilisateur</b>, c'est que vous êtes bizarre ! (Naaa, bah, vous pouvez faire OK
+  ou jeter un coup d'oeil/modifier certaines choses comme vous le voulez !! Sachant que les confs sont d&eacute;j&agrave; 
+  <b>opp&eacute;rationnels !</b>)<br>
+  Pour se mettre <b>Super Utilisateur</b>.
+  Passez à l'onglet <b>Configuration Générale</b>, dans <b>Autres</b>, inscrivez vôtre compte
+  pour <b>Super Utilisateur.</b><br>
+  <br>
+  <a name=12></a><a href="Aide-Fr.htm#12"><span style='mso-bookmark:12'>I.2.
+  Lancement du Serveur .</span></a><br>
+  Double cliquez sur <b>T4C Serveur</b> se trouvant sur vôtre <b>bureau</b> ou dans le <b>menu
+  démarrer</b> (Tous Les Programmes &gt; T4C Serveur &gt; T4C Serveur).<br>
+  Patientez jusqu'à se que l'écran noir vous dit d'appuyer sur F10 pour arrêter
+  le Serveur, ne le faites pas bien sur !<br>
+  Voila, le Serveur est lancé, tout le monde peut le joindre par vôtre <b>IP</b> avec
+  leurs client T4C.<br>
+  <br>
+  <b>PS:</b> le fait d'ouvrir T4C Serveur directement par sa destination (ex :
+  C:\Program Files\T4C Server\T4C Server.exe) ne fonctionnera pas, tout
+  simplement parce qu'il faut y ajouter l'option -m par un raccourci (ex :
+  &quot;c:\Program Files\T4C Server\T4C Server.exe&quot; -m).<br>
+  <br>
+  <b>Remarque:</b><br>
+  -Vous pouvez <b>fermer</b> le Serveur en tapant deux fois F10 !<br>
+  -Vous pouvez taper deux fois F5 pour tuer tous les <b>PNJs</b> en un coup !<br>
+  -Pour connaître vôtre <b>IP</b>, démarrer > executer > ipconfig > OK<br>
+  <br>
+  <a name=13></a><a href="Aide-Fr.htm#13"><span style='mso-bookmark:13'>I.3.
+  Connection du Client sur le Serveur .</span></a><br>
+  Pour faire comprendre au client de se connecter sur vôtre <b>IP</b>, c'est un peut
+  plus délicat.<br>
+  Je m'explique:<br>
+  Ouvrir un <b>traitement de texte</b> quelconque.<br>
+  Copier Coller ces lignes vers vôtre traitement de texte tout bêtement à
+  partir de la suivante (bien sure ^-^):<br>
+  <br>
+  NoName: Principal<br>
+  IP<br>
+  IP<br>
+  Le Serveur de NoName.<br>
+  Le site de NoName<br>
+  http://www.adresse.com/<br>
+  <br>
+  <b>STOOP !!</b> LoL, en va jouer au remplaçage maintenant, pour se faire:<br>
+  Remplacez la première ligne par le <b>nom</b> de vôtre Serveur. (sur le traitement
+  de texte lol ^-^)<br>
+  La seconde par vôtre <b>IP</b> (si vous jouez en <b>local</b> seulement, inscrivez alors
+  <b>127.0.0.1</b> pour ne pas avoir à faire avec Internet, pour les internautes, il
+  faudra inscrire vôtre <b>IP Internet</b> !).<br>
+  La troisième, il faut inscrire la même chose qu'à la seconde !<br>
+  La quatrième est une courte <b>description</b> de vôtre Serveur.<br>
+  La cinquième est se qui sera inscrit sur le <b>bouton d'aide</b> du client (si vous
+  savez pas, vous verrez par la suite, merde qu'est ce qu'on s'en fout de sa !)<br>
+  La sixième est le <b>lien</b> vers lequel ira l'explorateur web par défaut en
+  cliquant sur le <b>bouton</b> de la cinquième ligne.<br>
+  Enregistrez se fichier sous le nom de <b>serverlist.txt</b> n'importe où (sur vôtre
+  bureau par exemple).<br>
+  <b>PS:</b> si vous jouez seulement en <b>local</b>, enregistrez le cache a la racine de
+  vôtre client t4c. (snul le local !)<br>
+  Si vous ne mettez pas de <b>WebPatch</b> (par défaut) vous devez aussi lancer se
+  petit patch pour le client (Le Reg <a href="WebPatch" target="_blank">webpatch
+  - off.reg</a>) (au passage j'ai aussi placé le webpatch ON !).<br>
+  Voila, pour que les personnes peuvent se connecter sur vôtre Serveur, vous
+  devez leurs envoyer se petit fichier pour qu'ils le remplacent par l'ancien à
+  la racine de leurs clients <b>(+ le WebPatch off si vous décidez de ne pas en
+  mettre !)</b>.<br>
+  Pour vous trouver &quot;ses personnes&quot; (^-^), vous pouvez aller sur le
+  chat faire de la pub (attention ! pas trop de Spam !) et dès qu'une personne
+  est intéressée, envoyez leurs donc se(s) 1/2 fichier(s) !<br>
+  <br>
+  <b>/!\Attention !</b> Ses liens ne sont pas obligés d'être vus, juste conseill&eacute;s <b>/!\</b> :<br>
+  Pour rendre le tout tr&egrave;s dynamique (Redirrection D'<b>IP</b> & <b>Site</b>) c'est <a
+  href="Aide-Fr.htm#22">ici</a>, parce que c&#8217;est assez chiant de refaire le
+  fichier quand on a changé d'<b>IP</b> et de le repasser aux personnes inscrites sur vôtre Serveur !<br>
+  Vous pouvez rendre l'installation du <b>serverlist.txt</b> et du <b>WebPatchON/Off</b>
+  dynamique <a href="Aide-Fr.htm#25">ici</a> !<br>
+  Pour comprendre comment le <b>WebPatch</b> fonctionne c'est <a href="Aide-Fr.htm#23">ici</a> .<br>
+  <br>
+  Au niveau animateurs, quelques documents très intéréssants !<br>
+  Vous pouvez voir les <b>commandes des gm</b> dans la <b>liste</b> (Démarrer > Tous Les Programmes > T4C Serveur > Documents > Commandes GM + Flags etc...)<br>
+  La <b>soluce complète</b> de T4C se trouve ici (Démarrer > Tous Les Programmes > T4C Serveur > Aide-Animateur-Fr)<br>
+  Vous pouvez aussi voir la <b>carte</b> complète d'<b>Althéa</b> ici (Démarrer > Tous Les Programmes > T4C Serveur > Documents > Althéa Flash)<br>
+  Pour voir comment <b>GOA</b> annimait leur serveur, vous pouvez voir leurs bibles anims ici (Démarrer > Tous Les Programmes > T4C Serveur > Documents > Bible T4C (GOA))<br>
+  <br>
+  Pour les SysOps, vous avez le <b>Server Manual (FR)</b> (Démarrer > Tous Les Programmes > T4C Serveur > Documents > T4C Server Manual) et <b>Aide T4C Editor FR</b> (Démarrer > Tous Les Programmes > T4C Serveur > Documents > T4C Editor Aide Fr).<br>
+  Ces deux documents sont déjà traités dans cette aide d'une manière plus simpliste ;).<br>
+  <br>
+  <a name=2></a><a href="Aide-Fr.htm#2"><span style='mso-bookmark:2'>II.
+  Secrets du Serveur .</span></a><br>
+  Nous voila dans <st1:PersonName ProductID="la Partie Secrets" u1:st="on">la
+  Partie Secrets</st1:PersonName>, a partir de maintenant vôtre Serveur
+  fonctionne, mais voici maintenant des trucs &amp; astuces pour améliorer
+  vôtre Serveur !<br>
+  <br>
+  <a name=21></a><a href="Aide-Fr.htm#21"><span style='mso-bookmark:21'>II.1.
+  Installer un Serveur T4C <strong><span style='font-family:Verdana'>manuellement</span></strong>
+  (pour le fun) .</span></a><br>
+  Il est vrai que ceci ne vous sert à rien du tout, mais je tiens tout de même
+  à expliquer comment installer un Serveur Manuellement, pour ne pas oublier le
+  fonctionnement de l'installation !<br>
+  <br>
+  <a name=21a></a><a href="Aide-Fr.htm#21a"><span style='mso-bookmark:21a'>II.1.a.
+  Copie des fichiers.</span></a><br>
+  <b>Copier</b> le dossier <b>T4C Serveur</b> que se pack a extré à la direction voulue (pour
+  l'installation manuelle, je vous conseille d'opter pour <b>C:\T4C Server</b>,
+  j'expliquerai par la suite pourquoi).<br>
+  <b>Remarque:</b> À partir de maintenant, toutes les directions données sont pour
+  l'extraction sous <b>C:\T4C Server</b>.<br>
+  <br>
+  <a name=21b></a><a href="Aide-Fr.htm#21b"><span style='mso-bookmark:21b'>II.1.b.
+  Installation de la Database dans le registre ODBC.</span></a><br>
+  Allez dans <b>Panneau De Configuration</b> (dispo. dans le menu démarrer et dans
+  Poste De Travail).<br>
+  Double Cliquez sur <b>Outils Administration</b> (si il y a pas, basculez vers
+  l'<b>affichage classique</b>).<br>
+  Double Cliquez ensuite sur <b>Source de Données (ODBC)</b>.<br>
+  Dans l'onglet <b>Sources de données utilisateur</b>, cliquez sur <b>Ajouter</b>.<br>
+  Sélectionnez <b>Microsoft Access Driver (*.mdb)</b> puis cliquez sur <b>Terminer</b>.<br>
+  Remplissez comme qui suit ! :<br>
+  <br>
+  <b>Nom de la source de données:</b> T4C Server<br>
+  <b>Base de données:</b> C:\T4C Server\T4C.mdb (en cliquant sur <b>Sélectionner</b>)<br>
+  <br>
+  Cliquez sur <b>OK</b>, puis fermez la dernière fenêtre d'avant en cliquant aussi sur
+  <b>OK</b>.<br>
+  <br>
+  <a name=21c></a><a href="Aide-Fr.htm#21c"><span style='mso-bookmark:21c'>II.1.c.
+  Configuration du registre avec T4CSetup.cpl &amp; le Reg déja préparer .</span></a><br>
+  Maintenant, l'extraction dans <b>C:\T4C Server</b> prend tout son sens, en effet, il
+  s'agit de lancer le <b>Reg</b> <a href="Reg" target="_blank">T4C Server.reg</a>
+  fonctionnant seulement pour <b>C:\T4C Server</b> !<br>
+  <b>Remarque:</b> Sur l'installation, l'extraction fonctionne sur toutes les
+  directions parce que la partie <b>Reg</b> est gérée <b>Dynamiquement</b>, <b>C-A-D:</b> Elle change
+  selon la destination !<br>
+  Une fois lancé, Cliquez sur <b>Oui</b> puis sur <b>Ok</b>.<br>
+  Maintenant, lancez <b>T4CSetup.cpl</b> (C:\T4C Server\T4CSetup.cpl) et dans l'onglet
+  <b>Configuration Générale</b>, dans <b>Autres</b>, sur <b>Super Utilisateur</b>, Mettez le nom du
+  compte qui doit être <b>Admin.</b> sur le serv !<br>
+  Vous pouvez changer le reste à vôtre goût mais c'est déjà opérationnel.<br>
+  <br>
+  <a name=21d></a><a href="Aide-Fr.htm#21d"><span style='mso-bookmark:21d'>II.1.d.
+  Creation des comptes.</span></a><br>
+  Munissez vous de <b>Microsoft Access</b>!<br>
+  Ouvrez <b>C:\T4C Server\T4C.mdb</b> avec <b>Access</b>, si celui ci dit que sa peut nuir le
+  PC, ouvrez quand même !<br>
+  Dans la table <b>T4Cusers</b>, inscrivez au minimum <b>Account</b> et <b>Password</b> (faite au
+  moins un compte pour l'<b>Admin.</b> !) ^-^<br>
+  Sauvegardez &amp; Quittez !<br>
+  <br>
+  <b>Remarque:</b> je disais dans la première partie qu'il est possible de créer les
+  comptes plus facilement, T4C Database Manager 4.0 (C:\T4C Server\T4C Database Manager) !<br>
+  Il faut supprimer <b>Config.ini</b> se trouvant dans son r&eacute;pertoire puis de lancer <b>T4C Database Manager.exe</b> se trouvant dans le même Rep. !<br>
+  <br>
+  <a name=21e></a><a href="Aide-Fr.htm#21e"><span style='mso-bookmark:21e'>II.1.e.
+  Creation d'un raccourci permettant de faire fonctionner T4C Serveur .</span></a><br>
+  Faites bouton droit sur le <b>Bureau</b>, <b>Nouveau</b> &gt; <b>Raccourci</b>.<br>
+  <b>Entrez l'emplacement de l'élément:</b> &quot;C:\T4C Server\T4C Server.exe&quot;
+  -m<br>
+  Cliquez ensuite sur <b>suivant</b>.<br>
+  <b>Entrez un nom pour ce raccourci:</b> T4C Serveur<br>
+  Cliquez sur <b>Terminer</b>.<br>
+  Voila, lancez le Serveur à partir de se <b>raccourci</b>!<br>
+  Pour la connection du client sur le Serveur, voir partie <a
+  href="Aide-Fr.htm#13">I.3.</a> .<br>
+  <br>
+  <a name=22></a><a href="Aide-Fr.htm#22"><span style='mso-bookmark:22'>II.2. Faire
+  un Serveur disponible à touts internautes sans se faire &quot;avoir&quot; par
+  &quot;les keufs&quot;.</span></a><br>
+  Vous allez apprendre maintenant comment faire un Serveur dispo pour tout le
+  monde sur le <b>net</b>!<br>
+  <br>
+  <a name=22a></a><a href="Aide-Fr.htm#22a"><span style='mso-bookmark:22a'>II.2.a.
+  Creation d'un DNS .</span></a><br>
+  Un <b>DNS</b> est une redirection d'<b>IP</b> tout simplement, je donne un exemple
+  <b>www.No-Ip.com/Kalis</b> qui va donner <b>127.0.0.1</b>, voila en gros se qu'il vous faut
+  !<br>
+  Deux raisons pour faire un <b>DNS</b>:<br>
+  Première raison: Un <b>DNS</b> n'a pas le droit d'êtres scanné, donc les
+  &quot;keufs&quot; n'auront pas vôtre <b>IP</b> est ne pourront pas remonter vers
+  vous ;) .<br>
+  Seconde raison: Prenons le cas de connection sur l'<b>IP</b> cache, la personne se connecte direct sur vôtre
+  <b>IP</b>, au moment d'un changement de vôtre <b>IP</b>, l'<b>IP</b> que la personne jouant cher vous a est d&eacute;sormais fausse, celle ci
+  n'arrivera plus à vous joindre, vous devrez alors recr&eacute; un serverlist puis de le repasser par un chat, en revanche si la personne se connecte sur le
+  <b>DNS</b>, le Serveur marche, vous changez d'<b>IP</b>, vous mettez à jour le <b>DNS</b>, la
+  personne se reconnecte, et sa marche Toujours, et bien entendu, plus besoin
+  de créer d'autres Serverlist.txt .<br>
+  <br>
+  Pour se faire un <b>DNS</b>, inscrivez vous simplement sur un site fournissant des
+  <b>DNS</b> (exemple : <a href="http://www.no-ip.com/" target="_blank">www.no-ip.com</a>
+  ou sur un autre).<br>
+  <b>Remarque:</b> Google est vôtre meilleur ami ^-^<br>
+  Une fois que vous avez obtenu vôtre <b>DNS</b>, modifiez juste les <b>IP</b> que vous aviez inscrit anciennement (serverlist, webpatch etc...) par l'adresse du <b>DNS</b><br>
+  <br>
+  <a name=22b></a><a href="Aide-Fr.htm#22b"><span style='mso-bookmark:22b'>II.2.b.
+  Création d'un Site (facultatif mais intéressant ^-^).</span><span
+  style='mso-bookmark:22b'></span></a><span style='mso-bookmark:22b'><br>
+  <b>Désolé</b> mais cette partie n'est pas encore finie, il faudra attendre que le
+  site auto généré soit fini se qui n'est pas le cas :/ Peut être dans la
+  prochaine release de se pack !<br>
+  <br>
+  <a name=23></a></span><a href="Aide-Fr.htm#23"><span style='mso-bookmark:
+  22b'><span style='mso-bookmark:23'>II.3. Utiliser le WebPatch .</span></span><span
+  style='mso-bookmark:22b'></span></a><span style='mso-bookmark:22b'><br>
+  Le <b>WebPatch</b> est une très bonne idée car celui ci peut enlever l'erreur du
+  <b>Patch</b> quand le client se connecte sans que l'on doit lancer le ptit <b>reg</b>
+  webpatch off coté client <b>mais</b> seulement si on y fait des <b>majs</b> coté client (nouveaux skins, changements de maps)!<br>
+  Par contre, evitez de faire un <b>webpatch</b> pour éviter l'<b>erreur du patch</b>, allez plutôt <a href="Aide-Fr.htm#25">ici</a> pour le désactiver avec un setup tout simple!<br>
+  <br>
+  <a name=23a></a></span><a href="Aide-Fr.htm#23a"><span style='mso-bookmark:
+  22b'><span style='mso-bookmark:23a'>II.3.a. Generer le fichier webpatch.image
+  avec tous les fichiers dont il a besoin .</span></span><span
+  style='mso-bookmark:22b'></span></a><span style='mso-bookmark:22b'><br>
+  Lancez <b>WebPatchSetup.exe</b> (Démarrer &gt; Tous Les Programmes &gt; T4C Serveur
+  &gt; Configuration &gt; WebPatch Setup).<br>
+  Ici sont les configurations du <b>webpatch.image</b>, vous pouvez remarquer <b>5
+  catégories</b><br>
+  <br>
+  L'onglet <b>WebPatch Files:</b><br>
+  Commençant par dire de ne pas changer <b>Target Web Directory</b>, celui ci est déjà
+  configuré, modifiez le juste pour un changement de path !<br>
+  Ceci dit, cette onglet permet de dire au client tout se que celui ci doit
+  aller télécharger (cher vous) avant de pouvoir aller sur vôtre Serveur.<br>
+  Avant de cliquer sur <b>Add</b> pour mettre un fichier je précise plusieurs choses,
+  si vous voulez rien donner au client juste éviter l'erreur du <b>webpatch</b> sans
+  le <b>Reg</b>, faites OK (Je précise qu'il est préférable de faire le setup avec le webpatch off <a href="Aide-Fr.htm#25">ici</a>, le fichier sera donc généré même si aucuns fichier y sont
+  (passez aussi directement à l'étape suivante ;) ).<br>
+  Une seconde chose, avant d'ajouter un fichier, il faut d'abord régler
+  certaines choses, <b>Set Option</b>, vous pouvez laisser tel quel, <b>Target App.
+  Subdirectory</b>, ceci est le path vers lequel sera extrait le fichier après
+  téléchargement, <b>Exemple:</b> Si vous voulez que le fichier s'extrait dans (..\<st1:PersonName ProductID="La Quatrième Prophétie" u1:st="on">La
+  Quatrième Prophétie</st1:PersonName>\Maps\), inscrivez alors Maps pour <b>Target
+  App. Subdirectory</b> !<br>
+  Ensuite: <b>Auto-compress:</b> compresser le fichier, <b>Auto-overwrite:</b> si le fichier
+  est déjà dans le client, écraser, <b>Auto-Update listing</b> (mieux vaut le cocher):
+  met la liste Update a jour automatiquement !<br>
+  Cliquez ensuite sur <b>Add</b>, allez à la direction voulue, et double cliquez sur
+  le fichier voulu, le fichier sera automatiquement copier a la bonne direction
+  pour le bon fonctionnement du <b>webpatch</b>.<br>
+  Celui ci s'ajoute alors dans la liste d'en dessous. (mettez autant de
+  fichiers que vous voulez !)<br>
+  <br>
+  L'onglet <b>Delete Files</b> permet de dire au client quels fichiers celui ci doit
+  enlever ! Il suffit juste de dire son nom puis de cliquer sur <b>Add</b> (celui ci
+  apparaîtra de suite sur la liste d'en dessous, vous pouvez aussi virer autant
+  de fichier que vous voulez !)<br>
+  <br>
+  L'onglet <b>Patches</b> permet au client de downloader un pack déja préparer par <b>Vircom</b>, remplissez <b>From Version</b> par les versions a updater puis to version pour dire le numéro de version que le client sera après l'update !<br>
+  <b>Attention:</b> Ne pas mettre les virgules ! (ex: 1.25 > 125 , 1.26 > 126) !<br>
+  Une fois ces deux cases remplies cliquez sur <b>Add</b>, et là prenez le <b>rtp</b> qui correspend ;) ! (Ils sont dispos sur <a href="http://www.t4c-serveur.fr.st" target="_blank">www.t4c-serveur.fr.st</a>: Jusqu'à la <b>1.27</b>)<br>
+  (Personellement, je trouve un peu cette catégorie inutile ^^).<br>
+  <br>
+  <b>Appliquez</b> et faites <b>OK</b> ! Voila, vôtre <b>webpatch.image</b> est généré, il vous faut
+  encore l'<b>héberger</b> et <b>configurer</b> le Serveur !<br>
+  <br>
+  <a name=23b></a></span><a href="Aide-Fr.htm#23b"><span style='mso-bookmark:
+  22b'><span style='mso-bookmark:23b'>II.3.b. Hebergement de webpatch.image
+  avec tous les fichier par Apache .</span></span><span style='mso-bookmark:
+  22b'></span></a><span style='mso-bookmark:22b'><br>
+  Il ya deux techniques pour heberger un webpatch (uploader les fichiers sur ftp (ma préférée :P), ou heberger soit même les fichiers *laaag* )<br>
+  <br>
+  Uploader les fichiers sur ftp ;)<br>
+  Il vous faut un <b>accès ftp</b> pour sa, moi je conseil de prendre un gratuit, un accès ftp free par exemple, bref, pour vôtre accès, faîtes comme vous le voulez!<br>
+  Une fois que vous avez vôtre <b>accès</b>, il vous faut un client <b>ftp</b> (je conseil FlashFxp, mon préféré ^^), <b>inscrivez</b> ensuite les coordonées de l'ftp puis cliquez sur connecter!<br>
+  <br>
+  Exemple de coordonées d'ftp sur free ;) avec FlashFxp :<br>
+  Server or Url: ftpperso.free.fr<br>
+  User Name: kalis.script<br>
+  Password: loul<br>
+  Heum j'vous voi déjà venir ^^<br>
+  Port: 21<br>
+  Puis un bref click sur <b>Connect</b><br>
+  <br>
+  Là vous êtes dans le repertoire principale (root) de l'<b>ftp</b>, avec l'exploreur de <b>gauche</b>, allez dans le rep. <b>T4C Server</b> (ex: C:\Program Files\T4C Server) et <b>glissez</b> le rep. <b>wwwroot</b> dans l'exploreur de <b>droite</b> (vôtre espace web quoi).<br>
+  Il s'occupera d'<b>uploader</b> tous les fichiers, une fois l'upload finni, vous pouvez le fermer ;).<br>
+  L'interet de l'ftp, c'est que vous donnez une seul fois le fichier, et les personnes iront les telechargers cher l'autre ;) Sa evitera de perdre de la connection pour l'hebergement du webpatch, et donc vous pouvez la conssacrer encore plus pour le Serveur T4C ;).<br>
+  (A chaque fois que vous mettez à jour vôtre <b>WebPatch</b>, vous devez de nouveau <b>uploader</b> les nouveaux fichiers, logique)<br>
+  Passez déja a la prochaine partie, si vous avez choisi cette solution!<br>
+  <br>
+  Pour s'héberger le <b>webpatch</b>, il vous faut un <b>apache</b> (je conseille <b>easyphp</b> voir
+  www.telecharger.com ou www.google.com pour le trouver).<br>
+  Je parle brièvement pour les <b>apaches</b> en générale, il faut <b>héberger</b> la
+  répertoire <b>wwwroot</b> qui est dans le répertoire <b>T4C Server</b> (..\T4C
+  Server\wwwroot\).<br>
+  Je précise comment faire la démarche avec <b>easyphp:</b><br>
+  Installer celui-ci n'importe où, lancer celui-ci, click droit ensuite sur
+  l'icône easy-php dans la barre des taches (près de l'horloge) puis click
+  gauche sur <b>Administration</b>.<br>
+  Une page Internet s'affiche alors, cliquez sur <b>[ajouter]</b> dans <st1:PersonName ProductID="la Partie Apache" u1:st="on">la
+  Partie <b>Apache</b></st1:PersonName> sous <b>&quot;Alias&quot;</b>.<br>
+  Remplir comme qui suit:<br>
+  <br>
+  <b>Saisir un nom pour l'alias (ex.: site 1):</b> wwwroot<br>
+  <b>Saisir le chemin du répertoire créé (ex.: C:\weblocal\sites\site1):</b>
+  [Destination du répertoire T4C Server]\wwwroot\<br>
+  <br>
+  L'étape 4 est à laisser tel quel.<br>
+  Cliquez ensuite sur <b>OK</b>. Fermez la page Internet, faite bouton droit sur
+  easy-php dans la barre des taches, puis click gauche sur <b>redémarrer</b>.<br>
+  <br>
+  <a name=23c></a></span><a href="Aide-Fr.htm#23c"><span style='mso-bookmark:
+  22b'><span style='mso-bookmark:23c'>II.3.c. Configuration du registre de T4C
+  Serveur avec T4CSetup.cpl .</span></span><span style='mso-bookmark:22b'></span></a><span
+  style='mso-bookmark:22b'><br>
+  Lancez <b>T4CSetup.cpl</b> (Démarrer &gt; Tous Les Programmes &gt; T4C Serveur &gt;
+  Configuration &gt; T4C Setup), onglet <b>Serveur M.à.J.</b> sous <b>Webpatch *</b>.<br>
+  <br>
+  Configuration avec hébèrgement ftp:<br>
+  <b>Url du serveur web:</b> l'url de vôtre repertoire root (dans mon exemple avec free: http://kalis.script.free.fr/)<br>
+  <b>Chemin d'accès du fichier:</b> wwwroot/images/webpatch.image<br>
+  <br>
+  Configuration avec vôtre propre hébèrgement:<br>
+  <b>Url du serveur web:</b> vôtre IP Internet<br>
+  <b>Chemin d'accès du fichier:</b> wwwroot/images/webpatch.image<br>
+  <br>
+  Vérifiez si le webpatch fonctionne en cliquant sur <b>Vérifier</b> juste en dessous,
+  si la vérification réussie, tout est bon !<br>
+  <b>Appliquez</b> puis <b>OK</b> !<br>
+  Voila, le <b>webpatch</b> fonctionne !<br>
+  <br>
+  <b>Remarques: Pour ceux qui hébèrgent leurs propres WebPatch</b><br>
+  Pour que le <b>webpatch</b> fonctionne, il faudra en plus du lancement
+  du Serveur t4c, le lancement du Serveur <b>Apache</b> (easy-php) !<br>
+  Etant donné que vous hébergez un <b>webpatch</b> avec <b>Apache</b>, hébergez donc un
+  site pour T4C par <b>Apache</b> aussi NON !? Voir Partie </span><a
+  href="Aide-Fr.htm#22b"><span style='mso-bookmark:22b'>II.2.b</span><span
+  style='mso-bookmark:22b'></span></a><span style='mso-bookmark:22b'> !<br>
+  <br>
+  <a name=24></a></span><a href="Aide-Fr.htm#24"><span style='mso-bookmark:
+  22b'><span style='mso-bookmark:24'>II.4. Motd (Message du Jour).</span></span><span
+  style='mso-bookmark:22b'></span></a><span style='mso-bookmark:22b'><br>
+  Le <b>Motd</b> (Message Of The Day) autrement dit <b>Message Du jour</b> que le client T4C
+  reçoit lors de la connection sur le Serveur peut être modifié.<br>
+  Pour se faire, lancez <b>Motd.txt</b> (Démarrer &gt; Tous Les Programmes &gt; T4C
+  Serveur &gt; Configuration &gt; Motd) et modifiez son contenu ! Sauvegardez
+  &amp; Quittez !<br>
+  <b>Remarque:</b> Je ne sait pas pour qu'elle raison, mais la dernière lettre du <b>motd</b>
+  ne s'affiche jamais sur le client, répétez donc 2 fois cette lettre, ou
+  mettez un espace comme dernière lettre !<br>
+  <br>
+  <a name=25></a></span><a href="Aide-Fr.htm#25"><span style='mso-bookmark:
+  22b'><span style='mso-bookmark:25'>II.5. Patch T4C (très pratique pour les
+  nioubz).</span></span><span style='mso-bookmark:22b'></span></a><span
+  style='mso-bookmark:22b'><br>
+  Aller, je vous offre un ptit code <b>NSIS</b> permettant de copier tout seul le
+  fichier <b>serverlist.txt</b> vers le client ! et d'activer/désactiver le <b>webpatch</b> ;)<br>
+  C'est pratique, vous donnez sa aux personnes qui veulent se connecter sur
+  vôtre Serveur, il le lancent, puis font suivant et c'est installé !<br>
+  Les personnes voulant se connecter sur vôtre Serveur auront alors aucunes
+  difficultés pour se connecter cher vous ;)<br>
+  Donc, en gros, l'exécutable remplacera le fichier <b>serverlist.txt</b> et le <b>WebPatchOn/Off</b> ! Bien qu'il
+  faudra quand même le créer pour l'exécutable !<br>
+  <br>
+  <a name=25a></a></span><a href="Aide-Fr.htm#25a"><span style='mso-bookmark:
+  22b'><span style='mso-bookmark:25a'>II.5.a. Configuration de serverlist.txt .</span></span><span
+  style='mso-bookmark:22b'></span></a><span style='mso-bookmark:22b'><br>
+  D'abord ouvrez le répertoire </span><a href="PatchT4C" target="_blank"><span
+  style='mso-bookmark:22b'>PatchT4C</span><span style='mso-bookmark:22b'></span></a><span
+  style='mso-bookmark:22b'> où j'ai déjà placé tout se qu'il vous faut !<br>
+  Si vous avez déjà créé le fichier <b>serverlist.txt</b> pour le client, remplacez
+  alors le fichier <b>serverlist.txt</b> disponible dans le dossier PatchT4C par celui
+  que vous avez créé.<br>
+  En revanche, si vous l'avez pas fait, il serait temps de le faire, allez voir
+  </span><a href="Aide-FR.htm#13"><span style='mso-bookmark:22b'>là</span><span
+  style='mso-bookmark:22b'></span></a><span style='mso-bookmark:22b'> tient !
+  (Une fois le fichier serverlist.txt fini, enregistrez le alors à la place de
+  celui placé dans le répertoire PatchT4C, puis revenez ici !)<br>
+  <br>
+  <a name=25b></a></span><a href="Aide-Fr.htm#25b"><span style='mso-bookmark:
+  22b'><span style='mso-bookmark:25b'>II.5.b. Configuration du commentaire.</span></span><span
+  style='mso-bookmark:22b'></span></a><span style='mso-bookmark:22b'><br>
+  Ouvrez <b>PathAuto.ini</b> avec un <b>traitement de texte</b>.<br>
+  A la toute dernière ligne (State=&quot;Vos C...&quot;), remplacez tout se
+  qu'il y a entre les <b>guillemets</b> par se que vous voulez, par exemple: les
+  options de vôtre Serveur, ou un petit texte de remerciement pour avoir
+  télécharger vôtre patch, enfin bref, mettez se que bon vous semble !<br>
+  <b>Remarque:</b><br>
+  1 - Pour faire un saut à la ligne (un genre d'entrer), il faudra inscrire
+  ceci: <b>\r\n</b><br>
+  Il faudra alors coller la seconde ligne a coté du n ! (donc toutes les lignes
+  sont écrites sur une même ligne séparées par <b>\r\n</b> !)<br>
+  2 - Pour utiliser le caractère <b>\</b> comme texte, vous devrez inscrire un autre <b>\</b>
+  devant celui ci, s'ki donne : <b>\\</b> .<br>
+  Une fois le commentaire fini, enregistrez le fichier !<br>
+  <br>
+  <a name=25c></a></span><a href="Aide-Fr.htm#25c"><span style='mso-bookmark:
+  22b'><span style='mso-bookmark:25c'>II.5.c. Compilation.</span></span><span
+  style='mso-bookmark:22b'></span></a><span style='mso-bookmark:22b'><br>
+  Pour <b>compiler</b> se script, vous avez besoin du <b>compilateur NSIS</b> !<br>
+  Ce programme est gratuit, je vous conseille la version 2 en français traduit
+  par Julien, allez </span><a href="http://www.winampfr.com/nsis"
+  target="_blank"><span style='mso-bookmark:22b'>ici</span><span
+  style='mso-bookmark:22b'></span></a><span style='mso-bookmark:22b'> pour
+  télécharger cette version !<br>
+  Une fois installé, vous avez le choix entre PatchT4C+WebpatchOn.nsi et PatchT4C+WebPatchOff.nsi<br>
+  Le <b>On</b> active le <b>WebPatch</b> en même temps, le <b>Off</b> le désactive en même temps !<br>
+  Une fois que vous vous êtes fait une idée de celui que vous allez prendre,
+  faites un click droit sur le fichier correspondant, puis cliquez sur <b>compiler</b>
+  !<br>
+  Le compilateur <b>Makensisw</b> apparaît et fait tout de suite l'opération, à la fin
+  de l'opération, vous pourrez fermer celui ci, vous voyez alors apparaître
+  dans le dossier <b>PatchT4C</b>, l'exécutable <b>PatchT4C.exe</b> !<br>
+  Voila ! Envoyez donc cet exécutable la à la place du <b>serverlist.txt</b> et de
+  <b>WebPatchOff/On.reg</b>, sa évitera énormément de questions de la part des newbis,
+  ils le lancent, ils cliquent sur installer, et voila ! Ils lancent leurs
+  clients, cliquent sur Connecter, et ils sont dessus !<br>
+  <br>
+  <a name="3" href="Aide-Fr.htm#3">III. Secrets du Client.</a><br>
+  Comme pour le Serveur, voici des astuces pour le Client !<br>
+  <br>
+  <a name="31" href="Aide-Fr.htm#31">III.1 Où trouver se fabuleux client ?</a><br>
+  Pole Links ;) : <a href="http://dload.pole-interactive.com/T4CInstall/FrenchCDInstall125Addon.exe" target="_blank">http://dload.pole-interactive.com/T4CInstall/FrenchCDInstall125Addon.exe</a><br>
+  Si celui ci fonctionne plus, venez en chercher un autre sur www.t4c-serveur.fr.st ;)<br>
+  <br>
+  <a name="32" href="Aide-Fr.htm#32">III.2 Les Paramètres lors du lancement du Client.</a><br>
+  Lorsque vous faites des <b>raccourcis</b> pour le <b>Client</b> T4C, il est possible d'y ajouter des <b>paramètres</b>, les voicis:<br><br>
+  -uid= : <b>Compte</b><br>
+  -lt= : <b>Pass</b><br>
+  -ipserv= : <b>IP du serveur avec le port</b><br><br>
+  Je donne un exemple de <b>raccourci</b>:<br>
+  &quot;C:\Program Files\La Quatrième Prophétie\t4c.exe&quot; -uid=Kalis -lt=TuCroisFranchementQueJeVaisTeLePasser! -ipserv=127.0.0.1:11677<br>
+  Sa donne des idées pour des <b>launcheurs</b> ? AllT4C, T4C Database Manager utilisent le même procédé pour y arriver ;) !<br>
+  <br>
+  <a name="33" href="Aide-Fr.htm#33">III.3 Virer la lenteur de la sourie après un Alt + Tab.</a><br>
+  Lorsque vous revenez sur le jeux après un Alt+Tab (Changement de Fenetre sous Windows) et que vous possedez une version de windows Récente, il est possible que votre <b>sourie</b> va au <b>ralenti</b>!<br>
+  Pour y remedier, allez dans le <b>repertoire</b> du Client T4C, faites bouton droit sur <b>t4c.exe</b> puis click gauche sur <b>Propriétés</b>!<br>
+  Dans l'onglet <b>Compatibilité</b>, cochez: <b>Executer se programme en mode Compatibilité pour:</b>, selectionnez ensuite dans la liste d'en dessous <b>Windows 98</b>, <b>Appliquez</b> puis faites <b>OK</b>.<br>
+  Vôtre sourie sera dorénavant en pleine forme après chaques Alt+Tab, en revanche, il est possible que des petits flash noirs apparaissent de temps en temps (je croit que sa dépend de la carte graphique)<br>
+  <br>
+  <a name="34" href="Aide-Fr.htm#34">III.4 Un ecran noir apparait après le chargement de la map t4c.</a><br>
+  Si ceci se produit, c'est que vous venez juste de créer vôtre compte auprès du serveur, le client affiche alors l'<b>aide</b> du jeux t4c, mais il y a quelques problèmes avec son affichage, appuyez sur <b>echap</b> et vous verrez la map !<br>
+  L'ecran est <b>noir</b> a cause que vous avez installer <b>DirectX 9.x</b>, vous pouvez remedier a ceci en désinstallant <b>DirectX9</b> (la meilleur facon: formatage :/).<br>
+  A la place de formater, je vous invite plutot a lire avec windows les images, elles se trouvent dans le Dossier <b>HelpFrench</b> du repertoire du client T4C !<br>
+  <b>Remarque:</b> Il est conseillé de posseder DirectX8 pour ne pas avoir ce type de problèmes !<br>
+  Il est aussi possible que l'écran fonctionne alors que vous possedez Directx9.x (ma fois je sait pas trop pourquoi ^^).<br>
+  <br>
+  <a name="4" href="Aide-Fr.htm#4">IV. Editer le jeux.</a><br>
+  Marre d'Althéa ? Envi de dévelloper un peut le tout ? Créer des nouveaux skins ? Cette Partie est faite pour VOUS !<br>
+  <b>Attention:</b> Pour les personnes pas habituées, va falloir s'accrocher! D'ailleur, je me doit de donner un exemple pour tous ses tutos ;)<br>
+  <br>
+  Il ya une autre chose dont je doit vous parler, lorsque vous faîtes une <b>modiffication</b> côté <b>client</b>, la seule <b>technique</b> possible pour qu'elle <b>fonctionne cher tout le monde</b>, c'est le <a href="Aide-Fr.htm#23">WebPatch</a>, il faudra réussir a <b>donner</b> tous les fichiers à <b>modifier</b> au <b>webpatch</b>!<br>
+  Par contre, pour une <b>modiffication</b> côté <b>Serveur</b>, <b>rien</b> ne doit être <b>donné</b> au <b>WebPatch</b>, je croit que c'est bien clair :).<br>
+  <br>
+  <a name="41" href="Aide-Fr.htm#41">IV.1 Editer les Maps.</a><br>
+  Pour le <b>mapping</b>, ya deux grandes parties ! La partie <b>Skin</b> et la partie <b>Colisions</b>!<br>
+  Le mieux est de commencer par la partie <b>Skin</b>, c'est asser logique, mais bon, vous pouvez très bien commencer par les <b>Colisions</b>!<br>
+  <br>
+  <b>Skin:</b><br>
+  <b>A savoir,</b> cette partie se fait seulement pour le <b>Client</b>!<br>
+  <b>Copiez</b> le <a href="DecodeurEncodeurMapClient" target="_blank">décodeur/encodeur de map</a> dans le dossier <b>Game Files</b> du dossier du <b>Client</b>!<br>
+  <b>Ouvrez</b> le <b>décodeur/encodeur</b>, <b>tapez</b> sur <b>1</b> puis <b>inscriver</b> un fichier <b>map</b>, il se chargera de créer un fichier <b>bmp</b>, faites le pour les 4 fichiers <b>map</b>!<br>
+  Il ya 4 fichiers <b>Map</b> pour le client:<br>
+  <b>WorldMap.Map</b> (Les 3 îles d'Arakas)<br>
+  <b>CavernMap.Map</b> (Les cavernes d'Arakas)<br>
+  <b>DungeonMap.Map</b> (Les donjons d'Arakas ?)<br>
+  <b>UnderWorld.Map</b> (La quatrième île, elle en vaut au moin 2)<br>
+  Une fois que vous avez fait les opérations pour les quatres fichiers <b>Map</b>, quatre <b>bmp</b> apparaissent alors dans le dossier <b>Game Files</b> du dossier du Client!<br>
+  Le système est simple, il suffit d'<b>editer</b> les <b>bmp</b> (je conseil Adobe Photoshop), de les enregistrer dans la même <b>qualitée</b> puis de les <b>réencoders</b> et seulement si vous editez worldmap.map de copier se <a href="MajMap" target="_blank">programme</a> dans le dossier <b>Game Files</b> du client puis de le lancer (sa enlèvera certains bugs qui peuvent venir ^^)<br>
+  Si vous voulez vous faire une <b>quatrième</b> île qui suit celles d'<b>Arakas</b>, editez <b>UnderWorld.Map.bmp</b>, <b>supprimez</b> le tout, et a vos pinceaux !<br>
+  Un <b>pixel</b> correspend à une id, exemple: un <b>pixel bleu clair</b> correspend a une <b>fontaine</b>!<br>
+  Pour comprendre comment dessiner, je vais vous donnez un exemple! L'exemple est comment mettre un mur qui ferme l'entrée du temple de LH!<br>
+  Editez <b>WorldMap.Map.bmp</b> avec <b>Adobe Photoshop</b> par exemple! Là, vous voyez une map vue du dessus, <b>LH</b> se trouve tout en haut à droite de la <b>Map</b>, <b>zoomez</b> a mort dessus, puis <b>deplacez</b> vous jusqu'au <b>temple</b>!<br>
+  <b>Prenez</b> la <b>pipette</b> et <b>copiez</b> un <b>pixel</b> (point) d'un mur, prenez le <b>crayon</b> puis continuez le mur du temple jusqu'à fermer l'ouverture du temple!<br>
+  <b>Enregistrez</b> l'image exactement dans la même <b>qualitée d'image</b>! <b>Lancez</b> ensuite le <b>décodeur/encodeur de map</b>, <b>tapez</b> sur <b>2</b> puis inscrivez le fichier <b>bmp</b> (WorldMap.Map.bmp pour l'exemple) et il se chargera de recréer le fichier en extension <b>Map</b>!<br>
+  Vous voyez alors apparaitre un nouveau fichier en extension <b>Map</b> (WorldMap.Map.bmp.map pour l'exemple), <b>renommez</b> le comme à la <b>base</b> (WorldMap.Map.bmp.map > WorldMap.map pour l'exemple !), puis <b>remplacez</b> le par l'ancien!<br>
+  Puis <b>copiez</b> se <a href="MajMap" target="_blank">programme</a> dans le dossier <b>Game Files</b> du client et <b>lancez</b> le afin qu'il enlève des éventuels bugs qui peuvent apparaitre seulement pour WorldMap.map ;).<br>
+  <br>
+  Vous pouvez essayer la <b>Map</b> en vous connectant sur vôtre Serveur! Le mur est bel et bien là Mais, vous arrivez a le traverser ^-^ !<br>
+  <br>
+  <b>Colisions:</b><br>
+  <b>A savoir,</b> cette partie se fait seulement pour le <b>Serveur</b>!<br>
+  Les <b>Colisions</b> permettent de bloquer les <b>mouvements</b>, les <b>pvps</b> etc..., donc nous voila dans cette partie:
+  Je garde encore l'exemple du mur d'LH!<br>
+  Ouvrez <b>T4C Storm Editor</b> (Démarrer > Tous Les Programmes > T4C Serveur > Edition > T4C Storm Editor Beta 0.66)!<br>
+  File > Load World Data > T4C Worlds.WDA<br>
+  Onglet <b>Map</b>, double cliquez sur <b>Realms Of Oblivion</b> (qui correspend à WorldMap.map), la même <b>map</b> que pour la première partie apparait alors (avec des autres couleurs)!<br>
+  Comme avant, <b>déplacez</b> vous tout en haut à droite avec le <b>click droit</b> puis repérez LH, <b>zoomez</b> a mort dessus, déplacez vous au temple, sur la <b>pallete</b> à droite, <b>prenez</b> la couleur <b>type 1</b> (la même que celle du mur), puis <b>continuez</b> le mur avec le <b>click gauche</b>!<br>
+  Vous l'aurez compri, un <b>pixel</b> correspend a un type de <b>Colision</b>, le type de <b>Colision</b> est inscrit a coté de chaques <b>couleurs</b> (8 couleurs).
+  <b>Cliquez</b> ensuite sur la <b>croix</b> en haut à droite, puis cliquez sur <b>Yes</b>, <b>enregistrez</b> le <b>WDA</b>, puis fermez le programme, voilà, relancez le Serveur, essayer le mur avec vôtre client ;)<br>
+  <b>Remarque:</b> Pour editer les <b>Colisions</b> de la Quatrième ile, prenez <b>Addon World</b>!<br>  <br>
+  Il ya une <b>technique</b> plus facile pour <b>editer</b> les <b>colisions</b>, j'en parlerai dans la prochaine release, promis :P.<br>
+  <br>
+  <a name="42" href="Aide-Fr.htm#42">IV.2 Créer un/des Monstre(s).</a><br>
+  <b>Ouvrez</b> <b>T4C Editor</b> (Démarrer > Tous Les Programmes > T4C Serveur > Edition > T4C Editor 1.00D).<br>
+  Il chargera automatiquement le WDA, une fois le chargement finni, <b>cliquez</b> sur l'onglet <b>Monstres</b> du <b>Navigateur</b>, faites un <b>Click droit</b> sur la <b>liste</b> du dessus puis un <b>Click gauche</b> sur <b>Ajouter</b>.<br>
+  Là, il demande l'<b>ID du monstre</b>, <b>inscrivez</b> n'importe quoi! (retennez le !!! Pour la compréhension du tuto, je donne un exemple: MonstreKalis).<br>
+  <b>Cliquez</b> ensuite sur <b>OK</b>, votre monstre apparait alors dans la liste, <b>recherchez</b> le puis <b>Double Cliquez</b> dessus!<br>
+  Ici, se trouve les <b>stats</b> du <b>monstre</b>: Vous avez deux <b>possibilitées</b>,<br>
+  Si vôtre <b>monstre</b> est là pour être <b>PNJ</b>, vous n'êtes pas obliger de mettre des points aux stats parce qu'un <b>pnj</b> ne combat que si vous l'ordonnez, décochez <b>Peu Attaquer</b> (essentiel pour un <b>PNJ</b>), <b>Clan</b> (vous pouvez mettre n'importe quoi)<br>
+  Si vôtre <b>monstre</b> est là pour se faire taper dessus, pour xp les users ^^, cochez <b>Peu Attaquer</b>, mettez biensur des <b>points</b> aux <b>stats</b>, mettez le dans un bon <b>clan</b>, mais aussi, editer se qu'ils <b>dropent</b> l'<b>xp</b> qu'ils donnent et leurs <b>sorts</b>!!!<br>
+  <b>Apparence</b>, qu'il sera simple <b>monstre</b> ou <b>pnj</b>, vous pouvez lui donner une <b>apparence</b> de <b>monstre</b>, <b>ou</b> si vous le souhaitez une apparence d'<n>user</b> (<b>Male:</b> Puppet, <b>Femelle:</b> Female Puppet, vous pouvez bien entendu editer les habits en cliqant sur <b>Editer habits...</b> :D)<br>
+  Une fois le <b>monstre</b> configuré, <b>cliquez</b> sur la <b>croix</b> en haut a droite, puis <b>cliquez</b> sur <b>Oui</b>.<br>
+  <br>
+  <a name="43" href="Aide-Fr.htm#43">IV.3 Créer un/des PNJ(s).</a><br>
+  Toujours avec l'editor <b>T4C Editor 1.00D</b> (Démarrer > Tous les Prorammes > T4C Serveur > Edition > T4C Editor 1.00D).<br>
+  <b>Cliquez</b> sur l'onglet <b>PNJs</b> du <b>Navigateur</b>, faites <b>bouton droit</b> sur la liste du dessus puis <b>click gauche</b> sur <b>Ajouter</b>.<br>
+  Là, il demande l'<b>ID du PNJ</b>, <b>inscrivez son nom</b> puis <b>cliquez</b> sur <b>OK</b> (retenez le !!! Pour la compréhension du tuto, je donne un exemple: PnjKalis).<br>
+  <b>Recherchez</b> son nom dans la liste puis <b>double cliquez</b> dessus.<br>
+  Commencant par <b>configurer</b> tout a droite de la fenêtre...<br>
+  <br>
+  <b>Nom:</b> Ce qui sera inscrit quand on fait <b>click droit</b> sur le <b>PNJ</b> en plein jeux.<br>
+  <b>Monstre:</b> C'est le <b>corp</b> du <b>PNJ</b>! Il ya deux possibilitées, Vous pouvez <b>prendre</b> un monstre déja fait par <b>Vircom</b> ou <b>prendre</b> un <b>monstre</b> que vous aviez créer au préalable: il se trouve tout en bas de la liste ;) (ex: MonstreKalis pour les suiveurs ;) ) (Voir partie <a href="Aide-Fr.htm#42">IV.2</a> pour la création d'un monstre).<br>
+  <br>
+  Sous <b>Code</b>, <b>double cliquez</b> sur <b>Initial Text</b> puis sur <b>Say Text</b>, ceci sera le <b>texte</b> que dira le <b>PNJ</b> lorsqu'on commencera la conversation avec lui, <b>inscrivez</b> un truc du genre: Salut Ami, Je suis blablabla... puis <b>Cliquez</b> sur <b>OK</b>.<br>
+  <b>Double cliquez</b> ensuite sur <b>Default Text</b> puis sur <b>Say Text</b>, ici sera le text que dira le <b>PNJ</b> lorsqu'il ne comprendra pas se que vous voulez dire ! <b>Mettez</b> un truc du genre: Allons ami, veuillez articulez lorsque vous parlez! <b>Cliquez</b> ensuite sur <b>OK</b>!<br>
+  Vous l'aurez compri ces deux texte sont comment dirais-je: <b>OBLIGATOIRES</b> ^^.<br>
+  Nous allons maintenant lui incorporer un <b>mot clé</b>: BYE, ADIEU, AU REVOIR (celui ci est primordialle pour quitter la conversation, même si il est pas obligatoire!)<br>
+  <b>Cliquez</b> sur le <b>bouton</b> le plus vers le haut entre <b>Instructions</b> et <b>Code</b> (C'est un Plus avec deux Accolades en bas a droite).<br>
+  Le <b>Mot Clé</b> apparait sous <b>Code</b>, faite un seul <b>Click</b> dessus puis <b>cliquez</b> ensuite sur le <b>bouton Crayon</b> a droite de <b>Code</b>.<br>
+  <b>Tapez</b>: BYE, <b>cliquez</b> ensuite sur <b>Ajouter</b>, <b>tapez</b> ensuite ADIEU, puis <b>cliquez</b> sur <b>Ajouter</b>, <b>tapez</b> encore AU REVOIR puis <b>cliquez</b> sur <b>Ajouter</b><br>
+  Sous <b>Relation</b>, <b>cochez OU</b> (ET: Tous les Mots Clés doivent être trouvés, OU: Un des Mots Clés doit être trouvé, ORDONNER: Tous les Mots Clés doivent être trouvé dans l'ordre indiqué). <b>Cliquez</b> ensuite sur <b>OK</b>.<br>
+  Vôtre mot clef change alors en <b>BYE, ADIEU, AU REVOIR</b>, <b>double cliquez</b> dessus puis sur SayText, ici sera le message que dira le <b>PNJ</b> lorsque l'on lui dira l'un des <b>3 mots clef</b> (BYE, ADIEU, AU REVOIR), <b>mettez</b> un truc genre: Adieu, Ami... puis cliquez sur <b>OK</b>.<br>
+  Bon, si il dit Adieu et qu'il ne se casse pas, c'est qu'il a un prob ^^, <b>restez</b> dans le mot clef <b>BYE, ADIEU, AU REVOIR</b> et <b>double cliquez</b> sur <b>BreakConversation</b> dans <b>Instructions</b> (arrête la conversation).<br>
+  Nous avons là les <b>3 mot clef</b> les plus <b>IMPORTANTS</b> de tous les <b>PNJ</b>.<br>
+  <br>
+  <b>A savoir,</b> dans T4C, il ya toujours les même <b>mots clés principaux</b> qui tombent:<br>
+  <br>
+  Nom, Qui est tu : le <b>PNJ</b> se présente.<br>
+  Travail, Quêtes, Tâches : le <b>PNJ</b> attribut une <b>quête</b> à l'user.<br>
+  Acheter : Montre la fenêtre des achats. (Voir le bouton <b>Editer Marchand</b> pour ses ventes).<br>
+  Vendre : Montre la fenêtre des ventes. (Voir le bouton <b>Editer Marchand</b> pour ses achats).<br>
+  Apprendre : Montre la fenêtre des techniques a apprendre. (Voir le bouton <b>Editer entraîneur</b> pour ses techniques à apprendre).<br>
+  Entrainer : Montre la fenêtre des techniques a entrainer. (Voir le bouton <b>Editer entraîneur</b> pour ses techniques à entraîner).<br>
+  Adieu, Bye, Au Revoir : le <b>PNJ</b> coupe la conversation.<br>
+  <br>
+  <b>Mais aussi,</b> vous pouvez mettre du texte en <b>GRAS</b> pour que la personne parlant avec le <b>PNJ</b> sait quel <b>mot clé</b> taper pour continuer la conversation! Il suffit d'entourer les mots de: " (ex: Salut, je travail pour "Artherk").<br>
+  <b>Remarque:</b> Pour je ne sait quels raisons, si on entoure <b>plusieurs mots</b> de <b>guillemets</b> (Ex: Hi, je suis "Le Boureau" d'Artherk), il est possible que des <b>bugs surviennent</b>, genre <b>D'Artherk</b> se met aussi en gras etc...<br>
+  Pour y <b>remedier</b>, <b>mettez</b> un mot après l'autre entre <b>guillemets</b> (Ex: Hi, je suis "Le" "Boureau" d'Artherk), vous <b>eviterez</b> ainsi les bugs ;).<br>
+  <br>
+  Vous pouvez ajouter autants de mot clef que vous voulez !<br>
+  Une fois le PNJ</b> configuré, <b>cliquez</b> sur la <b>croix</b> en haut a droite puis sur <b>Oui</b>.<br>
+  <br>
+  <b>Remarque:</b><br>
+  Les définitions des <b>Instructions</b> sont <a href="Def\Ins.htm" target="_blank">ici</a>.<br>
+  La liste des <b>variables</b> connues est <a href="Def\VarEt.htm" target="_blank">ici</a>.<br>
+  <br>
+  Je donnerai un autre exemple de <b>mots clé</b> avec plusieurs <b>instruction</b> afin de mieux comprendre dans la prochaine release, promis ^^.<br>
+  <br>
+  <a name="44" href="Aide-Fr.htm#44">IV.4 Summon d'un Monstre ou PNJ.</a><br>
+  Il ya deux moyens de summoner, <b>Manuellement</b> (Un GM le summon Ingame) ou <b>Automatiquement</b> (Le PNJ/Monstre se summon N fois à chaques démarrages du serveur dans un délai configurable et respawn chaques X secondes si MORT(s)).<br>
+  <br>
+  <b>Manuellement</b>, ya pas plus simple: un <b>GM</b> tape: summon monster (PNJ/Monstre) at (location) (attention, si vous summonez un corp de PNJ, celui ci sera un monstre et non un PNJ, il faut donc summoner l'âme du PNJ ;) ) et pour <b>location</b>: X,Y,Monde. Vous devez avoir le flag de summon!<br>
+  <br>
+  <b>Automatiquement</b><br>
+  Avec <b>T4C Editor 1.00D</b>, dans le menu en haut, <b>cliquez</b> sur <b>Divers Editeurs</b> puis sur <b>Positions</b>.<br>
+  <br>
+  <b>Nom du groupe:</b> <b>Mettez</b> n'importe quoi (retennez le !).<br>
+  <b>Temps Min.:</b> C'est le temps minimum afin que le groupe soit summoné.<br>
+  <b>Temps Max.:</b> Le temps max afin que le groupe soit summoné.<br>
+  <b>Apparition Min.:</b> Le nombre minimum de summons.<br>
+  <b>Apparition Max.:</b> Le nombre maximum de summons.<br>
+  <br>
+  <b>Remarque:</b> Pour un <b>PNJ</b>, il doit y en avoir que <b>un</b> du même <b>type</b> (donc 1 en apparition Min. et Max.), ensuite, il doit se <b>summoner</b> tout de suite après l'ouverture du Serveur (donc 1 pour Temps Min. et Max.), donc en gros, mettez <b>1</b> partout ;).<br>
+  <br>
+  Tout à droite, dans la <b>liste</b>, sous <b>Monstres</b>, <b>sellectionnez</b> tous les <b>types</b> de <b>monstres</b> que vous voulez qui spawnent (attention, une fois un type de monstres suffits, et un après l'autres lool ^^) ou pour un <b>PNJ</b> selectionnez juste son <b>âme</b> (pas son corp!) puis <b>cliquez</b> sur le <b>bouton plus</b> juste à coté!<br>
+  <br>
+  <b>Enfaite,</b> A chaques fois que le Serveur veut spawner un <b>monstre/PNJ</b> de se groupe, un de la <b>liste</b> sera pri au hasard!<br>
+  <br>
+  Maintenant que vôtre groupe est préparé, <b>cliquez</b> sur le <b>bouton plus</b> qui se trouve tout en haut à gauche!<br>
+  Voilà, vôtre groupe à bien été cré !! Il faut encore dire où est ce qu'il doit <b>spawner</b>!<br>
+  C'est juste en dessous, sous <b>groupe</b>, <b>cliquez</b> sur la liste et cliquez sur le nom du groupe que vous venait juste de créer (celui que vous deviait retenir :D)<br>
+  Ensuite, en dessous, <b>X pos</b> et <b>Y pos</b> sont les positions <b>X</b> et <b>Y</b> où doit spawner vôtre PNJ et encore plus bas (sous <b>Monde</b>), vous devez choisir la <b>Carte</b> où celui ci doit spawner!<br>
+  <b>Cliquez</b> ensuite sur le <b>bouton plus</b> qui se trouve juste à coté!<br>  <b>Cliquez</b> ensuite sur la <b>croix</b> en haut à droite, <b>fermez</b> le programme en entier, et au moment de la demande d'enregistrement, dite OUI ;) !<br>
+  <br>
+  <b>Remarque:</b> Au lancement du Serveur, celui ci lance tous les <b>groupes</b>, au moment où il est temps pour un <b>groupe</b> de <b>spawner</b> un <b>monstre/pnj</b>, il en prend un au <b>hasard</b> dans la liste des <b>Monstres</b>, puis cherche sa <b>position</b> de <b>spawn</b> dans la liste d'en bas!<br>
+  <br>
+  <a name="5" href="Aide-Fr.htm#5">V. Astuces afin de mieux créer ou éditer.</a><br>
+  Ici sera, une fois que vous avez compri comment ajouter/supprimer/créer/etc.. des objets/sorts/quetes/etc..., des techniques supplémentaires ou des listes pour encore mieu s'en sortir !!<br>
+  <br>
+  <a name="51" href="Aide-Fr.htm#51">V.1 Liste des skins monstres/objets/sorts et icones (par Yebor).</a><br>
+  Liste des icones des sorts: <a href="Yebor Listes\icone sort.htm" target="_blank">ici</a>.<br>
+  Liste des skins des monstres: <a href="Yebor Listes\liste des skin des monstres.htm" target="_blank">ici</a>.<br>
+  Liste des skins des objets: <a href="Yebor Listes\liste des skin des objets.htm" target="_blank">ici</a>.<br>
+  Liste des skins des sorts: <a href="Yebor Listes\liste des skin des sorts.htm" target="_blank">ici</a>.<br>
+  <br>
+  <a name="52" href="Aide-Fr.htm#52">V.2 Liste des commandes gm, flags et coordonées (Stripée par Kalis).</a><br>
+  Pour avoir les trois listes, c'est <a href="CommandesGMFlagsCoorId\CommandesGMFlagsCoorId.htm" target="_blank">ici</a>.<br>
+  <br>
+  <a name="53" href="Aide-Fr.htm#53">V.3 Liste des instructions et variables connues pour l'ET.</a><br>
+  La liste des instructions est <a href="Def\Ins.htm" target="_blank">ici</a>.<br>
+  Pour la liste des variables, c'est <a href="Def\VarEt.htm" target="_blank">ici</a>.<br>
+  <br>
+  <a name="54" href="Aide-Fr.htm#54">V.4 Documents officiels sur le serveur, l'editeur et l'animation.</a><br>
+  La Bible Animateur GOA ici: Démarrer > Tous les Programmes > T4C Serveur > Documents > Bible Anim. Goa<br>
+  L'aide sur T4C Editor (traduit par Akado) ici: Démarrer > Tous les Programmes > T4C Serveur > Documents > T4C Editor (Aide Fr)<br>
+  Le Manuel de T4C Serveur (en anglais) ici: Démarrer > Tous les Programmes > T4C Serveur > Documents > T4C Server Manuel<br>
+  <br>
+  <a name="55" href="Aide-Fr.htm#55">V.5 La Soluce de T4C en complète.</a><br>
+  Pour voir la soluce complète de T4C, allez ici: Démarrer > Tous les Programmes > T4C Serveur > Aide-Animateurs-Fr<br>
+  Vous avez aussi la carte complète d'Althéa ici: Démarrer > Tous les Programmes > T4C Serveur > Documents > Althéa Flash<br>
+  <br>
+  <a name="56" href="Aide-Fr.htm#56">V.6 Décoder/Encoder facilement un fichier vsf/wda/elng.</a><br>
+  Pour faciliter le décodage/encodage manuel d'un fichier (wda/vsf/elng), la release installe automatiquement un programme disponible par un menu déroulant.<br>
+  Cliquez avec le bouton droit sur un fichier type wda/vsf/elng puis sur le click gauche sur Décoder/Encoder, l'operation se faira automatiquement.<br>
+  Vous pouvez double clickez sur celui ci pour ouvrir le fichier avec Wordpad.<br>
+  <br>
+  <a name="57" href="Aide-Fr.htm#57">V.7 Pleins d'astuces l'une sur l'autres, bonne lecture ! (Trouvails de T4C-Serveur.fr.st).<br>
+  <a href="All Astuces\Forum  Ro-Emulateur  Truc spéciaux, astuce, flag, etc.htm" target="_blank">Ici</a> se trouve tout plein d'astuces concernant le Serveur !! Toutes les astuces sont des trouvails des membres de T4C-Serveur.fr.st ! Merci à eux !!
+  <! Le Par Kalis !>
+  <o:p></o:p></span></span></p>
+  <p class=color1 align=right style='text-align:right'><span style='mso-bookmark:
+  22b'><span style='font-size:8.5pt;font-family:Verdana'>Par Kalis [-Gaara-]</span></span><span
+  style='font-size:8.5pt;font-family:Verdana'><o:p></o:p></span></p>
+</td>
+</tr>
+</table>
+</center>
+</body>
+
+</html>

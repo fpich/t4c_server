@@ -13,10 +13,21 @@ from enum import IntEnum
 class PacketID(IntEnum):
     # Early gameplay/menu ids from the legacy request table.
     PUT_PLAYER_IN_GAME = 13
+    # RQ_PlayerMove : 1-8 = directions, 9 = position. (tfc_main.h original)
+    MOVE_NORTH = 1
+    MOVE_NORTH_EAST = 2
+    MOVE_EAST = 3
+    MOVE_SOUTH_EAST = 4
+    MOVE_SOUTH = 5
+    MOVE_SOUTH_WEST = 6
+    MOVE_WEST = 7
+    MOVE_NORTH_WEST = 8
+    GET_PLAYER_POS = 9
     REGISTER_ACCOUNT = 14
     EXIT_GAME = 20
     CREATE_PLAYER = 25
     GET_PERSONAL_PC_LIST = 26
+    TOGGLE_PAGE = 89
     RETURN_TO_MENU = 38
     GET_TIME = 45
     FROM_PREINGAME_TO_INGAME = 46

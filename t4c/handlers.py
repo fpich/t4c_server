@@ -13,6 +13,7 @@ import logging
 import re
 from typing import TYPE_CHECKING
 
+from .characters import Character
 from .codec import DecodedPacket, PacketReader, PacketWriter, T4CProtocolError
 from .protocol import PacketID
 from .session import SessionState
@@ -37,6 +38,20 @@ class PacketDispatcher:
         self.register(PacketID.AUTHENTICATE_SERVER_VERSION, handle_authenticate_server_version)
         self.register(PacketID.EXIT_GAME, handle_exit_game)
         self.register(PacketID.GET_PERSONAL_PC_LIST, handle_get_personal_pc_list)
+        self.register(PacketID.CREATE_PLAYER, handle_create_player)
+        self.register(PacketID.TOGGLE_PAGE, handle_toggle_page)
+        self.register(PacketID.PUT_PLAYER_IN_GAME, handle_put_player_in_game)
+        self.register(
+            PacketID.FROM_PREINGAME_TO_INGAME,
+            handle_from_preingame_to_ingame,
+        )
+        for move_id in MOVE_OFFSETS:
+            self.register(move_id, handle_player_move)
+        self.register(PacketID.GET_PLAYER_POS, handle_player_move)
+        self.register(
+            PacketID.MAX_CHARACTERS_PER_ACCOUNT_INFO,
+            handle_max_characters_per_account_info,
+        )
 
     def register(self, packet_id: int, handler: PacketHandler) -> None:
         packet_id = int(packet_id)
@@ -315,33 +330,357 @@ async def handle_exit_game(
 async def handle_get_personal_pc_list(
     server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
 ) -> None:
-    """Request 26: return the account's character list.
+    """Requête 26 : liste des personnages du compte.
 
-    The original server serializes the response as:
+    Le serveur original envoie d'abord le paquet 103 (nombre maximal de
+    personnages par compte) pour piloter l'option « Nouveau personnage »,
+    puis sérialise la liste ainsi :
       u8 count
-      repeated count times:
-        u8 name_len, name bytes, u16 field_a, u16 field_b
-
-    Persistence/character creation is the next milestone.  For now an
-    authenticated development account owns zero characters, which is a valid
-    response and lets the stock client advance to its character-creation UI.
+      répété count fois : u8 name_len, name, i16 race, i16 level
     """
     session.character_list_requests += 1
     if packet.body:
         log.debug(
-            "request 26 from %s unexpectedly carries %d body byte(s): %s",
+            "requête 26 de %s avec %d octet(s) inattendu(s) : %s",
             session.address,
             len(packet.body),
             packet.body.hex(" "),
         )
-
+    max_writer = PacketWriter(PacketID.MAX_CHARACTERS_PER_ACCOUNT_INFO)
+    max_writer.write_u8(server.characters.max_per_account)
+    server.send_packet(session.address, max_writer)
+    characters = (
+        server.characters.characters(session.account) if session.account else []
+    )
     response = PacketWriter(PacketID.GET_PERSONAL_PC_LIST)
-    response.write_u8(0)
+    response.write_u8(len(characters))
+    for character in characters:
+        encoded = character.name.encode("cp1252")
+        response.write_u8(len(encoded)).write_bytes(encoded)
+        response.write_i16(character.race)
+        response.write_i16(character.level)
+    server.send_packet(session.address, response)
+    log.info(
+        "PERSONNAGES client=%s compte=%r nombre=%d max=%d requêtes=%d",
+        session.address,
+        session.account,
+        len(characters),
+        server.characters.max_per_account,
+        session.character_list_requests,
+    )
+
+
+async def handle_max_characters_per_account_info(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 103 : nombre maximal de personnages par compte (u8)."""
+    response = PacketWriter(PacketID.MAX_CHARACTERS_PER_ACCOUNT_INFO)
+    response.write_u8(server.characters.max_per_account)
     server.send_packet(session.address, response)
 
+
+async def handle_create_player(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 25 : création d'un personnage.
+
+    Format confirmé depuis le gestionnaire RQ_CreatePlayer original :
+      requête  = 6 × u8 réponses du questionnaire, u8 name_len, name
+      réponse  = u8 résultat, puis Character::packet_stats :
+                 i8 AGI, i8 END, i8 INT, i8 luck, i8 STR, i8 wil, i8 WIS,
+                 i32 max HP, i32 HP, i16 max mana, i16 mana
+    Le résultat 0 est la branche succès du serveur original ; les autres
+    valeurs signalent les échecs de création (état, nom, quota).
+    """
+    session.create_player_requests += 1
+    reader = PacketReader(packet.body)
+    try:
+        answers = tuple(reader.read_u8() for _ in range(6))
+        name = reader.read_pascal_u8_text()
+    except T4CProtocolError as exc:
+        log.warning("requête 25 malformée de %s : %s", session.address, exc)
+        return
+    _ensure_consumed(reader, packet.packet_id)
+    result = 0
+    if session.state is not SessionState.CHARACTER_MENU or not session.account:
+        result = 1
+    elif not _name_is_syntactically_valid(name):
+        result = 2
+    elif (
+        server.characters.name_exists(name)
+        or name.casefold() in server.reserved_names
+    ):
+        result = 3
+    elif (
+        len(server.characters.characters(session.account))
+        >= server.characters.max_per_account
+    ):
+        result = 4
+    character = None
+    if result == 0:
+        character = Character(name=name, answers=answers)
+        if not server.characters.create(session.account, character):
+            result = 3
+            character = None
+        elif server.persistence is not None:
+            server.persistence.save_character(session.account, character)
+    response = PacketWriter(PacketID.CREATE_PLAYER)
+    response.write_u8(result)
+    if character is not None:
+        session.active_character = character.name
+        response.write_i8(character.agi)
+        response.write_i8(character.end)
+        response.write_i8(character.intelligence)
+        response.write_i8(0)
+        response.write_i8(character.strength)
+        response.write_i8(0)
+        response.write_i8(character.wisdom)
+        response.write_i32(character.max_hp)
+        response.write_i32(character.hp)
+        response.write_i16(character.max_mana)
+        response.write_i16(character.mana)
+    server.send_packet(session.address, response)
     log.info(
-        "PERSONNAGES client=%s nombre=0 requêtes=%d version_ok=%s",
+        "CRÉATION nom=%r compte=%r résultat=%d client=%s",
+        name,
+        session.account,
+        result,
         session.address,
-        session.character_list_requests,
-        session.protocol_version_accepted,
+    )
+
+
+async def handle_toggle_page(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 89 (RQ_TogglePage) : bascule d'affichage d'une page.
+
+    Confirmé depuis le gestionnaire original : un seul u8 d'état, le serveur
+    n'envoie aucune réponse applicative (l'ACK transport suffit).
+    """
+    session.toggle_page_requests += 1
+    reader = PacketReader(packet.body)
+    try:
+        new_state = reader.read_u8()
+    except T4CProtocolError as exc:
+        log.warning("requête 89 malformée de %s : %s", session.address, exc)
+        return
+    _ensure_consumed(reader, packet.packet_id)
+    session.page_toggled = bool(new_state)
+    log.info(
+        "PAGE bascule client=%s état=%s requêtes=%d (aucune réponse applicative)",
+        session.address,
+        session.page_toggled,
+        session.toggle_page_requests,
+    )
+
+
+def _write_ingame_stats(
+    writer: "PacketWriter",
+    character: "Character",
+    unit_id: int,
+    x: int = 0,
+    y: int = 0,
+    world: int = 0,
+) -> None:
+    """Sérialise la charge utile de RQ_PutPlayerInGame (format original).
+
+    u8 résultat, i32 ID unité, i16 X, i16 Y, i16 monde,
+    i32 HP, i32 HP max, i16 mana, i16 mana max,
+    i32 XP hi, i32 XP lo, i32 XP prochain niveau hi/lo,
+    i16 STR, i16 END, i16 AGI, i16 wil, i16 WIS, i16 INT, i16 luck,
+    heure (6 champs comme GET_TIME), i32 or, i16 niveau,
+    i32 XP niveau précédent hi/lo.
+    """
+    from datetime import datetime
+
+    now = datetime.now()
+    writer.write_u8(0)  # résultat : 0 = chargé
+    writer.write_i32(unit_id)
+    writer.write_i16(x)
+    writer.write_i16(y)
+    writer.write_i16(world)
+    writer.write_i32(character.hp)
+    writer.write_i32(character.max_hp)
+    writer.write_i16(character.mana)
+    writer.write_i16(character.max_mana)
+    writer.write_i32(0)  # XP hi
+    writer.write_i32(0)  # XP lo
+    writer.write_i32(0)  # XP prochain niveau hi
+    writer.write_i32(0)  # XP prochain niveau lo
+    writer.write_i16(character.strength)
+    writer.write_i16(character.end)
+    writer.write_i16(character.agi)
+    writer.write_i16(0)  # wil
+    writer.write_i16(character.wisdom)
+    writer.write_i16(character.intelligence)
+    writer.write_i16(0)  # luck
+    writer.write_i8(now.second)
+    writer.write_i8(now.minute)
+    writer.write_i8(now.hour)
+    writer.write_i8(now.weekday())
+    writer.write_i8(now.day)
+    writer.write_i8(now.month)
+    writer.write_i16(now.year)
+    writer.write_i32(0)  # or
+    writer.write_i16(character.level)
+    writer.write_i32(0)  # XP niveau précédent hi
+    writer.write_i32(0)  # XP niveau précédent lo
+
+
+async def handle_put_player_in_game(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 13 : charger un personnage et entrer en pré-jeu.
+
+    Confirmé depuis AsyncRQFUNC_PutPlayerInGame original :
+      requête  = u8 name_len, name
+      réponse  = u8 résultat (0 = chargé), puis _write_ingame_stats
+    En cas d'échec le serveur original n'envoie que l'u8 résultat non nul.
+    """
+    session.put_in_game_requests += 1
+    reader = PacketReader(packet.body)
+    try:
+        name = reader.read_pascal_u8_text()
+    except T4CProtocolError as exc:
+        log.warning("requête 13 malformée de %s : %s", session.address, exc)
+        return
+    _ensure_consumed(reader, packet.packet_id)
+    character = None
+    if session.account:
+        for candidate in server.characters.characters(session.account):
+            if candidate.name.casefold() == name.casefold():
+                character = candidate
+                break
+    if character is None:
+        response = PacketWriter(PacketID.PUT_PLAYER_IN_GAME)
+        response.write_u8(1)  # échec de chargement
+        server.send_packet(session.address, response)
+        log.info(
+            "MONDE chargement refusé nom=%r compte=%r client=%s",
+            name,
+            session.account,
+            session.address,
+        )
+        return
+    session.active_character = character.name
+    session.unit_id = (session.unit_id or 0) + 1
+    session.state = SessionState.PRE_INGAME
+    if server.persistence is not None:
+        pos = server.persistence.position(character.name)
+        if pos is not None:
+            session.pos_x, session.pos_y, session.pos_world = pos
+    response = PacketWriter(PacketID.PUT_PLAYER_IN_GAME)
+    _write_ingame_stats(
+        response,
+        character,
+        session.unit_id,
+        session.pos_x,
+        session.pos_y,
+        session.pos_world,
+    )
+    server.send_packet(session.address, response)
+    log.info(
+        "MONDE personnage chargé nom=%r compte=%r ID=%d client=%s -> %s",
+        character.name,
+        session.account,
+        session.unit_id,
+        session.address,
+        session.state.name,
+    )
+
+
+async def handle_from_preingame_to_ingame(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 46 : confirmation d'entrée en jeu.
+
+    Confirmé depuis RQFUNC_FromPreInGameToInGame original : la réponse est
+    u8 résultat (0 = OK, 1 = déjà en jeu). La liste des unités en vue
+    (packet_inview_units) est vide dans notre monde de développement,
+    le serveur original n'envoie alors que l'u8 résultat.
+    """
+    session.enter_world_requests += 1
+    if session.state is SessionState.PRE_INGAME:
+        result = 0
+        session.state = SessionState.IN_WORLD
+    elif session.state is SessionState.IN_WORLD:
+        result = 1
+    else:
+        result = 1
+    response = PacketWriter(PacketID.FROM_PREINGAME_TO_INGAME)
+    response.write_u8(result)
+    server.send_packet(session.address, response)
+    log.info(
+        "MONDE entrée en jeu client=%s perso=%r résultat=%d -> %s",
+        session.address,
+        session.active_character,
+        result,
+        session.state.name,
+    )
+
+
+# Directions de RQ_PlayerMove (tfc_main.h / DIR::MOVE originaux).
+# Le monde 2D de T4C : X croît vers l'est, Y croît vers le sud.
+MOVE_OFFSETS: dict[int, tuple[int, int]] = {
+    int(PacketID.MOVE_NORTH): (0, -1),
+    int(PacketID.MOVE_NORTH_EAST): (1, -1),
+    int(PacketID.MOVE_EAST): (1, 0),
+    int(PacketID.MOVE_SOUTH_EAST): (1, 1),
+    int(PacketID.MOVE_SOUTH): (0, 1),
+    int(PacketID.MOVE_SOUTH_WEST): (-1, 1),
+    int(PacketID.MOVE_WEST): (-1, 0),
+    int(PacketID.MOVE_NORTH_WEST): (-1, -1),
+}
+
+
+async def handle_player_move(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requêtes 1-9 (RQ_PlayerMove / RQ_GetPlayerPos).
+
+    Confirmé depuis RQFUNC_PlayerMove original :
+      - 9 (position) : réponse i16 X, i16 Y, i16 monde, sans condition d'état.
+      - 1-8 (mouvements) : uniquement si le joueur est en jeu ; le serveur
+        original envoie les objets périphériques (rien dans notre monde vide)
+        puis l'événement __EVENT_OBJECT_MOVED (id 1) : i16 X, i16 Y puis les
+        informations de l'unité. Notre monde de développement n'ayant ni carte
+        ni collisions, tout déplacement est accepté.
+    """
+    if packet.packet_id == int(PacketID.GET_PLAYER_POS):
+        response = PacketWriter(PacketID.GET_PLAYER_POS)
+        response.write_i16(session.pos_x)
+        response.write_i16(session.pos_y)
+        response.write_i16(session.pos_world)
+        server.send_packet(session.address, response)
+        log.debug(
+            "POSITION client=%s (%d,%d,%d)",
+            session.address,
+            session.pos_x,
+            session.pos_y,
+            session.pos_world,
+        )
+        return
+    if session.state is not SessionState.IN_WORLD:
+        return
+    dx, dy = MOVE_OFFSETS[packet.packet_id]
+    session.pos_x += dx
+    session.pos_y += dy
+    if server.persistence is not None and session.active_character:
+        server.persistence.save_position(
+            session.active_character, session.pos_x, session.pos_y, session.pos_world
+        )
+    # Événement __EVENT_OBJECT_MOVED (id 1) : i16 X, i16 Y.
+    event = PacketWriter(1)
+    event.write_i16(session.pos_x)
+    event.write_i16(session.pos_y)
+    server.send_packet(session.address, event)
+    session.move_requests += 1
+    log.info(
+        "MOUVEMENT client=%s perso=%r -> (%d,%d,%d) requêtes=%d",
+        session.address,
+        session.active_character,
+        session.pos_x,
+        session.pos_y,
+        session.pos_world,
+        session.move_requests,
     )

@@ -1,0 +1,192 @@
+Traduction FR. par Kalis:
+
+T4C Shell v1.01, shell control for T4C Server.
+Copyright (C) Vircom inc. 1998-99. All rights reserved.
+
+Usage: T4CShell [\\nom_du_pc] [option] [parametres]
+
+   \\nom_du_pc
+       Spécifi le nom de l'ordinateur où est installé T4C Serveur.
+       Cette option est seulement pour la propre utilisation du Serveur, et non de la Database.
+       Si vous n'utilisez pas se paramètre, le nom courant de l'ordinateur sera utilisé.
+
+   Options:
+      -shutdown <minutes> | now | cancel
+      -noverbose
+      -alive
+      -maintaindb [backup "dirrection" | nobackup] "dirrection database"
+      -waitshutdown <secondes>
+      -deleteaccount [dbaccount "identiffiant"][dbpwd "mot_de_passe"] "compte_porteur"
+
+      ? ou /? Affiche une aide détaillée
+
+      -shutdown <minutes> | now | cancel
+          Ferme le Serveur après le temps donné. Vous pouvez choisir
+          un temps (en minutes), Le fermer tout de suite (now) ou annuler
+          la fermeture du Serveur (cancel). Comptez au moin 1 ou 2
+          minutes après l'execution de la fermeture du Serveur pour qu'il
+          soit réèllement fermé!
+
+          Conseil: Relancez T4CShell avec le paramètre -waitshutdown <secondes>
+          Mettez le temps de l'execution de la fermeture + 1 ou 2 minutes.
+          Ceci permettra d'affirmer la fermeture du Serveur.
+
+          Ex.: "C:\Program Files\T4C Server\T4CShell.exe" -shutdown 5
+          //Conseil
+          Ex.: "C:\Program Files\T4C Server\T4CShell.exe" -waitshutdown 420
+          (On a mit 5 minutes d'attente pour la fermeture du Serveur, se qui fait en secondes
+          5X60=300 (300 secondes) plus deux minutes en secondes 2X60=120 (120 secondes), donc
+          300+120=420 (420 secondes d'attente pour affirmer la fermeture du Serveur)).
+
+      -noverbose
+          Ceci désactive tous les textes de la console, y compri l'intro, la license etc...
+
+      -alive
+          Vérifi si le Serveur est ouvert. Si il l'est, T4CShell
+          se ferme en retournant 1, sinon, il retourne 2.
+
+      -maintaindb [backup "dirrection" | nobackup] "dirrection database"
+          Répare et Compresse la Database spécifiée (doit avoir l'extension *.mdb).
+          Vous pouvez spécifier l'option backup avec sa dirrection pour que T4CShell
+          fasse d'abord un backup de la database dans la dirrection voulue et que
+          seulement après, fait l'operation de réparage & compactage.
+          L'option nobackup dit a T4CShell de ne pas faire de backup de la Database
+          (Par défaut).
+          Si aucuns des deux paramètres sont utilisés, aucuns backups seront crées!
+
+          Ex.: "..\T4CShell.exe" -maintaindb "C:\Program Files\T4C Server\T4C.mdb"
+          (Fait Cache l'operation de réparage et compactage)
+
+          Ex2.: "..\T4CShell.exe" -maintaindb backup "E:\T4C Backup.mdb" "C:\T4C Server\T4C.mdb"
+          (Fait d'abord un backup puis fait l'operation de réparage et compactage)
+
+      -waitshutdown <secondes>
+          Attend jusqu'a se que le Serveur se ferme pour se fermer et retourner 2.
+          Vous devez spécifier en secondes combien de temps T4CShell restera ouvert
+          au cas où il ne detecte pas la fermeture du Serveur (par exemple si le SysOp
+          annule la fermeture du Serveur). Si la fenêtre se ferme après le laps de temps
+          donné ou si le Serveur a eu une erreur, celui ci retournera 1, par contre, si
+          celui ci detecte la réèlle fermeture du Serveur, il se fermera tout seul en retournant 2.
+          Le Serveur devrait se fermer une ou deux minutes après l'execution de la fermeture du Serveur.
+
+          Conseil: Voir le paramètre -shutdown pour une meilleur compréhension de celui-ci
+
+          Ex.: "..\T4CShell.exe" -waitshutdown 300
+
+      -deleteaccount [dbaccount "identiffiant"][dbpwd "mot_de_passe"] "compte_porteur"
+          Supprime un compte porteur spécifié par "compte_porteur" de la Database
+          (utilise T4C Server DSN). Cette commande met en suretée tous les joueurs, objets,
+          sorts etc... Une fois le compte supprimé, il ne restera plus rien de celui-ci !
+          Si vous utilisez un mot de passe pour vôtre Database, utilisez les paramètres dbaccount
+          et dbpwd pour y dire l'identiffiant et son mot de passe ! A UTILISER AVEC PRECAUTION
+
+          Remarque: Cette action supprime un COMPTE PORTEUR et non pas un COMPTE, ya une différence ;)
+
+          Ex.: "..\T4CShell.exe" -deleteaccount "PorteurKalis"
+          (ceci supprimera le compte porteur PorteurKalis dans une database non protégée par mot de passe)
+
+          Ex2.: "..\T4CShell.exe" -deleteaccount dbaccount "Kalis" dbpwd "JeVousVoisVenir" "PorteurKalis"
+          (ceci supprimera le compte porteur PorteurKalis dans une database protégée par l'identifiant Kalis
+          et par le mot de passe JeVousVoisVenir)
+
+   Valeurs Retournées:
+      -3:  Tous les paramètres ne sont pas présents
+      -2:  L'aide étendue est demandée.
+      -1:  Aucuns paramètres sont justes.
+       0:  Action faites avec succès.
+       1:  T4C Serveur est lancé.
+       2:  T4C Serveur n'est pas trouvé.
+       3:  T4C Server s'initialise.
+       4:  Backup loupé.
+       5:  Ne peut pas écrire dans le Serveur.
+
+   REMARQUES: -Avec tous types de programmations, types C++ , C , Delphi , NSIS...
+              Il est possible de retenir les valeurs retournées pour une utilisation propre au programme
+              que vous créez! Ceci prend une tournure intéréssante dans le fait qu'il est possible
+              de savoir si le Serveur est actif ou inactif ;)
+              Je vous laisse donc a vos propres idées très créatifs ^^
+
+              -Si vous executez T4CShell avec aucunes options, paramètres, il se chargera d'afficher
+              une petite aide !
+
+------------------------------------------------------------------------------------------------------------------
+
+Original EN. Help:
+
+T4C Shell v1.01, shell control for T4C Server.
+Copyright (C) Vircom inc. 1998-99. All rights reserved.
+
+Usage: T4CShell [\\server_name] [option] [parameters]
+
+   Options:
+      -shutdown <minutes> | now | cancel
+      -noverbose
+      -alive
+      -maintaindb [backup "path" | nobackup] "access database"
+      -waitshutdown <max wait seconds>
+      -deleteaccount [dbaccount "account"][dbpwd "pwd"] "account"
+      ? or /? for extended help.
+
+      \\server_name
+          Specifies the machine name on which T4C Server resides.
+          This is only used for server queries, not database
+          functions. If you omit this, the current machine name
+          will be used.
+
+      -shutdown <minutes> | now | cancel
+         Shuts down the server after a given time. You can either
+         specify a time (in minutes), NOW or CANCEL. Allow at least
+         1 to 2 minutes after shutdown triggers before server actually
+         stops running.
+         Ex.: T4CShell -shutdown 5
+
+      -noverbose
+         This will disable all console text, including the intro
+         copyright notice.
+
+      -alive
+         Checks if the server is running. If it is, T4CShell will
+         exit with return code 1, otherwise it will return code 2.
+
+      -maintaindb [backup "path" | nobackup] "access database"
+         Does a RepairDatabase and CompactDatabase on the specified
+         MSAccess database (must have the .mdb extension).
+         Specifying the backup keyword with a backup path will make
+         T4CShell create a backup file of the current database
+         in the specified path. The nobackup keyword is optional
+         and tells T4CShell not to backup the database. If no
+         keyword is specified, no backup is made.
+         Ex.: T4CShell -maintaindb "C:\Program Files\T4C Server\T4C.mdb"
+         Ex.: T4CShell -maintaindb backup "E:\T4C Backup" T4C.mdb
+
+      -waitshutdown <max wait seconds>
+         Waits until the server shuts down before returning. You
+         must specify a max wait in seconds to avoid T4CShell from
+         never returning if a shutdown command failed (cancelled by
+         online gameop for example). It will return error level 1 if
+         timeout expired and server is still alive or error level 2 if
+         server has shutdown. Allow 1 to 2 more minutes after estimated
+         shutdown time before the server completly stops running and
+         this function detects a shutdown.
+         Ex.: T4CShell -waitshutdown 300
+
+      -deleteaccount [dbaccount "account"][dbpwd "pwd"] "account"
+         Deletes an account specified by "account" from the character
+.        database (using the T4C Server DSN). This command makes sure
+         all players, items, spells etc. owned by the account are
+         removed from the database. If an account was deleted by
+         the accounting system, its T4C characters should be erased
+         by this function. Use the facultative dbaccount "account"
+         or dbpwd "pwd" to specify the database's connection account
+         and password. USE WITH CAUTON.
+
+   Error level returns:
+      -3:  Undefined parameter.
+      -2:  Extended help requested.
+      -1:  No parameters passed.
+       0:  Command successful.
+       1:  T4C Server running.
+       2:  T4C Server not found.
+       3:  T4C Server is initializing.
+       4:  Backup failed (-maintaindb backup "path" parameter)
+       5:  Could not write to server pipe.

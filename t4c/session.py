@@ -18,6 +18,8 @@ class SessionState(Enum):
     AUTHENTICATED = auto()
     # Compte authentifié, aucun personnage actif.
     CHARACTER_MENU = auto()
+    # Personnage chargé (réponse 13 envoyée), attente du paquet 46.
+    PRE_INGAME = auto()
     IN_WORLD = auto()
 
 
@@ -42,4 +44,14 @@ class ClientSession:
     protocol_version_accepted: bool = False
     character_list_requests: int = 0
     exit_game_requests: int = 0
+    create_player_requests: int = 0
+    toggle_page_requests: int = 0
+    put_in_game_requests: int = 0
+    enter_world_requests: int = 0
+    unit_id: int | None = None
+    pos_x: int = 0
+    pos_y: int = 0
+    pos_world: int = 0
+    move_requests: int = 0
+    page_toggled: bool = False
     active_character: str | None = None

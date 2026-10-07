@@ -61,7 +61,10 @@ class Step5VersionAndCharacterListTests(unittest.IsolatedAsyncioTestCase):
         handled = await server.dispatcher.dispatch(server, session, decoded)
         self.assertTrue(handled)
         self.assertEqual(session.character_list_requests, 1)
-        reply = decode_reply(server.sent[0][1])
+        first = decode_reply(server.sent[0][1])
+        self.assertEqual(first.packet_id, PacketID.MAX_CHARACTERS_PER_ACCOUNT_INFO)
+        self.assertEqual(PacketReader(first.body).read_u8(), 3)
+        reply = decode_reply(server.sent[1][1])
         self.assertEqual(reply.packet_id, PacketID.GET_PERSONAL_PC_LIST)
         self.assertEqual(reply.body, b"\x00")
 

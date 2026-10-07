@@ -70,15 +70,16 @@ WODBC
 cp -f "$DB_DIR/T4C.mdb" "$T4C_DIR/T4C.mdb" 2>/dev/null || true
 
 # --- Compte admin/admin (super admin) créé automatiquement au 1er démarrage ---
-if mdb-tables "$DB_DIR/T4C.mdb" 2>/dev/null | grep -q "T4Cusers" \
-   && ! mdb-sql -p "$DB_DIR/T4C.mdb" "SELECT Account FROM T4Cusers WHERE Account='admin'" 2>/dev/null | grep -q admin; then
+ADMIN_EXISTS=$(echo "SELECT Account FROM T4Cusers" | mdb-sql "$DB_DIR/T4C.mdb" 2>/dev/null | grep -c admin || true)
+if [ "${ADMIN_EXISTS:-0}" = "0" ]; then
     echo "[t4c] création du compte admin/admin (super admin)..."
-    mdb-sql -p "$DB_DIR/T4C.mdb" \
-      "INSERT INTO T4Cusers (Account, Password, Account_type, Expired, FullName, Email, CreationDate, RevisionDate) VALUES ('admin', 'admin', 0, 0, 'Administrateur', '', NOW, NOW)" \
-      2>&1 | head -3 || echo "[t4c] ATTENTION : INSERT mdb-sql a échoué — créer le compte via T4C Database Manager (VM XP) si le login refuse"
+    echo "INSERT INTO T4Cusers (Account, Password, Account_type, Expired, FullName, Email, CreationDate, RevisionDate) VALUES ('admin', 'admin', 0, 0, 'Administrateur', '', NOW, NOW)" \
+        | mdb-sql "$DB_DIR/T4C.mdb" 2>&1 | head -3 \
+        || echo "[t4c] ATTENTION : INSERT mdb-sql a échoué — créer le compte via T4C Database Manager (VM XP) si le login refuse"
     cp -f "$DB_DIR/T4C.mdb" "$T4C_DIR/T4C.mdb" 2>/dev/null || true
+    echo "SELECT Account, Password FROM T4Cusers" | mdb-sql "$DB_DIR/T4C.mdb" 2>/dev/null | head -5
 else
-    echo "[t4c] compte admin déjà présent (ou table absente)."
+    echo "[t4c] compte admin déjà présent."
 fi
 
 echo "[t4c] démarrage du serveur (UDP ${T4C_PORT:-11677})..."

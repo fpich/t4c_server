@@ -251,3 +251,25 @@ Formats confirmés depuis `RQFUNC_PlayerMove` original :
   n'ayant ni carte ni collisions, tout déplacement est accepté. Le serveur
   répond l'événement `__EVENT_OBJECT_MOVED` (id 1) : `i16 X, i16 Y`.
 La position est persistée à chaque mouvement (si `--database` actif).
+
+## Lancer le client sous Wine (installation automatique)
+
+Un script unique installe tout (Wine 32 bits, MFC42, préfixe dédié,
+langue FR, WebPatch désactivé, serverlist) et lance le jeu en fenêtré :
+
+```bash
+# installation + lancement (le serveur doit tourner avant) :
+bash start_server.sh                     # terminal 1
+bash install_client_wine.sh              # terminal 2
+
+# ou en deux temps :
+bash install_client_wine.sh --install
+bash install_client_wine.sh --run --server 127.0.0.1
+
+# options :
+#   --prefix /chemin   préfixe Wine dédié (défaut ~/.wine-t4c)
+#   --server IP        IP du serveur T4C (défaut 127.0.0.1)
+```
+
+Plus de Docker pour le client : Wine tourne directement, avec affichage,
+son et performances natifs de la machine.

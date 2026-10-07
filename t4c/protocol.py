@@ -1,0 +1,56 @@
+"""Known T4C packet ids used by the 1.25 compatibility work.
+
+The pre-session subset is confirmed against the legacy server dispatcher.  A
+small set of post-auth/menu ids is named as well so real client traces are
+immediately readable while their payloads are still being reconstructed.
+"""
+
+from __future__ import annotations
+
+from enum import IntEnum
+
+
+class PacketID(IntEnum):
+    # Early gameplay/menu ids from the legacy request table.
+    PUT_PLAYER_IN_GAME = 13
+    REGISTER_ACCOUNT = 14
+    EXIT_GAME = 20
+    CREATE_PLAYER = 25
+    GET_PERSONAL_PC_LIST = 26
+    RETURN_TO_MENU = 38
+    GET_TIME = 45
+    FROM_PREINGAME_TO_INGAME = 46
+
+    # Pre-session/bootstrap requests.
+    QUERY_SERVER_VERSION = 65
+    MESSAGE_OF_THE_DAY = 66
+    QUERY_NAME_EXISTENCE = 90
+    QUERY_PATCH_SERVER_INFO = 91
+
+    # Later bootstrap/menu metadata seen in the legacy request table.
+    AUTHENTICATE_SERVER_VERSION = 99
+    MAX_CHARACTERS_PER_ACCOUNT_INFO = 103
+
+    # Backwards-compatible alias used by earlier prototype code/docs.
+    ENTER_WORLD = FROM_PREINGAME_TO_INGAME
+
+
+PRE_SESSION_PACKET_IDS = frozenset(
+    {
+        PacketID.REGISTER_ACCOUNT,
+        PacketID.GET_TIME,
+        PacketID.QUERY_SERVER_VERSION,
+        PacketID.MESSAGE_OF_THE_DAY,
+        PacketID.QUERY_NAME_EXISTENCE,
+        PacketID.QUERY_PATCH_SERVER_INFO,
+    }
+)
+
+
+PACKET_NAMES: dict[int, str] = {
+    int(packet_id): packet_id.name for packet_id in PacketID
+}
+
+
+def packet_name(packet_id: int) -> str:
+    return PACKET_NAMES.get(packet_id, f"UNKNOWN_{packet_id}")

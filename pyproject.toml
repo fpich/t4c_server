@@ -1,0 +1,8 @@
+[project]
+name = "t4c-python-server"
+version = "0.1.0"
+description = "Experimental clean-room compatible server shell for T4C 1.25"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -402,7 +402,13 @@ async def handle_create_player(
         return
     _ensure_consumed(reader, packet.packet_id)
     result = 0
-    if session.state is not SessionState.CHARACTER_MENU or not session.account:
+    # Trace réelle (VM, étape 7 révisée) : le client envoie le 25 alors que la
+    # session est AUTHENTICATED — le passage en CHARACTER_MENU (paquet 20)
+    # est automatique et silencieux côté client. On accepte la création dès
+    # que le compte est authentifié ; refus seulement sans compte.
+    if not session.account:
+        result = 1
+    elif session.state not in (SessionState.AUTHENTICATED, SessionState.CHARACTER_MENU):
         result = 1
     elif not _name_is_syntactically_valid(name):
         result = 2

@@ -87,10 +87,21 @@ class Step7CreatePlayerTests(unittest.IsolatedAsyncioTestCase):
         reply = decode_reply(server.sent[0][1])
         self.assertEqual(PacketReader(reply.body).read_u8(), 3)
 
-    async def test_create_player_rejects_when_not_in_menu(self):
+    async def test_create_player_accepts_when_authenticated(self):
+        # Trace réelle : le client envoie le 25 en état AUTHENTICATED
+        # (le paquet 20 est automatique et silencieux côté client).
         server = new_server()
         session = ClientSession(("127.0.0.1", 12345), state=SessionState.AUTHENTICATED)
         session.account = "test"
+        handled = await server.dispatcher.dispatch(server, session, create_request())
+        self.assertTrue(handled)
+        self.assertEqual(session.create_player_requests, 1)
+        reply = decode_reply(server.sent[0][1])
+        self.assertEqual(PacketReader(reply.body).read_u8(), 0)
+
+    async def test_create_player_rejects_without_account(self):
+        server = new_server()
+        session = ClientSession(("127.0.0.1", 12345), state=SessionState.AUTHENTICATED)
         handled = await server.dispatcher.dispatch(server, session, create_request())
         self.assertTrue(handled)
         reply = decode_reply(server.sent[0][1])

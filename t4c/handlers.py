@@ -726,10 +726,21 @@ async def handle_player_move(
         server.persistence.save_position(
             session.active_character, session.pos_x, session.pos_y, session.pos_world
         )
-    # Événement __EVENT_OBJECT_MOVED (id 1) : i16 X, i16 Y.
+    # Flux original du mouvement (RQFUNC_PlayerMove) :
+    #   1. packet_peripheral_units(nouvelle pos) si unités -> envoi (monde vide : non)
+    #   2. << __EVENT_OBJECT_MOVED(1), << X, << Y,
+    #      PUIS PacketUnitInformation(self) — SANS lui le client crashe
+    #      en parsant la suite du paquet !
     event = PacketWriter(1)
     event.write_i16(session.pos_x)
     event.write_i16(session.pos_y)
+    # PacketUnitInformation (binaire 0x48f560) :
+    #   i16 apparence, i32 ID, i8 radiance, i8 statut, i8 %HP
+    event.write_i16(10011)            # apparence __PLAYER_PUPPET
+    event.write_i32(session.unit_id or 0)
+    event.write_i8(0)                 # radiance
+    event.write_i8(0)                 # statut
+    event.write_i8(100)               # %HP
     server.send_packet(session.address, event)
     session.move_requests += 1
     log.info(

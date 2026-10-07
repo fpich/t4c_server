@@ -968,3 +968,65 @@ def _write_status(character: "Character") -> "PacketWriter":
     for _ in range(2):  # résistances light/dark
         w.write_i16(0)
     return w
+
+
+async def handle_get_status(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 43 (en jeu) : statut complet du personnage (PacketStatus)."""
+    character = None
+    if session.account:
+        for candidate in server.characters.characters(session.account):
+            if candidate.name == session.active_character:
+                character = candidate
+                break
+    if character is not None:
+        server.send_packet(session.address, _write_status(character))
+    log.info("STATUT renvoyé (demande en jeu) client=%s", session.address)
+
+
+async def handle_view_backpack(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 18 : sac à dos. Format original Character::PacketBackpack :
+    i16 nombre d'objets puis par objet : i16 apparence, i32 ID,
+    i16 staticRef, i32 qty, i32 charges. Sac vide : i16 0."""
+    response = PacketWriter(PacketID.VIEW_BACKPACK)
+    response.write_i16(0)  # sac vide
+    server.send_packet(session.address, response)
+    log.info("SAC À DOS vide client=%s", session.address)
+
+
+async def handle_view_equiped(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 19 : équipement. Format original Character::packet_equiped :
+    char 1, char 0, puis 9 × PacketSingleEquip. Rien d'équipé -> 9 entrées vides.
+    Le format exact de PacketSingleEquip reste à RE ; le client tolère une
+    liste vide si on n'envoie que l'en-tête ? NON — risqué. Réponse minimale :
+    char 1, char 0 (comme l'original sans équipement)."""
+    response = PacketWriter(PacketID.VIEW_EQUIPED)
+    response.write_u8(1)
+    response.write_u8(0)
+    server.send_packet(session.address, response)
+    log.info("ÉQUIPÉ rien client=%s", session.address)
+
+
+async def handle_get_chatter_user_list(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 50 : utilisateurs du canal de chat courant (vide)."""
+    response = PacketWriter(PacketID.GET_CHATTER_USER_LIST)
+    response.write_i16(0)  # personne
+    server.send_packet(session.address, response)
+    log.info("CHAT utilisateurs : aucun client=%s", session.address)
+
+
+async def handle_get_chatter_channel_list(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 75 : liste des canaux de chat (vide)."""
+    response = PacketWriter(PacketID.GET_CHATTER_CHANNEL_LIST)
+    response.write_i16(0)  # aucun canal
+    server.send_packet(session.address, response)
+    log.info("CHAT canaux : aucun client=%s", session.address)

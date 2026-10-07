@@ -36,6 +36,10 @@ class PacketID(IntEnum):
     GET_NEAR_ITEMS = 60          # RQ_GetNearItems
     GET_ONLINE_PLAYER_LIST = 62  # RQ_GetOnlinePlayerList
     PUPPET_INFORMATION = 68       # RQ_PuppetInformation
+    VIEW_BACKPACK = 18            # RQ_ViewBackpack
+    VIEW_EQUIPED = 19             # RQ_ViewEquiped
+    GET_CHATTER_USER_LIST = 50    # RQ_GetChatterUserList
+    GET_CHATTER_CHANNEL_LIST = 75 # RQ_GetChatterChannelList
     RETURN_TO_MENU = 38
     GET_TIME = 45
     FROM_PREINGAME_TO_INGAME = 46

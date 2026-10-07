@@ -1,0 +1,52 @@
+# Client T4C 1.25 FR sous Wine — mode fenêtré, accessible en VNC.
+# Usage (depuis docker/) :
+#   docker compose up -d --build
+#   docker compose logs t4c-client | grep -i "vnc\|display"
+# Puis ouvrir un client VNC sur <hôte>:5900 (mot de passe : t4c)
+# ou http://<hôte>:6080 (novnc, navigateur).
+FROM debian:trixie-slim
+
+ENV WINEPREFIX=/opt/wineprefix \
+    WINEARCH=win32 \
+    WINEDEBUG=-all \
+    XDG_RUNTIME_DIR=/tmp/xdg \
+    DISPLAY=:98
+
+# Wine 32 bits + X + VNC + novnc (accès navigateur) + outils
+RUN dpkg --add-architecture i386 \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
+        wine wine32:i386 wine64 \
+        cabextract \
+        curl ca-certificates \
+        xvfb xauth xdotool x11-xserver-utils \
+        x11vnc \
+        novnc websockify \
+        wmctrl \
+        util-linux \
+        pulseaudio \
+        libpulse0:i386 \
+        pipewire-audio \
+    && rm -rf /var/lib/apt/lists/*
+
+# winetricks officiel (absent des dépôts Debian 13)
+RUN curl -L -o /usr/local/bin/winetricks \
+      https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks \
+    && chmod +x /usr/local/bin/winetricks
+
+# MFC42 pour t4c.exe (même besoin que le serveur)
+RUN export WINEPREFIX=/opt/wineprefix WINEARCH=win32 XDG_RUNTIME_DIR=/tmp/xdg \
+    && mkdir -p /tmp/xdg /opt/wineprefix \
+    && xvfb-run -a winetricks -q mfc42 \
+    && rm -rf /root/.cache
+
+# Le client complet (Game Files, french.elng, etc.)
+COPY ressources/t4c_client_fr/ /opt/t4c-client/
+# Configuration du client (prête à l'emploi)
+COPY docker/client-entrypoint.sh /client-entrypoint.sh
+RUN chmod +x /client-entrypoint.sh
+
+# VNC (5900) et noVNC navigateur (6080)
+EXPOSE 5900 6080
+
+ENTRYPOINT ["/client-entrypoint.sh"]

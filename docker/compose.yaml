@@ -1,4 +1,4 @@
-# docker compose pour le serveur T4C original sous Wine.
+# docker compose : serveur T4C original + client T4C fenêtré (VNC/noVNC + son).
 # Usage :
 #   docker compose up -d --build
 #   docker compose logs -f
@@ -26,6 +26,33 @@ services:
     # TTY réel requis : T4C Server.exe exige une console interactive et
     # sort proprement (code 0) sans elle. Confirmé par test : avec -it,
     # le serveur démarre et écoute sur 11677/11678.
+    stdin_open: true
+    tty: true
+
+  # Client T4C en mode fenêtré, visible en VNC (5900) / noVNC (6080).
+  # Le son du client est transmis à PulseAudio de l'hôte (PULSE_SERVER).
+  t4c-client:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.client
+    image: t4c-client:125
+    container_name: t4c-client
+    depends_on:
+      - t4c-server
+    environment:
+      # Le client joint le conteneur serveur par son nom Docker.
+      T4C_SERVER_HOST: t4c-server
+      WINEDEBUG: "-all"
+      # Son : PulseAudio de l'hôte doit écouter en réseau (module-native-
+      # protocol-tcp). PulseAudio route la sortie Wine vers les haut-parleurs
+      # de l'hôte pendant que l'image est affichée via noVNC.
+      PULSE_SERVER: "${PULSE_SERVER:-host.docker.internal:4713}"
+    ports:
+      - "5900:5900"       # VNC (mot de passe : t4c)
+      - "6080:6080"       # noVNC (navigateur) : http://<hôte>:6080/vnc.html
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
     stdin_open: true
     tty: true
 

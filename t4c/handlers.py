@@ -48,6 +48,14 @@ class PacketDispatcher:
         for move_id in MOVE_OFFSETS:
             self.register(move_id, handle_player_move)
         self.register(PacketID.GET_PLAYER_POS, handle_player_move)
+        self.register(PacketID.GET_SKILL_LIST, handle_get_skill_list)
+        self.register(
+            PacketID.SEND_TRAIN_SKILL_LIST, handle_send_train_skill_list
+        )
+        self.register(PacketID.GET_NEAR_ITEMS, handle_get_near_items)
+        self.register(
+            PacketID.GET_ONLINE_PLAYER_LIST, handle_get_online_player_list
+        )
         self.register(
             PacketID.MAX_CHARACTERS_PER_ACCOUNT_INFO,
             handle_max_characters_per_account_info,
@@ -689,4 +697,91 @@ async def handle_player_move(
         session.pos_y,
         session.pos_world,
         session.move_requests,
+    )
+
+
+async def handle_get_skill_list(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 39 : liste des compétences du personnage.
+
+    Format confirmé depuis Character::PacketSkills original :
+      i16 nombre (compétences spéciales + attaque + esquive),
+      puis par entrée : i16 skillID, i8 type, i16 valeur, i16 valeur vraie,
+      CString nom, CString description.
+    Le monde de développement n'a pas de compétences apprises : on envoie
+    les deux entrées de base (attaque et esquive) que l'original ajoute
+    toujours, avec les valeurs du personnage.
+    """
+    session.skill_list_requests += 1
+    response = PacketWriter(PacketID.GET_SKILL_LIST)
+    response.write_i16(2)  # attaque + esquive, aucune compétence apprise
+    # attaque (__SKILL_ATTACK, id 1)
+    response.write_i16(1)
+    response.write_i8(0)
+    response.write_i16(10)
+    response.write_i16(10)
+    response.write_text("Attaque")
+    response.write_text("Capacite d'attaque au corps a corps.")
+    # esquive (__SKILL_DODGE, id 2)
+    response.write_i16(2)
+    response.write_i8(0)
+    response.write_i16(10)
+    response.write_i16(10)
+    response.write_text("Esquive")
+    response.write_text("Capacite a esquiver les coups.")
+    server.send_packet(session.address, response)
+    log.info("COMPÉTENCES client=%s nombre=2", session.address)
+
+
+async def handle_send_train_skill_list(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 40 : compétences entraînables. Monde vide : liste vide.
+
+    Format original (RQ_SendTrainSkillList) : u8 résultat,
+    puis la liste des compétences proposées par les PNJ — aucune ici.
+    """
+    session.train_skill_requests += 1
+    response = PacketWriter(PacketID.SEND_TRAIN_SKILL_LIST)
+    response.write_u8(0)
+    server.send_packet(session.address, response)
+    log.info("ENTRAINEMENT liste vide client=%s", session.address)
+
+
+async def handle_get_near_items(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 60 : objets au sol à proximité. Monde vide : rien.
+
+    L'original appelle packet_inview_units puis envoie RQ_GetNearItems
+    sans corps supplémentaire quand il n'y a rien ; notre monde de
+    développement ne contient aucun objet.
+    """
+    session.near_items_requests += 1
+    response = PacketWriter(PacketID.GET_NEAR_ITEMS)
+    server.send_packet(session.address, response)
+    log.info("OBJETS à proximité : aucun client=%s", session.address)
+
+
+async def handle_get_online_player_list(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 62 : joueurs en ligne.
+
+    Format confirmé depuis CPlayerManager::PacketUserList :
+      i16 nombre, puis par joueur : CString compte, CString nom du perso.
+    Un seul joueur est en ligne : nous-mêmes.
+    """
+    session.online_list_requests += 1
+    response = PacketWriter(PacketID.GET_ONLINE_PLAYER_LIST)
+    response.write_i16(1)
+    response.write_text(session.account or "")
+    response.write_text(session.active_character or "")
+    server.send_packet(session.address, response)
+    log.info(
+        "JOUEURS en ligne : 1 (%r / %r) client=%s",
+        session.account,
+        session.active_character,
+        session.address,
     )

@@ -28,6 +28,11 @@ class PacketID(IntEnum):
     CREATE_PLAYER = 25
     GET_PERSONAL_PC_LIST = 26
     TOGGLE_PAGE = 89
+    # Données demandées par le client à l'entrée en monde (confirmées par trace réelle).
+    GET_SKILL_LIST = 39          # RQ_GetSkillList
+    SEND_TRAIN_SKILL_LIST = 40   # RQ_SendTrainSkillList
+    GET_NEAR_ITEMS = 60          # RQ_GetNearItems
+    GET_ONLINE_PLAYER_LIST = 62  # RQ_GetOnlinePlayerList
     RETURN_TO_MENU = 38
     GET_TIME = 45
     FROM_PREINGAME_TO_INGAME = 46

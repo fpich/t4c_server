@@ -53,5 +53,9 @@ class ClientSession:
     pos_y: int = 0
     pos_world: int = 0
     move_requests: int = 0
+    skill_list_requests: int = 0
+    train_skill_requests: int = 0
+    near_items_requests: int = 0
+    online_list_requests: int = 0
     page_toggled: bool = False
     active_character: str | None = None

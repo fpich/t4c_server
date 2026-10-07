@@ -181,3 +181,11 @@ Sérialisation du paquet 26 confirmée : `u8 count`, puis pour chaque personnage
 
 Le stockage (`t4c/characters.py`) est volontairement en mémoire pour l'instant ;
 la persistance sur disque est le prochain jalon.
+
+## Étape 7.1 — paquet 89 (RQ_TogglePage)
+
+La capture réelle du client 1.25 envoie le paquet 89 (corps `01`) juste avant la
+liste de personnages. Le code original le nomme `RQ_TogglePage` : un seul u8
+d'état, bascule d'affichage d'une page du client, **aucune réponse
+applicative** (l'ACK transport suffit). Le serveur l'enregistre désormais au
+lieu de le signaler comme inconnu.

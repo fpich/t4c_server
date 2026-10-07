@@ -39,6 +39,7 @@ class PacketDispatcher:
         self.register(PacketID.EXIT_GAME, handle_exit_game)
         self.register(PacketID.GET_PERSONAL_PC_LIST, handle_get_personal_pc_list)
         self.register(PacketID.CREATE_PLAYER, handle_create_player)
+        self.register(PacketID.TOGGLE_PAGE, handle_toggle_page)
         self.register(
             PacketID.MAX_CHARACTERS_PER_ACCOUNT_INFO,
             handle_max_characters_per_account_info,
@@ -435,4 +436,29 @@ async def handle_create_player(
         session.account,
         result,
         session.address,
+    )
+
+
+async def handle_toggle_page(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 89 (RQ_TogglePage) : bascule d'affichage d'une page.
+
+    Confirmé depuis le gestionnaire original : un seul u8 d'état, le serveur
+    n'envoie aucune réponse applicative (l'ACK transport suffit).
+    """
+    session.toggle_page_requests += 1
+    reader = PacketReader(packet.body)
+    try:
+        new_state = reader.read_u8()
+    except T4CProtocolError as exc:
+        log.warning("requête 89 malformée de %s : %s", session.address, exc)
+        return
+    _ensure_consumed(reader, packet.packet_id)
+    session.page_toggled = bool(new_state)
+    log.info(
+        "PAGE bascule client=%s état=%s requêtes=%d (aucune réponse applicative)",
+        session.address,
+        session.page_toggled,
+        session.toggle_page_requests,
     )

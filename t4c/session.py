@@ -43,4 +43,6 @@ class ClientSession:
     character_list_requests: int = 0
     exit_game_requests: int = 0
     create_player_requests: int = 0
+    toggle_page_requests: int = 0
+    page_toggled: bool = False
     active_character: str | None = None

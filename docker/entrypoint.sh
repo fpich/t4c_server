@@ -7,16 +7,21 @@
 set -Eeuo pipefail
 
 export WINEPREFIX=/opt/wineprefix
+export WINEARCH=win32
 export WINEDEBUG="${WINEDEBUG:--all}"
+export DISPLAY=
 T4C_DIR=/opt/t4c
 DB_DIR=/opt/t4c/db
 
-echo "[t4c] init du préfixe Wine..."
-wineboot --init >/dev/null 2>&1 || true
-sleep 1
+echo "[t4c] init du préfixe Wine (win32)..."
+if [ ! -f "$WINEPREFIX/system.reg" ]; then
+    mkdir -p "$WINEPREFIX"
+    WINEARCH=win32 wineboot --init 2>&1 | head -10 || true
+    sleep 2
+fi
 
 echo "[t4c] import des clés de registre..."
-wine regedit /tmp/T4C-server.reg >/dev/null 2>&1
+WINEARCH=win32 wine regedit /tmp/T4C-server.reg 2>&1 | head -5 || true
 
 # Base de données : le serveur original exige ODBC/Jet (T4C.mdb).
 # La mdb est copiée dans le volume si absente (persistance des comptes).

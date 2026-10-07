@@ -19,13 +19,14 @@ FROM debian:trixie-slim
 
 ENV WINEDEBUG=-all \
     WINEPREFIX=/opt/wineprefix \
+    WINEARCH=win32 \
     WINE_NO_PROXY=1
 
 # Wine 32 bits (le binaire est un PE32 i386) + cabextract pour winetricks
 RUN dpkg --add-architecture i386 \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
-        wine wine32:i386 \
+        wine wine32:i386 wine64 \
         cabextract \
         winbind \
     && rm -rf /var/lib/apt/lists/*

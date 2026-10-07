@@ -4,13 +4,13 @@
  * Fichier de travail de reverse engineering. CE N'EST PAS le source original
  * et il n'est pas destiné à compiler tel quel.
  *
- * Binaire analysé : t4c.exe (client 1.25 FR)
+ * Binaire analysé : /mnt/data/t4c.exe
  * Format          : PE32 x86 / Windows GUI
  * Image base      : 0x00400000
  * Entry point     : 0x00520B0D
  * PE timestamp    : 2003-07-12
  * SHA-256         : 569ee802798a8ae526a4dbdba54671f4561c4efbf8927d6b2c8609b76ef3fa68
- * PDB référencé   : C:\T4C Client\T4C Workfiles\T4C CLIENT\Release\T4C Client.pdb
+ * PDB référencé   : C:\\T4C Client\\T4C Workfiles\\T4C CLIENT\\Release\\T4C Client.pdb
  *
  * Légende :
  *   [CONFIRME] : directement visible dans l'assembleur.
@@ -57,6 +57,8 @@ public:
 
     // [CONFIRME] @0x4B5DB0
     // Le vrai code retourne le pointeur du buffer interne et sa taille totale.
+    // Nom volontairement générique car cette fonction ne tient pas compte du
+    // curseur comme un read_bytes() classique.
     void expose_raw_buffer(const uint8_t** data, int32_t* size) const;
 
     // [RECONSTRUCTION] idiome vu de très nombreuses fois dans le client.
@@ -72,8 +74,17 @@ public:
 
 
 // -----------------------------------------------------------------------------
-// 2. Transport UDP / file de paquets
+// 2. Transport UDP / file de paquets (vue d'ensemble)
 // -----------------------------------------------------------------------------
+
+/*
+ * NOTE : la reconstruction approfondie de la couche transport (endianness
+ * little-endian du header, fragmentation, ACK/SAFE, réassemblage, threads)
+ * se trouve maintenant dans le fichier dédié :
+ *     docs/reverse-engineering/T4CClient-transport-udp.c
+ *
+ * Les éléments ci-dessous restent une vue d'ensemble de haut niveau.
+ */
 
 struct SocketAddress16 {
     uint8_t raw[16];
@@ -83,35 +94,17 @@ struct ReceivedDatagram {
     SocketAddress16 from;   // offsets +0x00..+0x0F
     uint8_t* bytes;         // +0x10 [CONFIRME]
     int32_t length;         // +0x14 [CONFIRME]
+    // autres champs internes jusqu'à 0x2C octets [INCONNU]
 };
-
-/*
- * [CORROBORE]
- * Le transport T4C observé autour du payload applicatif utilise un header de
- * 12 octets. PacketThread @0x45D490 livre au callback :
- *
- *     payload = datagram->bytes  + 12
- *     length  = datagram->length - 12
- */
-struct T4CTransportHeader {
-    uint16_t flags_be;
-    uint16_t declared_length_be;
-    uint32_t sequence_be;
-    uint32_t fragment_or_ack_be;
-};
-static_assert(sizeof(T4CTransportHeader) == 12);
-
-// [CORROBORE] valeurs utilisées par la réimplémentation Python.
-constexpr uint16_t T4C_FLAG_ACK        = 0x0100;
-constexpr uint16_t T4C_FLAG_SAFE       = 0x0200;
-constexpr uint16_t T4C_FLAG_FRAGMENTED = 0x0400;
 
 class T4CSocketLike {
 public:
-    bool running;
+    bool running;                         // champ réel non nommé
     std::function<void(SocketAddress16,
                        const uint8_t*,
                        int32_t)> onPayload; // callback réel à +0x1AC [CONFIRME]
+
+    // Files/ring buffers/locks internes omis.
 };
 
 
@@ -127,6 +120,7 @@ void PacketThread(T4CSocketLike* self)
             unlock(/* self+0xC8 */);
 
             // Attend jusqu'à 60 000 ms qu'un évènement signale un paquet.
+            // @0x45D4DD..0x45D4EF
             if (wait_for_event(/* self+0xF4 */, 60000) == TIMEOUT)
                 continue;
 
@@ -173,6 +167,8 @@ void UdpReceiveThread(T4CSocketLike* self)
         );
 
         if (p->length < 0) {
+            // Le vrai code filtre plusieurs erreurs Winsock et peut alimenter
+            // une structure de notification/erreur interne.
             handle_recv_error(self, WSAGetLastError());
             free(p);
             continue;
@@ -213,7 +209,8 @@ void ReliableSendAndLossMaintenance(T4CSocketLike* self)
 // 3. Sauvegarde locale du mot de passe
 // -----------------------------------------------------------------------------
 
-// [CONFIRME] chaque octet du mot de passe sauvegardé est XORé avec 0x80.
+// [CONFIRME] dans la logique utilisant "AccountPassword" : chaque octet du
+// mot de passe sauvegardé est XORé avec 0x80. Ce n'est PAS du chiffrement fort.
 std::string ObfuscateSavedPassword(std::string s)
 {
     for (char& c : s)
@@ -233,12 +230,14 @@ std::string DeobfuscateSavedPassword(std::string s)
 // -----------------------------------------------------------------------------
 
 // [CONFIRME] énorme machine d'état @0x489D60, chaîne "Init Socket Func".
+// Les noms des états sont reconstruits.
 enum class BootstrapState : int {
     STARTING             = 0, // [INFERE]
     QUERYING_MOTD        = 1, // [INFERE]
     QUERYING_PATCH_INFO  = 2, // [INFERE]
     AUTHENTICATING_VER   = 3, // [INFERE]
     LOGIN_UI             = 6, // une transition vers 6 est visible après succès
+    // autres états non encore nommés
 };
 
 struct BootstrapContext {
@@ -248,11 +247,13 @@ struct BootstrapContext {
 };
 
 // [CONFIRME] paquet 66 / 0x42 dans @0x489F63.
+// Le client reçoit : u16 longueur, puis longueur octets.
 std::string ParsePacket66_MessageOfTheDay(TFCPacket& p)
 {
     const uint16_t len = p.read_u16_be();
 
     std::string out;
+    // Le client alloue len + 500 environ; probablement pour les remplacements.
     out.reserve(len + 500);
 
     for (uint16_t i = 0; i < len; ++i) {
@@ -263,7 +264,8 @@ std::string ParsePacket66_MessageOfTheDay(TFCPacket& p)
             continue;
         }
         if (c == '\r') {
-            // [CONFIRME] CR devient exactement trois caractères ' ', '<', '>'.
+            // [CONFIRME] CR devient exactement trois caractères : ' ', '<', '>'.
+            // Cela ressemble à un marqueur de mise en page de l'ancien contrôle UI.
             out += " <>";
             continue;
         }
@@ -328,16 +330,19 @@ void InitSocketAndBootstrap(BootstrapContext& ctx)
 
     switch (ctx.state) {
     case BootstrapState::QUERYING_MOTD:
+        // Le client construit/envoie une requête 66 puis attend la réponse.
         SendPacket(/* id = */ 66);
         PollAndDispatchBootstrapPackets(ctx);
         break;
 
     case BootstrapState::QUERYING_PATCH_INFO:
+        // Le code contient une logique de retry autour de l'ID 91.
         SendPacket(/* id = */ 91);
         PollAndDispatchBootstrapPackets(ctx);
         break;
 
     case BootstrapState::AUTHENTICATING_VER:
+        // Réponse attendue : 99, dont le corps commence par u32 result.
         SendVersionAuthenticationRequest();
         PollAndDispatchBootstrapPackets(ctx);
         break;
@@ -356,7 +361,7 @@ void InitSocketAndBootstrap(BootstrapContext& ctx)
 // -----------------------------------------------------------------------------
 
 // [CONFIRME] @0x4979F0, chaînes "Entering packet player list" et
-// "Leaving packet player list".
+// "Leaving packet player list" dans la zone fonctionnelle.
 struct OnlinePlayerRow {
     std::string first;   // [INCONNU] probablement une colonne nom/compte
     std::string second;  // [INCONNU] probablement l'autre colonne
@@ -379,6 +384,7 @@ std::vector<OnlinePlayerRow> HandleOnlinePlayerList(TFCPacket& p)
         debug_player_list_pair(s1, s2);
 
         // [CONFIRME] deux insertions UI séparées sont faites par ligne.
+        // L'ordre visuel exact des colonnes reste à nommer proprement.
         AddOnlinePlayerListCell(/*column?*/ 0, s2);
         AddOnlinePlayerListCell(/*column?*/ 1, s1);
 
@@ -399,6 +405,9 @@ std::vector<OnlinePlayerRow> HandleOnlinePlayerList(TFCPacket& p)
  * [CONFIRME] fonction principale @0x4985C0.
  * Elle lit d'abord un u16 packetId avec @0x4B5A40 puis passe par plusieurs
  * jump tables et quelques IDs spéciaux.
+ *
+ * Les noms ci-dessous viennent du projet serveur Python lorsqu'ils sont connus;
+ * l'adresse indique le bloc exact du CLIENT qui reçoit cet ID.
  */
 struct PacketDispatchEntry {
     uint16_t id;
@@ -408,7 +417,7 @@ struct PacketDispatchEntry {
 
 static const PacketDispatchEntry kKnownGameplayDispatch[] = {
     {  1, 0x49B02C, "packet_1" },
-    {  9, 0x49AB44, "GET_PLAYER_POS" },
+    {  9, 0x49AB44, "GET_PLAYER_POS (nom projet Python)" },
     { 10, 0x49B83B, "packet_10" },
     { 11, 0x49B8BD, "packet_11" },
     { 12, 0x49B934, "packet_12" },
@@ -426,10 +435,10 @@ static const PacketDispatchEntry kKnownGameplayDispatch[] = {
     { 36, 0x499FB8, "packet_36" },
     { 37, 0x4992AC, "packet_37" },
     { 38, 0x49A585, "RETURN_TO_MENU" },
-    { 39, 0x4998E7, "GET_SKILL_LIST" },
+    { 39, 0x4998E7, "GET_SKILL_LIST / skill list" },
     { 40, 0x4994E0, "SEND_TRAIN_SKILL_LIST" },
     { 41, 0x499AC6, "packet_41" },
-    { 43, 0x498C54, "GET_STATUS" },
+    { 43, 0x498C54, "GET_STATUS / PacketStatus" },
     { 44, 0x499387, "packet_44" },
     { 45, 0x499864, "GET_TIME" },
     { 46, 0x499292, "FROM_PREINGAME_TO_INGAME" },
@@ -476,12 +485,15 @@ void HandleGameplayPacket(TFCPacket& p)
     debug("Received Packet %u", packetId);
 
     switch (packetId) {
+    case 13: HandlePutPlayerInGame13(p);          break;
     case 39: HandlePacket39_SkillList(p);          break;
     case 43: HandlePacket43_Status(p);             break;
     case 60: HandlePacket60_WorldLoadTransition(p);break;
-    case 62: HandleOnlinePlayerList(p);            break;
+    case 62: HandleOnlinePlayerList(p);            break; // association à consolider
     case 68: HandlePacket68_PuppetInformation(p);  break;
 
+    // Les autres branches existent et sont cartographiées ci-dessus.
+    // Elles seront décompilées progressivement.
     default:
         DispatchKnownButNotYetDecompiled(packetId, p);
         break;
@@ -494,8 +506,8 @@ void HandleGameplayPacket(TFCPacket& p)
 // -----------------------------------------------------------------------------
 
 struct ClientSkill {
-    std::string name;
-    std::string description;
+    std::string name;        // objet réel : pointeur/chaîne à +0x00
+    std::string description; // objet chaîne à +0x04
     uint16_t id;             // +0x14 [CONFIRME]
     uint32_t value;          // +0x18 [CONFIRME, valeur issue d'un u16]
     uint32_t trueValue;      // +0x1C [CONFIRME, valeur issue d'un u16]
@@ -526,6 +538,8 @@ std::vector<ClientSkill> HandlePacket39_SkillList(TFCPacket& p)
         skill.name      = p.read_string_u16();
         skill.description = p.read_string_u16();
 
+        // Le vrai client alloue 0x24 octets, appelle ctor @0x49FEA0,
+        // puis insère le pointeur dans la liste globale @0x88E5F8.
         InsertSkillIntoClientGlobalList(skill);
         skills.push_back(std::move(skill));
     }
@@ -576,9 +590,9 @@ struct CharacterStatus43 {
     int16_t karma;
     int16_t trueMaxHp;
 
-    std::array<int16_t, 4> elementalPower;
+    std::array<int16_t, 4> elementalPower;       // water/earth/air/fire [ordre à confirmer]
     std::array<int16_t, 4> elementalResistance;
-    std::array<int16_t, 6> truePower;
+    std::array<int16_t, 6> truePower;            // 4 éléments + light/dark
     std::array<int16_t, 6> trueResistance;
     int16_t lightResistance;
     int16_t darkResistance;
@@ -643,6 +657,9 @@ CharacterStatus43 HandlePacket43_Status(TFCPacket& p)
 // -----------------------------------------------------------------------------
 
 // [CONFIRME à haut niveau] @0x49D972, debug "* PAK = 60".
+// Cette branche contient surtout des transitions d'état/UI et relance/crée des
+// threads du monde. Le corps réseau n'est pas lu comme une longue liste d'items
+// dans cette branche du client.
 void HandlePacket60_WorldLoadTransition(TFCPacket& p)
 {
     debug("* PAK = 60");
@@ -650,6 +667,8 @@ void HandlePacket60_WorldLoadTransition(TFCPacket& p)
     SetWorldLoadingFlags();
     InitializeOrResumeWorldSubsystem();
 
+    // Appels vers les grosses boucles/threads dont les entrées sont notamment
+    // autour de @0x4B6E70 et @0x4B9410.
     EnsureWorldThreadsRunning();
 
     if (/* global transition flag */) {
@@ -669,6 +688,7 @@ struct PuppetInformation68 {
     uint32_t unitId;
 
     // [CONFIRME] exactement HUIT u16 sont lus @0x49E0C9..0x49E11C.
+    // Leur rôle précis (apparence/slots/états) reste à nommer.
     uint16_t field1;
     uint16_t field2;
     uint16_t field3;
@@ -697,14 +717,16 @@ PuppetInformation68 HandlePacket68_PuppetInformation(TFCPacket& p)
 
     LockPuppetState(); // lock global autour de @0x5A6AA0
 
-    if (info.unitId == GetLocalUnitId() /* @0x88E0BC */) {
+    if (info.unitId == /* local player unit id @0x88E0BC */ GetLocalUnitId()) {
         const bool everyFieldZero =
             info.field1 == 0 && info.field2 == 0 &&
             info.field3 == 0 && info.field4 == 0 &&
             info.field5 == 0 && info.field6 == 0 &&
             info.field7 == 0 && info.field8 == 0;
 
-        UpdateLocalPuppetFlags(everyFieldZero, info.field6);
+        // [CONFIRME] deux flags globaux client sont ajustés selon la combinaison
+        // de champs nuls et un autre état global @0x88E548.
+        UpdateLocalPuppetFlags(everyFieldZero, info.field6 /* champ testé séparément */);
     }
 
     UnlockPuppetState();
@@ -724,77 +746,259 @@ PuppetInformation68 HandlePacket68_PuppetInformation(TFCPacket& p)
 /*
  * IMPORTANT POUR LE SERVEUR PYTHON ACTUEL
  * ---------------------------------------
- * Le code Python écrit actuellement, lors de l'entrée en jeu :
+ * Le code Python fourni écrit actuellement, lors de l'entrée en jeu :
  *
  *     puppet.write_i32(unit_id)
  *     for _ in range(9):
  *         puppet.write_i16(0)
  *
  * Or le CLIENT lit 1 x u32 + 8 x u16, pas 9.
- * La structure compatible observée est donc 4 + 16 = 20 octets de corps,
- * et non 4 + 18 = 22 octets.
+ * La structure compatible observée ici est donc 4 + 16 = 20 octets de corps
+ * (hors ID/encapsulation TFCPacket), et non 4 + 18 = 22 octets.
  *
  * Correction probable : range(8).
  */
 
 
 // -----------------------------------------------------------------------------
-// 11. Observations utiles pour la réimplémentation Python
+// 11. Couche transport UDP — reconstruction approfondie
 // -----------------------------------------------------------------------------
 
 /*
- * A. Endianness
- * ------------
- * @0x4B5A40 et @0x4B5980 prouvent que les scalaires u16/u32 du TFCPacket sont
- * lus en BIG-ENDIAN.
+ * Statut : [CONFIRME] sauf mention contraire.
+ * Fonctions principales :
+ *   0x45C550  : création/enqueue d'un datagramme sortant
+ *   0x45C670  : préparation des headers + fragmentation
+ *   0x45CD10  : traitement ACK/SAFE/déduplication/réassemblage entrant
+ *   0x45D490  : thread de livraison vers la couche applicative
+ *   0x45D5E0  : thread recvfrom()
+ *   0x45D7D0  : thread sendto()
+ *   0x45D970  : maintenance retransmission / pertes
  *
- * B. Séparation transport / application
- * -------------------------------------
- * @0x45D583..0x45D591 : le client retire exactement 12 octets avant de remettre
- * le payload au callback applicatif — corroboration forte du header UDP T4C
- * de 12 octets déjà implémenté côté Python.
+ * ATTENTION : l'endianness de ce header est DIFFERENTE de celle du TFCPacket.
+ * Le header UDP est manipulé directement par du code x86 et est donc little-endian.
+ * Les scalaires du TFCPacket applicatif restent, eux, lus en big-endian.
  *
- * C. Packet 39
- * -----------
- * Le format du serveur Python pour la liste de compétences concorde avec le
- * client : u16 count, puis par entrée u16 id, u8 type, u16 value, u16
- * trueValue, CString nom, CString description.
+ * Le détail complet (fragmentation, ACK/SAFE, réassemblage, threads,
+ * retransmissions) est reconstruit dans :
+ *     docs/reverse-engineering/T4CClient-transport-udp.c
+ */
+
+#pragma pack(push, 1)
+struct T4CTransportHeader {
+    uint16_t control;        // +0x00 little-endian
+    uint16_t declaredLength; // +0x02 little-endian
+    uint32_t sequence;       // +0x04 little-endian
+    uint32_t fragmentGroup;  // +0x08 little-endian
+};
+#pragma pack(pop)
+
+static_assert(sizeof(T4CTransportHeader) == 12);
+
+/* control :
+ *   bits 0..7  = index du fragment (0 pour paquet non fragmenté)
+ *   bit 8      = ACK       (0x0100)
+ *   bit 9      = SAFE      (0x0200)
+ *   bit 10     = FRAGMENT  (0x0400)
+ *   bits 11..15= réservés ; le client rejette s'ils sont non nuls
+ */
+constexpr uint16_t TR_ACK      = 0x0100;
+constexpr uint16_t TR_SAFE     = 0x0200;
+constexpr uint16_t TR_FRAGMENT = 0x0400;
+constexpr uint16_t TR_RESERVED = 0xF800;
+constexpr size_t   UDP_MAX     = 1024;
+constexpr size_t   TR_HDR      = 12;
+constexpr size_t   FRAG_DATA   = 1012; // 1024 - 12
+
+static uint32_t g_nextSequence; // global observé @0x5A6D88
+
+
+// -----------------------------------------------------------------------------
+// 12. Paquet 13 — PUT_PLAYER_IN_GAME : structure client
+// -----------------------------------------------------------------------------
+
+/*
+ * Handler principal observé à @0x49A612.
+ * 0x4B5AD0 = lecture u8
+ * 0x4B5980 = lecture u32 big-endian
+ * 0x4B5A40 = lecture u16 big-endian
  *
- * D. Packet 43
- * -----------
- * L'ordre PacketStatus utilisé par _write_status() est corroboré par le
- * client. C'est une base solide pour compléter les vraies stats, résistances
- * et pouvoirs.
+ * Le serveur Python actuel a déjà une structure très proche de cette séquence.
+ */
+struct PutPlayerInGame13 {
+    uint8_t  result;
+    uint32_t unitId;
+
+    uint16_t x;
+    uint16_t y;
+    uint16_t world;
+
+    uint32_t hp;
+    uint32_t maxHp;
+    uint16_t mana;
+    uint16_t maxMana;
+
+    // Trois valeurs 64 bits sont transmises en deux u32 : high puis low.
+    uint32_t xpHi;
+    uint32_t xpLo;
+
+    uint32_t nextLevelXpHi;
+    uint32_t nextLevelXpLo;
+
+    uint16_t strength;
+    uint16_t endurance;
+    uint16_t agility;
+    uint16_t willpower;
+    uint16_t wisdom;
+    uint16_t intelligence;
+    uint16_t luck;
+
+    // Six octets puis l'année u16.
+    uint8_t second;
+    uint8_t minute;
+    uint8_t hour;
+    uint8_t weekday;
+    uint8_t day;
+    uint8_t month;
+    uint16_t year;
+
+    uint32_t gold;
+    uint16_t level;
+
+    uint32_t previousLevelXpHi;
+    uint32_t previousLevelXpLo;
+};
+
+uint64_t ReadSplitU64(TFCPacket& p)
+{
+    uint32_t hi = p.ReadU32();
+    uint32_t lo = p.ReadU32();
+
+    // Le client appelle le helper 64-bit @0x51DA90 (_allmul) avec 2^32,
+    // puis ajoute la deuxième moitié : exactement (hi << 32) + lo.
+    return ((uint64_t)hi << 32) | lo;
+}
+
+void HandlePutPlayerInGame13(TFCPacket& p)
+{
+    uint8_t result = p.ReadU8();
+
+    uint32_t unitId = p.ReadU32();
+    uint16_t x      = p.ReadU16();
+    uint16_t y      = p.ReadU16();
+    uint16_t world  = p.ReadU16();
+
+    uint32_t hp      = p.ReadU32();
+    uint32_t maxHp   = p.ReadU32();
+    uint16_t mana    = p.ReadU16();
+    uint16_t maxMana = p.ReadU16();
+
+    uint64_t xp          = ReadSplitU64(p);
+    uint64_t nextLevelXp = ReadSplitU64(p);
+
+    uint16_t str  = p.ReadU16();
+    uint16_t end  = p.ReadU16();
+    uint16_t agi  = p.ReadU16();
+    uint16_t wil  = p.ReadU16();
+    uint16_t wis  = p.ReadU16();
+    uint16_t intel= p.ReadU16();
+    uint16_t luck = p.ReadU16();
+
+    uint8_t second  = p.ReadU8();
+    uint8_t minute  = p.ReadU8();
+    uint8_t hour    = p.ReadU8();
+    uint8_t weekday = p.ReadU8();
+    uint8_t day     = p.ReadU8();
+    uint8_t month   = p.ReadU8();
+    uint16_t year   = p.ReadU16();
+
+    uint32_t gold  = p.ReadU32();
+    uint16_t level = p.ReadU16();
+
+    uint64_t previousLevelXp = ReadSplitU64(p);
+
+    /*
+     * Après cette lecture le client initialise plusieurs sous-systèmes du monde,
+     * positionne le joueur avec (x,y,world), puis émet deux requêtes :
+     *
+     *   packet 39 (0x27)  @0x49A923
+     *   packet 60 (0x3C)  @0x49AAA1
+     *
+     * Ceci confirme que le paquet 13 est le pivot entre PRE_INGAME et le chargement
+     * des données de gameplay côté client.
+     */
+    InitializeWorldAfterPlayerLoad();
+    PlaceLocalPlayer(x, y, world, /*arg=*/0);
+    SendPacket(39);
+    SendPacket(60);
+}
+
+
+// -----------------------------------------------------------------------------
+// 13. Corrections / implications pour la réimplémentation Python
+// -----------------------------------------------------------------------------
+
+/*
+ * [CONFIRME] 1) Header transport little-endian :
  *
- * E. Packet 68
- * -----------
- * Le nombre de champs du serveur Python doit être corrigé de 9 u16 vers 8 u16.
+ *   struct.pack("<HHII", control, declaredLength, sequence, fragmentGroup)
  *
- * F. Fragmentation / SAFE / ACK
- * -----------------------------
- * Le client possède une couche de fiabilité avec file d'envoi,
- * retransmissions, suivi de pertes et "PacketLost.Log". Il reste à décompiler
- * les blocs exacts qui assemblent/interprètent flags, sequence et fragments.
+ * tandis que TFCPacket reste big-endian pour ses u16/u32.
+ *
+ * [CONFIRME] 2) Valeurs de flags :
+ *   ACK      = 0x0100
+ *   SAFE     = 0x0200
+ *   FRAGMENT = 0x0400
+ *   index    = control & 0xFF
+ *
+ * [CONFIRME] 3) Taille fragment de données = 1012.
+ *
+ * [CONFIRME] 4) Dans un fragment, declaredLength est la longueur du datagramme
+ * original avant fragmentation, et NON la longueur wire du fragment courant.
+ * C'est une correction importante pour un encode_fragment Python.
+ *
+ * [CONFIRME] 5) groupId = valeur du compteur de séquence capturée avant le split.
+ * Chaque fragment reçoit ensuite sa propre séquence incrémentale.
+ *
+ * [CONFIRME] 6) Le dernier fragment possède le quirk de +12 décrit plus haut.
+ * Pour une compatibilité stricte avec le client 1.25, il est préférable de le
+ * reproduire plutôt que d'implémenter une fragmentation UDP "idéale" moderne.
+ *
+ * [CONFIRME] 7) Réassemblage : timeout = 10 secondes.
+ *
+ * [CONFIRME] 8) Déduplication : ring de 100 numéros de séquence.
+ *
+ * [CONFIRME] 9) Un SAFE dupliqué est acquitté AVANT d'être rejeté comme doublon.
+ * Ceci est important : sinon le serveur peut retransmettre indéfiniment si le
+ * premier ACK s'est perdu.
+ *
+ * [CONFIRME] 10) Packet 68 PUPPET_INFORMATION reste :
+ *   1 x u32 + 8 x u16
+ * et non 1 x u32 + 9 x u16.
  */
 
 
 // -----------------------------------------------------------------------------
-// 12. Prochaines fonctions prioritaires à décompiler
+// 14. Prochaines cibles utiles du client
 // -----------------------------------------------------------------------------
 
 /*
- * 1) @0x4B9630 : gros coeur TFCSocket (chaînes SEND/RECEIVE/INTERPRET PACKET)
- *    => SAFE, ACK, séquences, fragmentation/réassemblage exacts.
+ * Le premier fichier indiquait @0x4B9630 comme "coeur TFCSocket". Correction :
+ * ce bloc appartient surtout à la grande boucle / machine d'état applicative.
+ * Le transport bas niveau est bien concentré autour de @0x45C550..@0x45DEE0.
  *
- * 2) @0x49A612 : paquet 13 PUT_PLAYER_IN_GAME
- *    => structure initiale complète du personnage et monde.
+ * Priorités suivantes :
  *
- * 3) @0x4994E0 : paquet 40 train-skill list.
+ * 1) Inventaire / équipement : retrouver les handlers qui consomment les listes
+ *    d'objets et les structures d'item.
  *
- * 4) @0x49DD27 : paquet 62 / online player list, afin de lier définitivement
- *    le parseur @0x4979F0 au dispatcher et nommer les deux chaînes.
+ * 2) Sorts : chaînes "SPELL ID [", "SpellCasting", "[USESPELLUNIT]".
+ *    Objectif : paquet d'apprentissage, cooldown/cast, cible unité/sol.
  *
- * 5) Blocs objets/inventaire/sorts autour des strings :
- *       "SPELL ID [", "SpellCasting", "[USESPELLUNIT]", "[USESKILLUNIT]"
- *    => structures serveur -> client puis requêtes client -> serveur.
+ * 3) Skills : packet 40 et requêtes USESKILLUNIT.
+ *
+ * 4) In-view units / mouvement : compléter les formats spawn/despawn et
+ *    synchronisation des coordonnées.
+ *
+ * 5) Chat, NPC/dialogues et shops, après stabilisation monde + inventaire.
  */

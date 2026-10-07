@@ -44,7 +44,7 @@ RUN chmod +x /entrypoint.sh
 # via entrypoint ; wineboot rend l'init idempotent).
 VOLUME ["/opt/t4c/db"]
 
-# Port jeu T4C (UDP 11677 — valeur par défaut confirmée dans le binaire)
-EXPOSE 11677/udp
+# Ports T4C (défauts confirmés en désassemblage : RECV 11677 / SEND 11678)
+EXPOSE 11677/udp 11678/udp
 
 ENTRYPOINT ["/entrypoint.sh"]

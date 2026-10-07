@@ -7,8 +7,10 @@ REGEDIT4
 
 [HKEY_LOCAL_MACHINE\Software\Vircom\The 4th Coming Server\Network]
 ; Ports par défaut confirmés dans le binaire (push 0x2D9D = 11677).
+; Défauts confirmés en désassemblage (0x43f7ac) : RECV=11677 (0x2D9D),
+; SEND=11678 (0x2D9E). Le serveur reçoit sur 11677 et émet depuis 11678.
 "RECV_PORT"=dword:00002d9d
-"SEND_PORT"=dword:00002d9d
+"SEND_PORT"=dword:00002d9e
 "LocalUserMax"=dword:00000064
 "RemoteUserMax"=dword:00000064
 

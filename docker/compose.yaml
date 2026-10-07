@@ -11,7 +11,10 @@ services:
     container_name: t4c-server
     # Le serveur original écoute en UDP 11677 (0x2D9D confirmé dans le binaire).
     ports:
+      # RECV (11677) : les clients s'y connectent.
+      # SEND (11678) : le serveur émet depuis ce port (défaut binaire 0x2D9E).
       - "0.0.0.0:11677:11677/udp"
+      - "0.0.0.0:11678:11678/udp"
     environment:
       T4C_PORT: "11677"
       WINEDEBUG: "-all"

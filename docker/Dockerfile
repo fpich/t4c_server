@@ -36,7 +36,10 @@ RUN dpkg --add-architecture i386 \
         xvfb \
         xauth \
         unixodbc \
+        unixodbc-dev \
+        libodbc2:i386 \
         odbc-mdbtools \
+        odbc-mdbtools:i386 \
         mdbtools \
     && rm -rf /var/lib/apt/lists/*
 

@@ -47,8 +47,8 @@ fi
 cat > /etc/odbcinst.ini <<'ODBCINST'
 [MDBTools]
 Description=MDBTools Access Driver
-Driver=/usr/lib/x86_64-linux-gnu/odbc/libmdb.so
-Setup=/usr/lib/x86_64-linux-gnu/odbc/libmdbodbc.so
+Driver=libmdbodbc.so
+Setup=libmdb.so
 FileUsage=1
 UsageCount=1
 ODBCINST

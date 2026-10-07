@@ -607,6 +607,15 @@ async def handle_put_player_in_game(
         session.pos_world,
     )
     server.send_packet(session.address, response)
+    # Puppet du joueur (Character::PacketPuppetInfo, envoyé par
+    # packet_inview_units au propriétaire) : le client a besoin du
+    # modèle 3D du personnage pour le rendre au centre de l'écran.
+    # Format : i32 ID puis 9 × i16 apparences d'équipement (0 = rien).
+    puppet = PacketWriter(PacketID.PUPPET_INFORMATION)
+    puppet.write_i32(session.unit_id)
+    for _ in range(9):  # body, feet, gloves, helm, legs, armes D/G, cape
+        puppet.write_i16(0)
+    server.send_packet(session.address, puppet)
     log.info(
         "MONDE personnage chargé nom=%r compte=%r ID=%d client=%s -> %s",
         character.name,

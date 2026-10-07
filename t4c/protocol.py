@@ -35,6 +35,7 @@ class PacketID(IntEnum):
     SEND_TRAIN_SKILL_LIST = 40   # RQ_SendTrainSkillList
     GET_NEAR_ITEMS = 60          # RQ_GetNearItems
     GET_ONLINE_PLAYER_LIST = 62  # RQ_GetOnlinePlayerList
+    PUPPET_INFORMATION = 68       # RQ_PuppetInformation
     RETURN_TO_MENU = 38
     GET_TIME = 45
     FROM_PREINGAME_TO_INGAME = 46

@@ -91,7 +91,9 @@ class Step9PersistenceTests(unittest.IsolatedAsyncioTestCase):
                 server, session2, decode_datagram(load.to_datagram(seed=22))
             )
             self.assertEqual((session2.pos_x, session2.pos_y, session2.pos_world), (5, 9, 1))
-            reply = decode_reply(server.sent[-1][1])
+            # sent[0] = réponse 25 (création), sent[1] = réponse 13,
+            # sent[2] = puppet 68
+            reply = decode_reply(server.sent[1][1])
             reader = PacketReader(reply.body)
             reader.read_u8()
             reader.read_i32()

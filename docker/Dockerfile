@@ -35,6 +35,9 @@ RUN dpkg --add-architecture i386 \
         winbind \
         xvfb \
         xauth \
+        xdotool \
+        util-linux \
+        x11-xserver-utils \
         unixodbc \
         unixodbc-dev \
         libodbc2:i386 \

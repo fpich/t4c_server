@@ -72,9 +72,37 @@ cp -f "$DB_DIR/T4C.mdb" "$T4C_DIR/T4C.mdb" 2>/dev/null || true
 echo "[t4c] démarrage du serveur (UDP ${T4C_PORT:-11677})..."
 cd "$T4C_DIR"
 set +e
-echo "[t4c] lancement du serveur (console complète capturée)..."
-WINEDEBUG=-all xvfb-run -a -s "-screen 0 1024x768x16" \
-    wine "T4C Server.exe" > /tmp/server-console.log 2>&1
+echo "[t4c] lancement du serveur avec TTY (console interactive requise)..."
+# T4C Server exige une vraie console interactive (sinon il sort illico, code 0).
+# 'script' lui fournit un pseudo-TTY ; la sortie est capturée intégralement.
+# Display fixe :99 — xvfb-run seul choisirait un display aléatoire,
+# rendant le pilotage xdotool impossible.
+rm -f /tmp/.X99-lock
+Xvfb :99 -screen 0 1024x768x16 -nolisten tcp >/tmp/xvfb.log 2>&1 &
+for i in 1 2 3 4 5 6 7 8 9 10; do
+    if DISPLAY=:99 xset q >/dev/null 2>&1; then break; fi
+    sleep 1
+done
+export DISPLAY=:99
+WINEDEBUG=-all script -qec "wine \"T4C Server.exe\"" /tmp/server-console.log >/dev/null 2>&1 &
+SERVER_PID=$!
+
+# Fenêtre de licence éventuelle : la détecter et cliquer OK automatiquement.
+sleep 8
+for i in 1 2 3 4 5; do
+    WIN=$(xdotool search --name "." 2>/dev/null | head -1)
+    if [ -n "$WIN" ]; then
+        echo "[t4c] fenêtre détectée (id $WIN) — titre :"
+        xdotool getwindowname "$WIN" 2>/dev/null
+        echo "[t4c] clic automatique (licence OK)..."
+        xdotool key --window "$WIN" space 2>/dev/null
+        xdotool key --window "$WIN" Return 2>/dev/null
+        break
+    fi
+    sleep 2
+done
+
+wait $SERVER_PID
 code=$?
 echo "[t4c] T4C Server.exe terminé (code $code)"
 echo "[t4c] ===== console du serveur (100 dernières lignes) ====="

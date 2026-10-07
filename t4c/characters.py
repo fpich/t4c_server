@@ -14,6 +14,11 @@ PLAYER_PUPPET = 10011          # __PLAYER_PUPPET (homme)
 PLAYER_FEMALE_PUPPET = 10012   # __PLAYER_FEMALE_PUPPET (femme)
 
 
+# Position de départ des nouveaux personnages (Character.cpp:117 original :
+# const WorldPos wlStartPos = { 2944, 1059, 0 } — LightHaven).
+START_POS = (2944, 1059, 0)
+
+
 @dataclass(slots=True)
 class Character:
     name: str

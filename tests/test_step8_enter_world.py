@@ -52,9 +52,10 @@ class Step8PutPlayerInGameTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(reader.read_u8(), 0)  # chargé
         unit_id = reader.read_i32()
         self.assertGreater(unit_id, 0)
-        self.assertEqual(reader.read_i16(), 0)  # X
-        self.assertEqual(reader.read_i16(), 0)  # Y
-        self.assertEqual(reader.read_i16(), 0)  # monde
+        # Position de départ officielle (Character.cpp:117) : LightHaven.
+        self.assertEqual(reader.read_i16(), 2944)  # X
+        self.assertEqual(reader.read_i16(), 1059)  # Y
+        self.assertEqual(reader.read_i16(), 0)     # monde
         self.assertEqual(reader.read_i32(), 50)  # HP
         self.assertEqual(reader.read_i32(), 50)  # HP max
         self.assertEqual(reader.read_i16(), 30)  # mana

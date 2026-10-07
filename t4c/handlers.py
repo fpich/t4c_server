@@ -13,7 +13,7 @@ import logging
 import re
 from typing import TYPE_CHECKING
 
-from .characters import PLAYER_FEMALE_PUPPET, PLAYER_PUPPET, Character
+from .characters import PLAYER_FEMALE_PUPPET, PLAYER_PUPPET, START_POS, Character
 from .codec import DecodedPacket, PacketReader, PacketWriter, T4CProtocolError
 from .protocol import PacketID
 from .session import SessionState
@@ -502,9 +502,9 @@ def _write_ingame_stats(
     writer: "PacketWriter",
     character: "Character",
     unit_id: int,
-    x: int = 0,
-    y: int = 0,
-    world: int = 0,
+    x: int = START_POS[0],
+    y: int = START_POS[1],
+    world: int = START_POS[2],
 ) -> None:
     """Sérialise la charge utile de RQ_PutPlayerInGame (format original).
 
@@ -589,6 +589,10 @@ async def handle_put_player_in_game(
     session.active_character = character.name
     session.unit_id = (session.unit_id or 0) + 1
     session.state = SessionState.PRE_INGAME
+    # Position de départ officielle (Character.cpp:117) ; remplacée par la
+    # position persistée si elle existe. (0,0,0) est hors carte -> crash
+    # du client à l'affichage du monde.
+    session.pos_x, session.pos_y, session.pos_world = START_POS
     if server.persistence is not None:
         pos = server.persistence.position(character.name)
         if pos is not None:

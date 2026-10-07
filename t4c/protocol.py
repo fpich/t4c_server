@@ -30,6 +30,7 @@ class PacketID(IntEnum):
     TOGGLE_PAGE = 89
     # Données demandées par le client à l'entrée en monde (confirmées par trace réelle).
     DELETE_PLAYER = 15            # RQ_DeletePlayer
+    GET_STATUS = 43               # RQ_GetStatus
     GET_SKILL_LIST = 39          # RQ_GetSkillList
     SEND_TRAIN_SKILL_LIST = 40   # RQ_SendTrainSkillList
     GET_NEAR_ITEMS = 60          # RQ_GetNearItems

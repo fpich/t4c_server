@@ -99,7 +99,10 @@ class Step8PutPlayerInGameTests(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(handled)
         self.assertIs(session.state, SessionState.IN_WORLD)
         self.assertEqual(session.enter_world_requests, 1)
-        reply = decode_reply(server.sent[1][1])
+        # L'original envoie PacketStatus (43) avant la confirmation 46.
+        status = decode_reply(server.sent[1][1])
+        self.assertEqual(status.packet_id, PacketID.GET_STATUS)
+        reply = decode_reply(server.sent[2][1])
         self.assertEqual(reply.packet_id, PacketID.FROM_PREINGAME_TO_INGAME)
         self.assertEqual(PacketReader(reply.body).read_u8(), 0)
 

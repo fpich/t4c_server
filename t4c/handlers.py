@@ -628,9 +628,22 @@ async def handle_from_preingame_to_ingame(
     le serveur original n'envoie alors que l'u8 résultat.
     """
     session.enter_world_requests += 1
+    result = 0
+    status_writer = None
     if session.state is SessionState.PRE_INGAME:
-        result = 0
         session.state = SessionState.IN_WORLD
+        # L'original envoie PacketStatus juste après la mise en jeu
+        # (TFCMessagesHandler.cpp:1545) : le client en a besoin pour
+        # construire son interface. Sans lui, crash à l'affichage.
+        character = None
+        if session.account:
+            for candidate in server.characters.characters(session.account):
+                if candidate.name == session.active_character:
+                    character = candidate
+                    break
+        if character is not None:
+            status_writer = _write_status(character)
+            server.send_packet(session.address, status_writer)
     elif session.state is SessionState.IN_WORLD:
         result = 1
     else:
@@ -844,3 +857,55 @@ async def handle_delete_player(
         "supprimé" if deleted else "introuvable",
         session.address,
     )
+
+
+def _write_status(character: "Character") -> "PacketWriter":
+    """Sérialise PacketStatus (paquet 43) — format Character::PacketStatus original.
+
+    Ordre confirmé : i32 HP, i32 maxHP, i16 mana, i16 maxMana,
+    i32 XP hi/lo, i16 AC + trueAC, i16 STR/END/AGI/wil/WIS/INT/LCK,
+    i16 points de stats, i16 true STR/END/AGI/wil/WIS/INT/LCK,
+    i16 niveau, i16 points de compét., i16 poids, i16 max poids, i16 karma,
+    i16 trueMaxHP, i16 pouvoirs eau/terre/air/feu,
+    i16 résistances eau/terre/air/feu,
+    i16 true pouvoirs eau/terre/air/feu + light/dark,
+    i16 true résistances eau/terre/air/feu + light/dark,
+    i16 résistances light/dark.
+    """
+    w = PacketWriter(PacketID.GET_STATUS)
+    w.write_i32(character.hp)
+    w.write_i32(character.max_hp)
+    w.write_i16(character.mana)
+    w.write_i16(character.max_mana)
+    w.write_i32(0)  # XP hi
+    w.write_i32(0)  # XP lo
+    for _ in range(2):  # AC + trueAC
+        w.write_i16(0)
+    w.write_i16(character.strength)
+    w.write_i16(character.end)
+    w.write_i16(character.agi)
+    w.write_i16(0)  # wil
+    w.write_i16(character.wisdom)
+    w.write_i16(character.intelligence)
+    w.write_i16(0)  # luck
+    w.write_i16(0)  # points de stats
+    for v in (character.strength, character.end, character.agi,
+              0, character.wisdom, character.intelligence, 0):
+        w.write_i16(v)  # vraies stats
+    w.write_i16(character.level)
+    w.write_i16(15)   # points de compétences (défaut création original)
+    w.write_i16(0)    # poids
+    w.write_i16(100)  # max poids
+    w.write_i16(0)    # karma
+    w.write_i16(character.max_hp)  # trueMaxHP
+    for _ in range(4):  # pouvoirs eau/terre/air/feu
+        w.write_i16(0)
+    for _ in range(4):  # résistances eau/terre/air/feu
+        w.write_i16(0)
+    for _ in range(6):  # true pouvoirs (4 éléments + light/dark)
+        w.write_i16(0)
+    for _ in range(6):  # true résistances
+        w.write_i16(0)
+    for _ in range(2):  # résistances light/dark
+        w.write_i16(0)
+    return w

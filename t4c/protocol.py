@@ -40,6 +40,13 @@ class PacketID(IntEnum):
     VIEW_EQUIPED = 19             # RQ_ViewEquiped
     GET_CHATTER_USER_LIST = 50    # RQ_GetChatterUserList
     GET_CHATTER_CHANNEL_LIST = 75 # RQ_GetChatterChannelList
+    # Inventaire / équipement / sorts / skills (RE client 1.25).
+    EQUIP_ITEM = 21               # client @0x434C5A : u32 itemUnitId
+    UNEQUIP_SLOT = 22             # client @0x434924 : u8 equipSlot
+    USE_ITEM = 23                 # client @0x434536 : u16 x, u16 y, u32 itemUnitId
+    ITEM_NAME_REQUEST = 59        # client @0x433C7B : u32 itemId
+    USE_SPELL_UNIT = 32           # client @0x455BF0 : u16 spellId, u16 x, u16 y, u32 targetUnitId
+    USE_SKILL_UNIT = 42           # client @0x415C00 : u16 skillId, u16 x, u16 y, u32 targetUnitId
     RETURN_TO_MENU = 38
     GET_TIME = 45
     FROM_PREINGAME_TO_INGAME = 46

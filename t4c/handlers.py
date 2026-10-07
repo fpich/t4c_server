@@ -61,6 +61,14 @@ class PacketDispatcher:
             PacketID.MAX_CHARACTERS_PER_ACCOUNT_INFO,
             handle_max_characters_per_account_info,
         )
+        self.register(PacketID.VIEW_BACKPACK, handle_view_backpack)
+        self.register(PacketID.VIEW_EQUIPED, handle_view_equiped)
+        self.register(PacketID.EQUIP_ITEM, handle_equip_item)
+        self.register(PacketID.UNEQUIP_SLOT, handle_unequip_slot)
+        self.register(PacketID.USE_ITEM, handle_use_item)
+        self.register(PacketID.USE_SPELL_UNIT, handle_use_spell_unit)
+        self.register(PacketID.USE_SKILL_UNIT, handle_use_skill_unit)
+        self.register(PacketID.ITEM_NAME_REQUEST, handle_item_name_request)
 
     def register(self, packet_id: int, handler: PacketHandler) -> None:
         packet_id = int(packet_id)
@@ -799,14 +807,18 @@ async def handle_get_skill_list(
 async def handle_send_train_skill_list(
     server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
 ) -> None:
-    """Requête 40 : compétences entraînables. Monde vide : liste vide.
+    """Requête 40 : compétences entraînables.
 
-    Format original (RQ_SendTrainSkillList) : u8 résultat,
-    puis la liste des compétences proposées par les PNJ — aucune ici.
+    Format confirmé par le handler client @0x4994E0 :
+      u16 context (points de compétence), u16 count,
+      puis par entrée : u8 flags, u16 skillId, u16 valueA, u16 valueB,
+      u32 costOrValue, CString name.
+    Aucun PNJ entraîneur dans le monde : count = 0.
     """
     session.train_skill_requests += 1
     response = PacketWriter(PacketID.SEND_TRAIN_SKILL_LIST)
-    response.write_u8(0)
+    response.write_i16(15)   # points de compétence (défaut création original)
+    response.write_i16(0)    # aucune compétence entraînable
     server.send_packet(session.address, response)
     log.info("ENTRAINEMENT liste vide client=%s", session.address)
 
@@ -991,28 +1003,56 @@ async def handle_get_status(
 async def handle_view_backpack(
     server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
 ) -> None:
-    """Requête 18 : sac à dos. Format original Character::PacketBackpack :
-    i16 nombre d'objets puis par objet : i16 apparence, i32 ID,
-    i16 staticRef, i32 qty, i32 charges. Sac vide : i16 0."""
+    """Requête 18 : sac à dos.
+
+    Format confirmé par le handler client @0x49A0B6 :
+      u8 headerFlag, u32 headerValue, u16 count,
+      puis par objet : u16 templateField, u32 unitId,
+      u16 baseField, u32 quantity, u32 uniqueData.
+    Sac vide : header (flag=0, value=0) + count=0.
+    """
     response = PacketWriter(PacketID.VIEW_BACKPACK)
-    response.write_i16(0)  # sac vide
+    response.write_u8(0)     # headerFlag
+    response.write_u32(0)   # headerValue
+    response.write_i16(0)    # aucun objet
     server.send_packet(session.address, response)
     log.info("SAC À DOS vide client=%s", session.address)
+
+
+# Ordre fixe des slots consommés par le handler client du paquet 19
+# (@0x49942B) — doit être respecté à l'identique côté serveur.
+EQUIPMENT_SLOT_ORDER = (0, 2, 3, 4, 6, 7, 8, 9, 11, 12, 14, 15, 1)
+
+
+def _write_empty_equipment_slot(w: PacketWriter) -> None:
+    """Une entrée d'équipement vide : tous champs à zéro + CString vide.
+    Format PacketSingleEquip confirmé : u32 unitId, u16 templateField,
+    u16 baseField, u16 quantity, u32 uniqueData, CString displayName.
+    """
+    w.write_u32(0)          # unitId = 0 => slot vide
+    w.write_i16(0)          # templateField
+    w.write_i16(0)          # baseField
+    w.write_i16(0)          # quantity
+    w.write_u32(0)          # uniqueData
+    w.write_text("")        # displayName
 
 
 async def handle_view_equiped(
     server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
 ) -> None:
-    """Requête 19 : équipement. Format original Character::packet_equiped :
-    char 1, char 0, puis 9 × PacketSingleEquip. Rien d'équipé -> 9 entrées vides.
-    Le format exact de PacketSingleEquip reste à RE ; le client tolère une
-    liste vide si on n'envoie que l'en-tête ? NON — risqué. Réponse minimale :
-    char 1, char 0 (comme l'original sans équipement)."""
+    """Requête 19 : équipement.
+
+    Format confirmé par le handler client @0x49942B :
+      u8 rangedAttack, puis 13 entrées dans l'ordre de slots fixe
+      0,2,3,4,6,7,8,9,11,12,14,15,1.
+    Rien d'équipé : rangedAttack=0 et 13 entrées vides.
+    """
     response = PacketWriter(PacketID.VIEW_EQUIPED)
-    response.write_u8(1)
-    response.write_u8(0)
+    response.write_u8(0)    # rangedAttack
+    for _ in EQUIPMENT_SLOT_ORDER:
+        _write_empty_equipment_slot(response)
     server.send_packet(session.address, response)
-    log.info("ÉQUIPÉ rien client=%s", session.address)
+    log.info("ÉQUIPÉ rien (13 slots vides) client=%s", session.address)
 
 
 async def handle_get_chatter_user_list(
@@ -1033,3 +1073,159 @@ async def handle_get_chatter_channel_list(
     response.write_i16(0)  # aucun canal
     server.send_packet(session.address, response)
     log.info("CHAT canaux : aucun client=%s", session.address)
+
+
+# -----------------------------------------------------------------------------
+# Inventaire / équipement / sorts / skills — formats confirmés par RE client
+# (docs/reverse-engineering/T4CClient-pseudo-code.c, sections 15-17).
+# -----------------------------------------------------------------------------
+
+
+async def handle_equip_item(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 21 (client @0x434C5A) : équiper un objet du sac.
+
+    Corps confirmé : u32 itemUnitId.
+    Aucun inventaire serveur pour l'instant : la demande est acceptée
+    puis ignorée (le client rafraîchira via 18/19).
+    """
+    reader = PacketReader(packet.body)
+    try:
+        item_unit_id = reader.read_u32()
+    except T4CProtocolError as exc:
+        log.warning("requête 21 malformée de %s : %s", session.address, exc)
+        return
+    _ensure_consumed(reader, packet.packet_id)
+    log.info(
+        "ÉQUIPER ignoré (inventaire non implémenté) item=%d client=%s",
+        item_unit_id,
+        session.address,
+    )
+
+
+async def handle_unequip_slot(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 22 (client @0x434924) : déséquiper un slot.
+
+    Corps confirmé : u8 equipSlot (valeurs vues : 0,1,2,3,4,6,7,8,9,11,12,14,15).
+    """
+    reader = PacketReader(packet.body)
+    try:
+        slot = reader.read_u8()
+    except T4CProtocolError as exc:
+        log.warning("requête 22 malformée de %s : %s", session.address, exc)
+        return
+    _ensure_consumed(reader, packet.packet_id)
+    log.info(
+        "DÉSÉQUIPER ignoré (inventaire non implémenté) slot=%d client=%s",
+        slot,
+        session.address,
+    )
+
+
+async def handle_use_item(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 23 (client @0x434536) : utiliser un objet.
+
+    Corps confirmé : u16 x, u16 y, u32 itemUnitId (x=y=0 pour un
+    double-clic dans le sac).
+    """
+    reader = PacketReader(packet.body)
+    try:
+        x = reader.read_u16()
+        y = reader.read_u16()
+        item_unit_id = reader.read_u32()
+    except T4CProtocolError as exc:
+        log.warning("requête 23 malformée de %s : %s", session.address, exc)
+        return
+    _ensure_consumed(reader, packet.packet_id)
+    log.info(
+        "UTILISER OBJET ignoré (inventaire non implémenté) item=%d (%d,%d) client=%s",
+        item_unit_id,
+        x,
+        y,
+        session.address,
+    )
+
+
+async def handle_use_spell_unit(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 32 (client @0x455BF0) : lancer un sort sur une unité/position.
+
+    Corps confirmé : u16 spellId, u16 targetX, u16 targetY, u32 targetUnitId.
+    targetUnitId != 0 => sort ciblé sur une unité, sinon sur le sol.
+    Le personnage ne connaît aucun sort : demande ignorée.
+    """
+    reader = PacketReader(packet.body)
+    try:
+        spell_id = reader.read_u16()
+        x = reader.read_u16()
+        y = reader.read_u16()
+        target_unit_id = reader.read_u32()
+    except T4CProtocolError as exc:
+        log.warning("requête 32 malformée de %s : %s", session.address, exc)
+        return
+    _ensure_consumed(reader, packet.packet_id)
+    log.info(
+        "SORT ignoré (aucun sort connu) spell=%d cible=%d (%d,%d) client=%s",
+        spell_id,
+        target_unit_id,
+        x,
+        y,
+        session.address,
+    )
+
+
+async def handle_use_skill_unit(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 42 (client @0x415C00) : utiliser une compétence sur une unité/position.
+
+    Corps confirmé : u16 skillId, u16 targetX, u16 targetY, u32 targetUnitId.
+    Aucune compétence utilisable en dehors d'un contexte PNJ : ignorée.
+    """
+    reader = PacketReader(packet.body)
+    try:
+        skill_id = reader.read_u16()
+        x = reader.read_u16()
+        y = reader.read_u16()
+        target_unit_id = reader.read_u32()
+    except T4CProtocolError as exc:
+        log.warning("requête 42 malformée de %s : %s", session.address, exc)
+        return
+    _ensure_consumed(reader, packet.packet_id)
+    log.info(
+        "COMPÉTENCE ignorée skill=%d cible=%d (%d,%d) client=%s",
+        skill_id,
+        target_unit_id,
+        x,
+        y,
+        session.address,
+    )
+
+
+async def handle_item_name_request(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 59 (client @0x433C7B) : résolution du nom d'un objet.
+
+    Corps confirmé : u32 itemId.
+    Réponse (handler client @0x49E420) : u32 itemId, u16 nameLen, bytes.
+    Aucun objet dans le monde : nom vide pour ne pas bloquer le client.
+    """
+    reader = PacketReader(packet.body)
+    try:
+        item_id = reader.read_u32()
+    except T4CProtocolError as exc:
+        log.warning("requête 59 malformée de %s : %s", session.address, exc)
+        return
+    _ensure_consumed(reader, packet.packet_id)
+    response = PacketWriter(PacketID.ITEM_NAME_REQUEST)
+    response.write_u32(item_id)
+    response.write_text("")
+    server.send_packet(session.address, response)
+    log.info("NOM OBJET vide item=%d client=%s", item_id, session.address)

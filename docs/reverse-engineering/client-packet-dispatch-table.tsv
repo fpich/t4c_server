@@ -59,3 +59,12 @@ packet_id	client_block	working_name	confidence
 97	0x49DFA0	packet_97	address_confirmed
 98	0x49BF99	packet_98	address_confirmed
 100	0x49DB94	packet_100	address_confirmed
+21	0x499E57	EQUIP_ITEM (S2C 21 confirmé comme update ?)	address_confirmed
+22	0x434924	C2S UNEQUIP_SLOT	client_emit_confirmed
+23	0x434536	C2S USE_ITEM	client_emit_confirmed
+32	0x455BF0	C2S USE_SPELL_UNIT	client_emit_confirmed
+42	0x415C00	C2S USE_SKILL_UNIT	client_emit_confirmed
+59	0x49E420	S2C ITEM_NAME_RESPONSE	handler_confirmed
+59	0x433C7B	C2S ITEM_NAME_REQUEST	client_emit_confirmed
+64	0x49CEE3	S2C SPELL_CASTING	handler_confirmed
+75	0x49C7E6	S2C CHANNEL_LIST	handler_confirmed

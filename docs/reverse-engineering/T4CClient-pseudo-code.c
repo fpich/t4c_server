@@ -1002,3 +1002,513 @@ void HandlePutPlayerInGame13(TFCPacket& p)
  *
  * 5) Chat, NPC/dialogues et shops, après stabilisation monde + inventaire.
  */
+
+
+// =============================================================================
+// 15. INVENTAIRE / EQUIPEMENT -- reconstruction croisee client + serveur
+// =============================================================================
+
+/*
+ * Les IDs ci-dessous sont confirmes par le code d'emission du client et, pour
+ * 18/19, par les fonctions serveur Character::PacketBackpack et
+ * Character::packet_equiped.
+ *
+ * Conventions :
+ *   [CONFIRME] = ordre/type verifies des deux cotes lorsque possible.
+ *   [INFERE]   = nom semantique du champ deduit de son utilisation.
+ */
+
+// -----------------------------------------------------------------------------
+// Packet 21 (0x15) -- EQUIP_ITEM, client -> serveur
+// Client @0x434C5A
+// -----------------------------------------------------------------------------
+
+struct C2S_EquipItem_21
+{
+    uint16_t packetId;      // = 21
+    uint32_t itemUnitId;    // [CONFIRME] identifiant de l'objet selectionne
+};
+
+void InventoryUI_EquipItem(/* ItemUI *item */)
+{
+    TFCPacket p;
+    p.write_u16_be(21);
+    p.write_u32_be(selectedItem->unitId);
+    SendPacket(p);
+}
+
+
+// -----------------------------------------------------------------------------
+// Packet 22 (0x16) -- UNEQUIP_SLOT, client -> serveur
+// Client @0x4348E0, construction @0x434924
+// -----------------------------------------------------------------------------
+
+/*
+ * Le client convertit le widget d'equipement clique en un index de slot puis
+ * n'envoie QUE cet octet. Les valeurs vues dans le mapping UI incluent :
+ *   0,1,2,3,4,6,7,8,9,11,12,14,15.
+ */
+struct C2S_UnequipSlot_22
+{
+    uint16_t packetId;      // = 22
+    uint8_t  equipSlot;     // [CONFIRME]
+};
+
+void InventoryUI_UnequipClicked(EquipmentWidget *widget)
+{
+    uint8_t slot = ResolveEquipmentSlot(widget); // mapping UI -> slot protocole
+
+    // Le client met aussi a jour son modele/UI local avant l'envoi.
+    LocalEquipment_Remove(slot);
+
+    TFCPacket p;
+    p.write_u16_be(22);
+    p.write_u8(slot);
+    SendPacket(p);
+}
+
+
+// -----------------------------------------------------------------------------
+// Packet 23 (0x17) -- USE_ITEM, client -> serveur
+// Client @0x434536. Trace debug : "Using item!"
+// -----------------------------------------------------------------------------
+
+struct C2S_UseItem_23
+{
+    uint16_t packetId;      // = 23
+    uint16_t x;             // [CONFIRME] 0 lors d'un double-clic inventaire
+    uint16_t y;             // [CONFIRME] 0 lors d'un double-clic inventaire
+    uint32_t itemUnitId;    // [CONFIRME]
+};
+
+void InventoryUI_UseItem(ItemUI *item)
+{
+    TFCPacket p;
+    p.write_u16_be(23);
+    p.write_u16_be(0);
+    p.write_u16_be(0);
+    p.write_u32_be(item->unitId);
+    SendPacket(p);
+}
+
+/*
+ * [INFERE] Les champs x/y permettent probablement la variante "utiliser a une
+ * position / au sol". Pour un usage direct depuis le sac, le client les met a 0.
+ */
+
+
+// -----------------------------------------------------------------------------
+// Packet 18 (0x12) -- BACKPACK / INVENTORY LIST, serveur -> client
+// Client handler @0x49A0B6
+// Serveur : Character::PacketBackpack @0x420760
+// -----------------------------------------------------------------------------
+
+struct BackpackItem18
+{
+    uint16_t templateField; // [CONFIRME TYPE] virtual item getter +0x2C
+    uint32_t unitId;        // [CONFIRME] Unit::GetID()
+    uint16_t baseField;     // [CONFIRME TYPE] virtual item getter +0x28
+    uint32_t quantity;      // [CONFIRME] Objects::GetQty()
+    uint32_t uniqueData;    // [CONFIRME TYPE] 0 si !Objects::IsUnique()
+};
+
+/*
+ * Le handler client lit avant la liste :
+ *   u8  headerFlag;
+ *   u32 headerValue;
+ *   u16 itemCount;
+ * puis itemCount entrees.
+ *
+ * Character::PacketBackpack() cote serveur ecrit le itemCount et les entrees;
+ * les deux premiers champs sont donc ajoutes par son appelant. Leur signification
+ * exacte reste a nommer.
+ */
+void HandlePacket18_Backpack(TFCPacket &p)
+{
+    uint8_t  headerFlag  = p.read_u8();       // [SEMANTIQUE A CONFIRMER]
+    uint32_t headerValue = p.read_u32_be();   // [SEMANTIQUE A CONFIRMER]
+    uint16_t count       = p.read_u16_be();
+
+    std::vector<ItemUI *> incoming;
+
+    for (uint16_t i = 0; i < count; ++i)
+    {
+        BackpackItem18 raw;
+        raw.templateField = p.read_u16_be();
+        raw.unitId        = p.read_u32_be();
+        raw.baseField     = p.read_u16_be();
+        raw.quantity      = p.read_u32_be();
+        raw.uniqueData    = p.read_u32_be();
+
+        ItemUI *item = new ItemUI();
+        item->unitId   = raw.unitId;
+        item->quantity = raw.quantity;
+
+        // Le client resolve une definition graphique/template a partir d'un
+        // des champs u16, puis fusionne la nouvelle liste avec l'ancienne.
+        item->definition = LookupItemDefinition(raw.templateField);
+
+        incoming.push_back(item);
+    }
+
+    MergeBackpackWithExistingUI(incoming, headerFlag, headerValue);
+}
+
+
+// -----------------------------------------------------------------------------
+// Packet 19 (0x13) -- EQUIPMENT SNAPSHOT, serveur -> client
+// Client handler @0x49942B
+// Serveur : Character::packet_equiped @0x419870
+//            Character::PacketSingleEquip @0x4196F0
+// -----------------------------------------------------------------------------
+
+struct EquippedItem19
+{
+    uint32_t unitId;        // Unit::GetID()
+    uint16_t templateField; // virtual getter +0x2C
+    uint16_t baseField;     // virtual getter +0x28
+    uint16_t quantity;      // Objects::GetQty(), tronque en u16 dans ce paquet
+    uint32_t uniqueData;    // 0 si non unique
+    CString  displayName;   // ecrit par PacketSingleEquip
+};
+
+/*
+ * Le serveur ecrit :
+ *   u16 packetId = 19;
+ *   u8  rangedAttack = Character::RangedAttack();
+ * puis une entree d'equipement dans l'ordre fixe :
+ *   0,2,3,4,6,7,8,9,11,12,14,15,1
+ *
+ * Le client appelle son parseur de slot dans exactement ce meme ordre.
+ */
+void HandlePacket19_Equipment(TFCPacket &p)
+{
+    bool rangedAttack = p.read_u8() != 0;
+
+    static const uint8_t slots[] = {
+        0, 2, 3, 4, 6, 7, 8, 9, 11, 12, 14, 15, 1
+    };
+
+    for (uint8_t slot : slots)
+        ParseEquipmentSlot19(p, slot);
+
+    InventoryUI_RefreshEquipment();
+}
+
+void ParseEquipmentSlot19(TFCPacket &p, uint8_t slot)
+{
+    EquippedItem19 item;
+    item.unitId        = p.read_u32_be();
+    item.templateField = p.read_u16_be();
+    item.baseField     = p.read_u16_be();
+    item.quantity      = p.read_u16_be();
+    item.uniqueData    = p.read_u32_be();
+    item.displayName   = p.read_cstring();
+
+    // unitId == 0 correspond a un slot vide; le serveur ecrit alors des zeros
+    // pour tous les champs et une CString vide.
+    Equipment_SetSlot(slot, item);
+}
+
+
+// -----------------------------------------------------------------------------
+// Packet 59 (0x3B) -- ITEM NAME LOOKUP
+// Requete client @0x433C7B / @0x43425E
+// Reponse client handler @0x49E420
+// -----------------------------------------------------------------------------
+
+struct C2S_ItemNameRequest_59
+{
+    uint16_t packetId;  // = 59
+    uint32_t itemId;
+};
+
+struct S2C_ItemNameResponse_59
+{
+    uint32_t itemId;
+    uint16_t nameLength;
+    uint8_t  name[nameLength];
+};
+
+void HandlePacket59_ItemName(TFCPacket &p)
+{
+    uint32_t itemId = p.read_u32_be();
+    uint16_t len    = p.read_u16_be();
+    std::string name = p.read_bytes_as_string(len);
+
+    // Le client parcourt sa liste d'items en attente; si l'ID correspond,
+    // il copie le nom dans l'objet UI et notifie le widget associe.
+    ResolvePendingItemName(itemId, name);
+}
+
+
+// =============================================================================
+// 16. SORTS -- emission, reception et animation
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Packet 32 (0x20) -- USE_SPELL_UNIT / CAST SPELL, client -> serveur
+// Client @0x455BF0 (autre chemin UI voisin @0x4559E0)
+// Serveur parser autour de @0x480240
+// -----------------------------------------------------------------------------
+
+struct C2S_UseSpellUnit_32
+{
+    uint16_t packetId;      // = 32
+    uint16_t spellId;
+    uint16_t targetX;
+    uint16_t targetY;
+    uint32_t targetUnitId;
+};
+
+bool SendUseSpellUnit(uint16_t spellId, uint32_t targetUnitId)
+{
+    uint16_t x, y;
+
+    if (targetUnitId == gLocalPlayer.unitId)
+    {
+        x = gLocalPlayer.x;
+        y = gLocalPlayer.y;
+    }
+    else
+    {
+        // @0x512960 dans ce chemin : resolution de la cible visible/relative.
+        if (!ResolveVisibleTargetPosition_Spell(targetUnitId, &x, &y))
+            return false;
+    }
+
+    TFCPacket p;
+    p.write_u16_be(32);
+    p.write_u16_be(spellId);
+    p.write_u16_be(x);
+    p.write_u16_be(y);
+    p.write_u32_be(targetUnitId);
+    SendPacket(p);
+    return true;
+}
+
+/*
+ * Le parser serveur confirme exactement l'ordre spellId, x, y, targetUnitId.
+ * Si targetUnitId != 0, il tente de retrouver l'unite et appelle la variante
+ * Character::CastSpell(spellId, Unit*). Sinon il utilise la variante WorldPos.
+ */
+
+
+// -----------------------------------------------------------------------------
+// Packet 64 (0x40) -- SPELL_CASTING / effet de sort, serveur -> clients
+// Client handler @0x49CEE3
+// Serveur Broadcast::BCSpellEffect @0x40FF00
+// -----------------------------------------------------------------------------
+
+struct S2C_SpellCasting_64
+{
+    uint16_t spellId;
+    uint32_t casterUnitId;
+    uint32_t targetUnitId;
+
+    // Deux WorldPos sont passes a Broadcast::BCSpellEffect.
+    // Le serveur n'en serialise que X et Y; la composante world/map est omise.
+    uint16_t posB_X;
+    uint16_t posB_Y;
+    uint16_t posA_X;
+    uint16_t posA_Y;
+
+    uint32_t effectId;
+    uint32_t childId;
+};
+
+void HandlePacket64_SpellCasting(TFCPacket &p)
+{
+    S2C_SpellCasting_64 s;
+    s.spellId      = p.read_u16_be();
+    s.casterUnitId = p.read_u32_be();
+    s.targetUnitId = p.read_u32_be();
+
+    s.posB_X = p.read_u16_be();
+    s.posB_Y = p.read_u16_be();
+    s.posA_X = p.read_u16_be();
+    s.posA_Y = p.read_u16_be();
+
+    s.effectId = p.read_u32_be();
+    s.childId  = p.read_u32_be();
+
+    // Le client compare casterUnitId/targetUnitId au joueur local, resout les
+    // positions effectives puis cree/declenche le FX du sort.
+    SpellFX_Play(
+        s.spellId,
+        s.casterUnitId,
+        s.targetUnitId,
+        {s.posA_X, s.posA_Y},
+        {s.posB_X, s.posB_Y},
+        s.effectId,
+        s.childId
+    );
+}
+
+/*
+ * Le nom des deux derniers champs est CONFIRME par les traces debug du client :
+ *   "EFFCT ID ["
+ *   "CHILD ID ["
+ * ainsi que par les deux derniers u32 ecrits dans Broadcast::BCSpellEffect().
+ */
+
+
+// =============================================================================
+// 17. SKILLS -- utilisation et liste d'entrainement
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Packet 42 (0x2A) -- USE_SKILL_UNIT, client -> serveur
+// Client @0x415C00
+// -----------------------------------------------------------------------------
+
+struct C2S_UseSkillUnit_42
+{
+    uint16_t packetId;      // = 42
+    uint16_t skillId;
+    uint16_t targetX;
+    uint16_t targetY;
+    uint32_t targetUnitId;
+};
+
+bool SendUseSkillUnit(uint16_t skillId, uint32_t targetUnitId)
+{
+    uint16_t x, y;
+
+    if (targetUnitId == gLocalPlayer.unitId)
+    {
+        x = gLocalPlayer.x;
+        y = gLocalPlayer.y;
+    }
+    else
+    {
+        // Le chemin skill emploie @0x5128E0.
+        if (!ResolveVisibleTargetPosition_Skill(targetUnitId, &x, &y))
+            return false;
+    }
+
+    TFCPacket p;
+    p.write_u16_be(42);
+    p.write_u16_be(skillId);
+    p.write_u16_be(x);
+    p.write_u16_be(y);
+    p.write_u32_be(targetUnitId);
+    SendPacket(p);
+    return true;
+}
+
+
+// -----------------------------------------------------------------------------
+// Packet 40 (0x28) -- TRAIN SKILL LIST, serveur -> client
+// Client handler @0x4994E0
+// Serveur SendTrainSkillListFunc @0x447620
+// -----------------------------------------------------------------------------
+
+struct TrainSkillEntry40
+{
+    uint8_t  flags;         // [TYPE CONFIRME, semantique exacte a nommer]
+    uint16_t skillIdLike;   // [INFERE]
+    uint16_t valueA;
+    uint16_t valueB;
+    uint32_t costOrValue;   // [INFERE]
+    CString  name;
+};
+
+void HandlePacket40_TrainSkillList(TFCPacket &p)
+{
+    uint16_t playerSkillPointsOrContext = p.read_u16_be(); // [INFERE]
+    uint16_t count = p.read_u16_be();
+
+    std::vector<TrainSkillEntry40> entries;
+    entries.reserve(count);
+
+    for (uint16_t i = 0; i < count; ++i)
+    {
+        TrainSkillEntry40 e;
+        e.flags       = p.read_u8();
+        e.skillIdLike = p.read_u16_be();
+        e.valueA      = p.read_u16_be();
+        e.valueB      = p.read_u16_be();
+        e.costOrValue = p.read_u32_be();
+        e.name        = p.read_cstring();
+        entries.push_back(e);
+    }
+
+    TrainSkillUI_SetList(playerSkillPointsOrContext, entries);
+}
+
+
+// =============================================================================
+// 18. QUELQUES HANDLERS SUPPLEMENTAIRES IDENTIFIES
+// =============================================================================
+
+// Packet 75 : liste de canaux de chat.
+struct ChannelEntry75
+{
+    CString name;
+    bool listen;
+};
+
+void HandlePacket75_ChannelList(TFCPacket &p)
+{
+    uint16_t count = p.read_u16_be();
+    for (uint16_t i = 0; i < count; ++i)
+    {
+        uint16_t len = p.read_u16_be();
+        CString name = p.read_bytes_as_string(len);
+        bool listen = p.read_u8() != 0;
+        ChatUI_AddOrUpdateChannel(name, listen);
+    }
+}
+
+/*
+ * Packet 63 est confirme comme MESSAGE SERVEUR par les traces :
+ *   "RECEIVE SERVER MESSAGE"
+ *   "SERVER MESSAGE: ["
+ * Son en-tete contient plusieurs champs de routage/style avant le texte; il sera
+ * documente plus finement lors du prochain passage chat/NPC.
+ */
+
+
+// =============================================================================
+// 19. CONSEQUENCES DIRECTES POUR LA REIMPLEMENTATION PYTHON
+// =============================================================================
+
+/*
+ * Handlers client -> serveur a implementer / verifier :
+ *
+ *   21 EQUIP_ITEM:
+ *      read_u32() -> itemUnitId
+ *
+ *   22 UNEQUIP_SLOT:
+ *      read_u8() -> slot
+ *
+ *   23 USE_ITEM:
+ *      read_u16() x
+ *      read_u16() y
+ *      read_u32() itemUnitId
+ *
+ *   32 USE_SPELL_UNIT:
+ *      read_u16() spellId
+ *      read_u16() x
+ *      read_u16() y
+ *      read_u32() targetUnitId
+ *
+ *   42 USE_SKILL_UNIT:
+ *      read_u16() skillId
+ *      read_u16() x
+ *      read_u16() y
+ *      read_u32() targetUnitId
+ *
+ * Reponses importantes :
+ *
+ *   18 backpack snapshot (u8 headerFlag, u32 headerValue, u16 count, entrees)
+ *   19 equipment snapshot (u8 rangedAttack, 13 slots dans l'ordre fixe)
+ *   40 train skill list (u16 context, u16 count, entrees)
+ *   59 item-name lookup response (u32 itemId, u16 len, bytes)
+ *   64 spell FX/casting broadcast
+ *
+ * Tous les champs TFCPacket u16/u32 ci-dessus sont en BIG-ENDIAN. Le header
+ * transport UDP 12 octets documente dans la section precedente reste, lui,
+ * LITTLE-ENDIAN.
+ */

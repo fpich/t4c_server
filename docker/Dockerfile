@@ -30,6 +30,7 @@ RUN dpkg --add-architecture i386 \
     && apt-get install -y --no-install-recommends \
         wine wine32:i386 wine64 \
         cabextract \
+        winetricks \
         winbind \
         xvfb \
         xauth \
@@ -41,6 +42,14 @@ RUN dpkg --add-architecture i386 \
 # Fichiers du serveur original (copiés depuis ressources/T4C_Server)
 # Le contexte de build est la racine du dépôt.
 COPY ressources/T4C_Server/ /opt/t4c/
+
+# MFC42 : T4C Server.exe importe MFC42.DLL (confirmé par err:module:import_dll).
+# Wine ne fournit pas les MFC ; winetricks mfc42 installe les redistributables
+# Microsoft officiels dans le préfixe.
+RUN export WINEPREFIX=/opt/wineprefix WINEARCH=win32 XDG_RUNTIME_DIR=/tmp/xdg \
+    && mkdir -p /tmp/xdg /opt/wineprefix \
+    && xvfb-run -a winetricks -q mfc42 \
+    && rm -rf /root/.cache
 
 # Clés de registre et script de démarrage
 COPY docker/T4C-server.reg /tmp/T4C-server.reg

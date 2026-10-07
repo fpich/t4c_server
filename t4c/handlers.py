@@ -803,13 +803,25 @@ async def handle_get_near_items(
     #    original : 'Sends this to ensure player wont get stuck in a
     #    black screen when loading').
     # 2) puis le corps du 60 lui-même.
+    # L'événement 16 contient les unités apparues — le JOUEUR lui-même
+    # en fait partie (PutPlayerInGame l'a ajouté au monde juste avant ;
+    # c'est ce que l'original sérialise via packet_inview_units).
+    # Format Unit::PacketUnitInformation : i16 apparence, i32 ID,
+    # i8 radiance, i8 statut, i8 %HP.
     event = PacketWriter(16)  # __EVENT_OBJECT_APPEARED_LIST
-    event.write_i16(0)        # aucune unité en vue
+    event.write_i16(1)        # une unité : le joueur
+    event.write_i16(session.pos_x)
+    event.write_i16(session.pos_y)
+    event.write_i16(10011)    # apparence __PLAYER_PUPPET
+    event.write_i32(session.unit_id or 0)
+    event.write_i8(0)         # radiance
+    event.write_i8(0)         # statut
+    event.write_i8(100)       # %HP (pleine santé)
     server.send_packet(session.address, event)
     response = PacketWriter(PacketID.GET_NEAR_ITEMS)
     server.send_packet(session.address, response)
     log.info(
-        "VUE unités en vue : 0 (événement 16 envoyé avant le 60) client=%s",
+        "VUE le joueur apparaît dans la scène (événement 16 : 1 unité) client=%s",
         session.address,
     )
 

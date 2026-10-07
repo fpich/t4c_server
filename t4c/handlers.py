@@ -757,17 +757,22 @@ async def handle_get_skill_list(
     toujours, avec les valeurs du personnage.
     """
     session.skill_list_requests += 1
+    # Désassemblage binaire 1.25 (Character::PacketSkills @ 0x41eeb3) :
+    #   << 39, << (count+2), puis par entrée : << skillID, << char 0,
+    #   << valeur, << valeur vraie, << CString nom, << CString desc.
+    # SkillListing.h : __SKILL_DODGE = 11, __SKILL_ATTACK = 12
+    # (les deux entrées de base ALWAYS envoyées par l'original).
     response = PacketWriter(PacketID.GET_SKILL_LIST)
     response.write_i16(2)  # attaque + esquive, aucune compétence apprise
-    # attaque (__SKILL_ATTACK, id 1)
-    response.write_i16(1)
+    # attaque (__SKILL_ATTACK = 12)
+    response.write_i16(12)
     response.write_i8(0)
     response.write_i16(10)
     response.write_i16(10)
     response.write_text("Attaque")
     response.write_text("Capacite d'attaque au corps a corps.")
-    # esquive (__SKILL_DODGE, id 2)
-    response.write_i16(2)
+    # esquive (__SKILL_DODGE = 11)
+    response.write_i16(11)
     response.write_i8(0)
     response.write_i16(10)
     response.write_i16(10)

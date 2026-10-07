@@ -32,7 +32,7 @@ RUN dpkg --add-architecture i386 \
         cabextract \
         winbind \
         unixodbc \
-        libmdbodbc1 \
+        odbc-mdbtools \
         mdbtools \
     && rm -rf /var/lib/apt/lists/*
 

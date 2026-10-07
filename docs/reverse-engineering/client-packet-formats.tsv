@@ -23,3 +23,20 @@ S2C	10001 (0x2711)	ATTACK / PAK_1_1	0x49E6B4	u32 attackerId; u32 targetId; u8 0;
 S2C	10002 (0x2712)	MISS / PAK_1_2	0x49EF62	u32 attackerId; u32 targetId; u16 pos1X; u16 pos1Y; u16 pos2X; u16 pos2Y	confirmed client+server
 S2C	10003 (0x2713)	SKILL_USED / PAK_1_3	0x49EEC4	u16 skillId; u16 reserved(0)	confirmed client+server
 S2C	10004 (0x2714)	UNIT_POPUP / PAK_1_4	0x49EBFF	u16 x; u16 y; u16 appearance; u32 unitId; i8 radiance; u8 status; u8 hpPercent	confirmed client+server
+C2S	11	PICKUP_UNIT / GET_UNIT	server handler 0x47A640	u16 x; u16 y; u32 unitId	confirmed server; direction-dependent opcode
+C2S	12	DROP_ITEM	server handler 0x47A9B0	u16 x; u16 y; u32 itemUnitId; u32 quantity	confirmed server; direction-dependent opcode
+S2C	35	NPC_NAME	0x499E86	u32 npcUnitId; CString name	confirmed client
+S2C	41	BUY_LIST	0x499AC6	u32 shopUnitId; u16 count; repeated{u16 templateIdLike,u16 appearance,u32 price,u8 canEquip,CString name,CString equipMessage}	confirmed client+server; some field semantics inferred
+C2S	41	BUY_ITEMS	client builder ~0x4A9DA0 / server 0x482940	u16 x; u16 y; u32 npcUnitId; u16 count; repeated{u16 itemId,u16 quantity}	confirmed client+server
+S2C	56	SELL_LIST	0x499C83	u32 shopUnitId; u16 count; repeated{u32 itemUnitId,u16 appearance,u32 price,u32 quantity,CString name}	confirmed client+server
+C2S	56	SELL_ITEMS	client bulk builder 0x44A040 / server 0x482C70	u16 x; u16 y; u32 npcUnitId; repeated-until-EOF{u32 itemUnitId,u32 quantity}	confirmed bulk path; no count
+S2C	27	UNIT_TALK / CHAT	server Unit::Talk 0x48C3E0	u32 speakerUnitId; u8 direction; u32 colorOrStyle; u8 speakerFlag; CString text; CString speakerName	types/order confirmed server; some semantics inferred
+C2S	30	LOCAL_TALK_REQUEST	server handler 0x47FC90	u16 x; u16 y; u32 fieldA; u8 direction; u32 colorOrStyle; CString text	types/order confirmed; some semantics inferred
+BIDIR	29	TWO_STRING_MESSAGE_OR_COMMAND	client 0x498E73 / server 0x47F910	CString first; CString second	types confirmed; semantics unresolved
+S2C	63	SERVER_MESSAGE	0x49DBB1	u16 category; u16 style; CString text	confirmed client+server; common server values category=30 style=3
+S2C	70	ACTION_FAILURE / CORRELATED_ERROR	0x49CB2E	u32 objectOrUnitId; u16 relatedRequestOpcode	confirmed client+multiple server sites
+S2C	76	GROUP_MEMBERS	0x49C4A6	u8 autoSplit; u16 memberCount; repeated{u32 unitId,u16 level,u16 hpPercent,u8 isLeader,CString name}	confirmed client+server
+S2C	78	GROUP_INVITE	0x49C729	u32 leaderUnitId; CString leaderName	confirmed client+server
+S2C	80	GROUP_DISMISSED	0x49C2D7	(no payload)	confirmed client
+S2C	82	GROUP_DISBANDED	0x49C3BE	(no payload)	confirmed client+server
+S2C	87	GROUP_HP_UPDATE	0x49C28A	u32 unitId; u16 hpPercent	confirmed client+server

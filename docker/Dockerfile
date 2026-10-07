@@ -32,6 +32,7 @@ RUN dpkg --add-architecture i386 \
         cabextract \
         winbind \
         xvfb \
+        xauth \
         unixodbc \
         odbc-mdbtools \
         mdbtools \

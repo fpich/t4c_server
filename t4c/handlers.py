@@ -76,6 +76,9 @@ class PacketDispatcher:
             PacketID.PUPPET_INFORMATION, handle_puppet_information_request
         )
         self.register(PacketID.GET_STATUS, handle_get_status)
+        self.register(PacketID.UNIT_TALK, handle_unit_talk_request)
+        self.register(49, handle_chatter_message)
+        self.register(29, handle_whisper_message)
 
     def register(self, packet_id: int, handler: PacketHandler) -> None:
         packet_id = int(packet_id)
@@ -1363,12 +1366,20 @@ async def handle_item_name_request(
         log.warning("requête 59 malformée de %s : %s", session.address, exc)
         return
     _ensure_consumed(reader, packet.packet_id)
-    # Le client demande le nom d'un template connu : on répond avec le nom
-    # du catalogue (le tooltip de l'objet l'affiche dans le sac).
-    from .items import TEMPLATES
+    # Trace réelle : le client demande le nom par l'unitId de l'objet
+    # (le champ u32 du paquet 18), pas par le template. On cherche donc
+    # dans l'inventaire de la session, puis on retombe sur le catalogue.
+    name = ""
+    inventory = _session_inventory(server, session)
+    if inventory is not None:
+        item = inventory.find(item_id)
+        if item is not None:
+            name = item.template.name
+    if not name:
+        from .items import TEMPLATES
 
-    template = TEMPLATES.get(item_id)
-    name = template.name if template else ""
+        template = TEMPLATES.get(item_id)
+        name = template.name if template else ""
     response = PacketWriter(PacketID.ITEM_NAME_REQUEST)
     response.write_u32(item_id)
     response.write_text(name)
@@ -1443,3 +1454,108 @@ async def handle_puppet_information_request(
             )
             return
     log.debug("PUPPET demandé unité=%d introuvable client=%s", unit_id, session.address)
+
+
+async def handle_unit_talk_request(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 27 C2S : parole locale (format observé en trace réelle).
+
+    Corps : u32 (unitId cible/contexte), u8 direction, u32 style, CString text.
+    Le client 1.25 FR envoie ses messages locaux par le 27 — pas le 30.
+    Diffusion en S2C 27 aux joueurs en vue + l'émetteur.
+    """
+    if session.state is not SessionState.IN_WORLD:
+        return
+    reader = PacketReader(packet.body)
+    try:
+        context_id = reader.read_u32()
+        direction = reader.read_u8()
+        style = reader.read_u32()
+        text = reader.read_text()
+    except T4CProtocolError as exc:
+        log.warning("requête 27 malformée de %s : %s", session.address, exc)
+        return
+    if not text:
+        return
+    world.broadcast_unit_talk(
+        server, session, text, direction=direction, style=style & 0xFF
+    )
+
+
+async def handle_chatter_message(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 49 C2S : message du canal de chatter (RQ_SendChatterMessage).
+
+    Corps : CString channel, CString message.
+    Diffusion S2C 49 (channel, speaker, message) aux sessions en jeu —
+    format d'affichage client : ["CC <canal>"] <locuteur>: <message>.
+    """
+    if session.state is not SessionState.IN_WORLD:
+        return
+    reader = PacketReader(packet.body)
+    try:
+        channel = reader.read_text()
+        message = reader.read_text()
+    except T4CProtocolError as exc:
+        log.warning("requête 49 malformée de %s : %s", session.address, exc)
+        return
+    if not message:
+        return
+    speaker = session.active_character or ""
+    targets = [s for s in server.sessions.values()
+               if s.state is SessionState.IN_WORLD]
+    for target in targets:
+        reply = PacketWriter(49)
+        reply.write_text(channel)
+        reply.write_text(speaker)
+        reply.write_text(message)
+        server.send_packet(target.address, reply)
+    log.info(
+        "CHAT canal=%r %s : %r (%d destinataire(s))",
+        channel, speaker, message[:60], len(targets),
+    )
+
+
+async def handle_whisper_message(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 29 C2S : chuchotement privé (deux CString : cible, texte).
+
+    Livré à la cible sous forme de bulle S2C 27 (le locuteur est l'émetteur).
+    """
+    if session.state is not SessionState.IN_WORLD:
+        return
+    reader = PacketReader(packet.body)
+    try:
+        target_name = reader.read_text()
+        text = reader.read_text()
+    except T4CProtocolError as exc:
+        log.warning("requête 29 malformée de %s : %s", session.address, exc)
+        return
+    if not target_name or not text:
+        return
+    sender = session.active_character or ""
+    for other in server.sessions.values():
+        if (
+            other.state is SessionState.IN_WORLD
+            and other.active_character
+            and other.active_character.casefold() == target_name.casefold()
+        ):
+            talk = PacketWriter(PacketID.UNIT_TALK)
+            talk.write_i32(session.unit_id or 0)
+            talk.write_u8(0)
+            talk.write_u32(0)
+            talk.write_u8(1)
+            talk.write_text(text)
+            talk.write_text(sender)
+            server.send_packet(other.address, talk)
+            world.send_server_message(
+                server, session, f"Message envoyé à {other.active_character}."
+            )
+            log.info("CHUCHOTE %s -> %s : %r", sender, target_name, text[:60])
+            return
+    world.send_server_message(
+        server, session, f"{target_name} n'est pas en jeu."
+    )

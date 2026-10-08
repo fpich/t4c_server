@@ -28,7 +28,7 @@ RUN dpkg --add-architecture i386 && \
         procps \
         cabextract \
         curl ca-certificates \
-        unixodbc:i386 libsqlite3odbc:i386 \
+        unixodbc:i386 libsqlite3odbc:i386 sqlite3 \
         imagemagick \
         xvfb xauth && \
     rm -rf /var/lib/apt/lists/* && \
@@ -59,6 +59,7 @@ COPY docker/original-server/t4c-server.reg /root/t4c-server.reg
 # DSN "T4C Server" -> SQLite (bascule depuis Access/Jet inexistant sous Wine).
 COPY docker/original-server/odbcinst.ini /etc/odbcinst.ini
 COPY docker/original-server/odbc.ini /etc/odbc.ini
+COPY docker/original-server/create-db.sql /root/create-db.sql
 # IMPORTANT : regedit écrit dans le registre EN MÉMOIRE du wineserver ;
 # le flush vers system.dat n'a lieu qu'à l'arrêt PROPRE du wineserver.
 # À la fin d'une couche Docker, le wineserver est tué brutalement -> pertes.

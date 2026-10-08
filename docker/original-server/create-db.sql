@@ -1,0 +1,81 @@
+-- Base T4C Server (SQLite) — schéma porté de T4C.mdb (Jet3).
+-- Colonnes requises par le serveur original (registre + persistence.py du
+-- projet : ODBC_TABLE=T4Cusers, champs Account/Password/T4CKey).
+CREATE TABLE IF NOT EXISTS T4Cusers (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    Account TEXT UNIQUE NOT NULL,
+    Password TEXT NOT NULL DEFAULT '',
+    Account_type INTEGER NOT NULL DEFAULT 0,
+    CreationDate TEXT NOT NULL DEFAULT (datetime('now')),
+    RevisionDate TEXT NOT NULL DEFAULT (datetime('now')),
+    T4CKey INTEGER NOT NULL DEFAULT 1
+);
+CREATE TABLE IF NOT EXISTS PlayingCharacters (
+    UserID INTEGER NOT NULL,
+    PlayerName TEXT UNIQUE NOT NULL,
+    AccountName TEXT NOT NULL,
+    wlX INTEGER NOT NULL DEFAULT 0,
+    wlY INTEGER NOT NULL DEFAULT 0,
+    wlWorld INTEGER NOT NULL DEFAULT 0,
+    nClass INTEGER NOT NULL DEFAULT 0,
+    CurrentHP INTEGER NOT NULL DEFAULT 50,
+    MaxHP INTEGER NOT NULL DEFAULT 50,
+    CurrentMana INTEGER NOT NULL DEFAULT 30,
+    MaxMana INTEGER NOT NULL DEFAULT 30,
+    Strength INTEGER NOT NULL DEFAULT 10,
+    Endurance INTEGER NOT NULL DEFAULT 10,
+    Agility INTEGER NOT NULL DEFAULT 10,
+    Intelligence INTEGER NOT NULL DEFAULT 10,
+    WillPower INTEGER NOT NULL DEFAULT 10,
+    Wisdom INTEGER NOT NULL DEFAULT 10,
+    Luck INTEGER NOT NULL DEFAULT 10,
+    CurrentLevel INTEGER NOT NULL DEFAULT 1,
+    Gold INTEGER NOT NULL DEFAULT 0,
+    XP INTEGER NOT NULL DEFAULT 0,
+    Gender INTEGER NOT NULL DEFAULT 0,
+    Karma INTEGER NOT NULL DEFAULT 0,
+    guildnumberz INTEGER NOT NULL DEFAULT 0,
+    ListingTitle TEXT,
+    ListingMisc TEXT,
+    FOREIGN KEY (UserID) REFERENCES T4Cusers(ID)
+);
+CREATE TABLE IF NOT EXISTS PlayerItems (
+    UserID INTEGER NOT NULL,
+    OwnerID INTEGER NOT NULL,
+    ObjID INTEGER NOT NULL,
+    ObjType INTEGER NOT NULL DEFAULT 0,
+    Qty INTEGER NOT NULL DEFAULT 1,
+    EquipPos INTEGER NOT NULL DEFAULT -1
+);
+CREATE TABLE IF NOT EXISTS PlayerSkills (
+    OwnerID INTEGER NOT NULL,
+    SkillID INTEGER NOT NULL,
+    Value INTEGER NOT NULL DEFAULT 0
+);
+CREATE TABLE IF NOT EXISTS PlayerSpells (
+    OwnerID INTEGER NOT NULL,
+    SpellID INTEGER NOT NULL,
+    Value INTEGER NOT NULL DEFAULT 0
+);
+CREATE TABLE IF NOT EXISTS OnlineUsers (
+    AccountName TEXT PRIMARY KEY,
+    PlayerName TEXT,
+    LastLogin TEXT
+);
+CREATE TABLE IF NOT EXISTS Flags (
+    UserID INTEGER NOT NULL,
+    FlagBitPosition INTEGER NOT NULL
+);
+CREATE TABLE IF NOT EXISTS UserFlags (
+    AccountName TEXT NOT NULL,
+    FlagBitPosition INTEGER NOT NULL
+);
+CREATE TABLE IF NOT EXISTS NotInUserList (
+    AccountName TEXT NOT NULL,
+    FlagBitPosition INTEGER
+);
+CREATE TABLE IF NOT EXISTS Guilds (
+    guildnumberz INTEGER PRIMARY KEY,
+    non_html_name TEXT,
+    html_name TEXT
+);

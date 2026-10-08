@@ -48,9 +48,10 @@ echo "=== État du serveur ==="
 ps aux | grep -v grep | grep -E "wine|T4C|tcpdump" || echo "processus introuvables"
 echo "=== Socket UDP ==="
 ss -lunp 2>/dev/null | grep 11677 || netstat -lunp 2>/dev/null | grep 11677 || echo "port 11677 pas encore en écoute"
-echo "=== Logs du serveur (s'ils existent) ==="
-ls -la /root/server/Logs/ 2>/dev/null || true
-tail -50 /root/server/Logs/*.log 2>/dev/null || true
+echo "=== Logs du serveur (contenu intégral) ==="
+for f in /root/server/Logs/*.log /root/server/Logs/exit.txt; do
+    if [ -f "$f" ] && [ -s "$f" ]; then echo "--- $f ---"; cat "$f"; echo; fi
+done
 
 # Attendre indéfiniment (le conteneur reste vivant pour la session de capture).
 wait $SERVER_PID

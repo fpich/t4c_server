@@ -28,7 +28,7 @@ XVFB_PID=$!
 sleep 2
 
 cd /root/server
-wine "T4C Server.exe" 2>&1 | tee /captures/server-console.log &
+wine "T4C Server.exe" -m 2>&1 | tee /captures/server-console.log &
 SERVER_PID=$!
 
 # Suivi : si le serveur écrit un log, l'afficher aussi.

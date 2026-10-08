@@ -3,7 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from t4c.characters import Character
+from t4c.characters import Character, START_POS
 from t4c.codec import PacketReader, PacketWriter, decode_datagram
 from t4c.config import ServerConfig
 from t4c.persistence import Persistence
@@ -82,7 +82,10 @@ class Step9PersistenceTests(unittest.IsolatedAsyncioTestCase):
             server = CaptureServer(cfg)
             session = menu_session()
             await server.dispatcher.dispatch(server, session, create_request())
-            server.persistence.save_position("Fabien", 5, 9, 1)
+            # Position proche de LightHaven : les positions trop éloignées
+            # sont recalées sur START_POS par le serveur (hors carte client).
+            sx, sy, _ = START_POS
+            server.persistence.save_position("Fabien", sx + 5, sy + 9, 1)
             # rechargement du personnage via paquet 13
             load = PacketWriter(PacketID.PUT_PLAYER_IN_GAME)
             load.write_pascal_u8_text("Fabien")
@@ -90,7 +93,10 @@ class Step9PersistenceTests(unittest.IsolatedAsyncioTestCase):
             await server.dispatcher.dispatch(
                 server, session2, decode_datagram(load.to_datagram(seed=22))
             )
-            self.assertEqual((session2.pos_x, session2.pos_y, session2.pos_world), (5, 9, 1))
+            self.assertEqual(
+                (session2.pos_x, session2.pos_y, session2.pos_world),
+                (sx + 5, sy + 9, 1),
+            )
             # sent[0] = réponse 25 (création), sent[1] = réponse 13,
             # sent[2] = puppet 68
             reply = decode_reply(server.sent[1][1])

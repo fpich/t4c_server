@@ -25,7 +25,17 @@ xvfb-run -a wine "T4C Server.exe" 2>&1 | tee /captures/server-console.log &
 SERVER_PID=$!
 
 # Suivi : si le serveur écrit un log, l'afficher aussi.
-sleep 5
+# Attendre l'init (DB, licence...) avant le diagnostic.
+sleep 15
+echo "=== Capture de la console du serveur (display virtuel) ==="
+# Le serveur écrit dans sa FENÊTRE CONSOLE X (invisible depuis l'hôte) :
+# on la capture en PNG pour voir ce qu'il affiche / attend.
+DISPLAY_CHECK=$(ps -o args= -p $SERVER_PID 2>/dev/null | grep -o ':[0-9]*' | head -1 || true)
+for D in $(ls /tmp/.X11-unix/ 2>/dev/null | sed 's/X//'); do
+    import -window root -display ":$D" "/captures/console-$(date +%H%M%S).png" 2>/dev/null || \
+    import -window root ":$D" "/captures/console-$(date +%H%M%S).png" 2>/dev/null || true
+done
+ls -la /captures/*.png 2>/dev/null || echo "pas de capture (display absent)"
 echo "=== État du serveur ==="
 ps aux | grep -v grep | grep -E "wine|T4C|tcpdump" || echo "processus introuvables"
 echo "=== Socket UDP ==="

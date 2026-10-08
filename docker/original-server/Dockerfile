@@ -29,6 +29,7 @@ RUN dpkg --add-architecture i386 && \
         cabextract \
         curl ca-certificates \
         unixodbc:i386 \
+        imagemagick \
         xvfb xauth && \
     rm -rf /var/lib/apt/lists/* && \
     curl -fsSL -o /usr/local/bin/winetricks \

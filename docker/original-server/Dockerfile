@@ -28,7 +28,7 @@ RUN dpkg --add-architecture i386 && \
         procps \
         cabextract \
         curl ca-certificates \
-        unixodbc:i386 \
+        unixodbc:i386 libsqlite3odbc:i386 \
         imagemagick \
         xvfb xauth && \
     rm -rf /var/lib/apt/lists/* && \
@@ -54,13 +54,16 @@ COPY "ressources/T4C_Server/" "/root/server/"
 # vérification immédiate DANS LA MÊME COUCHÉE : si les clés n'existent pas,
 # le build échoue avec un message clair au lieu de laisser passer.
 COPY docker/original-server/t4c-server.reg /root/t4c-server.reg
-COPY docker/original-server/odbc-setup.reg /root/odbc-setup.reg
+# ODBC : Wine mappe ODBC32.dll sur unixodbc. Les drivers/DNS Unix se
+# declarent dans /etc/odbcinst.ini et /etc/odbc.ini (pas dans le registre).
+# DSN "T4C Server" -> SQLite (bascule depuis Access/Jet inexistant sous Wine).
+COPY docker/original-server/odbcinst.ini /etc/odbcinst.ini
+COPY docker/original-server/odbc.ini /etc/odbc.ini
 # IMPORTANT : regedit écrit dans le registre EN MÉMOIRE du wineserver ;
 # le flush vers system.dat n'a lieu qu'à l'arrêt PROPRE du wineserver.
 # À la fin d'une couche Docker, le wineserver est tué brutalement -> pertes.
 # wineserver -k force l'arrêt propre (flush) avant la fin de la couche.
 RUN wine regedit /s /root/t4c-server.reg; \
-    wine regedit /s /root/odbc-setup.reg; \
     wine reg query "HKLM\Software\Vircom\The 4th Coming Server\Network" && \
     echo "=== REGISTRE OK (memoire) ===" ; \
     wineserver -k || true; \

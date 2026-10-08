@@ -18,14 +18,14 @@
 
 ---
 
-## Phase 1 — Fondations de gameplay
+## Phase 1 — Fondations de gameplay ✅ TERMINÉE (2026-10-08)
 
 ### 1.1 Modèle de données d'inventaire ✅ (2026-10-08)
 - [x] `Item` dataclass : `unit_id`, `template_id`, `name`, `quantity`, `price`, `equip_slot`, `is_unique` (`t4c/items.py`)
 - [x] Persistance des items (table `CharacterItems` par personnage : sac + 13 slots d'équipement)
 - [x] Remplir 18/19 avec le vrai contenu
 - [x] Brancher 21 (équiper → maj slot + renvoyer 19), 22 (déséquiper), 23 (utiliser — potion de soin consommable)
-- **Validation** : ✅ **confirmé en jeu client** (2026-10-08) : épée + potions visibles dans le sac des deux joueurs, équipement renvoyé correctement
+- **Validation** : ✅ **confirmé en jeu client** (2026-10-08) : épée + potions dans le sac, épée équipable dans le slot, noms d'objets visibles (59), persistance OK
 
 ### 1.2 Or et stats persistants
 - [ ] `gold`, XP, HP/mana réels dans la base ; le 13 et le 43 les reflètent

@@ -102,8 +102,10 @@ for i in $(seq 1 120); do
         cat /root/server/Logs/exit.txt 2>/dev/null || echo "pas d'exit.txt"
         echo "=== Memory.log (rapport de crash GP du serveur original !) ==="
         for f in /root/server/Memory.log /root/server/Logs/Memory.log; do
-            if [ -f "$f" ] && [ -s "$f" ]; then echo "--- $f ---"; cat "$f"; echo; fi
+            if [ -f "$f" ]; then echo "--- $f ($(stat -c%s "$f") octets) ---"; cat "$f"; echo; fi
         done
+        echo "=== APPELS ODBC (retval de chaque SQL* : SQL_ERROR = cause de l'exit 111) ==="
+        grep -E "Call odbc32\.|Ret  odbc32\." /captures/trace.log | tail -120 || echo "aucun appel ODBC tracé"
         echo "=== ExitProcess(0x6f=111) : 120 lignes AVANT dans la trace = cause ==="
         grep -n "ExitProcess" /captures/trace.log | head -5
         LINE=$(grep -n "ExitProcess(0000006f)" /captures/trace.log | head -1 | cut -d: -f1)

@@ -35,7 +35,7 @@
 - [x] C2S 30 (LOCAL_TALK) → diffusion S2C 27 (Unit::Talk) aux joueurs en vue + émetteur (`world.broadcast_unit_talk`)
 - [x] S2C 63 (SERVER_MESSAGE cat=30 style=3) disponible (`world.send_server_message`)
 - [ ] Paquet 29 : observer en trace avant d'implémenter (sémantique non résolue)
-- **Validation** : ✅ tests (diffusion aux joueurs en vue, pas aux hors-vue) — en jeu : à tester (message au-dessus des persos)
+- **Validation** : ✅ **confirmé en jeu client** (2026-10-08) : PAROLE 'hello'/'bonjour' diffusée aux 2 joueurs (27 C2S→S2C)
 
 ## Phase 2 — Monde vivant
 

@@ -100,8 +100,9 @@ def broadcast_unit_popup(
         server.send_packet(other.address, popup)
         puppet = PacketWriter(68)
         puppet.write_i32(session.unit_id)
-        for _ in range(8):
-            puppet.write_i16(0)
+        # Habillage de base (RE UpdatePuppetObject) : pantalon + veste.
+        for value in (0, 0, 259, 205, 0, 0, 0, 0):
+            puppet.write_i16(value)
         server.send_packet(other.address, puppet)
         log.debug(
             "POPUP unité=%d vers %s (%d,%d)",

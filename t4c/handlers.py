@@ -1468,6 +1468,19 @@ async def handle_puppet_information_request(
                 "PUPPET demandé unité=%d -> envoyé à %s", unit_id, session.address
             )
             return
+    # Les PNJ sont aussi des unités visibles : le client demande leur puppet
+    # de la même façon. On répond avec leur apparence puppet humanoïde.
+    npc = world.find_npc(unit_id)
+    if npc is not None:
+        puppet = PacketWriter(PacketID.PUPPET_INFORMATION)
+        puppet.write_i32(unit_id)
+        for _ in range(8):
+            puppet.write_i16(0)
+        server.send_packet(session.address, puppet)
+        log.debug(
+            "PUPPET PNJ %s (unité=%d) -> %s", npc.name, unit_id, session.address
+        )
+        return
     log.debug("PUPPET demandé unité=%d introuvable client=%s", unit_id, session.address)
 
 

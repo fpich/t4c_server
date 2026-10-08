@@ -34,13 +34,16 @@ echo "=== Test ODBC unix : isql sur le DSN 'T4C Server' ==="
 echo "select count(*) from T4Cusers;" | isql "T4C Server" 2>&1 | head -5 || true
 echo "=== fin test ODBC ==="
 
-# Enregistrer emsmtp.dll (EasyMail.SMTP.5) : le serveur fait
-# CoCreateInstance sur ce ProgID au startup — sans regsvr32, _com_error -> crash GP.
-echo "=== Enregistrement emsmtp.dll (EasyMail.SMTP.5) ==="
+# emsmtp.dll (EasyMail.SMTP.5) : les cles COM sont importees au BUILD via
+# emsmtp-com.reg (extraites du RGS embarque dans la DLL). regsvr32 est tente
+# en runtime mais un echec n'est plus bloquant : CoCreateInstance ne lit que
+# ces cles du registre.
+echo "=== Verrou COM emsmtp (cles importees au build) ==="
 cd /root/server
-wine regsvr32 emsmtp.dll 2>&1 | tee /captures/regsvr32.log
-echo "=== Vérification ProgID EasyMail.SMTP.5 dans le registre ==="
+wine regsvr32 emsmtp.dll 2>&1 | tee /captures/regsvr32.log || echo "regsvr32 a echoue (non bloquant : cles deja en place)"
+echo "=== Verification ProgID EasyMail.SMTP.5 + InprocServer32 ==="
 wine reg query "HKLM\\Software\\Classes\\EasyMail.SMTP.5" /s 2>&1 | head -10 || echo "ProgID ABSENT"
+wine reg query "HKLM\\Software\\Classes\\CLSID\\{4610E7BF-710F-11d3-813D-00C04F6B92D0}\\InprocServer32" /s 2>&1 | head -10 || echo "CLSID ABSENT"
 
 # TRACE des exceptions SEH : code d'exception exact (0xC0000005 /
 # 0xE06D7363), adresse et thread fautifs — sans le ralentissement du +relay.

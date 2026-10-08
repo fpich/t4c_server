@@ -63,6 +63,13 @@ puppet 68 et corrige `puppet_appearances()` avec la vérité terrain.
 
 ## Pièges connus
 
+- **emsmtp.dll / EasyMail.SMTP.5** : le serveur fait `CoCreateInstance` sur ce
+  ProgID au startup — ProgID absent = `_com_error` = crash GP. `regsvr32` sous
+  Wine échoue sur ce composant, donc les clés COM (CLSID
+  `{4610E7BF-710F-11d3-813D-00C04F6B92D0}`, extraites du script RGS embarqué
+  dans la DLL) sont importées au **build** via `emsmtp-com.reg`, avec
+  `InprocServer32 = Z:\root\server\emsmtp.dll`. C'est suffisant pour
+  `CoCreateInstance`.
 - **Jet/Access sous Wine** : le point fragile. Le DSN est déclaré dans
   `odbc-setup.reg`, mais il faut que `odbcjt32.dll` (driver Access) existe
   dans le prefixe Wine. Si le serveur affiche une erreur ODBC :

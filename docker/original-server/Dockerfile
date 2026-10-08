@@ -55,6 +55,12 @@ COPY "ressources/T4C_Server/" "/root/server/"
 # le build échoue avec un message clair au lieu de laisser passer.
 COPY docker/original-server/t4c-server.reg /root/t4c-server.reg
 COPY docker/original-server/odbc-wine.reg /root/odbc-wine.reg
+# COM : cles EasyMail.SMTP.5 extraites du RGS embarque dans emsmtp.dll
+# (CLSID {4610E7BF-710F-11d3-813D-00C04F6B92D0}, InprocServer32, ThreadingModel).
+# regsvr32 sous Wine echoue sur ce composant ; l'ecriture directe des cles
+# suffit a CoCreateInstance (le serveur fait CoCreateInstance au startup,
+# ProgID absent = _com_error = crash).
+COPY docker/original-server/emsmtp-com.reg /root/emsmtp-com.reg
 # ODBC : Wine mappe ODBC32.dll sur unixodbc. Les drivers/DNS Unix se
 # declarent dans /etc/odbcinst.ini et /etc/odbc.ini (pas dans le registre).
 # DSN "T4C Server" -> SQLite (bascule depuis Access/Jet inexistant sous Wine).
@@ -67,12 +73,14 @@ COPY docker/original-server/create-db.sql /root/create-db.sql
 # wineserver -k force l'arrêt propre (flush) avant la fin de la couche.
 RUN wine regedit /s /root/t4c-server.reg; \
     wine regedit /s /root/odbc-wine.reg; \
+    wine regedit /s /root/emsmtp-com.reg; \
     wine reg query "HKLM\Software\Vircom\The 4th Coming Server\Network" && \
     echo "=== REGISTRE OK (memoire) ===" ; \
     wineserver -k || true; \
     sleep 2; \
     wine reg query "HKLM\Software\Vircom\The 4th Coming Server\Network" && \
     wine reg query "HKLM\Software\ODBC\ODBC.INI\T4C Server" && \
+    wine reg query "HKLM\Software\Classes\CLSID\{4610E7BF-710F-11d3-813D-00C04F6B92D0}\InprocServer32" && \
     echo "=== REGISTRE PERSISTANT (system.dat) ===" || \
     (echo "=== ECHEC : clés perdues au flush ==="; exit 1)
 

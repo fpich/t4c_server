@@ -28,6 +28,11 @@ XVFB_PID=$!
 sleep 2
 
 cd /root/server
+
+echo "=== Vérification registre (clés Vircom) ==="
+wine reg query "HKLM\Software\Vircom\The 4th Coming Server" //s 2>&1 | tee /captures/registry-dump.txt | head -40 || \
+  echo "CLÉ VIRCOM INTROUVABLE — l'import .reg a échoué"
+
 wine "T4C Server.exe" -m 2>&1 | tee /captures/server-console.log &
 SERVER_PID=$!
 

@@ -24,22 +24,32 @@ ENV WINEDEBUG=-all \
     WINEPREFIX=/root/.wine \
     WINEARCH=win32
 
-# Dépendances minimales : Wine 32 bits + tcpdump + xvfb (console virtuelle,
-# le serveur est une application CONSOLE PE32 mais MFC peut vouloir un DISPLAY).
+# Dépendances : Wine 32 bits + tcpdump + winetricks (pour MFC42 !).
+# Le serveur importe MFC42.DLL (vérifié objdump), pas les MFC40D fournies
+# dans le dossier. winetricks mfc42 installe le redistribuable officiel.
 RUN dpkg --add-architecture i386 && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
         wine wine32:i386 libwine:i386 \
         winbind \
         tcpdump \
-        xvfb xauth \
         procps \
-        cabextract && \
+        cabextract \
+        curl \
+        winetricks && \
     rm -rf /var/lib/apt/lists/*
 
-# Initialiser le préfixe Wine (version win98 : MFC40/ODBC 2003 s'y sentent bien).
-RUN xvfb-run -a winecfg -v win98 || true; \
-    xvfb-run -a wineboot --init || true
+# Initialiser le préfixe Wine puis installer MFC42 (requis par l'exe).
+# Winetricks a besoin d'un display pour certains installs ; xvfb-run est
+# fourni par le paquet xvfb installé avec xauth.
+RUN apt-get update && apt-get install -y --no-install-recommends xvfb xauth && \
+    rm -rf /var/lib/apt/lists/* || true
+
+ENV WINEDEBUG=-all
+
+RUN wineboot --init || true && \
+    sleep 3 && \
+    winetricks --unattended mfc42 || true
 
 # Copier le serveur original (depuis ressources/T4C_Server du repo).
 COPY "ressources/T4C_Server/" "/root/server/"

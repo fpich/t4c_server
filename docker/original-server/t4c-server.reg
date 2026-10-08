@@ -1,0 +1,235 @@
+﻿Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Vircom]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Vircom\The 4th Coming Server]
+"License"="VT4C2002060001-242823-C0651943"
+"SHUTDOWN"=dword:00000001
+"RegUpdate"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Vircom\The 4th Coming Server\Authentication]
+"AuthenticationMethod"=dword:00000001
+"VOP_SEC_IP"=""
+"VOP_NAS_IP"=""
+"VOP_SEC_PORT"=dword:00000000
+"VOP_SECRET"=""
+"AUTH_REALM"=""
+"ODBC_DB_PWD"=""
+"ODBC_DSN"="T4C Server"
+"ODBC_NAME_FLD"="Account"
+"ODBC_PWD_FLD"="Password"
+"ODBC_TABLE"="T4Cusers"
+"ODBC_CREDITS_FLD"=""
+"ODBC_WHERE"=""
+"ODBC_DB_USER"=""
+"WG_T4C_KEY"=""
+"VOP_ACCT_IP"=""
+"VOP_ACCT_PORT"=dword:00000000
+"VOP_2ND_AUTH_IP"=""
+"VOP_2ND_AUTH_PORT"=dword:00000000
+"REMOTE_WG_T4C_KEY"=""
+"ACCESS_RIGHT_DENIAL_MSG"="You do not have access rights to play The 4th Coming."
+"ODBC_DEDUCT_CREDITS"=dword:00000000
+"VOP_STRIP_REALM"=dword:00000000
+"ODBC_PRIVILEGE_FLD"="T4CKey"
+"ODBC_PRIVILEGE_VALUE"="1"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Vircom\The 4th Coming Server\Characters]
+"StartupGold"="200+1d50"
+"DB_USER"=""
+"DB_PWD"=""
+"ShoutDelay"=dword:0000000a
+"StartupItem1"="Cloth pants"
+"StartupItem2"="Cloth vest"
+"StartupItem3"="Rusterd Dirk"
+"StartupItem4"="Torch"
+"StartupItem5"="Torch"
+"TeleportLocation1"="Blackblood's Castle"
+"TeleportLocation1X"=dword:00000172
+"TeleportLocation1Y"=dword:000006ea
+"TeleportLocation1W"=dword:00000000
+"TeleportLocation2"="Bridge of Lighthaven"
+"TeleportLocation2X"=dword:00000ae6
+"TeleportLocation2Y"=dword:00000406
+"TeleportLocation2W"=dword:00000000
+"TeleportLocation3"="Brigand's camp"
+"TeleportLocation3X"=dword:0000087a
+"TeleportLocation3Y"=dword:000004d8
+"TeleportLocation3W"=dword:00000000
+"TeleportLocation4"="Castle of Orkanis"
+"TeleportLocation4X"=dword:0000062c
+"TeleportLocation4Y"=dword:000000d2
+"TeleportLocation4W"=dword:00000000
+"TeleportLocation5"="Druids Camp"
+"TeleportLocation5X"=dword:00000b27
+"TeleportLocation5Y"=dword:000000a5
+"TeleportLocation5W"=dword:00000000
+"TeleportLocation6"="Gobelin"
+"TeleportLocation6X"=dword:00000ad1
+"TeleportLocation6Y"=dword:000003f1
+"TeleportLocation6W"=dword:00000000
+"TeleportLocation7"="Graveyard"
+"TeleportLocation7X"=dword:00000ae6
+"TeleportLocation7Y"=dword:0000044c
+"TeleportLocation7W"=dword:00000000
+"TeleportLocation8"="Island Madness"
+"TeleportLocation8X"=dword:00000b09
+"TeleportLocation8Y"=dword:00000adc
+"TeleportLocation8W"=dword:00000000
+"TeleportLocation9"="Isolated Island"
+"TeleportLocation9X"=dword:00000a50
+"TeleportLocation9Y"=dword:00000ae1
+"TeleportLocation9W"=dword:00000000
+"TeleportLocation10"="Jail"
+"TeleportLocation10X"=dword:00000bae
+"TeleportLocation10Y"=dword:0000015e
+"TeleportLocation10W"=dword:00000000
+"TeleportLocation11"="Orc Camp"
+"TeleportLocation11X"=dword:00000a69
+"TeleportLocation11Y"=dword:00000226
+"TeleportLocation11W"=dword:00000000
+"TeleportLocation12"="Raven's Dust Oasis"
+"TeleportLocation12X"=dword:00000113
+"TeleportLocation12Y"=dword:000009dd
+"TeleportLocation12W"=dword:00000000
+"TeleportLocation13"="Scattered Bones"
+"TeleportLocation13X"=dword:0000018b
+"TeleportLocation13Y"=dword:00000a87
+"TeleportLocation13W"=dword:00000001
+"TeleportLocation14"="Silversky"
+"TeleportLocation14X"=dword:000005dc
+"TeleportLocation14Y"=dword:00000a05
+"TeleportLocation14W"=dword:00000000
+"TeleportLocation15"="Stonehenge"
+"TeleportLocation15X"=dword:00000aeb
+"TeleportLocation15Y"=dword:000000af
+"TeleportLocation15W"=dword:00000000
+"TeleportLocation16"="Temple Of Lighthaven"
+"TeleportLocation16X"=dword:00000b72
+"TeleportLocation16Y"=dword:00000429
+"TeleportLocation16W"=dword:00000000
+"TeleportLocation17"="Windhowl"
+"TeleportLocation17X"=dword:00000721
+"TeleportLocation17Y"=dword:00000514
+"TeleportLocation17W"=dword:00000000
+"TeleportLocation18"="Wizard's Vale"
+"TeleportLocation18X"=dword:0000013b
+"TeleportLocation18Y"=dword:00000839
+"TeleportLocation18W"=dword:00000000
+"PublicChannel1"="Main"
+"PublicChannel2"="Roleplay"
+"PublicChannel3"="Vente"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Vircom\The 4th Coming Server\Contact]
+"CompanyName"="Merrill Information Systems Inc."
+"AdminEmail"="dsfs@fsdfsdfhetie.cod"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Vircom\The 4th Coming Server\ExtensionDLLs]
+"SpellDLL1"="Skills.dll"
+"SpellDLL2"="SpellEffects.dll"
+"ObjectDLL1"="World Objects.dll"
+"NPCDLL1"="GameOps.dll"
+"NPCDLL2"="NPC Addon.dll"
+"NPCDLL3"="NPC Arakas.dll"
+"NPCDLL4"="NPC Ravensdust.dll"
+"NPCDLL5"="NPC Remort.dll"
+"NPCDLL6"="NPC Stoneheim.dll"
+"NPCDLL7"="NPC Windhowl.dll"
+"NPCDLL8"="NPCs.dll"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Vircom\The 4th Coming Server\GeneralConfig]
+"NB_WARNINGS"=dword:00000005
+"TIME_BEFORE_WARNING"=dword:000003e8
+"SuperUser"="AdminUser"
+"ACK_COLOSSEUM"=dword:00000000
+"Version"=dword:0000007d
+"LangDB1"="t4c_fre.elng"
+"UserCap"="1000"
+"ACK_DOPPELGANGER"=dword:00000000
+"Nouvelle valeur #1"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Vircom\The 4th Coming Server\Logging]
+"DEATH_LOG"="Death.log"
+"GAMEOP_LOG"="GameOp.log"
+"PC_LOG"="PCEdit.log"
+"ITEMS_LOG"="Items.log"
+"NPCS_LOG"="NPCs.log"
+"WORLD_LOG"="World.log"
+"DEBUG_LOG"="Debug.log"
+"PAGE_LOG"="Pages.log"
+"SHOUTS_LOG"="Shouts.log"
+"TEXT_LOG"="OnlineText.log"
+"LOG_CRITICAL_ERRORS"=dword:00000001
+"LOG_DEBUG_LVL1"=dword:00000001
+"LOG_DEBUG_LVL3"=dword:00000001
+"LOG_DEBUG_LVL4"=dword:00000001
+"LOG_GEN_ERRORS"=dword:00000001
+"LOG_MISC"=dword:00000001
+"LOG_WARNINGS"=dword:00000001
+"LOG_DEATH_LOG"=dword:00000001
+"LOG_DEBUG_LOG"=dword:00000001
+"LOG_GAMEOP_LOG"=dword:00000001
+"LOG_ITEMS_LOG"=dword:00000001
+"LOG_NPCS_LOG"=dword:00000001
+"LOG_PC_LOG"=dword:00000001
+"LOG_WORLD_LOG"=dword:00000001
+"LOG_PAGE_LOG"=dword:00000001
+"LOG_SHOUTS_LOG"=dword:00000001
+"LOG_TEXT_LOG"=dword:00000001
+"LOG_DEBUG_VOPSEC"=dword:00000001
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Vircom\The 4th Coming Server\Network]
+"SERVER_PORT"=dword:00002d9d
+"SERVER_IP"="127.0.0.1"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Vircom\The 4th Coming Server\PatchServers]
+"WebPatch_URL"="kcnt4c2.the4th-coming.com"
+"WebPatch_ImageFile"="/WebPatch/WebPatch.image"
+"WebPatch_User"=""
+"WebPatch_Pwd"=""
+"OtherServer1_IP"="80.8.147.110"
+"OtherServer1_Port"=dword:00002d9f
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Vircom\The 4th Coming Server\Paths]
+"BINARY_PATH"="C:\\T4c Server\\"
+"LOG_PATH"="C:\\T4c Server\\Logs"
+"MOTD"=""
+"ShutdownCommand"=""
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Vircom\The 4th Coming Server\PVPDeath]
+"MIN_PVP"=dword:00000009
+"PVP_RANGE"=dword:00000003
+"MOB_XP_LOSS"=dword:00000005
+"MOB_BACKPACK_LOSS"=dword:0000000a
+"MOB_EQUIP_LOSS"=dword:00000000
+"MOB_GOLD_LOSS"=dword:00000000
+"PC_XP_LOSS"=dword:00000001
+"PC_BACKPACK_LOSS"=dword:00000002
+"PC_EQUIP_LOSS"=dword:00000000
+"PC_GOLD_LOSS"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Vircom\The 4th Coming Server\UserMax]
+"LocalUserMax"=dword:00000005
+"RemoteUserMax"=dword:00000005
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Vircom\WebPatch]
+"rootWWWdir"="C:\\T4c Server\\wwwroot\\"
+"ImageFile"="C:\\T4c Server\\wwwroot\\images\\webpatch.image"
+
+[HKEY_CURRENT_USER\Software\ODBC\ODBC.INI\ODBC Data Sources]
+"T4C Server"="Microsoft Access Driver (*.mdb)"
+
+[HKEY_CURRENT_USER\Software\ODBC\ODBC.INI\T4C Server]
+"DBQ"="C:\\T4C Server\\T4C.mdb"
+"Driver"="C:\\WINDOWS\\System32\\odbcjt32.dll"
+"DriverId"=dword:00000019
+"Fil"="MS Access;"
+"SafeTransactions"=dword:00000000
+"UID"=""
+
+[HKEY_CURRENT_USER\Software\ODBC\ODBC.INI\T4C Server\Engines\Jet]
+"ImplicitCommitSync"=""
+"MaxBufferSize"=dword:00000800
+"PageTimeout"=dword:00000005
+"Threads"=dword:00000003
+"UserCommitSync"="Yes"

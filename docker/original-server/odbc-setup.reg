@@ -1,0 +1,28 @@
+Windows Registry Editor Version 5.00
+
+; DSN ODBC système "T4C Server" pointant sur T4C.mdb.
+; ATTENTION : ce DSN exige le driver Microsoft Access (Jet 4.0) dans Wine.
+; Wine (>= 3.x avec mdac via winetricks) peut fournir "Microsoft Access Driver (*.mdb)".
+; Si le driver manque, le serveur affichera une erreur ODBC au démarrage :
+; dans ce cas installer mdac28 + jet dans le conteneur (winetricks) puis relancer.
+; On déclare aussi un DSN par défaut avec le driver générique au cas où.
+
+[HKEY_LOCAL_MACHINE\Software\ODBC\ODBC.INI\ODBC Data Sources]
+"T4C Server"="Microsoft Access Driver (*.mdb)"
+
+[HKEY_LOCAL_MACHINE\Software\ODBC\ODBC.INI\T4C Server]
+"Driver"="C:\\windows\\system32\\odbcjt32.dll"
+"DBQ"="C:\\server\\T4C.mdb"
+"Description"="T4C Server database"
+"DriverId"=dword:00000019
+"FIL"="MS Access;"
+"SafeTransactions"=dword:00000000
+"UID"=""
+
+[HKEY_LOCAL_MACHINE\Software\ODBC\ODBC.INI\T4C Server\Engines]
+[HKEY_LOCAL_MACHINE\Software\ODBC\ODBC.INI\T4C Server\Engines\Jet]
+"ImplicitCommitSync"=""
+"MaxBufferSize"=dword:00000000
+"PageTimeout"=dword:000005a0
+"Threads"=dword:00000003
+"UserCommitSync"="Yes"

@@ -629,9 +629,21 @@ async def handle_put_player_in_game(
     # Une position persistée hors bornes (ex. y négatif d'une session
     # précédente) est invalide pour le client : x/y sont lus en u16 et
     # bornés à 0x0C00. On recale sur la position de départ officielle.
-    if not (0 <= session.pos_x <= 0x0C00 and 0 <= session.pos_y <= 0x0C00):
+    # Une position trop éloignée de LightHaven (START_POS) est également
+    # recalée : la carte du client n'a de terres qu'autour des zones
+    # habitées — ailleurs c'est de l'eau, et les PNJ n'y sont pas.
+    # Tolérance large (±0x400) autour de la position de départ officielle.
+    near_start = (
+        abs(session.pos_x - START_POS[0]) <= 0x400
+        and abs(session.pos_y - START_POS[1]) <= 0x400
+    )
+    if not (
+        0 <= session.pos_x <= 0x0C00
+        and 0 <= session.pos_y <= 0x0C00
+        and near_start
+    ):
         log.warning(
-            "position persistée hors bornes (%d,%d) -> retour à START_POS",
+            "position persistée hors zone (%d,%d) -> retour à START_POS",
             session.pos_x,
             session.pos_y,
         )

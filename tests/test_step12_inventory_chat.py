@@ -65,7 +65,7 @@ class InventoryTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(count, 2)                  # épée + potions
         first_template = reader.read_i16()
         first_unit = reader.read_i32()
-        self.assertEqual(first_template, 22)        # apparence épée
+        self.assertEqual(first_template, 1)         # apparence épée (64kInvShortSword)
         self.assertEqual(reader.read_i16(), 0)     # baseField
         self.assertEqual(reader.read_i32(), 1)     # quantity
         self.assertEqual(reader.read_u32(), 0)     # uniqueData

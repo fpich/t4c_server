@@ -45,10 +45,14 @@ class Item:
         return TEMPLATES[self.template_id]
 
 
-# Catalogue minimal de développement. À terme : extrait du client original.
+# Catalogue minimal de développement. Les apparences DOIVENT exister dans
+# la table du client (map 0x5B40F0, extraite dans
+# docs/reverse-engineering/client-item-appearances.tsv) : une valeur inconnue
+# fait silencieusement ignorer l'objet par le client (sac vide).
+# Apparence 1 = 64kInvShortSword ; 241 = 64kInvPotion 1.
 TEMPLATES: dict[int, ItemTemplate] = {
-    1: ItemTemplate(1, "Épée courte", appearance=22, price=50, equip_slot=0),
-    2: ItemTemplate(2, "Potion de soin", appearance=23, price=10),
+    1: ItemTemplate(1, "Épée courte", appearance=1, price=50, equip_slot=0),
+    2: ItemTemplate(2, "Potion de soin", appearance=241, price=10),
 }
 
 

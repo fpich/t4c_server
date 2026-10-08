@@ -27,7 +27,7 @@ RUN dpkg --add-architecture i386 && \
         tcpdump \
         procps \
         cabextract \
-        curl \
+        curl ca-certificates \
         xvfb xauth && \
     rm -rf /var/lib/apt/lists/* && \
     curl -fsSL -o /usr/local/bin/winetricks \

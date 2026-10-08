@@ -17,25 +17,27 @@ sleep 1
 
 cd /root/server
 
-# Le serveur crée une FENÊTRE CONSOLE via USER32 ("nodrv_CreateWindow" sans
-# display) : xvfb est nécessaire AU RUNTIME. xauth est installé (c'était
-# lui qui manquait lors du premier essai).
+# Le serveur crée une FENÊTRE CONSOLE via USER32 : il faut un display.
+# xvfb-run détruit son display quand la commande se termine, et le
+# sous-shell de capture n'y accédait pas. On lance Xvfb MANUELLEMENT :
+# display stable et capturable.
+export DISPLAY=:99
+rm -f /tmp/.X99-lock
+Xvfb :99 -screen 0 1280x1024x24 &
+XVFB_PID=$!
+sleep 2
+
 cd /root/server
-xvfb-run -a wine "T4C Server.exe" 2>&1 | tee /captures/server-console.log &
+wine "T4C Server.exe" 2>&1 | tee /captures/server-console.log &
 SERVER_PID=$!
 
 # Suivi : si le serveur écrit un log, l'afficher aussi.
 # Attendre l'init (DB, licence...) avant le diagnostic.
 sleep 15
-echo "=== Capture de la console du serveur (display virtuel) ==="
-# Le serveur écrit dans sa FENÊTRE CONSOLE X (invisible depuis l'hôte) :
-# on la capture en PNG pour voir ce qu'il affiche / attend.
-DISPLAY_CHECK=$(ps -o args= -p $SERVER_PID 2>/dev/null | grep -o ':[0-9]*' | head -1 || true)
-for D in $(ls /tmp/.X11-unix/ 2>/dev/null | sed 's/X//'); do
-    import -window root -display ":$D" "/captures/console-$(date +%H%M%S).png" 2>/dev/null || \
-    import -window root ":$D" "/captures/console-$(date +%H%M%S).png" 2>/dev/null || true
-done
-ls -la /captures/*.png 2>/dev/null || echo "pas de capture (display absent)"
+echo "=== Capture de la console du serveur (display :99) ==="
+DISPLAY=:99 import -window root "/captures/console.png" 2>&1 || \
+DISPLAY=:99 xwd -root -out /captures/console.xwd 2>&1 || true
+ls -la /captures/console.* 2>/dev/null || echo "echec capture"
 echo "=== État du serveur ==="
 ps aux | grep -v grep | grep -E "wine|T4C|tcpdump" || echo "processus introuvables"
 echo "=== Socket UDP ==="

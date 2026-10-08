@@ -55,11 +55,19 @@ COPY "ressources/T4C_Server/" "/root/server/"
 # le build échoue avec un message clair au lieu de laisser passer.
 COPY docker/original-server/t4c-server.reg /root/t4c-server.reg
 COPY docker/original-server/odbc-setup.reg /root/odbc-setup.reg
+# IMPORTANT : regedit écrit dans le registre EN MÉMOIRE du wineserver ;
+# le flush vers system.dat n'a lieu qu'à l'arrêt PROPRE du wineserver.
+# À la fin d'une couche Docker, le wineserver est tué brutalement -> pertes.
+# wineserver -k force l'arrêt propre (flush) avant la fin de la couche.
 RUN wine regedit /s /root/t4c-server.reg; \
     wine regedit /s /root/odbc-setup.reg; \
     wine reg query "HKLM\Software\Vircom\The 4th Coming Server\Network" && \
-    echo "=== REGISTRE OK ===" || \
-    (echo "=== ECHEC IMPORT REGISTRE ==="; wine reg query "HKLM\Software\Vircom" 2>&1 | head -20; exit 1)
+    echo "=== REGISTRE OK (memoire) ===" ; \
+    wineserver -k || true; \
+    sleep 2; \
+    wine reg query "HKLM\Software\Vircom\The 4th Coming Server\Network" && \
+    echo "=== REGISTRE PERSISTANT (system.dat) ===" || \
+    (echo "=== ECHEC : clés perdues au flush ==="; exit 1)
 
 WORKDIR /root/server
 

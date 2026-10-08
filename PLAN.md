@@ -44,16 +44,17 @@
 - [ ] Le mouvement vérifie la tuile cible ; refus = pas de paquet 1 (le client reste sur sa prédiction locale)
 - **Validation** : impossible de traverser un mur/l'eau
 
-### 2.2 NPCs statiques
-- [ ] Table de spawn : position, apparence, nom
-- [ ] Diffusion via 16 (en vue), 0x2714 (apparition), 11 (disparition) — étendre `t4c/world.py` aux non-joueurs
-- [ ] S2C 35 (NPC_NAME) à l'approche
-- **Validation** : PNJ visible dans le monde, clic dessus affiche son nom
+### 2.2 NPCs statiques ✅ (2026-10-08)
+- [x] Table de spawn : position, apparence, nom (`world.register_npc`)
+- [x] Inclus dans le 16 (vue) + popup 0x2714 ; 3 PNJ seedés à LightHaven au démarrage
+- [x] S2C 35 (NPC_NAME) sur demande (clic)
+- **Validation** : tests `test_step13_ground_items_npcs.py` — à confirmer en jeu client
 
-### 2.3 Objets au sol
-- [ ] C2S 12 (DROP_ITEM) → spawn objet visible des autres ; C2S 11 (PICKUP) → ajout au sac + retrait diffusé
-- [ ] S2C 70 avec `{unitId, 11}` si le pickup échoue
-- **Validation** : déposer un objet, le ramasser avec l'autre compte
+### 2.3 Objets au sol ✅ (2026-10-08)
+- [x] C2S 12 (DROP_ITEM) → consomme le sac, spawn au sol visible (popup 0x2714), sac renvoyé
+- [x] C2S 11 (PICKUP) → retrait du sol diffusé (paquet 11), ajout au sac, sac renvoyé
+- [x] S2C 70 avec `{unitId, 11}` si le pickup échoue (ACTION_FAILURE corrélé)
+- **Validation** : tests `test_step13_ground_items_npcs.py` — à confirmer en jeu client
 
 ### 2.4 Synchronisation de vue dynamique
 - [ ] Au mouvement : détecter entrée/sortie du rayon de 20 tuiles → 0x2714 / 11 aux concernés (pas seulement à l'entrée en jeu)

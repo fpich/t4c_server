@@ -50,6 +50,9 @@ class PacketID(IntEnum):
     LOCAL_TALK_REQUEST = 30       # client -> serveur : u16 x, u16 y, u32 fieldA, u8 dir, u32 style, CString text
     UNIT_TALK = 27                # serveur -> client : parole au-dessus d'une unité
     SERVER_MESSAGE = 63           # serveur -> client : u16 catégorie, u16 style, CString texte
+    PICKUP_UNIT = 11              # client @0x47A640 : u16 x, u16 y, u32 unitId (directionnel !)
+    DROP_ITEM = 12                # client @0x47A9B0 : u16 x, u16 y, u32 itemUnitId, u32 quantity
+    ACTION_FAILURE = 70           # serveur -> client : u32 objectOrUnitId, u16 relatedRequestOpcode
     RETURN_TO_MENU = 38
     GET_TIME = 45
     FROM_PREINGAME_TO_INGAME = 46

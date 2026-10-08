@@ -17,6 +17,8 @@ l'unité apparaître ; le retrait (11) à ceux qui la voyaient.
 
 from __future__ import annotations
 
+from dataclasses import dataclass
+
 import logging
 from typing import TYPE_CHECKING
 
@@ -121,18 +123,30 @@ def send_inview_units(server: "T4CServerProtocol", session: ClientSession) -> No
         character = _find_character(server, other)
         if character is not None:
             visible.append((other, character))
+    # PNJ statiques en vue (même format d'entrée que les joueurs).
+    npcs = npcs_in_view(session.pos_x, session.pos_y, session.pos_world)
+    # Objets au sol en vue.
+    grounds = ground_items_in_view(session.pos_x, session.pos_y, session.pos_world)
+    total = len(visible) + len(npcs) + len(grounds)
     response = PacketWriter(16)
-    response.write_i16(len(visible))
+    response.write_i16(total)
     for other, character in visible:
         response.write_i16(other.pos_x)
         response.write_i16(other.pos_y)
         _write_unit_information(response, character, other.unit_id or 0)
+    for npc in npcs:
+        response.write_i16(npc.x)
+        response.write_i16(npc.y)
+        _write_npc_information(response, npc)
+    for ground in grounds:
+        response.write_i16(ground.x)
+        response.write_i16(ground.y)
+        _write_item_information(response, ground)
     server.send_packet(session.address, response)
-    if visible:
+    if total:
         log.info(
-            "VUE unités en vue=%d pour %s",
-            len(visible),
-            session.address,
+            "VUE unités en vue=%d (joueurs=%d pnj=%d objets=%d) pour %s",
+            total, len(visible), len(npcs), len(grounds), session.address,
         )
 
 
@@ -219,3 +233,207 @@ def send_server_message(
 
 
 EVENT_SERVER_MESSAGE = 63
+
+
+# -----------------------------------------------------------------------------
+# Objets au sol (PLAN 2.3)
+# -----------------------------------------------------------------------------
+# C2S 12 DROP_ITEM : u16 x, u16 y, u32 itemUnitId, u32 quantity.
+# C2S 11 PICKUP_UNIT : u16 x, u16 y, u32 unitId.
+# S2C 70 ACTION_FAILURE : u32 objectOrUnitId, u16 relatedRequestOpcode.
+#
+# Un objet au sol est une unité visible comme un joueur : même bloc
+# UnitInformation (apparence = sprite de l'objet), diffusée par popup 0x2714
+# et retirée par le paquet 11. Le serveur original range les objets au sol
+# dans les mêmes WorldMap hives que les unités.
+
+
+@dataclass
+class GroundItem:
+    unit_id: int
+    template_id: int
+    quantity: int
+    x: int
+    y: int
+    world: int = 0
+
+
+# Registre global des objets au sol (unit ids partagés avec les joueurs :
+# même espace d'adressage que server.next_unit_id).
+_ground_items: dict[int, GroundItem] = {}
+
+
+def _write_item_information(w, item: GroundItem) -> None:
+    """Bloc UnitInformation pour un objet au sol (apparence = sprite)."""
+    from .items import TEMPLATES
+
+    template = TEMPLATES.get(item.template_id)
+    appearance = template.appearance if template else 0
+    w.write_i16(appearance)
+    w.write_i32(item.unit_id)
+    w.write_i8(0)     # radiance
+    w.write_u8(0)     # statut
+    w.write_u8(100)   # %HP (inutilisé pour un objet)
+
+
+def spawn_ground_item(
+    server: "T4CServerProtocol",
+    unit_id: int,
+    template_id: int,
+    quantity: int,
+    x: int,
+    y: int,
+    world: int = 0,
+) -> None:
+    """Crée un objet au sol et le diffuse aux joueurs en vue (popup 0x2714)."""
+    item = GroundItem(unit_id, template_id, quantity, x, y, world)
+    _ground_items[unit_id] = item
+    _broadcast_item_popup(server, item)
+
+
+def _broadcast_item_popup(
+    server: "T4CServerProtocol", item: GroundItem
+) -> None:
+    for session in server.sessions.values():
+        if (
+            session.state is SessionState.IN_WORLD
+            and session.pos_world == item.world
+            and _in_view(session.pos_x, session.pos_y, item.x, item.y)
+        ):
+            popup = PacketWriter(EVENT_UNIT_POPUP)
+            popup.write_i16(item.x)
+            popup.write_i16(item.y)
+            _write_item_information(popup, item)
+            server.send_packet(session.address, popup)
+
+
+def find_ground_item(unit_id: int) -> GroundItem | None:
+    return _ground_items.get(unit_id)
+
+
+def remove_ground_item(
+    server: "T4CServerProtocol", unit_id: int
+) -> GroundItem | None:
+    """Retire un objet au sol et diffuse sa disparition (paquet 11)."""
+    item = _ground_items.pop(unit_id, None)
+    if item is None:
+        return None
+    removed = PacketWriter(EVENT_OBJECT_REMOVED)
+    removed.write_u8(0)
+    removed.write_i32(unit_id)
+    for session in server.sessions.values():
+        if (
+            session.state is SessionState.IN_WORLD
+            and session.pos_world == item.world
+            and _in_view(session.pos_x, session.pos_y, item.x, item.y)
+        ):
+            server.send_packet(session.address, removed)
+    return item
+
+
+def ground_items_in_view(
+    x: int, y: int, world: int = 0
+) -> list[GroundItem]:
+    return [
+        item
+        for item in _ground_items.values()
+        if item.world == world and _in_view(x, y, item.x, item.y)
+    ]
+
+
+def send_action_failure(
+    server: "T4CServerProtocol",
+    session: "ClientSession",
+    object_or_unit_id: int,
+    related_opcode: int,
+) -> None:
+    """S2C 70 : échec d'action corrélé (ex. pickup introuvable -> opcode 11)."""
+    failure = PacketWriter(70)
+    failure.write_u32(object_or_unit_id)
+    failure.write_i16(related_opcode)
+    server.send_packet(session.address, failure)
+
+
+# -----------------------------------------------------------------------------
+# NPCs statiques (PLAN 2.2)
+# -----------------------------------------------------------------------------
+# S2C 35 NPC_NAME : u32 npcUnitId, CString name.
+# Les PNJ sont des unités persistantes : visibles par le popup 0x2714 et
+# inclus dans le paquet 16 (vue) des joueurs qui entrent en jeu.
+
+
+@dataclass
+class Npc:
+    unit_id: int
+    name: str
+    appearance: int
+    x: int
+    y: int
+    world: int = 0
+
+
+# Table de spawn des PNJ de développement. À terme : extraite des WDA/maps
+# du serveur original. Les apparences doivent exister côté client
+# (cf. docs/reverse-engineering/ — la zone d'init 0x501F00 couvre aussi des
+# apparences de créatures, ex. squelettes/orcs des sprites d'objets).
+_npcs: dict[int, Npc] = {}
+_next_npc_id = 100000  # espace d'IDs distinct des joueurs et objets
+
+
+def register_npc(
+    name: str, appearance: int, x: int, y: int, world: int = 0
+) -> Npc:
+    """Enregistre un PNJ statique (spawn au démarrage du serveur)."""
+    global _next_npc_id
+    npc = Npc(_next_npc_id, name, appearance, x, y, world)
+    _next_npc_id += 1
+    _npcs[npc.unit_id] = npc
+    return npc
+
+
+def find_npc(unit_id: int) -> Npc | None:
+    return _npcs.get(unit_id)
+
+
+def npcs_in_view(x: int, y: int, world: int = 0) -> list[Npc]:
+    return [
+        npc
+        for npc in _npcs.values()
+        if npc.world == world and _in_view(x, y, npc.x, npc.y)
+    ]
+
+
+def _write_npc_information(w, npc: Npc) -> None:
+    w.write_i16(npc.appearance)
+    w.write_i32(npc.unit_id)
+    w.write_i8(0)     # radiance
+    w.write_u8(0)     # statut
+    w.write_u8(100)   # %HP
+
+
+def broadcast_npc_popup(
+    server: "T4CServerProtocol", npc: Npc, *, exclude: "ClientSession | None" = None
+) -> None:
+    """Fait apparaître un PNJ auprès des joueurs en vue."""
+    for session in server.sessions.values():
+        if (
+            session is not exclude
+            and session.state is SessionState.IN_WORLD
+            and session.pos_world == npc.world
+            and _in_view(session.pos_x, session.pos_y, npc.x, npc.y)
+        ):
+            popup = PacketWriter(EVENT_UNIT_POPUP)
+            popup.write_i16(npc.x)
+            popup.write_i16(npc.y)
+            _write_npc_information(popup, npc)
+            server.send_packet(session.address, popup)
+
+
+def send_npc_name(
+    server: "T4CServerProtocol", session: "ClientSession", npc: Npc
+) -> None:
+    """S2C 35 : nom d'un PNJ (au clic / à l'approche)."""
+    name_packet = PacketWriter(35)
+    name_packet.write_u32(npc.unit_id)
+    name_packet.write_text(npc.name)
+    server.send_packet(session.address, name_packet)

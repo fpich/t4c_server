@@ -79,6 +79,9 @@ class PacketDispatcher:
         self.register(PacketID.UNIT_TALK, handle_unit_talk_request)
         self.register(49, handle_chatter_message)
         self.register(29, handle_whisper_message)
+        self.register(PacketID.DROP_ITEM, handle_drop_item)
+        self.register(PacketID.PICKUP_UNIT, handle_pickup_unit)
+        self.register(35, handle_npc_name_request)
 
     def register(self, packet_id: int, handler: PacketHandler) -> None:
         packet_id = int(packet_id)
@@ -1559,3 +1562,112 @@ async def handle_whisper_message(
     world.send_server_message(
         server, session, f"{target_name} n'est pas en jeu."
     )
+
+
+async def handle_drop_item(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 12 C2S (client @0x47A9B0) : déposer un objet au sol.
+
+    Corps confirmé : u16 x, u16 y, u32 itemUnitId, u32 quantity.
+    Retire l'objet du sac, le fait apparaître au sol (popup 0x2714) et
+    renvoie le sac mis à jour.
+    """
+    if session.state is not SessionState.IN_WORLD:
+        return
+    reader = PacketReader(packet.body)
+    try:
+        x = reader.read_u16()
+        y = reader.read_u16()
+        item_unit_id = reader.read_u32()
+        quantity = reader.read_u32()
+    except T4CProtocolError as exc:
+        log.warning("requête 12 malformée de %s : %s", session.address, exc)
+        return
+    inventory = _session_inventory(server, session)
+    if inventory is None:
+        return
+    item = inventory.find(item_unit_id)
+    if item is None:
+        world.send_action_failure(server, session, item_unit_id, 12)
+        return
+    dropped_qty = min(max(1, quantity), item.quantity)
+    if not inventory.consume(item_unit_id, dropped_qty):
+        world.send_action_failure(server, session, item_unit_id, 12)
+        return
+    _persist_inventory(server, session)
+    ground_unit = server.next_unit_id
+    server.next_unit_id += 1
+    # Le drop du client porte les coordonnées du clic ; on retombe sur la
+    # position du joueur si elles sont hors de vue.
+    if not world._in_view(session.pos_x, session.pos_y, x, y):
+        x, y = session.pos_x, session.pos_y
+    world.spawn_ground_item(
+        server, ground_unit, item.template_id, dropped_qty, x, y,
+        session.pos_world,
+    )
+    # Sac mis à jour pour le joueur.
+    await handle_view_backpack(server, session, packet)
+    log.info(
+        "DÉPOSÉ perso=%r item=%d qté=%d à (%d,%d) unité_sol=%d",
+        session.active_character, item.template_id, dropped_qty, x, y,
+        ground_unit,
+    )
+
+
+async def handle_pickup_unit(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 11 C2S (client @0x47A640) : ramasser une unité au sol.
+
+    Corps confirmé : u16 x, u16 y, u32 unitId.
+    Retire l'objet du sol (paquet 11 diffusé), l'ajoute au sac, renvoie le sac.
+    """
+    if session.state is not SessionState.IN_WORLD:
+        return
+    reader = PacketReader(packet.body)
+    try:
+        x = reader.read_u16()
+        y = reader.read_u16()
+        unit_id = reader.read_u32()
+    except T4CProtocolError as exc:
+        log.warning("requête 11 malformée de %s : %s", session.address, exc)
+        return
+    ground = world.find_ground_item(unit_id)
+    if ground is None:
+        # ACTION_FAILURE corrélé : le client sait que c'est le pickup qui a échoué.
+        world.send_action_failure(server, session, unit_id, 11)
+        log.info("RAMASSER introuvable unité=%d client=%s", unit_id, session.address)
+        return
+    if not world._in_view(session.pos_x, session.pos_y, ground.x, ground.y):
+        world.send_action_failure(server, session, unit_id, 11)
+        return
+    world.remove_ground_item(server, unit_id)
+    inventory = _session_inventory(server, session)
+    if inventory is not None:
+        inventory.add(ground.template_id, ground.quantity)
+        _persist_inventory(server, session)
+    await handle_view_backpack(server, session, packet)
+    log.info(
+        "RAMASSÉ perso=%r item=%d qté=%d unité_sol=%d",
+        session.active_character, ground.template_id, ground.quantity, unit_id,
+    )
+
+
+async def handle_npc_name_request(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Clic/interaction PNJ : renvoie S2C 35 (nom) si l'unité est un PNJ connu.
+
+    Le client demande le nom quand il sélectionne une unité ; le corps
+    exact varie selon le contexte (parfois u32 unitId). On tente le u32.
+    """
+    reader = PacketReader(packet.body)
+    try:
+        unit_id = reader.read_u32()
+    except T4CProtocolError:
+        return
+    npc = world.find_npc(unit_id)
+    if npc is not None:
+        world.send_npc_name(server, session, npc)
+        log.debug("NOM PNJ %s (unité=%d) -> %s", npc.name, unit_id, session.address)

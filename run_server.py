@@ -50,6 +50,16 @@ async def main() -> None:
         database_path=args.database,
     )
 
+    # PNJ de développement près de la position de départ (LightHaven).
+    # Apparences créatures : zone d'init client 0x501F00+ (cf. docs RE).
+    from t4c import world
+    from t4c.characters import START_POS
+
+    sx, sy, _w = START_POS
+    world.register_npc("Garde de LightHaven", appearance=203, x=sx - 2, y=sy)
+    world.register_npc("Marchand Ambroise", appearance=187, x=sx + 2, y=sy)
+    world.register_npc("Prêtresse Solène", appearance=161, x=sx, y=sy - 2)
+
     loop = asyncio.get_running_loop()
     transport, _protocol = await loop.create_datagram_endpoint(
         lambda: T4CServerProtocol(config=config),

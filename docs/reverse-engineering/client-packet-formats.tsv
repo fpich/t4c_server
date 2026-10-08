@@ -40,3 +40,33 @@ S2C	78	GROUP_INVITE	0x49C729	u32 leaderUnitId; CString leaderName	confirmed clie
 S2C	80	GROUP_DISMISSED	0x49C2D7	(no payload)	confirmed client
 S2C	82	GROUP_DISBANDED	0x49C3BE	(no payload)	confirmed client+server
 S2C	87	GROUP_HP_UPDATE	0x49C28A	u32 unitId; u16 hpPercent	confirmed client+server
+S2C	34	NPC_UI_CONTEXT_UPDATE_UNKNOWN	0x49A000	u32 objectOrUnitId; u16 value	types/order confirmed; semantics unresolved
+S2C	36	NPC_INTERACTION_END / BREAK	0x499FB8	(no payload)	confirmed client+server BreakFunc 0x4467C0
+S2C	37	LEVEL_PROGRESS_SNAPSHOT	0x4992AC	u16 level; u32 thresholdHi; u32 thresholdLo; u32 hpLikeA; u32 hpLikeB; u16 pointsLikeA; u16 pointsLikeB	confirmed types/order; emitted by Character::SetLevel
+S2C	44	PROGRESSION64_XP_UPDATE	0x499387	u32 high; u32 low	confirmed; emitted in Character::Death, XP/progression semantic high-confidence
+S2C	55	TEACH_SKILL_LIST	0x499661	u16 context; u16 count; repeated{u8 flags,u16 skillId,u32 valueA,CString name,CString requirements,u32 valueB,u32 valueC}	confirmed client+server SendTeachSkillListFunc
+S2C	57	TELEPORT_CHANGE_WORLD	0x49BF53 -> 0x4A26D0	u16 x; u16 y; u16 world	confirmed client+server Unit::Teleport
+S2C	83	EFFECT_STATUS_ADD_UPDATE	0x49E5A9	u32 effectIdOrKey; u32 valueA; u32 valueB; u32 spellStructField244; CString displayText	confirmed client+server SpellEffect::CreateEffectStatus
+S2C	84	EFFECT_STATUS_REMOVE	0x49E679	u32 effectIdOrKey	confirmed client+server SpellEffect::DispellEffectStatus
+S2C	92	WEIGHT_UPDATE	0x49E561	u32 weight; u32 maxWeight	confirmed server Character::GetWeight/GetMaxWeight; client stores low 16 bits
+S2C	94	CLEAR_TARGET_STOP_AUTOCOMBAT	0x49E403	(no payload)	high-confidence semantics; emitted by ExecAutoCombat and RemoveTargetReferences
+S2C	95	RANGED_VISUAL_A	0x49D916	u32 unitId; u16 x; u16 y; u8 flag	confirmed types/order; Character::RangedAttack path
+S2C	96	RANGED_VISUAL_B	0x49D8C2	u32 unitIdA; u32 unitIdB; u8 hpPercentOrFlag	confirmed types/order; Character::RangedAttack path
+S2C	97	ADMIN_GOD_FLAG	0x49DFA0	u8 subFlag; u8 enabled	confirmed; subFlag 2 = God can slay users
+S2C	48	CHATTER_ENTER_RESULT_IGNORED	0x498A1E	client consumes no payload (server error path may append CString)	client behavior confirmed; semantic response inferred from server RQ_EnterChatterChannel
+S2C	49	CHATTER_CC_MESSAGE	0x498A3E	CString channel; CString speaker; CString message	confirmed by client formatting ["CC channel"] speaker: message
+S2C	50	CHATTER_USER_LIST	0x49877C	CString channel; u16 count; repeated{CString userName,CString auxLabel,u8 listening}	types/order confirmed; auxLabel semantics unresolved
+S2C	53	GOLD_UPDATE	0x498E07	u32 gold	confirmed client global + server Character::SetGold
+S2C	67	MANA_UPDATE	0x49E04A	u16 mana	confirmed client global + server Character::SetMana
+S2C	69	UNIT_INFORMATION_UPDATE	0x49CEC9 -> 0x4A1F80	u16 appearance; u32 unitId; i8 radiance; u8 status; u8 hpPercent	high confidence; exact layout matches Unit::PacketUnitInformation
+S2C	73	USE_ITEM_BY_APPEARANCE_FAILURE_FEEDBACK	0x49CA74	u16 appearanceId	confirmed server failure path after Character::UseItemByAppearance
+S2C	88	GROUP_AUTOSPLIT_STATE	0x49C255	u8 enabled	confirmed client + Group::ToggleAutoSplit
+S2C	93	ROB_BACKPACK	0x49E215	u8 flag; u32 targetUnitId; CString targetName; u16 count; repeated{u16 appearanceOrTemplate,u32 itemUnitId,u16 baseField,u32 quantity,CString displayName}	confirmed client + Character::PacketRobBackpack; first flag label pending
+S2C	98	SERAPH_ARRIVAL	0x49BF99	popup{u16 tag,u16 x,u16 y,u16 appearance,u32 unitId,i8 radiance,u8 status,u8 hpPercent}; extension{u16,u32,8*u16}	types fixed by client; popup prefix confirmed via Unit::PacketPopup; extension semantics pending
+S2C	100	REMORT_RESET_COMPLETE	0x49DB94	(no payload)	confirmed client + server RemortTo
+C2S	48	ENTER_CHATTER_CHANNEL	server 0x4813D0	CString channel; CString keyOrPassword	confirmed request name and two strings; second-string semantic not fully named
+C2S	49	SEND_CHATTER_MESSAGE	server 0x4816D0	CString channel; CString message	confirmed server RQ_SendChatterMessage
+C2S	50	GET_CHATTER_USER_LIST	server 0x481940	CString channel	confirmed server RQ_GetChatterUserList
+C2S	51	LEAVE_CHATTER_CHANNEL	server 0x481B20	CString channel	confirmed server RQ_RemoveFromChatterChannel
+C2S	52	GET_PUBLIC_CHATTER_CHANNEL_LIST	server 0x481C80	(no payload)	confirmed request name; no TFCPacket reads observed
+C2S	53	TOGGLE_CHATTER_LISTENING	server 0x481D70	CString channel; u8 listening	confirmed server RQ_ToggleChatterListening

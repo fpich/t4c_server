@@ -14,15 +14,20 @@ FROM debian:bookworm-slim
 ENV WINEPREFIX=/root/.wine \
     WINEARCH=win32
 
-# Dépendances : Wine 32 bits + tcpdump.
-# Le serveur importe MFC42.DLL (vérifié objdump), pas les MFC40D fournies
-# dans le dossier. winetricks n'est PAS dans les dépôts bookworm : on
-# télécharge le script officiel upstream (une seule dépendance : curl).
-# xvfb+xauth pour l'installation de mfc42 (winetricks ouvre un installeur).
+# IMPORTANT : Wine des depots bookworm (8.x) a un odbc32 builtin SANS proxy
+# unixODBC (implemente a partir de Wine 9.13) -> SQLConnect echoue sans
+# diagnostic (SQLError = SQL_NO_DATA) -> le serveur exit(111) au startup.
+# On utilise donc le depot WineHQ (winehq-stable = Wine 10) pour bookworm.
 RUN dpkg --add-architecture i386 && \
     apt-get update && \
-    apt-get install -y --no-install-recommends \
-        wine wine32:i386 libwine:i386 \
+    apt-get install -y --no-install-recommends curl ca-certificates gnupg && \
+    mkdir -pm 0755 /etc/apt/keyrings && \
+    curl -fsSL https://dl.winehq.org/wine-builds/winehq.key | gpg --dearmor -o /etc/apt/keyrings/winehq.gpg && \
+    echo "deb [signed-by=/etc/apt/keyrings/winehq.gpg] https://dl.winehq.org/wine-builds/debian/ bookworm main" > /etc/apt/sources.list.d/winehq.list && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends winehq-stable \
+        wine32:i386 libwine:i386 \
+        wine32:i386 libwine:i386 \
         winbind \
         tcpdump \
         procps \
@@ -32,6 +37,7 @@ RUN dpkg --add-architecture i386 && \
         imagemagick x11-utils \
         xvfb xauth && \
     rm -rf /var/lib/apt/lists/* && \
+    wine --version && \
     curl -fsSL -o /usr/local/bin/winetricks \
         https://raw.githubusercontent.com/Winetricks/winetricks/master/src/winetricks && \
     chmod +x /usr/local/bin/winetricks

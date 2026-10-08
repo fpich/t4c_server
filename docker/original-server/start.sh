@@ -45,11 +45,12 @@ echo "=== Verification ProgID EasyMail.SMTP.5 + InprocServer32 ==="
 wine reg query "HKLM\\Software\\Classes\\EasyMail.SMTP.5" /s 2>&1 | head -10 || echo "ProgID ABSENT"
 wine reg query "HKLM\\Software\\Classes\\CLSID\\{4610E7BF-710F-11d3-813D-00C04F6B92D0}\\InprocServer32" /s 2>&1 | head -10 || echo "CLSID ABSENT"
 
-# TRACE des exceptions SEH : code d'exception exact (0xC0000005 /
-# 0xE06D7363), adresse et thread fautifs — sans le ralentissement du +relay.
-echo "=== Lancement serveur avec trace exceptions (+seh -> trace.log) ==="
+# TRACE COMPLETE : le serveur s'auto-quitte ~3 s apres le banner (exit.txt
+# STARTUP->EXIT immediat, pas de crash GP). +relay est praticable car le
+# processus est court-vivant : la DERNIERE ligne avant l'exit = appel fautif.
+echo "=== Lancement serveur avec trace complete (+relay,+seh -> trace.log) ==="
 rm -f /root/.wine/*.log 2>/dev/null
-WINEDEBUG=+seh wine "T4C Server.exe" -m > /captures/trace.log 2>&1 &
+WINEDEBUG=+relay,+seh wine "T4C Server.exe" -m > /captures/trace.log 2>&1 &
 SERVER_PID=$!
 TRACE_START=$SECONDS
 
@@ -71,8 +72,8 @@ for f in /root/server/Logs/*.log /root/server/Logs/exit.txt; do
 done
 echo "=== DERNIERS APPELS TRACE (fin de trace.log = cause de l'exit) ==="
 if [ -f /captures/trace.log ]; then
-    echo "tail -80 de trace.log :"
-    tail -80 /captures/trace.log
+    echo "tail -400 de trace.log (retro-appels autour de l'exit) :"
+    tail -400 /captures/trace.log
 fi
 echo "=== fin diagnostic ==="
 

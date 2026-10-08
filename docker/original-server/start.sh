@@ -34,16 +34,15 @@ echo "=== Test ODBC unix : isql sur le DSN 'T4C Server' ==="
 echo "select count(*) from T4Cusers;" | isql "T4C Server" 2>&1 | head -5 || true
 echo "=== fin test ODBC ==="
 
-# TRACE des API du serveur : registry + ODBC + fichiers. Le serveur quitte
-# sans message — la trace relay nous dira exactement le DERNIER appel avant
-# l'exit (quel registre/DSN/fichier il cherchait).
-echo "=== Lancement serveur avec trace API (trace.log) ==="
+# TRACE des exceptions SEH : code d'exception exact (0xC0000005 /
+# 0xE06D7363), adresse et thread fautifs — sans le ralentissement du +relay.
+echo "=== Lancement serveur avec trace exceptions (+seh -> trace.log) ==="
 rm -f /root/.wine/*.log 2>/dev/null
-WINEDEBUG=+relay wine "T4C Server.exe" -m > /captures/trace.log 2>&1 &
+WINEDEBUG=+seh wine "T4C Server.exe" -m > /captures/trace.log 2>&1 &
 SERVER_PID=$!
 TRACE_START=$SECONDS
 
-# Captures rapprochées : popup éventuelle visible tôt dans sa vie.
+# Captures rapprochées : popup éventuel visible tôt dans sa vie.
 sleep 3
 DISPLAY=:99 import -window root "/captures/console-early.png" 2>/dev/null || true
 sleep 12
@@ -63,10 +62,13 @@ echo "=== DERNIERS APPELS TRACE (fin de trace.log = cause de l'exit) ==="
 if [ -f /captures/trace.log ]; then
     echo "tail -80 de trace.log :"
     tail -80 /captures/trace.log
-    echo "=== Appels ODBC/SQL dans la trace ==="
-    grep -E "SQLDriverConnect|SQLConnect|SQLAllocEnv|RegOpenKey|GetPrivateProfile" /captures/trace.log | tail -30 || echo "aucun appel ODBC/registry trace"
 fi
 echo "=== fin diagnostic ==="
+
+# Dump de la clé de crash : le rapport GP du serveur écrit
+# "Writing crash info in registry" -> l'adresse/module fautif est dedans.
+echo "=== CLÉ DE CRASH DANS LE REGISTRE (rapport GP) ==="
+wine reg query "HKLM\\Software\\Vircom" /s 2>&1 | tee /captures/registry-crash.txt | tail -60 || echo "clé Vircom introuvable"
 
 # Surveillance : le serveur charge le monde (T4C Worlds.WDA = 198 Mo, parse
 # octet par octet -> plusieurs minutes). On guette l'ouverture du port
@@ -80,12 +82,17 @@ for i in $(seq 1 120); do
         break
     fi
     if ! kill -0 $SERVER_PID 2>/dev/null; then
-        echo "=== SERVEUR MORT à t+$((i*30))s ==="
-        tail -30 /captures/trace.log
+        echo "=== SERVEUR MORT à t+$((i*30))s — capture écran finale ==="
+        DISPLAY=:99 import -window root "/captures/death.png" 2>/dev/null || true
+        echo "=== Exceptions SEH (code exact : 0xC0000005 / 0xE06D7363...) ==="
+        grep -E "Unhandled exception|SEH|exception" /captures/trace.log | tail -20 || echo "aucune exception tracée"
+        echo "=== CLÉ DE CRASH DANS LE REGISTRE (rapport GP) ==="
+        wine reg query "HKLM\\Software\\Vircom" /s 2>&1 | tee /captures/registry-crash.txt | tail -60 || echo "clé Vircom introuvable"
         break
     fi
     ALIVE=$(ps aux | grep -v grep | grep -c "T4C Server" || true)
-    echo "[t+$((i*30))s] serveur vivant=$ALIVE ; logs: $(ls -la /root/server/Logs/ 2>/dev/null | grep -c ' 9[0-9]') ; $(cat /root/server/Logs/World.log 2>/dev/null | tail -1)"
+    echo "[t+$((i*30))s] vivant=$ALIVE ; $(cat /root/server/Logs/World.log 2>/dev/null | tail -1)"
+    DISPLAY=:99 import -window root "/captures/watch-$i.png" 2>/dev/null || true
     sleep 30
 done
 

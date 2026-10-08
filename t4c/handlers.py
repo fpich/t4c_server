@@ -72,6 +72,9 @@ class PacketDispatcher:
         self.register(PacketID.USE_SKILL_UNIT, handle_use_skill_unit)
         self.register(PacketID.ITEM_NAME_REQUEST, handle_item_name_request)
         self.register(PacketID.LOCAL_TALK_REQUEST, handle_local_talk)
+        self.register(
+            PacketID.PUPPET_INFORMATION, handle_puppet_information_request
+        )
 
     def register(self, packet_id: int, handler: PacketHandler) -> None:
         packet_id = int(packet_id)
@@ -1394,3 +1397,40 @@ async def handle_local_talk(
     world.broadcast_unit_talk(
         server, session, text, direction=direction, style=style & 0xFF
     )
+
+
+async def handle_puppet_information_request(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 68 C2S : le client demande l'apparence puppet d'une unité.
+
+    Observé en trace réelle : corps u32 unitId (+ 2 u16 de contexte).
+    Le client boucle sur cette requête tant qu'il n'a pas l'apparence d'une
+    unité visible. Réponse : le 68 S2C standard (u32 unitId + 8 u16).
+    """
+    reader = PacketReader(packet.body)
+    try:
+        unit_id = reader.read_u32()
+    except T4CProtocolError as exc:
+        log.warning("requête 68 malformée de %s : %s", session.address, exc)
+        return
+    if unit_id == 0 or unit_id == (session.unit_id or 0):
+        # Le client demande son propre puppet : déjà envoyé au 46.
+        return
+    # Cherche la session correspondante en monde.
+    for other in server.sessions.values():
+        if (
+            other is not session
+            and other.unit_id == unit_id
+            and other.state is SessionState.IN_WORLD
+        ):
+            puppet = PacketWriter(PacketID.PUPPET_INFORMATION)
+            puppet.write_i32(unit_id)
+            for _ in range(8):
+                puppet.write_i16(0)
+            server.send_packet(session.address, puppet)
+            log.debug(
+                "PUPPET demandé unité=%d -> envoyé à %s", unit_id, session.address
+            )
+            return
+    log.debug("PUPPET demandé unité=%d introuvable client=%s", unit_id, session.address)

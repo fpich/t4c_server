@@ -78,7 +78,13 @@ def _find_character(
 def broadcast_unit_popup(
     server: "T4CServerProtocol", session: ClientSession
 ) -> None:
-    """Annonce l'apparition d'un joueur aux sessions en vue (paquet 0x2714)."""
+    """Annonce l'apparition d'un joueur aux sessions en vue.
+
+    Deux paquets sont envoyés, comme le flux original :
+      - 0x2714 UNIT_POPUP (position + UnitInformation) crée l'unité visuelle,
+      - 68 PUPPET_INFORMATION (u32 unitId + 8 u16) fournit l'apparence puppet.
+    Sans le 68, le client demande en boucle l'apparence et n'affiche rien.
+    """
     character = _find_character(server, session)
     if character is None or session.unit_id is None:
         return
@@ -90,6 +96,11 @@ def broadcast_unit_popup(
         popup.write_i16(session.pos_y)
         _write_unit_information(popup, character, session.unit_id)
         server.send_packet(other.address, popup)
+        puppet = PacketWriter(68)
+        puppet.write_i32(session.unit_id)
+        for _ in range(8):
+            puppet.write_i16(0)
+        server.send_packet(other.address, puppet)
         log.debug(
             "POPUP unité=%d vers %s (%d,%d)",
             session.unit_id,

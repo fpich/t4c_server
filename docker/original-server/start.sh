@@ -100,6 +100,19 @@ for i in $(seq 1 120); do
         DISPLAY=:99 import -window root "/captures/death.png" 2>/dev/null || true
         echo "=== exit.txt (heure STARTUP -> EXIT) ==="
         cat /root/server/Logs/exit.txt 2>/dev/null || echo "pas d'exit.txt"
+        echo "=== Memory.log (rapport de crash GP du serveur original !) ==="
+        for f in /root/server/Memory.log /root/server/Logs/Memory.log; do
+            if [ -f "$f" ] && [ -s "$f" ]; then echo "--- $f ---"; cat "$f"; echo; fi
+        done
+        echo "=== ExitProcess(0x6f=111) : 120 lignes AVANT dans la trace = cause ==="
+        grep -n "ExitProcess" /captures/trace.log | head -5
+        LINE=$(grep -n "ExitProcess(0000006f)" /captures/trace.log | head -1 | cut -d: -f1)
+        if [ -n "$LINE" ]; then
+            START=$(( LINE > 120 ? LINE - 120 : 1 ))
+            sed -n "${START},${LINE}p" /captures/trace.log
+        else
+            echo "ExitProcess(0x6f) non trouvé dans la trace"
+        fi
         echo "=== DERNIÈRES LIGNES DE LA TRACE (vrai appel final avant l'exit) ==="
         tail -300 /captures/trace.log
         echo "=== DERNIERS FICHIERS OUVERTS AVANT LA MORT (handle -> fichier) ==="

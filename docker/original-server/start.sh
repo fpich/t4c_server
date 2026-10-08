@@ -68,9 +68,30 @@ if [ -f /captures/trace.log ]; then
 fi
 echo "=== fin diagnostic ==="
 
-# Attendre indéfiniment (le conteneur reste vivant pour la session de capture).
+# Surveillance : le serveur charge le monde (T4C Worlds.WDA = 198 Mo, parse
+# octet par octet -> plusieurs minutes). On guette l'ouverture du port
+# UDP 11677 et on log les étapes toutes les 30 s.
+echo "=== Surveillance du serveur (port 11677 ; chargement monde = plusieurs min) ==="
+for i in $(seq 1 120); do
+    if ss -lun 2>/dev/null | grep -q 11677; then
+        echo "=============================================="
+        echo "=== PORT 11677 EN ÉCOUTE ! Serveur opérationnel (t+$((i*30))s) ==="
+        echo "=============================================="
+        break
+    fi
+    if ! kill -0 $SERVER_PID 2>/dev/null; then
+        echo "=== SERVEUR MORT à t+$((i*30))s ==="
+        tail -30 /captures/trace.log
+        break
+    fi
+    ALIVE=$(ps aux | grep -v grep | grep -c "T4C Server" || true)
+    echo "[t+$((i*30))s] serveur vivant=$ALIVE ; logs: $(ls -la /root/server/Logs/ 2>/dev/null | grep -c ' 9[0-9]') ; $(cat /root/server/Logs/World.log 2>/dev/null | tail -1)"
+    sleep 30
+done
+
+# Une fois le port ouvert (ou timeout), rester vivant pour la session client.
+echo "=== Le conteneur reste ouvert : connectez le client (pcap en cours) ==="
+echo "=== Ctrl-C pour terminer la capture ==="
 wait $SERVER_PID
 kill $TCPDUMP_PID 2>/dev/null
-
-echo "=== Serveur terminé — messages éventuels ci-dessus ==="
-sleep 30
+echo "=== Serveur terminé ==="

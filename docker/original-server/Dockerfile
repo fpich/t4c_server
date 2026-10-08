@@ -49,11 +49,17 @@ RUN wineboot --init || true && \
 # Copier le serveur original (depuis ressources/T4C_Server du repo).
 COPY "ressources/T4C_Server/" "/root/server/"
 
-# Configuration registre : injection via wine reg add (fiable — l'import
-# regedit échouait silencieusement sur l'encodage).
-COPY docker/original-server/inject-registry.sh /root/inject-registry.sh
-RUN chmod +x /root/inject-registry.sh && \
-    /root/inject-registry.sh
+# Configuration registre : les .reg sont en UTF-16LE (format natif regedit).
+# Import avec /s (silencieux MAIS les erreurs restent visibles), puis
+# vérification immédiate DANS LA MÊME COUCHÉE : si les clés n'existent pas,
+# le build échoue avec un message clair au lieu de laisser passer.
+COPY docker/original-server/t4c-server.reg /root/t4c-server.reg
+COPY docker/original-server/odbc-setup.reg /root/odbc-setup.reg
+RUN wine regedit /s /root/t4c-server.reg; \
+    wine regedit /s /root/odbc-setup.reg; \
+    wine reg query "HKLM\Software\Vircom\The 4th Coming Server\Network" && \
+    echo "=== REGISTRE OK ===" || \
+    (echo "=== ECHEC IMPORT REGISTRE ==="; wine reg query "HKLM\Software\Vircom" 2>&1 | head -20; exit 1)
 
 WORKDIR /root/server
 

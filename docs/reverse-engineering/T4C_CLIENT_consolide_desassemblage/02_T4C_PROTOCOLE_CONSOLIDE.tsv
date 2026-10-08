@@ -1,0 +1,86 @@
+﻿direction	packet_id	schema_name	client_address	fields_after_packet_id	schema_confidence	map_working_name	map_client_block	map_confidence	source_first_seen	historical_notes
+BIDIR	29	TWO_STRING_MESSAGE_OR_COMMAND	client 0x498E73 / server 0x47F910	CString first; CString second	types confirmed; semantics unresolved				T4C_Client_packet_schemas_v5(2).tsv	
+C2S	1-8	PLAYER_MOVE_DIRECTION	client send path ~0x4B70B3	no payload; packet id itself is direction N/NE/E/SE/S/SW/W/NW	confirmed client+server RQ_PlayerMove				T4C_Client_packet_schemas_v4(2).tsv	
+C2S	9	GET_PLAYER_POS	client request path	no payload	confirmed server RQ_PlayerMove				T4C_Client_packet_schemas_v4(2).tsv	
+C2S	11	PICKUP_UNIT / GET_UNIT	server handler 0x47A640	u16 x; u16 y; u32 unitId	confirmed server; direction-dependent opcode				T4C_Client_packet_schemas_v5(2).tsv	
+C2S	12	DROP_ITEM	server handler 0x47A9B0	u16 x; u16 y; u32 itemUnitId; u32 quantity	confirmed server; direction-dependent opcode				T4C_Client_packet_schemas_v5(2).tsv	
+C2S	21	EQUIP_ITEM	0x434C5A	u32 itemUnitId	confirmed				T4C_Client_packet_schemas_v3(2).tsv	
+C2S	22	UNEQUIP_SLOT	0x434924	u8 equipSlot	confirmed				T4C_Client_packet_schemas_v3(2).tsv	
+C2S	23	USE_ITEM	0x434536	u16 x; u16 y; u32 itemUnitId	confirmed				T4C_Client_packet_schemas_v3(2).tsv	
+C2S	30	LOCAL_TALK_REQUEST	server handler 0x47FC90	u16 x; u16 y; u32 fieldA; u8 direction; u32 colorOrStyle; CString text	types/order confirmed; some semantics inferred				T4C_Client_packet_schemas_v5(2).tsv	
+C2S	32	USE_SPELL_UNIT	0x455BF0	u16 spellId; u16 targetX; u16 targetY; u32 targetUnitId	confirmed client+server				T4C_Client_packet_schemas_v3(2).tsv	
+C2S	41	BUY_ITEMS	client builder ~0x4A9DA0 / server 0x482940	u16 x; u16 y; u32 npcUnitId; u16 count; repeated{u16 itemId,u16 quantity}	confirmed client+server				T4C_Client_packet_schemas_v5(2).tsv	
+C2S	42	USE_SKILL_UNIT	0x415C00	u16 skillId; u16 targetX; u16 targetY; u32 targetUnitId	confirmed				T4C_Client_packet_schemas_v3(2).tsv	
+C2S	48	ENTER_CHATTER_CHANNEL	server 0x4813D0	CString channel; CString keyOrPassword	confirmed request name and two strings; second-string semantic not fully named				T4C_Client_packet_schemas_v7(2).tsv	
+C2S	49	SEND_CHATTER_MESSAGE	server 0x4816D0	CString channel; CString message	confirmed server RQ_SendChatterMessage				T4C_Client_packet_schemas_v7(2).tsv	
+C2S	50	GET_CHATTER_USER_LIST	server 0x481940	CString channel	confirmed server RQ_GetChatterUserList				T4C_Client_packet_schemas_v7(2).tsv	
+C2S	51	LEAVE_CHATTER_CHANNEL	server 0x481B20	CString channel	confirmed server RQ_RemoveFromChatterChannel				T4C_Client_packet_schemas_v7(2).tsv	
+C2S	52	GET_PUBLIC_CHATTER_CHANNEL_LIST	server 0x481C80	(no payload)	confirmed request name; no TFCPacket reads observed				T4C_Client_packet_schemas_v7(2).tsv	
+C2S	53	TOGGLE_CHATTER_LISTENING	server 0x481D70	CString channel; u8 listening	confirmed server RQ_ToggleChatterListening				T4C_Client_packet_schemas_v7(2).tsv	
+C2S	56	SELL_ITEMS	client bulk builder 0x44A040 / server 0x482C70	u16 x; u16 y; u32 npcUnitId; repeated-until-EOF{u32 itemUnitId,u32 quantity}	confirmed bulk path; no count				T4C_Client_packet_schemas_v5(2).tsv	
+C2S	59	ITEM_NAME_REQUEST	0x433C7B	u32 itemId	confirmed				T4C_Client_packet_schemas_v3(2).tsv	
+C2S	60	POST_PUT_PLAYER_IN_GAME_REQUEST (nom descriptif, non original)	0x49AAA1, 0x49AAAA, 0x49AAF6	aucun champ explicite observe dans ce chemin	opcode and send-submission confirmed; payload/semantics incomplete				10_PASSE_S2C13_ENVOI_ET_COUVERTURE_2026-10-08.md	Construit depuis le chemin commun S2C 13; 0x45BA10 peut filtrer la demande.
+S2C	1	OBJECT_MOVED	0x49B02C	u16 x; u16 y; u16 appearance; u32 unitId; i8 radiance; u8 status; u8 hpPercent	confirmed client+server	packet_1	0x49B02C	address_confirmed	T4C_Client_packet_schemas_v4(2).tsv	
+S2C	9	PLAYER_POSITION	0x49AB44	u16 x; u16 y; u16 world	confirmed client+server	GET_PLAYER_POS	0x49AB44	name_from_python_project	T4C_Client_packet_schemas_v4(2).tsv	
+S2C	10	packet_10				packet_10	0x49B83B	address_confirmed	packet_map	
+S2C	11	OBJECT_REMOVED	0x49B8BD	u8 reservedOrReason(0); u32 unitId	confirmed client+server	packet_11	0x49B8BD	address_confirmed	T4C_Client_packet_schemas_v4(2).tsv	
+S2C	12	OBJECT_CHANGED	0x49B934	u16 appearance; u32 unitId	confirmed client+server	packet_12	0x49B934	address_confirmed	T4C_Client_packet_schemas_v4(2).tsv	
+S2C	13	PUT_PLAYER_IN_GAME		u8; u32; u16 x3; u32 x2; u16 x2; u32 x4; u16 x7; u8 x6; u16; u32; u16; u32 x2 (75 octets lectures directes)	direct reads confirmed; semantic names partially inferred; jump table on first u8; exception-path confirmed by IAT, semantics unresolved	PUT_PLAYER_IN_GAME	0x49A612	debug_block+python_name	packet_map	Passe 07: 31 lectures directes, 75 octets, VA 0x49A634..0x49A886 ; table saut @0x49AA1A | Passe 08: switch du premier u8, table @0x49F694 ; 3..8,12 -> appel 0x51EA5B ; 9..11/hors 3..12 -> branche commune @0x49AA52 ; significations inconnues. | Passe 09 CORRECTION: 0x51EA5B -> KERNEL32!RaiseException (IAT 0x53C298), compatible _CxxThrowException (E06D7363) ; ne pas supposer retour normal vers 0x49AA52 pour 3..8,12. | Passe 10: chemin commun construit une requete C2S 60 via 0x4B57E0 et appelle la routine envoi 0x45BA10; effets conditionnels, semantique inconnue.
+S2C	16	INVIEW_UNITS	0x49BAC6	u16 count; repeated{u16 x,u16 y,u16 appearance,u32 unitId,i8 radiance,u8 status,u8 hpPercent}	confirmed client+server	packet_16	0x49BAC6	address_confirmed	T4C_Client_packet_schemas_v4(2).tsv	
+S2C	18	BACKPACK_SNAPSHOT	0x49A0B6	u8 headerFlag; u32 headerValue; u16 count; repeated{u16 templateField,u32 unitId,u16 baseField,u32 quantity,u32 uniqueData}	types confirmed; first two semantics unknown	packet_18	0x49A0B6	address_confirmed	T4C_Client_packet_schemas_v3(2).tsv	
+S2C	19	EQUIPMENT_SNAPSHOT	0x49942B	u8 rangedAttack; 13 equipment entries in slots 0,2,3,4,6,7,8,9,11,12,14,15,1	confirmed by client+server	packet_19	0x49942B	address_confirmed	T4C_Client_packet_schemas_v3(2).tsv	
+S2C	20	EXIT_GAME				EXIT_GAME	0x498BFE	name_from_python_project	packet_map	
+S2C	21	packet_21				packet_21	0x499E57	address_confirmed	packet_map	
+S2C	27	UNIT_TALK / CHAT	server Unit::Talk 0x48C3E0	u32 speakerUnitId; u8 direction; u32 colorOrStyle; u8 speakerFlag; CString text; CString speakerName	types/order confirmed server; some semantics inferred	packet_27	0x49A56B	address_confirmed	T4C_Client_packet_schemas_v5(2).tsv	
+S2C	29	packet_29				packet_29	0x498E73	debug_block	packet_map	
+S2C	33	packet_33				packet_33	0x499DC9	address_confirmed	packet_map	
+S2C	34	NPC_UI_CONTEXT_UPDATE_UNKNOWN	0x49A000	u32 objectOrUnitId; u16 value	types/order confirmed; semantics unresolved	packet_34	0x49A000	address_confirmed	T4C_Client_packet_schemas_v6(2).tsv	
+S2C	35	NPC_NAME	0x499E86	u32 npcUnitId; CString name	confirmed client	packet_35	0x499E86	address_confirmed	T4C_Client_packet_schemas_v5(2).tsv	
+S2C	36	NPC_INTERACTION_END / BREAK	0x499FB8	(no payload)	confirmed client+server BreakFunc 0x4467C0	packet_36	0x499FB8	address_confirmed	T4C_Client_packet_schemas_v6(2).tsv	
+S2C	37	LEVEL_PROGRESS_SNAPSHOT	0x4992AC	u16 level; u32 thresholdHi; u32 thresholdLo; u32 hpLikeA; u32 hpLikeB; u16 pointsLikeA; u16 pointsLikeB	confirmed types/order; emitted by Character::SetLevel	packet_37	0x4992AC	address_confirmed	T4C_Client_packet_schemas_v6(2).tsv	
+S2C	38	RETURN_TO_MENU				RETURN_TO_MENU	0x49A585	debug_block+python_name	packet_map	
+S2C	39	GET_SKILL_LIST / skill list				GET_SKILL_LIST / skill list	0x4998E7	parser_confirmed	packet_map	
+S2C	40	TRAIN_SKILL_LIST	0x4994E0	u16 context; u16 count; repeated{u8 flags,u16 id,u16 valueA,u16 valueB,u32 costOrValue,CString name}	types confirmed; some semantics inferred	SEND_TRAIN_SKILL_LIST	0x4994E0	debug_block+python_name	T4C_Client_packet_schemas_v3(2).tsv	
+S2C	41	BUY_LIST	0x499AC6	u32 shopUnitId; u16 count; repeated{u16 templateIdLike,u16 appearance,u32 price,u8 canEquip,CString name,CString equipMessage}	confirmed client+server; some field semantics inferred	packet_41	0x499AC6	address_confirmed	T4C_Client_packet_schemas_v5(2).tsv	
+S2C	43	GET_STATUS / PacketStatus				GET_STATUS / PacketStatus	0x498C54	parser_confirmed	packet_map	
+S2C	44	PROGRESSION64_XP_UPDATE	0x499387	u32 high; u32 low	confirmed; emitted in Character::Death, XP/progression semantic high-confidence	packet_44	0x499387	address_confirmed	T4C_Client_packet_schemas_v6(2).tsv	
+S2C	45	GET_TIME	0x499864..0x4998E6	u8 field0; u8 field1; u8 field2; u8 field3; u8 field4; u8 field5; u16 field6 (big-endian); total 8 bytes	confirmed directly by 6 calls @0x4B5AD0 + 1 call @0x4B5A40; time-field semantics unknown	GET_TIME	0x499864	debug_block+python_name	packet_map	2026-10-08 independent disassembly of identical SHA256 binary; previously schema blank
+S2C	46	FROM_PREINGAME_TO_INGAME	0x499292..0x4992AB		handler branch calls @0x4A2A30; no local packet-reader calls; callee not studied	FROM_PREINGAME_TO_INGAME	0x499292	python_name	packet_map	2026-10-08: cannot assert no payload without examining callee
+S2C	48	CHATTER_ENTER_RESULT_IGNORED	0x498A1E	client consumes no payload (server error path may append CString)	client behavior confirmed; semantic response inferred from server RQ_EnterChatterChannel	packet_48	0x498A1E	debug_block	T4C_Client_packet_schemas_v7(2).tsv	
+S2C	49	CHATTER_CC_MESSAGE	0x498A3E	CString channel; CString speaker; CString message	"confirmed by client formatting [""CC channel""] speaker: message"	packet_49	0x498A3E	debug_block	T4C_Client_packet_schemas_v7(2).tsv	
+S2C	50	CHATTER_USER_LIST	0x49877C	CString channel; u16 count; repeated{CString userName,CString auxLabel,u8 listening}	types/order confirmed; auxLabel semantics unresolved	packet_50	0x49877C	debug_block	T4C_Client_packet_schemas_v7(2).tsv	
+S2C	53	GOLD_UPDATE	0x498E07	u32 gold	confirmed client global + server Character::SetGold	packet_53	0x498E07	debug_block	T4C_Client_packet_schemas_v7(2).tsv	
+S2C	55	TEACH_SKILL_LIST	0x499661	u16 context; u16 count; repeated{u8 flags,u16 skillId,u32 valueA,CString name,CString requirements,u32 valueB,u32 valueC}	confirmed client+server SendTeachSkillListFunc	packet_55	0x499661	debug_block	T4C_Client_packet_schemas_v6(2).tsv	
+S2C	56	SELL_LIST	0x499C83	u32 shopUnitId; u16 count; repeated{u32 itemUnitId,u16 appearance,u32 price,u32 quantity,CString name}	confirmed client+server	packet_56	0x499C83	debug_block	T4C_Client_packet_schemas_v5(2).tsv	
+S2C	57	TELEPORT_CHANGE_WORLD	0x49BF53 -> 0x4A26D0	u16 x; u16 y; u16 world	confirmed client+server Unit::Teleport	packet_57	0x49BF53	address_confirmed	T4C_Client_packet_schemas_v6(2).tsv	
+S2C	59	ITEM_NAME_RESPONSE	0x49E420	u32 itemId; u16 nameLen; bytes[nameLen]	confirmed	packet_59	0x49E420	address_confirmed	T4C_Client_packet_schemas_v3(2).tsv	
+S2C	60	GET_NEAR_ITEMS / world-load transition				GET_NEAR_ITEMS / world-load transition	0x49D972	debug_block+python_name	packet_map	
+S2C	62	GET_ONLINE_PLAYER_LIST				GET_ONLINE_PLAYER_LIST	0x49DD27	python_name;parser_link_to_verify	packet_map	
+S2C	63	SERVER_MESSAGE	0x49DBB1	u16 category; u16 style; CString text	confirmed client+server; common server values category=30 style=3	packet_63	0x49DBB1	address_confirmed	T4C_Client_packet_schemas_v5(2).tsv	
+S2C	64	SPELL_CASTING	0x49CEE3	u16 spellId; u32 casterUnitId; u32 targetUnitId; u16 posB_X; u16 posB_Y; u16 posA_X; u16 posA_Y; u32 effectId; u32 childId	confirmed client+server	packet_64	0x49CEE3	debug_block	T4C_Client_packet_schemas_v3(2).tsv	
+S2C	67	MANA_UPDATE	0x49E04A	u16 mana	confirmed client global + server Character::SetMana	packet_67	0x49E04A	address_confirmed	T4C_Client_packet_schemas_v7(2).tsv	
+S2C	68	PUPPET_INFORMATION	0x49E0AF	u32 unitId; 8*u16	confirmed	PUPPET_INFORMATION	0x49E0AF	parser_confirmed	T4C_Client_packet_schemas_v3(2).tsv	
+S2C	69	UNIT_INFORMATION_UPDATE	0x49CEC9 -> 0x4A1F80	u16 appearance; u32 unitId; i8 radiance; u8 status; u8 hpPercent	high confidence; exact layout matches Unit::PacketUnitInformation	packet_69	0x49CEC9	address_confirmed	T4C_Client_packet_schemas_v7(2).tsv	
+S2C	70	ACTION_FAILURE / CORRELATED_ERROR	0x49CB2E	u32 objectOrUnitId; u16 relatedRequestOpcode	confirmed client+multiple server sites	packet_70	0x49CB2E	address_confirmed	T4C_Client_packet_schemas_v5(2).tsv	
+S2C	73	USE_ITEM_BY_APPEARANCE_FAILURE_FEEDBACK	0x49CA74	u16 appearanceId	confirmed server failure path after Character::UseItemByAppearance	packet_73	0x49CA74	address_confirmed	T4C_Client_packet_schemas_v7(2).tsv	
+S2C	75	CHANNEL_LIST	0x49C7E6	u16 count; repeated{u16 nameLen,bytes[nameLen],u8 listen}	confirmed	packet_75	0x49C7E6	address_confirmed	T4C_Client_packet_schemas_v3(2).tsv	
+S2C	76	GROUP_MEMBERS	0x49C4A6	u8 autoSplit; u16 memberCount; repeated{u32 unitId,u16 level,u16 hpPercent,u8 isLeader,CString name}	confirmed client+server	packet_76	0x49C4A6	address_confirmed	T4C_Client_packet_schemas_v5(2).tsv	
+S2C	78	GROUP_INVITE	0x49C729	u32 leaderUnitId; CString leaderName	confirmed client+server	packet_78	0x49C729	address_confirmed	T4C_Client_packet_schemas_v5(2).tsv	
+S2C	80	GROUP_DISMISSED	0x49C2D7	(no payload)	confirmed client	packet_80	0x49C2D7	address_confirmed	T4C_Client_packet_schemas_v5(2).tsv	
+S2C	82	GROUP_DISBANDED	0x49C3BE	(no payload)	confirmed client+server	packet_82	0x49C3BE	address_confirmed	T4C_Client_packet_schemas_v5(2).tsv	
+S2C	83	EFFECT_STATUS_ADD_UPDATE	0x49E5A9	u32 effectIdOrKey; u32 valueA; u32 valueB; u32 spellStructField244; CString displayText	confirmed client+server SpellEffect::CreateEffectStatus	packet_83	0x49E5A9	address_confirmed	T4C_Client_packet_schemas_v6(2).tsv	
+S2C	84	EFFECT_STATUS_REMOVE	0x49E679	u32 effectIdOrKey	confirmed client+server SpellEffect::DispellEffectStatus	packet_84	0x49E679	address_confirmed	T4C_Client_packet_schemas_v6(2).tsv	
+S2C	87	GROUP_HP_UPDATE	0x49C28A	u32 unitId; u16 hpPercent	confirmed client+server	packet_87	0x49C28A	address_confirmed	T4C_Client_packet_schemas_v5(2).tsv	
+S2C	88	GROUP_AUTOSPLIT_STATE	0x49C255	u8 enabled	confirmed client + Group::ToggleAutoSplit	packet_88	0x49C255	address_confirmed	T4C_Client_packet_schemas_v7(2).tsv	
+S2C	92	WEIGHT_UPDATE	0x49E561	u32 weight; u32 maxWeight	confirmed server Character::GetWeight/GetMaxWeight; client stores low 16 bits	packet_92	0x49E561	address_confirmed	T4C_Client_packet_schemas_v6(2).tsv	
+S2C	93	ROB_BACKPACK	0x49E215	u8 flag; u32 targetUnitId; CString targetName; u16 count; repeated{u16 appearanceOrTemplate,u32 itemUnitId,u16 baseField,u32 quantity,CString displayName}	confirmed client + Character::PacketRobBackpack; first flag label pending	packet_93	0x49E215	address_confirmed	T4C_Client_packet_schemas_v7(2).tsv	
+S2C	94	CLEAR_TARGET_STOP_AUTOCOMBAT	0x49E403	(no payload)	high-confidence semantics; emitted by ExecAutoCombat and RemoveTargetReferences	packet_94	0x49E403	address_confirmed	T4C_Client_packet_schemas_v6(2).tsv	
+S2C	95	RANGED_VISUAL_A	0x49D916	u32 unitId; u16 x; u16 y; u8 flag	confirmed types/order; Character::RangedAttack path	packet_95	0x49D916	address_confirmed	T4C_Client_packet_schemas_v6(2).tsv	
+S2C	96	RANGED_VISUAL_B	0x49D8C2	u32 unitIdA; u32 unitIdB; u8 hpPercentOrFlag	confirmed types/order; Character::RangedAttack path	packet_96	0x49D8C2	address_confirmed	T4C_Client_packet_schemas_v6(2).tsv	
+S2C	97	ADMIN_GOD_FLAG	0x49DFA0	u8 subFlag; u8 enabled	confirmed; subFlag 2 = God can slay users	packet_97	0x49DFA0	address_confirmed	T4C_Client_packet_schemas_v6(2).tsv	
+S2C	98	SERAPH_ARRIVAL	0x49BF99	popup{u16 tag,u16 x,u16 y,u16 appearance,u32 unitId,i8 radiance,u8 status,u8 hpPercent}; extension{u16,u32,8*u16}	types fixed by client; popup prefix confirmed via Unit::PacketPopup; extension semantics pending	packet_98	0x49BF99	address_confirmed	T4C_Client_packet_schemas_v6(2).tsv	T4C_Client_packet_schemas_v7(2).tsv: SERAPH_ARRIVAL / long fixed Character/Popup structure / name confirmed by client debug string and server BroadcastSeraphArrival; tail field semantics pending
+S2C	100	REMORT_RESET_COMPLETE	0x49DB94	(no payload)	confirmed client + server RemortTo	packet_100	0x49DB94	address_confirmed	T4C_Client_packet_schemas_v7(2).tsv	
+S2C	10001 (0x2711)	ATTACK / PAK_1_1	0x49E6B4	u32 attackerId; u32 targetId; u8 0; u8 0; i8 attackType; u16 pos1X; u16 pos1Y; u16 pos2X; u16 pos2Y	confirmed client+server				T4C_Client_packet_schemas_v4(2).tsv	
+S2C	10002 (0x2712)	MISS / PAK_1_2	0x49EF62	u32 attackerId; u32 targetId; u16 pos1X; u16 pos1Y; u16 pos2X; u16 pos2Y	confirmed client+server				T4C_Client_packet_schemas_v4(2).tsv	
+S2C	10003 (0x2713)	SKILL_USED / PAK_1_3	0x49EEC4	u16 skillId; u16 reserved(0)	confirmed client+server				T4C_Client_packet_schemas_v4(2).tsv	
+S2C	10004 (0x2714)	UNIT_POPUP / PAK_1_4	0x49EBFF	u16 x; u16 y; u16 appearance; u32 unitId; i8 radiance; u8 status; u8 hpPercent	confirmed client+server				T4C_Client_packet_schemas_v4(2).tsv	

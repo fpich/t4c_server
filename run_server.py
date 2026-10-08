@@ -56,9 +56,11 @@ async def main() -> None:
     from t4c.characters import START_POS
 
     sx, sy, _w = START_POS
-    world.register_npc("Garde de LightHaven", appearance=203, x=sx - 2, y=sy)
-    world.register_npc("Marchand Ambroise", appearance=187, x=sx + 2, y=sy)
-    world.register_npc("Prêtresse Solène", appearance=161, x=sx, y=sy - 2)
+    # Apparences humanoïdes valides côté client (puppets) en attendant
+    # l'extraction des apparences de créatures.
+    world.register_npc("Garde de LightHaven", appearance=10011, x=sx - 2, y=sy)
+    world.register_npc("Marchand Ambroise", appearance=10011, x=sx + 2, y=sy)
+    world.register_npc("Prêtresse Solène", appearance=10012, x=sx, y=sy - 2)
 
     loop = asyncio.get_running_loop()
     transport, _protocol = await loop.create_datagram_endpoint(

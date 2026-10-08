@@ -53,6 +53,11 @@ class Item:
 TEMPLATES: dict[int, ItemTemplate] = {
     1: ItemTemplate(1, "Épée courte", appearance=1, price=50, equip_slot=0),
     2: ItemTemplate(2, "Potion de soin", appearance=241, price=10),
+    # Vêtements de départ (slots d'équipement du paquet 19).
+    # Slot 3 = jambes (pantalon), slot 6 = torse (veste) d'après l'ordre
+    # 0,2,3,4,6,7,8,9,11,12,14,15,1 consommé par le client.
+    3: ItemTemplate(3, "Pantalon de cuir", appearance=262, price=20, equip_slot=3),
+    4: ItemTemplate(4, "Veste de cuir", appearance=263, price=35, equip_slot=6),
 }
 
 
@@ -137,8 +142,12 @@ def _stackable_ok(template_id: int) -> bool:
 
 
 def starting_inventory() -> Inventory:
-    """Inventaire de création : épée courte + 3 potions."""
+    """Inventaire de création : épée, 3 potions, pantalon et veste équipés."""
     inv = Inventory()
     inv.add(1)  # épée courte
     inv.add(2, quantity=3)  # potions de soin
+    pants = inv.add(3)  # pantalon de cuir
+    inv.equip(pants.unit_id)
+    vest = inv.add(4)  # veste de cuir
+    inv.equip(vest.unit_id)
     return inv

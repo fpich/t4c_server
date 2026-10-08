@@ -95,7 +95,17 @@ for i in $(seq 1 120); do
     fi
     if ! kill -0 $SERVER_PID 2>/dev/null; then
         echo "=== SERVEUR MORT à t+$((i*30))s — capture écran finale ==="
+        echo "=== ARBRE DES FENÊTRES X (un popup bloquant serait ici) ==="
+        DISPLAY=:99 xwininfo -root -tree 2>&1 | head -40 || echo "xwininfo indisponible"
         DISPLAY=:99 import -window root "/captures/death.png" 2>/dev/null || true
+        echo "=== exit.txt (heure STARTUP -> EXIT) ==="
+        cat /root/server/Logs/exit.txt 2>/dev/null || echo "pas d'exit.txt"
+        echo "=== DERNIÈRES LIGNES DE LA TRACE (vrai appel final avant l'exit) ==="
+        tail -300 /captures/trace.log
+        echo "=== DERNIERS FICHIERS OUVERTS AVANT LA MORT (handle -> fichier) ==="
+        grep -E "Call KERNEL32.CreateFile|Ret  KERNEL32.CreateFile" /captures/trace.log | tail -30 || echo "aucun CreateFile tracé"
+        echo "=== DERNIERS APPELS EXIT/MESSAGEBOX/DIALOGUE ==="
+        grep -E "ExitProcess|MessageBox|DialogBox|CreateWindowEx|SetForegroundWindow" /captures/trace.log | tail -30 || echo "aucun"
         echo "=== Exceptions SEH (code exact : 0xC0000005 / 0xE06D7363...) ==="
         grep -E "Unhandled exception|SEH|exception" /captures/trace.log | tail -20 || echo "aucune exception tracée"
         echo "=== CLÉ DE CRASH DANS LE REGISTRE (rapport GP) ==="

@@ -29,7 +29,7 @@ RUN dpkg --add-architecture i386 && \
         cabextract \
         curl ca-certificates \
         unixodbc:i386 libsqliteodbc:i386 sqlite3 \
-        imagemagick \
+        imagemagick x11-utils \
         xvfb xauth && \
     rm -rf /var/lib/apt/lists/* && \
     curl -fsSL -o /usr/local/bin/winetricks \

@@ -49,11 +49,11 @@ RUN wineboot --init || true && \
 # Copier le serveur original (depuis ressources/T4C_Server du repo).
 COPY "ressources/T4C_Server/" "/root/server/"
 
-# Configuration registre : DSN ODBC "T4C Server", port 11677, licence.
-COPY docker/original-server/t4c-server.reg /root/t4c-server.reg
-COPY docker/original-server/odbc-setup.reg /root/odbc-setup.reg
-RUN wine regedit /root/t4c-server.reg || true && \
-    wine regedit /root/odbc-setup.reg || true
+# Configuration registre : injection via wine reg add (fiable — l'import
+# regedit échouait silencieusement sur l'encodage).
+COPY docker/original-server/inject-registry.sh /root/inject-registry.sh
+RUN chmod +x /root/inject-registry.sh && \
+    /root/inject-registry.sh
 
 WORKDIR /root/server
 

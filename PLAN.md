@@ -25,7 +25,7 @@
 - [x] Persistance des items (table `CharacterItems` par personnage : sac + 13 slots d'équipement)
 - [x] Remplir 18/19 avec le vrai contenu
 - [x] Brancher 21 (équiper → maj slot + renvoyer 19), 22 (déséquiper), 23 (utiliser — potion de soin consommable)
-- **Validation** : ✅ tests `test_step12_inventory_chat.py` (roundtrip persistance, équiper/déséquiper, consommation) — à confirmer en jeu client
+- **Validation** : ✅ **confirmé en jeu client** (2026-10-08) : épée + potions visibles dans le sac des deux joueurs, équipement renvoyé correctement
 
 ### 1.2 Or et stats persistants
 - [ ] `gold`, XP, HP/mana réels dans la base ; le 13 et le 43 les reflètent
@@ -35,7 +35,7 @@
 - [x] C2S 30 (LOCAL_TALK) → diffusion S2C 27 (Unit::Talk) aux joueurs en vue + émetteur (`world.broadcast_unit_talk`)
 - [x] S2C 63 (SERVER_MESSAGE cat=30 style=3) disponible (`world.send_server_message`)
 - [ ] Paquet 29 : observer en trace avant d'implémenter (sémantique non résolue)
-- **Validation** : ✅ tests (diffusion aux joueurs en vue, pas aux hors-vue) — à confirmer en jeu client
+- **Validation** : ✅ tests (diffusion aux joueurs en vue, pas aux hors-vue) — en jeu : à tester (message au-dessus des persos)
 
 ## Phase 2 — Monde vivant
 

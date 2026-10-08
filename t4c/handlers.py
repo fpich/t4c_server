@@ -75,6 +75,7 @@ class PacketDispatcher:
         self.register(
             PacketID.PUPPET_INFORMATION, handle_puppet_information_request
         )
+        self.register(PacketID.GET_STATUS, handle_get_status)
 
     def register(self, packet_id: int, handler: PacketHandler) -> None:
         packet_id = int(packet_id)
@@ -1362,11 +1363,19 @@ async def handle_item_name_request(
         log.warning("requête 59 malformée de %s : %s", session.address, exc)
         return
     _ensure_consumed(reader, packet.packet_id)
+    # Le client demande le nom d'un template connu : on répond avec le nom
+    # du catalogue (le tooltip de l'objet l'affiche dans le sac).
+    from .items import TEMPLATES
+
+    template = TEMPLATES.get(item_id)
+    name = template.name if template else ""
     response = PacketWriter(PacketID.ITEM_NAME_REQUEST)
     response.write_u32(item_id)
-    response.write_text("")
+    response.write_text(name)
     server.send_packet(session.address, response)
-    log.info("NOM OBJET vide item=%d client=%s", item_id, session.address)
+    log.info(
+        "NOM OBJET item=%d nom=%r client=%s", item_id, name, session.address
+    )
 
 
 async def handle_local_talk(

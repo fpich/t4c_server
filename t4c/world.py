@@ -457,30 +457,16 @@ def puppet_appearances(
     Chaque champ est l'apparence d'un item équipé (0 si le slot est vide).
     Les items du sac ne comptent pas : SEUL l'équipement habille le modèle.
     """
-    inventory = session.inventory
     character = _find_character(server, session)
-    if inventory is None:
-        return [0] * 8
-    appearances = []
-    for slot in PUPPET_EQUIP_SLOTS:
-        if slot == 15:
-            # Champ 8 = modèle de base du personnage (472 homme / 473 femme),
-            # confirmé par le client @0x511F10 (champ comparé à 0x11f/0xb9+b9).
-            from .characters import PLAYER_FEMALE_PUPPET
+    # ATTENTION : les champs du puppet 68 ne sont PAS des IDs d'icônes
+    # d'inventaire mais des codes de pièces 3D portées (RE client @0x511F10) :
+    #   champ 6 : plages valides 86-202 / 271-498 (codes "worn"),
+    #   champ 8 : codes race {287, 472, 473, 184, 185} (472=homme, 473=femme),
+    #   champ 1 : codes d'arme classifiants {3, 8, 177, 180, 206, 269, ...}.
+    # Les IDs d'icônes (épée=1, pantalon=262, veste=263) y sont hors plages
+    # et produisent des artefacts (ailes, gants). En attendant l'extraction
+    # complète des codes portés, on n'envoie que la race (rendu propre).
+    from .characters import PLAYER_FEMALE_PUPPET
 
-            if character is not None and character.race == PLAYER_FEMALE_PUPPET:
-                appearances.append(473)
-            else:
-                appearances.append(472)
-            continue
-        item = inventory.equipment.get(slot)
-        if item is None:
-            appearances.append(0)
-        else:
-            from .items import TEMPLATES
-
-            template = TEMPLATES.get(item.template_id)
-            appearances.append(template.appearance if template else 0)
-    while len(appearances) < 8:
-        appearances.append(0)
-    return appearances[:8]
+    female = character is not None and character.race == PLAYER_FEMALE_PUPPET
+    return [0, 0, 0, 0, 0, 0, 0, 473 if female else 472]

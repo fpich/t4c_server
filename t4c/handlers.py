@@ -602,7 +602,8 @@ async def handle_put_player_in_game(
         )
         return
     session.active_character = character.name
-    session.unit_id = (session.unit_id or 0) + 1
+    session.unit_id = server.next_unit_id
+    server.next_unit_id += 1
     session.state = SessionState.PRE_INGAME
     # Inventaire : chargé depuis la persistance, sinon inventaire de création.
     session.inventory = None
@@ -1036,11 +1037,22 @@ async def handle_get_status(
 def _session_inventory(
     server: "T4CServerProtocol", session: "ClientSession"
 ) -> Inventory | None:
-    """Inventaire du personnage actif (memoïsé dans la session)."""
+    """Inventaire du personnage actif (memoïsé dans la session).
+
+    Persistance d'abord ; si le personnage n'a AUCUN item en base (première
+    connexion), on lui sème l'inventaire de création et on le persiste.
+    """
     if session.inventory is None and session.active_character:
         if server.persistence is not None:
-            session.inventory = server.persistence.inventory(session.active_character)
-        if session.inventory is None:
+            stored = server.persistence.inventory(session.active_character)
+            if stored is not None and (stored.backpack or stored.equipment):
+                session.inventory = stored
+            else:
+                session.inventory = starting_inventory()
+                server.persistence.save_inventory(
+                    session.active_character, session.inventory
+                )
+        else:
             session.inventory = starting_inventory()
     return session.inventory
 

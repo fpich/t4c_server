@@ -34,6 +34,11 @@ class T4CServerProtocol(asyncio.DatagramProtocol):
         self.config = config or ServerConfig()
         self.dispatcher = dispatcher or PacketDispatcher()
         self.sessions: dict[Address, ClientSession] = {}
+        # Compteur global d'unit IDs : DOIT être unique par personnage en monde.
+        # Un compteur par session donnait le même ID (1) à tous les joueurs —
+        # le client destinataire d'un OBJECT_MOVED le reconnaissait comme
+        # lui-même et déplaçait son propre personnage (effet miroir).
+        self.next_unit_id = 1
         self.reserved_names: set[str] = set()
         self.characters = CharacterStore(max_per_account=config.max_characters_per_account if config else 3)
         # Étape 9 : couche de persistance optionnelle (SQLite, schéma T4C.mdb).

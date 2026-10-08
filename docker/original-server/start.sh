@@ -34,6 +34,14 @@ echo "=== Test ODBC unix : isql sur le DSN 'T4C Server' ==="
 echo "select count(*) from T4Cusers;" | isql "T4C Server" 2>&1 | head -5 || true
 echo "=== fin test ODBC ==="
 
+# Enregistrer emsmtp.dll (EasyMail.SMTP.5) : le serveur fait
+# CoCreateInstance sur ce ProgID au startup — sans regsvr32, _com_error -> crash GP.
+echo "=== Enregistrement emsmtp.dll (EasyMail.SMTP.5) ==="
+cd /root/server
+wine regsvr32 emsmtp.dll 2>&1 | tee /captures/regsvr32.log
+echo "=== Vérification ProgID EasyMail.SMTP.5 dans le registre ==="
+wine reg query "HKLM\\Software\\Classes\\EasyMail.SMTP.5" /s 2>&1 | head -10 || echo "ProgID ABSENT"
+
 # TRACE des exceptions SEH : code d'exception exact (0xC0000005 /
 # 0xE06D7363), adresse et thread fautifs — sans le ralentissement du +relay.
 echo "=== Lancement serveur avec trace exceptions (+seh -> trace.log) ==="

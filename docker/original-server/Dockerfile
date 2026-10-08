@@ -54,6 +54,7 @@ COPY "ressources/T4C_Server/" "/root/server/"
 # vérification immédiate DANS LA MÊME COUCHÉE : si les clés n'existent pas,
 # le build échoue avec un message clair au lieu de laisser passer.
 COPY docker/original-server/t4c-server.reg /root/t4c-server.reg
+COPY docker/original-server/odbc-wine.reg /root/odbc-wine.reg
 # ODBC : Wine mappe ODBC32.dll sur unixodbc. Les drivers/DNS Unix se
 # declarent dans /etc/odbcinst.ini et /etc/odbc.ini (pas dans le registre).
 # DSN "T4C Server" -> SQLite (bascule depuis Access/Jet inexistant sous Wine).
@@ -65,11 +66,13 @@ COPY docker/original-server/create-db.sql /root/create-db.sql
 # À la fin d'une couche Docker, le wineserver est tué brutalement -> pertes.
 # wineserver -k force l'arrêt propre (flush) avant la fin de la couche.
 RUN wine regedit /s /root/t4c-server.reg; \
+    wine regedit /s /root/odbc-wine.reg; \
     wine reg query "HKLM\Software\Vircom\The 4th Coming Server\Network" && \
     echo "=== REGISTRE OK (memoire) ===" ; \
     wineserver -k || true; \
     sleep 2; \
     wine reg query "HKLM\Software\Vircom\The 4th Coming Server\Network" && \
+    wine reg query "HKLM\Software\ODBC\ODBC.INI\T4C Server" && \
     echo "=== REGISTRE PERSISTANT (system.dat) ===" || \
     (echo "=== ECHEC : clés perdues au flush ==="; exit 1)
 

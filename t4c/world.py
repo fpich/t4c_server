@@ -440,12 +440,13 @@ def send_npc_name(
     server.send_packet(session.address, name_packet)
 
 
-# Ordre des slots du puppet 68 : le serveur original sérialise les apparences
-# des items équipés (RE Character::PacketPuppetInfo @0x41FB70, offsets
-# Character+0x1a0..+0x1dc). L'ordre exact des 8 champs vis-à-vis des 13
-# slots d'équipement du paquet 19 reste à confirmer ; l'ordre ci-dessous
-# suit l'ordre naturel des slots d'équipement.
-PUPPET_EQUIP_SLOTS = (0, 2, 3, 4, 6, 7, 8, 9)
+# Correspondance champ puppet -> slot d'équipement, DÉCODÉE du serveur
+# original : unequip_object @0x41951a lit le slot i à Character+0x1a0+i*4,
+# et PacketPuppetInfo @0x41FB70 sérialise les offsets +0x1a0, +0x1a4,
+# +0x1a8, +0x1ac, +0x1b0, +0x1c0, +0x1c4, +0x1dc => slots 0, 1, 2, 3, 4,
+# 8, 9, 15. Le slot 15 porte le genre (472=homme / 473=femme d'après le
+# client @0x511F10) : le champ 8 n'est PAS un item mais le modèle de base.
+PUPPET_EQUIP_SLOTS = (0, 1, 2, 3, 4, 8, 9, 15)
 
 
 def puppet_appearances(
@@ -457,10 +458,21 @@ def puppet_appearances(
     Les items du sac ne comptent pas : SEUL l'équipement habille le modèle.
     """
     inventory = session.inventory
+    character = _find_character(server, session)
     if inventory is None:
         return [0] * 8
     appearances = []
     for slot in PUPPET_EQUIP_SLOTS:
+        if slot == 15:
+            # Champ 8 = modèle de base du personnage (472 homme / 473 femme),
+            # confirmé par le client @0x511F10 (champ comparé à 0x11f/0xb9+b9).
+            from .characters import PLAYER_FEMALE_PUPPET
+
+            if character is not None and character.race == PLAYER_FEMALE_PUPPET:
+                appearances.append(473)
+            else:
+                appearances.append(472)
+            continue
         item = inventory.equipment.get(slot)
         if item is None:
             appearances.append(0)
@@ -469,7 +481,6 @@ def puppet_appearances(
 
             template = TEMPLATES.get(item.template_id)
             appearances.append(template.appearance if template else 0)
-    # Complète à 8 champs si l'ordre devait évoluer.
     while len(appearances) < 8:
         appearances.append(0)
     return appearances[:8]

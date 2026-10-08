@@ -53,11 +53,12 @@ class Item:
 TEMPLATES: dict[int, ItemTemplate] = {
     1: ItemTemplate(1, "Épée courte", appearance=1, price=50, equip_slot=0),
     2: ItemTemplate(2, "Potion de soin", appearance=241, price=10),
-    # Vêtements de départ (slots d'équipement du paquet 19).
-    # Slot 3 = jambes (pantalon), slot 6 = torse (veste) d'après l'ordre
-    # 0,2,3,4,6,7,8,9,11,12,14,15,1 consommé par le client.
-    3: ItemTemplate(3, "Pantalon de cuir", appearance=262, price=20, equip_slot=3),
-    4: ItemTemplate(4, "Veste de cuir", appearance=263, price=35, equip_slot=6),
+    # Vêtements de départ. Slots décodés du serveur original : le slot N est
+    # à Character+0x1a0+N*4 (unequip_object @0x41951a, PacketSingleEquip
+    # @0x419717). Le puppet 68 sérialise les slots 0,1,2,3,4,8,9 (+15=genre).
+    # Jambes = slot 8, torse = slot 9 : les seuls slots "corps" visibles.
+    3: ItemTemplate(3, "Pantalon de cuir", appearance=262, price=20, equip_slot=8),
+    4: ItemTemplate(4, "Veste de cuir", appearance=263, price=35, equip_slot=9),
 }
 
 

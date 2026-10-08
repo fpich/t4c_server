@@ -706,17 +706,13 @@ async def handle_from_preingame_to_ingame(
                 # le parseur (2 octets de trop).
                 puppet = PacketWriter(PacketID.PUPPET_INFORMATION)
                 puppet.write_i32(session.unit_id or 0)
-                # Habillage 3D (RE UpdatePuppetObject @0x511F10) :
-                #   champ3 = jambes (pantalon), champ4 = torse (veste),
-                #   champ8 = type de modèle (0 homme / 1 femme).
-                puppet.write_i16(0)   # champ1 (inconnu)
-                puppet.write_i16(0)   # champ2 (inconnu)
-                puppet.write_i16(259)  # champ3 : pantalon (code jambes)
-                puppet.write_i16(205)  # champ4 : veste (code torse)
-                puppet.write_i16(0)   # champ5 (inconnu)
-                puppet.write_i16(0)   # champ6 (inconnu)
-                puppet.write_i16(0)   # champ7 (inconnu)
-                puppet.write_i16(1 if character.race == PLAYER_FEMALE_PUPPET else 0)  # champ8 : type modèle
+                # RE Character::PacketPuppetInfo @0x41FB70 : chaque champ u16
+                # est l'APPARENCE d'un item équipé (virtual GetAppearance par
+                # slot d'équipement, 0 si vide). C'est l'équipement qui
+                # habille le modèle 3D — les apparences d'objets (ex. épée=1,
+                # pantalon=262, veste=263) se retrouvent ici.
+                for appearance in world.puppet_appearances(server, session):
+                    puppet.write_i16(appearance)
                 server.send_packet(session.address, puppet)
                 log.info(
                     "PUPPET envoyé au 46 (apparence=%d) client=%s",
@@ -1470,9 +1466,9 @@ async def handle_puppet_information_request(
         ):
             puppet = PacketWriter(PacketID.PUPPET_INFORMATION)
             puppet.write_i32(unit_id)
-            # Habillage de base : pantalon (259) + veste (205) du RE 0x511F10.
-            for value in (0, 0, 259, 205, 0, 0, 0, 0):
-                puppet.write_i16(value)
+            # Apparences réelles des items équipés de CE joueur (unitId).
+            for appearance in world.puppet_appearances(server, other):
+                puppet.write_i16(appearance)
             server.send_packet(session.address, puppet)
             log.debug(
                 "PUPPET demandé unité=%d -> envoyé à %s", unit_id, session.address

@@ -100,9 +100,9 @@ def broadcast_unit_popup(
         server.send_packet(other.address, popup)
         puppet = PacketWriter(68)
         puppet.write_i32(session.unit_id)
-        # Habillage de base (RE UpdatePuppetObject) : pantalon + veste.
-        for value in (0, 0, 259, 205, 0, 0, 0, 0):
-            puppet.write_i16(value)
+        # Apparences réelles des items équipés (RE PacketPuppetInfo).
+        for appearance in puppet_appearances(server, session):
+            puppet.write_i16(appearance)
         server.send_packet(other.address, puppet)
         log.debug(
             "POPUP unité=%d vers %s (%d,%d)",
@@ -438,3 +438,38 @@ def send_npc_name(
     name_packet.write_u32(npc.unit_id)
     name_packet.write_text(npc.name)
     server.send_packet(session.address, name_packet)
+
+
+# Ordre des slots du puppet 68 : le serveur original sérialise les apparences
+# des items équipés (RE Character::PacketPuppetInfo @0x41FB70, offsets
+# Character+0x1a0..+0x1dc). L'ordre exact des 8 champs vis-à-vis des 13
+# slots d'équipement du paquet 19 reste à confirmer ; l'ordre ci-dessous
+# suit l'ordre naturel des slots d'équipement.
+PUPPET_EQUIP_SLOTS = (0, 2, 3, 4, 6, 7, 8, 9)
+
+
+def puppet_appearances(
+    server: "T4CServerProtocol", session: "ClientSession"
+) -> list[int]:
+    """Apparences des items équipés pour le puppet 68 (8 champs u16).
+
+    Chaque champ est l'apparence d'un item équipé (0 si le slot est vide).
+    Les items du sac ne comptent pas : SEUL l'équipement habille le modèle.
+    """
+    inventory = session.inventory
+    if inventory is None:
+        return [0] * 8
+    appearances = []
+    for slot in PUPPET_EQUIP_SLOTS:
+        item = inventory.equipment.get(slot)
+        if item is None:
+            appearances.append(0)
+        else:
+            from .items import TEMPLATES
+
+            template = TEMPLATES.get(item.template_id)
+            appearances.append(template.appearance if template else 0)
+    # Complète à 8 champs si l'ordre devait évoluer.
+    while len(appearances) < 8:
+        appearances.append(0)
+    return appearances[:8]

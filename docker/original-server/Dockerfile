@@ -32,7 +32,7 @@ RUN dpkg --add-architecture i386 && \
         wine wine32:i386 libwine:i386 \
         winbind \
         tcpdump \
-        xvfb \
+        xvfb xauth \
         procps \
         cabextract && \
     rm -rf /var/lib/apt/lists/*

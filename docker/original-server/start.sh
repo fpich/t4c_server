@@ -19,7 +19,13 @@ cd /root/server
 
 # Le serveur est une console PE32 : on le lance avec un display virtuel
 # par sécurité (MFC4 peut vouloir initialiser une console OLE).
-xvfb-run -a wine "T4C Server.exe" &
+# Fallback sans xvfb si indisponible : une console pure n'en a normalement
+# pas besoin.
+if command -v xvfb-run >/dev/null 2>&1; then
+    xvfb-run -a wine "T4C Server.exe" &
+else
+    wine "T4C Server.exe" &
+fi
 SERVER_PID=$!
 
 # Suivi : si le serveur écrit un log, l'afficher aussi.

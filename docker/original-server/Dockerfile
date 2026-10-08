@@ -27,7 +27,6 @@ RUN dpkg --add-architecture i386 && \
     apt-get update && \
     apt-get install -y --no-install-recommends winehq-stable \
         wine32:i386 libwine:i386 \
-        wine32:i386 libwine:i386 \
         winbind \
         tcpdump \
         procps \

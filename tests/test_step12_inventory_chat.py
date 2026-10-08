@@ -108,8 +108,8 @@ class InventoryTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(self.session.inventory.backpack), 2)
         reloaded = self.server.persistence.inventory("Fabien")
         self.assertEqual(len(reloaded.backpack), 2)
-        self.assertIn(3, reloaded.equipment)
-        self.assertIn(6, reloaded.equipment)
+        self.assertIn(8, reloaded.equipment)
+        self.assertIn(9, reloaded.equipment)
 
     async def test_potion_use_consumes_quantity(self):
         self.session.inventory = starting_inventory()

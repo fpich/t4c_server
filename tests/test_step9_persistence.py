@@ -103,8 +103,8 @@ class Step9PersistenceTests(unittest.IsolatedAsyncioTestCase):
             reader = PacketReader(reply.body)
             reader.read_u8()
             reader.read_i32()
-            self.assertEqual(reader.read_i16(), 5)
-            self.assertEqual(reader.read_i16(), 9)
+            self.assertEqual(reader.read_i16(), sx + 5)
+            self.assertEqual(reader.read_i16(), sy + 9)
             self.assertEqual(reader.read_i16(), 1)
 
 

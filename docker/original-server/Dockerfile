@@ -28,7 +28,7 @@ RUN dpkg --add-architecture i386 && \
         procps \
         cabextract \
         curl ca-certificates \
-        unixodbc:i386 libsqlite3odbc:i386 sqlite3 \
+        unixodbc:i386 libsqliteodbc:i386 sqlite3 \
         imagemagick \
         xvfb xauth && \
     rm -rf /var/lib/apt/lists/* && \

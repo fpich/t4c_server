@@ -40,7 +40,9 @@ echo "=== fin test ODBC ==="
 # ces cles du registre.
 echo "=== Verrou COM emsmtp (cles importees au build) ==="
 cd /root/server
-wine regsvr32 emsmtp.dll 2>&1 | tee /captures/regsvr32.log || echo "regsvr32 a echoue (non bloquant : cles deja en place)"
+# timeout : sous Wine 10, regsvr32 peut bloquer (dialogue sans message pump).
+# Non bloquant : les cles COM sont DEJA en place via emsmtp-com.reg au build.
+timeout 60 wine regsvr32 emsmtp.dll 2>&1 | tee /captures/regsvr32.log || echo "regsvr32 bloque/echoue (non bloquant : cles deja en place via emsmtp-com.reg)"
 echo "=== Verification ProgID EasyMail.SMTP.5 + InprocServer32 ==="
 wine reg query "HKLM\\Software\\Classes\\EasyMail.SMTP.5" /s 2>&1 | head -10 || echo "ProgID ABSENT"
 wine reg query "HKLM\\Software\\Classes\\CLSID\\{4610E7BF-710F-11d3-813D-00C04F6B92D0}\\InprocServer32" /s 2>&1 | head -10 || echo "CLSID ABSENT"
@@ -86,7 +88,7 @@ wine reg query "HKLM\\Software\\Vircom" /s 2>&1 | tee /captures/registry-crash.t
 # octet par octet -> plusieurs minutes). On guette l'ouverture du port
 # UDP 11677 et on log les étapes toutes les 30 s.
 echo "=== Surveillance du serveur (port 11677 ; chargement monde = plusieurs min) ==="
-for i in $(seq 1 120); do
+for i in $(seq 1 240); do
     if ss -lun 2>/dev/null | grep -q 11677; then
         echo "=============================================="
         echo "=== PORT 11677 EN ÉCOUTE ! Serveur opérationnel (t+$((i*30))s) ==="

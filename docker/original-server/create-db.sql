@@ -1,15 +1,20 @@
--- Base T4C Server (SQLite) — schéma porté de T4C.mdb (Jet3).
--- Colonnes requises par le serveur original (registre + persistence.py du
--- projet : ODBC_TABLE=T4Cusers, champs Account/Password/T4CKey).
+-- Base T4C Server (SQLite) — schéma EXACT extrait du T4C.mdb original (Jet3)
+-- via access-parser. Le serveur original fait ODBC sur ces tables/colonnes ;
+-- la premiere requete du startup est DELETE FROM OnlineUsers WHERE MachineName='...'
+-- (trace +odbc : [SQLite]no such column: MachineName = cause de l'exit 111).
+
 CREATE TABLE IF NOT EXISTS T4Cusers (
-    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    ID INTEGER PRIMARY KEY,
     Account TEXT UNIQUE NOT NULL,
     Password TEXT NOT NULL DEFAULT '',
     Account_type INTEGER NOT NULL DEFAULT 0,
-    CreationDate TEXT NOT NULL DEFAULT (datetime('now')),
-    RevisionDate TEXT NOT NULL DEFAULT (datetime('now')),
-    T4CKey INTEGER NOT NULL DEFAULT 1
+    Expired INTEGER NOT NULL DEFAULT 0,
+    FullName TEXT,
+    Email TEXT,
+    CreationDate TEXT,
+    RevisionDate TEXT
 );
+
 CREATE TABLE IF NOT EXISTS PlayingCharacters (
     UserID INTEGER NOT NULL,
     PlayerName TEXT UNIQUE NOT NULL,
@@ -30,52 +35,167 @@ CREATE TABLE IF NOT EXISTS PlayingCharacters (
     Wisdom INTEGER NOT NULL DEFAULT 10,
     Luck INTEGER NOT NULL DEFAULT 10,
     CurrentLevel INTEGER NOT NULL DEFAULT 1,
+    AttackSkill INTEGER NOT NULL DEFAULT 0,
+    DodgeSkill INTEGER NOT NULL DEFAULT 0,
     Gold INTEGER NOT NULL DEFAULT 0,
+    Appearance INTEGER NOT NULL DEFAULT 0,
+    Corpse INTEGER NOT NULL DEFAULT 0,
     XP INTEGER NOT NULL DEFAULT 0,
-    Gender INTEGER NOT NULL DEFAULT 0,
+    StatPnts INTEGER NOT NULL DEFAULT 0,
+    SkillPnts INTEGER NOT NULL DEFAULT 0,
     Karma INTEGER NOT NULL DEFAULT 0,
+    Gender INTEGER NOT NULL DEFAULT 0,
     guildnumberz INTEGER NOT NULL DEFAULT 0,
     ListingTitle TEXT,
     ListingMisc TEXT,
-    FOREIGN KEY (UserID) REFERENCES T4Cusers(ID)
+    SS INTEGER NOT NULL DEFAULT 0,
+    OVO INTEGER NOT NULL DEFAULT 0,
+    GvG INTEGER NOT NULL DEFAULT 0,
+    Impeach INTEGER NOT NULL DEFAULT 0,
+    GuildURL TEXT,
+    HideLevel INTEGER NOT NULL DEFAULT 0,
+    Bounty INTEGER NOT NULL DEFAULT 0,
+    BountyPlacer TEXT,
+    GuildRank INTEGER NOT NULL DEFAULT 0,
+    GuildName TEXT,
+    MoveExhaust INTEGER NOT NULL DEFAULT 0,
+    MentalExhaust INTEGER NOT NULL DEFAULT 0,
+    AttackExhaust INTEGER NOT NULL DEFAULT 0
 );
+
+CREATE TABLE IF NOT EXISTS OnlineUsers (
+    MachineName TEXT NOT NULL,
+    AccountName TEXT,
+    PlayerName TEXT,
+    FlagBitPosition INTEGER NOT NULL DEFAULT 0,
+    IPaddr TEXT
+);
+
 CREATE TABLE IF NOT EXISTS PlayerItems (
-    UserID INTEGER NOT NULL,
-    OwnerID INTEGER NOT NULL,
+    ItemsID INTEGER PRIMARY KEY,
     ObjID INTEGER NOT NULL,
+    OwnerID INTEGER NOT NULL,
+    EquipPos INTEGER NOT NULL DEFAULT -1,
     ObjType INTEGER NOT NULL DEFAULT 0,
-    Qty INTEGER NOT NULL DEFAULT 1,
-    EquipPos INTEGER NOT NULL DEFAULT -1
+    Qty INTEGER NOT NULL DEFAULT 1
 );
+
 CREATE TABLE IF NOT EXISTS PlayerSkills (
+    PlayerSkillsID INTEGER PRIMARY KEY,
     OwnerID INTEGER NOT NULL,
     SkillID INTEGER NOT NULL,
-    Value INTEGER NOT NULL DEFAULT 0
+    SkillPnts INTEGER NOT NULL DEFAULT 0
 );
+
 CREATE TABLE IF NOT EXISTS PlayerSpells (
+    PlayerSpellsID INTEGER PRIMARY KEY,
     OwnerID INTEGER NOT NULL,
     SpellID INTEGER NOT NULL,
-    Value INTEGER NOT NULL DEFAULT 0
+    SpellPnts INTEGER NOT NULL DEFAULT 0
 );
-CREATE TABLE IF NOT EXISTS OnlineUsers (
-    AccountName TEXT PRIMARY KEY,
-    PlayerName TEXT,
-    LastLogin TEXT
-);
+
 CREATE TABLE IF NOT EXISTS Flags (
-    UserID INTEGER NOT NULL,
-    FlagBitPosition INTEGER NOT NULL
+    FlagsID INTEGER PRIMARY KEY,
+    OwnerID INTEGER NOT NULL,
+    BaseOwnerID INTEGER NOT NULL DEFAULT 0,
+    FlagID INTEGER NOT NULL,
+    FlagValue INTEGER NOT NULL DEFAULT 0,
+    DynamicFlag INTEGER NOT NULL DEFAULT 0
 );
+
 CREATE TABLE IF NOT EXISTS UserFlags (
+    UserFlagsID INTEGER PRIMARY KEY,
     AccountName TEXT NOT NULL,
     FlagBitPosition INTEGER NOT NULL
 );
-CREATE TABLE IF NOT EXISTS NotInUserList (
-    AccountName TEXT NOT NULL,
-    FlagBitPosition INTEGER
+
+CREATE TABLE IF NOT EXISTS guildz (
+    GuildzID INTEGER PRIMARY KEY,
+    guildnumberz INTEGER NOT NULL,
+    guildnamez TEXT,
+    "non html name" TEXT,
+    website TEXT
 );
-CREATE TABLE IF NOT EXISTS Guilds (
-    guildnumberz INTEGER PRIMARY KEY,
-    non_html_name TEXT,
-    html_name TEXT
+
+CREATE TABLE IF NOT EXISTS guildplayers (
+    GuildPlayersID INTEGER PRIMARY KEY,
+    guildnumberz INTEGER NOT NULL,
+    PlayerName TEXT,
+    AccountName TEXT
+);
+
+CREATE TABLE IF NOT EXISTS Guildboard (
+    GuildBoardID INTEGER PRIMARY KEY,
+    PlayerName TEXT,
+    Guild TEXT,
+    Rank INTEGER NOT NULL DEFAULT 0,
+    Message TEXT,
+    Date TEXT,
+    GuildURL TEXT
+);
+
+CREATE TABLE IF NOT EXISTS visible (
+    FlagBitPosition INTEGER PRIMARY KEY,
+    FlagDescription TEXT
+);
+
+CREATE TABLE IF NOT EXISTS Boosts (
+    BoostsID INTEGER PRIMARY KEY,
+    OwnerID INTEGER NOT NULL,
+    BaseOwnerID INTEGER NOT NULL DEFAULT 0,
+    BoostID INTEGER NOT NULL,
+    Stat INTEGER NOT NULL DEFAULT 0,
+    Boost INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS Effects (
+    EffectsID INTEGER PRIMARY KEY,
+    OwnerID INTEGER NOT NULL,
+    BaseOwnerID INTEGER NOT NULL DEFAULT 0,
+    EffectID INTEGER NOT NULL,
+    EffectType INTEGER NOT NULL DEFAULT 0,
+    Timer INTEGER NOT NULL DEFAULT 0,
+    EffectData BLOB,
+    TotalDuration INTEGER NOT NULL DEFAULT 0,
+    BindedSpellID INTEGER NOT NULL DEFAULT 0,
+    BindedFlagID INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS Bounties (
+    BountiesID INTEGER PRIMARY KEY,
+    BountyInEffect INTEGER NOT NULL DEFAULT 0,
+    GoldAmount INTEGER NOT NULL DEFAULT 0,
+    BountyType INTEGER NOT NULL DEFAULT 0
+);
+
+CREATE TABLE IF NOT EXISTS MessageDispatch (
+    RecipientID INTEGER NOT NULL,
+    MessageID INTEGER NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS OfflineMessages (
+    MessageID INTEGER PRIMARY KEY,
+    Sender TEXT,
+    ReaderCount INTEGER NOT NULL DEFAULT 0,
+    Subject TEXT,
+    Message TEXT,
+    DeletionDate TEXT
+);
+
+CREATE TABLE IF NOT EXISTS UserFlagIDs (
+    UserFLagsID INTEGER PRIMARY KEY,
+    FlagBitPosition INTEGER NOT NULL,
+    FlagDescription TEXT
+);
+
+CREATE TABLE IF NOT EXISTS UserSkillsIDs (
+    ID INTEGER PRIMARY KEY,
+    SkillID INTEGER NOT NULL,
+    SkillName TEXT
+);
+
+CREATE TABLE IF NOT EXISTS Bounty (
+    BountryID INTEGER PRIMARY KEY,
+    PlayerName TEXT,
+    BountyInEffect INTEGER NOT NULL DEFAULT 0
 );

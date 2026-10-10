@@ -47,12 +47,13 @@ echo "=== Verification ProgID EasyMail.SMTP.5 + InprocServer32 ==="
 wine reg query "HKLM\\Software\\Classes\\EasyMail.SMTP.5" /s 2>&1 | head -10 || echo "ProgID ABSENT"
 wine reg query "HKLM\\Software\\Classes\\CLSID\\{4610E7BF-710F-11d3-813D-00C04F6B92D0}\\InprocServer32" /s 2>&1 | head -10 || echo "CLSID ABSENT"
 
-# TRACE COMPLETE : le serveur s'auto-quitte ~3 s apres le banner (exit.txt
-# STARTUP->EXIT immediat, pas de crash GP). +relay est praticable car le
-# processus est court-vivant : la DERNIERE ligne avant l'exit = appel fautif.
-echo "=== Lancement serveur avec trace complete (+relay,+seh -> trace.log) ==="
+# L'ODBC est regle (Wine 10 : SQLConnect OK, le serveur passe l'init DB
+# et charge le monde). +relay ralentissait le parse octet-par-octet de
+# plusieurs heures -> retour a +seh (rapide) : exceptions seulement,
+# chargement du monde en minutes.
+echo "=== Lancement serveur avec trace exceptions (+seh -> trace.log) ==="
 rm -f /root/.wine/*.log 2>/dev/null
-WINEDEBUG=+relay,+seh wine "T4C Server.exe" -m > /captures/trace.log 2>&1 &
+WINEDEBUG=+seh wine "T4C Server.exe" -m > /captures/trace.log 2>&1 &
 SERVER_PID=$!
 TRACE_START=$SECONDS
 

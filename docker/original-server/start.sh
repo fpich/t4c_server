@@ -47,13 +47,13 @@ echo "=== Verification ProgID EasyMail.SMTP.5 + InprocServer32 ==="
 wine reg query "HKLM\\Software\\Classes\\EasyMail.SMTP.5" /s 2>&1 | head -10 || echo "ProgID ABSENT"
 wine reg query "HKLM\\Software\\Classes\\CLSID\\{4610E7BF-710F-11d3-813D-00C04F6B92D0}\\InprocServer32" /s 2>&1 | head -10 || echo "CLSID ABSENT"
 
-# L'ODBC est regle (Wine 10 : SQLConnect OK, le serveur passe l'init DB
-# et charge le monde). +relay ralentissait le parse octet-par-octet de
-# plusieurs heures -> retour a +seh (rapide) : exceptions seulement,
-# chargement du monde en minutes.
-echo "=== Lancement serveur avec trace exceptions (+seh -> trace.log) ==="
+# exit.txt (Wine 8 ET Wine 10) : STARTUP -> EXIT la meme seconde = la mort
+# intervient juste apres le parse, a l'etape DB (l'exit 111 = cleanup ODBC).
+# Relay complet = trop lent ; relay limite a odbc32 (syntaxe relay+dll) donne
+# le retval du SQLConnect sans ralentir le reste.
+echo "=== Lancement serveur (+seh + relay odbc32 -> trace.log) ==="
 rm -f /root/.wine/*.log 2>/dev/null
-WINEDEBUG=+seh wine "T4C Server.exe" -m > /captures/trace.log 2>&1 &
+WINEDEBUG=+seh,relay+odbc32 wine "T4C Server.exe" -m > /captures/trace.log 2>&1 &
 SERVER_PID=$!
 TRACE_START=$SECONDS
 

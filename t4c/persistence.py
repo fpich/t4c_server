@@ -60,6 +60,39 @@ CREATE TABLE IF NOT EXISTS PlayerSpells (
     SpellID INTEGER NOT NULL,
     PRIMARY KEY (CharacterName, SpellID)
 );
+
+-- Tables sociales du schéma T4C.mdb original (guildes, messagerie, présence).
+CREATE TABLE IF NOT EXISTS guildz (
+    GuildID INTEGER PRIMARY KEY AUTOINCREMENT,
+    GuildName TEXT UNIQUE NOT NULL,
+    LeaderName TEXT NOT NULL DEFAULT '',
+    CreationDate TEXT NOT NULL DEFAULT (datetime('now'))
+);
+CREATE TABLE IF NOT EXISTS guildplayers (
+    GuildID INTEGER NOT NULL,
+    PlayerName TEXT NOT NULL,
+    Rank INTEGER NOT NULL DEFAULT 0,
+    PRIMARY KEY (GuildID, PlayerName)
+);
+CREATE TABLE IF NOT EXISTS Guildboard (
+    GuildID INTEGER NOT NULL,
+    Author TEXT NOT NULL DEFAULT '',
+    Message TEXT NOT NULL DEFAULT '',
+    PostedAt TEXT NOT NULL DEFAULT (datetime('now'))
+);
+CREATE TABLE IF NOT EXISTS OfflineMessages (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    TargetAccount TEXT NOT NULL,
+    SenderName TEXT NOT NULL DEFAULT '',
+    Message TEXT NOT NULL DEFAULT '',
+    SentAt TEXT NOT NULL DEFAULT (datetime('now')),
+    Delivered INTEGER NOT NULL DEFAULT 0
+);
+CREATE TABLE IF NOT EXISTS OnlineUsers (
+    Account TEXT PRIMARY KEY,
+    CharacterName TEXT NOT NULL DEFAULT '',
+    Since TEXT NOT NULL DEFAULT (datetime('now'))
+);
 """
 
 
@@ -291,3 +324,129 @@ class Persistence:
                 (name, item.template_id, item.quantity, item.equip_slot),
             )
         self._db.commit()
+
+    # --- comptes (authentification réelle) ------------------------------
+
+    def account_exists(self, account: str) -> bool:
+        return self.user_id(account) is not None
+
+    def check_password(self, account: str, password: str) -> bool:
+        """Vérifie le mot de passe (hash SHA-256, salé par le compte)."""
+        import hashlib
+
+        row = self._db.execute(
+            "SELECT Password FROM T4Cusers WHERE Account = ? COLLATE NOCASE",
+            (account,),
+        ).fetchone()
+        if row is None:
+            return False
+        stored = row["Password"]
+        digest = hashlib.sha256((account.casefold() + ":" + password).encode()).hexdigest()
+        # Accepte le hash salé ou, en dev, un mot de passe stocké en clair.
+        return stored == digest or stored == password
+
+    def register_account(self, account: str, password: str) -> bool:
+        """Crée un compte avec mot de passe hashé. False si déjà pris."""
+        import hashlib
+
+        if self.account_exists(account):
+            return False
+        digest = hashlib.sha256((account.casefold() + ":" + password).encode()).hexdigest()
+        self._db.execute(
+            "INSERT INTO T4Cusers (Account, Password) VALUES (?, ?)",
+            (account, digest),
+        )
+        self._db.commit()
+        return True
+
+    # --- guildes ---------------------------------------------------------
+
+    def create_guild(self, name: str, leader: str) -> int | None:
+        cur = self._db.execute(
+            "INSERT INTO guildz (GuildName, LeaderName) VALUES (?, ?)", (name, leader)
+        )
+        self._db.execute(
+            "INSERT INTO guildplayers (GuildID, PlayerName, Rank) VALUES (?, ?, 2)",
+            (cur.lastrowid, leader),
+        )
+        self._db.commit()
+        return cur.lastrowid
+
+    def guild_of(self, player: str) -> str | None:
+        row = self._db.execute(
+            "SELECT g.GuildName FROM guildz g JOIN guildplayers gp ON gp.GuildID = g.GuildID "
+            "WHERE gp.PlayerName = ? COLLATE NOCASE",
+            (player,),
+        ).fetchone()
+        return row["GuildName"] if row else None
+
+    def guild_members(self, guild: str) -> list[str]:
+        rows = self._db.execute(
+            "SELECT gp.PlayerName FROM guildplayers gp JOIN guildz g ON g.GuildID = gp.GuildID "
+            "WHERE g.GuildName = ? COLLATE NOCASE ORDER BY gp.Rank DESC, gp.PlayerName",
+            (guild,),
+        ).fetchall()
+        return [r["PlayerName"] for r in rows]
+
+    def join_guild(self, guild: str, player: str) -> bool:
+        row = self._db.execute(
+            "SELECT GuildID FROM guildz WHERE GuildName = ? COLLATE NOCASE", (guild,)
+        ).fetchone()
+        if row is None:
+            return False
+        self._db.execute(
+            "INSERT OR IGNORE INTO guildplayers (GuildID, PlayerName, Rank) VALUES (?, ?, 0)",
+            (row["GuildID"], player),
+        )
+        self._db.commit()
+        return True
+
+    def leave_guild(self, player: str) -> None:
+        self._db.execute(
+            "DELETE FROM guildplayers WHERE PlayerName = ? COLLATE NOCASE", (player,)
+        )
+        self._db.commit()
+
+    # --- messages hors ligne ---------------------------------------------
+
+    def save_offline_message(self, target_account: str, sender: str, message: str) -> None:
+        self._db.execute(
+            "INSERT INTO OfflineMessages (TargetAccount, SenderName, Message) VALUES (?, ?, ?)",
+            (target_account, sender, message),
+        )
+        self._db.commit()
+
+    def pending_offline_messages(self, account: str) -> list[tuple[str, str]]:
+        """Messages non délivrés d'un compte, puis marqués comme délivrés."""
+        rows = self._db.execute(
+            "SELECT ID, SenderName, Message FROM OfflineMessages "
+            "WHERE TargetAccount = ? COLLATE NOCASE AND Delivered = 0 ORDER BY ID",
+            (account,),
+        ).fetchall()
+        self._db.execute(
+            "UPDATE OfflineMessages SET Delivered = 1 "
+            "WHERE TargetAccount = ? COLLATE NOCASE AND Delivered = 0",
+            (account,),
+        )
+        self._db.commit()
+        return [(r["SenderName"], r["Message"]) for r in rows]
+
+    # --- présence --------------------------------------------------------
+
+    def mark_online(self, account: str, character: str) -> None:
+        self._db.execute(
+            "INSERT OR REPLACE INTO OnlineUsers (Account, CharacterName, Since) "
+            "VALUES (?, ?, datetime('now'))",
+            (account, character),
+        )
+        self._db.commit()
+
+    def mark_offline(self, account: str) -> None:
+        self._db.execute("DELETE FROM OnlineUsers WHERE Account = ? COLLATE NOCASE", (account,))
+        self._db.commit()
+
+    def online_accounts(self) -> list[tuple[str, str]]:
+        rows = self._db.execute(
+            "SELECT Account, CharacterName FROM OnlineUsers ORDER BY Account"
+        ).fetchall()
+        return [(r["Account"], r["CharacterName"]) for r in rows]

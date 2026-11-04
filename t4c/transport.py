@@ -98,6 +98,13 @@ def decode_transport(datagram: bytes | bytearray | memoryview) -> TransportPacke
             raise T4CTransportError(
                 f"invalid ACK length field: {declared_length} (expected 0 or {HEADER_SIZE})"
             )
+    elif flags & FLAG_FRAGMENTED:
+        # Fragment : declared_length = taille TOTALE du datagramme original,
+        # pas celle de ce fragment (comportement client @0x45D373).
+        if declared_length < len(raw):
+            raise T4CTransportError(
+                f"fragment declared_length too small: header={declared_length}, actual={len(raw)}"
+            )
     elif declared_length != len(raw):
         raise T4CTransportError(
             f"transport length mismatch: header={declared_length}, actual={len(raw)}"
@@ -112,6 +119,9 @@ def decode_transport(datagram: bytes | bytearray | memoryview) -> TransportPacke
     )
 
 
+FRAGMENT_DATA_SIZE: Final = 1012  # payload max par fragment (1024 - 12 header)
+
+
 def encode_transport(
     payload: bytes | bytearray | memoryview,
     *,
@@ -120,6 +130,7 @@ def encode_transport(
     fragmented: bool = False,
     fragment_index: int = 0,
     fragment_group: int = 0,
+    declared_length: int | None = None,
 ) -> bytes:
     data = bytes(payload)
     if not 0 <= sequence <= 0xFFFFFFFF:
@@ -138,9 +149,13 @@ def encode_transport(
         raise ValueError("fragment_index is only valid for fragmented packets")
 
     total_length = HEADER_SIZE + len(data)
-    if total_length > MAX_DATAGRAM_SIZE:
+    if declared_length is not None:
+        # Pour un fragment, declaredLength = taille TOTALE du datagramme
+        # original (comportement client @0x45D373), pas celle du fragment.
+        total_length = declared_length
+    if HEADER_SIZE + len(data) > MAX_DATAGRAM_SIZE:
         raise T4CTransportError(
-            f"transport datagram too large: {total_length} bytes, max {MAX_DATAGRAM_SIZE}"
+            f"transport datagram too large: {HEADER_SIZE + len(data)} bytes, max {MAX_DATAGRAM_SIZE}"
         )
 
     return struct.pack(

@@ -32,10 +32,10 @@ Découvertes clés :
 | 23 | Groupes (4.2) | C2S 78/79/80/81/88, S2C 76/78/80/82/87/88, partage XP/or (DistributeKillXP/Gold) | ✅ 2026-10-13 (6 tests) |
 | 24 | Sorts réels (3.3) | C2S 32 spellId>0 : coût mana (67), diffusion 64, dégâts, sort de départ 414 Fire dart, PNJ teach → S2C 55, persistance PlayerSpells | ✅ 2026-10-13 (5 tests) |
 | 25 | WDA déchiffré | `tools/wda_decrypt.py` (masque LCG 3418 octets, SHA256 vérifié), `ressources/wda_extract/` : 188 items, 962 sorts, PNJ/mobs/spawners ; catalogue chargé dans items.py/spells.py | ✅ 2026-10-13 (4 tests) — grille de tuiles non localisée (binaire) |
-| 26 | Persistance étendue | Tables guildes (guildz/guildplayers/Guildboard), OfflineMessages/MessageDispatch, Karma/StatPnts/SkillPnts/Appearance/Gender, OnlineUsers | ⬜ |
-| 27 | Téléportation & mort | S2C 57 (changement de monde), respawn, pénalité mort, S2C 37 progression niveau | ⬜ |
-| 28 | Fragmentation UDP | Réassemblage des fragments (flag 0x0400, group id) côté serveur | ⬜ |
-| 29 | Comptes réels | Création de compte via 14 (inscription), hash mot de passe, unicité, session compte | ⬜ |
+| 26 | Persistance étendue | Tables guildz/guildplayers/Guildboard/OfflineMessages/OnlineUsers + CRUD ; messages offline livrés au 46 ; présence online/offline | ✅ 2026-10-13 (5 tests) — opcodes wire guilde à identifier (SQL direct côté original) |
+| 27 | Téléportation & mort | S2C 57 au respawn après mort (fait avec étape 22) ; pénalité/XP niveau (37) : formules WDA extraites mais pas encore branchées | 🔄 |
+| 28 | Fragmentation UDP | Réassemblage (flag 0x0400) : declaredLength = taille totale, 1012 o/fragment, purge 10 s | ✅ 2026-10-13 (3 tests) |
+| 29 | Comptes réels | 14 = inscription si inconnu (hash SHA-256 salé) / vérification si connu ; persistance T4Cusers | ✅ 2026-10-13 (2 tests) |
 | 30 | Docker/Wine | Finaliser le diagnostic ODBC du serveur original (SQLConnect sous Wine 10) pour diff-test | ⬜ |
 | 31 | Validation de bout en bout | Harnais multi-clients rejouant un scénario complet (combat, groupe, shop, sort) + métriques | ⬜ |
 

@@ -162,9 +162,17 @@ async def handle_register_account(
 
     _ensure_consumed(reader, packet.packet_id)
     cfg = server.config
-    accepted = bool(account) and (
-        cfg.accept_any_login or (account == cfg.account and password == cfg.password)
-    )
+    if server.persistence is not None and account:
+        # Authentification réelle : compte inconnu -> inscription (14 fait les
+        # deux, comme l'original) ; compte connu -> vérification du hash.
+        if server.persistence.account_exists(account):
+            accepted = server.persistence.check_password(account, password)
+        else:
+            accepted = server.persistence.register_account(account, password)
+    else:
+        accepted = bool(account) and (
+            cfg.accept_any_login or (account == cfg.account and password == cfg.password)
+        )
 
     response = PacketWriter(PacketID.REGISTER_ACCOUNT)
     if accepted:
@@ -364,6 +372,8 @@ async def handle_exit_game(
         world.broadcast_object_removed(server, session)
     # Persistance des stats courantes (HP/mana/or/XP) à la sortie du monde.
     _persist_character_stats(server, session)
+    if server.persistence is not None and session.account:
+        server.persistence.mark_offline(session.account)
     if packet.body:
         log.debug(
             "requête 20 avec %d octet(s) inattendu(s) client=%s corps=%s",
@@ -749,6 +759,15 @@ async def handle_from_preingame_to_ingame(
         # (paquet 0x2714).
         world.send_inview_units(server, session)
         world.broadcast_unit_popup(server, session)
+        # Présence + messages hors ligne livrés à l'entrée en monde.
+        if server.persistence is not None and session.account:
+            server.persistence.mark_online(session.account, character.name if character else "")
+            for sender_name, message in server.persistence.pending_offline_messages(
+                session.account
+            ):
+                world.send_server_message(
+                    server, session, f"[{sender_name}] {message}"
+                )
     elif session.state is SessionState.IN_WORLD:
         result = 1
     else:
@@ -1802,6 +1821,22 @@ async def handle_whisper_message(
                 server, session, f"Message envoyé à {other.active_character}."
             )
             log.info("CHUCHOTE %s -> %s : %r", sender, target_name, text[:60])
+            return
+    # Cible hors ligne : message stocké (OfflineMessages) si persistance active.
+    if server.persistence is not None and session.account:
+        # La cible peut être un personnage d'un autre compte : on retrouve le compte.
+        target_account = None
+        for row_account, chars in server.characters._by_account.items():
+            for ch in chars:
+                if ch.name.casefold() == target_name.casefold():
+                    target_account = row_account
+                    break
+        if target_account is not None:
+            server.persistence.save_offline_message(target_account, sender, text)
+            world.send_server_message(
+                server, session, f"{target_name} est hors ligne : message laissé."
+            )
+            log.info("CHUCHOTE différé %s -> %s : %r", sender, target_name, text[:60])
             return
     world.send_server_message(
         server, session, f"{target_name} n'est pas en jeu."

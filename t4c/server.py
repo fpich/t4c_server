@@ -16,7 +16,9 @@ from .protocol import packet_name
 from .session import Address, ClientSession
 from .transport import (
     FLAG_FRAGMENTED,
+    HEADER_SIZE,
     T4CTransportError,
+    TransportPacket,
     decode_transport,
     encode_ack,
     encode_transport,
@@ -35,6 +37,8 @@ class T4CServerProtocol(asyncio.DatagramProtocol):
         self.config = config or ServerConfig()
         self.dispatcher = dispatcher or PacketDispatcher()
         self.sessions: dict[Address, ClientSession] = {}
+        # Fragments UDP en cours de réassemblage : (addr, group) -> {parts, created}.
+        self._fragments: dict[tuple, dict] = {}
         # Compteur global d'unit IDs : DOIT être unique par personnage en monde.
         # Un compteur par session donnait le même ID (1) à tous les joueurs —
         # le client destinataire d'un OBJECT_MOVED le reconnaissait comme
@@ -77,6 +81,14 @@ class T4CServerProtocol(asyncio.DatagramProtocol):
             for session in list(self.sessions.values()):
                 self._retransmit_pending(session, now)
             self._cleanup_sessions(now)
+            # Purge des groupes de fragments incomplets (> 10 s).
+            for key, bucket in list(self._fragments.items()):
+                if now - bucket["created"] > 10.0:
+                    log.warning(
+                        "fragments incomplets abandonnés peer=%s:%d group=%u",
+                        key[0][0], key[0][1], key[1],
+                    )
+                    del self._fragments[key]
 
     def _retransmit_pending(self, session: ClientSession, now: float) -> None:
         """PLAN 5.1 : renvoie les paquets SAFE sans ACK (intervalle configuré,
@@ -114,6 +126,8 @@ class T4CServerProtocol(asyncio.DatagramProtocol):
                 continue
             if session.state is SessionState.IN_WORLD and session.unit_id is not None:
                 _world.broadcast_object_removed(self, session)
+            if self.persistence is not None and session.account:
+                self.persistence.mark_offline(session.account)
             log.info(
                 "session expirée %s:%d (inactif depuis %.0fs, état=%s)",
                 addr[0], addr[1], now - session.last_seen_at, session.state.name,
@@ -182,19 +196,60 @@ class T4CServerProtocol(asyncio.DatagramProtocol):
                 transport_packet.sequence,
             )
 
-        # Fragment reassembly is a later milestone. The first real client packet
-        # (MOTD) is ordinary/unfragmented.
+        # Réassemblage des fragments (flag 0x0400), façon client @0x45D0E1 :
+        # declaredLength = taille TOTALE du datagramme original ; chaque
+        # fragment occupe [12 + index*1012, ...). Groupe complet quand on a
+        # reçu ceil((declaredLength-12)/1012) fragments.
         if transport_packet.flags & FLAG_FRAGMENTED:
-            log.warning(
-                "fragmented transport packet not implemented yet: peer=%s:%d "
-                "seq=%u fragment=%u group=%u",
-                addr[0],
-                addr[1],
-                transport_packet.sequence,
-                transport_packet.fragment_index,
-                transport_packet.fragment_group,
+            from .transport import FRAGMENT_DATA_SIZE
+
+            idx = transport_packet.fragment_index
+            declared = transport_packet.declared_length
+            if idx * FRAGMENT_DATA_SIZE + len(transport_packet.payload) > declared:
+                log.warning(
+                    "fragment hors bornes ignoré peer=%s:%d index=%u",
+                    addr[0], addr[1], idx,
+                )
+                return
+            key = (addr, transport_packet.fragment_group)
+            bucket = self._fragments.get(key)
+            if bucket is None:
+                total_frags = max(1, -(-(declared - HEADER_SIZE) // FRAGMENT_DATA_SIZE))
+                bucket = {
+                    "parts": {},
+                    "remaining": total_frags,
+                    "total": declared,
+                    "created": time.monotonic(),
+                }
+                self._fragments[key] = bucket
+            if idx in bucket["parts"]:
+                return  # doublon
+            bucket["parts"][idx] = transport_packet.payload
+            bucket["remaining"] -= 1
+            if bucket["remaining"] > 0:
+                log.debug(
+                    "RX-FRAGMENT peer=%s:%d group=%u index=%u reste=%d",
+                    addr[0], addr[1], transport_packet.fragment_group, idx,
+                    bucket["remaining"],
+                )
+                return
+            # Groupe complet : reconstruit le payload total (taille fixe 1012/fragment).
+            payload = bytearray(declared - HEADER_SIZE)
+            for i, part in bucket["parts"].items():
+                payload[i * FRAGMENT_DATA_SIZE : i * FRAGMENT_DATA_SIZE + len(part)] = part
+            del self._fragments[key]
+            log.info(
+                "RX-FRAGMENTS réassemblés peer=%s:%d group=%u fragments=%d total=%dB",
+                addr[0], addr[1], transport_packet.fragment_group,
+                len(bucket["parts"]), len(payload),
             )
-            return
+            transport_packet = TransportPacket(
+                flags=transport_packet.flags & ~FLAG_FRAGMENTED,
+                declared_length=declared,
+                sequence=transport_packet.sequence,
+                fragment_group=transport_packet.fragment_group,
+                payload=bytes(payload),
+            )
 
         if not transport_packet.payload:
             log.warning(

@@ -28,8 +28,9 @@
 - **Validation** : ✅ **confirmé en jeu client** (2026-10-08) : épée + potions dans le sac, épée équipable dans le slot, noms d'objets visibles (59), persistance OK
 
 ### 1.2 Or et stats persistants
-- [ ] `gold`, XP, HP/mana réels dans la base ; le 13 et le 43 les reflètent
-- **Validation** : tuer/acheter modifie l'or, relog le conserve
+- [x] `gold`, XP, HP/mana réels dans la base ; le 13 et le 43 les reflètent ✅ (2026-10-13, étape 14)
+- [x] S2C 53 GOLD_UPDATE + S2C 44 XP (hi/lo 64 bits) ; potion (23) soigne +25 HP clamp max et renvoie 43
+- **Validation** : tuer/acheter modifie l'or, relog le conserve (achat/vente testés étape 16)
 
 ### 1.3 Chat local ✅ (2026-10-08)
 - [x] C2S 30 (LOCAL_TALK) → diffusion S2C 27 (Unit::Talk) aux joueurs en vue + émetteur (`world.broadcast_unit_talk`)
@@ -40,9 +41,10 @@
 ## Phase 2 — Monde vivant
 
 ### 2.1 Carte et collisions
-- [ ] Extraire les données de map du client original (ressources binaires) ou format minimal : grille de passabilité par monde
-- [ ] Le mouvement vérifie la tuile cible ; refus = pas de paquet 1 (le client reste sur sa prédiction locale)
-- **Validation** : impossible de traverser un mur/l'eau
+- [x] Format minimal propre : `t4c/maps.py` WorldMap, grille CSV `maps/world<id>.csv` (--maps-dir), tout franchissable par défaut ✅ (2026-10-13, étape 20)
+- [x] Le mouvement vérifie la tuile cible (`is_walkable`) ; refus = pas de paquet 1 ✅
+- [ ] Extraire les vraies données de `T4C Worlds.WDA` (format restant INCONNU dans les passes 41+) pour remplir les CSV
+- **Validation** : impossible de traverser un mur/l'eau (une fois la grille réelle chargée)
 
 ### 2.2 NPCs statiques ✅ (2026-10-08)
 - [x] Table de spawn : position, apparence, nom (`world.register_npc`)
@@ -57,16 +59,16 @@
 - **Validation** : tests `test_step13_ground_items_npcs.py` — à confirmer en jeu client
 
 ### 2.4 Synchronisation de vue dynamique
-- [ ] Au mouvement : détecter entrée/sortie du rayon de 20 tuiles → 0x2714 / 11 aux concernés (pas seulement à l'entrée en jeu)
-- **Validation** : s'éloigner de >20 tuiles, l'autre disparaît
+- [x] Au mouvement : `world.sync_view_on_move` détecte entrée/sortie du rayon de 20 tuiles → 0x2714 (+68 puppet) / 11, pour le joueur qui bouge ET pour les autres joueurs qui le voient ✅ (2026-10-13, étape 15)
+- **Validation** : tests `test_step15_view_sync.py`
 
 ## Phase 3 — Interaction
 
 ### 3.1 Marchands
-- [ ] NPC marchand avec inventaire ; à l'interaction : S2C 41 (BUY_LIST, format passe V5)
-- [ ] C2S 41 → débit or, ajout sac
-- [ ] C2S 56 (paires u32/u32 jusqu'à EOF, SANS compteur) → crédit or, retrait sac
-- **Validation** : acheter/vendre, or et sac cohérents des deux côtés
+- [x] PNJ marchand (`Npc.shop` : template_id → stock) ; C2S 11 (GET_UNIT) sur le marchand → S2C 41 BUY_LIST + S2C 56 SELL_LIST ✅ (2026-10-13, étape 16)
+- [x] C2S 41 → débit or, ajout sac, réponses 18 + 53 + 41 rafraîchi ; or insuffisant → S2C 70 {npcId, 41}
+- [x] C2S 56 (paires u32/u32 jusqu'à EOF, SANS compteur) → crédit or (prix/2), retrait sac, réponses 18 + 53 + 56 rafraîchi
+- **Validation** : tests `test_step16_shops.py`
 
 ### 3.2 Combat de base
 - [ ] Identifier le C2S d'attaque en trace (probablement via clic sur cible)
@@ -81,16 +83,16 @@
 
 ## Phase 4 — Social
 
-- [ ] 4.1 Chat par canaux : 75 (CHANNEL_LIST réel), 50 (utilisateurs), 29 si identifié
-- [ ] 4.2 Groupes : inviter (S2C 78), membres (76), HP partagé (87), dissolution (80/82)
-- [ ] 4.3 Liste en ligne réelle (clarifier l'ambiguïté 62/63 relevée dans les docs)
+- [x] 4.1 Chat par canaux : 48 (entrée + mdp), 51 (sortie), 52→75 (liste publique), 53 (écoute), 50 (utilisateurs), 49 (message canalisé) ✅ (2026-10-13, étape 18) ; 29 = chuchotement (déjà fait)
+- [ ] 4.2 Groupes : inviter (S2C 78), membres (76), HP partagé (87), dissolution (80/82) — C2S d'invitation à identifier en trace
+- [x] 4.3 Liste en ligne réelle : S2C 62 = u16 count + (CString perso, CString compte)* par joueur IN_WORLD ✅ (2026-10-13, étape 21 — format client @0x49DD27)
 
 ## Phase 5 — Robustesse (continu)
 
-- [ ] 5.1 Retransmission SAFE transport (125 ms, max 5 suivis, `PacketLost.Log`)
-- [ ] 5.2 Nettoyage des sessions mortes (pas de RX depuis N secondes → 11 diffusé)
-- [ ] 5.3 Anti-triche minimal : cadence de mouvement, validation des positions C2S
-- [ ] 5.4 Tests d'intégration : harness simulant deux clients complets (bootstrap → jeu → interaction)
+- [x] 5.1 Retransmission SAFE transport (125 ms, max 5 essais, log PacketLost) ✅ (2026-10-13, étape 17)
+- [x] 5.2 Nettoyage des sessions mortes (60 s sans RX → 11 diffusé + suppression) ✅ (2026-10-13, étape 17)
+- [x] 5.3 Cadence de mouvement : > `max_moves_per_second` (10/s, fenêtre 1 s) → requête ignorée ✅ (2026-10-13, étape 21) ; validation position = collisions (étape 20)
+- [x] 5.4 Test d'intégration bout-en-bout : 2 clients UDP réels vs vrai serveur (bootstrap → monde → popup/mouvement/chat/canal/shop/sortie) ✅ `tests/test_step19_integration.py` (2026-10-13)
 
 ---
 
@@ -108,6 +110,32 @@ Phase 2.2 ──→ 4.2 (groupes)
 1. **Format de carte** : rien dans le repo — extraire du client ou définir un format minimal. Principal goulot d'étranglement.
 2. **Paquet 29** et le **C2S d'attaque** : à capturer en trace réelle avant d'écrire le code.
 3. **Sémantique des champs `headerFlag`/`headerValue` du 18** : à confirmer (probablement or/poids).
+
+## Plan de développement autonome — 2026-10-13
+
+Décision de session (analyse complète du dépôt) : le serveur Python `t4c/` est
+la piste principale ; le harness Docker/Wine (`docker/original-server/`) reste
+un outil de diagnostic du serveur original (bloqué au startup sous Wine 10,
+cause ODBC/SQLConnect en cours d'investigation — sans impact sur le serveur
+Python). On poursuit sur les chantiers dont les formats wire sont **confirmés
+dans `docs/reverse-engineering/` et `ressources/.../02_T4C_PROTOCOLE_CONSOLIDE.tsv`**,
+dans l'ordre de valeur testable avec le vrai client :
+
+| Étape | Chantier | Plan | Statut |
+|---|---|---|---|
+| 14 | Or/XP/HP/mana persistants ; 13/43 réels ; S2C 53 (or) + 44 (XP) ; potion soigne | 1.2 | ✅ 2026-10-13 (6 tests) |
+| 15 | Synchro de vue dynamique : entrée/sortie du rayon de 20 tuiles → 0x2714 / 11 | 2.4 | ✅ 2026-10-13 (5 tests) |
+| 16 | Marchands : C2S 11 sur PNJ marchand → S2C 41/56 ; achat C2S 41, vente C2S 56, or réel | 3.1 | ✅ 2026-10-13 (6 tests) |
+| 17 | Robustesse : retransmission SAFE (125 ms × 5) + nettoyage sessions mortes | 5.1/5.2 | ✅ 2026-10-13 (5 tests) |
+| 18 | Canaux de chat réels : 48/51/52/53 C2S, 75/50 S2C | 4.1 | ✅ 2026-10-13 (7 tests) |
+| 19 | Test d'intégration bout-en-bout : 2 clients UDP réels, bootstrap → monde → chat/shop/sortie | 5.4 | ✅ 2026-10-13 (1 test) |
+| 20 | Carte/collisions : `t4c/maps.py` WorldMap (CSV `maps/world<id>.csv`), refus de déplacement | 2.1 | ✅ 2026-10-13 (5 tests) — données WDA réelles à extraire |
+| 21 | 62 = liste joueurs en ligne réelle ; 60 renvoie le 16 si unités en vue ; cadence mouvement (5.3) | 4.3/5.3 | ✅ 2026-10-13 (5 tests) |
+
+Bloqués en attente de capture client réelle ou d'extraction WDA (ne pas
+spéculer) : C2S d'attaque (3.2 — `TFCMAIN::Attack` @0x4722A0 existe mais le
+paquet C2S déclencheur n'est pas encore identifié), format de carte/collisions
+(2.1 — `T4C Worlds.WDA` 198 Mo à extraire), groupes (4.2).
 
 ## Prochaine session recommandée
 

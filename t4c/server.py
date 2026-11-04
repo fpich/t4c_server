@@ -11,6 +11,7 @@ from .characters import CharacterStore
 from .persistence import Persistence
 from .config import ServerConfig
 from .handlers import PacketDispatcher
+from .maps import WorldMap
 from .protocol import packet_name
 from .session import Address, ClientSession
 from .transport import (
@@ -48,6 +49,8 @@ class T4CServerProtocol(asyncio.DatagramProtocol):
             for account, characters in self.persistence_accounts().items():
                 for character in characters:
                     self.characters._by_account.setdefault(account.casefold(), []).append(character)
+        # Carte/collisions (PLAN 2.1) : grille de passabilité par monde.
+        self.world_map = WorldMap(getattr(config, "maps_dir", None) if config else None)
 
     def persistence_accounts(self) -> dict[str, list]:
         if self.persistence is None:
@@ -62,6 +65,60 @@ class T4CServerProtocol(asyncio.DatagramProtocol):
         self.transport = transport  # type: ignore[assignment]
         sockname = transport.get_extra_info("sockname")
         log.info("Serveur UDP T4C à l’écoute sur %s:%s", *sockname[:2])
+        # Boucle de maintenance : retransmission SAFE (PLAN 5.1) + sessions
+        # mortes (PLAN 5.2).
+        self._maintenance_task = asyncio.create_task(self._maintenance_loop())
+
+    async def _maintenance_loop(self) -> None:
+        """Tâche périodique : retransmet les SAFE non acquittés, purge les sessions mortes."""
+        while True:
+            await asyncio.sleep(0.125)
+            now = time.monotonic()
+            for session in list(self.sessions.values()):
+                self._retransmit_pending(session, now)
+            self._cleanup_sessions(now)
+
+    def _retransmit_pending(self, session: ClientSession, now: float) -> None:
+        """PLAN 5.1 : renvoie les paquets SAFE sans ACK (intervalle configuré,
+        max `safe_max_retries` essais puis abandon façon PacketLost)."""
+        cfg = self.config
+        for seq, entry in list(session.pending_safe.items()):
+            datagram, last_sent, retries = entry
+            if now - last_sent < cfg.safe_retransmit_interval:
+                continue
+            if retries >= cfg.safe_max_retries:
+                del session.pending_safe[seq]
+                log.warning(
+                    "PacketLost seq=%u peer=%s:%d après %d essais",
+                    seq, session.address[0], session.address[1], retries,
+                )
+                continue
+            entry[1] = now
+            entry[2] = retries + 1
+            self.send_datagram(
+                session.address, datagram, count_application_packet=False
+            )
+            log.info(
+                "TX-RETX %s:%d seq=%u essai=%d",
+                session.address[0], session.address[1], seq, retries + 1,
+            )
+
+    def _cleanup_sessions(self, now: float) -> None:
+        """PLAN 5.2 : session sans trafic depuis `session_timeout` secondes ->
+        retrait du monde (paquet 11 diffusé) puis suppression."""
+        from .session import SessionState
+        from . import world as _world
+
+        for addr, session in list(self.sessions.items()):
+            if now - session.last_seen_at <= self.config.session_timeout:
+                continue
+            if session.state is SessionState.IN_WORLD and session.unit_id is not None:
+                _world.broadcast_object_removed(self, session)
+            log.info(
+                "session expirée %s:%d (inactif depuis %.0fs, état=%s)",
+                addr[0], addr[1], now - session.last_seen_at, session.state.name,
+            )
+            del self.sessions[addr]
 
     def datagram_received(self, data: bytes, addr: Address) -> None:
         session = self.sessions.get(addr)
@@ -101,12 +158,15 @@ class T4CServerProtocol(asyncio.DatagramProtocol):
         # ACKs are consumed by the transport layer and never reach TFCPacket.
         if transport_packet.is_ack:
             session.received_acks += 1
+            # L'ACK acquitte un paquet SAFE en attente de retransmission.
+            acked = session.pending_safe.pop(transport_packet.sequence, None)
             log.info(
-                "RX-ACK %s:%d seq=%u stamp=0x%08X",
+                "RX-ACK %s:%d seq=%u stamp=0x%08X pending_restant=%d",
                 addr[0],
                 addr[1],
                 transport_packet.sequence,
                 transport_packet.fragment_group,
+                len(session.pending_safe),
             )
             return
 
@@ -240,6 +300,9 @@ class T4CServerProtocol(asyncio.DatagramProtocol):
             sequence=sequence,
             safe=reliable,
         )
+        # Les paquets SAFE sont suivis pour retransmission jusqu'à l'ACK (PLAN 5.1).
+        if reliable and session is not None:
+            session.pending_safe[sequence] = [wire_datagram, time.monotonic(), 0]
 
         log.info(
             "TX %s:%d seq=%u id=%d/0x%04X %-24s body=%dB reliable=%s",

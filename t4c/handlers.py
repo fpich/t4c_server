@@ -72,6 +72,10 @@ class PacketDispatcher:
         self.register(PacketID.USE_SKILL_UNIT, handle_use_skill_unit)
         self.register(PacketID.ITEM_NAME_REQUEST, handle_item_name_request)
         self.register(PacketID.LOCAL_TALK_REQUEST, handle_local_talk)
+        self.register(PacketID.GET_CHATTER_USER_LIST, handle_get_chatter_user_list)
+        self.register(
+            PacketID.GET_CHATTER_CHANNEL_LIST, handle_get_chatter_channel_list
+        )
         self.register(
             PacketID.PUPPET_INFORMATION, handle_puppet_information_request
         )
@@ -81,6 +85,17 @@ class PacketDispatcher:
         self.register(29, handle_whisper_message)
         self.register(PacketID.DROP_ITEM, handle_drop_item)
         self.register(PacketID.PICKUP_UNIT, handle_pickup_unit)
+        self.register(PacketID.BUY_ITEMS, handle_buy_items)
+        self.register(PacketID.SELL_ITEMS, handle_sell_items)
+        self.register(PacketID.ENTER_CHATTER_CHANNEL, handle_enter_chatter_channel)
+        self.register(PacketID.LEAVE_CHATTER_CHANNEL, handle_leave_chatter_channel)
+        self.register(
+            PacketID.GET_PUBLIC_CHATTER_CHANNEL_LIST,
+            handle_get_public_chatter_channel_list,
+        )
+        self.register(
+            PacketID.TOGGLE_CHATTER_LISTENING, handle_toggle_chatter_listening
+        )
         self.register(35, handle_npc_name_request)
 
     def register(self, packet_id: int, handler: PacketHandler) -> None:
@@ -342,6 +357,8 @@ async def handle_exit_game(
     # (paquet 11) avant la remise à zéro de la session.
     if session.state is SessionState.IN_WORLD:
         world.broadcast_object_removed(server, session)
+    # Persistance des stats courantes (HP/mana/or/XP) à la sortie du monde.
+    _persist_character_stats(server, session)
     if packet.body:
         log.debug(
             "requête 20 avec %d octet(s) inattendu(s) client=%s corps=%s",
@@ -552,17 +569,18 @@ def _write_ingame_stats(
     writer.write_i32(character.max_hp)
     writer.write_i16(character.mana)
     writer.write_i16(character.max_mana)
-    writer.write_i32(0)  # XP hi
-    writer.write_i32(0)  # XP lo
-    writer.write_i32(0)  # XP prochain niveau hi
+    xp64 = character.xp & 0xFFFFFFFFFFFFFFFF
+    writer.write_i32((xp64 >> 32) & 0xFFFFFFFF)  # XP hi
+    writer.write_i32(xp64 & 0xFFFFFFFF)           # XP lo
+    writer.write_i32(0)  # XP prochain niveau hi (seuils non modélisés encore)
     writer.write_i32(0)  # XP prochain niveau lo
     writer.write_i16(character.strength)
     writer.write_i16(character.end)
     writer.write_i16(character.agi)
-    writer.write_i16(0)  # wil
+    writer.write_i16(character.willpower)  # wil
     writer.write_i16(character.wisdom)
     writer.write_i16(character.intelligence)
-    writer.write_i16(0)  # luck
+    writer.write_i16(character.luck)  # luck
     writer.write_i8(now.second)
     writer.write_i8(now.minute)
     writer.write_i8(now.hour)
@@ -570,7 +588,7 @@ def _write_ingame_stats(
     writer.write_i8(now.day)
     writer.write_i8(now.month)
     writer.write_i16(now.year)
-    writer.write_i32(0)  # or
+    writer.write_i32(character.gold)  # or
     writer.write_i16(character.level)
     writer.write_i32(0)  # XP niveau précédent hi
     writer.write_i32(0)  # XP niveau précédent lo
@@ -783,9 +801,35 @@ async def handle_player_move(
         return
     if session.state is not SessionState.IN_WORLD:
         return
+    # PLAN 5.3 : cadence de mouvement. Le client normal émet ~1 mouvement par
+    # case (~3-4/s). Au-delà de 10 mouvements/s (fenêtre glissante 1 s), on
+    # ignore la requête (anti-triche minimal, sans bloquer le client légal).
+    import time as _time
+
+    now = _time.monotonic()
+    session.move_timestamps = [t for t in session.move_timestamps if now - t < 1.0]
+    if len(session.move_timestamps) >= server.config.max_moves_per_second:
+        log.warning(
+            "MOUVEMENT cadence trop élevée (>=10/s) ignoré client=%s",
+            session.address,
+        )
+        return
+    session.move_timestamps.append(now)
+    old_x, old_y = session.pos_x, session.pos_y
     dx, dy = MOVE_OFFSETS[packet.packet_id]
-    session.pos_x += dx
-    session.pos_y += dy
+    new_x = max(0, min(session.pos_x + dx, 0x0C00))
+    new_y = max(0, min(session.pos_y + dy, 0x0C00))
+    # Collisions (PLAN 2.1) : WorldMap::GetCollisionPos original. Si la case
+    # cible n'est pas franchissable, le déplacement est refusé : aucun paquet
+    # 1 n'est émis, le client reste sur sa prédiction locale.
+    if not server.world_map.is_walkable(new_x, new_y, session.pos_world):
+        log.info(
+            "MOUVEMENT refusé (collision) client=%s perso=%r (%d,%d)->(%d,%d)",
+            session.address, session.active_character, old_x, old_y, new_x, new_y,
+        )
+        return
+    session.pos_x = new_x
+    session.pos_y = new_y
     # Bornes acceptées par le client : x/y en u16 et comparés à 0x0C00
     # (handler paquet 9 @0x49AB44 ; paquet 13 lit x/y en u16). Une position
     # négative sérialisée en u16 (ex. -3 -> 0xFFFD) fait crasher le client
@@ -812,6 +856,9 @@ async def handle_player_move(
     event.write_i8(0)                 # statut
     event.write_i8(100)               # %HP
     server.send_packet(session.address, event)
+    # PLAN 2.4 : entrée/sortie du rayon de vue (popup 0x2714 / retrait 11)
+    # pour le joueur qui bouge ET pour les autres joueurs qui le voient.
+    world.sync_view_on_move(server, session, old_x, old_y)
     # Diffusion multi-joueurs : les autres sessions en vue voient le mouvement.
     world.broadcast_object_moved(server, session)
     session.move_requests += 1
@@ -906,46 +953,36 @@ async def handle_get_near_items(
     #   read = packet_inview_units(WL, packet, range=0x14, self)
     #   si read <= 0 : packet.Destroy(); packet << 60 (corps vide)
     #   SendPlayerMessage(packet)
-    # L'événement 16 n'est envoyé QUE si des unités existent autour ;
-    # notre monde de développement n'en contient aucune -> 60 corps vide,
-    # exactement comme l'original.
+    # Le paquet 16 n'est envoyé QUE si des unités existent autour.
+    world.send_inview_units(server, session, only_if_nonempty=True)
     response = PacketWriter(PacketID.GET_NEAR_ITEMS)
     server.send_packet(session.address, response)
-    log.info("VUE monde vide : 60 corps vide (comportement 1.25) client=%s", session.address)
+    log.info("VUE 60 renvoyé (16 si unités en vue) client=%s", session.address)
 
 
 async def handle_get_online_player_list(
     server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
 ) -> None:
-    """Requête 62 : RQ_SendSpellList (liste des sorts).
+    """Requête 62 : liste des joueurs en ligne (RQ_GetOnlinePlayerList).
 
-    tfc_main.h : #define RQ_SendSpellList 62 (et GetSkillStatPoints = 52 !).
-    Format (source Character::packet_spells + binaire 0x481fb0) :
-      char bUpdate (1 = mise à jour sans réaffichage),
-      short mana, short maxMana,
-      short nombre de sorts, puis par sort : id, points, CString nom, CString desc.
-    Un nouveau personnage ne connaît aucun sort : liste vide.
+    Format confirmé côté client @0x49DD27 (HandleOnlinePlayerList) :
+      u16 count, puis par joueur : CString s1, CString s2
+      (deux colonnes UI : nom du personnage et compte).
     """
     session.online_list_requests += 1
-    character = None
-    if session.account:
-        for candidate in server.characters.characters(session.account):
-            if candidate.name == session.active_character:
-                character = candidate
-                break
-    mana = character.mana if character else 30
-    max_mana = character.max_mana if character else 30
+    online = [
+        other
+        for other in server.sessions.values()
+        if other.state is SessionState.IN_WORLD and other.active_character
+    ]
     response = PacketWriter(PacketID.GET_ONLINE_PLAYER_LIST)
-    response.write_u8(1)          # bUpdate : ne pas réafficher la fenêtre
-    response.write_i16(mana)
-    response.write_i16(max_mana)
-    response.write_i16(0)         # aucun sort connu
+    response.write_u16(len(online))
+    for other in online:
+        response.write_text(other.active_character or "")
+        response.write_text(other.account or "")
     server.send_packet(session.address, response)
     log.info(
-        "SORTS bUpdate=1 mana=%d maxMana=%d nombre=0 client=%s",
-        mana,
-        max_mana,
-        session.address,
+        "JOUEURS EN LIGNE nombre=%d client=%s", len(online), session.address
     )
 
 
@@ -1012,20 +1049,22 @@ def _write_status(character: "Character") -> "PacketWriter":
     w.write_i32(character.max_hp)
     w.write_i16(character.mana)
     w.write_i16(character.max_mana)
-    w.write_i32(0)  # XP hi
-    w.write_i32(0)  # XP lo
+    xp64 = character.xp & 0xFFFFFFFFFFFFFFFF
+    w.write_i32((xp64 >> 32) & 0xFFFFFFFF)  # XP hi
+    w.write_i32(xp64 & 0xFFFFFFFF)           # XP lo
     for _ in range(2):  # AC + trueAC
         w.write_i16(0)
     w.write_i16(character.strength)
     w.write_i16(character.end)
     w.write_i16(character.agi)
-    w.write_i16(0)  # wil
+    w.write_i16(character.willpower)  # wil
     w.write_i16(character.wisdom)
     w.write_i16(character.intelligence)
-    w.write_i16(0)  # luck
+    w.write_i16(character.luck)  # luck
     w.write_i16(0)  # points de stats
     for v in (character.strength, character.end, character.agi,
-              0, character.wisdom, character.intelligence, 0):
+              character.willpower, character.wisdom, character.intelligence,
+              character.luck):
         w.write_i16(v)  # vraies stats
     w.write_i16(character.level)
     w.write_i16(15)   # points de compétences (défaut création original)
@@ -1093,6 +1132,34 @@ def _persist_inventory(
         and session.inventory is not None
     ):
         server.persistence.save_inventory(session.active_character, session.inventory)
+
+
+def _find_active_character(
+    server: "T4CServerProtocol", session: "ClientSession"
+) -> Character | None:
+    """Personnage actif de la session (compte -> store -> nom)."""
+    if not session.account:
+        return None
+    for candidate in server.characters.characters(session.account):
+        if candidate.name == session.active_character:
+            return candidate
+    return None
+
+
+def _persist_character_stats(
+    server: "T4CServerProtocol", session: "ClientSession"
+) -> None:
+    """Sauvegarde HP/mana/or/XP/niveau du personnage actif (si persistant)."""
+    character = _find_active_character(server, session)
+    if server.persistence is not None and character is not None:
+        server.persistence.save_stats(
+            character.name,
+            hp=character.hp,
+            mana=character.mana,
+            gold=character.gold,
+            xp=character.xp,
+            level=character.level,
+        )
 
 
 async def handle_view_backpack(
@@ -1188,21 +1255,100 @@ async def handle_view_equiped(
 async def handle_get_chatter_user_list(
     server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
 ) -> None:
-    """Requête 50 : utilisateurs du canal de chat courant (vide)."""
-    response = PacketWriter(PacketID.GET_CHATTER_USER_LIST)
-    response.write_i16(0)  # personne
-    server.send_packet(session.address, response)
-    log.info("CHAT utilisateurs : aucun client=%s", session.address)
+    """Requête 50 (serveur @0x481940) : utilisateurs d'un canal de chat.
+
+    Corps : CString channel. Réponse S2C 50 : CString channel, u16 count,
+    puis par membre : CString userName, CString auxLabel, u8 listening.
+    """
+    reader = PacketReader(packet.body)
+    try:
+        channel = reader.read_text()
+    except T4CProtocolError as exc:
+        log.warning("requête 50 malformée de %s : %s", session.address, exc)
+        return
+    world.send_chatter_user_list(server, session, channel)
+    log.info("CHAT utilisateurs canal=%r client=%s", channel, session.address)
 
 
 async def handle_get_chatter_channel_list(
     server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
 ) -> None:
-    """Requête 75 : liste des canaux de chat (vide)."""
-    response = PacketWriter(PacketID.GET_CHATTER_CHANNEL_LIST)
-    response.write_i16(0)  # aucun canal
+    """Requête 75 : liste des canaux connus (S2C 75 avec flag d'écoute)."""
+    world.send_channel_list(server, session)
+    log.info("CHAT liste canaux client=%s", session.address)
+
+
+async def handle_get_public_chatter_channel_list(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 52 (serveur @0x481C80, sans payload) : canaux publics -> S2C 75."""
+    world.send_channel_list(server, session)
+    log.info("CHAT canaux publics client=%s", session.address)
+
+
+async def handle_enter_chatter_channel(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 48 (serveur @0x4813D0) : rejoindre un canal de chat.
+
+    Corps : CString channel, CString keyOrPassword. Réponse S2C 48 : corps
+    vide en cas de succès (le client ne consomme rien), CString d'erreur sinon.
+    """
+    reader = PacketReader(packet.body)
+    try:
+        channel = reader.read_text()
+        key = reader.read_text()
+    except T4CProtocolError as exc:
+        log.warning("requête 48 malformée de %s : %s", session.address, exc)
+        return
+    joined = world.join_channel(server, session, channel, key)
+    response = PacketWriter(PacketID.ENTER_CHATTER_CHANNEL)
+    if joined is None:
+        response.write_text("Mot de passe du canal invalide.")
     server.send_packet(session.address, response)
-    log.info("CHAT canaux : aucun client=%s", session.address)
+    if joined is not None:
+        # Le client resynchronise la liste des canaux après une entrée.
+        world.send_channel_list(server, session)
+    log.info(
+        "CHAT entrée canal=%r client=%s -> %s",
+        channel, session.address, "ok" if joined else "refusé",
+    )
+
+
+async def handle_leave_chatter_channel(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 51 (serveur @0x481B20) : quitter un canal (CString channel)."""
+    reader = PacketReader(packet.body)
+    try:
+        channel = reader.read_text()
+    except T4CProtocolError as exc:
+        log.warning("requête 51 malformée de %s : %s", session.address, exc)
+        return
+    world.leave_channel(server, session, channel)
+    world.send_channel_list(server, session)
+    log.info("CHAT sortie canal=%r client=%s", channel, session.address)
+
+
+async def handle_toggle_chatter_listening(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 53 (serveur @0x481D70) : bascule d'écoute d'un canal.
+
+    Corps : CString channel, u8 listening.
+    """
+    reader = PacketReader(packet.body)
+    try:
+        channel = reader.read_text()
+        listening = reader.read_u8()
+    except T4CProtocolError as exc:
+        log.warning("requête 53 malformée de %s : %s", session.address, exc)
+        return
+    world.toggle_listening(session, channel, bool(listening))
+    world.send_channel_list(server, session)
+    log.info(
+        "CHAT écoute canal=%r=%s client=%s", channel, bool(listening), session.address
+    )
 
 
 # -----------------------------------------------------------------------------
@@ -1292,17 +1438,26 @@ async def handle_use_item(
     if item is None:
         log.info("UTILISER OBJET introuvable item=%d client=%s", item_unit_id, session.address)
         return
-    # Effet minimal de développement : potion de soin (template 2)
+    # Potion de soin (template 2) : +25 HP, clamp à max HP, consommée.
     if item.template_id == 2:
         consumed = inventory.consume(item_unit_id, 1)
         if consumed:
+            character = _find_active_character(server, session)
+            if character is not None:
+                healed = min(25, character.max_hp - character.hp)
+                character.hp += healed
+                _persist_character_stats(server, session)
+                # Le client met à jour son HUD depuis le statut (43).
+                server.send_packet(session.address, _write_status(character))
+                log.info(
+                    "POTION utilisée item=%d soin=%d HP -> %d/%d client=%s",
+                    item_unit_id,
+                    healed,
+                    character.hp,
+                    character.max_hp,
+                    session.address,
+                )
             _persist_inventory(server, session)
-            log.info(
-                "POTION utilisée item=%d (reste=%d) client=%s",
-                item_unit_id,
-                item.quantity,
-                session.address,
-            )
             return
     log.info(
         "UTILISER OBJET sans effet item=%d (%d,%d) client=%s",
@@ -1521,11 +1676,11 @@ async def handle_unit_talk_request(
 async def handle_chatter_message(
     server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
 ) -> None:
-    """Requête 49 C2S : message du canal de chatter (RQ_SendChatterMessage).
+    """Requête 49 C2S : message du canal de chatter (RQ_SendChatterMessage @0x4816D0).
 
     Corps : CString channel, CString message.
-    Diffusion S2C 49 (channel, speaker, message) aux sessions en jeu —
-    format d'affichage client : ["CC <canal>"] <locuteur>: <message>.
+    Diffusion S2C 49 (channel, speaker, message) aux membres du canal qui
+    écoutent — format d'affichage client : ["CC <canal>"] <locuteur>: <message>.
     """
     if session.state is not SessionState.IN_WORLD:
         return
@@ -1538,19 +1693,7 @@ async def handle_chatter_message(
         return
     if not message:
         return
-    speaker = session.active_character or ""
-    targets = [s for s in server.sessions.values()
-               if s.state is SessionState.IN_WORLD]
-    for target in targets:
-        reply = PacketWriter(49)
-        reply.write_text(channel)
-        reply.write_text(speaker)
-        reply.write_text(message)
-        server.send_packet(target.address, reply)
-    log.info(
-        "CHAT canal=%r %s : %r (%d destinataire(s))",
-        channel, speaker, message[:60], len(targets),
-    )
+    world.send_chatter_message(server, session, channel, message)
 
 
 async def handle_whisper_message(
@@ -1650,10 +1793,12 @@ async def handle_drop_item(
 async def handle_pickup_unit(
     server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
 ) -> None:
-    """Requête 11 C2S (client @0x47A640) : ramasser une unité au sol.
+    """Requête 11 C2S (client @0x47A640) : ramasser une unité au sol / interagir.
 
-    Corps confirmé : u16 x, u16 y, u32 unitId.
-    Retire l'objet du sol (paquet 11 diffusé), l'ajoute au sac, renvoie le sac.
+    Corps confirmé : u16 x, u16 y, u32 unitId. Le paquet 11 est directionnel :
+    sur un objet au sol -> ramassage ; sur un PNJ marchand -> ouverture du
+    shop (S2C 41 BUY_LIST + S2C 56 SELL_LIST, handler original Character::GetUnit
+    @0x416D90 qui appelle SendBuyItemListFunc/SendSellItemListFunc).
     """
     if session.state is not SessionState.IN_WORLD:
         return
@@ -1664,6 +1809,17 @@ async def handle_pickup_unit(
         unit_id = reader.read_u32()
     except T4CProtocolError as exc:
         log.warning("requête 11 malformée de %s : %s", session.address, exc)
+        return
+    # Interaction avec un PNJ (GET_UNIT) : marchand -> ouverture du shop.
+    npc = world.find_npc(unit_id)
+    if npc is not None:
+        if npc.shop and world.npc_in_reach(session, npc):
+            world.send_buy_list(server, session, npc)
+            world.send_sell_list(server, session, npc)
+            log.info(
+                "SHOP ouvert perso=%r marchand=%s (%d article(s)) client=%s",
+                session.active_character, npc.name, len(npc.shop), session.address,
+            )
         return
     ground = world.find_ground_item(unit_id)
     if ground is None:
@@ -1703,3 +1859,160 @@ async def handle_npc_name_request(
     if npc is not None:
         world.send_npc_name(server, session, npc)
         log.debug("NOM PNJ %s (unité=%d) -> %s", npc.name, unit_id, session.address)
+
+
+# -----------------------------------------------------------------------------
+# Marchands (PLAN 3.1) — handlers serveur originaux @0x482940 (achat) et
+# @0x482C70 (vente). Formats confirmés passe V5.
+# -----------------------------------------------------------------------------
+
+
+def _shop_and_character(
+    server: "T4CServerProtocol", session: "ClientSession", npc_unit_id: int
+):
+    """Valide la requête marchand : PNJ marchand à portée + perso actif.
+
+    Renvoie (npc, character) ou (None, None) ; l'appelant envoie l'échec
+    corrélé S2C 70 {npcUnitId, opcode} comme le serveur original.
+    """
+    npc = world.find_npc(npc_unit_id)
+    if npc is None or not npc.shop or not world.npc_in_reach(session, npc):
+        return None, None
+    character = _find_active_character(server, session)
+    if character is None:
+        return None, None
+    return npc, character
+
+
+async def handle_buy_items(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 41 C2S (serveur @0x482940) : acheter des articles à un marchand.
+
+    Corps : u16 x, u16 y, u32 npcUnitId, u16 count, puis count × {u16 itemId, u16 qty}.
+    Débite l'or du personnage, ajoute au sac, renvoie : sac (18), or (53),
+    stock du marchand rafraîchi (41).
+    """
+    if session.state is not SessionState.IN_WORLD:
+        return
+    reader = PacketReader(packet.body)
+    try:
+        reader.read_u16()  # x
+        reader.read_u16()  # y
+        npc_unit_id = reader.read_u32()
+        count = reader.read_u16()
+        entries = [(reader.read_u16(), reader.read_u16()) for _ in range(count)]
+    except T4CProtocolError as exc:
+        log.warning("requête 41 malformée de %s : %s", session.address, exc)
+        return
+    npc, character = _shop_and_character(server, session, npc_unit_id)
+    if npc is None:
+        world.send_action_failure(server, session, npc_unit_id, 41)
+        return
+    from .items import TEMPLATES
+
+    inventory = _session_inventory(server, session)
+    if inventory is None:
+        return
+    total = 0
+    achats: list[tuple[int, int]] = []
+    for item_id, qty in entries:
+        template = TEMPLATES.get(item_id)
+        if template is None or qty == 0:
+            continue
+        dispo = npc.shop.get(item_id, 0)
+        if dispo <= 0:
+            continue
+        qty = min(qty, dispo)
+        total += template.price * qty
+        achats.append((item_id, qty))
+    if not achats:
+        world.send_action_failure(server, session, npc_unit_id, 41)
+        return
+    if character.gold < total:
+        world.send_action_failure(server, session, npc_unit_id, 41)
+        world.send_server_message(
+            server, session, "Vous n'avez pas assez d'or pour cet achat."
+        )
+        log.info(
+            "ACHAT refusé (or insuffisant) perso=%r or=%d total=%d client=%s",
+            character.name, character.gold, total, session.address,
+        )
+        return
+    character.gold -= total
+    for item_id, qty in achats:
+        inventory.add(item_id, qty)
+        remaining = npc.shop.get(item_id, 0) - qty
+        if remaining > 0:
+            npc.shop[item_id] = remaining
+        else:
+            npc.shop.pop(item_id, None)
+    _persist_character_stats(server, session)
+    _persist_inventory(server, session)
+    # Réponses : sac mis à jour, solde d'or, stock du marchand rafraîchi.
+    await handle_view_backpack(server, session, packet)
+    world.send_gold_update(server, session, character.gold)
+    world.send_buy_list(server, session, npc)
+    log.info(
+        "ACHAT perso=%r marchand=%s total=%d or restant=%d articles=%s client=%s",
+        character.name, npc.name, total, character.gold, achats, session.address,
+    )
+
+
+async def handle_sell_items(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Requête 56 C2S (serveur @0x482C70) : vendre des objets au marchand.
+
+    Corps : u16 x, u16 y, u32 npcUnitId, puis paires {u32 itemUnitId, u32 qty}
+    répétées jusqu'à épuisement du paquet (pas de compteur, branche "bulk").
+    Crédite l'or du personnage, retire du sac, renvoie : sac (18), or (53),
+    liste de vente rafraîchie (56).
+    """
+    if session.state is not SessionState.IN_WORLD:
+        return
+    reader = PacketReader(packet.body)
+    try:
+        reader.read_u16()  # x
+        reader.read_u16()  # y
+        npc_unit_id = reader.read_u32()
+        entries: list[tuple[int, int]] = []
+        while reader.remaining >= 8:
+            entries.append((reader.read_u32(), reader.read_u32()))
+    except T4CProtocolError as exc:
+        log.warning("requête 56 malformée de %s : %s", session.address, exc)
+        return
+    npc, character = _shop_and_character(server, session, npc_unit_id)
+    if npc is None:
+        world.send_action_failure(server, session, npc_unit_id, 56)
+        return
+    inventory = _session_inventory(server, session)
+    if inventory is None:
+        return
+    gain = 0
+    ventes: list[tuple[int, int]] = []
+    for item_unit_id, qty in entries:
+        item = inventory.find(item_unit_id)
+        if item is None or item.equip_slot != -1 or qty == 0:
+            continue
+        qty = min(qty, item.quantity)
+        if qty <= 0:
+            continue
+        unit_price = world.sell_price(item.template)
+        gain += unit_price * qty
+        inventory.consume(item_unit_id, qty)
+        npc.shop[item.template_id] = npc.shop.get(item.template_id, 0) + qty
+        ventes.append((item_unit_id, qty))
+    if not ventes:
+        world.send_action_failure(server, session, npc_unit_id, 56)
+        return
+    character.gold += gain
+    _persist_character_stats(server, session)
+    _persist_inventory(server, session)
+    await handle_view_backpack(server, session, packet)
+    world.send_gold_update(server, session, character.gold)
+    world.send_sell_list(server, session, npc)
+    log.info(
+        "VENTE perso=%r marchand=%s gain=%d or total=%d ventes=%s client=%s",
+        character.name, npc.name, gain, character.gold, ventes, session.address,
+    )

@@ -38,8 +38,12 @@ class PacketID(IntEnum):
     PUPPET_INFORMATION = 68       # RQ_PuppetInformation
     VIEW_BACKPACK = 18            # RQ_ViewBackpack
     VIEW_EQUIPED = 19             # RQ_ViewEquiped
-    GET_CHATTER_USER_LIST = 50    # RQ_GetChatterUserList
-    GET_CHATTER_CHANNEL_LIST = 75 # RQ_GetChatterChannelList
+    GET_CHATTER_USER_LIST = 50    # RQ_GetChatterUserList : CString channel
+    ENTER_CHATTER_CHANNEL = 48    # CString channel, CString keyOrPassword
+    LEAVE_CHATTER_CHANNEL = 51    # CString channel
+    GET_PUBLIC_CHATTER_CHANNEL_LIST = 52  # pas de payload -> S2C 75
+    TOGGLE_CHATTER_LISTENING = 53 # CString channel, u8 listening
+    GET_CHATTER_CHANNEL_LIST = 75 # S2C CHANNEL_LIST : u16 count, {u16 nameLen, bytes, u8 listen}*
     # Inventaire / équipement / sorts / skills (RE client 1.25).
     EQUIP_ITEM = 21               # client @0x434C5A : u32 itemUnitId
     UNEQUIP_SLOT = 22             # client @0x434924 : u8 equipSlot
@@ -52,6 +56,8 @@ class PacketID(IntEnum):
     SERVER_MESSAGE = 63           # serveur -> client : u16 catégorie, u16 style, CString texte
     PICKUP_UNIT = 11              # client @0x47A640 : u16 x, u16 y, u32 unitId (directionnel !)
     DROP_ITEM = 12                # client @0x47A9B0 : u16 x, u16 y, u32 itemUnitId, u32 quantity
+    BUY_ITEMS = 41                # C2S achat : u16 x, u16 y, u32 npcUnitId, u16 count, {u16 itemId, u16 qty}*
+    SELL_ITEMS = 56               # C2S vente : u16 x, u16 y, u32 npcUnitId, paires {u32 itemUnitId, u32 qty} jusqu'à EOF
     ACTION_FAILURE = 70           # serveur -> client : u32 objectOrUnitId, u16 relatedRequestOpcode
     RETURN_TO_MENU = 38
     GET_TIME = 45

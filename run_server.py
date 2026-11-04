@@ -28,6 +28,11 @@ def parse_args() -> argparse.Namespace:
         default="t4c.sqlite3",
         help="chemin SQLite de persistance (schéma T4C.mdb porté) ; vide = mémoire uniquement",
     )
+    parser.add_argument(
+        "--maps-dir",
+        default="maps",
+        help="dossier des grilles de collision world<id>.csv (vide/absent = tout franchissable)",
+    )
     parser.add_argument("--debug", action="store_true", help="enable debug logging")
     return parser.parse_args()
 
@@ -48,6 +53,7 @@ async def main() -> None:
         motd=args.motd,
         default_language=args.default_language,
         database_path=args.database,
+        maps_dir=args.maps_dir or None,
     )
 
     # PNJ de développement près de la position de départ (LightHaven).
@@ -58,8 +64,18 @@ async def main() -> None:
     sx, sy, _w = START_POS
     # Apparences humanoïdes valides côté client (puppets) en attendant
     # l'extraction des apparences de créatures.
+    # Canal de chat public par défaut (PLAN 4.1).
+    world.create_channel("General")
     world.register_npc("Garde de LightHaven", appearance=10011, x=sx - 2, y=sy)
-    world.register_npc("Marchand Ambroise", appearance=10011, x=sx + 2, y=sy)
+    # Marchand avec un stock réel (template_id -> quantité) : achat C2S 41 /
+    # vente C2S 56, listes S2C 41/56 (PLAN 3.1).
+    world.register_npc(
+        "Marchand Ambroise",
+        appearance=10011,
+        x=sx + 2,
+        y=sy,
+        shop={1: 5, 2: 10, 3: 3, 4: 3},  # épées, potions, pantalons, vestes
+    )
     world.register_npc("Prêtresse Solène", appearance=10012, x=sx, y=sy - 2)
 
     loop = asyncio.get_running_loop()

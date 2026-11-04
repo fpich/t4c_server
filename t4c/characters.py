@@ -34,10 +34,15 @@ class Character:
     intelligence: int = 10
     strength: int = 10
     wisdom: int = 10
+    willpower: int = 10
+    luck: int = 10
     max_hp: int = 50
     hp: int = 50
     max_mana: int = 30
     mana: int = 30
+    # Économie/progression (colonnes Gold/XP de PlayingCharacters, T4C.mdb).
+    gold: int = 50
+    xp: int = 0
     answers: tuple[int, ...] = ()
 
 

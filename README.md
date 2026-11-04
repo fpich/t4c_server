@@ -210,6 +210,19 @@ La position (0,0,0), l'XP, l'or et les seuils de niveau sont des valeurs de
 développement ; la carte, les collisions et les unités sont les prochains
 jalons.
 
+## Étapes 14-21 — boucle de jeu étendue (2026-10-13)
+
+- **14** : or/XP/HP/mana persistants (SQLite, colonnes `Gold`/`XP` de `T4C.mdb`) ; les paquets 13 et 43 les reflètent ; S2C 53 (GOLD_UPDATE) et 44 (XP 64 bits hi/lo) ; la potion (23) soigne réellement (+25 HP, clamp max) et renvoie le statut 43.
+- **15** : synchro de vue dynamique — au mouvement, entrée/sortie du rayon de 20 tuiles → popup `0x2714` (+ puppet 68) / retrait 11, pour le joueur qui bouge et pour les autres joueurs.
+- **16** : marchands — PNJ avec stock (`Npc.shop`) ; C2S 11 sur le marchand → S2C 41 (BUY_LIST) + 56 (SELL_LIST) ; achat C2S 41 (débit or, sac 18, or 53, stock 41 rafraîchi, échec → S2C 70) ; vente C2S 56 (paires u32/u32 jusqu'à EOF, crédit or à prix/2, sac 18, or 53, liste 56 rafraîchie).
+- **17** : robustesse — retransmission des SAFE non acquittés (125 ms, 5 essais, `PacketLost`), nettoyage des sessions mortes après 60 s (paquet 11 diffusé).
+- **18** : canaux de chat — 48 (entrée + mot de passe), 51 (sortie), 52 → S2C 75 (liste), 53 (écoute on/off), 50 (utilisateurs du canal), 49 (message canalisé). Canal `General` créé au démarrage.
+- **19** : test d'intégration bout-en-bout (`tests/test_step19_integration.py`) : deux clients UDP réels contre le vrai serveur.
+- **20** : carte/collisions — `t4c/maps.py` (`WorldMap`, grilles CSV `maps/world<id>.csv` via `--maps-dir`) ; un déplacement vers une case bloquée est refusé sans paquet 1. Le format WDA original reste à extraire pour remplir les vraies grilles.
+- **21** : paquet 62 = liste réelle des joueurs en ligne (u16 count + (perso, compte)*) ; le paquet 60 renvoie d'abord le 16 (unités en vue) quand il y en a ; limite de cadence de mouvement (10/s).
+
+Lancement : `./start_server.sh` (ou `python3 run_server.py --host 0.0.0.0 --port 11677 --debug`).
+
 ## Ressources originales du serveur (dépôt)
 
 `ressources/T4C_Server/` contient désormais la distribution originale du

@@ -3,6 +3,7 @@ from __future__ import annotations
 import asyncio
 import unittest
 
+from t4c.characters import CharacterStore
 from t4c.codec import DecodedPacket
 from t4c.config import ServerConfig
 from t4c.handlers import handle_exit_game
@@ -13,6 +14,9 @@ from t4c.session import ClientSession, SessionState
 class DummyServer:
     def __init__(self):
         self.config = ServerConfig()
+        self.characters = CharacterStore()
+        self.persistence = None
+        self.sessions = {}
         self.sent = []
 
     def send_packet(self, address, writer, **kwargs):

@@ -63,3 +63,7 @@ class ClientSession:
     page_toggled: bool = False
     active_character: str | None = None
     inventory: Inventory | None = None
+    # Paquets SAFE envoyés en attente d'ACK : seq -> [datagram, last_sent, retries].
+    pending_safe: dict[int, list] = field(default_factory=dict)
+    # PLAN 5.3 : horodatages des mouvements reçus (fenêtre glissante anti-triche).
+    move_timestamps: list = field(default_factory=list)

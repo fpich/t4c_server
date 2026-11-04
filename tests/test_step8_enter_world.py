@@ -65,15 +65,15 @@ class Step8PutPlayerInGameTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(reader.read_i16(), 10)  # STR
         self.assertEqual(reader.read_i16(), 10)  # END
         self.assertEqual(reader.read_i16(), 10)  # AGI
-        self.assertEqual(reader.read_i16(), 0)  # wil
+        self.assertEqual(reader.read_i16(), 10)  # wil (valeur réelle depuis étape 14)
         self.assertEqual(reader.read_i16(), 10)  # WIS
         self.assertEqual(reader.read_i16(), 10)  # INT
-        self.assertEqual(reader.read_i16(), 0)  # luck
+        self.assertEqual(reader.read_i16(), 10)  # luck (valeur réelle depuis étape 14)
         # heure : 6 champs + année
         reader.read_i8(); reader.read_i8(); reader.read_i8()
         reader.read_i8(); reader.read_i8(); reader.read_i8()
         self.assertGreater(reader.read_i16(), 2000)  # année
-        self.assertEqual(reader.read_i32(), 0)  # or
+        self.assertEqual(reader.read_i32(), 50)  # or (gold de départ, étape 14)
         self.assertEqual(reader.read_i16(), 1)  # niveau
         reader.read_i32(); reader.read_i32()  # XP niveau précédent
         self.assertEqual(reader.remaining, 0)

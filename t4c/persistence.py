@@ -108,6 +108,10 @@ class Persistence:
                 hp=row["CurrentHP"],
                 max_mana=row["MaxMana"],
                 mana=row["CurrentMana"],
+                willpower=row["WillPower"],
+                luck=row["Luck"],
+                gold=row["Gold"],
+                xp=row["XP"],
             )
             for row in rows
         ]
@@ -129,9 +133,9 @@ class Persistence:
             """INSERT INTO PlayingCharacters (
                    UserID, PlayerName, AccountName, nClass,
                    CurrentHP, MaxHP, CurrentMana, MaxMana,
-                   Strength, Endurance, Agility, Intelligence, Wisdom,
-                   CurrentLevel
-               ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                   Strength, Endurance, Agility, Intelligence,
+                   WillPower, Wisdom, Luck, CurrentLevel, Gold, XP
+               ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
             (
                 uid,
                 character.name,
@@ -145,12 +149,49 @@ class Persistence:
                 character.end,
                 character.agi,
                 character.intelligence,
+                character.willpower,
                 character.wisdom,
+                character.luck,
                 character.level,
+                character.gold,
+                character.xp,
             ),
         )
         self._db.commit()
         return True
+
+    def save_stats(
+        self,
+        name: str,
+        *,
+        hp: int | None = None,
+        mana: int | None = None,
+        gold: int | None = None,
+        xp: int | None = None,
+        level: int | None = None,
+    ) -> None:
+        """Met à jour les champs de progression d'un personnage existant."""
+        fields: list[str] = []
+        values: list[object] = []
+        for column, value in (
+            ("CurrentHP", hp),
+            ("CurrentMana", mana),
+            ("Gold", gold),
+            ("XP", xp),
+            ("CurrentLevel", level),
+        ):
+            if value is not None:
+                fields.append(f"{column} = ?")
+                values.append(value)
+        if not fields:
+            return
+        values.append(name)
+        self._db.execute(
+            f"UPDATE PlayingCharacters SET {', '.join(fields)} "
+            "WHERE PlayerName = ? COLLATE NOCASE",
+            values,
+        )
+        self._db.commit()
 
     def delete_character(self, name: str) -> bool:
         cur = self._db.execute(

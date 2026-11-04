@@ -17,6 +17,8 @@ class FakeServer:
         self.characters = CharacterStore()
         self.sessions = {}
         self.persistence = None
+        from t4c.maps import WorldMap
+        self.world_map = WorldMap()
         self.sent: list[tuple[object, PacketWriter]] = []
 
     def send_packet(self, address, writer, **kwargs):

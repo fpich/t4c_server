@@ -48,3 +48,13 @@ class ServerConfig:
     # Étape 9 : persistance SQLite (schéma T4C.mdb porté). Chaîne vide = mémoire.
     # Un chemin (ex. "t4c.sqlite3") active la sauvegarde des comptes/personnages.
     database_path: str = ""
+    # Robustesse transport (PLAN 5.1/5.2) : retransmission des paquets SAFE
+    # non acquittés, et expiration des sessions sans trafic.
+    safe_retransmit_interval: float = 0.125  # secondes entre deux renvois
+    safe_max_retries: int = 5                 # renvois max avant abandon (PacketLost)
+    session_timeout: float = 60.0             # secondes sans RX -> session morte
+    # Carte/collisions (PLAN 2.1) : dossier des grilles `world<id>.csv`.
+    # None = aucune carte définie, tout est franchissable dans les bornes.
+    maps_dir: str | None = None
+    # PLAN 5.3 : mouvements max par seconde (fenêtre glissante) avant d'ignorer.
+    max_moves_per_second: int = 10

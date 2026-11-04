@@ -17,7 +17,7 @@ l'unité apparaître ; le retrait (11) à ceux qui la voyaient.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 import logging
 from typing import TYPE_CHECKING
@@ -41,13 +41,18 @@ EVENT_UNIT_POPUP = 0x2714  # 10004
 EVENT_UNIT_TALK = 27
 
 
-def _write_unit_information(w, character: Character, unit_id: int) -> None:
-    """Bloc PacketUnitInformation (Unit::PacketUnitInformation @0x48F560)."""
-    w.write_i16(character.race)     # apparence
+def _write_unit_info_raw(w, appearance: int, unit_id: int, hp_percent: int = 100) -> None:
+    """Bloc PacketUnitInformation brut (Unit::PacketUnitInformation @0x48F560)."""
+    w.write_i16(appearance)         # apparence
     w.write_i32(unit_id)            # ID d'unité
     w.write_i8(0)                   # radiance
     w.write_u8(0)                   # statut
-    w.write_u8(100)                  # %HP
+    w.write_u8(hp_percent)          # %HP
+
+
+def _write_unit_information(w, character: Character, unit_id: int) -> None:
+    """Bloc PacketUnitInformation pour un personnage."""
+    _write_unit_info_raw(w, character.race, unit_id)
 
 
 def _in_view(sx: int, sy: int, ox: int, oy: int, *, rng: int = VIEW_RANGE) -> bool:
@@ -113,8 +118,15 @@ def broadcast_unit_popup(
         )
 
 
-def send_inview_units(server: "T4CServerProtocol", session: ClientSession) -> None:
-    """Paquet 16 : liste des unités en vue d'une session qui entre en jeu."""
+def send_inview_units(
+    server: "T4CServerProtocol", session: ClientSession, *, only_if_nonempty: bool = False
+) -> None:
+    """Paquet 16 : liste des unités en vue d'une session qui entre en jeu.
+
+    `only_if_nonempty` : ne rien envoyer si aucune unité n'est en vue
+    (comportement de RQFUNC_GetNearItems original, qui détruit le paquet 16
+    quand packet_inview_units ne lit rien).
+    """
     if session.unit_id is None:
         return
     visible: list[tuple[ClientSession, Character]] = []
@@ -129,6 +141,8 @@ def send_inview_units(server: "T4CServerProtocol", session: ClientSession) -> No
     # Objets au sol en vue.
     grounds = ground_items_in_view(session.pos_x, session.pos_y, session.pos_world)
     total = len(visible) + len(npcs) + len(grounds)
+    if only_if_nonempty and total == 0:
+        return
     response = PacketWriter(16)
     response.write_i16(total)
     for other, character in visible:
@@ -166,6 +180,111 @@ def broadcast_object_moved(
         moved.write_i16(session.pos_y)
         _write_unit_information(moved, character, session.unit_id)
         server.send_packet(other.address, moved)
+
+
+def _send_unit_popup_to(
+    server: "T4CServerProtocol",
+    target: ClientSession,
+    x: int,
+    y: int,
+    appearance: int,
+    unit_id: int,
+) -> None:
+    """Paquet 0x2714 (UNIT_POPUP) vers une session précise."""
+    popup = PacketWriter(EVENT_UNIT_POPUP)
+    popup.write_i16(x)
+    popup.write_i16(y)
+    _write_unit_info_raw(popup, appearance, unit_id)
+    server.send_packet(target.address, popup)
+
+
+def _send_unit_removed_to(
+    server: "T4CServerProtocol", target: ClientSession, unit_id: int
+) -> None:
+    """Paquet 11 (OBJECT_REMOVED) vers une session précise."""
+    removed = PacketWriter(EVENT_OBJECT_REMOVED)
+    removed.write_u8(0)
+    removed.write_i32(unit_id)
+    server.send_packet(target.address, removed)
+
+
+def _visible_units_at(
+    server: "T4CServerProtocol", x: int, y: int, world_id: int, exclude: ClientSession
+) -> dict[int, tuple[int, int, int, object]]:
+    """Snapshot des unités (joueurs, PNJ, objets au sol) visibles en (x, y).
+
+    Retourne unit_id -> (x, y, apparence, objet source).
+    """
+    result: dict[int, tuple[int, int, int, object]] = {}
+    for other in _other_in_world_sessions(server, exclude):
+        if other.pos_world != world_id:
+            continue
+        if _in_view(x, y, other.pos_x, other.pos_y):
+            character = _find_character(server, other)
+            if character is not None and other.unit_id is not None:
+                result[other.unit_id] = (other.pos_x, other.pos_y, character.race, other)
+    for npc in npcs_in_view(x, y, world_id):
+        result[npc.unit_id] = (npc.x, npc.y, npc.appearance, npc)
+    for ground in ground_items_in_view(x, y, world_id):
+        result[ground.unit_id] = (ground.x, ground.y, _item_appearance(ground), ground)
+    return result
+
+
+def sync_view_on_move(
+    server: "T4CServerProtocol", session: ClientSession, old_x: int, old_y: int
+) -> None:
+    """PLAN 2.4 : synchronise le rayon de vue après un déplacement.
+
+    - Unités qui entrent dans la vue du joueur qui bouge -> popup 0x2714
+      (+ paquet 68 puppet pour un autre joueur).
+    - Unités qui sortent de sa vue -> paquet 11.
+    - Pour chaque autre joueur du monde : le personnage qui bouge entre dans
+      sa vue -> popup 0x2714 ; il en sort -> paquet 11.
+    """
+    if session.unit_id is None or session.state is not SessionState.IN_WORLD:
+        return
+    world_id = session.pos_world
+    new_x, new_y = session.pos_x, session.pos_y
+
+    before = _visible_units_at(server, old_x, old_y, world_id, session)
+    after = _visible_units_at(server, new_x, new_y, world_id, session)
+
+    character = _find_character(server, session)
+
+    # 1) Vue du joueur qui bouge.
+    for unit_id, (x, y, appearance, source) in after.items():
+        if unit_id in before:
+            continue
+        _send_unit_popup_to(server, session, x, y, appearance, unit_id)
+        if isinstance(source, ClientSession):
+            puppet = PacketWriter(68)
+            puppet.write_i32(unit_id)
+            for value in puppet_appearances(server, source):
+                puppet.write_i16(value)
+            server.send_packet(session.address, puppet)
+    for unit_id in before:
+        if unit_id not in after:
+            _send_unit_removed_to(server, session, unit_id)
+
+    # 2) Vue des autres joueurs sur le personnage qui bouge.
+    if character is None:
+        return
+    for other in _other_in_world_sessions(server, session):
+        if other.pos_world != world_id:
+            continue
+        saw_before = _in_view(other.pos_x, other.pos_y, old_x, old_y)
+        sees_now = _in_view(other.pos_x, other.pos_y, new_x, new_y)
+        if sees_now and not saw_before:
+            _send_unit_popup_to(
+                server, other, new_x, new_y, character.race, session.unit_id
+            )
+            puppet = PacketWriter(68)
+            puppet.write_i32(session.unit_id)
+            for value in puppet_appearances(server, session):
+                puppet.write_i16(value)
+            server.send_packet(other.address, puppet)
+        elif saw_before and not sees_now:
+            _send_unit_removed_to(server, other, session.unit_id)
 
 
 def broadcast_object_removed(
@@ -234,6 +353,146 @@ def send_server_message(
 
 
 EVENT_SERVER_MESSAGE = 63
+EVENT_GOLD_UPDATE = 53        # S2C 53 GOLD_UPDATE : u32 gold (client @0x49C7E6 voisin)
+EVENT_XP_UPDATE = 44          # S2C 44 PROGRESSION64_XP_UPDATE : u32 hi, u32 lo
+
+
+def send_gold_update(server: "T4CServerProtocol", session: ClientSession, gold: int) -> None:
+    """S2C 53 (GOLD_UPDATE) : nouveau solde d'or du personnage."""
+    packet = PacketWriter(EVENT_GOLD_UPDATE)
+    packet.write_u32(gold & 0xFFFFFFFF)
+    server.send_packet(session.address, packet)
+
+
+def send_xp_update(server: "T4CServerProtocol", session: ClientSession, xp: int) -> None:
+    """S2C 44 (PROGRESSION64_XP_UPDATE) : XP 64 bits, hi puis lo (big-endian)."""
+    xp &= 0xFFFFFFFFFFFFFFFF
+    packet = PacketWriter(EVENT_XP_UPDATE)
+    packet.write_u32((xp >> 32) & 0xFFFFFFFF)
+    packet.write_u32(xp & 0xFFFFFFFF)
+    server.send_packet(session.address, packet)
+
+
+# -----------------------------------------------------------------------------
+# Canaux de chat (chatter) — PLAN 4.1. Formats confirmés passe V7.
+# -----------------------------------------------------------------------------
+# C2S 48 : CString channel, CString keyOrPassword   -> S2C 48 (corps vide ou CString erreur)
+# C2S 49 : CString channel, CString message         -> S2C 49 : CString channel, CString speaker, CString message
+# C2S 50 : CString channel                           -> S2C 50 : CString channel, u16 count, {CString user, CString aux, u8 listen}*
+# C2S 51 : CString channel                           (quitte le canal)
+# C2S 52 : (rien)                                    -> S2C 75 : u16 count, {u16 nameLen, bytes, u8 listen}*
+# C2S 53 : CString channel, u8 listening             (bascule d'écoute)
+
+
+@dataclass
+class ChatterChannel:
+    name: str
+    password: str = ""                      # vide = canal public
+    members: dict = field(default_factory=dict)   # address -> ClientSession
+    listening: set = field(default_factory=set)   # addresses qui écoutent
+
+
+_channels: dict[str, ChatterChannel] = {}
+
+
+def create_channel(name: str, password: str = "") -> ChatterChannel:
+    """Crée un canal (idempotent)."""
+    channel = _channels.get(name.casefold())
+    if channel is None:
+        channel = ChatterChannel(name, password)
+        _channels[name.casefold()] = channel
+    return channel
+
+
+def find_channel(name: str) -> ChatterChannel | None:
+    return _channels.get(name.casefold())
+
+
+def all_channels() -> list[ChatterChannel]:
+    return list(_channels.values())
+
+
+def join_channel(server: "T4CServerProtocol", session: ClientSession, name: str, key: str = "") -> ChatterChannel | None:
+    """Rejoint un canal (créé à la volée en dev si inconnu). Retourne None si mot de passe faux."""
+    channel = find_channel(name)
+    if channel is None:
+        channel = create_channel(name)
+    elif channel.password and channel.password != key:
+        return None
+    channel.members[session.address] = session
+    channel.listening.add(session.address)
+    return channel
+
+
+def leave_channel(server: "T4CServerProtocol", session: ClientSession, name: str) -> None:
+    channel = find_channel(name)
+    if channel is None:
+        return
+    channel.members.pop(session.address, None)
+    channel.listening.discard(session.address)
+
+
+def toggle_listening(session: ClientSession, name: str, listening: bool) -> None:
+    channel = find_channel(name)
+    if channel is None or session.address not in channel.members:
+        return
+    if listening:
+        channel.listening.add(session.address)
+    else:
+        channel.listening.discard(session.address)
+
+
+def send_chatter_message(
+    server: "T4CServerProtocol", session: ClientSession, channel_name: str, message: str
+) -> None:
+    """S2C 49 : message d'un canal diffusé à ses membres qui écoutent."""
+    channel = find_channel(channel_name)
+    if channel is None:
+        return
+    speaker = session.active_character or ""
+    for addr in list(channel.listening):
+        member = channel.members.get(addr)
+        if member is None:
+            continue
+        reply = PacketWriter(49)
+        reply.write_text(channel.name)
+        reply.write_text(speaker)
+        reply.write_text(message)
+        server.send_packet(addr, reply)
+    log.info(
+        "CHAT canal=%r %s : %r (%d membre(s) à l'écoute)",
+        channel.name, speaker, message[:60], len(channel.listening),
+    )
+
+
+def send_channel_list(server: "T4CServerProtocol", session: ClientSession) -> None:
+    """S2C 75 : liste des canaux connus de la session avec flag d'écoute."""
+    listing = PacketWriter(75)
+    channels = all_channels()
+    listing.write_u16(len(channels))
+    for channel in channels:
+        encoded = channel.name.encode("cp1252")
+        listing.write_u16(len(encoded))
+        listing.write_bytes(encoded)
+        listening = 1 if session.address in channel.listening else 0
+        listing.write_u8(listening)
+    server.send_packet(session.address, listing)
+
+
+def send_chatter_user_list(
+    server: "T4CServerProtocol", session: ClientSession, channel_name: str
+) -> None:
+    """S2C 50 : utilisateurs d'un canal (nom, label auxiliaire, écoute)."""
+    channel = find_channel(channel_name)
+    listing = PacketWriter(50)
+    listing.write_text(channel.name if channel else channel_name)
+    members = list(channel.members.values()) if channel else []
+    listing.write_u16(len(members))
+    for member in members:
+        listing.write_text(member.active_character or "")
+        listing.write_text("")
+        listing.write_u8(1 if channel and member.address in channel.listening else 0)
+    server.send_packet(session.address, listing)
 
 
 # -----------------------------------------------------------------------------
@@ -264,17 +523,16 @@ class GroundItem:
 _ground_items: dict[int, GroundItem] = {}
 
 
-def _write_item_information(w, item: GroundItem) -> None:
-    """Bloc UnitInformation pour un objet au sol (apparence = sprite)."""
+def _item_appearance(item: GroundItem) -> int:
     from .items import TEMPLATES
 
     template = TEMPLATES.get(item.template_id)
-    appearance = template.appearance if template else 0
-    w.write_i16(appearance)
-    w.write_i32(item.unit_id)
-    w.write_i8(0)     # radiance
-    w.write_u8(0)     # statut
-    w.write_u8(100)   # %HP (inutilisé pour un objet)
+    return template.appearance if template else 0
+
+
+def _write_item_information(w, item: GroundItem) -> None:
+    """Bloc UnitInformation pour un objet au sol (apparence = sprite)."""
+    _write_unit_info_raw(w, _item_appearance(item), item.unit_id)
 
 
 def spawn_ground_item(
@@ -371,6 +629,8 @@ class Npc:
     x: int
     y: int
     world: int = 0
+    # Shop du PNJ marchand : template_id -> quantité en stock (vide = pas marchand).
+    shop: dict[int, int] = field(default_factory=dict)
 
 
 # Table de spawn des PNJ de développement. À terme : extraite des WDA/maps
@@ -382,11 +642,20 @@ _next_npc_id = 100000  # espace d'IDs distinct des joueurs et objets
 
 
 def register_npc(
-    name: str, appearance: int, x: int, y: int, world: int = 0
+    name: str,
+    appearance: int,
+    x: int,
+    y: int,
+    world: int = 0,
+    *,
+    shop: dict[int, int] | None = None,
 ) -> Npc:
-    """Enregistre un PNJ statique (spawn au démarrage du serveur)."""
+    """Enregistre un PNJ statique (spawn au démarrage du serveur).
+
+    `shop` : si fourni, le PNJ est un marchand (template_id -> quantité).
+    """
     global _next_npc_id
-    npc = Npc(_next_npc_id, name, appearance, x, y, world)
+    npc = Npc(_next_npc_id, name, appearance, x, y, world, dict(shop or {}))
     _next_npc_id += 1
     _npcs[npc.unit_id] = npc
     return npc
@@ -405,11 +674,7 @@ def npcs_in_view(x: int, y: int, world: int = 0) -> list[Npc]:
 
 
 def _write_npc_information(w, npc: Npc) -> None:
-    w.write_i16(npc.appearance)
-    w.write_i32(npc.unit_id)
-    w.write_i8(0)     # radiance
-    w.write_u8(0)     # statut
-    w.write_u8(100)   # %HP
+    _write_unit_info_raw(w, npc.appearance, npc.unit_id)
 
 
 def broadcast_npc_popup(
@@ -438,6 +703,79 @@ def send_npc_name(
     name_packet.write_u32(npc.unit_id)
     name_packet.write_text(npc.name)
     server.send_packet(session.address, name_packet)
+
+
+# -----------------------------------------------------------------------------
+# Marchands (PLAN 3.1) — formats confirmés passe V5 (02_T4C_PROTOCOLE_CONSOLIDE.tsv)
+# -----------------------------------------------------------------------------
+# S2C 41 BUY_LIST  : u32 shopUnitId, u16 count, puis par article :
+#   u16 templateIdLike, u16 appearance, u32 price, u8 canEquip, CString name, CString equipMessage
+# S2C 56 SELL_LIST : u32 shopUnitId, u16 count, puis par objet du joueur :
+#   u32 itemUnitId, u16 appearance, u32 price, u32 quantity, CString name
+
+
+def npc_in_reach(session: ClientSession, npc: Npc) -> bool:
+    """Le PNJ est dans le même monde et dans le rayon de vue du joueur."""
+    return (
+        session.state is SessionState.IN_WORLD
+        and session.pos_world == npc.world
+        and _in_view(session.pos_x, session.pos_y, npc.x, npc.y)
+    )
+
+
+def send_buy_list(
+    server: "T4CServerProtocol", session: ClientSession, npc: Npc
+) -> None:
+    """S2C 41 : liste des articles vendus par le marchand (son stock)."""
+    from .items import TEMPLATES
+
+    listing = PacketWriter(41)
+    listing.write_u32(npc.unit_id)
+    entries = [(tid, qty) for tid, qty in npc.shop.items() if qty > 0]
+    listing.write_u16(len(entries))
+    for template_id, _qty in entries:
+        template = TEMPLATES.get(template_id)
+        if template is None:
+            continue
+        listing.write_u16(template_id)          # templateIdLike
+        listing.write_u16(template.appearance)  # appearance
+        listing.write_u32(template.price)       # prix à l'achat
+        listing.write_u8(1 if template.equip_slot is not None else 0)  # canEquip
+        listing.write_text(template.name)
+        listing.write_text("")                  # equipMessage (exigence)
+    server.send_packet(session.address, listing)
+    log.info(
+        "SHOP liste achat envoyée à %s (marchand=%s, %d article(s))",
+        session.address, npc.name, len(entries),
+    )
+
+
+def sell_price(template) -> int:
+    """Prix de rachat par le marchand (moitié du prix d'achat, min 1)."""
+    return max(1, template.price // 2)
+
+
+def send_sell_list(
+    server: "T4CServerProtocol", session: ClientSession, npc: Npc
+) -> None:
+    """S2C 56 : liste des objets du sac du joueur que le marchand rachète."""
+    inventory = session.inventory
+    items = list(inventory.backpack) if inventory is not None else []
+    listing = PacketWriter(56)
+    listing.write_u32(npc.unit_id)
+    listing.write_u16(len(items))
+    for item in items:
+        template = item.template
+        listing.write_u32(item.unit_id)
+        listing.write_u16(template.appearance)
+        listing.write_u32(sell_price(template))
+        listing.write_u32(item.quantity)
+        listing.write_text(template.name)
+    server.send_packet(session.address, listing)
+    log.info(
+        "SHOP liste vente envoyée à %s (marchand=%s, %d objet(s) du sac)",
+        session.address, npc.name, len(items),
+    )
 
 
 # Correspondance champ puppet -> slot d'équipement, DÉCODÉE du serveur

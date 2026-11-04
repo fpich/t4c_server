@@ -50,12 +50,13 @@ class TestClient(asyncio.DatagramProtocol):
         self.transport.sendto(encode_transport(app, sequence=self.seq, safe=True))
 
     async def wait_for(self, packet_id, timeout=3.0):
+        ids = (packet_id,) if isinstance(packet_id, int) else tuple(packet_id)
         for p in self.received:
-            if p.packet_id == packet_id:
+            if p.packet_id in ids:
                 return p
         loop = asyncio.get_running_loop()
         fut = loop.create_future()
-        self.waiters.append((lambda p, pid=packet_id: p.packet_id == pid, fut))
+        self.waiters.append((lambda p, ids=ids: p.packet_id in ids, fut))
         return await asyncio.wait_for(fut, timeout)
 
 
@@ -248,10 +249,8 @@ class IntegrationTests(unittest.IsolatedAsyncioTestCase):
         # --- Combat : Alice attaque le rat (C2S 32, spellId=0) ---
         alice.received.clear()
         alice.request(32, lambda w: (w.write_u16(0), w.write_u16(0), w.write_u16(0), w.write_u32(self.rat.unit_id)))
-        ev = await alice.wait_for(0x2711, timeout=3.0) if any(p.packet_id == 0x2711 for p in alice.received) else None
         # Accepte 0x2711 (touché) ou 0x2712 (raté) : un round a eu lieu.
-        if ev is None:
-            ev = await alice.wait_for(0x2712)
+        ev = await alice.wait_for((0x2711, 0x2712))
         self.assertIn(ev.packet_id, (0x2711, 0x2712))
 
         # --- Sort : Alice lance Fire dart (C2S 32, spellId=414) ---

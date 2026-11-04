@@ -376,9 +376,14 @@ def broadcast_spell_casting(
     target_x: int,
     target_y: int,
     world_id: int = 0,
+    caster: ClientSession | None = None,
 ) -> None:
-    """S2C 64 (SPELL_CASTING) : diffuse le lancement d'un sort aux joueurs en vue."""
-    for viewer in _sessions_in_view_of(server, target_x, target_y, world_id):
+    """S2C 64 (SPELL_CASTING) : diffuse le lancement d'un sort aux joueurs en
+    vue de la cible, plus au lanceur lui-même."""
+    viewers = _sessions_in_view_of(server, target_x, target_y, world_id)
+    if caster is not None and caster.state is SessionState.IN_WORLD and caster not in viewers:
+        viewers.append(caster)
+    for viewer in viewers:
         packet = PacketWriter(EVENT_SPELL_CASTING)
         packet.write_u16(spell_id)
         packet.write_u32(caster_unit_id)

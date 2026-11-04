@@ -57,10 +57,16 @@ CREATE TABLE IF NOT EXISTS PlayerSpells (
     SpellID INTEGER NOT NULL,
     Value INTEGER NOT NULL DEFAULT 0
 );
+-- Vrai schéma T4C.mdb (mdb-schema) : OnlineUsers(MachineName, AccountName,
+-- PlayerName, FlagBitPosition, IPaddr). Le serveur fait au startup :
+-- DELETE FROM OnlineUsers WHERE MachineName='<host>' -> la colonne
+-- MachineName est obligatoire sinon SQL_ERROR -> exit(122).
 CREATE TABLE IF NOT EXISTS OnlineUsers (
-    AccountName TEXT PRIMARY KEY,
+    MachineName TEXT,
+    AccountName TEXT,
     PlayerName TEXT,
-    LastLogin TEXT
+    FlagBitPosition INTEGER NOT NULL DEFAULT 0,
+    IPaddr TEXT
 );
 CREATE TABLE IF NOT EXISTS Flags (
     UserID INTEGER NOT NULL,

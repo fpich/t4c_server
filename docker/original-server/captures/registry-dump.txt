@@ -1,0 +1,17 @@
+
+HKEY_LOCAL_MACHINE\Software\Vircom\The 4th Coming Server\Network
+    SERVER_IP    REG_SZ    127.0.0.1
+    SERVER_PORT    REG_DWORD    0x2d9d
+
+
+HKEY_LOCAL_MACHINE\Software\Vircom\The 4th Coming Server\Paths
+    BINARY_PATH    REG_SZ    Z:\root\server\
+    LOG_PATH    REG_SZ    Z:\root\server\Logs
+    rootWWWdir    REG_SZ    Z:\root\server\wwwroot\
+
+
+HKEY_LOCAL_MACHINE\Software\ODBC\ODBC.INI\T4C Server
+    Database    REG_SZ    /root/server/T4C.sqlite3
+    Description    REG_SZ    T4C Server database (SQLite)
+    Driver    REG_SZ    /usr/lib/i386-linux-gnu/odbc/libsqliteodbc.so
+

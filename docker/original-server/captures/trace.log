@@ -1,0 +1,150 @@
+0024:trace:odbc:DllMain proxy ODBC: 7A890000,1,0031FD24
+0044:err:vulkan:vulkan_init_once Failed to load libvulkan.so.1
+0044:err:ole:StdMarshalImpl_MarshalInterface Failed to create ifstub, hr 0x80004002
+0044:err:ole:CoMarshalInterface Failed to marshal the interface {6d5140c1-7436-11ce-8034-00aa006009fa}, hr 0x80004002
+0044:err:ole:apartment_get_local_server_stream Failed: 0x80004002
+0024:trace:odbc:SQLAllocEnv (EnvironmentHandle 0051187C)
+0024:trace:odbc:SQLAllocEnv Returning 0, EnvironmentHandle 00347DF0
+0024:trace:odbc:SQLAllocConnect (EnvironmentHandle 00347DF0, ConnectionHandle 00511880)
+0024:trace:odbc:SQLAllocConnect Returning 0, ConnectionHandle 00347E58
+0024:trace:odbc:SQLAllocEnv (EnvironmentHandle 0051167C)
+0024:trace:odbc:SQLAllocEnv Returning 0, EnvironmentHandle 00347EB8
+0024:trace:odbc:SQLAllocConnect (EnvironmentHandle 00347EB8, ConnectionHandle 00511680)
+0024:trace:odbc:SQLAllocConnect Returning 0, ConnectionHandle 00347F20
+0024:trace:odbc:SQLAllocEnv (EnvironmentHandle 0051147C)
+0024:trace:odbc:SQLAllocEnv Returning 0, EnvironmentHandle 00347F80
+0024:trace:odbc:SQLAllocConnect (EnvironmentHandle 00347F80, ConnectionHandle 00511480)
+0024:trace:odbc:SQLAllocConnect Returning 0, ConnectionHandle 0034BC48
+0024:trace:odbc:SQLAllocEnv (EnvironmentHandle 00514AD4)
+0024:trace:odbc:SQLAllocEnv Returning 0, EnvironmentHandle 0034BCA8
+0024:trace:odbc:SQLAllocConnect (EnvironmentHandle 0034BCA8, ConnectionHandle 00514AD8)
+0024:trace:odbc:SQLAllocConnect Returning 0, ConnectionHandle 0034BD10
+0024:trace:odbc:SQLAllocEnv (EnvironmentHandle 00515E94)
+0024:trace:odbc:SQLAllocEnv Returning 0, EnvironmentHandle 0034BD70
+0024:trace:odbc:SQLAllocConnect (EnvironmentHandle 0034BD70, ConnectionHandle 00515E98)
+0024:trace:odbc:SQLAllocConnect Returning 0, ConnectionHandle 0034BDD8
+0024:trace:seh:signal (22, 0043EEF0)
+0024:trace:odbc:SQLSetConnectOption (ConnectionHandle 0034BD10, Option 110, Value 1)
+0024:trace:odbc:SQLSetConnectOption Returning -1
+0024:trace:odbc:SQLConnect (ConnectionHandle 0034BD10, ServerName "T4C Server", NameLength1 -3, UserName "", NameLength2 -3, Authentication "", NameLength3 -3)
+0024:trace:odbc:SQLConnect using Unix driver L"/usr/lib/i386-linux-gnu/odbc/libsqlite3odbc.so"
+0024:trace:odbc:SQLConnect Returning 0
+0024:trace:odbc:SQLAllocStmt (ConnectionHandle 0034BD10, StatementHandle 00514ADC)
+0024:trace:odbc:SQLAllocStmt Returning 0, StatementHandle 0034CCA8
+0024:trace:odbc:SQLExecDirect (StatementHandle 0034CCA8, StatementText "DELETE FROM OnlineUsers WHERE MachineName='P50'", TextLength -3)
+0024:trace:odbc:SQLExecDirect Returning -1
+0024:trace:odbc:SQLError (EnvironmentHandle 0034BCA8, ConnectionHandle 0034BD10, StatementHandle 0034CCA8, SqlState 0031DF10, NativeError 0031DEFC, MessageText 0031DD14, BufferLength 200, TextLength 0031DEF4)
+0024:trace:odbc:SQLError  SqlState "S1000"
+0024:trace:odbc:SQLError  Error 1
+0024:trace:odbc:SQLError  MessageText "[SQLite]no such column: MachineName (1)"
+0024:trace:odbc:SQLError Returning 0
+0024:trace:odbc:SQLFreeConnect (ConnectionHandle 0034BD10)
+0024:trace:odbc:SQLFreeConnect Returning -1
+0024:trace:odbc:SQLFreeEnv (EnvironmentHandle 0034BCA8)
+0024:trace:odbc:SQLFreeEnv Returning -1
+0024:trace:odbc:SQLAllocEnv (EnvironmentHandle 00514AD4)
+0024:trace:odbc:SQLAllocEnv Returning 0, EnvironmentHandle 0034CD20
+0024:trace:odbc:SQLAllocConnect (EnvironmentHandle 0034CD20, ConnectionHandle 00514AD8)
+0024:trace:odbc:SQLAllocConnect Returning 0, ConnectionHandle 0034CD88
+0024:trace:odbc:SQLSetConnectOption (ConnectionHandle 0034CD88, Option 110, Value 1)
+0024:trace:odbc:SQLSetConnectOption Returning -1
+0024:trace:odbc:SQLConnect (ConnectionHandle 0034CD88, ServerName "T4C Server", NameLength1 -3, UserName "", NameLength2 -3, Authentication "", NameLength3 -3)
+0024:trace:odbc:SQLConnect using Unix driver L"/usr/lib/i386-linux-gnu/odbc/libsqlite3odbc.so"
+0024:trace:odbc:SQLConnect Returning 0
+0024:trace:odbc:SQLAllocStmt (ConnectionHandle 0034CD88, StatementHandle 00514ADC)
+0024:trace:odbc:SQLAllocStmt Returning 0, StatementHandle 0034CDE8
+0024:trace:odbc:SQLExecDirect (StatementHandle 0034CDE8, StatementText "DELETE FROM OnlineUsers WHERE MachineName='P50'", TextLength -3)
+0024:trace:odbc:SQLExecDirect Returning -1
+0024:trace:odbc:SQLError (EnvironmentHandle 0034CD20, ConnectionHandle 0034CD88, StatementHandle 0034CDE8, SqlState 0031E010, NativeError 0031E00C, MessageText 0031DF40, BufferLength 200, TextLength 0031E024)
+0024:trace:odbc:SQLError  SqlState "S1000"
+0024:trace:odbc:SQLError  Error 1
+0024:trace:odbc:SQLError  MessageText "[SQLite]no such column: MachineName (1)"
+0024:trace:odbc:SQLError Returning 0
+0024:trace:odbc:SQLSetConnectOption (ConnectionHandle 00347E58, Option 110, Value 1)
+0024:trace:odbc:SQLSetConnectOption Returning -1
+0024:trace:odbc:SQLConnect (ConnectionHandle 00347E58, ServerName "T4C Server", NameLength1 -3, UserName "", NameLength2 -3, Authentication "", NameLength3 -3)
+0024:trace:odbc:SQLConnect using Unix driver L"/usr/lib/i386-linux-gnu/odbc/libsqlite3odbc.so"
+0024:trace:odbc:SQLConnect Returning 0
+0024:trace:odbc:SQLAllocStmt (ConnectionHandle 00347E58, StatementHandle 00511884)
+0024:trace:odbc:SQLAllocStmt Returning 0, StatementHandle 0034CE60
+0024:trace:odbc:SQLSetConnectOption (ConnectionHandle 00347F20, Option 110, Value 1)
+0024:trace:odbc:SQLSetConnectOption Returning -1
+0024:trace:odbc:SQLConnect (ConnectionHandle 00347F20, ServerName "T4C Server", NameLength1 -3, UserName "", NameLength2 -3, Authentication "", NameLength3 -3)
+0024:trace:odbc:SQLConnect using Unix driver L"/usr/lib/i386-linux-gnu/odbc/libsqlite3odbc.so"
+0024:trace:odbc:SQLConnect Returning 0
+0024:trace:odbc:SQLAllocStmt (ConnectionHandle 00347F20, StatementHandle 00511684)
+0024:trace:odbc:SQLAllocStmt Returning 0, StatementHandle 0034D4C0
+0024:trace:odbc:SQLSetConnectOption (ConnectionHandle 0034BC48, Option 110, Value 1)
+0024:trace:odbc:SQLSetConnectOption Returning -1
+0024:trace:odbc:SQLConnect (ConnectionHandle 0034BC48, ServerName "T4C Server", NameLength1 -3, UserName "", NameLength2 -3, Authentication "", NameLength3 -3)
+0024:trace:odbc:SQLConnect using Unix driver L"/usr/lib/i386-linux-gnu/odbc/libsqlite3odbc.so"
+0024:trace:odbc:SQLConnect Returning 0
+0024:trace:odbc:SQLAllocStmt (ConnectionHandle 0034BC48, StatementHandle 00511484)
+0024:trace:odbc:SQLAllocStmt Returning 0, StatementHandle 0034DF00
+0024:trace:odbc:SQLSetConnectOption (ConnectionHandle 00347E58, Option 102, Value 0)
+0024:trace:odbc:SQLSetConnectOption Returning 0
+0024:trace:odbc:SQLSetConnectOption (ConnectionHandle 0034BC48, Option 102, Value 0)
+0024:trace:odbc:SQLSetConnectOption Returning 0
+0024:trace:odbc:SQLExecDirect (StatementHandle 0034D4C0, StatementText "SELECT UserID, AccountName, CurrentLevel FROM PlayingCharacters", TextLength -3)
+0024:trace:odbc:SQLExecDirect Returning 0
+0024:trace:odbc:SQLFetch (StatementHandle 0034D4C0)
+0024:trace:odbc:SQLFetch Returning 100
+0024:trace:odbc:SQLCloseCursor (StatementHandle 0034D4C0)
+0024:trace:odbc:SQLCloseCursor Returning 0
+0024:trace:odbc:SQLFreeConnect (ConnectionHandle 0034BDD8)
+0024:trace:odbc:SQLFreeConnect Returning 0
+0024:trace:odbc:SQLFreeEnv (EnvironmentHandle 0034BD70)
+0024:trace:odbc:SQLFreeEnv Returning 0
+0024:trace:odbc:SQLFreeConnect (ConnectionHandle 0034CD88)
+0024:trace:odbc:SQLFreeConnect Returning -1
+0024:trace:odbc:SQLFreeEnv (EnvironmentHandle 0034CD20)
+0024:trace:odbc:SQLFreeEnv Returning -1
+0024:trace:odbc:SQLFreeConnect (ConnectionHandle 0034BC48)
+0024:trace:odbc:SQLFreeConnect Returning -1
+0024:trace:odbc:SQLFreeEnv (EnvironmentHandle 00347F80)
+0024:trace:odbc:SQLFreeEnv Returning -1
+0024:trace:odbc:SQLFreeConnect (ConnectionHandle 00347F20)
+0024:trace:odbc:SQLFreeConnect Returning -1
+0024:trace:odbc:SQLFreeEnv (EnvironmentHandle 00347EB8)
+0024:trace:odbc:SQLFreeEnv Returning -1
+0024:trace:odbc:SQLFreeConnect (ConnectionHandle 00347E58)
+0024:trace:odbc:SQLFreeConnect Returning -1
+0024:trace:odbc:SQLFreeEnv (EnvironmentHandle 00347DF0)
+0024:trace:odbc:SQLFreeEnv Returning -1
+0024:warn:seh:dispatch_exception ""
+0024:trace:seh:dispatch_exception code=40010006 (DBG_PRINTEXCEPTION_C) flags=0 addr=7B648AA7
+0024:trace:seh:dispatch_exception  info[0]=00000001
+0024:trace:seh:dispatch_exception  info[1]=0031E004
+0024:trace:seh:dispatch_exception eip=7b648aa7 esp=0031ddcc ebp=0031de20 eflags=00000246
+0024:trace:seh:dispatch_exception eax=0031ddcc ebx=00000001 ecx=00000004 edx=0031de54
+0024:trace:seh:dispatch_exception esi=00514308 edi=00000000 cs=0023 ds=002b es=002b fs=0063 gs=006b ss=002b
+0024:trace:seh:call_seh_handlers calling handler at 7BB76BC0 code=40010006 flags=0
+0024:trace:seh:__regs_RtlUnwind code=40010006 flags=2
+0024:trace:seh:__regs_RtlUnwind eip=7bb6005e esp=0031d118 ebp=0031d120 eflags=00000216
+0024:trace:seh:__regs_RtlUnwind eax=00000000 ebx=00000000 ecx=40010006 edx=0031de5c
+0024:trace:seh:__regs_RtlUnwind esi=0031d248 edi=0031d248 cs=0023 ds=002b es=002b fs=0063 gs=006b ss=002b
+0024:trace:seh:__regs_RtlUnwind calling handler at 7BD40C60 code=40010006 flags=2
+0024:trace:seh:__regs_RtlUnwind handler at 7BD40C60 returned 1
+--------------------------------------------------------
+T4C Server v125. Traduit par Kalis.                       
+Copyright(c) Crystalin.. 1998-2004. All rights reserved.
+--------------------------------------------------------0024:trace:odbc:DllMain proxy ODBC: 7A890000,0,00000001
+0044:trace:seh:dispatch_exception code=6ba (RPC_S_SERVER_UNAVAILABLE) flags=0 addr=7B648AA7
+0044:trace:seh:dispatch_exception eip=7b648aa7 esp=0069e2ac ebp=0069e300 eflags=00000246
+0044:trace:seh:dispatch_exception eax=0069e2ac ebx=0069e918 ecx=00000000 edx=00000000
+0044:trace:seh:dispatch_exception esi=00000004 edi=00245d88 cs=0023 ds=002b es=002b fs=0063 gs=006b ss=002b
+0044:trace:seh:call_seh_handlers calling handler at 7ABDA020 code=6ba flags=0
+0044:trace:seh:call_seh_handlers handler at 7ABDA020 returned 1
+0044:trace:seh:call_seh_handlers calling handler at 78EB6F30 code=6ba flags=0
+0044:trace:seh:__regs_RtlUnwind code=6ba flags=2
+0044:trace:seh:__regs_RtlUnwind eip=78ea4f6a esp=0069d618 ebp=0069d620 eflags=00000216
+0044:trace:seh:__regs_RtlUnwind eax=00000000 ebx=00000000 ecx=000006ba edx=0069f040
+0044:trace:seh:__regs_RtlUnwind esi=0069d748 edi=0069d748 cs=0023 ds=002b es=002b fs=0063 gs=006b ss=002b
+0044:trace:seh:__regs_RtlUnwind calling handler at 7BD40C60 code=6ba flags=2
+0044:trace:seh:__regs_RtlUnwind handler at 7BD40C60 returned 1
+0044:trace:seh:__regs_RtlUnwind calling handler at 7ABDA020 code=6ba flags=2
+0044:trace:seh:__regs_RtlUnwind handler at 7ABDA020 returned 1
+0044:err:ole:start_rpcss Failed to open RpcSs service
+0038:trace:seh:NtGetContextThread 0xfffffffe: eax=0000000f ebx=00246f10 ecx=00000000 edx=00000000 esi=00246ecc edi=00246eb8
+0038:trace:seh:NtGetContextThread 0xfffffffe: ebp=00cdfee4 esp=00cdfed8 eip=7bced140 cs=0023 ss=002b flags=00000207
+0038:trace:seh:NtGetContextThread 0xfffffffe: ds=002b es=002b fs=0063 gs=006b

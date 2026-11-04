@@ -31,16 +31,14 @@ class ServerConfig:
     # Packet 66.
     motd: str = "Bienvenue sur le serveur T4C Python 1.25 FR"
 
-    # Packet 91. These fields are present in the original response; empty values
-    # are valid for a development server with no external patch infrastructure.
-    patch_info_1: str = ""
+    # Packet 91. Valeurs réelles observées sur le serveur original 1.25
+    # (diff-test Wine 2026-10-13) : patch_info_1 = domaine officiel, langue = 2 (FR).
+    patch_info_1: str = "kcnt4c2.the4th-coming.com"
     patch_info_2: str = ""
     patch_info_3: str = ""
     patch_info_4: str = ""
-    # Langue annoncée dans le paquet 91. On garde 0 par défaut tant que le
-    # comportement exact du client FR/GOA n'est pas complètement neutralisé.
-    # Le serveur et ses textes visibles restent néanmoins en français.
-    default_language: int = 0
+    # Langue annoncée dans le paquet 91 : 2 = français (valeur du serveur original).
+    default_language: int = 2
     # Paquet 103 : nombre maximal de personnages par compte. Le serveur
     # original l'envoie juste avant la liste (26) pour piloter l'affichage
     # de l'option "Nouveau personnage" du client.

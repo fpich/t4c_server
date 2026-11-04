@@ -1,0 +1,605 @@
+[
+ {
+  "kind": "surface",
+  "x": 0,
+  "y": 3071,
+  "w": 0,
+  "h": 3071,
+  "world": 0,
+  "pcx": "Althea.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 1392,
+  "y": 3032,
+  "w": 44,
+  "h": 1764,
+  "world": 0,
+  "pcx": "Arakas.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 8,
+  "y": 1390,
+  "w": 35,
+  "h": 1353,
+  "world": 0,
+  "pcx": "stoneheim.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 25,
+  "y": 1750,
+  "w": 1469,
+  "h": 2944,
+  "world": 0,
+  "pcx": "ravensdust.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 615,
+  "y": 902,
+  "w": 1251,
+  "h": 1504,
+  "world": 0,
+  "pcx": "ravensdust.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 2725,
+  "y": 3060,
+  "w": 1076,
+  "h": 1273,
+  "world": 0,
+  "pcx": "lighthaven.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 2905,
+  "y": 3060,
+  "w": 838,
+  "h": 1088,
+  "world": 0,
+  "pcx": "lighthaven.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 2793,
+  "y": 2906,
+  "w": 1012,
+  "h": 1087,
+  "world": 0,
+  "pcx": "lighthaven.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 3798,
+  "y": -1772,
+  "w": 3904,
+  "h": -1654,
+  "world": 0,
+  "pcx": "lighthaven.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 2766,
+  "y": -568,
+  "w": 3112,
+  "h": -302,
+  "world": 0,
+  "pcx": "windhowl.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 76,
+  "y": 164,
+  "w": 741,
+  "h": 826,
+  "world": 0,
+  "pcx": "stonecrest.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 823,
+  "y": 405,
+  "w": 1209,
+  "h": 665,
+  "world": 0,
+  "pcx": "stonecrest.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 3672,
+  "y": 840,
+  "w": 4298,
+  "h": 1104,
+  "world": 0,
+  "pcx": "silversky.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 3790,
+  "y": 820,
+  "w": 4164,
+  "h": 842,
+  "world": 0,
+  "pcx": "silversky.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 3791,
+  "y": 795,
+  "w": 4037,
+  "h": 821,
+  "world": 0,
+  "pcx": "silversky.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 3791,
+  "y": 777,
+  "w": 3951,
+  "h": 797,
+  "world": 0,
+  "pcx": "silversky.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 3859,
+  "y": 759,
+  "w": 3951,
+  "h": 777,
+  "world": 0,
+  "pcx": "silversky.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 5101,
+  "y": -73,
+  "w": 5231,
+  "h": 41,
+  "world": 0,
+  "pcx": "urtanar.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 39,
+  "y": 95,
+  "w": 1829,
+  "h": 1885,
+  "world": 0,
+  "pcx": "ogrimar.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 1253,
+  "y": 1291,
+  "w": 1597,
+  "h": 1637,
+  "world": 0,
+  "pcx": "brownbark_basement.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 1687,
+  "y": 1756,
+  "w": 1811,
+  "h": 1869,
+  "world": 0,
+  "pcx": "colosseum.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 2928,
+  "y": 3053,
+  "w": 299,
+  "h": 416,
+  "world": 0,
+  "pcx": "prison.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 288,
+  "y": 453,
+  "w": 2893,
+  "h": 3013,
+  "world": 0,
+  "pcx": "market.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 1582,
+  "y": 1618,
+  "w": 782,
+  "h": 819,
+  "world": 0,
+  "pcx": "artherk.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 1,
+  "y": 3071,
+  "w": 1,
+  "h": 3071,
+  "world": 1,
+  "pcx": "uncharted.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 274,
+  "y": 351,
+  "w": 357,
+  "h": 434,
+  "world": 1,
+  "pcx": "lighthaven_dungeon1.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 564,
+  "y": -68,
+  "w": 850,
+  "h": 58,
+  "world": 1,
+  "pcx": "lighthaven_dungeon1.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 227,
+  "y": -175,
+  "w": 503,
+  "h": 67,
+  "world": 1,
+  "pcx": "lighthaven_dungeon2.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 214,
+  "y": 268,
+  "w": 16,
+  "h": 65,
+  "world": 1,
+  "pcx": "lighthaven_dungeon2.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 299,
+  "y": -295,
+  "w": 503,
+  "h": -175,
+  "world": 1,
+  "pcx": "lighthaven_dungeon2.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 3,
+  "y": 112,
+  "w": 247,
+  "h": 407,
+  "world": 1,
+  "pcx": "lighthaven_dungeon3.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 211,
+  "y": 69,
+  "w": 569,
+  "h": 209,
+  "world": 1,
+  "pcx": "lighthaven_dungeon3.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 427,
+  "y": 209,
+  "w": 569,
+  "h": 333,
+  "world": 1,
+  "pcx": "lighthaven_dungeon3.pcx"
+ },
+ {
+  "kind": "sous-sol",
+  "x": 580,
+  "y": 174,
+  "w": 818,
+  "h": 394,
+  "world": 1,
+  "pcx": "lighthaven_dungeon4.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 29,
+  "y": 153,
+  "w": 577,
+  "h": 698,
+  "world": 1,
+  "pcx": "lighthaven_crypt.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 1123,
+  "y": -1039,
+  "w": 1409,
+  "h": -707,
+  "world": 1,
+  "pcx": "jarko.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 577,
+  "y": -349,
+  "w": 833,
+  "h": -157,
+  "world": 1,
+  "pcx": "ancient_temple.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 597,
+  "y": 874,
+  "w": 21,
+  "h": 292,
+  "world": 1,
+  "pcx": "feylor_labyrinth.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 1299,
+  "y": 1675,
+  "w": 12,
+  "h": 455,
+  "world": 1,
+  "pcx": "bane.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 2448,
+  "y": 2533,
+  "w": 369,
+  "h": 902,
+  "world": 1,
+  "pcx": "makrsh.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 2533,
+  "y": 3054,
+  "w": 11,
+  "h": 992,
+  "world": 1,
+  "pcx": "makrsh.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 2314,
+  "y": -2230,
+  "w": 2808,
+  "h": -1724,
+  "world": 1,
+  "pcx": "makrsh.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 301,
+  "y": 624,
+  "w": 1681,
+  "h": 1984,
+  "world": 1,
+  "pcx": "raven_crypt1.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 397,
+  "y": 690,
+  "w": 2013,
+  "h": 2263,
+  "world": 1,
+  "pcx": "raven_crypt2.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 570,
+  "y": 703,
+  "w": 321,
+  "h": 454,
+  "world": 1,
+  "pcx": "mordenthal.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 886,
+  "y": -144,
+  "w": 1164,
+  "h": 160,
+  "world": 1,
+  "pcx": "mordenthal.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 1,
+  "y": 3071,
+  "w": 1,
+  "h": 3071,
+  "world": 2,
+  "pcx": "uncharted.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 566,
+  "y": -266,
+  "w": 1178,
+  "h": 536,
+  "world": 2,
+  "pcx": "lighthaven_cave.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 956,
+  "y": 588,
+  "w": 1516,
+  "h": 948,
+  "world": 2,
+  "pcx": "brigands.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 1178,
+  "y": 60,
+  "w": 1588,
+  "h": 588,
+  "world": 2,
+  "pcx": "brigands.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 4,
+  "y": 632,
+  "w": 1252,
+  "h": 1577,
+  "world": 2,
+  "pcx": "kraanian.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 228,
+  "y": 378,
+  "w": 1577,
+  "h": 1603,
+  "world": 2,
+  "pcx": "kraanian.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 1516,
+  "y": 628,
+  "w": 1874,
+  "h": 988,
+  "world": 2,
+  "pcx": "kraanian.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 97,
+  "y": 538,
+  "w": 2421,
+  "h": 2825,
+  "world": 2,
+  "pcx": "cave1.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 71,
+  "y": 538,
+  "w": 1993,
+  "h": 2421,
+  "world": 2,
+  "pcx": "cave2.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 98,
+  "y": 310,
+  "w": 2826,
+  "h": 3058,
+  "world": 2,
+  "pcx": "cave3.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 635,
+  "y": 948,
+  "w": 2404,
+  "h": 2686,
+  "world": 2,
+  "pcx": "cave4.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 593,
+  "y": 945,
+  "w": 1938,
+  "h": 2363,
+  "world": 2,
+  "pcx": "cave5.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 3080,
+  "y": 878,
+  "w": 3320,
+  "h": 1186,
+  "world": 2,
+  "pcx": "cave7.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 3024,
+  "y": 878,
+  "w": 3080,
+  "h": 1002,
+  "world": 2,
+  "pcx": "cave7.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 3028,
+  "y": 650,
+  "w": 3340,
+  "h": 878,
+  "world": 2,
+  "pcx": "cave7.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 3336,
+  "y": 882,
+  "w": 3724,
+  "h": 1336,
+  "world": 2,
+  "pcx": "cave6.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 764,
+  "y": 901,
+  "w": 1103,
+  "h": 1352,
+  "world": 2,
+  "pcx": "orcs1.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 895,
+  "y": 146,
+  "w": 1164,
+  "h": 1372,
+  "world": 2,
+  "pcx": "orcs1.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 764,
+  "y": 1142,
+  "w": 909,
+  "h": 1099,
+  "world": 2,
+  "pcx": "orcs2.pcx"
+ },
+ {
+  "kind": "surface",
+  "x": 903,
+  "y": 1114,
+  "w": 1099,
+  "h": 1140,
+  "world": 2,
+  "pcx": "orcs2.pcx"
+ },
+ {
+  "kind": "donjon",
+  "x": 1391,
+  "y": -1353,
+  "w": 1869,
+  "h": -721,
+  "world": 2,
+  "pcx": "sorrow.pcx"
+ }
+]

@@ -15,7 +15,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--server-version", type=int, default=0, help="packet 65/91 metadata version value")
     parser.add_argument("--protocol-version", type=int, default=125, help="packet 99 expected client protocol version (default: 125)")
     parser.add_argument("--motd", default="Bienvenue sur le serveur T4C Python 1.25 FR")
-    parser.add_argument("--default-language", type=int, default=0, help="identifiant de langue envoyé dans le paquet 91 (0 par défaut; français historique souvent ID 2)")
+    parser.add_argument("--default-language", type=int, default=2, help="identifiant de langue envoyé dans le paquet 91 (2 = FR, valeur du serveur original)")
+    parser.add_argument("--patch-info-1", default="kcnt4c2.the4th-coming.com", help="première CString du paquet 91 (domaine officiel observé sur l'original)")
     parser.add_argument("--account", default="test", help="account for --strict-auth")
     parser.add_argument("--password", default="test", help="password for --strict-auth")
     parser.add_argument(
@@ -55,6 +56,7 @@ async def main() -> None:
         database_path=args.database,
         maps_dir=args.maps_dir or None,
     )
+    config.patch_info_1 = args.patch_info_1
 
     # PNJ de développement près de la position de départ (LightHaven).
     # Apparences créatures : zone d'init client 0x501F00+ (cf. docs RE).

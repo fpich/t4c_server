@@ -102,6 +102,12 @@ class IntegrationTests(unittest.IsolatedAsyncioTestCase):
             "Marchand Test", appearance=10011, x=sx + 2, y=sy,
             shop={2: 5},
         )
+        # Monstre hostile pour le combat (étape 22).
+        self.rat = world.register_npc(
+            "Rat test", appearance=300, x=sx + 3, y=sy,
+            hostile=True, hp=50, damage=2, dodge=0, xp_reward=10, gold_reward=3,
+            loot=(10007,),
+        )
         world.create_channel("General")
         self.clients = []
         for _ in range(2):
@@ -224,11 +230,43 @@ class IntegrationTests(unittest.IsolatedAsyncioTestCase):
         await alice.wait_for(41)  # stock rafraîchi
         self.assertEqual(self.shop_npc.shop[2], 4)
 
+        # --- Groupe : Alice invite Bob (78), Bob rejoint (79) -> 76 aux deux ---
+        alice.received.clear()
+        bob.received.clear()
+        alice.request(78, lambda w: (w.write_u32(2), w.write_u32(0)))  # unit_id Bob = 2
+        invite = await bob.wait_for(78)
+        from t4c.codec import PacketReader
+        r = PacketReader(invite.body)
+        self.assertEqual(r.read_u32(), 1)  # leader = Alice (unit_id 1)
+        self.assertEqual(r.read_text(), "Alice")
+        bob.request(79)
+        members = await alice.wait_for(76)
+        r = PacketReader(members.body)
+        r.read_u8()
+        self.assertEqual(r.read_u16(), 2)  # 2 membres
+
+        # --- Combat : Alice attaque le rat (C2S 32, spellId=0) ---
+        alice.received.clear()
+        alice.request(32, lambda w: (w.write_u16(0), w.write_u16(0), w.write_u16(0), w.write_u32(self.rat.unit_id)))
+        ev = await alice.wait_for(0x2711, timeout=3.0) if any(p.packet_id == 0x2711 for p in alice.received) else None
+        # Accepte 0x2711 (touché) ou 0x2712 (raté) : un round a eu lieu.
+        if ev is None:
+            ev = await alice.wait_for(0x2712)
+        self.assertIn(ev.packet_id, (0x2711, 0x2712))
+
+        # --- Sort : Alice lance Fire dart (C2S 32, spellId=414) ---
+        alice.received.clear()
+        alice.request(32, lambda w: (w.write_u16(414), w.write_u16(0), w.write_u16(0), w.write_u32(self.rat.unit_id)))
+        cast = await alice.wait_for(64)
+        r = PacketReader(cast.body)
+        self.assertEqual(r.read_u16(), 414)
+        mana = await alice.wait_for(67)
+        self.assertGreaterEqual(PacketReader(mana.body).read_u16(), 0)
+
         # --- Sortie de jeu : Bob voit disparaître Alice (paquet 11, unit_id=1) ---
         bob.received.clear()
         alice.request(20)
         removed = await bob.wait_for(11)
-        from t4c.codec import PacketReader
         r = PacketReader(removed.body)
         r.read_u8()
         self.assertEqual(r.read_i32(), 1)  # unit_id d'Alice

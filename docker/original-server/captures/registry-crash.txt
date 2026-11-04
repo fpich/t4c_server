@@ -1,0 +1,105 @@
+
+HKEY_LOCAL_MACHINE\Software\Vircom\The 4th Coming Server
+    License    REG_SZ    VT4C20020060001-242823-C0651943
+    RegUpdate    REG_DWORD    0x1
+
+HKEY_LOCAL_MACHINE\Software\Vircom\The 4th Coming Server\Authentication
+    ACCESS_RIGHT_DENIAL_MSG    REG_SZ    You do not have access rights to play The 4th Coming.
+    AUTH_REALM    REG_SZ    
+    AuthenticationMethod    REG_DWORD    0x1
+    ODBC_CREDITS_FLD    REG_SZ    
+    ODBC_DB_PWD    REG_SZ    
+    ODBC_DB_USER    REG_SZ    
+    ODBC_DEDUCT_CREDITS    REG_DWORD    0x0
+    ODBC_DSN    REG_SZ    T4C Server
+    ODBC_NAME_FLD    REG_SZ    Account
+    ODBC_PRIVILEGE_FLD    REG_SZ    T4CKey
+    ODBC_PRIVILEGE_VALUE    REG_SZ    1
+    ODBC_PWD_FLD    REG_SZ    Password
+    ODBC_TABLE    REG_SZ    T4Cusers
+    ODBC_WHERE    REG_SZ    
+    REMOTE_WG_T4C_KEY    REG_SZ    
+    VOP_2ND_AUTH_IP    REG_SZ    
+    VOP_2ND_AUTH_PORT    REG_DWORD    0x0
+    VOP_ACCT_IP    REG_SZ    
+    VOP_ACCT_PORT    REG_DWORD    0x0
+    VOP_NAS_IP    REG_SZ    
+    VOP_SEC_IP    REG_SZ    
+    VOP_SEC_PORT    REG_DWORD    0x0
+    VOP_SECRET    REG_SZ    
+    VOP_STRIP_REALM    REG_SZ    
+    WG_T4C_KEY    REG_SZ    
+
+HKEY_LOCAL_MACHINE\Software\Vircom\The 4th Coming Server\Characters
+    DB_PWD    REG_SZ    
+    DB_USER    REG_SZ    
+    ShoutDelay    REG_DWORD    0xa0
+    StartupGold    REG_SZ    200+1d50
+    StartupItem1    REG_SZ    Cloth pants
+    StartupItem2    REG_SZ    Cloth vest
+    StartupItem3    REG_SZ    Rusterd Dirk
+    StartupItem4    REG_SZ    Torch
+    StartupItem5    REG_SZ    Torch
+    TeleportLocation1    REG_SZ    Blackblood's Castle
+    TeleportLocation1W    REG_DWORD    0x0
+    TeleportLocation1X    REG_DWORD    0x172
+    TeleportLocation1Y    REG_DWORD    0x6ea
+    TeleportLocation2    REG_SZ    Bridge of Lighthaven
+    TeleportLocation2W    REG_DWORD    0x0
+    TeleportLocation2X    REG_DWORD    0xae6
+    TeleportLocation2Y    REG_DWORD    0x406
+    TeleportLocation3    REG_SZ    Brigand's camp
+    TeleportLocation3W    REG_DWORD    0x0
+    TeleportLocation3X    REG_DWORD    0x87a
+    TeleportLocation3Y    REG_DWORD    0x4d8
+    TeleportLocation4    REG_SZ    Castle of Orkanis
+    TeleportLocation4W    REG_DWORD    0x0
+    TeleportLocation4X    REG_DWORD    0x62c
+    TeleportLocation4Y    REG_DWORD    0xd2
+
+HKEY_LOCAL_MACHINE\Software\Vircom\The 4th Coming Server\Contact
+    AdminEmail    REG_SZ    admin@localhost
+    CompanyName    REG_SZ    T4C Server
+
+HKEY_LOCAL_MACHINE\Software\Vircom\The 4th Coming Server\ExtensionDLLs
+    OjctDLL1    REG_SZ    World Objects.dll
+
+HKEY_LOCAL_MACHINE\Software\Vircom\The 4th Coming Server\GeneralConfig
+    ACK_COLOSSEUM    REG_DWORD    0x0
+    ACK_DOPPELGANGER    REG_DWORD    0x0
+    LangDB1    REG_SZ    t4c_fr.elng
+    LOG_WORLD_LOG    REG_DWORD    0x1
+    NB_WARNINGS    REG_DWORD    0x5
+    SuperUser    REG_SZ    AdminUser
+    TIME_BEFORE_WARNING    REG_DWORD    0x3e8
+    UserCap    REG_SZ    1000
+    Version    REG_DWORD    0x7d
+    WORLD_LOG    REG_SZ    World.log
+
+HKEY_LOCAL_MACHINE\Software\Vircom\The 4th Coming Server\Logging
+    LOG_WORLD_LOG    REG_DWORD    0x1
+    WORLD_LOG    REG_SZ    World.log
+
+HKEY_LOCAL_MACHINE\Software\Vircom\The 4th Coming Server\Network
+    SERVER_IP    REG_SZ    127.0.0.1
+    SERVER_PORT    REG_DWORD    0x2d9d
+
+HKEY_LOCAL_MACHINE\Software\Vircom\The 4th Coming Server\PatchServers
+    OtherServer1_IP    REG_SZ    80.8.147.110
+    OtherServer1_Port    REG_DWORD    0x2d9f
+    WebPatch_URL    REG_SZ    kcnt4c2.the4th-coming.com
+
+HKEY_LOCAL_MACHINE\Software\Vircom\The 4th Coming Server\Paths
+    BINARY_PATH    REG_SZ    Z:\root\server\
+    LOG_PATH    REG_SZ    Z:\root\server\Logs
+    rootWWWdir    REG_SZ    Z:\root\server\wwwroot\
+
+HKEY_LOCAL_MACHINE\Software\Vircom\The 4th Coming Server\PVPDeath
+
+HKEY_LOCAL_MACHINE\Software\Vircom\The 4th Coming Server\UserMan
+    rootWWWdir    REG_SZ    Z:\root\server\wwwroot\
+
+HKEY_LOCAL_MACHINE\Software\Vircom\The 4th Coming Server\WorldConfig
+
+HKEY_LOCAL_MACHINE\Software\Vircom\WebPatch
+

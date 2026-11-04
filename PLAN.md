@@ -36,8 +36,8 @@ Découvertes clés :
 | 27 | Téléportation & mort | S2C 57 au respawn après mort (fait avec étape 22) ; pénalité/XP niveau (37) : formules WDA extraites mais pas encore branchées | 🔄 |
 | 28 | Fragmentation UDP | Réassemblage (flag 0x0400) : declaredLength = taille totale, 1012 o/fragment, purge 10 s | ✅ 2026-10-13 (3 tests) |
 | 29 | Comptes réels | 14 = inscription si inconnu (hash SHA-256 salé) / vérification si connu ; persistance T4Cusers | ✅ 2026-10-13 (2 tests) |
-| 30 | Docker/Wine | Finaliser le diagnostic ODBC du serveur original (SQLConnect sous Wine 10) pour diff-test | ⬜ |
-| 31 | Validation de bout en bout | Harnais multi-clients rejouant un scénario complet (combat, groupe, shop, sort) + métriques | ⬜ |
+| 30 | Serveur original sous Wine | ✅ **FONCTIONNEL** (port 11677, Wine 10 local) : causes racines = MFC42, winbind, ODBC i386+MachineName, NPCDLL1=NPCs.dll. Doc : `docs/SERVEUR_ORIGINAL_WINE_LOCAL.md`. Diff-test vs Python OK (66/91/65/45/14/26/46) | ✅ 2026-10-13 |
+| 31 | Validation de bout en bout | Harnais multi-clients (fait étape 19, étendu groupe/combat/sort) + diff-test contre l'original (fait étape 30) ; reste : diff-test 25/13/46 complet avec perso créé côté original | 🔄 |
 
 ## Hors périmètre réaliste (à documenter comme limitations connues)
 

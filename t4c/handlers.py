@@ -1550,7 +1550,7 @@ async def handle_use_spell_unit(
     world.send_mana_update(server, session, character.mana)
     world.broadcast_spell_casting(
         server, spell_id, session.unit_id or 0, session.pos_x, session.pos_y,
-        target_unit_id, x, y, session.pos_world,
+        target_unit_id, x, y, session.pos_world, caster=session,
     )
     # Dégâts du sort sur un PNJ hostile en vue (formule simplifiée : 1d20 + INT/2).
     import random

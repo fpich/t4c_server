@@ -3,6 +3,49 @@
 > Document de suivi de l'implémentation. Cocher et dater au fur et à mesure.
 > Références RE : `docs/reverse-engineering/` (formats confirmés par passe V1-V5).
 
+---
+
+# PLAN DE FINALISATION — serveur T4C complet (2026-10-13, décision autonome)
+
+## Nouvelles sources RE produites cette session (binaire présent dans le dépôt)
+
+RE directe de `ressources/T4C_Server/T4C Server.exe` (PE32, ImageBase 0x400000) :
+table d'enregistrement des handlers = séquence `push opcode; push handler; call`
+dans `.text` → **79 handlers C2S identifiés** (voir
+`docs/reverse-engineering/RE_HANDLERS_TABLE_2026-10-13.md`).
+Découvertes clés :
+- **C2S 32** (handler 0x480240) appelle `Character::StartAutoCombat` (0x41FDD0)
+  → **c'est le paquet d'attaque/sort sur unité** (format connu :
+  u16 spellId, u16 x, u16 y, u32 targetUnitId). Le combat de mêlée se lance
+  donc par 32 avec targetUnitId = créature hostile.
+- **C2S 78** = inviter un groupe (CreateGroup/Invite), **79** = rejoindre
+  (Join), **80** = quitter (Dismiss), **81** = dissoudre, **88** = auto-split
+  (u8). S2C associés déjà connus : 76 membres, 78 invitation, 80/82 fin,
+  87 HP membre, 88 état auto-split.
+- Handler 24 appelle aussi StartAutoCombat (attaque à distance / compétence).
+
+## Chantiers de finalisation (ordre d'exécution)
+
+| # | Chantier | Contenu | Statut |
+|---|---|---|---|
+| 22 | Combat de base (3.2) | C2S 32 (spellId=0) sur PNJ hostile → jet touche → S2C 0x2711/0x2712, dégâts, mort PNJ (11 + loot + XP 44 + or 53), riposte, mort joueur → respawn (57) | ✅ 2026-10-13 (6 tests) |
+| 23 | Groupes (4.2) | C2S 78/79/80/81/88, S2C 76/78/80/82/87/88, partage XP/or (DistributeKillXP/Gold) | ✅ 2026-10-13 (6 tests) |
+| 24 | Sorts réels (3.3) | C2S 32 spellId>0 : coût mana (67), diffusion 64, dégâts, sort de départ 414 Fire dart, PNJ teach → S2C 55, persistance PlayerSpells | ✅ 2026-10-13 (5 tests) |
+| 25 | WDA déchiffré | `tools/wda_decrypt.py` (masque LCG 3418 octets, SHA256 vérifié), `ressources/wda_extract/` : 188 items, 962 sorts, PNJ/mobs/spawners ; catalogue chargé dans items.py/spells.py | ✅ 2026-10-13 (4 tests) — grille de tuiles non localisée (binaire) |
+| 26 | Persistance étendue | Tables guildes (guildz/guildplayers/Guildboard), OfflineMessages/MessageDispatch, Karma/StatPnts/SkillPnts/Appearance/Gender, OnlineUsers | ⬜ |
+| 27 | Téléportation & mort | S2C 57 (changement de monde), respawn, pénalité mort, S2C 37 progression niveau | ⬜ |
+| 28 | Fragmentation UDP | Réassemblage des fragments (flag 0x0400, group id) côté serveur | ⬜ |
+| 29 | Comptes réels | Création de compte via 14 (inscription), hash mot de passe, unicité, session compte | ⬜ |
+| 30 | Docker/Wine | Finaliser le diagnostic ODBC du serveur original (SQLConnect sous Wine 10) pour diff-test | ⬜ |
+| 31 | Validation de bout en bout | Harnais multi-clients rejouant un scénario complet (combat, groupe, shop, sort) + métriques | ⬜ |
+
+## Hors périmètre réaliste (à documenter comme limitations connues)
+
+- IA avancée des créatures (NPC AddOn dlls propriétaires), quêtes/dialogues
+  scriptés WDA, sons/musiques (client), anti-cheat poussé.
+
+---
+
 ## État actuel (acquis)
 
 | Domaine | Statut |

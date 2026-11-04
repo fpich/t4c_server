@@ -353,8 +353,42 @@ def send_server_message(
 
 
 EVENT_SERVER_MESSAGE = 63
-EVENT_GOLD_UPDATE = 53        # S2C 53 GOLD_UPDATE : u32 gold (client @0x49C7E6 voisin)
+EVENT_GOLD_UPDATE = 53        # S2C 53 GOLD_UPDATE : u32 gold
 EVENT_XP_UPDATE = 44          # S2C 44 PROGRESSION64_XP_UPDATE : u32 hi, u32 lo
+EVENT_MANA_UPDATE = 67        # S2C 67 MANA_UPDATE : u16 mana
+EVENT_SPELL_CASTING = 64      # S2C 64 : u16 spellId, u32 caster, u32 target, u16 xB,yB,xA,yA, u32 effectId
+
+
+def send_mana_update(server: "T4CServerProtocol", session: ClientSession, mana: int) -> None:
+    """S2C 67 (MANA_UPDATE) : nouveau mana du personnage."""
+    packet = PacketWriter(EVENT_MANA_UPDATE)
+    packet.write_u16(mana & 0xFFFF)
+    server.send_packet(session.address, packet)
+
+
+def broadcast_spell_casting(
+    server: "T4CServerProtocol",
+    spell_id: int,
+    caster_unit_id: int,
+    caster_x: int,
+    caster_y: int,
+    target_unit_id: int,
+    target_x: int,
+    target_y: int,
+    world_id: int = 0,
+) -> None:
+    """S2C 64 (SPELL_CASTING) : diffuse le lancement d'un sort aux joueurs en vue."""
+    for viewer in _sessions_in_view_of(server, target_x, target_y, world_id):
+        packet = PacketWriter(EVENT_SPELL_CASTING)
+        packet.write_u16(spell_id)
+        packet.write_u32(caster_unit_id)
+        packet.write_u32(target_unit_id)
+        packet.write_u16(target_x)   # posB (cible)
+        packet.write_u16(target_y)
+        packet.write_u16(caster_x)   # posA (lanceur)
+        packet.write_u16(caster_y)
+        packet.write_u32(spell_id)   # effectId
+        server.send_packet(viewer.address, packet)
 
 
 def send_gold_update(server: "T4CServerProtocol", session: ClientSession, gold: int) -> None:
@@ -631,6 +665,17 @@ class Npc:
     world: int = 0
     # Shop du PNJ marchand : template_id -> quantité en stock (vide = pas marchand).
     shop: dict[int, int] = field(default_factory=dict)
+    # PNJ enseignant (PLAN 3.3) : C2S 11 dessus -> S2C 55 TEACH_SKILL_LIST.
+    teach: tuple[int, ...] = ()
+    # Créature hostile (PLAN 3.2) : combat via C2S 32 sur cette unité.
+    hostile: bool = False
+    hp: int = 0
+    max_hp: int = 0
+    damage: int = 5          # dégâts d'une attaque de la créature
+    dodge: int = 5           # esquive de la créature
+    xp_reward: int = 0       # XP donnée au tueur
+    gold_reward: int = 0     # or donné au tueur
+    loot: tuple[int, ...] = ()  # template_ids droppés au sol à la mort
 
 
 # Table de spawn des PNJ de développement. À terme : extraite des WDA/maps
@@ -649,13 +694,28 @@ def register_npc(
     world: int = 0,
     *,
     shop: dict[int, int] | None = None,
+    teach: tuple[int, ...] = (),
+    hostile: bool = False,
+    hp: int = 0,
+    damage: int = 5,
+    dodge: int = 5,
+    xp_reward: int = 0,
+    gold_reward: int = 0,
+    loot: tuple[int, ...] = (),
 ) -> Npc:
     """Enregistre un PNJ statique (spawn au démarrage du serveur).
 
     `shop` : si fourni, le PNJ est un marchand (template_id -> quantité).
+    `hostile` : créature attaquable (C2S 32 sur son unit_id démarre le combat).
     """
     global _next_npc_id
-    npc = Npc(_next_npc_id, name, appearance, x, y, world, dict(shop or {}))
+    max_hp = hp if hp > 0 else (30 if hostile else 0)
+    npc = Npc(
+        _next_npc_id, name, appearance, x, y, world, dict(shop or {}),
+        teach=tuple(teach), hostile=hostile, hp=max_hp, max_hp=max_hp,
+        damage=damage, dodge=dodge,
+        xp_reward=xp_reward, gold_reward=gold_reward, loot=tuple(loot),
+    )
     _next_npc_id += 1
     _npcs[npc.unit_id] = npc
     return npc
@@ -755,6 +815,33 @@ def sell_price(template) -> int:
     return max(1, template.price // 2)
 
 
+def send_teach_list(
+    server: "T4CServerProtocol", session: ClientSession, npc: Npc
+) -> None:
+    """S2C 55 (TEACH_SKILL_LIST) : sorts enseignables par le PNJ.
+
+    Format (TSV consolidé) : u16 context, u16 count, puis par entrée :
+    u8 flags, u16 skillId, u32 valueA, CString name, CString requirements, u32 valueB.
+    """
+    from .spells import spell_name
+
+    listing = PacketWriter(55)
+    listing.write_u16(0)  # context
+    listing.write_u16(len(npc.teach))
+    for spell_id in npc.teach:
+        listing.write_u8(0)          # flags
+        listing.write_u16(spell_id)  # skillId (id du sort WDA)
+        listing.write_u32(10)        # valueA (coût mana)
+        listing.write_text(spell_name(spell_id))
+        listing.write_text("")       # requirements
+        listing.write_u32(0)         # valueB
+    server.send_packet(session.address, listing)
+    log.info(
+        "ENSEIGNEMENT liste envoyée à %s (PNJ=%s, %d sort(s))",
+        session.address, npc.name, len(npc.teach),
+    )
+
+
 def send_sell_list(
     server: "T4CServerProtocol", session: ClientSession, npc: Npc
 ) -> None:
@@ -776,6 +863,409 @@ def send_sell_list(
         "SHOP liste vente envoyée à %s (marchand=%s, %d objet(s) du sac)",
         session.address, npc.name, len(items),
     )
+
+
+# -----------------------------------------------------------------------------
+# Combat (PLAN 3.2) — C2S 32 sur unité hostile = StartAutoCombat (RE 2026-10-13,
+# handler 0x480240 -> Character::StartAutoCombat 0x41FDD0). Résolution d'un
+# round façon TFCMAIN::Attack (0x4722A0) : jet AGI vs esquive -> BCAttack
+# (0x2711) ou BCMiss (0x2712).
+# -----------------------------------------------------------------------------
+EVENT_ATTACK = 0x2711        # S2C ATTACK : u32 attacker, u32 target, u8 0, u8 0, i8 type, u16 x1,y1,x2,y2
+EVENT_MISS = 0x2712          # S2C MISS   : u32 attacker, u32 target, u16 x1,y1,x2,y2
+EVENT_UNIT_INFO_UPDATE = 69  # S2C : u16 appearance, u32 unitId, i8 radiance, u8 status, u8 hp%
+EVENT_TELEPORT = 57          # S2C : u16 x, u16 y, u16 world
+
+
+def _sessions_in_view_of(
+    server: "T4CServerProtocol", x: int, y: int, world_id: int
+) -> list[ClientSession]:
+    return [
+        s
+        for s in server.sessions.values()
+        if s.state is SessionState.IN_WORLD
+        and s.pos_world == world_id
+        and _in_view(s.pos_x, s.pos_y, x, y)
+    ]
+
+
+def broadcast_attack(
+    server: "T4CServerProtocol",
+    attacker_unit_id: int,
+    attacker_x: int,
+    attacker_y: int,
+    target_unit_id: int,
+    target_x: int,
+    target_y: int,
+    *,
+    hit: bool,
+    attack_type: int = 0,
+    world_id: int = 0,
+) -> None:
+    """Diffuse un round de combat (0x2711 touché / 0x2712 raté) aux joueurs en vue."""
+    targets = _sessions_in_view_of(server, target_x, target_y, world_id)
+    for target in targets:
+        packet = PacketWriter(EVENT_ATTACK if hit else EVENT_MISS)
+        packet.write_u32(attacker_unit_id)
+        packet.write_u32(target_unit_id)
+        if hit:
+            packet.write_u8(0)
+            packet.write_u8(0)
+            packet.write_i8(attack_type)
+        packet.write_u16(attacker_x)
+        packet.write_u16(attacker_y)
+        packet.write_u16(target_x)
+        packet.write_u16(target_y)
+        server.send_packet(target.address, packet)
+
+
+def send_unit_info_update(
+    server: "T4CServerProtocol",
+    session: ClientSession,
+    appearance: int,
+    unit_id: int,
+    hp_percent: int,
+) -> None:
+    """S2C 69 : met à jour l'unité affichée (barre de HP)."""
+    packet = PacketWriter(EVENT_UNIT_INFO_UPDATE)
+    packet.write_i16(appearance)
+    packet.write_u32(unit_id)
+    packet.write_i8(0)               # radiance
+    packet.write_u8(0)               # statut
+    packet.write_u8(max(0, min(100, hp_percent)))
+    server.send_packet(session.address, packet)
+
+
+def resolve_player_attack_on_npc(
+    server: "T4CServerProtocol",
+    session: ClientSession,
+    npc: Npc,
+    character,
+) -> bool:
+    """Un round d'attaque du joueur sur un PNJ hostile. Retourne True si touché."""
+    import random
+
+    # Jet de touche façon GetBlowPrecision : base 50% + (AGI attaquant - esquive cible) * 2.
+    hit_chance = 50 + (character.agi - npc.dodge) * 2
+    hit_chance = max(5, min(95, hit_chance))
+    hit = random.randint(1, 100) <= hit_chance
+    broadcast_attack(
+        server,
+        session.unit_id or 0,
+        session.pos_x,
+        session.pos_y,
+        npc.unit_id,
+        npc.x,
+        npc.y,
+        hit=hit,
+        world_id=npc.world,
+    )
+    if not hit:
+        log.info(
+            "COMBAT %s rate %s (unit=%d)", character.name, npc.name, npc.unit_id
+        )
+        return False
+    # Dégâts : FOR/2 + arme simplifiée (rand 1..6).
+    damage = max(1, character.strength // 2 + random.randint(1, 6))
+    npc.hp = max(0, npc.hp - damage)
+    hp_percent = (npc.hp * 100) // npc.max_hp if npc.max_hp else 0
+    for viewer in _sessions_in_view_of(server, npc.x, npc.y, npc.world):
+        send_unit_info_update(server, viewer, npc.appearance, npc.unit_id, hp_percent)
+    log.info(
+        "COMBAT %s touche %s pour %d dégâts (HP %d/%d)",
+        character.name, npc.name, damage, npc.hp, npc.max_hp,
+    )
+    if npc.hp <= 0:
+        kill_npc(server, npc, session, character)
+    return True
+
+
+def kill_npc(
+    server: "T4CServerProtocol",
+    npc: Npc,
+    killer: ClientSession,
+    character,
+) -> None:
+    """Mort d'un PNJ : retrait du monde (11), loot au sol, XP/or au tueur."""
+    del _npcs[npc.unit_id]
+    # Retrait diffusé aux joueurs en vue.
+    removed = PacketWriter(EVENT_OBJECT_REMOVED)
+    removed.write_u8(0)
+    removed.write_i32(npc.unit_id)
+    for viewer in _sessions_in_view_of(server, npc.x, npc.y, npc.world):
+        server.send_packet(viewer.address, removed)
+    # Loot au sol.
+    for template_id in npc.loot:
+        unit_id = server.next_unit_id
+        server.next_unit_id += 1
+        spawn_ground_item(server, unit_id, template_id, 1, npc.x, npc.y, npc.world)
+    # Récompenses au tueur (puis répartition si groupe avec auto-split).
+    if npc.xp_reward:
+        character.xp += npc.xp_reward
+        send_xp_update(server, killer, character.xp)
+    if npc.gold_reward:
+        character.gold += npc.gold_reward
+        send_gold_update(server, killer, character.gold)
+    distribute_kill_rewards(server, killer, npc.xp_reward, npc.gold_reward)
+    # HP du tueur aux autres membres du groupe (S2C 87).
+    killer_group = group_of(killer)
+    if killer_group is not None:
+        send_group_hp_update(
+            server, killer_group, killer.unit_id or 0,
+            (character.hp * 100) // character.max_hp if character.max_hp else 100,
+        )
+    send_server_message(
+        server,
+        killer,
+        f"Vous avez tué {npc.name} (+{npc.xp_reward} XP, +{npc.gold_reward} or).",
+    )
+    log.info(
+        "MORT PNJ %s (unit=%d) tué par %s : loot=%s xp=%d or=%d",
+        npc.name, npc.unit_id, character.name, npc.loot, npc.xp_reward, npc.gold_reward,
+    )
+
+
+def npc_counterattack(
+    server: "T4CServerProtocol",
+    npc_source: Npc,
+    target: ClientSession,
+    character,
+) -> None:
+    """Contre-attaque d'une créature après un round (dégâts sur le joueur)."""
+    import random
+
+    hit_chance = max(5, min(95, 50 + (npc_source.dodge - character.agi) * 2))
+    hit = random.randint(1, 100) <= hit_chance
+    # On ressuscite le PNJ dans un snapshot local pour la contre-attaque :
+    # on garde ses stats même s'il vient de mourir (sinon pas de riposte).
+    broadcast_attack(
+        server,
+        npc_source.unit_id,
+        npc_source.x,
+        npc_source.y,
+        target.unit_id or 0,
+        target.pos_x,
+        target.pos_y,
+        hit=hit,
+        world_id=target.pos_world,
+    )
+    if not hit:
+        return
+    damage = max(1, npc_source.damage + random.randint(0, 3))
+    character.hp = max(0, character.hp - damage)
+    log.info(
+        "COMBAT riposte %s -> %s : %d dégâts (HP %d/%d)",
+        npc_source.name, character.name, damage, character.hp, character.max_hp,
+    )
+    from .handlers import _write_status, _persist_character_stats
+
+    server.send_packet(target.address, _write_status(character))
+    _persist_character_stats(server, target)
+    if character.hp <= 0:
+        respawn_player(server, target, character)
+
+
+def respawn_player(
+    server: "T4CServerProtocol", session: ClientSession, character
+) -> None:
+    """Mort du joueur : respawn à la position de départ avec HP/2 (S2C 57 + 43)."""
+    from .characters import START_POS
+
+    session.pos_x, session.pos_y, session.pos_world = START_POS
+    character.hp = max(1, character.max_hp // 2)
+    if server.persistence is not None:
+        server.persistence.save_position(character.name, *START_POS)
+    teleport = PacketWriter(EVENT_TELEPORT)
+    teleport.write_u16(session.pos_x)
+    teleport.write_u16(session.pos_y)
+    teleport.write_u16(session.pos_world)
+    server.send_packet(session.address, teleport)
+    from .handlers import _write_status
+
+    server.send_packet(session.address, _write_status(character))
+    send_server_message(server, session, "Vous êtes mort. Retour à LightHaven.")
+    log.info("MORT joueur %s -> respawn (%d,%d)", character.name, *START_POS[:2])
+
+
+# -----------------------------------------------------------------------------
+# Groupes (PLAN 4.2) — RE 2026-10-13 : C2S 78 invite, 79 join, 80 leave,
+# 81 disband, 88 autosplit. S2C : 76 membres, 78 invitation, 80/82 fin,
+# 87 HP membre, 88 autosplit.
+# -----------------------------------------------------------------------------
+
+
+@dataclass
+class Group:
+    leader_unit_id: int
+    members: list = field(default_factory=list)  # ClientSession
+    auto_split: bool = True
+
+
+_groups: dict[int, Group] = {}          # leader unit_id -> Group
+_pending_invites: dict = {}             # invité address -> (leader address, Group)
+
+
+def group_of(session: ClientSession) -> Group | None:
+    for group in _groups.values():
+        if session in group.members:
+            return group
+    return None
+
+
+def _session_by_unit_id(server, unit_id: int) -> ClientSession | None:
+    for s in server.sessions.values():
+        if s.unit_id == unit_id and s.state is SessionState.IN_WORLD:
+            return s
+    return None
+
+
+def send_group_invite(
+    server: "T4CServerProtocol", inviter: ClientSession, target: ClientSession
+) -> Group:
+    """C2S 78 : invite `target` dans le groupe de `inviter` (créé si besoin)."""
+    group = group_of(inviter)
+    if group is None:
+        group = Group(leader_unit_id=inviter.unit_id or 0, members=[inviter])
+        _groups[group.leader_unit_id] = group
+    invite = PacketWriter(78)
+    invite.write_u32(inviter.unit_id or 0)
+    invite.write_text(inviter.active_character or "")
+    server.send_packet(target.address, invite)
+    _pending_invites[target.address] = (inviter.address, group)
+    log.info(
+        "GROUPE invitation %s -> %s (leader unit=%d)",
+        inviter.active_character, target.active_character, inviter.unit_id or 0,
+    )
+    return group
+
+
+def join_group(server: "T4CServerProtocol", session: ClientSession) -> bool:
+    """C2S 79 : accepte l'invitation en attente et rejoint le groupe."""
+    pending = _pending_invites.pop(session.address, None)
+    if pending is None:
+        return False
+    _leader_addr, group = pending
+    if session not in group.members:
+        group.members.append(session)
+    send_group_members(server, group)
+    log.info(
+        "GROUPE %s rejoint le groupe de unit=%d (%d membres)",
+        session.active_character, group.leader_unit_id, len(group.members),
+    )
+    return True
+
+
+def leave_group(server: "T4CServerProtocol", session: ClientSession) -> None:
+    """C2S 80 : quitte le groupe (S2C 80 à soi, 76 rafraîchi aux autres)."""
+    group = group_of(session)
+    if group is None:
+        return
+    group.members.remove(session)
+    dismissed = PacketWriter(80)
+    server.send_packet(session.address, dismissed)
+    if len(group.members) < 2:
+        # Groupe réduit à 1 membre : on le dissout proprement.
+        disband_group(server, group)
+        return
+    send_group_members(server, group)
+    log.info("GROUPE %s quitte (%d membres restants)", session.active_character, len(group.members))
+
+
+def disband_group(server: "T4CServerProtocol", group: Group) -> None:
+    """C2S 81 (leader) : dissout le groupe -> S2C 82 à tous les membres."""
+    for member in list(group.members):
+        packet = PacketWriter(82)
+        server.send_packet(member.address, packet)
+    _groups.pop(group.leader_unit_id, None)
+    log.info("GROUPE dissous (leader unit=%d)", group.leader_unit_id)
+
+
+def handle_disband_request(server: "T4CServerProtocol", session: ClientSession) -> None:
+    group = group_of(session)
+    if group is not None and group.leader_unit_id == session.unit_id:
+        disband_group(server, group)
+
+
+def toggle_group_autosplit(
+    server: "T4CServerProtocol", session: ClientSession, enabled: bool
+) -> None:
+    """C2S 88 (u8) : bascule l'auto-split -> S2C 88 à tous + 76 rafraîchi."""
+    group = group_of(session)
+    if group is None:
+        return
+    group.auto_split = enabled
+    for member in group.members:
+        packet = PacketWriter(88)
+        packet.write_u8(1 if enabled else 0)
+        server.send_packet(member.address, packet)
+    send_group_members(server, group)
+    log.info("GROUPE auto-split=%s (leader unit=%d)", enabled, group.leader_unit_id)
+
+
+def send_group_members(server: "T4CServerProtocol", group: Group) -> None:
+    """S2C 76 : u8 autoSplit, u16 count, par membre u32 unitId, u16 level,
+    u16 hpPercent, u8 isLeader, CString name — à tous les membres."""
+    for member in group.members:
+        packet = PacketWriter(76)
+        packet.write_u8(1 if group.auto_split else 0)
+        packet.write_u16(len(group.members))
+        for m in group.members:
+            character = _find_character(server, m)
+            packet.write_u32(m.unit_id or 0)
+            packet.write_u16(character.level if character else 1)
+            packet.write_u16(
+                (character.hp * 100) // character.max_hp if character and character.max_hp else 100
+            )
+            packet.write_u8(1 if m.unit_id == group.leader_unit_id else 0)
+            packet.write_text(m.active_character or "")
+        server.send_packet(member.address, packet)
+
+
+def send_group_hp_update(
+    server: "T4CServerProtocol", group: Group, unit_id: int, hp_percent: int
+) -> None:
+    """S2C 87 : u32 unitId, u16 hpPercent — HP d'un membre du groupe."""
+    for member in group.members:
+        if member.unit_id == unit_id:
+            continue
+        packet = PacketWriter(87)
+        packet.write_u32(unit_id)
+        packet.write_u16(max(0, min(100, hp_percent)))
+        server.send_packet(member.address, packet)
+
+
+def distribute_kill_rewards(
+    server: "T4CServerProtocol", killer: ClientSession, xp: int, gold: int
+) -> None:
+    """Répartit XP/or d'un kill entre les membres du groupe du tueur en vue
+    (Group::DistributeKillXP/DistributeKillGold), sinon tout au tueur."""
+    group = group_of(killer)
+    if group is None or not group.auto_split or len(group.members) < 2:
+        return  # le tueur garde tout (kill_npc crédite déjà)
+    share_xp = xp // len(group.members)
+    share_gold = gold // len(group.members)
+    if share_xp <= 0 and share_gold <= 0:
+        return
+    for member in group.members:
+        if member is killer:
+            continue
+        character = _find_character(server, member)
+        if character is None:
+            continue
+        if not _in_view(killer.pos_x, killer.pos_y, member.pos_x, member.pos_y):
+            continue
+        character.xp += share_xp
+        character.gold += share_gold
+        send_xp_update(server, member, character.xp)
+        send_gold_update(server, member, character.gold)
+    # Le tueur reçoit sa part aussi (kill_npc a donné le total : on corrige).
+    character = _find_character(server, killer)
+    if character is not None and share_xp > 0:
+        character.xp -= xp - share_xp
+        send_xp_update(server, killer, character.xp)
+    if character is not None and share_gold > 0:
+        character.gold -= gold - share_gold
+        send_gold_update(server, killer, character.gold)
 
 
 # Correspondance champ puppet -> slot d'équipement, DÉCODÉE du serveur

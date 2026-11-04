@@ -58,6 +58,11 @@ class PacketID(IntEnum):
     DROP_ITEM = 12                # client @0x47A9B0 : u16 x, u16 y, u32 itemUnitId, u32 quantity
     BUY_ITEMS = 41                # C2S achat : u16 x, u16 y, u32 npcUnitId, u16 count, {u16 itemId, u16 qty}*
     SELL_ITEMS = 56               # C2S vente : u16 x, u16 y, u32 npcUnitId, paires {u32 itemUnitId, u32 qty} jusqu'à EOF
+    GROUP_INVITE = 78             # C2S invite groupe (RE 2026-10-13 : CreateGroup+Invite)
+    GROUP_JOIN = 79               # C2S rejoint le groupe (Group::Join)
+    GROUP_LEAVE = 80              # C2S quitte le groupe
+    GROUP_DISBAND = 81            # C2S dissout le groupe (leader)
+    GROUP_AUTOSPLIT = 88          # C2S toggle auto-split : u8
     ACTION_FAILURE = 70           # serveur -> client : u32 objectOrUnitId, u16 relatedRequestOpcode
     RETURN_TO_MENU = 38
     GET_TIME = 45

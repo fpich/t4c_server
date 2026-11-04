@@ -74,9 +74,34 @@ async def main() -> None:
         appearance=10011,
         x=sx + 2,
         y=sy,
-        shop={1: 5, 2: 10, 3: 3, 4: 3},  # épées, potions, pantalons, vestes
+        # épées/potions de dev + vrais objets du WDA (10007 Minor healing, 10004 Greater Healing Potion)
+        shop={1: 5, 2: 10, 3: 3, 4: 3, 10007: 10, 10004: 5},
     )
-    world.register_npc("Prêtresse Solène", appearance=10012, x=sx, y=sy - 2)
+    # PNJ enseignant : C2S 11 dessus -> S2C 55 (sorts du WDA : 414 Fire dart...).
+    world.register_npc(
+        "Prêtresse Solène", appearance=10012, x=sx, y=sy - 2,
+        teach=(414, 415, 416, 421, 422),  # Fire dart, Flaming arrow, Fire bolt, Poison...
+    )
+    # Créatures hostiles de test autour de LightHaven (PLAN 3.2, étape 22).
+    # Apparences : petites valeurs sûres en i16 (l'UI client mappe ensuite le
+    # sprite ; à affiner quand la table d'apparences créatures sera extraite).
+    # Butin en vrais objets du WDA (ids extraits de T4C Worlds.WDA) :
+    # 10007 = "Minor healing" (potion), 10004 = "Greater Healing Potion 2".
+    world.register_npc(
+        "Rat des égouts", appearance=300, x=sx - 5, y=sy + 3,
+        hostile=True, hp=20, damage=3, dodge=5, xp_reward=15, gold_reward=5,
+        loot=(10007,),
+    )
+    world.register_npc(
+        "Loup sauvage", appearance=301, x=sx + 6, y=sy + 4,
+        hostile=True, hp=40, damage=6, dodge=10, xp_reward=30, gold_reward=12,
+        loot=(10004,),
+    )
+    world.register_npc(
+        "Squelette", appearance=302, x=sx - 7, y=sy - 5,
+        hostile=True, hp=60, damage=9, dodge=8, xp_reward=50, gold_reward=25,
+        loot=(3, 10007),
+    )
 
     loop = asyncio.get_running_loop()
     transport, _protocol = await loop.create_datagram_endpoint(

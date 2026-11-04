@@ -54,6 +54,12 @@ CREATE TABLE IF NOT EXISTS CharacterItems (
     Quantity INTEGER NOT NULL DEFAULT 1,
     EquipSlot INTEGER NOT NULL DEFAULT -1
 );
+
+CREATE TABLE IF NOT EXISTS PlayerSpells (
+    CharacterName TEXT NOT NULL,
+    SpellID INTEGER NOT NULL,
+    PRIMARY KEY (CharacterName, SpellID)
+);
 """
 
 
@@ -112,6 +118,14 @@ class Persistence:
                 luck=row["Luck"],
                 gold=row["Gold"],
                 xp=row["XP"],
+                spells=tuple(
+                    r["SpellID"]
+                    for r in self._db.execute(
+                        "SELECT SpellID FROM PlayerSpells WHERE CharacterName = ? "
+                        "COLLATE NOCASE ORDER BY SpellID",
+                        (row["PlayerName"],),
+                    )
+                ),
             )
             for row in rows
         ]
@@ -158,7 +172,20 @@ class Persistence:
             ),
         )
         self._db.commit()
+        self.save_spells(character.name, character.spells)
         return True
+
+    def save_spells(self, name: str, spells) -> None:
+        """Remplace les sorts connus d'un personnage (table PlayerSpells)."""
+        self._db.execute(
+            "DELETE FROM PlayerSpells WHERE CharacterName = ? COLLATE NOCASE", (name,)
+        )
+        for spell_id in spells:
+            self._db.execute(
+                "INSERT OR IGNORE INTO PlayerSpells (CharacterName, SpellID) VALUES (?, ?)",
+                (name, int(spell_id)),
+            )
+        self._db.commit()
 
     def save_stats(
         self,
@@ -197,6 +224,12 @@ class Persistence:
         cur = self._db.execute(
             "DELETE FROM PlayingCharacters WHERE PlayerName = ? COLLATE NOCASE",
             (name,),
+        )
+        self._db.execute(
+            "DELETE FROM CharacterItems WHERE CharacterName = ? COLLATE NOCASE", (name,)
+        )
+        self._db.execute(
+            "DELETE FROM PlayerSpells WHERE CharacterName = ? COLLATE NOCASE", (name,)
         )
         self._db.commit()
         return cur.rowcount > 0

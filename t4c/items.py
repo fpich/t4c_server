@@ -62,6 +62,48 @@ TEMPLATES: dict[int, ItemTemplate] = {
 }
 
 
+def load_wda_catalog(csv_path=None) -> int:
+    """Enrichit TEMPLATES avec les vrais objets extraits du WDA original.
+
+    `ressources/wda_extract/items.csv` (id WDA, nom) produit par
+    tools/wda_decrypt.py. Les ids WDA (ex. 10007 "Minor healing") deviennent
+    des template_id valides côté serveur ; apparence/prix par défaut
+    (l'extraction fine des champs WDA est un chantier séparé).
+    Retourne le nombre d'objets ajoutés.
+    """
+    import csv
+    from pathlib import Path
+
+    if csv_path is None:
+        csv_path = (
+            Path(__file__).resolve().parent.parent
+            / "ressources" / "wda_extract" / "items.csv"
+        )
+    added = 0
+    path = Path(csv_path)
+    if not path.is_file():
+        return 0
+    with path.open(newline="", encoding="utf-8") as f:
+        for row in csv.reader(f):
+            if not row or row[0] == "id":
+                continue
+            try:
+                item_id = int(row[0])
+            except ValueError:
+                continue
+            name = row[1] if len(row) > 1 else f"Objet {item_id}"
+            if item_id in TEMPLATES:
+                continue
+            # Heuristique de prix : potions/soins bon marché, le reste 100.
+            price = 10 if any(k in name.lower() for k in ("potion", "heal")) else 100
+            TEMPLATES[item_id] = ItemTemplate(item_id, name, appearance=0, price=price)
+            added += 1
+    return added
+
+
+load_wda_catalog()
+
+
 class Inventory:
     """Sac + équipement d'un personnage, avec allocation d'unit IDs."""
 

@@ -96,6 +96,11 @@ class PacketDispatcher:
         self.register(
             PacketID.TOGGLE_CHATTER_LISTENING, handle_toggle_chatter_listening
         )
+        self.register(PacketID.GROUP_INVITE, handle_group_invite)
+        self.register(PacketID.GROUP_JOIN, handle_group_join)
+        self.register(PacketID.GROUP_LEAVE, handle_group_leave)
+        self.register(PacketID.GROUP_DISBAND, handle_group_disband)
+        self.register(PacketID.GROUP_AUTOSPLIT, handle_group_autosplit)
         self.register(35, handle_npc_name_request)
 
     def register(self, packet_id: int, handler: PacketHandler) -> None:
@@ -484,7 +489,9 @@ async def handle_create_player(
         appearance = (
             PLAYER_FEMALE_PUPPET if gender == 1 else PLAYER_PUPPET
         )
-        character = Character(name=name, race=appearance, answers=answers)
+        from .spells import STARTER_SPELLS
+
+        character = Character(name=name, race=appearance, answers=answers, spells=tuple(STARTER_SPELLS))
         if not server.characters.create(session.account, character):
             result = 3
             character = None
@@ -1471,12 +1478,15 @@ async def handle_use_item(
 async def handle_use_spell_unit(
     server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
 ) -> None:
-    """Requête 32 (client @0x455BF0) : lancer un sort sur une unité/position.
+    """Requête 32 (client @0x455BF0) : attaque/sort sur une unité/position.
 
     Corps confirmé : u16 spellId, u16 targetX, u16 targetY, u32 targetUnitId.
-    targetUnitId != 0 => sort ciblé sur une unité, sinon sur le sol.
-    Le personnage ne connaît aucun sort : demande ignorée.
+    RE 2026-10-13 : le handler serveur 0x480240 appelle Character::StartAutoCombat
+    -> sur une unité hostile, 32 DÉMARRE LE COMBAT (un round d'attaque).
+    spellId == 0 = attaque de mêlée de base ; spellId > 0 = sort connu du perso.
     """
+    if session.state is not SessionState.IN_WORLD:
+        return
     reader = PacketReader(packet.body)
     try:
         spell_id = reader.read_u16()
@@ -1487,13 +1497,61 @@ async def handle_use_spell_unit(
         log.warning("requête 32 malformée de %s : %s", session.address, exc)
         return
     _ensure_consumed(reader, packet.packet_id)
+    # spellId > 0 = sort ; spellId == 0 = attaque de mêlée de base.
+    if spell_id == 0:
+        # Cible = PNJ hostile en vue -> round d'attaque de mêlée.
+        npc = world.find_npc(target_unit_id)
+        if npc is not None and npc.hostile and world.npc_in_reach(session, npc):
+            character = _find_active_character(server, session)
+            if character is not None:
+                world.resolve_player_attack_on_npc(server, session, npc, character)
+                _persist_character_stats(server, session)
+                # Riposte de la créature si elle survit.
+                if npc.unit_id in world._npcs:
+                    world.npc_counterattack(server, npc, session, character)
+                return
+        return
+    character = _find_active_character(server, session)
+    if character is None or spell_id not in character.spells:
+        log.info(
+            "SORT ignoré (non appris) spell=%d cible=%d client=%s",
+            spell_id, target_unit_id, session.address,
+        )
+        return
+    # --- Lancement d'un sort connu (PLAN 3.3) ---
+    from .spells import SPELL_MANA_COST, spell_name
+
+    cost = SPELL_MANA_COST
+    if character.mana < cost:
+        world.send_action_failure(server, session, target_unit_id, 32)
+        world.send_server_message(server, session, "Mana insuffisant.")
+        return
+    character.mana -= cost
+    _persist_character_stats(server, session)
+    world.send_mana_update(server, session, character.mana)
+    world.broadcast_spell_casting(
+        server, spell_id, session.unit_id or 0, session.pos_x, session.pos_y,
+        target_unit_id, x, y, session.pos_world,
+    )
+    # Dégâts du sort sur un PNJ hostile en vue (formule simplifiée : 1d20 + INT/2).
+    import random
+
+    npc = world.find_npc(target_unit_id)
+    if npc is not None and npc.hostile and world.npc_in_reach(session, npc):
+        damage = random.randint(1, 20) + character.intelligence // 2
+        npc.hp = max(0, npc.hp - damage)
+        hp_percent = (npc.hp * 100) // npc.max_hp if npc.max_hp else 0
+        for viewer in world._sessions_in_view_of(server, npc.x, npc.y, npc.world):
+            world.send_unit_info_update(server, viewer, npc.appearance, npc.unit_id, hp_percent)
+        world.broadcast_attack(
+            server, session.unit_id or 0, session.pos_x, session.pos_y,
+            npc.unit_id, npc.x, npc.y, hit=True, attack_type=1, world_id=npc.world,
+        )
+        if npc.hp <= 0:
+            world.kill_npc(server, npc, session, character)
     log.info(
-        "SORT ignoré (aucun sort connu) spell=%d cible=%d (%d,%d) client=%s",
-        spell_id,
-        target_unit_id,
-        x,
-        y,
-        session.address,
+        "SORT lancé spell=%d (%s) mana=%d cible=%d client=%s",
+        spell_id, spell_name(spell_id), character.mana, target_unit_id, session.address,
     )
 
 
@@ -1515,6 +1573,17 @@ async def handle_use_skill_unit(
         log.warning("requête 42 malformée de %s : %s", session.address, exc)
         return
     _ensure_consumed(reader, packet.packet_id)
+    # __SKILL_ATTACK = 12 : compétence d'attaque = round de mêlée (C2S 42).
+    if skill_id == 12 and session.state is SessionState.IN_WORLD:
+        npc = world.find_npc(target_unit_id)
+        if npc is not None and npc.hostile and world.npc_in_reach(session, npc):
+            character = _find_active_character(server, session)
+            if character is not None:
+                world.resolve_player_attack_on_npc(server, session, npc, character)
+                _persist_character_stats(server, session)
+                if npc.unit_id in world._npcs:
+                    world.npc_counterattack(server, npc, session, character)
+                return
     log.info(
         "COMPÉTENCE ignorée skill=%d cible=%d (%d,%d) client=%s",
         skill_id,
@@ -1813,12 +1882,20 @@ async def handle_pickup_unit(
     # Interaction avec un PNJ (GET_UNIT) : marchand -> ouverture du shop.
     npc = world.find_npc(unit_id)
     if npc is not None:
-        if npc.shop and world.npc_in_reach(session, npc):
+        if not world.npc_in_reach(session, npc):
+            return
+        if npc.shop:
             world.send_buy_list(server, session, npc)
             world.send_sell_list(server, session, npc)
             log.info(
                 "SHOP ouvert perso=%r marchand=%s (%d article(s)) client=%s",
                 session.active_character, npc.name, len(npc.shop), session.address,
+            )
+        elif npc.teach:
+            world.send_teach_list(server, session, npc)
+            log.info(
+                "ENSEIGNEMENT liste envoyée perso=%r PNJ=%s client=%s",
+                session.active_character, npc.name, session.address,
             )
         return
     ground = world.find_ground_item(unit_id)
@@ -1859,6 +1936,80 @@ async def handle_npc_name_request(
     if npc is not None:
         world.send_npc_name(server, session, npc)
         log.debug("NOM PNJ %s (unité=%d) -> %s", npc.name, unit_id, session.address)
+
+
+# -----------------------------------------------------------------------------
+# Groupes (PLAN 4.2) — RE 2026-10-13 : C2S 78/79/80/81/88.
+# -----------------------------------------------------------------------------
+
+
+async def handle_group_invite(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """C2S 78 : inviter un joueur dans son groupe.
+
+    Corps (scan handler 0x484020) : u32 targetUnitId (+ u32 de contexte ignoré).
+    Si la cible est un joueur en monde et en vue : S2C 78 à la cible.
+    """
+    if session.state is not SessionState.IN_WORLD:
+        return
+    reader = PacketReader(packet.body)
+    try:
+        target_unit_id = reader.read_u32()
+    except T4CProtocolError as exc:
+        log.warning("requête 78 malformée de %s : %s", session.address, exc)
+        return
+    _ensure_consumed(reader, packet.packet_id)
+    target = world._session_by_unit_id(server, target_unit_id)
+    if target is None or target is session:
+        return
+    if not world._in_view(session.pos_x, session.pos_y, target.pos_x, target.pos_y):
+        world.send_server_message(server, session, "Cible hors de portée.")
+        return
+    world.send_group_invite(server, session, target)
+
+
+async def handle_group_join(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """C2S 79 : accepter l'invitation en attente (aucun payload)."""
+    if session.state is not SessionState.IN_WORLD:
+        return
+    if not world.join_group(server, session):
+        world.send_server_message(server, session, "Aucune invitation en attente.")
+
+
+async def handle_group_leave(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """C2S 80 : quitter son groupe (aucun payload)."""
+    if session.state is not SessionState.IN_WORLD:
+        return
+    world.leave_group(server, session)
+
+
+async def handle_group_disband(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """C2S 81 : dissoudre son groupe (leader uniquement, aucun payload)."""
+    if session.state is not SessionState.IN_WORLD:
+        return
+    world.handle_disband_request(server, session)
+
+
+async def handle_group_autosplit(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """C2S 88 : bascule l'auto-split du groupe (u8)."""
+    if session.state is not SessionState.IN_WORLD:
+        return
+    reader = PacketReader(packet.body)
+    try:
+        enabled = reader.read_u8()
+    except T4CProtocolError as exc:
+        log.warning("requête 88 malformée de %s : %s", session.address, exc)
+        return
+    world.toggle_group_autosplit(server, session, bool(enabled))
 
 
 # -----------------------------------------------------------------------------

@@ -43,6 +43,8 @@ class Character:
     # Économie/progression (colonnes Gold/XP de PlayingCharacters, T4C.mdb).
     gold: int = 50
     xp: int = 0
+    # Sorts connus (ids WDA) — table PlayerSpells du schéma original.
+    spells: tuple[int, ...] = ()
     answers: tuple[int, ...] = ()
 
 

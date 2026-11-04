@@ -1,0 +1,963 @@
+id,nom
+74,Goblin subchief 
+82,Goblin Chieftain!
+83,"Goblin warchief"""
+84,Goblin warlord#
+85,Kraanian flyer 
+86,Kraanian millipede!
+87,Forest GuardianU
+89,Gorben the mad-
+91,Antelope
+92,Wild horse
+93,Orc deserter$
+94,"Flesh eater,"
+95,Sand worm+
+96,Dune raider'
+97,Nightbreed'
+98,Blackguard&
+99,Giant scorpion*
+100,Rogue mage&
+101,Demon tree%
+102,Minotaur warrior-
+103,Tarantula.
+104,Deep One/
+105,Orc berserker/
+106,Death stinger0
+107,Orc battlemage1
+108,Nightblade2
+109,Minotaur chieftain2
+110,Bonedead!
+111,Failed summon2
+113,Sandlord7
+114,Stinkbreath9
+115,Taunting Horror-
+126,Axe of destruction{
+141,Box of jewelsm
+147,Chainmail boots 
+149,Chainmail gauntlets
+151,Chaotic sword
+152,chest)
+171,Demonblade
+186,Flail of stability
+188,Flask of goblin blood
+192,Gloomblade
+193,Gloves of the duelist
+196,Goblin blade
+197,Goblin leather armor
+208,Ice blade
+218,Leather armor
+219,Leather boots
+220,Leather gloves
+222,Leather leggings
+224,Lightbringer
+249,Platemail gauntlets
+252,Platemail armor
+258,Potion of regenerationa
+281,Runic scripting kitm
+284,Rusted sword of sorrow *
+292,Shadow blade
+297,Silver axe{
+312,Studded leather boots
+313,Studded leather gloves
+321,Gloves of thieving
+329,Vampire axe
+331,Vial of spider venom
+413,Fire shield?
+414,Fire dart=
+415,Flaming arrow?
+416,Fire bolt?
+417,FireballC
+418,Poison=
+419,Poison effect
+420,Ice shard=
+421,Poison arrow?
+422,Poison arrow effect
+423,Freeze?
+424,Ice bolt?
+425,Dust devil=
+426,Lightning bolt?
+427,Word of recall
+428,Call lightning?
+429,Heal light=
+430,Heal serious?
+431,Heal critical?
+432,Stone shard=
+433,Shatter?
+434,Curse?
+435,InfernoA
+436,Chaos shield
+437,Tetrashock
+438,Flame waveC
+439,Ice ball?
+440,Chain lightningC
+441,FlashC
+442,Vortex of air?
+443,Electric shield?
+444,EarthquakeC
+445,Protection=
+446,Barrier?
+447,Earthen strength?
+448,Minor combat sense?
+464,Minotaur shaman5
+465,Orc guardian7
+466,Cobra0
+2848,Griroesh2
+2849,Araf'Kul(
+2850,Doom guard-
+2851,Wererat2
+2852,Griroesh2
+2853,Illusion weaver1
+2854,Bandaged horror;
+2855,Skeleton warlock=
+2856,Death Chosen7
+2857,Broken One8
+2858,Vampire bat5
+2859,Shrieking horror;
+2860,Acid slime3
+2861,Dead BoltF
+2862,Dark Axe?
+2863,Death Jester6
+2864,SkullfireG
+2865,Ratsputin the wererat7
+2866,T-Bone-
+2867,Count Hemogoblin-
+2868,Skrull4
+2869,Headsmasher7
+2870,Hoofcrusher8
+2871,Bulldaoza9
+2872,Burly jailkeeper-
+2873,Desperate prisoner'
+2878,Mrish Yellowblood!
+2879,"Trish Yellowblood"""
+2880,Fugar the smelly#
+2882,Bugar pouchsnatcher+
+2883,Eye-patched Qardos-
+2884,Quelet Hon the thirsty#
+2885,Grudish Earchewer2
+2886,Liedric Throatcutter4
+2887,Blaarg Toemangler5
+2888,Bend Hayjes the rotten5
+2889,Thadoss the moaner6
+2890,Hurbag Nailripper2
+2891,Grott7
+3063,Acanthus plantD
+3064,Adamantite bastard sword
+3065,Adamantite bastard sword +1
+3066,Adamantite bastard sword +2
+3071,Adamantite broadsword
+3072,Adamantite broadsword +1
+3073,Adamantite broadsword +2
+3075,Adamantite platemail armor
+3077,Adamantite platemail gauntlets
+3089,Ancient bastard sword
+3090,Ancient bastard sword +1
+3091,Ancient bastard sword +2
+3100,Ancient morningstar
+3101,Ancient morningstar +1
+3102,Ancient morningstar +2
+3103,Ancient morningstar +3
+3105,Ancient platemail armor
+3107,Ancient platemail gauntlets
+3117,Antelope's skinF
+3119,Armor of cowardice *
+3120,Armor of selfishness *
+3121,Baldric's drumY
+3129,Black lizardskin boots 
+3139,Bo(
+3140,Bo +1(
+3141,Bo +2(
+3154,Copal Damania plantD
+3157,Crowned staff of cleverness +1&
+3161,Dead fishR
+3162,Death Jester's skull!
+3163,Demon skull!
+3168,Dragonscale boots 
+3169,Dragonscale gauntlets
+3173,Druss's briber of soulsz
+3175,Dwarven platemail armor
+3177,Dwarven platemail gauntlets
+3180,Egg of a kraanianE
+3183,Elven chainmail boots 
+3184,Elven chainmail gauntlets
+3188,Elven leather armor
+3190,Elven leather boots
+3191,Elven leather gloves
+3193,Elven leather leggings
+3195,Emerald-topped staff of earthquakes'
+3196,"Empty beer mug"""
+3197,Empty flaskd
+3200,Fine steel battle axez
+3201,Fine steel battle axe +1z
+3202,Fine steel battle axe +2z
+3203,Fine steel battle axe +3z
+3204,Fine steel broadsword
+3205,Fine steel broadsword +1
+3206,Fine steel broadsword +2
+3211,Fine steel hand axe{
+3212,Fine steel hand axe +1{
+3213,Fine steel hand axe +2{
+3214,Fine steel long sword
+3215,Fine steel long sword +1
+3216,Fine steel long sword +2
+3217,Fine steel macew
+3218,Fine steel mace +1w
+3219,Fine steel mace +2w
+3220,Fine steel mace +3w
+3225,Fine steel short sword
+3226,Fine steel short sword +1
+3227,Fine steel short sword +2
+3228,Fine steel warhammer
+3229,Fine steel warhammer +1
+3230,Fine steel warhammer +2
+3241,Goblin slayer
+3243,Golden chalice'
+3247,Hardened leather armor *
+3253,High-metal bastard sword
+3254,High-metal bastard sword +1
+3255,High-metal bastard sword +2
+3256,High-metal bastard sword +3
+3257,High-metal battle axez
+3258,High-metal battle axe +1z
+3259,High-metal battle axe +2z
+3260,High-metal broad axez
+3261,High-metal broad axe +1z
+3262,High-metal broad axe +2z
+3263,High-metal broad axe +3z
+3264,High-metal broadsword
+3265,High-metal broadsword +1
+3266,High-metal broadsword +2
+3271,High-metal flail
+3272,High-metal flail +1
+3273,High-metal flail +2
+3274,High-metal flail +3
+3275,High-metal hand axe{
+3276,High-metal hand axe +1{
+3277,High-metal hand axe +2{
+3278,High-metal long sword
+3279,High-metal long sword +1
+3280,High-metal long sword +2
+3281,High-metal macew
+3282,High-metal mace +1w
+3283,High-metal mace +2w
+3287,High-metal short sword
+3288,High-metal short sword +1
+3289,High-metal short sword +2
+3290,HourglassB
+3291,Human's footH
+3293,Hydrangea plantD
+3300,Hyper potion of tranquilityb
+3303,Hyssop plantD
+3304,Iron staffv
+3305,Iron staff +1v
+3306,Iron staff +2v
+3313,Laurel plantD
+3314,Laurel plantD
+3329,Mandrake plantD
+3332,Mithril bastard sword +1|
+3333,Mithril bastard sword +2|
+3334,Mithril battle axez
+3335,Mithril battle axe +1z
+3336,Mithril battle axe +2z
+3341,Mithril broad axez
+3342,Mithril broad axe +1z
+3343,Mithril broad axe +2z
+3344,Mithril broad axe +3z
+3345,Mithril broadsword
+3346,Mithril broadsword +1
+3347,Mithril broadsword +2
+3349,Mithril chainmail boots 
+3350,Mithril chainmail gauntlets
+3357,Mithril flail
+3358,Mithril flail +1
+3359,Mithril flail +2
+3360,Mithril long sword
+3361,Mithril long sword +1
+3362,Mithril long sword +2
+3363,Mithril morningstar
+3364,Mithril morningstar +1
+3365,Mithril morningstar +2
+3366,Mithril morningstar +3
+3375,Mjolnir
+3379,Mummy's bandages3
+3382,Necroscope's staff of impending death&
+3394,Polished broadsword
+3395,Polished broadsword *
+3396,Polished broadsword +1
+3397,Polished broadsword +2
+3398,Polished broadsword +3
+3406,Polished hand axe{
+3407,Polished hand axe +1{
+3408,Polished hand axe +2{
+3409,Polished hand axe +3{
+3410,Polished long sword
+3411,Polished long sword *
+3412,Polished long sword *
+3413,Polished long sword +1
+3414,Polished long sword +2
+3415,Polished short sword
+3416,Polished short sword *
+3417,Polished short sword *
+3418,Polished short sword +1
+3419,Polished short sword +2
+3430,Potion of greater protection from evil
+3437,Potion of lesser protection from evil
+3445,Potion of partial protection from evil
+3449,Potion of tranquility
+3458,Purslane plantD
+3459,Quarterstaffv
+3460,Quarterstaff +1v
+3461,Quarterstaff +2v
+3463,Rang-kwanv
+3464,Rang-kwan +1v
+3465,Rang-kwan +2v
+3469,Rhodar's hammerw
+3476,Ringmail boots 
+3477,Ringmail gauntlets
+3484,Rowan plantD
+3485,Royal key #1 
+3486,Royal key #2 
+3487,Royal key #3 
+3488,Royal key #4 
+3489,Royal key #5 
+3490,Royal key #6 
+3500,Rusted hand axe{
+3501,Rusted hand axe *{
+3502,Rusted hand axe +1{
+3503,Rusted hand axe +2{
+3504,Rusted hand axe +3{
+3505,Rusted long sword
+3506,Rusted long sword *
+3507,Rusted long sword +1
+3508,Rusted long sword +2
+3509,Rusted long sword +3
+3510,Rusted short sword
+3511,Rusted short sword +1
+3512,Rusted short sword +2
+3516,Scalemail boots 
+3517,Scalemail gauntlets
+3538,Staff of thornsv
+3539,Staff of thorns +1v
+3540,Staff of thorns +2v
+3545,Steel-reinforced warhammer
+3546,Steel-reinforced warhammer +1
+3547,Steel-reinforced warhammer +2
+3548,Steel-reinforced warhammer +3
+3554,Sword of Justice *
+3557,Tanned antelope's skinF
+3559,Tetsubov
+3560,Tetsubo +1v
+3561,Tetsubo +2v
+3566,Tormentil plantD
+3576,Wisteria plantD
+3582,Wooden staff(
+3583,Wooden staff +1(
+3584,Wooden staff +2(
+3589,AvalancheE
+3590,BlizzardE
+3591,Clear thought?
+3592,Drain life?
+3593,Entangle?
+3594,Essence of Drake
+3595,FirestormE
+3596,FlareA
+3597,GlacierA
+3598,Greater drain?
+3599,HealingA
+3600,Healing mistE
+3601,HurricaneE
+3602,Ice stormE
+3603,Lesser drain?
+3604,Light=
+3605,Major combat senseA
+3606,Mana burst>
+3607,Mana shield?
+3608,Mana surgeA
+3609,Mass healingE
+3610,MeteorC
+3611,Nimbleness?
+3612,Plague?
+3613,Rain of fireE
+3614,Resist fire?
+3615,Resist ice?
+3616,Sanctuary>
+3617,Stone skin?
+3618,TornadoE
+3619,Tranquility?
+3620,TsunamiA
+3621,Turn undead?
+3622,Vaporize
+3623,Wrath of Drake
+7402,The sign reads
+7403,The sign reads
+7404,The sign reads
+7405,The sign reads
+7406,The sign reads
+7407,The sign reads
+7408,The sign reads
+7409,The sign reads
+7410,The sign reads
+7411,The sign reads
+7412,The sign reads
+7413,The sign reads
+7414,The sign reads
+7415,The sign reads
+7416,The sign reads
+7417,The sign reads
+7418,The sign reads
+7419,The sign reads
+7420,The sign reads
+7421,The sign reads
+7422,The sign reads
+7423,A wooden signu
+7424,Azure plate armor
+7426,Azure plate gauntlets
+7433,Candle of eternitys
+7434,Chaos key 
+7436,Colossusz
+7437,Crimson bastard sword|
+7438,Crooked staff of vigorv
+7439,Crusherw
+7440,Stack of demon tree woodG
+7443,Grail of purity'
+7444,Holy cutlass
+7446,Hourglass of EssenceB
+7447,Magic scripting kitm
+7450,Mjolnir
+7452,Purity
+7455,Red spellbook-
+7462,Staff of Hope'
+7463,Staff of submission'
+7464,Sword of Majesty
+7467,Tempest
+7469,Tome of Valor/
+7470,Troll Reward BadgeI
+7471,Twisted long sword
+7473,Frost wakizashi
+7474,Finely crafted drumY
+7487,The sign reads
+7488,The sign reads
+7489,The sign reads
+7490,The sign reads
+7491,The sign reads
+7492,The sign reads
+7493,The sign reads
+7494,The sign reads
+7495,The sign reads
+7496,The sign reads
+7497,The sign reads
+7498,The sign reads
+7499,The sign reads
+7567,Bless
+7568,Boulders
+7569,Cure poison
+7570,Detect hidden
+7571,Detect invisible
+7572,Dispel
+7573,Drake's Blades of Vengeance
+7574,Druid's Point gateway
+7575,Invisibility
+7576,Surge of strength
+7577,Hyper potion of clear thought
+7578,Hyper potion of fortitude
+7579,Hyper potion of fury
+7580,Hyper potion of nimbleness
+7581,Hyper potion of tranquility
+7582,Hyper potion of violent rage
+7583,Mana prism
+7584,Potion of clear thought
+7585,Potion of fortitude
+7586,Potion of fury
+7587,Potion of greater air resistance
+7588,Potion of greater earth resistance
+7589,Potion of greater fire resistance
+7590,Potion of greater protection from evil
+7591,Potion of greater water resistance
+7592,Potion of lesser air resistance
+7593,Potion of lesser earth resistance
+7594,Potion of lesser fire resistance
+7595,Potion of lesser protection from evil
+7596,Potion of lesser water resistance
+7597,Potion of nimbleness
+7598,Potion of partial air resistance
+7599,Potion of partial earth resistance
+7600,Potion of partial fire resistance
+7601,Potion of partial protection from evil
+7602,Potion of partial water resistance
+7603,Potion of regeneration
+7604,Potion of tranquility
+7605,Torch
+7606,Lighthaven gateway
+7607,Lighthaven improved gateway
+7608,Silversky gateway
+7609,Soul steal
+7610,Stonecrest gateway
+7611,Sunken Woods gateway
+7612,True sight
+7613,Windhowl gateway
+7614,Wizard's Vale gateway
+7615,Avalanche
+7616,Blizzard
+7617,Clear thought
+7618,Drain life
+7619,Entangle
+7620,Essence of Drake
+7621,Firestorm
+7622,Flare
+7623,Glacier
+7624,Greater drain
+7625,Healing
+7626,Healing mist
+7627,Hurricane
+7628,Ice storm
+7629,Lesser drain
+7630,Light
+7631,Major combat sense
+7632,Mana burst
+7633,Mana shield
+7634,Mana surge
+7635,Mass healing
+7636,Meteor
+7637,Nimbleness
+7638,Plague
+7639,Rain of fire
+7640,Resist fire
+7641,Resist ice
+7642,Sanctuary
+7643,Stone skin
+7644,Tornado
+7645,Tranquility
+7646,Tsunami
+7647,Turn undead
+7648,Vaporize
+7649,Wrath of Drake
+7650,Fire shield
+7651,Fire dart
+7652,Flaming arrow
+7653,Fire bolt
+7654,Fireball
+7655,Poison
+7656,Ice shard
+7657,Poison arrow
+7658,Freeze
+7659,Ice bolt
+7660,Dust devil
+7661,Lightning bolt
+7662,Word of recall
+7663,Call lightning
+7664,Heal light
+7665,Heal serious
+7666,Heal critical
+7667,Stone shard
+7668,Shatter
+7669,Curse
+7670,Inferno
+7671,Chaos shield (god only)
+7672,Tetrashock (god only)
+7673,Flame wave
+7674,Ice ball
+7675,Chain lightning
+7676,Vortex of air
+7677,Electric shield
+7678,Earthquake
+7679,Protection
+7680,Barrier
+7681,Earthen strength
+7682,Minor combat sense
+7730,Ashwood flatbowV
+7731,Ashwood flatbow +1V
+7732,Ashwood flatbow +2V
+7766,Elm flatbowV
+7767,Elm flatbow +1V
+7768,Elm flatbow +2V
+7783,Hickory flatbowV
+7784,Hickory flatbow +1V
+7785,Hickory flatbow +2V
+7815,Oak flatbowV
+7816,Oak flatbow +1V
+7817,Oak flatbow +2V
+7848,Renewal
+7849,Sinister force
+7850,Gypsy's curse
+7851,Ebbing strength
+7852,Blessing
+7853,Sapphire strength
+7854,Aggravation
+7855,Anti-magic shell
+7856,Armor melt
+7857,Armor weakness
+7858,Blink invisibility
+7859,Chilling touch
+7860,Custodian's word
+7861,Disease
+7862,Foul sickness
+7863,Gangrene
+7864,Hell chains
+7865,Mana leak
+7866,Mana bane
+7867,Mind rot
+7868,Mudball
+7869,Peaceful night
+7870,Petrification
+7871,Piercing worms
+7872,Poison
+7873,Quicksands
+7874,Rabies
+7875,Rat lice
+7876,Rotting fingers
+7877,Silence of the lambs
+7878,Stench
+7879,Stone
+7880,Terror
+7881,Throwing stones
+7882,Entangle
+7903,Cure poison=
+10840,wooden chest)
+10985,Alchemy kit0
+10997,Nephil spider venomc
+11001,Bloodstained broadsword
+11007,Book of psalms.
+11013,Broom>
+11017,Candles
+11020,Cat-claw ornated staff&
+11039,Dark iron key 
+11042,Dew covered metal key 
+11048,Drachenstaff&
+11050,Drake's Tome of Destruction-
+11051,Drum of fateY
+11060,Eye of the tigerE
+11063,Fine wine
+11077,Forkp
+11078,Foul potionc
+11080,Gauntlets of shocking
+11084,Gleaming bluestone chestplate
+11085,Gleaming bluestone gauntlets
+11090,Gleaming orichalcum key 
+11091,Gloom staff'
+11092,Gnarled walking stick(
+11094,Great axe of the crowz
+11095,Greater hive safe conductE
+11099,Hammer of Finality
+11100,Hammer of true sight
+11111,Jander's gloves of thievery
+11112,Jander's padded boots 
+11114,Key of Artherk 
+11115,Key of Ogrimar 
+11116,Key of Ascension 
+11117,Key of Revelations 
+11119,Key of the Forgotten 
+11121,Lesser hive safe conductE
+11129,Lute of peaceX
+11130,Mace of strengthw
+11131,Mad house key 
+11132,Madrigan's chest)
+11135,Magic mirroru
+11136,Magical luteX
+11147,Gleaming ivory chest)
+11148,Gleaming chest inlaid with precious stones)
+11149,The sign reads
+11150,The sign reads
+11151,The sign reads
+11152,The sign reads
+11153,The sign reads
+11154,The sign reads
+11155,Pain's plate
+11162,Potion of reversal
+11164,Psykowasp's nectarc
+11166,Pulsating key 
+11180,The sign reads
+11181,The sign reads
+11182,The sign reads
+11183,The sign reads
+11184,The sign reads
+11185,The sign reads
+11186,The sign reads
+11189,Rolling pinr
+11202,Royal hive safe conductE
+11239,The sign reads
+11241,Silver spoon of the Propheto
+11243,skraug warrior's corpse!
+11244,skraug shaman's corpse$
+11245,skraug's corpse&
+11247,Skull of evil!
+11248,Skull of Ogrimar!
+11249,Small gold key 
+11255,Spider venomc
+11256,Spoono
+11264,Thank-you note~
+11266,Trial key 
+11268,Vial of Fey blood
+11269,Villain's skull!
+11272,Wizard's bane
+11273,BlessA
+11274,BouldersA
+11275,Detect hidden?
+11276,Detect invisibleA
+11277,DispelA
+11278,Druid's Point gateway
+11279,InvisibilityA
+11280,Lighthaven gateway
+11281,Silversky gateway
+11282,Soul stealA
+11283,Stonecrest gateway
+11284,Sunken Woods gateway
+11285,True sightA
+11286,Windhowl gateway
+11287,Wizard's Vale gateway
+11288,Ambrosia
+11289,Arcane liquor
+11290,Ball of confusion
+11291,Berserker rage
+11292,Bluestone talisman
+11293,Book of Psalms
+11294,Brain blast
+11295,Charm
+11296,Crow's sorrow
+11297,Fate
+11298,Fatigue
+11299,Fine wine
+11300,Firefang
+11301,Ice chains
+11302,Kingsnake poison
+11303,Magical defense upgrade
+11304,Magical offense upgrade
+11305,Marked for death
+11306,Moon aura
+11307,Orientation
+11308,Physical defense upgrade
+11309,Physical offense upgrade
+11310,Protective aura
+11311,Ragnarok's rage
+11312,Raindrop
+11313,Seraph aura
+11314,Star aura
+11315,Sun aura
+11316,Voyeur's cloak
+11317,Wizard's bane
+11425,ZzartgaxF
+11426,Yoggoth wormK
+11427,Wraith batP
+11428,WoodstalkerZ
+11429,Wolfhound?
+11430,Widow hatchlingU
+11431,Wasp drone7
+11432,WargG
+11433,Unseen BatA
+11434,Toll Trolld
+11439,Templar!
+11440,Sun knight+
+11441,Spectral knightO
+11442,Skeleton warderZ
+11443,Skeletal centaurU
+11444,ShadowfiendK
+11445,Shadow demons
+11446,Robin hoodd
+11447,Ribbon fiendA
+11448,Raving lunatic
+11449,Putrid beastb
+11451,Psykowasp trooper!
+11454,Psykowasp devastator%
+11455,Psykowasp commander(
+11457,Pilferer<
+11458,Paladin#
+11459,Pack wolf7
+11461,Obsidian assassini
+11462,Nightcreeper7
+11463,Night hunterA
+11464,Nemesis_
+11465,NecrospiderP
+11466,MysticistZ
+11467,Mortal wombat_
+11468,MorlokkJ
+11469,Madman
+11471,Loon 
+11473,LeprechaunF
+11474,Jade kingsnake-
+11475,Howling terrorC
+11476,Hive defenderF
+11477,GremlinH
+11478,Greater Drake
+11479,Great wolfP
+11480,Gangrene carrier_
+11481,Foul muckF
+11482,Foul fienda
+11483,Fiend of the paled
+11484,Fenris wolf_
+11488,Drain spiderA
+11489,Drain rat-
+11490,Deranged orderly
+11491,DeathstalkerU
+11492,Dark warlordZ
+11493,Dark custodianA
+11494,Crypt custodianP
+11495,Creeping sludgeG
+11496,Crazed nurse!
+11497,Colony sentinel>
+11498,Chaos SpawnF
+11499,Centaur warriord
+11500,Centaur shamand
+11501,Centaur kingd
+11502,Centaur archerd
+11503,Cave dwellerC
+11504,Carrion crawlerS
+11507,B'thastans
+11508,Bone demonM
+11509,Blood hound?
+11510,Berserker ratM
+11512,Battle bard%
+11514,ArachnofiendK
+11517,Acid zombieK
+11533,Weapons}
+11534,Weapons|
+11535,Weapons{
+11536,Weaponsz
+11537,Water bowlP
+11538,Tankard$
+11539,Tankard#
+11540,"Tankard"""
+11541,Bandages3
+11542,Bandages2
+11543,Bandages1
+11544,Stoolh
+11545,SquareU
+11546,SquareT
+11548,Shovel`
+11549,Shelf/
+11550,Shelf.
+11551,Shelf-
+11552,Bucketg
+11553,Bucketf
+11554,BucketS
+11558,Scroll~
+11559,Scissors@
+11560,Sceptrev
+11561,Saw[
+11562,Satchel0
+11563,HourglassB
+11565,Rolling pinr
+11568,Pick=
+11569,Vase5
+11570,Mirroru
+11571,MapZ
+11572,Macex
+11573,Macew
+11574,Mace?
+11575,LogH
+11576,LogG
+11577,LogF
+11578,Kitchen instrumentsq
+11579,Kitchen instrumentsp
+11580,Kitchen instrumentso
+11581,Keys!
+11582,Key 
+11586,Goblet&
+11587,Goblet%
+11591,FoodO
+11592,FoodN
+11593,FoodM
+11594,FoodL
+11595,FoodK
+11596,FoodJ
+11597,FoodI
+11598,Flaske
+11599,Flaskd
+11600,Flaskc
+11601,Flaskb
+11602,Flaska
+11603,FlaskE
+11604,FlaskD
+11605,FlaskC
+11606,Fishing rodQ
+11607,FishR
+11608,DrumY
+11609,Wooden bowl4
+11610,CrossbowW
+11611,Cup(
+11612,Cup'
+11613,Chest*
+11614,Chest)
+11615,Chairj
+11616,Chairi
+11617,Casem
+11618,Casel
+11619,Candlestickt
+11620,Candlesticks
+11621,Broom>
+11622,Broom=
+11623,Bowln
+11624,BowV
+11625,"Basket,"
+11626,Basket+
+11627,Barrelk
+11628,Bar;
+11629,Bar
+11630,Bar9
+11631,Bar8
+11632,Bar7
+11633,Bar6
+11634,BanjoX
+11635,Ball of wool_
+11636,Ball of wool^
+11637,Ball of wool]
+11638,Ball of wool\
+11639,BalanceA
+12806,Druid's Point portal
+12807,Silversky portal
+12808,Stonecrest portal
+12809,Sunken Woods portal
+12810,Windhowl portal
+12811,Wizard's Vale portal
+12812,Ice shieldA
+12813,Wrath of the Ancients
+12814,Corruption
+12815,Increases the caster's AC by a random amount.
+12816,Inferno shield
+12817,Vitality
+12818,Augmentation
+12819,Regeneration
+12820,Rejuvenation
+12821,Renewal
+12822,Replenishment
+12823,Lighthaven portal
+12824,Essence of Seraph
+12825,Druid's Point portal
+12826,Silversky portal
+12827,Stonecrest portal
+12828,Sunken Woods portal
+12829,Windhowl portal
+12830,Wizard's Vale portal
+12831,Ice shield
+12832,Wrath of the Ancients
+12834,Nomad's house key!
+12835,Unsealed letter from Owain~
+12836,Solinae's staff'
+12841,Flask of Gluriurl's blood
+12844,Vial of Dragon Blood
+12851,Heart of Gluriurl(
+12852,Corrupt heart(
+12882,Tome of Arcane Knowledge/
+12885,Ancient celestial plate
+12886,Crimsonscale's letter~
+12893,Taintscale 
+12894,"Defiler"""
+12895,Fallen warrior$
+12896,Corrupt adept&
+12897,Corrupt follower(
+12898,Roaming cadaver>
+12899,Roaming corpse<
+12900,Crypt stalker
+12901,CreeperC
+12902,WorshipperF
+12903,Darkness demonK
+12904,Chaos demonK
+12905,Terror demonK
+12906,ApparitionF
+12907,Draconis knightW
+12908,Draconis magusW
+12909,Kraanian plagueP
+12910,Kraanian stomperR
+12911,Kraanian reaperS
+12912,Brigand#
+12913,Olin Haad private guard(
+12914,Olin Haad sentry-
+12915,Lighthaven ranger7
+12916,Lighthaven portal

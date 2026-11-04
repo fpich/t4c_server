@@ -43,6 +43,19 @@ Découvertes clés :
 
 - IA avancée des créatures (NPC AddOn dlls propriétaires), quêtes/dialogues
   scriptés WDA, sons/musiques (client), anti-cheat poussé.
+- Grille de tuiles fine : localisée (PCX client 640x480 + maps.dat 67 rectangles,
+  WorldMap.Map header d'offsets) mais le parse pixel→passabilité reste à faire.
+
+## État à fin de session 2026-10-13 (2e passe)
+
+- Serveur Python : **133 tests OK**, scénario bout-en-bout complet (bootstrap →
+  auth → création → monde → multi-joueurs → mouvement/collisions → chat local +
+  canaux → shop achat/vente → groupe → combat → sort → mort/respawn → sortie).
+- Serveur original 1.25 **fonctionnel sous Wine 10** (port 11677) : diff-test OK.
+- WDA déchiffré (masque LCG SHA256 vérifié) : 188 items, 962 sorts, maps, spawns.
+- Prochaines priorités : (a) diff-test 25/13/46 avec perso créé côté original pour
+  valider nos réponses 25/13/16 octet par octet ; (b) parser PCX+maps.dat pour la
+  grille de collision monde 0 ; (c) extraire spawns des NPC dlls (NPCs.dll).
 
 ---
 

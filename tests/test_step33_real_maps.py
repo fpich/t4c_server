@@ -115,3 +115,58 @@ class TestMapIntegration(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestPcxPaletteDetection(unittest.TestCase):
+    """Vérifie que la palette PCX est correctement détectée (standard len-769)."""
+
+    def test_all_existing_pcx_have_palette(self):
+        """Tous les PCX existants doivent avoir une palette détectable."""
+        from pathlib import Path
+        from t4c.map_parser import MapParser
+
+        pcx_dir = Path(__file__).parent.parent / "ressources" / "t4c_client_fr" / "Maps"
+        maps_dat = Path(__file__).parent.parent / "ressources" / "t4c_client_fr" / "Game Files" / "maps.dat"
+
+        if not pcx_dir.is_dir() or not maps_dat.is_file():
+            self.skipTest("Ressources PCX non disponibles")
+
+        parser = MapParser(maps_dat_path=maps_dat, pcx_dir=pcx_dir)
+        no_palette = []
+        for region in parser.regions:
+            if region.w <= 0 or region.h <= 0:
+                continue
+            pcx_path = pcx_dir / region.pcx
+            if not pcx_path.is_file():
+                continue
+            data = pcx_path.read_bytes()
+            if len(data) >= 769 and data[len(data) - 769] == 0x0C:
+                continue
+            # Scan de secours
+            found = False
+            search_start = max(0, len(data) - 1024)
+            for i in range(len(data) - 1, search_start, -1):
+                if data[i] == 0x0C and i + 769 <= len(data):
+                    found = True
+                    break
+            if not found:
+                no_palette.append(region.pcx)
+
+        self.assertEqual(no_palette, [], f"PCX sans palette: {no_palette}")
+
+    def test_parse_pcx_no_palette_error(self):
+        """Un PCX sans palette doit retourner une grille vide sans crash."""
+        from pathlib import Path
+        import tempfile
+        from t4c.map_parser import MapParser
+
+        parser = MapParser()
+        with tempfile.NamedTemporaryFile(suffix=".pcx", delete=False) as f:
+            f.write(b"\x0a\x05\x01\x08" + b"\x00" * 200)  # trop petit, pas de palette
+            tmp = Path(f.name)
+
+        try:
+            grid = parser.parse_pcx_collision(tmp, 0, 0, 100, 100)
+            self.assertEqual(grid, {})
+        finally:
+            tmp.unlink()

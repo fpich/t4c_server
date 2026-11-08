@@ -121,16 +121,26 @@ class MapParser:
             log.error("PCX trop petit : %s", pcx_path)
             return {}
 
-        # Trouver la palette (marker 0x0C 0x01 ou 0x03 0x01)
-        palette_marker = data.find(b"\x0c\x01")
-        if palette_marker == -1:
-            palette_marker = data.find(b"\x03\x01")
+        # Trouver la palette : marker 0x0C standard PCX, les 768 derniers
+        # octets du fichier sont la palette RGB (précédée de 0x0C).
+        # On cherche le 0x0C à len(data)-769 (position standard), sinon on
+        # scanne les 1024 derniers octets.
+        palette_marker = -1
+        if len(data) >= 769 and data[len(data) - 769] == 0x0C:
+            palette_marker = len(data) - 769
+        else:
+            # Scan de secours : dernier 0x0C dans les 1024 derniers octets
+            search_start = max(0, len(data) - 1024)
+            for i in range(len(data) - 1, search_start, -1):
+                if data[i] == 0x0C and i + 769 <= len(data):
+                    palette_marker = i
+                    break
 
-        if palette_marker == -1 or palette_marker > len(data) - 768:
+        if palette_marker == -1:
             log.error("Palette non trouvée dans : %s", pcx_path)
             return {}
 
-        palette = data[palette_marker + 2:palette_marker + 2 + 768]
+        palette = data[palette_marker + 1:palette_marker + 1 + 768]
 
         # Extraire les pixels (après header 164 bytes, avant palette)
         pixel_data = data[164:palette_marker]

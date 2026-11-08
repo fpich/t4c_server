@@ -33,7 +33,7 @@ Découvertes clés :
 | 24 | Sorts réels (3.3) | C2S 32 spellId>0 : coût mana (67), diffusion 64, dégâts, sort de départ 414 Fire dart, PNJ teach → S2C 55, persistance PlayerSpells | ✅ 2026-10-13 (5 tests) |
 | 25 | WDA déchiffré | `tools/wda_decrypt.py` (masque LCG 3418 octets, SHA256 vérifié), `ressources/wda_extract/` : 188 items, 962 sorts, PNJ/mobs/spawners ; catalogue chargé dans items.py/spells.py | ✅ 2026-10-13 (4 tests) — grille de tuiles non localisée (binaire) |
 | 26 | Persistance étendue | Tables guildz/guildplayers/Guildboard/OfflineMessages/OnlineUsers + CRUD ; messages offline livrés au 46 ; présence online/offline | ✅ 2026-10-13 (5 tests) — opcodes wire guilde à identifier (SQL direct côté original) |
-| 27 | Téléportation & mort | S2C 57 au respawn après mort (fait avec étape 22) ; pénalité/XP niveau (37) : formules WDA extraites mais pas encore branchées | 🔄 |
+| 27 | Téléportation & mort | S2C 57 au respawn après mort (fait avec étape 22) ; pénalité/XP niveau (37) : formules WDA extraites mais pas encore branchées ; **partage XP de groupe selon DistributeKillXP (coefficient de groupe + pénalité par niveau) branché** | 🔄 |
 | 28 | Fragmentation UDP | Réassemblage (flag 0x0400) : declaredLength = taille totale, 1012 o/fragment, purge 10 s | ✅ 2026-10-13 (3 tests) |
 | 29 | Comptes réels | 14 = inscription si inconnu (hash SHA-256 salé) / vérification si connu ; persistance T4Cusers | ✅ 2026-10-13 (2 tests) |
 | 30 | Serveur original sous Wine | ✅ **FONCTIONNEL** (port 11677, Wine 10 local) : causes racines = MFC42, winbind, ODBC i386+MachineName, NPCDLL1=NPCs.dll. Doc : `docs/SERVEUR_ORIGINAL_WINE_LOCAL.md`. Diff-test vs Python OK (66/91/65/45/14/26/46) | ✅ 2026-10-13 |
@@ -48,7 +48,7 @@ Découvertes clés :
 
 ## État à fin de session 2026-10-13 (2e passe)
 
-- Serveur Python : **133 tests OK**, scénario bout-en-bout complet (bootstrap →
+- Serveur Python : **141 tests OK**, scénario bout-en-bout complet (bootstrap →
   auth → création → monde → multi-joueurs → mouvement/collisions → chat local +
   canaux → shop achat/vente → groupe → combat → sort → mort/respawn → sortie).
 - Serveur original 1.25 **fonctionnel sous Wine 10** (port 11677) : diff-test OK.

@@ -1239,6 +1239,45 @@ def send_group_hp_update(
         server.send_packet(member.address, packet)
 
 
+def _group_xp_shares(
+    xp: int, members: list, levels: dict[int, int]
+) -> dict[int, int]:
+    """Calcule la part d'XP de chaque membre selon Group::DistributeKillXP
+    (PASSE21, confirmé) :
+
+      1. coefficient de groupe = min(1 + 0.5 * (n - 1), 3.0)
+      2. part de base = int(xp * coefficient) // n   (conversion 64 bits)
+      3. Lmax = niveau max parmi les membres retenus
+      4. pour chaque membre de niveau L :
+           pas = 4 * (1 + floor(L / 25))
+           k   = floor((Lmax - L) / pas)
+           si k == 0 : part = part de base
+           si k >= 1 : part = int(part de base * 0.5 * (0.2 ** (k - 1)))
+
+    Retourne {unit_id: part_xp}. Les membres hors vue sont exclus du partage
+    (GetRangeGroupMembers ne retient que les membres à portée).
+    """
+    n = len(members)
+    if n <= 0:
+        return {}
+    coefficient = min(1.0 + 0.5 * (n - 1), 3.0)
+    base_share = int(xp * coefficient) // n
+    if base_share <= 0:
+        return {}
+    lmax = max((levels.get(m.unit_id, 1) for m in members), default=1)
+    shares: dict[int, int] = {}
+    for member in members:
+        level = levels.get(member.unit_id, 1)
+        pas = 4 * (1 + level // 25)
+        k = (lmax - level) // pas
+        if k <= 0:
+            share = base_share
+        else:
+            share = int(base_share * 0.5 * (0.2 ** (k - 1)))
+        shares[member.unit_id] = share
+    return shares
+
+
 def distribute_kill_rewards(
     server: "T4CServerProtocol", killer: ClientSession, xp: int, gold: int
 ) -> None:
@@ -1247,30 +1286,43 @@ def distribute_kill_rewards(
     group = group_of(killer)
     if group is None or not group.auto_split or len(group.members) < 2:
         return  # le tueur garde tout (kill_npc crédite déjà)
-    share_xp = xp // len(group.members)
-    share_gold = gold // len(group.members)
-    if share_xp <= 0 and share_gold <= 0:
+    # Membres à portée (GetRangeGroupMembers) : le tueur + les autres en vue.
+    in_range = [
+        m for m in group.members
+        if m is killer or _in_view(killer.pos_x, killer.pos_y, m.pos_x, m.pos_y)
+    ]
+    if len(in_range) < 2:
         return
-    for member in group.members:
+    levels = {}
+    for member in in_range:
+        character = _find_character(server, member)
+        levels[member.unit_id] = character.level if character else 1
+    shares = _group_xp_shares(xp, in_range, levels)
+    share_gold = gold // len(in_range)
+    if not shares and share_gold <= 0:
+        return
+    # Le tueur a déjà reçu le total (kill_npc) : on lui retire sa part excédentaire.
+    killer_char = _find_character(server, killer)
+    killer_share = shares.get(killer.unit_id, 0)
+    if killer_char is not None and killer_share > 0:
+        killer_char.xp -= xp - killer_share
+        send_xp_update(server, killer, killer_char.xp)
+    if killer_char is not None and share_gold > 0:
+        killer_char.gold -= gold - share_gold
+        send_gold_update(server, killer, killer_char.gold)
+    for member in in_range:
         if member is killer:
             continue
         character = _find_character(server, member)
         if character is None:
             continue
-        if not _in_view(killer.pos_x, killer.pos_y, member.pos_x, member.pos_y):
-            continue
-        character.xp += share_xp
-        character.gold += share_gold
-        send_xp_update(server, member, character.xp)
-        send_gold_update(server, member, character.gold)
-    # Le tueur reçoit sa part aussi (kill_npc a donné le total : on corrige).
-    character = _find_character(server, killer)
-    if character is not None and share_xp > 0:
-        character.xp -= xp - share_xp
-        send_xp_update(server, killer, character.xp)
-    if character is not None and share_gold > 0:
-        character.gold -= gold - share_gold
-        send_gold_update(server, killer, character.gold)
+        share = shares.get(member.unit_id, 0)
+        if share > 0:
+            character.xp += share
+            send_xp_update(server, member, character.xp)
+        if share_gold > 0:
+            character.gold += share_gold
+            send_gold_update(server, member, character.gold)
 
 
 # Correspondance champ puppet -> slot d'équipement, DÉCODÉE du serveur

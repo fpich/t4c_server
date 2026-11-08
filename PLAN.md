@@ -224,3 +224,30 @@ Implémenter `t4c/map_parser.py` pour extraire la grille de collision depuis les
 
 Diff-test complet avec le serveur original Wine pour valider les réponses
 octet par octet sur les étapes 25 (création), 13 (entrée monde), 46 (chat).
+
+## Session 2026-11-08 — Résumé
+
+### Étapes complétées
+- **Étape 33** : Carte réelle depuis PCX + maps.dat
+  - Nouveau module `t4c/map_parser.py` pour parser les PCX et maps.dat
+  - Extraction grille de collision par heuristique couleur (vert/brun=walkable)
+  - WorldMap supporte `use_real_collision=True` pour charger automatiquement
+  - 7 tests d'intégration, 172 tests OK
+
+- **Étape 34** : Spawns réels depuis spawns.json
+  - Nouveau module `t4c/spawns.py` pour charger les spawners WDA
+  - Fonction `load_spawns()` pour parser le JSON (world, x, y)
+  - Intégration dans `run_server.py` avec `register_spawns_as_npcs()`
+  - 8 tests d'intégration, 180 tests OK
+
+### Fichiers ajoutés
+- `t4c/map_parser.py` — Parseur PCX + maps.dat pour grille de collision
+- `t4c/spawns.py` — Chargeur de spawners depuis spawns.json
+- `tests/test_step33_real_maps.py` — 7 tests pour la carte réelle
+- `tests/test_step34_real_spawns.py` — 8 tests pour les spawns réels
+
+### Statut actuel
+- **180 tests OK** sur toutes les étapes 1-34
+- Serveur fonctionnel avec cartes réelles et spawns WDA
+- Prochaine priorité : diff-test complet vs serveur original Wine
+

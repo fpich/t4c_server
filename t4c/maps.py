@@ -1,17 +1,13 @@
 """Carte et collisions (PLAN 2.1).
 
-Le serveur original valide chaque déplacement via WorldMap::GetCollisionPos
-(@0x4B2700) sur la grille du monde chargé depuis `T4C Worlds.WDA`. Le format
+Le serveur original valide chaque déplacement via WorldMap::IsBlocking
+(@0x4AF250) sur la grille du monde chargé depuis `T4C Worlds.WDA`. Le format
 WDA reste non décodé (cf. ressources/.../PASSE41 — « INCONNU : collisions
 réellement présentes dans T4C Worlds.WDA »), donc on définit ici un format
 minimal propre, chargeable depuis un CSV, en attendant l'extraction réelle.
 
-Convention : par défaut (pas de fichier), toute case dans les bornes
-0..0x0C00 du monde est franchissable — comportement actuel du serveur de
-développement. Un fichier `maps/world<id>.csv` (s'il existe) restreint la
-grille : chaque ligne `x,y,0|1` (1 = franchissable, 0 = bloqué) ; les cases
-absentes du fichier sont bloquées si au moins une ligne existe pour ce
-monde, franchissables sinon.
+À partir de l'étape 33, on peut charger automatiquement les grilles de
+collision réelles depuis les PCX clients + maps.dat (voir t4c.map_parser).
 """
 
 from __future__ import annotations
@@ -29,14 +25,42 @@ MAP_MAX = 0x0C00
 class WorldMap:
     """Grille de passabilité par monde."""
 
-    def __init__(self, maps_dir: str | Path | None = None):
+    def __init__(self, maps_dir: str | Path | None = None,
+                 use_real_collision: bool = False):
         self.maps_dir = Path(maps_dir) if maps_dir else None
         # world -> dict[(x, y)] -> bool walkable
         self._grids: dict[int, dict[tuple[int, int], bool]] = {}
         self._loaded: set[int] = set()
+        self._use_real_collision = use_real_collision
+        self._real_loaded: set[int] = set()
+
+        if use_real_collision:
+            self._load_real_collision()
+
+    def _load_real_collision(self) -> None:
+        """Charge les grilles réelles depuis PCX + maps.dat (étape 33)."""
+        try:
+            from t4c.map_parser import load_real_collision
+            real_grids = load_real_collision()
+            for world, grid in real_grids.items():
+                self._grids[world] = grid
+                self._loaded.add(world)
+                self._real_loaded.add(world)
+            log.info("collision réelle chargée : %d mondes", len(real_grids))
+        except ImportError:
+            log.warning("t4c.map_parser non disponible, fallback CSV")
 
     def _load(self, world: int) -> None:
-        if world in self._loaded or self.maps_dir is None:
+        if world in self._loaded:
+            return
+        # Essayer d'abord la collision réelle
+        if self._use_real_collision and world not in self._real_loaded:
+            self._load_real_collision()
+            if world in self._grids:
+                self._loaded.add(world)
+                return
+        # Fallback CSV
+        if self.maps_dir is None:
             self._loaded.add(world)
             return
         path = self.maps_dir / f"world{world}.csv"

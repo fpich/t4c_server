@@ -39,6 +39,8 @@ Découvertes clés :
 | 32 | Chuchotement (paquet 29) | C2S 29 : CString targetName, CString text → S2C 27 (Unit::Talk) au destinataire + accusé à l'émetteur ; recherche insensible à la casse | ✅ 2026-10-13 (3 tests) |
 | 30 | Serveur original sous Wine | ✅ **FONCTIONNEL** (port 11677, Wine 10 local) : causes racines = MFC42, winbind, ODBC i386+MachineName, NPCDLL1=NPCs.dll. Doc : `docs/SERVEUR_ORIGINAL_WINE_LOCAL.md`. Diff-test vs Python OK (66/91/65/45/14/26/46) | ✅ 2026-10-13 |
 | 31 | Validation de bout en bout | Harnais multi-clients (fait étape 19, étendu groupe/combat/sort) + diff-test contre l'original (fait étape 30) ; reste : diff-test 25/13/46 complet avec perso créé côté original | 🔄 |
+| 33 | Carte réelle monde 0 | Parser PCX client (640x480 8-bit palette) + maps.dat (CSV 67 rectangles) pour grille de collision ; chaque octet = 2 tuiles (nibble haut/bas), valeurs 0-9 walkable, >9 blocking | ⏳ |
+| 34 | Spawns réels | Charger spawns.json (extrait WDA) + maps.dat pour positionner PNJ/mobs/créatures dans le monde | ⏳ |
 
 ## Hors périmètre réaliste (à documenter comme limitations connues)
 
@@ -199,6 +201,24 @@ paquet C2S déclencheur n'est pas encore identifié), format de carte/collisions
 | P2 | Carte réelle monde 0 | Parser PCX client + maps.dat pour grille de collision réaliste |
 | P3 | ~~Paquet 29 (chuchotement)~~ | ✅ **Terminé** (étape 32, 3 tests) — format confirmé par RE client @0x498E73 |
 | P4 | Améliorations gameplay | Quêtes, IA PNJ avancée, événements monde |
+
+## Découvertes session 2026-11-08
+
+### Format de collision (désassemblage ISBlocking @0x4AF250)
+- Tableau d'octets à `WorldMap+0x30` : chaque octet contient 2 tuiles (nibble haut si pair, bas si impair)
+- Valeurs 0-9 = walkable, valeurs ≥10 = blocking
+- Index = `(y * width + x) / 2` (division par 2)
+- Table jump à `0x4AF334` détermine le statut de chaque tile (0-9 via table, >9 blocking par défaut)
+
+### Fichiers de carte trouvés
+- `maps.dat` : CSV ASCII avec colonnes `Type,X,Y,W,H,World,PCX_Name`
+  - Type: S=Surface (positif), L=Landscape (négatif)
+  - 67 entrées pour 3 mondes
+- `map4.dat` : liste d'IDs uint16 LE (1074 IDs, range 3-65293) — probablement IDs d'objets/units par map
+- PCX clients : 36 fichiers dans `ressources/t4c_client_fr/Maps/`, format 640x480 8-bit palette
+
+### Prochaine action
+Implémenter `t4c/map_parser.py` pour extraire la grille de collision depuis les PCX + maps.dat.
 
 ## Prochaine session recommandée
 

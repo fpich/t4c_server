@@ -1,0 +1,15 @@
+VA_entree	VA_adresse	Nature
+0x00451380	0x004513D5	indirect_jump
+0x00451380	0x00451554	indirect_jump
+0x00451380	0x0045161E	indirect_jump
+0x00451380	0x0045148C	indirect_jump
+0x004D1A76	0x004D1A76	indirect_jump
+0x004D1A8E	0x004D1A8E	indirect_jump
+0x004D1AE2	0x004D1AE2	indirect_jump
+0x004D1AFA	0x004D1AFA	indirect_jump
+0x004D1B00	0x004D1B00	indirect_jump
+0x004D1B06	0x004D1B06	indirect_jump
+0x004D1B0C	0x004D1B0C	indirect_jump
+0x004D1B12	0x004D1B12	indirect_jump
+0x004D2502	0x004D2502	indirect_jump
+0x004D254A	0x004D254A	indirect_jump

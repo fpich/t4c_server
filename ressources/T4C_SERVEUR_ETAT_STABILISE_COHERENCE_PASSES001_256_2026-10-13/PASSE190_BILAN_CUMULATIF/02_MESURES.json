@@ -1,0 +1,45 @@
+{
+  "passes": "185-190",
+  "sha256_executable": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "text_size": 905117,
+  "base_mask_count": 826773,
+  "unique_new_bytes": 0,
+  "final_mask_count": 826773,
+  "final_percentage": 91.3443234410579,
+  "remaining_bytes": 78344,
+  "cumulative_provisional": true,
+  "evidence_windows": [
+    {
+      "window": "0x4BAA90 \u2014 structure arborescente / allocation",
+      "begin": "0x4baa90",
+      "end_exclusive": "0x4bab65",
+      "matched_instructions": 74,
+      "matched_bytes": 213,
+      "unmatched_starts": 0,
+      "counted_new": 0
+    },
+    {
+      "window": "0x434670 \u2014 m\u00e9thode \u00e0 appels virtuels",
+      "begin": "0x434670",
+      "end_exclusive": "0x434770",
+      "matched_instructions": 103,
+      "matched_bytes": 256,
+      "unmatched_starts": 0,
+      "counted_new": 0
+    },
+    {
+      "window": "0x493A75 \u2014 zone fragmentaire",
+      "begin": "0x493a75",
+      "end_exclusive": "0x493bb0",
+      "matched_instructions": 79,
+      "matched_bytes": 313,
+      "unmatched_starts": 1,
+      "counted_new": 0
+    }
+  ],
+  "masked_sha256": "cf37f2c21903d54620f84d258c5715bc3ba6dba06a381961d1ddf91ada7bf122",
+  "tls_directory_rva": "0x0",
+  "pdata_directory_rva": "0x0",
+  "exports_in_text": 955,
+  "uncovered_exports": 0
+}

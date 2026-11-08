@@ -1,0 +1,10 @@
+adresse	contexte	constat_verifie	reserve
+0x490B10	UnitEffectManager::RegisterEffect	alloue paire 8 octets (code/proc) et la place dans liste globale 0x556400	doublons/ordre de résolution non démontrés intégralement
+0x4C3EDC	constructeur dynamique A	charge la clé depuis [esi+0x3AC]	nom métier du champ à confirmer
+0x4C5CB7	callback dynamique D / code 5	appelle SpellEffect::DispellEffectStatus	distinguer retrait visuel et suppression de l effet
+0x4C5CE0	callback dynamique D / code 0x1B	notification puis Unit::RemoveEffect	pas une preuve de suppression universelle pour tous les callbacks
+0x4C799E	callback dynamique F	teste nullité de pointeur argument avant entrée de dispatch	l objet pointé dépend de la voie appelante
+0x4C7A31	callback dynamique F / code 5	alloue nouvelle entrée, calcule round, puis Unit::AddEffect	l échéance exacte dépend des valeurs de contexte
+0x4C7BC0	callback dynamique F / code 9	libération conditionnelle	nature et ownership précis de l allocation à vérifier
+0x4C7BD6	callback dynamique F / code 0x0D	Unit::RemoveEffect et notification S2C84	autres codes ont un chemin différent
+0x4C7C27	callback dynamique F, repli	appelle SpellMessageHandler::ActivateSpell	ne prouve pas qu il est appelé pour tous les événements

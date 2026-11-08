@@ -1,0 +1,19 @@
+{
+  "passe": 72,
+  "theme": "PAQUETS_ET_SERIALISATION",
+  "sha256_binaire": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "base_text": "0x00401000",
+  "taille_text": 905117,
+  "octets_entree": 131179,
+  "octets_nouveaux": 2465,
+  "octets_cumules": 133644,
+  "couverture_pourcent": 14.765384,
+  "nombre_fonctions_examinees": 20,
+  "instructions_uniques_verifiees": 1080,
+  "octets_uniques_dans_preuves": 2750,
+  "octets_confondus_avec_historique": 285,
+  "nouvelles_plages": 16,
+  "cibles_non_decodees": 0,
+  "branches_hors_fenetre": 6,
+  "methodologie": "Parcours de CFG direct depuis export connu ou entrée connue; GNU objdump, vérification de chaque byte contre le binaire; aucun NOP/INT3, pas de désassemblage linéaire de zones non atteintes. Branches indirectes exclues. Les erreurs de désassemblage et les chemins non explorés restent possibles. Le pourcentage désigne exclusivement des octets instruction vérifiés, pas une reconstitution sémantique complète."
+}

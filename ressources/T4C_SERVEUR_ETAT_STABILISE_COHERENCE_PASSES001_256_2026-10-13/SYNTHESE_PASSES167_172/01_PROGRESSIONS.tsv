@@ -1,0 +1,7 @@
+passe	domaine	octets_ajoutes	nouvelles_instructions	octets_cumules	couverture_pct
+167	Reaudit des frontieres	0	0	820159	90.613589
+168	Personnages et objets	954	277	821113	90.718990
+169	Sessions et dialogues	1156	374	822269	90.846708
+170	Dispatcher WDA	360	137	822629	90.886482
+171	Routines utilitaires et autres	512	166	823141	90.943049
+172	Audit final	0	0	823141	90.943049

@@ -1,0 +1,23 @@
+{
+  "passe": 111,
+  "theme": "CALL_TRANSITIVE",
+  "description": "Cibles de CALL immédiats révélées par passes 107 à 110",
+  "sha256_binaire": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "base_text": "0x401000",
+  "taille_text": 905117,
+  "octets_avant": 740042,
+  "octets_nouveaux": 22384,
+  "octets_cumules": 762426,
+  "couverture_pourcent": 84.235077,
+  "entrees_examinees": 99,
+  "instructions_documentees": 8139,
+  "octets_distincts_dans_preuves": 23121,
+  "nombre_intervalles_nouveaux": 99,
+  "appels_directs": 416,
+  "sauts_indirects": 6,
+  "cibles_hors_fenetre": 2,
+  "instructions_rejetees_conflit": 0,
+  "branches_incompletes": 8,
+  "duree_s": 0.09,
+  "methode": "Parcours CFG local depuis cibles de relocations PE et appels directs, x86 objdump et octets PE controles. Limites des fonctions heuristiques; cibles indirectes non resolues; dedoublonnage bitset."
+}

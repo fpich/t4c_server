@@ -1,0 +1,12 @@
+{
+  "passe": 171,
+  "domaine": "Routines utilitaires et autres",
+  "avant": 822629,
+  "apres": 823141,
+  "gain_unique": 512,
+  "nouvelles_instructions": 166,
+  "blocs": 11,
+  "pourcentage": 90.943049,
+  "sha256_masque": "52a66b3d93b2757705e6f5c6a4e570506ddf3de8e5bbc80791df65a3891356e4",
+  "sha256_ajout": "9abd1fb87b8e47b468e2f49a93651f1026f3058fd747c89666d1a7f04caaf93f"
+}

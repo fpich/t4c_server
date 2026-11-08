@@ -1,0 +1,10 @@
+{
+  "passe": 143,
+  "description": "Point d’entrée du PE",
+  "nouveaux_octets": 240,
+  "octets_cumules": 809878,
+  "denominateur": 905117,
+  "couverture_pourcent": 89.477714,
+  "instructions_de_la_passe": 74,
+  "pe_original_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc"
+}

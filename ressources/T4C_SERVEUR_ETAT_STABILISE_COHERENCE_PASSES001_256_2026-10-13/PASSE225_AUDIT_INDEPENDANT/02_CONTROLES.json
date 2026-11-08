@@ -1,0 +1,18 @@
+{
+  "source_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "individual_table_checks": 18,
+  "guard_load_jump_binaries_compared_GNU_LLVM": 54,
+  "new_table_bytes": 891,
+  "all_referenced_destination_addresses_in_prior_code_mask": true,
+  "pairwise_masks_disjoint": true,
+  "code_mask_unchanged": true,
+  "table_regards_as_code": false,
+  "unresolved_indirect_graph": true,
+  "mask_shas": {
+    "code": "297ba98912981850379fd95dc4048cb6027c6e05b8e538e21883e9b913c5607b",
+    "data_old": "e9af64a4180a70adf21a0d3df9b1df0bbb1fdc64321450900a7aeeeb1b70c84f",
+    "data_new": "b7b9fa2f09f6822aaa992571c9d57c021c5afed9ae8d040fa4caed8f99edd675",
+    "padding": "3a8a81ab0780a54fdf9b00c06fb493c7eda311999fde274fbcb68b72953af4df",
+    "classified": "081d74cbb85508c1bc9711a2e265a4ab000b2f7c6e87425f3d14d668794ac72b"
+  }
+}

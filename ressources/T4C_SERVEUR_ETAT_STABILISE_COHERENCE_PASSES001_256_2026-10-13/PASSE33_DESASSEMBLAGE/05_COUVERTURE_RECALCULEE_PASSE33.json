@@ -1,0 +1,45 @@
+{
+  "date": "2026-10-08",
+  "binaire": "T4C Server(1).exe",
+  "sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "section_texte_va": "0x00401000",
+  "section_texte_octets": 905117,
+  "passes_base": 32,
+  "documents_historiques_conserves": 223,
+  "couverture_base_octets": 48321,
+  "couverture_base_pct": 5.338647,
+  "nouveaux_octets_non_redondants": 4468,
+  "nouvelle_couverture_octets": 52789,
+  "nouvelle_couverture_pct": 5.832285,
+  "instructions_nouvelles_entre_preuves": 1672,
+  "adresses_instructions_nouvelles_distinctes": 1552,
+  "total_adresses_instructions_distinctes": 18093,
+  "entrees_exportees": 1125,
+  "entrees_exportees_couvertes_avant": 128,
+  "entrees_exportees_couvertes_apres": 142,
+  "nombre_preuves_historique_pertinentes": 36,
+  "lignes_historique_non_matching_serveur": 536,
+  "preuves_nouvelles": [
+    {
+      "fichier": "02_PREUVES_OBJECTTIMER_ASSEMBLEUR_PASSE33.asm",
+      "instructions_verifiees": 579,
+      "octets_dans_preuve": 1729,
+      "nouveaux_octets_non_redondants": 1729,
+      "entrees_exportees_couvertes": 8
+    },
+    {
+      "fichier": "03_PREUVES_HANDLERS_OBJETS_ASSEMBLEUR_PASSE33.asm",
+      "instructions_verifiees": 664,
+      "octets_dans_preuve": 1664,
+      "nouveaux_octets_non_redondants": 1354,
+      "entrees_exportees_couvertes": 5
+    },
+    {
+      "fichier": "04_PREUVES_APPELANTS_ET_HORLOGE_PASSE33.asm",
+      "instructions_verifiees": 429,
+      "octets_dans_preuve": 1385,
+      "nouveaux_octets_non_redondants": 1385,
+      "entrees_exportees_couvertes": 2
+    }
+  ]
+}

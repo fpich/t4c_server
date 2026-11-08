@@ -1,0 +1,150 @@
+zone	adresse	opcodes	GNU	LLVM	octets_precedemment_non_couverts
+interruption_41b1b6	0x0041B1B6	c7 86 ac 02 00 00 00 00 00 00	mov    DWORD PTR [esi+0x2ac],0x0	mov	dword ptr [esi + 0x2ac], 0x0	0
+interruption_41b1b6	0x0041B1C0	c6 86 a0 02 00 00 08	mov    BYTE PTR [esi+0x2a0],0x8	mov	byte ptr [esi + 0x2a0], 0x8	7
+interruption_41b1b6	0x0041B1C7	8b 86 ac 02 00 00	mov    eax,DWORD PTR [esi+0x2ac]	mov	eax, dword ptr [esi + 0x2ac]	0
+interruption_41b1b6	0x0041B1CD	85 c0	test   eax,eax	test	eax, eax	0
+interruption_41b1b6	0x0041B1CF	74 10	je     0x41b1e1	je	0x41b1e1 <?attacked@Character@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z+0x191>	0
+interruption_41b1b6	0x0041B1D1	8b 8e 8c 02 00 00	mov    ecx,DWORD PTR [esi+0x28c]	mov	ecx, dword ptr [esi + 0x28c]	0
+interruption_41b1b6	0x0041B1D7	8b 11	mov    edx,DWORD PTR [ecx]	mov	edx, dword ptr [ecx]	0
+interruption_41b1b6	0x0041B1D9	89 96 8c 02 00 00	mov    DWORD PTR [esi+0x28c],edx	mov	dword ptr [esi + 0x28c], edx	0
+interruption_41b1b6	0x0041B1DF	eb 0a	jmp    0x41b1eb	jmp	0x41b1eb <?attacked@Character@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z+0x19b>	0
+interruption_41b1b6	0x0041B1E1	c7 86 ac 02 00 00 01 00 00 00	mov    DWORD PTR [esi+0x2ac],0x1	mov	dword ptr [esi + 0x2ac], 0x1	0
+interruption_41b1b6	0x0041B1EB	8b 86 8c 02 00 00	mov    eax,DWORD PTR [esi+0x28c]	mov	eax, dword ptr [esi + 0x28c]	0
+interruption_41b1b6	0x0041B1F1	85 c0	test   eax,eax	test	eax, eax	0
+interruption_41b1b6	0x0041B1F3	74 1a	je     0x41b20f	je	0x41b20f <?attacked@Character@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z+0x1bf>	0
+interruption_41b1b6	0x0041B1F5	8b 40 08	mov    eax,DWORD PTR [eax+0x8]	mov	eax, dword ptr [eax + 0x8]	0
+interruption_41b1b6	0x0041B1F8	8b 08	mov    ecx,DWORD PTR [eax]	mov	ecx, dword ptr [eax]	0
+interruption_41b1b6	0x0041B1FA	50	push   eax	push	eax	0
+interruption_41b1b6	0x0041B1FB	6a 00	push   0x0	push	0x0	0
+interruption_41b1b6	0x0041B1FD	57	push   edi	push	edi	0
+interruption_41b1b6	0x0041B1FE	53	push   ebx	push	ebx	0
+interruption_41b1b6	0x0041B1FF	6a 00	push   0x0	push	0x0	0
+interruption_41b1b6	0x0041B201	56	push   esi	push	esi	0
+interruption_41b1b6	0x0041B202	6a 04	push   0x4	push	0x4	0
+interruption_41b1b6	0x0041B204	51	push   ecx	push	ecx	0
+interruption_41b1b6	0x0041B205	e8 f6 4d 04 00	call   0x460000	call	0x460000 <?ExecuteSkill@Skills@@SAHHHPAVUnit@@00PAX1PAVUSER_SKILL@@@Z>	0
+interruption_41b1b6	0x0041B20A	83 c4 20	add    esp,0x20	add	esp, 0x20	0
+interruption_41b1b6	0x0041B20D	eb b8	jmp    0x41b1c7	jmp	0x41b1c7 <?attacked@Character@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z+0x177>	0
+interruption_41b1b6	0x0041B20F	8b 86 ac 02 00 00	mov    eax,DWORD PTR [esi+0x2ac]	mov	eax, dword ptr [esi + 0x2ac]	0
+interruption_41b1b6	0x0041B215	85 c0	test   eax,eax	test	eax, eax	0
+interruption_41b1b6	0x0041B217	74 07	je     0x41b220	je	0x41b220 <?attacked@Character@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z+0x1d0>	0
+interruption_41b1b6	0x0041B219	c6 86 a0 02 00 00 07	mov    BYTE PTR [esi+0x2a0],0x7	mov	byte ptr [esi + 0x2a0], 0x7	0
+interruption_41b1b6	0x0041B220	3b de	cmp    ebx,esi	cmp	ebx, esi	0
+interruption_41b1b6	0x0041B222	c7 86 ac 02 00 00 00 00 00 00	mov    DWORD PTR [esi+0x2ac],0x0	mov	dword ptr [esi + 0x2ac], 0x0	0
+interruption_41b1b6	0x0041B22C	74 0d	je     0x41b23b	je	0x41b23b <?attacked@Character@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z+0x1eb>	0
+interruption_41b1b6	0x0041B22E	53	push   ebx	push	ebx	0
+interruption_41b1b6	0x0041B22F	6a 00	push   0x0	push	0x0	0
+interruption_41b1b6	0x0041B231	57	push   edi	push	edi	0
+interruption_41b1b6	0x0041B232	6a 02	push   0x2	push	0x2	0
+interruption_41b1b6	0x0041B234	8b ce	mov    ecx,esi	mov	ecx, esi	0
+interruption_41b1b6	0x0041B236	e8 d5 1e 07 00	call   0x48d110	call	0x48d110 <?QueryEffects@Unit@@QAEXEPAXPAV1@1@Z>	0
+interruption_41b1b6	0x0041B23B	5f	pop    edi	pop	edi	0
+interruption_41b1b6	0x0041B23C	5e	pop    esi	pop	esi	0
+interruption_41b1b6	0x0041B23D	33 c0	xor    eax,eax	xor	eax, eax	0
+interruption_41b1b6	0x0041B23F	5b	pop    ebx	pop	ebx	0
+interruption_41b1b6	0x0041B240	5d	pop    ebp	pop	ebp	0
+interruption_41b1b6	0x0041B241	c2 08 00	ret    0x8	ret	0x8	0
+interruption_41cc3e	0x0041CC3E	c7 86 f0 02 00 00 00 00 00 00	mov    DWORD PTR [esi+0x2f0],0x0	mov	dword ptr [esi + 0x2f0], 0x0	0
+interruption_41cc3e	0x0041CC48	c6 86 e4 02 00 00 08	mov    BYTE PTR [esi+0x2e4],0x8	mov	byte ptr [esi + 0x2e4], 0x8	7
+interruption_41cc3e	0x0041CC4F	8b 86 f0 02 00 00	mov    eax,DWORD PTR [esi+0x2f0]	mov	eax, dword ptr [esi + 0x2f0]	0
+interruption_41cc3e	0x0041CC55	85 c0	test   eax,eax	test	eax, eax	0
+interruption_41cc3e	0x0041CC57	74 10	je     0x41cc69	je	0x41cc69 <?hit@Character@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z+0x69>	0
+interruption_41cc3e	0x0041CC59	8b 96 d0 02 00 00	mov    edx,DWORD PTR [esi+0x2d0]	mov	edx, dword ptr [esi + 0x2d0]	0
+interruption_41cc3e	0x0041CC5F	8b 02	mov    eax,DWORD PTR [edx]	mov	eax, dword ptr [edx]	0
+interruption_41cc3e	0x0041CC61	89 86 d0 02 00 00	mov    DWORD PTR [esi+0x2d0],eax	mov	dword ptr [esi + 0x2d0], eax	0
+interruption_41cc3e	0x0041CC67	eb 0a	jmp    0x41cc73	jmp	0x41cc73 <?hit@Character@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z+0x73>	0
+interruption_41cc3e	0x0041CC69	c7 86 f0 02 00 00 01 00 00 00	mov    DWORD PTR [esi+0x2f0],0x1	mov	dword ptr [esi + 0x2f0], 0x1	0
+interruption_41cc3e	0x0041CC73	8b 86 d0 02 00 00	mov    eax,DWORD PTR [esi+0x2d0]	mov	eax, dword ptr [esi + 0x2d0]	0
+interruption_41cc3e	0x0041CC79	85 c0	test   eax,eax	test	eax, eax	0
+interruption_41cc3e	0x0041CC7B	74 1c	je     0x41cc99	je	0x41cc99 <?hit@Character@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z+0x99>	0
+interruption_41cc3e	0x0041CC7D	8b c8	mov    ecx,eax	mov	ecx, eax	0
+interruption_41cc3e	0x0041CC7F	8b 41 08	mov    eax,DWORD PTR [ecx+0x8]	mov	eax, dword ptr [ecx + 0x8]	0
+interruption_41cc3e	0x0041CC82	8b 10	mov    edx,DWORD PTR [eax]	mov	edx, dword ptr [eax]	0
+interruption_41cc3e	0x0041CC84	50	push   eax	push	eax	0
+interruption_41cc3e	0x0041CC85	6a 00	push   0x0	push	0x0	0
+interruption_41cc3e	0x0041CC87	53	push   ebx	push	ebx	0
+interruption_41cc3e	0x0041CC88	57	push   edi	push	edi	0
+interruption_41cc3e	0x0041CC89	6a 00	push   0x0	push	0x0	0
+interruption_41cc3e	0x0041CC8B	56	push   esi	push	esi	0
+interruption_41cc3e	0x0041CC8C	6a 08	push   0x8	push	0x8	0
+interruption_41cc3e	0x0041CC8E	52	push   edx	push	edx	0
+interruption_41cc3e	0x0041CC8F	e8 6c 33 04 00	call   0x460000	call	0x460000 <?ExecuteSkill@Skills@@SAHHHPAVUnit@@00PAX1PAVUSER_SKILL@@@Z>	0
+interruption_41cc3e	0x0041CC94	83 c4 20	add    esp,0x20	add	esp, 0x20	0
+interruption_41cc3e	0x0041CC97	eb b6	jmp    0x41cc4f	jmp	0x41cc4f <?hit@Character@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z+0x4f>	0
+interruption_41cc3e	0x0041CC99	8b 86 f0 02 00 00	mov    eax,DWORD PTR [esi+0x2f0]	mov	eax, dword ptr [esi + 0x2f0]	0
+interruption_41cc3e	0x0041CC9F	85 c0	test   eax,eax	test	eax, eax	0
+interruption_41cc3e	0x0041CCA1	74 07	je     0x41ccaa	je	0x41ccaa <?hit@Character@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z+0xaa>	0
+interruption_41cc3e	0x0041CCA3	c6 86 e4 02 00 00 07	mov    BYTE PTR [esi+0x2e4],0x7	mov	byte ptr [esi + 0x2e4], 0x7	0
+interruption_41cc3e	0x0041CCAA	3b fe	cmp    edi,esi	cmp	edi, esi	0
+interruption_41cc3e	0x0041CCAC	c7 86 f0 02 00 00 00 00 00 00	mov    DWORD PTR [esi+0x2f0],0x0	mov	dword ptr [esi + 0x2f0], 0x0	0
+interruption_41cc3e	0x0041CCB6	74 0d	je     0x41ccc5	je	0x41ccc5 <?hit@Character@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z+0xc5>	0
+interruption_41cc3e	0x0041CCB8	57	push   edi	push	edi	0
+interruption_41cc3e	0x0041CCB9	6a 00	push   0x0	push	0x0	0
+interruption_41cc3e	0x0041CCBB	53	push   ebx	push	ebx	0
+interruption_41cc3e	0x0041CCBC	6a 0e	push   0xe	push	0xe	0
+interruption_41cc3e	0x0041CCBE	8b ce	mov    ecx,esi	mov	ecx, esi	0
+interruption_41cc3e	0x0041CCC0	e8 4b 04 07 00	call   0x48d110	call	0x48d110 <?QueryEffects@Unit@@QAEXEPAXPAV1@1@Z>	0
+interruption_41cc3e	0x0041CCC5	8b 06	mov    eax,DWORD PTR [esi]	mov	eax, dword ptr [esi]	0
+interruption_41cc3e	0x0041CCC7	8b ce	mov    ecx,esi	mov	ecx, esi	0
+interruption_41cc3e	0x0041CCC9	ff 90 d8 00 00 00	call   DWORD PTR [eax+0xd8]	call	dword ptr [eax + 0xd8]	0
+interruption_41cc3e	0x0041CCCF	8b 16	mov    edx,DWORD PTR [esi]	mov	edx, dword ptr [esi]	0
+interruption_41cc3e	0x0041CCD1	8b ce	mov    ecx,esi	mov	ecx, esi	0
+interruption_41cc3e	0x0041CCD3	89 45 0c	mov    DWORD PTR [ebp+0xc],eax	mov	dword ptr [ebp + 0xc], eax	0
+interruption_41cc3e	0x0041CCD6	ff 92 cc 00 00 00	call   DWORD PTR [edx+0xcc]	call	dword ptr [edx + 0xcc]	0
+interruption_41cc3e	0x0041CCDC	8b 8e 78 01 00 00	mov    ecx,DWORD PTR [esi+0x178]	mov	ecx, dword ptr [esi + 0x178]	0
+interruption_41cc3e	0x0041CCE2	85 c9	test   ecx,ecx	test	ecx, ecx	0
+interruption_41cc3e	0x0041CCE4	89 45 ec	mov    DWORD PTR [ebp-0x14],eax	mov	dword ptr [ebp - 0x14], eax	0
+interruption_41cc3e	0x0041CCE7	89 4d 08	mov    DWORD PTR [ebp+0x8],ecx	mov	dword ptr [ebp + 0x8], ecx	0
+interruption_41cc3e	0x0041CCEA	74 1a	je     0x41cd06	je	0x41cd06 <?hit@Character@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z+0x106>	0
+interruption_41cc3e	0x0041CCEC	e8 ef 7d 03 00	call   0x454ae0	call	0x454ae0 <?GetGodFlags@Players@@QAE_KXZ>	0
+interruption_41cc3e	0x0041CCF1	25 00 00 00 40	and    eax,0x40000000	and	eax, 0x40000000	0
+interruption_41cc3e	0x0041CCF6	33 c9	xor    ecx,ecx	xor	ecx, ecx	0
+interruption_41cc3e	0x0041CCF8	0b c1	or     eax,ecx	or	eax, ecx	0
+interruption_41cc3e	0x0041CCFA	75 0a	jne    0x41cd06	jne	0x41cd06 <?hit@Character@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z+0x106>	0
+interruption_41cc3e	0x0041CCFC	dd 03	fld    QWORD PTR [ebx]	fld	qword ptr [ebx]	0
+interruption_41cc3e	0x0041CCFE	e8 77 50 0b 00	call   0x4d1d7a	call	0x4d1d7a <ExpFltr_end+0x74a>	0
+interruption_41cc3e	0x0041CD03	29 45 0c	sub    DWORD PTR [ebp+0xc],eax	sub	dword ptr [ebp + 0xc], eax	0
+interruption_41cc3e	0x0041CD06	8b 8e cc 01 00 00	mov    ecx,DWORD PTR [esi+0x1cc]	mov	ecx, dword ptr [esi + 0x1cc]	0
+interruption_41cc3e	0x0041CD0C	85 c9	test   ecx,ecx	test	ecx, ecx	0
+interruption_41cc3e	0x0041CD0E	74 0d	je     0x41cd1d	je	0x41cd1d <?hit@Character@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z+0x11d>	0
+interruption_41cc3e	0x0041CD10	8b 01	mov    eax,DWORD PTR [ecx]	mov	eax, dword ptr [ecx]	0
+interruption_41cc3e	0x0041CD12	6a 00	push   0x0	push	0x0	0
+interruption_41cc3e	0x0041CD14	53	push   ebx	push	ebx	0
+interruption_41cc3e	0x0041CD15	57	push   edi	push	edi	0
+interruption_41cc3e	0x0041CD16	56	push   esi	push	esi	0
+interruption_41cc3e	0x0041CD17	51	push   ecx	push	ecx	0
+interruption_41cc3e	0x0041CD18	6a 0e	push   0xe	push	0xe	0
+interruption_41cc3e	0x0041CD1A	ff 50 24	call   DWORD PTR [eax+0x24]	call	dword ptr [eax + 0x24]	0
+interruption_41e03e	0x0041E03E	c7 86 bc 03 00 00 00 00 00 00	mov    DWORD PTR [esi+0x3bc],0x0	mov	dword ptr [esi + 0x3bc], 0x0	0
+interruption_41e03e	0x0041E048	c6 86 b0 03 00 00 08	mov    BYTE PTR [esi+0x3b0],0x8	mov	byte ptr [esi + 0x3b0], 0x8	7
+interruption_41e03e	0x0041E04F	8b 86 bc 03 00 00	mov    eax,DWORD PTR [esi+0x3bc]	mov	eax, dword ptr [esi + 0x3bc]	0
+interruption_41e03e	0x0041E055	85 c0	test   eax,eax	test	eax, eax	0
+interruption_41e03e	0x0041E057	74 10	je     0x41e069	je	0x41e069 <?Regenerate@Character@@QAEXXZ+0x49>	0
+interruption_41e03e	0x0041E059	8b 8e 9c 03 00 00	mov    ecx,DWORD PTR [esi+0x39c]	mov	ecx, dword ptr [esi + 0x39c]	0
+interruption_41e03e	0x0041E05F	8b 11	mov    edx,DWORD PTR [ecx]	mov	edx, dword ptr [ecx]	0
+interruption_41e03e	0x0041E061	89 96 9c 03 00 00	mov    DWORD PTR [esi+0x39c],edx	mov	dword ptr [esi + 0x39c], edx	0
+interruption_41e03e	0x0041E067	eb 0a	jmp    0x41e073	jmp	0x41e073 <?Regenerate@Character@@QAEXXZ+0x53>	0
+interruption_41e03e	0x0041E069	c7 86 bc 03 00 00 01 00 00 00	mov    DWORD PTR [esi+0x3bc],0x1	mov	dword ptr [esi + 0x3bc], 0x1	0
+interruption_41e03e	0x0041E073	8b 86 9c 03 00 00	mov    eax,DWORD PTR [esi+0x39c]	mov	eax, dword ptr [esi + 0x39c]	0
+interruption_41e03e	0x0041E079	85 c0	test   eax,eax	test	eax, eax	0
+interruption_41e03e	0x0041E07B	74 1c	je     0x41e099	je	0x41e099 <?Regenerate@Character@@QAEXXZ+0x79>	0
+interruption_41e03e	0x0041E07D	8b 40 08	mov    eax,DWORD PTR [eax+0x8]	mov	eax, dword ptr [eax + 0x8]	0
+interruption_41e03e	0x0041E080	8b 08	mov    ecx,DWORD PTR [eax]	mov	ecx, dword ptr [eax]	0
+interruption_41e03e	0x0041E082	50	push   eax	push	eax	0
+interruption_41e03e	0x0041E083	6a 00	push   0x0	push	0x0	0
+interruption_41e03e	0x0041E085	6a 00	push   0x0	push	0x0	0
+interruption_41e03e	0x0041E087	6a 00	push   0x0	push	0x0	0
+interruption_41e03e	0x0041E089	6a 00	push   0x0	push	0x0	0
+interruption_41e03e	0x0041E08B	56	push   esi	push	esi	0
+interruption_41e03e	0x0041E08C	6a 40	push   0x40	push	0x40	0
+interruption_41e03e	0x0041E08E	51	push   ecx	push	ecx	0
+interruption_41e03e	0x0041E08F	e8 6c 1f 04 00	call   0x460000	call	0x460000 <?ExecuteSkill@Skills@@SAHHHPAVUnit@@00PAX1PAVUSER_SKILL@@@Z>	0
+interruption_41e03e	0x0041E094	83 c4 20	add    esp,0x20	add	esp, 0x20	0
+interruption_41e03e	0x0041E097	eb b6	jmp    0x41e04f	jmp	0x41e04f <?Regenerate@Character@@QAEXXZ+0x2f>	0
+interruption_41e03e	0x0041E099	8b 86 bc 03 00 00	mov    eax,DWORD PTR [esi+0x3bc]	mov	eax, dword ptr [esi + 0x3bc]	0
+interruption_41e03e	0x0041E09F	85 c0	test   eax,eax	test	eax, eax	0
+interruption_41e03e	0x0041E0A1	74 07	je     0x41e0aa	je	0x41e0aa <?Regenerate@Character@@QAEXXZ+0x8a>	0
+interruption_41e03e	0x0041E0A3	c6 86 b0 03 00 00 07	mov    BYTE PTR [esi+0x3b0],0x7	mov	byte ptr [esi + 0x3b0], 0x7	0
+interruption_41e03e	0x0041E0AA	c7 86 bc 03 00 00 00 00 00 00	mov    DWORD PTR [esi+0x3bc],0x0	mov	dword ptr [esi + 0x3bc], 0x0	0
+interruption_41e03e	0x0041E0B4	5e	pop    esi	pop	esi	0
+interruption_41e03e	0x0041E0B5	c3	ret	ret	0

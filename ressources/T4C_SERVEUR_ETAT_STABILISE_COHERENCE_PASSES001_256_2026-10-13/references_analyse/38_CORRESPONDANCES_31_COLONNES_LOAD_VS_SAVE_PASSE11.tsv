@@ -1,0 +1,32 @@
+index_odbc	colonne_sql_confirmee	routine_lire_va	lecture_reperable_va	destination_observee_pseudocode	dans_UPDATE_principal	statut_source	notes
+1	UserID	0x44EF10	0x414C24	Unit::SetID @0x48B710	non	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+2	AccountName	0x44F120	0x414C3F	local buffer 0x14; comparison to account name	non	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+3	wlX	0x44EF10	0x414CAF	local word of WorldPos (x); passed to vtable+0x20	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+4	wlY	0x44EF10	0x414CC2	local word of WorldPos (y); passed to vtable+0x20	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+5	wlWorld	0x44EF10	0x414CDF	local word of WorldPos (world); passed to vtable+0x20	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+6	nClass	0x44EFF0	0x414F1A	BYTE [this+0x58] (read after col 24)	non	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+7	CurrentHP	0x44EF10	0x414D0B	vtable+0xDC	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+8	MaxHP	0x44EF10	0x414D27	vtable+0xD4	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+9	CurrentMana	0x44EFF0	0x414D45	vtable+0xF0	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+10	MaxMana	0x44EFF0	0x414D65	vtable+0xE8	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+11	Strength	0x44EFF0	see pass 5 assembly	0x48E2C0 writes WORD [ECX+0x64]	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+12	Endurance	0x44EFF0	see pass 5 assembly	0x48E2B0 writes WORD [ECX+0x62]	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+13	Agility	0x44EFF0	see pass 5 assembly	0x48E2D0 writes WORD [ECX+0x66]	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+14	Intelligence	0x44EFF0	see pass 5 assembly	0x48E2A0 writes WORD [ECX+0x60]	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+15	Wisdom	0x44EFF0	see pass 5 assembly	0x48E2E0 writes WORD [ECX+0x6A]	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+16	CurrentLevel	0x44EFF0	see pass 5 assembly	vtable+0x140	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+17	AttackSkill	0x44EFF0	see pass 5 assembly	0x48E2F0 writes WORD [ECX+0x70]	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+18	DodgeSkill	0x44EFF0	see pass 5 assembly	0x48E300 writes WORD [ECX+0x6E]	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+19	Gold	0x44EF10	see pass 5 assembly	local [EBP-0x28] / further checks	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+20	Appearance	0x44EFF0	see pass 5 assembly	WORD [this+0x7C]	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+21	Corpse	0x44EFF0	see pass 5 assembly	WORD [this+0x84]	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+22	XP	0x44F160	0x414EA4	QWORD, x87 conversion, vtable+0x50	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+23	StatPnts	0x44EFF0	see pass 5 assembly	WORD [this+0x1E2]	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+24	SkillPnts	0x44EFF0	see pass 5 assembly	WORD [this+0x1E0]	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+25	Karma	0x44EF80	see pass 5 assembly	DWORD [this+0x80]	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+26	Gender	0x44EFF0	see pass 5 assembly	BYTE [this+0x7E]	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+27	ListingTitle	0x44F120	0x414F4C	string buffer size arg 0x400 -> this+0x164	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+28	ListingMisc	0x44F120	see pass 5 assembly	string buffer size arg 0x400 -> this+0x168	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+29	MoveExhaust	0x44EF10	0x414FC2	DWORD [this+0x8C]	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+30	MentalExhaust	0x44EF10	see pass 5 assembly	DWORD [this+0x88]	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles
+31	AttackExhaust	0x44EF10	0x414FFB	DWORD [this+0x90]	oui	nom SQL CONFIRME / destination selon passes 4-6	Source SELECT VA=0x501ACC ; UPDATE VA=0x501354 ; offsets relatifs aux objets cibles

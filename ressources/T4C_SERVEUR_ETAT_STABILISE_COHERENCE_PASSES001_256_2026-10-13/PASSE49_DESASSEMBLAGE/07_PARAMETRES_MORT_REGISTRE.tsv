@@ -1,0 +1,9 @@
+categorie	cle_registre	adresse_chaine_VA	site_lecture_VA	sortie_observee	qualification
+PvP	PC_GOLD_LOSS	0x503350	0x438B15	registre vers variables locales	CONFIRME
+PvP	PC_XP_LOSS	0x503360	0x438ABF	registre vers variables locales	CONFIRME
+PvP	PC_EQUIP_LOSS	0x50336C	0x438AFC	registre vers variables locales	CONFIRME
+PvP	PC_BACKPACK_LOSS	0x50337C	0x438AE4	registre vers variables locales	CONFIRME
+autre	MOB_GOLD_LOSS	0x503390	0x438B15	registre vers variables locales	CONFIRME
+autre	MOB_XP_LOSS	0x5033A0	0x438A5B	registre vers variables locales	CONFIRME
+autre	MOB_EQUIP_LOSS	0x5033AC	0x438A99	registre vers variables locales	CONFIRME
+autre	MOB_BACKPACK_LOSS	0x5033BC	0x438A80	registre vers variables locales	CONFIRME

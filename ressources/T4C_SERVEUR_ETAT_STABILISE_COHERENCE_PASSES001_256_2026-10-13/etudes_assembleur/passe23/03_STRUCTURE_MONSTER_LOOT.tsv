@@ -1,0 +1,14 @@
+structure	offset	taille_type	interprétation	preuve	certitude
+NPCstructure	+0x08	MonsterStructure incorporée	construit à cet offset; constructeur copie sur cette adresse	0x44982F–0x449840; 0x449AA3–0x449AAC	CONFIRMÉ
+MonsterStructure	+0xB0	u8	drapeau précédent le tableau, sémantique non déterminée	0x442553, 0x4118BB	CONFIRMÉ structure, SENS INCONNU
+MonsterStructure	+0xB4	ptr32	début tableau d’entrées de butin	0x442559; 0x4118C9; 0x41190C	CONFIRMÉ
+MonsterStructure	+0xB8	ptr32	fin des éléments renseignés	0x44255F; 0x4118DD; 0x411928	CONFIRMÉ
+MonsterStructure	+0xBC	ptr32	limite allouée (capacity end)	0x442565; 0x411906	CONFIRMÉ
+NPCstructure	+0xBC	ptr32	début = MonsterStructure+0xB4 (+8)	0x44A977	CONFIRMÉ
+NPCstructure	+0xC0	ptr32	fin = MonsterStructure+0xB8 (+8)	0x44A985	CONFIRMÉ
+NPCstructure	+0xC4	ptr32	fin de capacité = MonsterStructure+0xBC (+8)	0x449AA3 et 0x442565	CORROBORÉ
+LootEntry	+0x00	u32	index de modèle passé à Objects::Create(mode=3, id)	0x44AA03–0x44AA17; 0x44C070; 0x48B0CB	CONFIRMÉ chemin, NOM INFÉRÉ
+LootEntry	+0x04	u32	inconnu (aucune lecture prouvée dans chemin étudié)	0x41191B–0x411928 (copie de 16 octets)	INCONNU
+LootEntry	+0x08	double	poids/chance; multiplié par 1e6 avant comparaison RNG	0x44A9BB–0x44A9CC	CONFIRMÉ lecture; interprétation chance corroborée
+LootEntry	+0x10	hors de l’entrée	entrée suivante; stride 16 octets	0x44AAC6; 0x4118E3	CONFIRMÉ
+Table globale modèles	VA 0x5163F4	ptr32[index]	table de modèles d’objets consultée par la création	0x48B0CB; 0x48B18C	CONFIRMÉ accès; provenance et contenu non fournis

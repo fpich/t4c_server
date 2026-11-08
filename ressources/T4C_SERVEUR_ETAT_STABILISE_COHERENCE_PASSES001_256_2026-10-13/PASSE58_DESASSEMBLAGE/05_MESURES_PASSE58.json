@@ -1,0 +1,13 @@
+{
+  "passe": 58,
+  "type": "analyse_documentaire_sans_executable",
+  "ancien_fichiers_inchanges": 525,
+  "nouveaux_fichiers": 7,
+  "total_fichiers": 532,
+  "text_octets": 905117,
+  "octets_uniques_verifies_cumul": 126431,
+  "octets_nouveaux_verifies": 0,
+  "couverture_pct": 13.96847,
+  "instructions_nouvelles_verifiees": 0,
+  "observation": "Preuves reprises sans recompter. Le binaire original manque."
+}

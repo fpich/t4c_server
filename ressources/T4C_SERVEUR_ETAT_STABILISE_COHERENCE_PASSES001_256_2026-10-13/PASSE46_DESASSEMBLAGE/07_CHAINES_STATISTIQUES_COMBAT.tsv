@@ -1,0 +1,19 @@
+etape	fonction	adresse_ou_offset	preuve	statut
+recherche boost	Unit::QueryBoost	0x48DE60	PASSE45	CONFIRME
+force effective	Unit::GetSTR	0x48E150	PASSE45	CONFIRME
+agilite effective	Unit::GetAGI	0x48E1B0	PASSE45	CONFIRME
+attaque effective	Unit::GetATTACK	0x48E1F0	PASSE45	CONFIRME
+dommages naturels	GAME_RULES::GetNaturalDamage	0x4386A0	02_PREUVES_REGLES_COMBAT.asm	CONFIRME
+precision	GAME_RULES::GetBlowPrecision	0x438620	02_PREUVES_REGLES_COMBAT.asm	CONFIRME
+attaque perso	Character::attack	0x41AF00	03_PREUVES_ATTAQUE_ET_REACTION.asm	CONFIRME
+reaction perso	Character::attacked	0x41B050	03_PREUVES_ATTAQUE_ET_REACTION.asm	CONFIRME
+coup perso	Character::hit	0x41CC00	03_PREUVES_ATTAQUE_ET_REACTION.asm	CONFIRME
+tir equipe	Character::RangedAttack	0x421620	04_PREUVES_TIR_ET_PAQUETS.asm	CONFIRME
+tir calcul	fonction interne	0x4216A0	04_PREUVES_TIR_ET_PAQUETS.asm	CONFIRME
+regen HP	GAME_RULES::HPregen	0x438770	02_PREUVES_REGLES_COMBAT.asm	CONFIRME
+regen mana	GAME_RULES::ManaRegen	0x438830	02_PREUVES_REGLES_COMBAT.asm	CONFIRME
+regen perso	Character::Regenerate	0x41E020	05_PREUVES_REGENERATION_CHARACTER.asm	CONFIRME
+status serialise	Character::PacketStatus	0x41F5A0	PASSE45	CONFIRME
+status equiper	Character::equip_object	0x4192F3 / 0x419300	06_PREUVES_EQUIPEMENT_STATUT.asm	CONFIRME
+status desequiper	Character::unequip_object	0x4195D1 / 0x4195DE	06_PREUVES_EQUIPEMENT_STATUT.asm	CONFIRME
+notification generale des boosts	N/A	N/A	aucune preuve universelle	INCONNU

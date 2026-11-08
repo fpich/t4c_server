@@ -1,0 +1,33 @@
+passe	chapitre	contenu	source_historique	nouveaux_octets_de_preuve_apres_dedup	couverture_cumulee_pct
+1	Inventaire initial	exports, comptes et premières fonctions	references_analyse/01_INDEX_SYMBOLES_EXPORTES.tsv	0	0.0
+2	Socle serveur	groupes, unité, messages, HP	references_analyse/06_RAPPORT_PASSE2_ET_FEUILLE_DE_ROUTE.md	874	0.0966
+3	Persistance	sauvegarde, callbacks	references_analyse/09_RAPPORT_PASSE3_PERSISTANCE.md	2031	0.321
+4	Chargement et entrée	LoadCharacter, PutPlayerInGame	references_analyse/11_RAPPORT_PASSE4_CHARGEMENT_ENTREE_JEU.md	720	0.4005
+5	Colonnes du personnage	lecture des colonnes SQL	references_analyse/15_RAPPORT_PASSE5_COLONNES_LOADCHARACTER.md	512	0.4571
+6	Setters mémoire	colonnes et offsets 16 bits	references_analyse/18_RAPPORT_PASSE6_CORRELATION_CHARGEMENT_SAUVEGARDE.md	336	0.4942
+7	Requêtes SaveCharacter	requêtes SQL nommées	references_analyse/23_RAPPORT_PASSE7_SQL_SAUVEGARDE.md	1200	0.6268
+8	Sauvegarde des sorts	DELETE/INSERT PlayerSpells et UPDATE	references_analyse/27_RAPPORT_PASSE8_SORTS_UPDATE.md	1562	0.7993
+9	Queue SQL asynchrone	worker, callback, COMMIT/ROLLBACK	references_analyse/29_RAPPORT_PASSE9_CHAINE_SQL_ASYNCHRONE.md	1115	0.9225
+10	Reprise ODBC	retry, échec lot, autocommit	references_analyse/33_RAPPORT_PASSE10_REPRISE_ODBC_TRANSACTIONS.md	890	1.0209
+11	Schéma chargement	SELECT 31 colonnes, items, sorts, skills	references_analyse/37_RAPPORT_PASSE11_CYCLE_LOADCHARACTER_SQL.md	1275	1.1617
+12	Placement du joueur	monde, conditions, visibilité	references_analyse/42_RAPPORT_PASSE12_PLACEMENT_MONDE.md	739	1.2434
+13	Statut paquet 43	29 champs, 66 octets payload	references_analyse/46_RAPPORT_PASSE13_STATUT43.md	824	1.3344
+14	Tables virtuelles et S2C46	S2C43, S2C46, sous-paquet S2C16	references_analyse/51_RAPPORT_PASSE14_VTABLES_STATUT_ENTREE_JEU.md	1252	1.4727
+15	Visibilité et références	CreateVirtualUnit/DeleteUnit	references_analyse/57_RAPPORT_PASSE15_VISIBILITE_REFERENCES_S2C46.md	521	1.5303
+16	Puppet et mouvement	S2C68, périphérie, S2C1	references_analyse/62_RAPPORT_PASSE16_PUPPET_ET_DEPLACEMENT.md	3140	1.8772
+17	Événements monde	S2C11 et S2C12, retrait unité	references_analyse/67_RAPPORT_PASSE17_EVENEMENTS_MONDE.md	1092	1.9979
+18	Réorganisation de projet	développement Python supprimé; aucune preuve assembleur spécifique	REGISTRE_DEV_PYTHON_EXCLU.tsv	0	1.9979
+19	Attaque et collision	Attack et événements de combat	etudes_assembleur/passe19/01_RAPPORT_PASSE19_COMBAT.md	2880	2.3161
+20	Précision et mort	GetBlowPrecision/GetNaturalDamage	etudes_assembleur/passe20/01_RAPPORT_PRECISION_DEGATS_MORT.md	1304	2.4601
+21	Armure et XP groupe	GetAC, hit, groupe	etudes_assembleur/passe21/01_RAPPORT_PASSE21_ARMURE_XP.md	1656	2.6431
+22	Mort et pertes	DeathPenalties et butin	etudes_assembleur/passe22/01_RAPPORT_PASSE22_PENALITES_ET_BUTIN.md	1982	2.8621
+23	Provenance du butin	MonsterStructure, Objects::Create, deposit_unit	etudes_assembleur/passe23/01_RAPPORT_PASSE23_PROVENANCE_LOOT.md	641	2.9329
+24	Registre général	table 65 536 et références	etudes_assembleur/passe24/01_RAPPORT_PASSE24_REGISTRE_GLOBAL.md	1887	3.1414
+25	Sources de définitions	Creatures_Items/Attacks et Objects_*	etudes_assembleur/passe25/01_RAPPORT_PASSE25_CHARGEMENT_DEFINITIONS.md	2200	3.3844
+26	Imports et strides	MFC42.DLL, 264/272 octets	etudes_assembleur/passe26/01_RAPPORT_PASSE26_SOURCES_ET_STRUCTURES.md	847	3.478
+27	Groupes de conteneurs	Objects_ContainerGroups/Items	etudes_assembleur/passe27/01_RAPPORT_PASSE27_CONTENEURS.md	1316	3.6234
+28	Usage des objets	use_item, UseItemByAppearance	etudes_assembleur/passe28/01_RAPPORT_PASSE28_UTILISATION_OBJETS.md	3062	3.9617
+29	Messages objets	SendUnitMessage, OnUse/OnDisturbed	etudes_assembleur/passe29/01_RAPPORT_PASSE29_DISPATCH_ET_OBJETS.md	1909	4.1726
+30	Activation des sorts	ActivateSpell, sélection cibles, PvP	etudes_assembleur/passe30/01_RAPPORT_PASSE30_ACTIVATION_SORTS.md	3657	4.5766
+31	Effets et persistance	S2C83/84, Save/LoadEffects	etudes_assembleur/passe31/01_RAPPORT_PASSE31_EFFETS_ET_VTABLES.md	4340	5.0561
+32	Gestion des effets	callbacks, dissipation, compteur	etudes_assembleur/passe32/01_RAPPORT_PASSE32_CYCLE_EFFETS.md	1755	5.25

@@ -1,0 +1,74 @@
+{
+  "original_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "section_text_bytes": 905117,
+  "base_octets": 774024,
+  "nouveaux_octets": 35598,
+  "total_octets": 809622,
+  "couverture_pourcent": 89.44943,
+  "octets_hors_masque": 95495,
+  "sources_appels_candidats": 146,
+  "sources_xrefs": 210,
+  "instruction_claims_checked": 15239,
+  "llvm_disassembler_matching_claims": 15239,
+  "llvm_differences": 0,
+  "mask_union_exact": true,
+  "mask_new_only_verified_in_evidence": true,
+  "historical_boundary_conflicts": 0,
+  "new_boundary_conflicts": 0,
+  "inline_pointer_table_overlaps": 0,
+  "passes": [
+    {
+      "passe": 119,
+      "nouveaux_octets": 5592,
+      "total_octets": 779616,
+      "instructions_documentees": 2212,
+      "nouvelles_entrees": 29,
+      "alertes": 4
+    },
+    {
+      "passe": 120,
+      "nouveaux_octets": 13903,
+      "total_octets": 793519,
+      "instructions_documentees": 5703,
+      "nouvelles_entrees": 74,
+      "alertes": 8
+    },
+    {
+      "passe": 121,
+      "nouveaux_octets": 0,
+      "total_octets": 793519,
+      "instructions_documentees": 0,
+      "nouvelles_entrees": 0,
+      "alertes": 0
+    },
+    {
+      "passe": 122,
+      "nouveaux_octets": 4621,
+      "total_octets": 798140,
+      "instructions_documentees": 2435,
+      "nouvelles_entrees": 43,
+      "alertes": 21
+    },
+    {
+      "passe": 123,
+      "nouveaux_octets": 6796,
+      "total_octets": 804936,
+      "instructions_documentees": 2517,
+      "nouvelles_entrees": 39,
+      "alertes": 1
+    },
+    {
+      "passe": 124,
+      "nouveaux_octets": 4686,
+      "total_octets": 809622,
+      "instructions_documentees": 2372,
+      "nouvelles_entrees": 19,
+      "alertes": 0
+    }
+  ],
+  "limitations": [
+    "La provenance des cibles issues du masque sans ligne assembleur archivée reste moins forte que celle des appels directement conservés en preuve.",
+    "La couverture antérieure alimentée par relocations inclut des points d’entrée candidats, non une preuve d’exécution.",
+    "Le masque ne certifie ni l’exhaustivité des branches indirectes ni le comportement réel du serveur."
+  ]
+}

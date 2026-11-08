@@ -1,0 +1,17 @@
+libelle_WDA	VA_comparaison	sous_type_decimal	sous_type_hex	VA_ecriture_sous_type	structure	interpretation_limitee	statut
+skill	0x0040E205	3	0x03	0x0040EFFC	OPERAND+0x11	une sous-expression paramètre; branche partagée skill/spell	ECRITURE_IMMEDIATE_CONFIRME_ASM
+spell	0x0040E241	3	0x03	0x0040EFFC	OPERAND+0x11	une sous-expression paramètre; branche partagée skill/spell	ECRITURE_IMMEDIATE_CONFIRME_ASM
+true_skill	0x0040E27D	10	0x0A	0x0040EF29	OPERAND+0x11	une sous-expression paramètre; branche true_skill/true_spell	ECRITURE_IMMEDIATE_CONFIRME_ASM
+true_spell	0x0040E2B9	10	0x0A	0x0040EF29	OPERAND+0x11	une sous-expression paramètre; branche true_skill/true_spell	ECRITURE_IMMEDIATE_CONFIRME_ASM
+target.skill	0x0040E2F5	8	0x08	0x0040EE56	OPERAND+0x11	une sous-expression paramètre; cible target	ECRITURE_IMMEDIATE_CONFIRME_ASM
+target.spell	0x0040E331	8	0x08	0x0040EE56	OPERAND+0x11	une sous-expression paramètre; cible target	ECRITURE_IMMEDIATE_CONFIRME_ASM
+target.true_skill	0x0040E36D	9	0x09	0x0040ED83	OPERAND+0x11	une sous-expression paramètre; cible target et mode true	ECRITURE_IMMEDIATE_CONFIRME_ASM
+target.true_spell	0x0040E3A9	9	0x09	0x0040ED83	OPERAND+0x11	une sous-expression paramètre; cible target et mode true	ECRITURE_IMMEDIATE_CONFIRME_ASM
+self.viewflag	0x0040E3E5	4	0x04	0x0040E420	OPERAND+0x11	identifiant ou argument flag, sous-type 4	ECRITURE_IMMEDIATE_CONFIRME_ASM
+target.viewflag	0x0040E426	5	0x05	0x0040E465	OPERAND+0x11	identifiant ou argument flag, sous-type 5	ECRITURE_IMMEDIATE_CONFIRME_ASM
+itemcount	0x0040E535	6	0x06	0x0040E570	OPERAND+0x11	comptage par identifiant d objet, sous-type 6	ECRITURE_IMMEDIATE_CONFIRME_ASM
+target.itemcount	0x0040E579	12	0x0C	0x0040E5B4	OPERAND+0x11	comptage par identifiant, côté target	ECRITURE_IMMEDIATE_CONFIRME_ASM
+var	0x0040E5BD	11	0x0B	0x0040E5FE	OPERAND+0x11	analyse du nom de variable avant construction du nœud	ECRITURE_IMMEDIATE_CONFIRME_ASM
+equipcount	0x0040E735	7	0x07	0x0040E770	OPERAND+0x11	comptage équipement, sous-type 7	ECRITURE_IMMEDIATE_CONFIRME_ASM
+target.equipcount	0x0040E776	13	0x0D	0x0040E7B5	OPERAND+0x11	comptage équipement, côté target	ECRITURE_IMMEDIATE_CONFIRME_ASM
+if	0x0040E885	2	0x02	0x0040EAB8	OPERAND+0x11	condition et branches vrai/faux via ? et :; 3 pointeurs +0x14/+0x18/+0x1C	ECRITURE_IMMEDIATE_CONFIRME_ASM

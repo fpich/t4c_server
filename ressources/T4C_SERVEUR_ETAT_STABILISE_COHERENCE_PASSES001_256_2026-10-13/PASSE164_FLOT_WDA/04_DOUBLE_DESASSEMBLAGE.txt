@@ -1,0 +1,31 @@
+--- GNU ---
+
+/mnt/data/T4C Server(2).exe:     file format pei-i386
+
+
+Disassembly of section .text:
+
+0040a61f <.text+0x961f>:
+  40a61f:	33 c0                	xor    eax,eax
+  40a621:	dd d8                	fstp   st(0)
+  40a623:	8a 46 10             	mov    al,BYTE PTR [esi+0x10]
+  40a626:	48                   	dec    eax
+  40a627:	83 f8 70             	cmp    eax,0x70
+  40a62a:	0f 87 55 1a 00 00    	ja     0x40c085
+  40a630:	ff 24 85 8c c1 40 00 	jmp    DWORD PTR [eax*4+0x40c18c]
+
+
+--- LLVM ---
+
+/mnt/data/T4C Server(2).exe:	file format coff-i386
+
+Disassembly of section .text:
+
+00409c10 <?GetOperandValue@BoostFormula@@AAENPAU_OPERAND@1@PAX1NNNPAV?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@NU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@N@std@@@2@@std@@@Z>:
+  40a61f: 33 c0                        	xor	eax, eax
+  40a621: dd d8                        	fstp	st(0)
+  40a623: 8a 46 10                     	mov	al, byte ptr [esi + 0x10]
+  40a626: 48                           	dec	eax
+  40a627: 83 f8 70                     	cmp	eax, 0x70
+  40a62a: 0f 87 55 1a 00 00            	ja	0x40c085 <?GetOperandValue@BoostFormula@@AAENPAU_OPERAND@1@PAX1NNNPAV?$map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@NU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@N@std@@@2@@std@@@Z+0x2475>
+  40a630: ff 24 85 8c c1 40 00         	jmp	dword ptr [4*eax + 0x40c18c]

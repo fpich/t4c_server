@@ -1,0 +1,5 @@
+Adresse	Octets_PE	Instruction	Taille	Source_preuve
+0x004DDF8B	8d 4d f0	lea ecx,[ebp-0x10]	3	SEH+FuncInfo
+0x004DDF8E	e9 2d 19 ff ff	jmp 0x4cf8c0	5	SEH+FuncInfo
+0x004DDF93	b8 30 0c 4f 00	mov eax,0x4f0c30	5	SEH+FuncInfo
+0x004DDF98	e9 ed 3b ff ff	jmp 0x4d1b8a	5	SEH+FuncInfo

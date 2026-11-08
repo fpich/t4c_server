@@ -1,0 +1,10 @@
+chaîne_va	valeur_littérale_vérifiée	site_appel	usage_observé	limite
+0x50E6C4	SELECT * FROM Creatures_Items	0x494F23	lecture de la table de butin	source physique non confirmée
+0x50E6AC	DropPercentage	0x494FF9	champ lu dans Creatures_Items	type de donnée exact inconnu
+0x50E6BC	ItemID	0x494FD1	champ lu dans Creatures_Items	valeurs de données non disponibles
+0x50E920	CreatureID	0x494F77	champ servant de clé/filtre observé	join exact encore à confirmer
+0x50E77C	SELECT * FROM Creatures_Attacks	0x494B42	lecture attaques créatures	sémantique des autres champs à confirmer
+0x50E704	SELECT * FROM Creatures_DeathFlags	0x494DA8	lecture drapeaux décès	conditionnel selon parcours
+0x50EF78	SELECT * FROM Objects_ContainerGroups	0x49F223	lecture groupes d’objets	colonne physique encore incertaine
+0x50F300	ObjectID	0x49F277	lecture identifiant modèle objet	autres usages du champ
+0x50F3AC	SELECT * FROM Objects_ContainerItems WHERE ContainerGroupID=%u	0x4A599D	requête de sélection paramétrée par identifiant	formatage à étudier

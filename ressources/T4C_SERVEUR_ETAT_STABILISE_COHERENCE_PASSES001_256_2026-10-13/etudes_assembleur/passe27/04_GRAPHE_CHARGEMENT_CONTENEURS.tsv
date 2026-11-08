@@ -1,0 +1,10 @@
+etape	debut_va	fin_va	indice	observation
+Groupe SQL	0x49F223	0x4D1B78	Objects_ContainerGroups	requete generale
+Liaison au modele	0x49F277	0x4D1B72	ObjectID	recuperation de champ
+Table def	0x49F304	0x49F316	indice * 272 + 0x34	acces de definition
+Identifiant de groupe	0x4A5945	0x4A5951	ID	appel virtuel +0x4C
+Jointure	0x4A599D	0x4A59B8	WHERE ContainerGroupID=%u	formatage et ouverture de requete
+Parcours lignes	0x4A59D0	0x4A5A4D	thunks MFC	loop lecture
+Identification entree	0x4A6687	0x4A6695	ConjureID	champ lu dans un objet auxiliaire
+Vecteur interne	0x4A5A0C	0x4A5A24	pas 40 octets	construction et insertion
+Contenu derive	0x4A5720	0x4A5783	pas 40 + appel virtuel	traitement polymorphe

@@ -1,0 +1,33 @@
+{
+  "text_size": 905117,
+  "pe_sha": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "sources_originales": {
+    "code_popcount": 829711,
+    "data_popcount": 3052,
+    "padding_popcount": 15398
+  },
+  "masques_cumules": {
+    "code_popcount": 828849,
+    "data_popcount": 3052,
+    "padding_popcount": 17946,
+    "union_popcount": 849847,
+    "disjoint_pairwise": true
+  },
+  "count_invariants": {
+    "removed_code_bytes": 862,
+    "newly_classified_bytes": 1686,
+    "reclassified_only_bytes": 862,
+    "remaining_unclassified": 55270,
+    "total_partition": 905117
+  },
+  "reference_check": {
+    "direct_reference_hits": 0,
+    "relocation_hits": 0
+  },
+  "mask_sha256": {
+    "code_corrected": "297ba98912981850379fd95dc4048cb6027c6e05b8e538e21883e9b913c5607b",
+    "padding_corrected": "3a8a81ab0780a54fdf9b00c06fb493c7eda311999fde274fbcb68b72953af4df",
+    "classified": "b7ce7f5b080ad3ada6c18d088a22245a50a0cb529e735078f2887b694902fd16"
+  },
+  "no_new_instructions": true
+}

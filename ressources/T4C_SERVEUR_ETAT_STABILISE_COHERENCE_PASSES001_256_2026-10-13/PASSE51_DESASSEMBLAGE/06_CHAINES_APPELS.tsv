@@ -1,0 +1,14 @@
+chaine	site_VA	fonction_ou_cible	action	confiance
+formule.compilee	0x409900	BoostFormula::SetFormula	pretraitement et preparation d expression	CONFIRME
+formule.compilee	0x40C400	BoostFormula::ParseFormula	construction de representation operande	CONFIRME
+formule.runtime	0x40C37B	BoostFormula::GetOperandValue 0x409C10	calcul depuis representation en this+8	CONFIRME
+formule.noeuds	0x409CCD	table 0x40C114	12 operateurs par type de noeud	CONFIRME
+formule.operandes	0x409F7B	table 0x40C144	12 classes d operandes de contexte	CONFIRME
+formule.competence	0x40A120	GetSkill vtable +0x170	lecture de competence via id evalue	CONFIRME
+formule.competence	0x40A13D	Unit::QueryBoost 0x48DE60	code de boost skill id +10000	CONFIRME
+formule.objets	0x40A3F6	__CheckItem 0x445E80	comptage des possessions correspondantes	CONFIRME
+formule.flags	0x40A33E	ViewFlag vtable +0xC	lecture flag selon contexte	CONFIRME
+spell.type1.chance	0x4C67F5	BoostFormula::GetBoost	evaluation formule a +0xF0 puis comparaison tirage	CONFIRME
+spell.type1.valeur	0x4C684C	BoostFormula::GetBoost	evaluation formule +0x10 ou +0x80	CONFIRME
+spell.type1.offensif	0x4C6871	0x4C61A0	attacked puis hit selon gardes	CONFIRME
+spell.type1.PV	0x4C687F	0x4C64F0	calcul puis SetHP selon gardes	CONFIRME

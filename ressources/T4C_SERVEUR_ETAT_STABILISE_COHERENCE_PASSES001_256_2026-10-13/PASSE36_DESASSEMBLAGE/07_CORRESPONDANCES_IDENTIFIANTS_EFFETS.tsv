@@ -1,0 +1,14 @@
+adresse	sujet	source	traitement	preuve	certitude
+0x473729	id dans la source	WORD [esi+0x24]	copié en WORD dans [ebx]	02_PREUVES_CONSTRUCTION_SPELLS.asm	CONFIRMÉ
+0x473878	initialisation compteur	DWORD [esi+0x24]	multiplication par 5^3 et 8 = 1000; résultat stocké à [ebx+0x3AC]	02_PREUVES_CONSTRUCTION_SPELLS.asm	CONFIRMÉ
+0x473BD0	publication du sort	WORD [ebx] et pointeur ebx	appel SpellMessageHandler::RegisterSpell	02_PREUVES_CONSTRUCTION_SPELLS.asm	CONFIRMÉ
+0x4C3F16	effet A	DWORD [esi+0x3AC]	stocke à [objet+8], incrémente [esi+0x3AC]	04_PREUVES_COMPTEURS_EFFETS.asm	CONFIRMÉ
+0x4C46E6	effet B	DWORD [esi+0x3AC]	stocke à [objet+8], incrémente [esi+0x3AC]	04_PREUVES_COMPTEURS_EFFETS.asm	CONFIRMÉ
+0x4C4F86	effet C	DWORD [esi+0x3AC]	stocke à [objet+8], incrémente [esi+0x3AC]	04_PREUVES_COMPTEURS_EFFETS.asm	CONFIRMÉ
+0x4C5F46	effet D	DWORD [esi+0x3AC]	stocke à [objet+8], incrémente [esi+0x3AC]	04_PREUVES_COMPTEURS_EFFETS.asm	CONFIRMÉ
+0x4C7026	effet E	DWORD [esi+0x3AC]	stocke à [objet+8], incrémente [esi+0x3AC]	04_PREUVES_COMPTEURS_EFFETS.asm	CONFIRMÉ
+0x4C7966	effet F	DWORD [esi+0x3AC]	stocke à [objet+8], incrémente [esi+0x3AC]	04_PREUVES_COMPTEURS_EFFETS.asm	CONFIRMÉ
+0x490B10	registre callbacks	code, pointeur fonction	alloue paire 8 octets, insère dans structure globale	05_PREUVES_LISTES_ET_CALLBACKS.asm	CONFIRMÉ
+0x48C810	ajout effet unité	UNIT_EFFECT *	insertion dans liste Unit+0xF4	05_PREUVES_LISTES_ET_CALLBACKS.asm	CONFIRMÉ
+0x48C930	retrait effet unité	identifiant	parcours et retrait conditionnel dans liste Unit+0xF4	05_PREUVES_LISTES_ET_CALLBACKS.asm	CONFIRMÉ/PARTIEL
+0x475DDF	chargeur des définitions	objet intermédiaire de lecteur	appel à fonction 0x473610	06_PREUVES_APPEL_CHARGEMENT_SORTS.asm	CONFIRMÉ

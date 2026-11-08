@@ -1,0 +1,16 @@
+VA	Classe	Symbole_Msvc	Instructions_CFG	Octets_CFG_locaux	Appels_directs	Alertes	Limite_exclusive
+0x00401D10	WorldMap	?IsValidPosition@WorldMap@@QAE_NUWorldPos@@@Z	22	52	0	0	0x00401D50
+0x00401D50	WorldMap	??0WorldMap@@QAE@ABV0@@Z	30	87	0	0	0x00401DB0
+0x004AEC30	WorldMap	??0WorldMap@@QAE@XZ	23	105	0	0	0x004AECA0
+0x004AECA0	WorldMap	??1WorldMap@@UAE@XZ	193	560	4	0	0x004AEEF0
+0x004AEEF0	WorldMap	?Create@WorldMap@@QAEXGGGPAE@Z	118	362	4	0	0x004AF0C0
+0x004AF0C0	WorldMap	?ViewTopUnit@WorldMap@@QAEPAVUnit@@UWorldPos@@@Z	33	70	1	0	0x004AF110
+0x004AF610	WorldMap	?VerifyStackPacketting@WorldMap@@AAEXUWorldPos@@PAVCapuchon@@AAV?$TemplateList@VUnit@@@@PAVUnit@@@Z	123	344	6	0	0x004AF770
+0x004B0560	WorldMap	?GetLocalRandomPos@WorldMap@@QAE?AUWorldPos@@U2@E@Z	77	194	3	1	0x004B06C0
+0x004B1C40	WorldMap	?GetMAXX@WorldMap@@QAEHXZ	3	7	0	0	0x004B1C50
+0x004B1C50	WorldMap	?GetMAXY@WorldMap@@QAEHXZ	3	7	0	0	0x004B1C60
+0x004B1C60	WorldMap	?QueryAreaType@WorldMap@@QAEEUWorldPos@@@Z	50	105	0	0	0x004B1CD0
+0x004B1CD0	WorldMap	?internalIsBlocking@WorldMap@@AAEHUWorldPos@@PAVUnit@@FF@Z	57	140	0	1	0x004B1DB0
+0x004B1F50	WorldMap	?GetLocalUnits@WorldMap@@QAEPAV?$TemplateList@VUnit@@@@UWorldPos@@EH@Z	206	590	5	0	0x004B21A0
+0x004B2380	WorldMap	?GetHiveAt@WorldMap@@AAEPAVUnit@@HH@Z	26	53	1	0	0x004B23C0
+0x004B23C0	WorldMap	?VerifyPeripheralHives@WorldMap@@QAEXUWorldPos@@W4MOVE@DIR@@@Z	140	354	4	1	0x004B25F0

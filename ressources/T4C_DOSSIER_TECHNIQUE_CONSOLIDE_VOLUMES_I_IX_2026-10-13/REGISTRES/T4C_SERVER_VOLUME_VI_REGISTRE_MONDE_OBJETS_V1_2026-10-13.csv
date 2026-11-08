@@ -1,0 +1,17 @@
+﻿sous_systeme;fonction_ou_structure;adresse_va;observation;certitude;preuve_archive
+Monde;WorldMap::packet_peripheral_units;0x4AF770;Parcours des bandes de visibilité après déplacement, directions 1–8, offsets 12 X / 18 Y;Étayé;references_analyse/62_RAPPORT_PASSE16_PUPPET_ET_DEPLACEMENT.md
+Monde;WorldMap::move_world_unit;0x4B12A0;Vérifie les bornes, change les cellules, peut diffuser une mise à jour;Étayé;references_analyse/62_RAPPORT_PASSE16_PUPPET_ET_DEPLACEMENT.md
+Réseau monde;WorldMap S2C 16;0x4AFAF2;Écrit u16(16), u16(nombre) si au moins une unité visible;Confirmé sur chemin;references_analyse/62_RAPPORT_PASSE16_PUPPET_ET_DEPLACEMENT.md
+Réseau monde;Character::PacketPuppetInfo;0x41FB70;Opcode 68, ID u32, huit valeurs u16 conditionnelles;Confirmé sur chemin;references_analyse/62_RAPPORT_PASSE16_PUPPET_ET_DEPLACEMENT.md
+Réseau monde;Creatures::PacketPuppetInfo;0x433020;Opcode 68, chemin spécialisé et repli Unit;Confirmé sur chemin;references_analyse/62_RAPPORT_PASSE16_PUPPET_ET_DEPLACEMENT.md
+Réseau monde;Unit::PacketPuppetInfo;0x48F620;Opcode 68, ID, dix valeurs u16 nulles;Confirmé sur chemin;references_analyse/62_RAPPORT_PASSE16_PUPPET_ET_DEPLACEMENT.md
+Créatures;Chargement Creatures_Items;0x494F23;SELECT * FROM Creatures_Items, champs ItemID et DropPercentage;Confirmé;etudes_assembleur/passe26/01_RAPPORT_PASSE26_SOURCES_ET_STRUCTURES.md
+Créatures;Table définitions de créatures;0x495018;"Pas de tableau 264 octets ; ne démontre pas sizeof(MonsterStructure)";Confirmé pour pas;etudes_assembleur/passe26/01_RAPPORT_PASSE26_SOURCES_ET_STRUCTURES.md
+Butin;MonsterStructure tableau de loot;0x442559;Début +0xB4, fin +0xB8, capacité +0xBC;Confirmé structure;etudes_assembleur/passe23/03_STRUCTURE_MONSTER_LOOT.tsv
+Butin;LootEntry;0x44A9BB;"Stride 16 ; +0x08 double utilisé dans un test probabiliste";Confirmé lecture;etudes_assembleur/passe23/03_STRUCTURE_MONSTER_LOOT.tsv
+Objets;Chargement Objects_ContainerGroups;0x49F223;"SELECT * FROM Objects_ContainerGroups ; champ ObjectID";Confirmé;etudes_assembleur/passe27/01_RAPPORT_PASSE27_CONTENEURS.md
+Objets;Table définitions d’objets;0x49F304;"Pas 272 octets ; accès champ +0x34";Confirmé pour pas;etudes_assembleur/passe27/01_RAPPORT_PASSE27_CONTENEURS.md
+Conteneurs;Chargement Objects_ContainerItems;0x4A599D;SELECT * WHERE ContainerGroupID=%u, identifiant ID du groupe;Confirmé;etudes_assembleur/passe27/01_RAPPORT_PASSE27_CONTENEURS.md
+Conteneurs;Champ ConjureID;0x4A6687;Champ nommé ConjureID dans la source SQL;Confirmé;etudes_assembleur/passe27/01_RAPPORT_PASSE27_CONTENEURS.md
+Conteneurs;Entrées de sous-conteneur;0x4A5AAB;"Pas 40 octets par entrée ; rôle final de tirage non démontré";Confirmé pour pas;etudes_assembleur/passe27/01_RAPPORT_PASSE27_CONTENEURS.md
+Définitions;WDA définitions;0x461360;Chemin de remplacement d'un pointeur de définition déjà présent;Confirmé sur chemin;PASSE41_DESASSEMBLAGE/08_LIMITES_ET_COLLISIONS.md

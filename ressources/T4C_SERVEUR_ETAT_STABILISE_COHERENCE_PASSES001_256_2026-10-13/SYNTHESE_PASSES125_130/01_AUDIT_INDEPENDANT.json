@@ -1,0 +1,144 @@
+{
+  "sha256_executable": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "taille_text": 905117,
+  "octets_au_depart": 809622,
+  "octets_ajoutes": 30,
+  "octets_cumules": 809652,
+  "pourcentage": 89.45274478327111,
+  "octets_hors_masque": 95465,
+  "source_directes_haute_confiance": 2,
+  "source_directes_va": [
+    "0x477181",
+    "0x477521"
+  ],
+  "cibles_directes_va": [
+    "0x4773B0",
+    "0x477750"
+  ],
+  "instruction_nouvelles_deuxieme_decodeur": 14,
+  "relocalisations_pointant_hors_masque_124": 77,
+  "tables_sauts_verifiees": 44,
+  "entrees_table_sauts_verifiees": 585,
+  "destinations_de_tables_hors_masque": 0,
+  "grandes_lacunes": [
+    [
+      "0x0043EF09",
+      "0x004404E7",
+      5598,
+      7,
+      "55 8b ec",
+      "NON_ATTESTE"
+    ],
+    [
+      "0x0044B177",
+      "0x0044BD80",
+      3081,
+      0,
+      "68 58 58",
+      "NON_ATTESTE"
+    ],
+    [
+      "0x004BAA8B",
+      "0x004BB550",
+      2757,
+      5,
+      "55 8b ec",
+      "NON_ATTESTE"
+    ],
+    [
+      "0x0043466D",
+      "0x00434F23",
+      2230,
+      3,
+      "55 8b ec",
+      "NON_ATTESTE"
+    ],
+    [
+      "0x0042AE7A",
+      "0x0042B600",
+      1926,
+      6,
+      "55 8b ec",
+      "NON_ATTESTE"
+    ],
+    [
+      "0x004BA354",
+      "0x004BA9E0",
+      1676,
+      12,
+      "55 8b ec",
+      "NON_ATTESTE"
+    ],
+    [
+      "0x004B9CD6",
+      "0x004BA350",
+      1658,
+      10,
+      "55 8b ec",
+      "NON_ATTESTE"
+    ],
+    [
+      "0x0049EBD0",
+      "0x0049F1F0",
+      1568,
+      0,
+      "45 e4 50",
+      "NON_ATTESTE"
+    ],
+    [
+      "0x00493A80",
+      "0x00494098",
+      1560,
+      0,
+      "ff 89 9d",
+      "NON_ATTESTE"
+    ],
+    [
+      "0x0042ECA9",
+      "0x0042F090",
+      999,
+      7,
+      "55 8b ec",
+      "NON_ATTESTE"
+    ]
+  ],
+  "passes": [
+    {
+      "passe": 125,
+      "instructions": 14,
+      "octets_nouveaux": 30,
+      "total_octets": 809652
+    },
+    {
+      "passe": 126,
+      "instructions": 0,
+      "octets_nouveaux": 0,
+      "total_octets": 809652
+    },
+    {
+      "passe": 127,
+      "instructions": 0,
+      "octets_nouveaux": 0,
+      "total_octets": 809652
+    },
+    {
+      "passe": 128,
+      "instructions": 0,
+      "octets_nouveaux": 0,
+      "total_octets": 809652
+    },
+    {
+      "passe": 129,
+      "instructions": 0,
+      "octets_nouveaux": 0,
+      "total_octets": 809652
+    },
+    {
+      "passe": 130,
+      "instructions": 0,
+      "octets_nouveaux": 0,
+      "total_octets": 809652
+    }
+  ],
+  "note": "Seuls les 30 octets des appels directs documentes sont ajoutes. Les relocalisations sont references vers des donnees ou adresses candidates, non preuves de fonctions."
+}

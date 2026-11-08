@@ -1,0 +1,7 @@
+Passe	Domaine	Nouveaux_octets	Correction	Couverture_octets
+131	references_directes	0	0	809652
+132	exceptions_noreturn	0	0	809652
+133	donnees_inline	0	32	809620
+134	reconciliation_masques	0	0	809620
+135	lacunes_non_prouvees	0	0	809620
+136	audit_final	0	0	809620

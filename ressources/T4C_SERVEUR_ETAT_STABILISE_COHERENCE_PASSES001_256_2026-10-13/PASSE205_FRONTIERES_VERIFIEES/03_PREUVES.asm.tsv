@@ -1,0 +1,5 @@
+lacune	entree_precedente	adresse_instruction	opcodes	gnu	llvm	octets_nouveaux
+0x48af4b	0x48af21	0x48af4b	c7058c635100ffffffff	mov    DWORD PTR ds:0x51638c,0xffffffff	mov	dword ptr [0x51638c], 0xffffffff	7
+0x48af55	0x48af29	0x48af55	ff15dce04d00	call   DWORD PTR ds:0x4de0dc	call	dword ptr [0x4de0dc]	6
+0x48e52c	0x48e4ff	0x48e52c	e82f3bfbff	call   0x442060	call	0x442060 <??4SpellEffectManager@@QAEAAV0@ABV0@@Z+0x3fe0>	5
+0x4a894f	0x4a8924	0x4a894f	8d8d0cffffff	lea    ecx,[ebp-0xf4]	lea	ecx, [ebp - 0xf4]	1

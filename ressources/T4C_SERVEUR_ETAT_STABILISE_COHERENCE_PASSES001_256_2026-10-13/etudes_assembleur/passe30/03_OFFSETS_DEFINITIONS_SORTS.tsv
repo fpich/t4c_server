@@ -1,0 +1,13 @@
+adresse_ou_offset	lecture	observations	certitude
+0x00514DA4	table globale 1024 pointeurs	lpSpellTable; index par spellId - 0x2710	confirme
+Spell+0x23A	u8	branche de catégorie 5,15,18 et table de saut de cibles	type confirme / nom inconnu
+Spell+0x23B	u8	extension/borne autour de la position	type confirme / rôle inféré
+Spell+0x23C	u16	déclenche chemin Broadcast::BCSpellEffect	type confirme / rôle inconnu
+Spell+0x23E	u16	déclenche autre chemin Broadcast::BCSpellEffect	type confirme / rôle inconnu
+Spell+0x248	BoostFormula	GetBoost fournit un seuil comparé au tirage	appel confirmé / sens exact inconnu
+Spell+0x32C	u8	active vérification GAME_RULES::InPVP	type confirmé / sens exact inconnu
+Spell+0x328	u32	conditionne chemin de collision/zone	type confirmé / sens exact inconnu
+Spell+0x3B0	conteneur polymorphe	itération des composants d’effet	confirmé / contenu incomplet
+Spell+0x3D0	pointeur auxiliaire	gestion conteneur effet	confirmé / contenu incomplet
+Spell+0x3F0	u32	état de parcours conteneur	confirmé / sens incertain
+0x004DF518	double	constante 0.001 appliquée au tirage	confirmé

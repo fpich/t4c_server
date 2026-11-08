@@ -1,0 +1,51 @@
+{
+  "passe_debut": 83,
+  "passe_fin": 88,
+  "base_passe82": 264486,
+  "taille_text": 905117,
+  "octets_nouveaux": 79202,
+  "octets_cumules": 343688,
+  "pourcentage": 37.971666,
+  "gain_points": 8.750471,
+  "entrees_graphe": 308,
+  "instructions_controlees": 29985,
+  "sha256_binaire": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "details": [
+    {
+      "passe": 83,
+      "nouveaux": 7296,
+      "cumul": 271782,
+      "couverture": 30.027278
+    },
+    {
+      "passe": 84,
+      "nouveaux": 39046,
+      "cumul": 310828,
+      "couverture": 34.341196
+    },
+    {
+      "passe": 85,
+      "nouveaux": 8206,
+      "cumul": 319034,
+      "couverture": 35.247819
+    },
+    {
+      "passe": 86,
+      "nouveaux": 2315,
+      "cumul": 321349,
+      "couverture": 35.503587
+    },
+    {
+      "passe": 87,
+      "nouveaux": 8508,
+      "cumul": 329857,
+      "couverture": 36.443576
+    },
+    {
+      "passe": 88,
+      "nouveaux": 13831,
+      "cumul": 343688,
+      "couverture": 37.971666
+    }
+  ]
+}

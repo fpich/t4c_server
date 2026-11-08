@@ -1,0 +1,5 @@
+source	verrou_pendant_construction_snapshot	ordre	callback	nettoyage_temporaire	objet_effet_original	certitude
+Unit::SendGlobalEffectMessage	Unit+0x30	Copie references Unit+0xF4; deverrouille; callback	evenement parametre	0x490510 : valeur non liberee	reste dans Unit+0xF4 sauf autre modification	CONFIRMÉ pour chemin local
+Unit::VerifyTimers	Unit+0x30	Copie expire dans temporaire; retire de Unit+0xF4; deverrouille; callback	5 puis 9	0x490600 : valeur et node liberes	retrait avant callback, liberation ensuite	CONFIRMÉ pour chemin expire
+Unit::RemoveEffect	Unit+0x30	Recherche par identifiant; callback 9 puis suppression	9	0x442060 pour effet et maillon	retire si trouve	CONFIRMÉ dans chemin de retrait
+Unit::DestroyEffects	Unit+0x30	Parcours et callbacks dans chemin de destruction	9	0x442060 pour effet et maillon	unit liste ensuite supprimee	CONFIRMÉ pour chemin etudie

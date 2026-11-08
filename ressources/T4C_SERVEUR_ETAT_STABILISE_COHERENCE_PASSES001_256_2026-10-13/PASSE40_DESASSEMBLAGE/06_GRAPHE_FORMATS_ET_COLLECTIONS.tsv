@@ -1,0 +1,15 @@
+site	destination	role	certitude	remarque
+0x4993A6	0x459100	mise a zero/initialisation du seed 64 bits	CONFIRME	graine 0x5B7E, 0
+0x4993C3	0x4590A0	tirage de 0 a 255, chaque octet de table	CONFIRME	3418 iter. via 0x4993CC
+0x459010	0x4D1F60	multiplication 64 bits modulo 2^64	CONFIRME	facteur 0x2B3DD441
+0x459053	0x4D2050	decalage logique 64 bits de 16	CONFIRME	EAX/EDX
+0x45905F	0x4D1FD0	reste de division 64 bits	CONFIRME	modulo 256 pour ces bornes
+0x45906E	0x514CE0	controle anti repetition	CONFIRME	reessai unique
+0x4993E0	table[ftell % 3418]	octet de masque XOR	CONFIRME	position dans fichier
+0x4A8CA7	0x4A73A0	premiere sous-liste	CONFIRME	1 DWORD, compteur puis sous-elements
+0x4A8D24	0x4A8210	seconde sous-liste	CONFIRME	DWORD unique observe
+0x475DBC	0x4A8810	lecture WDA principal	CONFIRME	conteneur partage
+0x475DD3	0x4A8810	lecture WDA secondaire	CONFIRME	si disponible
+0x4A8D83	0x4A9DA0	acces fin de vecteur	CONFIRME	stride memoire 0xE4
+0x4A8D91	0x4A9FA0	insertion dans vecteur	CONFIRME	pas de dedup constate sur appel direct
+0x475DDF	0x473610	construction runtime depuis collection	CONFIRME	eventuel arbitrage inconnu

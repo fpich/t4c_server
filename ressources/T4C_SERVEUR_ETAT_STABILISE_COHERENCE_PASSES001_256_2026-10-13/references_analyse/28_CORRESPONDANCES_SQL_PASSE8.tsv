@@ -1,0 +1,4 @@
+adresse_push	adresse_chaine_sql	operation	table	adresse_formatage	certitude	limite
+0x414558	0x501554	DELETE	PlayerSpells	0x41456c	CONFIRME	Exécution effective dépend du chemin
+0x414674	0x501514	INSERT	PlayerSpells	0x41467a	CONFIRME	Branche conditionnelle 0x41464c/0x414658
+0x4149ac	0x501354	UPDATE	PlayingCharacters	0x4149b2	CONFIRME	Succès SQL / commit non prouvé

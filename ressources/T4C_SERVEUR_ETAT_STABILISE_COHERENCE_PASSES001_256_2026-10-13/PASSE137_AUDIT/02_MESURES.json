@@ -1,0 +1,8 @@
+{
+  "passe": 137,
+  "objet": "Trampoline SEH référencé dans le code",
+  "nouveaux_octets": 10,
+  "octets_cumules": 809630,
+  "couverture_pourcent": 89.450314,
+  "executable_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc"
+}

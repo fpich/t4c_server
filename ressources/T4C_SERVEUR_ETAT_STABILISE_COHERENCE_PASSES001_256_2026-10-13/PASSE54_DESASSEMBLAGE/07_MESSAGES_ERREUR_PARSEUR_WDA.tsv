@@ -1,0 +1,12 @@
+VA_chaine	message_litteral	sites_push_directs	nombre_sites	preuve
+0x00500948	Formula error: Could not find IF operator ?.	0x0040EC0E	1	STRINGS_DATA_ET_ASM_DIRECT
+0x00500880	Formula error: Invalid keyword/function name %s.	0x0040ED63	1	STRINGS_DATA_ET_ASM_DIRECT
+0x005008FC	Formula error: couldn't successfully parse return paths in IF expression.	0x0040ED3A	1	STRINGS_DATA_ET_ASM_DIRECT
+0x005008B4	Formula error: Could not find conditional arguments in IF expresioon.	0x0040ED4E	1	STRINGS_DATA_ET_ASM_DIRECT
+0x00500838	Formula error: invalid target.true_skill/target.true_spell parameter.	0x0040EE47	1	STRINGS_DATA_ET_ASM_DIRECT
+0x005007FC	Formula error: invalid target.skill/target.spell parameter.	0x0040EF1A	1	STRINGS_DATA_ET_ASM_DIRECT
+0x005007C4	Formula error: invalid true_skill/true_spell parameter.	0x0040EFED	1	STRINGS_DATA_ET_ASM_DIRECT
+0x00500794	Formula error: invalid skill/spell parameter.	0x0040F0BC	1	STRINGS_DATA_ET_ASM_DIRECT
+0x00500764	Formula error: Invalid or unknown character %c.	0x0040F0F3	1	STRINGS_DATA_ET_ASM_DIRECT
+0x005009C8	Formula error: closing ) parenthesis not found while getting variable name from var function.	0x0040E6B2	1	STRINGS_DATA_ET_ASM_DIRECT
+0x00500A4C	Formula error: invalid flagid parameter.	0x0040E52B	1	STRINGS_DATA_ET_ASM_DIRECT

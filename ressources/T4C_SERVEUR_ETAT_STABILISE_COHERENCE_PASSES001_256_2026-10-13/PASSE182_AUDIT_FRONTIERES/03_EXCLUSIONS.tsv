@@ -1,0 +1,4 @@
+debut	fin_approx	statut	motif
+0x493A80	0x494098	Non comptabilise	Point d entree complet non prouve
+0x4BAA90	0x4BB550	Non comptabilise	Prologue plausible sans appelant verifie
+0x434670	0x434F23	Non comptabilise	Prologue plausible sans appelant verifie

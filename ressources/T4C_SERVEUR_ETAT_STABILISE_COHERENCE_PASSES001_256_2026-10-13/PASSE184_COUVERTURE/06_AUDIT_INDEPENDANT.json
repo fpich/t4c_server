@@ -1,0 +1,21 @@
+{
+  "independent_method": "TSV parsed separately; compare bytes to original PE; compute uncovered sets from old bitset; verify exact equality with add mask",
+  "verified_new_bytes": 2520,
+  "overlap_between_instructions": 0,
+  "old_and_new_mask_intersection": 0,
+  "new_data_table_intersection": 0,
+  "instructions_source_count": 850,
+  "three_seed_opcodes": {
+    "0x41305c": "8a4df3",
+    "0x44f5c7": "8b4624",
+    "0x49ebcd": "8b16"
+  },
+  "sha256_new_mask": "4e01915a9e9eb9cc7b8585eabc64985a5ba7fdc3c15d55d70cc5a458b20260e8",
+  "sha256_final_mask": "cf37f2c21903d54620f84d258c5715bc3ba6dba06a381961d1ddf91ada7bf122",
+  "preserve_old_files_by_sha256": true,
+  "limits": [
+    "Indirect call targets not inferred",
+    "Code candidate blocks without call provenance excluded",
+    "Historical mask validity not exhaustively revalidated"
+  ]
+}

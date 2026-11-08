@@ -1,0 +1,21 @@
+{
+  "passes": "179-184",
+  "sha256_pe": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "text_va": "0x401000",
+  "text_size": 905117,
+  "old_mask_sha256": "a25b2b7551326b00fa537fcfa18dfea661cedd0a417a26d80bd57d7f3a988190",
+  "old_mask_popcount": 824253,
+  "new_mask_sha256": "4e01915a9e9eb9cc7b8585eabc64985a5ba7fdc3c15d55d70cc5a458b20260e8",
+  "new_mask_popcount": 2520,
+  "final_mask_sha256": "cf37f2c21903d54620f84d258c5715bc3ba6dba06a381961d1ddf91ada7bf122",
+  "final_mask_popcount": 826773,
+  "percentage": 91.3443234410579,
+  "remaining_bytes": 78344,
+  "instruction_count": 850,
+  "gnu_llvm_byte_length_disagreements": 0,
+  "decoded_instruction_bytes": 2534,
+  "reconstructed_new_spans": 3,
+  "overlap_with_old": 0,
+  "overlap_with_jump_table_bytes": 0,
+  "historical_population_provisional": true
+}

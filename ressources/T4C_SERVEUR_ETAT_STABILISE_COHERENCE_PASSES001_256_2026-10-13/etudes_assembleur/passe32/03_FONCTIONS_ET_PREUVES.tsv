@@ -1,0 +1,8 @@
+VA	Fonction	Observation	Statut	Limite
+0x48CAD0	Unit::DispellEffectWithFlag	Selection par champ entry+0x1C et manipulation des effets	assembleur	sens exact du flag
+0x48CCE0	Unit::GetEffect	Recherche identifiant 32-bit puis retour adresse/nul	assembleur, deja vu passe31	organisation exacte du noeud
+0x48CDA0	Unit::GetAllEffects	Retour du pointeur Unit+0xF4	assembleur	aucune conversion de liste
+0x48CDB0	Unit::DestroyEffects	Callback avec code 9, suppression noeuds et Unit+0xF4 = 0	assembleur	comportement des callbacks
+0x48CF40	Unit::SendGlobalEffectMessage	Dispatch local aux callbacks des effets	assembleur	tous les messages possibles
+0x462810	GetNextGlobalEffectID	InterlockedIncrement sur 0x506D84	assembleur + import	comportement au debordement
+0x490C20	UnitEffectManager::Destroy	Destruction du registre global des callbacks	assembleur	moment d invocation au cycle serveur

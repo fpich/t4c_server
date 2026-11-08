@@ -1,0 +1,12 @@
+{
+  "passe": 59,
+  "type": "audit_documentaire_sans_executable",
+  "base_passe": 58,
+  "octets_uniques_verifies_cumul": 126431,
+  "octets_nouveaux_verifies": 0,
+  "text_octets": 905117,
+  "couverture_pct_arrondie": 13.968,
+  "instructions_nouvelles_verifiees": 0,
+  "ecart_historique_233_octets": "non_resolu",
+  "conclusion": "aucune nouvelle couverture declaree"
+}

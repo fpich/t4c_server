@@ -1,0 +1,8 @@
+adresse	instruction_ou_calcul	conséquence	certitude	réserve
+0x495018–0x495028	index*33*8 = index*264 ; base à +0x14	pas de 264 octets entre deux enregistrements créature dans ce tableau	confirmé	pas nécessairement sizeof(MonsterStructure)
+0x49F304–0x49F316	index*17*16 = index*272 ; champ à +0x34	pas de 272 octets pour ce tableau de définitions d’objet	confirmé	pas nécessairement sizeof(ObjectStructure)
+0x49543F–0x495468	différence de pointeurs >>4 ; indice <<4	tableau interne à enregistrements de 16 octets	confirmé	rôle précis de tous les champs encore inconnu
+0x49FBE7–0x49FC46	division par 40 via constante 0x66666667, puis index*40	sous-conteneur à éléments de 40 octets	confirmé	plusieurs conteneurs distincts coexistent
+0x494FF9	chaîne DropPercentage	accès au champ de probabilité de la liste Creatures_Items	confirmé	type retourné / échelle non établis
+0x494FD1	chaîne ItemID	accès à l’identifiant de modèle de butin	confirmé	ne fournit aucun identifiant réel
+0x49F223	SELECT * FROM Objects_ContainerGroups	chargement des groupes de conteneurs	confirmé	tables de base non fournies

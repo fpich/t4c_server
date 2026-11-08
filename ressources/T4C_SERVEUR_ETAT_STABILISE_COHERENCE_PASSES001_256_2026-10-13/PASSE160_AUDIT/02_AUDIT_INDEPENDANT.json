@@ -1,0 +1,13 @@
+{
+  "instructions_verifiees_deux_desassembleurs": 218,
+  "divergences": 0,
+  "chevauchement_ancien": 0,
+  "chevauchement_interne": 0,
+  "nouvelles_plages": 20,
+  "gain": 1308,
+  "anciens_octets": 818829,
+  "nouveaux_octets": 820137,
+  "original_zip_entries": 1458,
+  "original_archives_intactes": true,
+  "nouveaux_fichiers": 14
+}

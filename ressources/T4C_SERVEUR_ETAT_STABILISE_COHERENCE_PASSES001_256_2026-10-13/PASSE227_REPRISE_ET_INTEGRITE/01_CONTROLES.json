@@ -1,0 +1,14 @@
+{
+  "source_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "code_bytes_unchanged": 828849,
+  "data_bytes_unchanged": 3943,
+  "probable_padding_bytes_unchanged": 17946,
+  "classified_bytes_unchanged": 850738,
+  "unclassified_bytes": 54379,
+  "unknown_intervals": 2476,
+  "pure_00_90_CC_intervals_unproven": 2268,
+  "pure_00_90_CC_bytes_unproven": 18985,
+  "new_code_bytes": 0,
+  "new_classified_bytes": 0,
+  "warning": "Les motifs 00/90/CC ne prouvent pas un remplissage ; aucune classification ajoutée."
+}

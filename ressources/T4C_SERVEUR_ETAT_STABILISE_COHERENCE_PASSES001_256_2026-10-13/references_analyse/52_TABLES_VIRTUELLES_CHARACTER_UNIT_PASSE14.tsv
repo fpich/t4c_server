@@ -1,0 +1,22 @@
+slot_virtuel	adresse_character	symbole_character	adresse_unit	symbole_unit	identification
+0x1c	0x48b680	Unit::?GetWL@Unit@@UAE?AUWorldPos@@XZ	0x48b680	Unit::?GetWL@Unit@@UAE?AUWorldPos@@XZ	résolu par lecture du pointeur depuis tables VA 0x4DE68C et 0x4DF658
+0x2c	0x48b940	Unit::?GetAppearance@Unit@@UAEIXZ	0x48b940	Unit::?GetAppearance@Unit@@UAEIXZ	résolu par lecture du pointeur depuis tables VA 0x4DE68C et 0x4DF658
+0x54	0x41d1b0	Character::?GetXP@Character@@UAE_JXZ	0x48b970	Unit::?GetXP@Unit@@UAE_JXZ	résolu par lecture du pointeur depuis tables VA 0x4DE68C et 0x4DF658
+0xcc	0x48bda0	Unit::?GetMaxHP@Unit@@UAEKXZ	0x48bda0	Unit::?GetMaxHP@Unit@@UAEKXZ	résolu par lecture du pointeur depuis tables VA 0x4DE68C et 0x4DF658
+0xd0	0x41d5f0	Character::?GetTrueMaxHP@Character@@UAEKXZ	0x48bd90	Unit::?GetTrueMaxHP@Unit@@UAEKXZ	résolu par lecture du pointeur depuis tables VA 0x4DE68C et 0x4DF658
+0xd8	0x41d6a0	Character::?GetHP@Character@@UAEKXZ	0x48bde0	Unit::?GetHP@Unit@@UAEKXZ	résolu par lecture du pointeur depuis tables VA 0x4DE68C et 0x4DF658
+0xe0	0x48be10	Unit::?GetMaxMana@Unit@@UAEGXZ	0x48be10	Unit::?GetMaxMana@Unit@@UAEGXZ	résolu par lecture du pointeur depuis tables VA 0x4DE68C et 0x4DF658
+0xec	0x41d7b0	Character::?GetMana@Character@@UAEGXZ	0x48be60	Unit::?GetMana@Unit@@UAEGXZ	résolu par lecture du pointeur depuis tables VA 0x4DE68C et 0x4DF658
+0x104	0x41d850	Character::?GetGold@Character@@UAEHXZ	0x48be80	Unit::?GetGold@Unit@@UAEHXZ	résolu par lecture du pointeur depuis tables VA 0x4DE68C et 0x4DF658
+0x13c	0x48c300	Unit::?GetLevel@Unit@@UAEGXZ	0x48c300	Unit::?GetLevel@Unit@@UAEGXZ	résolu par lecture du pointeur depuis tables VA 0x4DE68C et 0x4DF658
+0x14c	0x41dd80	Character::?SendPlayerMessage@Character@@UAEXAAVTFCPacket@@@Z	0x48c350	Unit::?SendPlayerMessage@Unit@@UAEXAAVTFCPacket@@@Z	résolu par lecture du pointeur depuis tables VA 0x4DE68C et 0x4DF658
+0x168	0x41ea40	Character::?GetAC@Character@@UAENXZ	0x48c6e0	Unit::?GetAC@Unit@@UAENXZ	résolu par lecture du pointeur depuis tables VA 0x4DE68C et 0x4DF658
+0x174	0x41ea00	Character::?GetSkillPoints@Character@@UAEGXZ	0x48c7a0	Unit::?GetSkillPoints@Unit@@UAEGXZ	résolu par lecture du pointeur depuis tables VA 0x4DE68C et 0x4DF658
+0x198	0x41f800	Character::?GetWeight@Character@@UAEHXZ	0x48f4f0	Unit::?GetWeight@Unit@@UAEHXZ	résolu par lecture du pointeur depuis tables VA 0x4DE68C et 0x4DF658
+0x19c	0x41f7c0	Character::?GetMaxWeight@Character@@UAEHXZ	0x48f520	Unit::?GetMaxWeight@Unit@@UAEHXZ	résolu par lecture du pointeur depuis tables VA 0x4DE68C et 0x4DF658
+0x1ac	0x48f560	Unit::?PacketUnitInformation@Unit@@UAEXAAVTFCPacket@@@Z	0x48f560	Unit::?PacketUnitInformation@Unit@@UAEXAAVTFCPacket@@@Z	résolu par lecture du pointeur depuis tables VA 0x4DE68C et 0x4DF658
+0x1b8	0x422f50	Unit::?GetKarma@Unit@@UAEHXZ	0x422f50	Unit::?GetKarma@Unit@@UAEHXZ	résolu par lecture du pointeur depuis tables VA 0x4DE68C et 0x4DF658
+0x1c0	0x41fb70	Character::?PacketPuppetInfo@Character@@UAEXAAVTFCPacket@@@Z	0x48f620	Unit::?PacketPuppetInfo@Unit@@UAEXAAVTFCPacket@@@Z	résolu par lecture du pointeur depuis tables VA 0x4DE68C et 0x4DF658
+0x1c4	0x48af10	Unit::?DeleteUnit@Unit@@UAE_NXZ	0x48af10	Unit::?DeleteUnit@Unit@@UAE_NXZ	résolu par lecture du pointeur depuis tables VA 0x4DE68C et 0x4DF658
+0x1c8	0x48b030	Unit::?CreateVirtualUnit@Unit@@UAEXXZ	0x48b030	Unit::?CreateVirtualUnit@Unit@@UAEXXZ	résolu par lecture du pointeur depuis tables VA 0x4DE68C et 0x4DF658
+0x1d0	0x422f60	Unit::?GetInvisibleQuery@Unit@@UAEPAVQueryInvisible@1@XZ	0x422f60	Unit::?GetInvisibleQuery@Unit@@UAEPAVQueryInvisible@1@XZ	résolu par lecture du pointeur depuis tables VA 0x4DE68C et 0x4DF658

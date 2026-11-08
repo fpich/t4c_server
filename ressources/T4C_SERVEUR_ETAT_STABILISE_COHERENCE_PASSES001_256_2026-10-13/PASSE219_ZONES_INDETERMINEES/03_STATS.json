@@ -1,0 +1,66 @@
+{
+  "unclassified_bytes": 55270,
+  "large_unclassified_regions_100plus": 71,
+  "largest": [
+    {
+      "start": "0x4baa90",
+      "end": "0x4bb550",
+      "size": 2752
+    },
+    {
+      "start": "0x43466d",
+      "end": "0x434f23",
+      "size": 2230
+    },
+    {
+      "start": "0x42ae80",
+      "end": "0x42b600",
+      "size": 1920
+    },
+    {
+      "start": "0x4ba360",
+      "end": "0x4ba9e0",
+      "size": 1664
+    },
+    {
+      "start": "0x4b9ce0",
+      "end": "0x4ba350",
+      "size": 1648
+    },
+    {
+      "start": "0x42ecb0",
+      "end": "0x42f090",
+      "size": 992
+    },
+    {
+      "start": "0x475690",
+      "end": "0x475a30",
+      "size": 928
+    },
+    {
+      "start": "0x49e6e7",
+      "end": "0x49e9c0",
+      "size": 729
+    },
+    {
+      "start": "0x430a20",
+      "end": "0x430cf0",
+      "size": 720
+    },
+    {
+      "start": "0x423970",
+      "end": "0x423c39",
+      "size": 713
+    },
+    {
+      "start": "0x4bbcf0",
+      "end": "0x4bbfb9",
+      "size": 713
+    },
+    {
+      "start": "0x42bef0",
+      "end": "0x42c110",
+      "size": 544
+    }
+  ]
+}

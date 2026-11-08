@@ -1,0 +1,16 @@
+VA	Origine	Symbole_ou_cible	Instructions_CFG	Octets_CFG_locaux	Appels_directs	Alertes	Limite_exclusive
+0x00414B70	Character	?LoadCharacter@Character@@QAEHVCString@@@Z	1234	4194	162	0	0x00415C10
+0x0041B250	Character	?Death@Character@@UAEXPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z	1948	6357	174	1	0x0041CC00
+0x00422840	Character	?RemoveReferenceTo@Character@@UAEXPAVUnit@@@Z	10	34	1	0	0x00422E30
+0x00422F60	Unit	?GetInvisibleQuery@Unit@@UAEPAVQueryInvisible@1@XZ	2	4	0	0	0x00425480
+0x00433220	Unit	?XPtoLevel@Unit@@UAE_JXZ	3	5	0	0	0x00434200
+0x0043B1B0	Group	?ToggleAutoSplit@Group@@QAEX_N@Z	77	225	5	0	0x0043CC00
+0x0044AC00	NPCstructure	?OnAttackHit@NPCstructure@@UAEXPAVUnit@@00PAX1@Z	1	3	0	0	0x0044BD80
+0x00454B00	Players	?SaveAccount@Players@@QAEHH@Z	539	1605	61	0	0x00455D40
+0x00457130	Players	?GetCredits@Players@@QAEKXZ	2	7	0	0	0x004577D0
+0x004579A0	Players	?IsIdle@Players@@QAEHXZ	90	320	12	0	0x004581F0
+0x0045A730	SimpleMonster	?OnServerInitialisation@SimpleMonster@@UAEXPAVUnit@@00PAX1G@Z	1	3	0	0	0x0045FF60
+0x004722A0	TFCMAIN	?Attack@TFCMAIN@@SAHPAVUnit@@0AA_N@Z	763	2218	62	0	0x00478448
+0x0048FC60	Unit	?RemoveReferenceTo@Unit@@UAEXPAV1@@Z	29	73	0	0	0x00490B10
+0x00490C20	UnitEffectManager	?Destroy@UnitEffectManager@@SAXXZ	93	339	2	0	0x00496DC8
+0x004B2700	WorldMap	?GetCollisionPos@WorldMap@@QAEHUWorldPos@@0PAU2@PAPAVUnit@@_N3@Z	260	760	8	0	0x004B88A8

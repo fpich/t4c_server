@@ -1,0 +1,26 @@
+{
+  "base": "T4C Server(2).exe",
+  "sha256_exe": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "section_text": {
+    "vma": "0x401000",
+    "size": 905117
+  },
+  "previous_pass": 154,
+  "previous_count": 818829,
+  "new_instructions": 218,
+  "new_unique_bytes": 1308,
+  "total_unique_bytes": 820137,
+  "coverage_percent": 90.611159,
+  "import_descriptors": 13,
+  "import_entries_total": 328,
+  "matches_ff25_to_iat_total": 873,
+  "matches_previously_covered": 655,
+  "matches_new": 218,
+  "groups": 20,
+  "gnu_llvm_verified": 218,
+  "partial_overlaps": 0,
+  "relocations_to_uncovered": 77,
+  "mask_prev_sha256": "ddc0be0a6d3e8e9dac6c41fc4f6d870a0a9245c4dbec58819da0f6c5bd4b7416",
+  "mask_new_sha256": "66dc5476dce7a469ba1c359ccf34872ccc231989da95d3a9cf5c3b746ce16f18",
+  "historical_mask_quality": "heritage statique non integralement qualifie"
+}

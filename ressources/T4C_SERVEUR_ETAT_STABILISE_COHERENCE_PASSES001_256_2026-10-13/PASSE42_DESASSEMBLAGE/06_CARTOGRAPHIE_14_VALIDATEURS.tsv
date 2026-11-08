@@ -1,0 +1,15 @@
+type_WDA_WORD	fabrique	vptr_runtime	validation_slot_0	methode_virtuelle_plus4	methode_virtuelle_plus8	constat_local	certitude
+1	0x4c68e0	0x4dfdcc	0x4c60a0	0x4c68a0	0x4c6000	contrôles de plusieurs ID, conversion et champs	CONFIRME - code et table rdata
+2	0x4c3ec0	0x4dfd6c	0x4c32f0	0x4c38b0	0x4c3290	plusieurs ID, chaîne / statut, traitement étendu	CONFIRME - code et table rdata
+3	0x4c5ef0	0x4dfdc0	0x4c5be0	0x4c5df0	0x4c5b60	sélection par ID et conversion	CONFIRME - code et table rdata
+6	0x4c4230	0x4dfd78	0x4c3fc0	0x4c4090	0x4c3f60	ID 1: comparaison de chaînes; ID 2: conversion	CONFIRME - code et table rdata
+7	0x4c72d0	0x4dfde8	0x4c7180	0x4c7220	0x4c70c0	IDs 1..3, valeur texte et conversion	CONFIRME - code et table rdata
+9	0x4c7910	0x4dfe10	0x4c75a0	0x4c7720	0x4c74d0	quatre cas; table de sauts	CONFIRME - code et table rdata
+10	0x4c5630	0x4dfda4	0x4c54b0	0x4c5580	0x4c56b0	ID 3: champ propre; autres ID: délégation au type 1	CONFIRME - code et table rdata
+11	0x4c7430	0x4dfe04	0x4c73a0	0x4c73c0	0x4c7340	renvoie 1 sans inspecter la valeur	CONFIRME - code et table rdata
+12	0x4c7df0	0x4dfe30	0x4c7cb0	0x4c7cd0	0x4c7c50	renvoie 1 sans inspecter la valeur	CONFIRME - code et table rdata
+13	0x4c52a0	0x4dfd9c	0x4c4fd0	0x4c5200	0x4c54b0	ID 1/2 et conversion	CONFIRME - code et table rdata
+14	0x4c5ad0	0x4dfdb4	0x4c5880	0x4c5980	0x4c57b0	quatre cas; table de sauts	CONFIRME - code et table rdata
+15	0x4c6fd0	0x4dfddc	0x4c69c0	0x4c6e50	0x4c6980	ID 1 chaîne; ID 2 conversion	CONFIRME - code et table rdata
+16	0x4c4f30	0x4dfd90	0x4c4790	0x4c4db0	0x4c4750	ID 1/2 et conversion	CONFIRME - code et table rdata
+17	0x4c4690	0x4dfd84	0x4c42f0	0x4c4510	0x4c4290	ID 1/2 et conversion	CONFIRME - code et table rdata

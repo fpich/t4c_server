@@ -1,0 +1,66 @@
+{
+  "origine_binaire_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "reference_passe88": 343688,
+  "total_final": 364548,
+  "octets_nouveaux": 20860,
+  "section_text_octets": 905117,
+  "couverture_finale_pourcent": 40.27634,
+  "total_instructions_preuves": 10961,
+  "chevauchements_instructions_nouvelles_entre_passes": 0,
+  "concordance_binaire_toutes_instructions": true,
+  "masques_disjoints_et_cumuls_coherents": true,
+  "intervalles_et_masques_coherents": true,
+  "masques_justifies_par_preuves": true,
+  "provenance_pass89_par_calls_directs_pass88": true,
+  "passes": [
+    {
+      "passe": 89,
+      "nouvelles_instructions_documentees": 3410,
+      "octets_nouveaux": 8837,
+      "total": 352525,
+      "pourcentage": 38.948003,
+      "alertes": 2
+    },
+    {
+      "passe": 90,
+      "nouvelles_instructions_documentees": 1529,
+      "octets_nouveaux": 3810,
+      "total": 356335,
+      "pourcentage": 39.368943,
+      "alertes": 0
+    },
+    {
+      "passe": 91,
+      "nouvelles_instructions_documentees": 226,
+      "octets_nouveaux": 550,
+      "total": 356885,
+      "pourcentage": 39.429709,
+      "alertes": 0
+    },
+    {
+      "passe": 92,
+      "nouvelles_instructions_documentees": 5052,
+      "octets_nouveaux": 7045,
+      "total": 363930,
+      "pourcentage": 40.208061,
+      "alertes": 1
+    },
+    {
+      "passe": 93,
+      "nouvelles_instructions_documentees": 501,
+      "octets_nouveaux": 5,
+      "total": 363935,
+      "pourcentage": 40.208614,
+      "alertes": 0
+    },
+    {
+      "passe": 94,
+      "nouvelles_instructions_documentees": 243,
+      "octets_nouveaux": 613,
+      "total": 364548,
+      "pourcentage": 40.27634,
+      "alertes": 0
+    }
+  ],
+  "limites": "Vérification statique des octets et des adresses, pas de preuve d’exécution ni de compréhension exhaustive des branches indirectes."
+}

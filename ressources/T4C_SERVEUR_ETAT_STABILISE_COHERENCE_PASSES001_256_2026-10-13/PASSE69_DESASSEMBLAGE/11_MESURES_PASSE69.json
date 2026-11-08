@@ -1,0 +1,51 @@
+{
+  "passe": 69,
+  "executable_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "text_va_base": "0x00401000",
+  "text_file_offset": "0x1000",
+  "text_octets": 905117,
+  "octets_certifies_passe68": 128659,
+  "octets_nouveaux_passe69": 1111,
+  "octets_certifies_passe69": 129770,
+  "couverture_passe68_pourcent": 14.214626396,
+  "couverture_passe69_pourcent": 14.337372958,
+  "instructions_verifiees_passe69": 448,
+  "instructions_divergentes_rejetees": 0,
+  "instructions_padding_ignores": 0,
+  "nouvelles_plages_contigues": 13,
+  "repartition_preuves": {
+    "02_ALLOCATEUR_441FF0.asm": {
+      "instructions": 40,
+      "plages": 1,
+      "nouveaux_octets": 97,
+      "octets_dans_preuves": 97
+    },
+    "03_POOL_ALLOCATION_4422E0.asm": {
+      "instructions": 93,
+      "plages": 1,
+      "nouveaux_octets": 238,
+      "octets_dans_preuves": 238
+    },
+    "04_POOL_CYCLE_VIE.asm": {
+      "instructions": 154,
+      "plages": 9,
+      "nouveaux_octets": 311,
+      "octets_dans_preuves": 432
+    },
+    "05_SEH_0_4_ET_IMPORTS.asm": {
+      "instructions": 135,
+      "plages": 4,
+      "nouveaux_octets": 416,
+      "octets_dans_preuves": 416
+    },
+    "06_HELPER_ALLOCATION_PILE.asm": {
+      "instructions": 26,
+      "plages": 1,
+      "nouveaux_octets": 49,
+      "octets_dans_preuves": 49
+    }
+  },
+  "format_masque": "1 bit par octet de la section .text, bit offset%8 du byte offset//8",
+  "statut": "preuves statiques vérifiées; aucune validation par exécution du serveur",
+  "limites": "Un masque de bytes vérifiés ne mesure ni exécution ni sécurité effective. Allocateur MFC en ordinal sans nom exact."
+}

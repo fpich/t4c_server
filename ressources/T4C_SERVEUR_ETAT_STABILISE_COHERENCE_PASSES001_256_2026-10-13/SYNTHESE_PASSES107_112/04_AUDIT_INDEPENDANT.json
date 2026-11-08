@@ -1,0 +1,77 @@
+{
+  "exe_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "mask_reference_octets": 681297,
+  "novel_bytes_count": 85704,
+  "mask_final_octets": 767001,
+  "mask_final_pct": 84.740536,
+  "disjoint_and_exact_union": true,
+  "proof_bytes_match_original_PE": true,
+  "intervals_masks_equal": true,
+  "new_bytes_all_proved": true,
+  "direct_edges_provenance_verified": 2027,
+  "objdump_resample_count": 32,
+  "previous_known_claim_collisions": 0,
+  "new_vs_existing_boundary_overlap_count": 0,
+  "boundary_overlap_examples": [],
+  "passes": [
+    {
+      "passe": 107,
+      "octets_nouveaux": 7922,
+      "total": 689219,
+      "instructions": 3787,
+      "entrees": 73,
+      "alertes": 13,
+      "rejets_conflit": 0
+    },
+    {
+      "passe": 108,
+      "octets_nouveaux": 7930,
+      "total": 697149,
+      "instructions": 2748,
+      "entrees": 73,
+      "alertes": 11,
+      "rejets_conflit": 0
+    },
+    {
+      "passe": 109,
+      "octets_nouveaux": 42262,
+      "total": 739411,
+      "instructions": 15565,
+      "entrees": 222,
+      "alertes": 15,
+      "rejets_conflit": 0
+    },
+    {
+      "passe": 110,
+      "octets_nouveaux": 631,
+      "total": 740042,
+      "instructions": 191,
+      "entrees": 1,
+      "alertes": 0,
+      "rejets_conflit": 0
+    },
+    {
+      "passe": 111,
+      "octets_nouveaux": 22384,
+      "total": 762426,
+      "instructions": 8139,
+      "entrees": 99,
+      "alertes": 8,
+      "rejets_conflit": 0
+    },
+    {
+      "passe": 112,
+      "octets_nouveaux": 4575,
+      "total": 767001,
+      "instructions": 1757,
+      "entrees": 30,
+      "alertes": 6,
+      "rejets_conflit": 0
+    }
+  ],
+  "caveats": [
+    "Ce contrôle vérifie les octets et limites de chaque instruction de l’échantillon ; pas la totalité de la pertinence sémantique des cibles.",
+    "La validite fonctionnelle des points de départ historiques doit etre auditee independamment; une cible relocalisee ou decodable n est pas une preuve dynamique de code execute.",
+    "Les appels virtuels, tables de saut indirect et exceptions restent partiellement irresolus."
+  ]
+}

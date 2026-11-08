@@ -1,0 +1,4 @@
+adresse	bytes_little_endian	valeur_double	utilisation_observee
+0x4dfe20	7b14ae47e17a943f	0.02	multiplicateur expression OnTimer type 9
+0x4de628	0000000000002440	10.0	constante flottante comparee type 9
+0x4dfe28	0000000000c07240	300.0	constante flottante dans comparaison type 9

@@ -1,0 +1,14 @@
+﻿domaine;preuve;volumes;niveau;limite
+Architecture / gel;ETAT_STABILISE/01_MESURES_REFERENCE.json;Vol. I et IX;confirmé statique;"Masques; pas tests"
+Exports;references_analyse/01_INDEX_SYMBOLES_EXPORTES.tsv;Vol. II, VII et VIII;confirmé PE;Export ≠ exécution
+Entrée PE;SYNTHESE_PASSES143_148/02_PREUVE_CHAINE_DE_DEMARRAGE.tsv;Vol. VII;confirmé flot direct;Graphe d’initialisation partiel
+Dépendances;PASSE155_IMPORTS/02_MODULES.tsv;Vol. VII;confirmé PE;Import ≠ utilisation
+SQL et IOCP;references_analyse/29_RAPPORT_PASSE9_CHAINE_SQL_ASYNCHRONE.md;Vol. IV et VII;confirmé chemin local;Succès transaction non garanti
+Effets, timers;PASSE34_DESASSEMBLAGE/01_RAPPORT_PASSE34_TIMERS_CALLBACKS.md;Vol. V et VII;confirmé chemin local;Échéance ≠ temps réel
+Combats;PASSE46_DESASSEMBLAGE/01_RAPPORT_PASSE46_COMBAT_BOOSTS_RESEAU.md;Vol. V;étayé;Formules non exhaustives
+Monde;references_analyse/62_RAPPORT_PASSE16_PUPPET_ET_DEPLACEMENT.md;Vol. VI;étayé;Couverture incomplète
+Butin;etudes_assembleur/passe23/03_STRUCTURE_MONSTER_LOOT.tsv;Vol. VI;confirmé pas;Champs non identifiés
+Colonnes personnage;references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv;Vol. IV;confirmé chaîne;Valeurs réelles SQL absentes
+SysopCmd;binaire, VA 0x00463E00–0x00471500;Vol. VIII;littéraux + calls;Autorisation non validée
+Logging;binaire, VA 0x004715D0–0x00471C00;Vol. VIII;littéraux + calls;Ouverture effective inconnue
+Gaps;PASSE252_BRANCHEMENTS_DIRECTS/01_CIBLES_HORS_MASQUE.tsv;Vol. I et IX;confirmé arithmétique;18 destinations non classées

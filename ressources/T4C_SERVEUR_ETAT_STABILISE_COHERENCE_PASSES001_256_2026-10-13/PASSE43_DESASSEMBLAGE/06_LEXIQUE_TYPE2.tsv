@@ -1,0 +1,46 @@
+type_WDA	id_parametre	texte_insensible_casse	adresse_chaine	sortie_etat	champ_structure	qualification
+2	2	strength	0x510130	0x3	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	str	0x51012c	0x3	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	agility	0x510124	0x6	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	agi	0x510120	0x6	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	endurance	0x510114	0x2	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	end	0x510110	0x2	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	wisdom	0x510108	0x4	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	wis	0x510104	0x4	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	intelligence	0x5100f4	0x1	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	int	0x5100f0	0x1	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	attack skill	0x5100e0	0x8	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	attack	0x5100d8	0x8	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	dodge skill	0x5100cc	0x9	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	dodge	0x5100c4	0x9	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	damage	0x5100bc	0xa	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	dam	0x5100b8	0xa	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	radiance	0x5100ac	0xb	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	mana	0x5100a4	0xf0	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	air resist	0x510098	0xc	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	r_air	0x510090	0xc	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	water resist	0x510080	0xe	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	r_water	0x510078	0xe	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	fire resist	0x51006c	0xd	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	r_fire	0x510064	0xd	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	earth resist	0x510054	0xf	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	r_earth	0x51004c	0xf	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	air power	0x510040	0x10	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	air	0x51003c	0x10	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	water power	0x510030	0x12	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	water	0x510028	0x12	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	fire power	0x51001c	0x11	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	fire	0x510014	0x11	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	earth power	0x510008	0x13	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	earth	0x510000	0x13	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	light resist	0x50fff0	0x15	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	r_light	0x50ffe8	0x15	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	dark resist	0x50ffdc	0x16	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	r_dark	0x50ffd4	0x16	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	light power	0x50ffc8	0x17	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	light	0x50ffc0	0x17	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	dark power	0x50ffb4	0x18	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	dark	0x50ffac	0x18	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	ac	0x50ffa8	0x14	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	max hp	0x50ffa0	0x19	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement
+2	2	max mana	0x50ff94	0x1a	this+0x0c WORD	CONFIRME: _stricmp et ecriture WORD du branchement

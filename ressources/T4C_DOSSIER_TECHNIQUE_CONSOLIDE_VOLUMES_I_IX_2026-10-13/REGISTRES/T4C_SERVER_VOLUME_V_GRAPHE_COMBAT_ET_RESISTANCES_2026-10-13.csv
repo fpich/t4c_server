@@ -1,0 +1,23 @@
+﻿type;source;cible_ou_adresse;detail;preuve
+appel;TFCMAIN::Attack;TFCMAIN::GetWorld;0x472337 selection_monde;etudes_assembleur/passe19/05_CARTOGRAPHIE_COMBAT.tsv
+appel;TFCMAIN::Attack;WorldMap::GetCollisionPos;0x472390 verifie_collision_positions;etudes_assembleur/passe19/05_CARTOGRAPHIE_COMBAT.tsv
+appel;TFCMAIN::Attack;Unit::GetType;0x4723B0 verifie_type_unite;etudes_assembleur/passe19/05_CARTOGRAPHIE_COMBAT.tsv
+appel;TFCMAIN::Attack;Unit::GetUnderBlock;0x47240C verifie_etat_unite;etudes_assembleur/passe19/05_CARTOGRAPHIE_COMBAT.tsv
+appel;TFCMAIN::Attack;Character::StopAutoCombat;0x472465 stop_combat_conditionnel;etudes_assembleur/passe19/05_CARTOGRAPHIE_COMBAT.tsv
+appel;TFCMAIN::Attack;Unit::GetDODGE;0x47254E lecture_esquive;etudes_assembleur/passe19/05_CARTOGRAPHIE_COMBAT.tsv
+appel;TFCMAIN::Attack;Unit::GetATTACK;0x47257F lecture_attaque;etudes_assembleur/passe19/05_CARTOGRAPHIE_COMBAT.tsv
+appel;TFCMAIN::Attack;Unit::GetAGI;0x4725B0 lecture_agilite;etudes_assembleur/passe19/05_CARTOGRAPHIE_COMBAT.tsv
+appel;TFCMAIN::Attack;GAME_RULES::GetBlowPrecision;0x4725CD calcul_precision;etudes_assembleur/passe19/05_CARTOGRAPHIE_COMBAT.tsv
+appel;TFCMAIN::Attack;Broadcast::BCMiss;0x4726AF diffuse_coup_manque;etudes_assembleur/passe19/05_CARTOGRAPHIE_COMBAT.tsv
+appel;TFCMAIN::Attack;Broadcast::BCAttack;0x4729B6 diffuse_attaque_chemin_A;etudes_assembleur/passe19/05_CARTOGRAPHIE_COMBAT.tsv
+appel;TFCMAIN::Attack;Broadcast::BCAttack;0x472A66 diffuse_attaque_chemin_B;etudes_assembleur/passe19/05_CARTOGRAPHIE_COMBAT.tsv
+appel;TFCMAIN::Attack;Broadcast::BCObjectChanged;0x472AD7 changement_conditionnel;etudes_assembleur/passe19/05_CARTOGRAPHIE_COMBAT.tsv
+appel;Broadcast::BCAttack;Broadcast::BCast;0x40FD61 diffusion;etudes_assembleur/passe19/05_CARTOGRAPHIE_COMBAT.tsv
+appel;Broadcast::BCMiss;Broadcast::BCast;0x40FE31 diffusion;etudes_assembleur/passe19/05_CARTOGRAPHIE_COMBAT.tsv
+appel;Broadcast::BCSkillUsed;Broadcast::BCast;0x40FECF diffusion;etudes_assembleur/passe19/05_CARTOGRAPHIE_COMBAT.tsv
+resistance;Unit::GetWaterResist;0x463000;"100 + ViewFlag + QueryBoost; flag=0x4e3f; boost=0xe";PASSE47_DESASSEMBLAGE/07_CODES_RESISTANCES.tsv
+resistance;Unit::GetFireResist;0x463030;"100 + ViewFlag + QueryBoost; flag=0x4e40; boost=0xd";PASSE47_DESASSEMBLAGE/07_CODES_RESISTANCES.tsv
+resistance;Unit::GetEarthResist;0x463060;"100 + ViewFlag + QueryBoost; flag=0x4e41; boost=0xf";PASSE47_DESASSEMBLAGE/07_CODES_RESISTANCES.tsv
+resistance;Unit::GetLightResist;0x463090;"100 + ViewFlag + QueryBoost; flag=0x4e45; boost=0x15";PASSE47_DESASSEMBLAGE/07_CODES_RESISTANCES.tsv
+resistance;Unit::GetDarkResist;0x4630c0;"100 + ViewFlag + QueryBoost; flag=0x4e46; boost=0x16";PASSE47_DESASSEMBLAGE/07_CODES_RESISTANCES.tsv
+resistance;Unit::GetAirResist;0x462fd0;"100 + ViewFlag + QueryBoost; flag=0x4e3e; boost=0xc";PASSE47_DESASSEMBLAGE/07_CODES_RESISTANCES.tsv

@@ -1,0 +1,6 @@
+lacune	entree_precedente	adresse_instruction	opcodes	gnu	llvm	octets_nouveaux
+0x41a5a2	0x41a58c	0x41a5a2	8b11	mov    edx,DWORD PTR [ecx]	mov	edx, dword ptr [ecx]	2
+0x432527	0x4324fa	0x432527	c74580ffffffff	mov    DWORD PTR [ebp-0x80],0xffffffff	mov	dword ptr [ebp - 0x80], 0xffffffff	7
+0x43254a	0x43252e	0x43254a	895dbc	mov    DWORD PTR [ebp-0x44],ebx	mov	dword ptr [ebp - 0x44], ebx	3
+0x4327d6	0x4327aa	0x4327d6	89459c	mov    DWORD PTR [ebp-0x64],eax	mov	dword ptr [ebp - 0x64], eax	3
+0x4328bf	0x4328a6	0x4328bf	ff15e0e04d00	call   DWORD PTR ds:0x4de0e0	call	dword ptr [0x4de0e0]	6

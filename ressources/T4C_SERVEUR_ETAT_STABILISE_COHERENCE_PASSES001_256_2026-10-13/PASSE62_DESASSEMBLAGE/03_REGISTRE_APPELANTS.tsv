@@ -1,0 +1,7 @@
+adresse_call	cible	pointeur_cinquieme_argument	statut
+0x45cee2	0x45C890	LEA [EBP-0x3C]	verifie_binaire
+0x45cf17	0x45C890	LEA [EBP-0x3C]	verifie_binaire
+0x45cfae	0x45C890	LEA [EBP-0x3C]	verifie_binaire
+0x45d074	0x45C890	LEA [EBP-0x3C]	verifie_binaire
+0x45d108	0x45C890	LEA [EBP-0x3C]	verifie_binaire
+0x45d23c	0x45C890	LEA [EBP-0x3C]	verifie_binaire

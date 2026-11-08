@@ -1,0 +1,7 @@
+etat	to_state	fonclet_VA	objet_EBP	cible	type_preuve	observation
+6	5	0x4D77AB	-0x1C	0x45DC10	code machine	Liste temporaire avec sentinelle
+7	6	0x4D77B3	-0xC4	IAT 0x4DE4F0	code machine + PE import	std::basic_string<char>
+8	7	0x4D77BF	-0x94	IAT 0x4DE4F0	code machine + PE import	std::basic_string<char>
+9	6	0x4D77CB	-0xA4	IAT 0x4DE4F0	code machine + PE import	std::basic_string<char>
+10	9	0x4D77D7	-0xB4	IAT 0x4DE4F0	code machine + PE import	std::basic_string<char>
+11	6	0x4D77E3	-0x28	0x45E1D0	code machine	Liste avec nettoyage sous-objet std::string à +8

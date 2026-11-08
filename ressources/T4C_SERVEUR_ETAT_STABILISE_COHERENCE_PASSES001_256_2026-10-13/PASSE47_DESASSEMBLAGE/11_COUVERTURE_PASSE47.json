@@ -1,0 +1,38 @@
+{
+  "passe": 47,
+  "exe_SHA256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "baseline": "T4C_SERVEUR_PASSE46_DESASSEMBLAGE_PUR_2026-10-09.zip",
+  "taille_text": 905117,
+  "base_octets": 91549,
+  "nouveaux_octets_non_redondants": 2519,
+  "octets_verifies": 94068,
+  "couverture_pct": 10.39291,
+  "exports_documentees": 228,
+  "total_exports": 1125,
+  "instructions_preuves_ajoutees": 1745,
+  "instructions_rejetees_nouvelles": 0,
+  "archives_anciennes_lignes_rejetees": 536,
+  "preuves_nouvelles": {
+    "02_PREUVES_AC_ET_EQUIPEMENT.asm": {
+      "lignes": 235,
+      "valides": 235,
+      "rejetees": 0
+    },
+    "03_PREUVES_RESISTANCES_ELEMENTAIRES.asm": {
+      "lignes": 506,
+      "valides": 506,
+      "rejetees": 0
+    },
+    "04_PREUVES_RANGEATTACK_DISPATCH.asm": {
+      "lignes": 537,
+      "valides": 537,
+      "rejetees": 0
+    },
+    "05_PREUVES_PAQUETS_ET_CONDITIONS.asm": {
+      "lignes": 467,
+      "valides": 467,
+      "rejetees": 0
+    }
+  },
+  "note": "Couverture de .text seule, adresses exactes, chevauchements dedupliques; les mauvaises lignes historiques (preuves client) restent exclues."
+}

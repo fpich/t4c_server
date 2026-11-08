@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-08",
+  "binaire": "T4C Server(1).exe",
+  "sha256_binaire": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "section": ".text",
+  "base_va": "0x401000",
+  "total_octets_text": 905117,
+  "base_passe35": 63405,
+  "base_passe35_pourcent": 7.005172,
+  "nouveaux_octets_uniques": 3131,
+  "total_octets_verifies": 66536,
+  "couverture_pct": 7.351094,
+  "nouvelles_lignes_instructions_verifiees": 1603,
+  "instructions_rejetees_passe36": 0,
+  "exports_total": 1125,
+  "exports_documentes_passe35": 158,
+  "exports_documentes_passe36": 160,
+  "lignes_historiques_hors_binaire_serveur": 536,
+  "preuves": [
+    {
+      "fichier": "02_PREUVES_CONSTRUCTION_SPELLS.asm",
+      "lignes_instructions": 673,
+      "octets_dans_la_preuve": 2294,
+      "octets_non_redondants": 2294
+    },
+    {
+      "fichier": "03_PREUVES_REGISTRES_SORTS.asm",
+      "lignes_instructions": 347,
+      "octets_dans_la_preuve": 1090,
+      "octets_non_redondants": 375
+    },
+    {
+      "fichier": "04_PREUVES_COMPTEURS_EFFETS.asm",
+      "lignes_instructions": 83,
+      "octets_dans_la_preuve": 236,
+      "octets_non_redondants": 208
+    },
+    {
+      "fichier": "05_PREUVES_LISTES_ET_CALLBACKS.asm",
+      "lignes_instructions": 426,
+      "octets_dans_la_preuve": 1163,
+      "octets_non_redondants": 22
+    },
+    {
+      "fichier": "06_PREUVES_APPEL_CHARGEMENT_SORTS.asm",
+      "lignes_instructions": 74,
+      "octets_dans_la_preuve": 232,
+      "octets_non_redondants": 232
+    }
+  ],
+  "mesure": "Union des octets attestés par des lignes objdump valides dans les rapports assembleur archivés, moins chevauchements; non équivalente à compréhension fonctionnelle."
+}

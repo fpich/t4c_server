@@ -1,0 +1,13 @@
+sous_type	VA_case	famille_source	action_observee	etat	limite
+2	0x00409F82	if	comparaison puis une seule branche de retour	CONDITION_BRANCHES_EXCLUSIVES	le partage des cas et la semantique exacte des alias restent partiels
+3	0x0040A0E4	skill / spell	Unit::GetSkill puis Unit::QueryBoost dans le mode non-true; une branche ecrit USER_SKILL+0x4	LECTURE_AVEC_ECRITURES_CONDITIONNELLES	le partage des cas et la semantique exacte des alias restent partiels
+4	0x0040A301	self.viewflag	Unit::ViewFlag dans le contexte source	LECTURE_OBSERVEE	le partage des cas et la semantique exacte des alias restent partiels
+5	0x0040A35A	target.viewflag	Unit::ViewFlag dans le contexte cible	LECTURE_OBSERVEE	le partage des cas et la semantique exacte des alias restent partiels
+6	0x0040A3BE	itemcount	appel 0x4223A0, cible self; semantique de quantite a verifier sur helper	LECTURE_OBSERVEE	le partage des cas et la semantique exacte des alias restent partiels
+7	0x0040A47B	equipcount	appel 0x445E80, self; comptage d objets dans un contexte	LECTURE_OBSERVEE	le partage des cas et la semantique exacte des alias restent partiels
+8	0x0040A182	target.skill / spell	GetSkill cible, lecture de USER_SKILL+0x4	LECTURE_OBSERVEE	le partage des cas et la semantique exacte des alias restent partiels
+9	0x0040A296	target.true_skill / true_spell	GetSkill cible, lecture de USER_SKILL+0x4	LECTURE_OBSERVEE	le partage des cas et la semantique exacte des alias restent partiels
+10	0x0040A22B	true_skill / true_spell	GetSkill source, lecture de USER_SKILL+0x4	LECTURE_OBSERVEE	le partage des cas et la semantique exacte des alias restent partiels
+11	0x0040A55B	var	recherche OU creation par 0x40F230, lecture noeud +0x20 et modification conditionnelle compteur	LECTURE_AVEC_ECRITURES_CONDITIONNELLES	le partage des cas et la semantique exacte des alias restent partiels
+12	0x0040A417	target.itemcount	appel 0x4223A0, cible target	LECTURE_OBSERVEE	le partage des cas et la semantique exacte des alias restent partiels
+13	0x0040A4E6	target.equipcount	appel 0x445E80, cible target	LECTURE_OBSERVEE	le partage des cas et la semantique exacte des alias restent partiels

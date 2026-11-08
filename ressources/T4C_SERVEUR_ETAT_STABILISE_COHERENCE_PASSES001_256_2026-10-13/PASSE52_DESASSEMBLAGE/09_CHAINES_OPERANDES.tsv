@@ -1,0 +1,8 @@
+point_depart	operation	appel_ou_donnee	resultat	preuve	statut
+BoostFormula::GetOperandValue	switch 113 cases	0x40C18C (113 dwords)	selection d operande	06_TABLE_113_OPERANDES_WDA.tsv	CONFIRME
+operande de resistance	ViewFlag	vtable+0xC	flag numerique	03_PREUVES_RESISTANCES_FORMULES.asm	CONFIRME
+operande de resistance	QueryBoost	0x48DE60	100 + flag + boost	03_PREUVES_RESISTANCES_FORMULES.asm	CONFIRME
+operande de resistance vraie	ViewFlag	vtable+0xC	100 + flag sans boost	04_PREUVES_FLAGS_SANS_BOOST.asm	CONFIRME
+operande caracteristique vraie	GetTrueX	0x48E230 etc.	statistique sans QueryBoost dans cette branche	05_PREUVES_CARACTERISTIQUES_EFFECTIVES.asm	CONFIRME
+operande contexte avec chaine	0x40F230 + modification octet conditionnelle	0x40A55B	valeur x87 et ecriture conditionnelle	02_PREUVES_COMPETENCES_PARSER_ET_DISTANCE.asm	CONFIRME
+operande distance	slot virtuel+0x1C	0x40C09E	sqrt(dx²+dy²)	02_PREUVES_COMPETENCES_PARSER_ET_DISTANCE.asm	CONFIRME_ARITHMETIQUE

@@ -1,0 +1,7 @@
+methode	VA	code_flag_argument_ViewFlag	code_QueryBoost	forme	statut
+Unit::GetWaterResist	0x463000	0x4e3f	0xe	100 + ViewFlag + QueryBoost	CONFIRME sur les chemins analyses
+Unit::GetFireResist	0x463030	0x4e40	0xd	100 + ViewFlag + QueryBoost	CONFIRME sur les chemins analyses
+Unit::GetEarthResist	0x463060	0x4e41	0xf	100 + ViewFlag + QueryBoost	CONFIRME sur les chemins analyses
+Unit::GetLightResist	0x463090	0x4e45	0x15	100 + ViewFlag + QueryBoost	CONFIRME sur les chemins analyses
+Unit::GetDarkResist	0x4630c0	0x4e46	0x16	100 + ViewFlag + QueryBoost	CONFIRME sur les chemins analyses
+Unit::GetAirResist	0x462fd0	0x4e3e	0xc	100 + ViewFlag + QueryBoost	CONFIRME sur les chemins analyses

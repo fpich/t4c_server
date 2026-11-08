@@ -1,0 +1,17 @@
+famille	adresse	condition_ou_champ	role	appel_ou_changement	qualification
+Type 2	0x4c38b0	0x00f0 (WORD)	special mana	vptr+0xec GetMana; vptr+0xe0 GetMaxMana; vptr+0xf0 SetMana	confirmé : branchements, noms de methodes resolus
+Type 2	0x4c38b0	autres codes WORD	boost de stat	RemoveEffect (+0x8), RemoveBoost (+0x8), AddBoost (0x48d790), AddEffect	confirmé : appels; particularites par stat à examiner
+Type 2	0x4c3b70	callback 5	expire / retire statut	GetBoost; DispellEffectStatus	confirmé pour la branche, contexte de timer à confronter
+Type 2	0x4c3b70	callback 0x17	sauvegarde	allocation et stockage d un enregistrement	confirmé : bytes; schema exact incomplet
+Type 2	0x4c3b70	callback 0x18	rechargement	AddBoost / AddEffect/ notifications selon condition	confirmé pour les appels; conditions a tester
+Type 9	0x4c7720	OnTimer=5	calcule échéance par expression	expression a +0x18 fois 0.02 + GetRound	confirmé : fmul constant 0.02 en rdata
+Type 9	0x4c7720	autres On*	calcule autre échéance	GetRound + calcul entier multiplie par 0x51eb851f	confirmé : branche distincte; unités de mesure non testées
+Type 9	0x4c7990	callback 5	verifie expiration / reporte	GetRound, AddEffect, DispellEffectStatus, ActivateSpell	confirmé: branches distinctes; pas de simulation serveur
+Type 9	0x4c7990	callback 0x17 et 0x18	sauvegarde / rechargement	copie structure 20 bytes; reste échéance; restauration	confirmé : calculs et tests sur type de sauvegarde 0x10/0x14
+Type 9	0x4c7990	callback 9 / 0x0d	liberation / retrait	free, RemoveEffect, DispellEffectStatus	confirmé : branchements, ordre exact suivant callback
+Type 14	0x4c5980	param WDA1 0x80	expression 1	evaluation + conversion entier; push valeur vers DealExhaust	confirmé
+Type 14	0x4c5980	param WDA2 0x10	expression 2	evaluation + conversion entier; push valeur vers DealExhaust	confirmé
+Type 14	0x4c5980	param WDA3 0xF0	expression 3	evaluation + conversion entier; push valeur vers DealExhaust	confirmé
+Type 14	0x4c5980	param WDA4 0x160	seuil de déclenchement	comparaison avec Random(1,100); échec retourne avant DealExhaust	confirmé: sens conditionnel inféré du branchement FPU
+Type 14	0x4c5a7f	vptr+0x78	application exhaustion	Unit::DealExhaust(3 entiers); GetExhaust+0x70 puis SetExhaust+0x74	confirmé : tables virtuelles et symboles
+Type 14	0x4c5aa1	notification S2C83	notification d effet	SpellEffect::CreateEffectStatus	confirmé : appel après DealExhaust

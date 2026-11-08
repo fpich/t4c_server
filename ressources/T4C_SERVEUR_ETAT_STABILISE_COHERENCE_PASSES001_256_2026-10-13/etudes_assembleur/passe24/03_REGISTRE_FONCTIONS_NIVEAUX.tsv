@@ -1,0 +1,11 @@
+VA	fonction_observee	adresse_ou_lien	preuve_centrale	niveau	limite
+0x489C70	initialisation	0x5163F4	65536 DWORD remis a zero	N4	fonction complete de reset
+0x489C90	enregistrement	0x5163F4 / registre de noms	id 16 bits; reservation; controle doublon; entree type/nom	N3	types de tous les arguments non resolus
+0x48A2D0	recherche nom	registre de noms	comparaison nom et type; renvoie u16 ou 0	N3	comparateur interne non integralement nomme
+0x48B0C0	creation entite	0x5163F4 + 4*id	mode; controle existence; compteur instance; appel virtuel	N3	effets du constructeur virtuel non resolus
+0x437810	producteur usine	0x489C90	allocation via callback; categorie 3	N2	fonction usine exacte non nommee
+0x47421E	producteur unite/PNJ	0x489C90	categorie 3; creation precedente 0x437810	N2	source donnees non resolue
+0x475630	producteur fiches	0x489C90	categorie 2; pas 0x108; id court	N2	origine et taille exhaustive de fiche inconnues
+0x476910	producteur special	0x489C90	categorie 2; valeur 0x7530	N2	role de la valeur non confirme
+0x44B0B0	resolution objets nommes	0x48A2D0	GOLD / DECOR001 / DECOR002	N2	provenance definitions non connue
+0x48A470	balayage	0x5163F4	iteration < 65536 et dispatch virtuel	N2	branches incompletes

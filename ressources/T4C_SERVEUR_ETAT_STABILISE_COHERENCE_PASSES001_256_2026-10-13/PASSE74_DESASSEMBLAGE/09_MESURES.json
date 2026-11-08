@@ -1,0 +1,19 @@
+{
+  "passe": 74,
+  "theme": "PERSONNAGES_ET_INVENTAIRE",
+  "sha256_binaire": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "base_text": "0x00401000",
+  "taille_text": 905117,
+  "octets_entree": 140401,
+  "octets_nouveaux": 10195,
+  "octets_cumules": 150596,
+  "couverture_pourcent": 16.638291,
+  "nombre_fonctions_examinees": 18,
+  "instructions_uniques_verifiees": 3441,
+  "octets_uniques_dans_preuves": 10566,
+  "octets_confondus_avec_historique": 371,
+  "nouvelles_plages": 24,
+  "cibles_non_decodees": 0,
+  "branches_hors_fenetre": 4,
+  "methodologie": "Parcours de CFG direct depuis export connu ou entrée connue; GNU objdump, vérification de chaque byte contre le binaire; aucun NOP/INT3, pas de désassemblage linéaire de zones non atteintes. Branches indirectes exclues. Les erreurs de désassemblage et les chemins non explorés restent possibles. Le pourcentage désigne exclusivement des octets instruction vérifiés, pas une reconstitution sémantique complète."
+}

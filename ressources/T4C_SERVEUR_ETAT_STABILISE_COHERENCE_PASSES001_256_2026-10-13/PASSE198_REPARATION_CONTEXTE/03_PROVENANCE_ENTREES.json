@@ -1,0 +1,67 @@
+[
+  {
+    "name": "interruption_49ead6",
+    "start": "0x49ead6",
+    "end": "0x49ecf0",
+    "matched_instructions": 155,
+    "candidate_new_bytes": 13,
+    "visited_not_matched": [
+      "0x49ecef"
+    ],
+    "old_instruction_conflicts": [],
+    "first_instructions": [
+      [
+        "0x49ead6",
+        "899d10ffffff",
+        "mov    DWORD PTR [ebp-0xf0],ebx"
+      ],
+      [
+        "0x49eadc",
+        "c78514ffffff00000000",
+        "mov    DWORD PTR [ebp-0xec],0x0"
+      ],
+      [
+        "0x49eae6",
+        "c78518ffffff00000000",
+        "mov    DWORD PTR [ebp-0xe8],0x0"
+      ],
+      [
+        "0x49eaf0",
+        "899d1cffffff",
+        "mov    DWORD PTR [ebp-0xe4],ebx"
+      ],
+      [
+        "0x49eaf6",
+        "899d20ffffff",
+        "mov    DWORD PTR [ebp-0xe0],ebx"
+      ]
+    ],
+    "last_instructions": [
+      [
+        "0x49ece1",
+        "8b55ec",
+        "mov    edx,DWORD PTR [ebp-0x14]"
+      ],
+      [
+        "0x49ece4",
+        "8b06",
+        "mov    eax,DWORD PTR [esi]"
+      ],
+      [
+        "0x49ece6",
+        "8d4de4",
+        "lea    ecx,[ebp-0x1c]"
+      ],
+      [
+        "0x49ece9",
+        "51",
+        "push   ecx"
+      ],
+      [
+        "0x49ecea",
+        "687cf25000",
+        "push   0x50f27c"
+      ]
+    ]
+  }
+]

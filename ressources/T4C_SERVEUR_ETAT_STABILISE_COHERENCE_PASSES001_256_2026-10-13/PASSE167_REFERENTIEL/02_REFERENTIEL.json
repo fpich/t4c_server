@@ -1,0 +1,14 @@
+{
+  "executable_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "text_base": "0x401000",
+  "text_size": 905117,
+  "old_mask_sha256": "32c078fe098e5c48bf10f91d08ee4affb88c0c705bf625de2f570f29748140ca",
+  "old_mask_population": 820159,
+  "old_archive_file_count": 1492,
+  "excluded_seed_addresses": [
+    "0x41e9e0",
+    "0x4633a1",
+    "0x4c5970"
+  ],
+  "historical_mask_certification": "statique nominale, revalidation complete non effectuee"
+}

@@ -1,0 +1,4 @@
+{
+  "direct_candidate_hits": [],
+  "scope": "E8/E9 suivis de quatre octets tous masqués comme instructions; le test ne certifie pas les frontières d’instructions"
+}

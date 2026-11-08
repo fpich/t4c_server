@@ -1,0 +1,19 @@
+{
+  "passe": 75,
+  "theme": "SESSIONS_ET_RESSOURCES",
+  "sha256_binaire": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "base_text": "0x00401000",
+  "taille_text": 905117,
+  "octets_entree": 150596,
+  "octets_nouveaux": 7755,
+  "octets_cumules": 158351,
+  "couverture_pourcent": 17.495086,
+  "nombre_fonctions_examinees": 21,
+  "instructions_uniques_verifiees": 2753,
+  "octets_uniques_dans_preuves": 8760,
+  "octets_confondus_avec_historique": 1005,
+  "nouvelles_plages": 21,
+  "cibles_non_decodees": 0,
+  "branches_hors_fenetre": 0,
+  "methodologie": "Parcours de CFG direct depuis export connu ou entrée connue; GNU objdump, vérification de chaque byte contre le binaire; aucun NOP/INT3, pas de désassemblage linéaire de zones non atteintes. Branches indirectes exclues. Les erreurs de désassemblage et les chemins non explorés restent possibles. Le pourcentage désigne exclusivement des octets instruction vérifiés, pas une reconstitution sémantique complète."
+}

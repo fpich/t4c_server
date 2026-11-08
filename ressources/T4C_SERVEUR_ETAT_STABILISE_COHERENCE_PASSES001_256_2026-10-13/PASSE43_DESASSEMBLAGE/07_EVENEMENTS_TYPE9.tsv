@@ -1,0 +1,7 @@
+type_WDA	id_parametre	chaine	adresse_chaine	code_interne	stockage	verification
+9	1	OnAttack	0x510278	1	this+0x0e WORD	comparaison _stricmp, branche vers mov WORD
+9	1	OnAttacked	0x51026c	2	this+0x0e WORD	comparaison _stricmp, branche vers mov WORD
+9	1	OnTimer	0x510264	5	this+0x0e WORD	comparaison _stricmp, branche vers mov WORD
+9	1	OnDisturbed	0x510258	3	this+0x0e WORD	comparaison _stricmp, branche vers mov WORD
+9	1	OnHit	0x510250	14	this+0x0e WORD	comparaison _stricmp, branche vers mov WORD
+9	1	OnAttackHit	0x510244	28	this+0x0e WORD	comparaison _stricmp, branche vers mov WORD

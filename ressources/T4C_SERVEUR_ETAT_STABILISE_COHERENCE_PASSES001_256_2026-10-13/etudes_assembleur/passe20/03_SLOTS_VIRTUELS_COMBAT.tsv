@@ -1,0 +1,19 @@
+classe	vtable_VA	offset_octets	nom_fonctionnel	cible_VA	export_MSVCC	certitude
+Character	0x4de68c	0x34	attack	0x41af00	?attack@Character@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z	CONFIRMÉ table mémoire; nom si export
+Character	0x4de68c	0x38	attacked	0x41b050	?attacked@Character@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z	CONFIRMÉ table mémoire; nom si export
+Character	0x4de68c	0x3c	hit	0x41cc00	?hit@Character@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z	CONFIRMÉ table mémoire; nom si export
+Character	0x4de68c	0x40	attack_hit	0x41dc10	?attack_hit@Character@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z	CONFIRMÉ table mémoire; nom si export
+Character	0x4de68c	0xcc	GetMaxHP	0x48bda0	?GetMaxHP@Unit@@UAEKXZ	CONFIRMÉ table mémoire; nom si export
+Character	0x4de68c	0xd8	GetHP	0x41d6a0	?GetHP@Character@@UAEKXZ	CONFIRMÉ table mémoire; nom si export
+Character	0x4de68c	0x184	CanAttack	0x41ec40	?CanAttack@Character@@UAEHXZ	CONFIRMÉ table mémoire; nom si export
+Character	0x4de68c	0x1d0	GetInvisibleQuery	0x422f60	?GetInvisibleQuery@Unit@@UAEPAVQueryInvisible@1@XZ	CONFIRMÉ table mémoire; nom si export
+Character	0x4de68c	0x1d8	DispellInvisibility	0x48fb90	?DispellInvisibility@Unit@@UAEXXZ	CONFIRMÉ table mémoire; nom si export
+Unit	0x4df658	0x34	attack	0x48b730	?attack@Unit@@UAEHPAU_ATTACK_STRUCTURE@@PAV1@@Z	CONFIRMÉ table mémoire; nom si export
+Unit	0x4df658	0x38	attacked	0x4d1c84	non exporté	CONFIRMÉ table mémoire; nom si export
+Unit	0x4df658	0x3c	hit	0x48b7d0	?hit@Unit@@UAEHPAU_ATTACK_STRUCTURE@@PAV1@@Z	CONFIRMÉ table mémoire; nom si export
+Unit	0x4df658	0x40	attack_hit	0x48b810	?attack_hit@Unit@@UAEHPAU_ATTACK_STRUCTURE@@PAV1@@Z	CONFIRMÉ table mémoire; nom si export
+Unit	0x4df658	0xcc	GetMaxHP	0x48bda0	?GetMaxHP@Unit@@UAEKXZ	CONFIRMÉ table mémoire; nom si export
+Unit	0x4df658	0xd8	GetHP	0x48bde0	?GetHP@Unit@@UAEKXZ	CONFIRMÉ table mémoire; nom si export
+Unit	0x4df658	0x184	CanAttack	0x48f440	?CanAttack@Unit@@UAEHXZ	CONFIRMÉ table mémoire; nom si export
+Unit	0x4df658	0x1d0	GetInvisibleQuery	0x422f60	?GetInvisibleQuery@Unit@@UAEPAVQueryInvisible@1@XZ	CONFIRMÉ table mémoire; nom si export
+Unit	0x4df658	0x1d8	DispellInvisibility	0x48fb90	?DispellInvisibility@Unit@@UAEXXZ	CONFIRMÉ table mémoire; nom si export

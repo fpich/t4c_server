@@ -1,0 +1,47 @@
+{
+  "passe_debut": 76,
+  "passe_fin": 82,
+  "sha256_binaire": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "base_text": "0x401000",
+  "taille_text": 905117,
+  "octets_p76": 161732,
+  "couverture_pct_p76": 17.868629,
+  "octets_nouveaux": 102754,
+  "octets_p82": 264486,
+  "couverture_pct_p82": 29.221195,
+  "gain_points": 11.352565,
+  "entrees_exportees_examinees": 552,
+  "instructions_controlees": 33592,
+  "passe_details": [
+    {
+      "passe": 77,
+      "nouveaux": 3030,
+      "cumul": 164762
+    },
+    {
+      "passe": 78,
+      "nouveaux": 25002,
+      "cumul": 189764
+    },
+    {
+      "passe": 79,
+      "nouveaux": 6437,
+      "cumul": 196201
+    },
+    {
+      "passe": 80,
+      "nouveaux": 12053,
+      "cumul": 208254
+    },
+    {
+      "passe": 81,
+      "nouveaux": 13276,
+      "cumul": 221530
+    },
+    {
+      "passe": 82,
+      "nouveaux": 42956,
+      "cumul": 264486
+    }
+  ]
+}

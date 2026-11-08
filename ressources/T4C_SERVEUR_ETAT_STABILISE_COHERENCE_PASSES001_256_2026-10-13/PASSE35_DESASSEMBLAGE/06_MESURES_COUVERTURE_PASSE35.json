@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-08",
+  "binaire": "T4C Server(1).exe",
+  "sha256_binaire": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "section": ".text",
+  "section_va": "0x401000",
+  "total_octets_text": 905117,
+  "base_passe34_octets": 56987,
+  "base_passe34_pct": 6.296092,
+  "nouveaux_octets_non_redondants": 6418,
+  "total_octets_verifies": 63405,
+  "couverture_pct": 7.005172,
+  "nouvelles_instructions_verifiees": 2436,
+  "nouveaux_points_entree_distincts": 2436,
+  "exports_total": 1125,
+  "exports_couverts_passe34": 158,
+  "exports_couverts_passe35": 158,
+  "lignes_historiques_hors_serveur": 536,
+  "preuves": [
+    {
+      "fichier": "02_PREUVES_ENREGISTREMENTS_EFFETS.asm",
+      "lignes": 267,
+      "octets_dans_la_preuve": 888,
+      "octets_nouveaux": 888
+    },
+    {
+      "fichier": "03_PREUVES_CALLBACKS_A.asm",
+      "lignes": 958,
+      "octets_dans_la_preuve": 2516,
+      "octets_nouveaux": 2516
+    },
+    {
+      "fichier": "04_PREUVES_CALLBACKS_B.asm",
+      "lignes": 1211,
+      "octets_dans_la_preuve": 3014,
+      "octets_nouveaux": 3014
+    }
+  ]
+}

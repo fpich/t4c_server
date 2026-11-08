@@ -1,0 +1,10 @@
+categorie	element	stat_code	offset_unite	getter	preuve
+stat	STR	3	+0x64	0x48E150	GetSTR appelle QueryBoost(3)
+stat	INT	1	+0x60	0x48E170	GetINT appelle QueryBoost(1)
+stat	END	2	+0x62	0x48E190	GetEND appelle QueryBoost(2)
+stat	AGI	6	+0x66	0x48E1B0	GetAGI appelle QueryBoost(6)
+stat	WIS	4	+0x6A	0x48E1D0	GetWIS appelle QueryBoost(4)
+stat	ATTACK	8	+0x70	0x48E1F0	GetATTACK : confirmer code via instruction immediate
+stat	DODGE	9	+0x6E	0x48E210	GetDODGE appelle QueryBoost(9)
+sql	save: Boosts	s.o.	0x50E0F8	0x48EEB0	INSERT OwnerID BaseOwnerID BoostID Stat Boost
+sql	load: Boosts	s.o.	0x50E150	0x48F070	SELECT BoostID Stat Boost WHERE OwnerID BaseOwnerID

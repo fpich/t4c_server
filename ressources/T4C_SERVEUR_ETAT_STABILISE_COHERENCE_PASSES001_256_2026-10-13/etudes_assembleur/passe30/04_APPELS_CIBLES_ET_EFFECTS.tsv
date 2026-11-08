@@ -1,0 +1,12 @@
+adresse_appel	cible	nom_exporte_si_disponible	rôle_observé	niveau
+0x461589	0x471EC0	TFCMAIN::GetWorld	retrouve monde	confirmé
+0x4615F7	0x4590A0	inconnu	tirage borné 1..100000	confirmé pour arguments
+0x461624	0x40C350	BoostFormula::GetBoost	évalue composante de seuil	confirmé
+0x46164E	0x438FE0	GAME_RULES::InPVP	contrôle interaction	confirmé
+0x461684	0x422E90	Character::SendSystemMessage	erreur ou refus	confirmé
+0x461A15	0x40FF00	Broadcast::BCSpellEffect	notification effet	confirmé
+0x461C26	0x4AF0C0	WorldMap::ViewTopUnit	unité candidate	confirmé
+0x461E33	0x4B2700	WorldMap::GetCollisionPos	contrôle collision	confirmé
+0x461EC0	0x40FF00	Broadcast::BCSpellEffect	notification conditionnelle	confirmé
+0x461EE9	0x461FD0	routine interne	exécution effets sur cible	fonction interne / détail partiel
+0x462215	slot virtuel +0x1C4	Unit::DeleteUnit si objet Unit	libération conditionnelle référence	confirmé sous type Unit

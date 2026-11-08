@@ -1,0 +1,12 @@
+etape	adresse_appel	adresse_cible	condition	effet_documente	statut
+1-WDA-premier	0x475DBC	0x4A8810	chargeur ouvert	ajout au conteneur commun	CONFIRME
+2-WDA-second	0x475DD3	0x4A8810	test a 0x475DC1 non nul	ajout a la meme collection	CONFIRME
+3-transformation	0x475DDF	0x473610	apres les lectures	itere au pas 0xE4 et construit un objet runtime 0x418	CONFIRME
+4-controle-succes	0x473914	0x409900	champ texte +0x248	si invalide journalise et utilise la chaine 100	CONFIRME
+5-type-effet	0x4739AF	0x460C00	chaque element WDA pas 0x2C	resout superstructure type effet	CONFIRME
+6-parametre-valide	0x473A2D	appel virtuel slot +0	pour chaque parametre	test du parametre avant validation	CONFIRME
+7-invalidite	0x473C1A	log 0x471D40	flag echec=1	Spell will be inactive; pas d enregistrement sur cette branche	CONFIRME
+8-enregistrement	0x473BD0	0x461360	flag echec=0	registre la definition runtime	CONFIRME
+9-ancien-remplacement	0x4613A1	table a 0x514DA4	case occupee	log et destruction de l ancien objet	CONFIRME
+10-nouveau-pointeur	0x4614A6	table a 0x514DA4	ID apres bornage	stocke le nouveau pointeur	CONFIRME
+11-recherche	0x462253	table a 0x514DA4	ID 10000..11023	retour pointeur ou zero	CONFIRME

@@ -1,0 +1,31 @@
+{
+  "passe": 54,
+  "date": "2026-10-09",
+  "binaire": "T4C Server(1).exe",
+  "sha256_binaire": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "section_text_octets": 905117,
+  "source_archive": "T4C_SERVEUR_PASSE53_DESASSEMBLAGE_PUR_2026-10-09.zip",
+  "couverture_passe53_brute": 117718,
+  "couverture_passe53_prudente": 117627,
+  "ecart_historique_octets": 91,
+  "preuves_par_fichier": {
+    "02_PREUVES_IF_STRUCTURE_CONDITIONNELLE.asm": 364,
+    "03_PREUVES_PARAMETRES_SPECIAUX_ET_ERREURS.asm": 302,
+    "04_PREUVES_INSERTION_ARBRE_ASSOCIATIF.asm": 286
+  },
+  "nouvelles_instructions_exactes": 952,
+  "instructions_rejetees_nouvelles": 0,
+  "octets_uniques_ajoutes": 2800,
+  "couverture_54_brute_octets": 120518,
+  "couverture_54_brute_pct": 13.315185,
+  "couverture_54_prudente_octets": 120427,
+  "couverture_54_prudente_pct": 13.305131,
+  "exports_verifies_independants_avant": 259,
+  "exports_verifies_independants_apres": 259,
+  "exports_total": 1125,
+  "sous_types_speciaux": 16,
+  "messages_erreur_litteraux": 11,
+  "anciennes_instructions_valides": 55297,
+  "anciennes_lignes_non_serveur_ou_non_conformes": 536,
+  "prevention": "Les tables de saut et les chaînes de données sont exclues du calcul; seules les instructions réelles comparées octet par octet comptent."
+}

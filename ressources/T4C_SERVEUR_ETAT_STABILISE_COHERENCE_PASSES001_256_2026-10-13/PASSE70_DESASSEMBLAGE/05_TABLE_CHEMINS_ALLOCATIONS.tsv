@@ -1,0 +1,10 @@
+Chemin	Mode	Valeur	Conditions et limites	Preuve
+Allocation directe	drapeau +0x20 nul	malloc taille	retour EAX sans contrôle de nullité	0x442005-0x442016
+Allocation suivie	drapeau +0x20 non nul	malloc + enregistrement	verrou Win32 autour de 0x4422E0 ; table +0x34 nulle => retour 0	0x442017-0x442050;0x4422E0-0x4423CB
+Hash	tous chemins suivis	(adresse >> 6) & 0x3FF	1024 compartiments	0x4422C0-0x4422D1
+Métadonnées suivies	nœud de 0x34 octets	malloc(0x34)	absence de test nul avant rep stosd	0x442339-0x44235B;0x442360-0x442385
+Table des buckets	initialisation gestionnaire	malloc(0x1000)	aucun test nul avant rep stosd	0x442150-0x442195
+Libération directe	drapeau +0x20 nul	free(p)	pas de validation locale du pointeur	0x442073-0x442084
+Libération suivie	drapeau +0x20 non nul	retrait métadonnées si présent, puis free(p)	la libération du pointeur s'effectue même si la clé manque	0x4423D0-0x442465
+Prise verrou	suivi actif	EnterCriticalSection	IAT 0x4DE0F8 import Win32 confirmé	0x409680-0x409696
+Relâche verrou	suivi actif	LeaveCriticalSection	IAT 0x4DE0FC import Win32 confirmé	0x4096A0-0x4096A9

@@ -1,0 +1,44 @@
+{
+  "sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "archive_source": "/mnt/data/_pass44work/stage44.zip",
+  "archive_fichiers": 357,
+  "code_section": ".text",
+  "section_va_debut": "0x401000",
+  "section_taille_octets": 905117,
+  "fichiers_preuves": 81,
+  "lignes_assembleur_detectees": 39159,
+  "lignes_octets_correspondants": 38623,
+  "lignes_exclues": 536,
+  "instructions_adresses_uniques": 29506,
+  "octets_uniques_directement_cites": 84659,
+  "pct_octets_directement_cites": 9.353,
+  "fonctions_exportees_uniques": 1125,
+  "fonctions_exportees_avec_entree_dans_preuves": 176,
+  "pct_entrees_exportees_avec_preuve": 15.644,
+  "passe": 44,
+  "ancienne_couverture": 82630,
+  "gain_net": 2029,
+  "nouvelles_preuves": [
+    {
+      "preuve": "02_PREUVES_TYPE2_APPLICATION_MANA.asm",
+      "instructions": 381,
+      "rejetees": 0
+    },
+    {
+      "preuve": "03_PREUVES_TYPE2_CALLBACKS_BOOST.asm",
+      "instructions": 530,
+      "rejetees": 0
+    },
+    {
+      "preuve": "04_PREUVES_TYPE9_CALLBACKS_TIMER.asm",
+      "instructions": 291,
+      "rejetees": 0
+    },
+    {
+      "preuve": "05_PREUVES_TYPE14_EXHAUST.asm",
+      "instructions": 176,
+      "rejetees": 0
+    }
+  ],
+  "anciens_fichiers_preserves": 347
+}

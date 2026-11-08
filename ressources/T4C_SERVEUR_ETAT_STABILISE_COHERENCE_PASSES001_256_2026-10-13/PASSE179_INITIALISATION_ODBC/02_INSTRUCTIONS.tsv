@@ -1,0 +1,229 @@
+adresse	octets	taille	instruction_GNU	instruction_LLVM	nouveaux_octets
+0x0041305C	8a 4d f3	3	mov    cl,BYTE PTR [ebp-0xd]	mov cl, byte ptr [ebp - 0xd]	0
+0x0041305F	8a 45 f3	3	mov    al,BYTE PTR [ebp-0xd]	mov al, byte ptr [ebp - 0xd]	2
+0x00413062	88 4d dd	3	mov    BYTE PTR [ebp-0x23],cl	mov byte ptr [ebp - 0x23], cl	3
+0x00413065	8d 4d dc	3	lea    ecx,[ebp-0x24]	lea ecx, [ebp - 0x24]	3
+0x00413068	89 75 a0	3	mov    DWORD PTR [ebp-0x60],esi	mov dword ptr [ebp - 0x60], esi	3
+0x0041306B	89 75 e8	3	mov    DWORD PTR [ebp-0x18],esi	mov dword ptr [ebp - 0x18], esi	3
+0x0041306E	89 75 b4	3	mov    DWORD PTR [ebp-0x4c],esi	mov dword ptr [ebp - 0x4c], esi	3
+0x00413071	89 75 b8	3	mov    DWORD PTR [ebp-0x48],esi	mov dword ptr [ebp - 0x48], esi	3
+0x00413074	89 75 bc	3	mov    DWORD PTR [ebp-0x44],esi	mov dword ptr [ebp - 0x44], esi	3
+0x00413077	89 75 c0	3	mov    DWORD PTR [ebp-0x40],esi	mov dword ptr [ebp - 0x40], esi	3
+0x0041307A	89 75 c4	3	mov    DWORD PTR [ebp-0x3c],esi	mov dword ptr [ebp - 0x3c], esi	3
+0x0041307D	89 75 c8	3	mov    DWORD PTR [ebp-0x38],esi	mov dword ptr [ebp - 0x38], esi	3
+0x00413080	89 75 cc	3	mov    DWORD PTR [ebp-0x34],esi	mov dword ptr [ebp - 0x34], esi	3
+0x00413083	89 75 d0	3	mov    DWORD PTR [ebp-0x30],esi	mov dword ptr [ebp - 0x30], esi	3
+0x00413086	89 75 d4	3	mov    DWORD PTR [ebp-0x2c],esi	mov dword ptr [ebp - 0x2c], esi	3
+0x00413089	89 75 d8	3	mov    DWORD PTR [ebp-0x28],esi	mov dword ptr [ebp - 0x28], esi	3
+0x0041308C	88 45 dc	3	mov    BYTE PTR [ebp-0x24],al	mov byte ptr [ebp - 0x24], al	3
+0x0041308F	e8 9c 08 01 00	5	call   0x423930	call 0x423930 <?GetInvisibleQuery@Unit@@UAEPAVQueryInvisible@1@XZ+0x9d0>	5
+0x00413094	b9 78 16 51 00	5	mov    ecx,0x511678	mov ecx, 0x511678	5
+0x00413099	89 75 fc	3	mov    DWORD PTR [ebp-0x4],esi	mov dword ptr [ebp - 0x4], esi	3
+0x0041309C	e8 bf bc 03 00	5	call   0x44ed60	call 0x44ed60 <?ObjectInList@ObjectTimer@@SAHK@Z+0xb80>	5
+0x004130A1	85 c0	2	test   eax,eax	test eax, eax	2
+0x004130A3	0f 84 88 01 00 00	6	je     0x413231	je 0x413231 <?InitializeODBC@Character@@SAXXZ+0x281>	6
+0x004130A9	eb 02	2	jmp    0x4130ad	jmp 0x4130ad <?InitializeODBC@Character@@SAXXZ+0xfd>	2
+0x004130AB	33 f6	2	xor    esi,esi	xor esi, esi	2
+0x004130AD	8d 55 a0	3	lea    edx,[ebp-0x60]	lea edx, [ebp - 0x60]	3
+0x004130B0	52	1	push   edx	push edx	1
+0x004130B1	6a 01	2	push   0x1	push 0x1	2
+0x004130B3	b9 78 16 51 00	5	mov    ecx,0x511678	mov ecx, 0x511678	5
+0x004130B8	e8 53 be 03 00	5	call   0x44ef10	call 0x44ef10 <?ObjectInList@ObjectTimer@@SAHK@Z+0xd30>	5
+0x004130BD	6a 14	2	push   0x14	push 0x14	2
+0x004130BF	8d 45 84	3	lea    eax,[ebp-0x7c]	lea eax, [ebp - 0x7c]	3
+0x004130C2	50	1	push   eax	push eax	1
+0x004130C3	6a 02	2	push   0x2	push 0x2	2
+0x004130C5	b9 78 16 51 00	5	mov    ecx,0x511678	mov ecx, 0x511678	5
+0x004130CA	e8 51 c0 03 00	5	call   0x44f120	call 0x44f120 <?ObjectInList@ObjectTimer@@SAHK@Z+0xf40>	5
+0x004130CF	8d 4d ec	3	lea    ecx,[ebp-0x14]	lea ecx, [ebp - 0x14]	3
+0x004130D2	51	1	push   ecx	push ecx	1
+0x004130D3	6a 03	2	push   0x3	push 0x3	2
+0x004130D5	b9 78 16 51 00	5	mov    ecx,0x511678	mov ecx, 0x511678	5
+0x004130DA	e8 31 be 03 00	5	call   0x44ef10	call 0x44ef10 <?ObjectInList@ObjectTimer@@SAHK@Z+0xd30>	5
+0x004130DF	8b 45 ec	3	mov    eax,DWORD PTR [ebp-0x14]	mov eax, dword ptr [ebp - 0x14]	3
+0x004130E2	83 f8 02	3	cmp    eax,0x2	cmp eax, 0x2	3
+0x004130E5	77 05	2	ja     0x4130ec	ja 0x4130ec <?InitializeODBC@Character@@SAXXZ+0x13c>	2
+0x004130E7	ff 45 b4	3	inc    DWORD PTR [ebp-0x4c]	inc dword ptr [ebp - 0x4c]	3
+0x004130EA	eb 55	2	jmp    0x413141	jmp 0x413141 <?InitializeODBC@Character@@SAXXZ+0x191>	2
+0x004130EC	83 f8 05	3	cmp    eax,0x5	cmp eax, 0x5	3
+0x004130EF	77 05	2	ja     0x4130f6	ja 0x4130f6 <?InitializeODBC@Character@@SAXXZ+0x146>	2
+0x004130F1	ff 45 b8	3	inc    DWORD PTR [ebp-0x48]	inc dword ptr [ebp - 0x48]	3
+0x004130F4	eb 4b	2	jmp    0x413141	jmp 0x413141 <?InitializeODBC@Character@@SAXXZ+0x191>	2
+0x004130F6	83 f8 0a	3	cmp    eax,0xa	cmp eax, 0xa	3
+0x004130F9	77 05	2	ja     0x413100	ja 0x413100 <?InitializeODBC@Character@@SAXXZ+0x150>	2
+0x004130FB	ff 45 bc	3	inc    DWORD PTR [ebp-0x44]	inc dword ptr [ebp - 0x44]	3
+0x004130FE	eb 41	2	jmp    0x413141	jmp 0x413141 <?InitializeODBC@Character@@SAXXZ+0x191>	2
+0x00413100	83 f8 19	3	cmp    eax,0x19	cmp eax, 0x19	3
+0x00413103	77 05	2	ja     0x41310a	ja 0x41310a <?InitializeODBC@Character@@SAXXZ+0x15a>	2
+0x00413105	ff 45 c0	3	inc    DWORD PTR [ebp-0x40]	inc dword ptr [ebp - 0x40]	3
+0x00413108	eb 37	2	jmp    0x413141	jmp 0x413141 <?InitializeODBC@Character@@SAXXZ+0x191>	2
+0x0041310A	83 f8 32	3	cmp    eax,0x32	cmp eax, 0x32	3
+0x0041310D	77 05	2	ja     0x413114	ja 0x413114 <?InitializeODBC@Character@@SAXXZ+0x164>	2
+0x0041310F	ff 45 c4	3	inc    DWORD PTR [ebp-0x3c]	inc dword ptr [ebp - 0x3c]	3
+0x00413112	eb 2d	2	jmp    0x413141	jmp 0x413141 <?InitializeODBC@Character@@SAXXZ+0x191>	2
+0x00413114	83 f8 4b	3	cmp    eax,0x4b	cmp eax, 0x4b	3
+0x00413117	77 05	2	ja     0x41311e	ja 0x41311e <?InitializeODBC@Character@@SAXXZ+0x16e>	2
+0x00413119	ff 45 c8	3	inc    DWORD PTR [ebp-0x38]	inc dword ptr [ebp - 0x38]	3
+0x0041311C	eb 23	2	jmp    0x413141	jmp 0x413141 <?InitializeODBC@Character@@SAXXZ+0x191>	2
+0x0041311E	83 f8 64	3	cmp    eax,0x64	cmp eax, 0x64	3
+0x00413121	77 05	2	ja     0x413128	ja 0x413128 <?InitializeODBC@Character@@SAXXZ+0x178>	2
+0x00413123	ff 45 cc	3	inc    DWORD PTR [ebp-0x34]	inc dword ptr [ebp - 0x34]	3
+0x00413126	eb 19	2	jmp    0x413141	jmp 0x413141 <?InitializeODBC@Character@@SAXXZ+0x191>	2
+0x00413128	83 f8 7d	3	cmp    eax,0x7d	cmp eax, 0x7d	3
+0x0041312B	77 05	2	ja     0x413132	ja 0x413132 <?InitializeODBC@Character@@SAXXZ+0x182>	2
+0x0041312D	ff 45 d0	3	inc    DWORD PTR [ebp-0x30]	inc dword ptr [ebp - 0x30]	3
+0x00413130	eb 0f	2	jmp    0x413141	jmp 0x413141 <?InitializeODBC@Character@@SAXXZ+0x191>	2
+0x00413132	3d 96 00 00 00	5	cmp    eax,0x96	cmp eax, 0x96	5
+0x00413137	77 05	2	ja     0x41313e	ja 0x41313e <?InitializeODBC@Character@@SAXXZ+0x18e>	2
+0x00413139	ff 45 d4	3	inc    DWORD PTR [ebp-0x2c]	inc dword ptr [ebp - 0x2c]	3
+0x0041313C	eb 03	2	jmp    0x413141	jmp 0x413141 <?InitializeODBC@Character@@SAXXZ+0x191>	2
+0x0041313E	ff 45 d8	3	inc    DWORD PTR [ebp-0x28]	inc dword ptr [ebp - 0x28]	3
+0x00413141	8b 45 e8	3	mov    eax,DWORD PTR [ebp-0x18]	mov eax, dword ptr [ebp - 0x18]	3
+0x00413144	8a 55 f3	3	mov    dl,BYTE PTR [ebp-0xd]	mov dl, byte ptr [ebp - 0xd]	3
+0x00413147	40	1	inc    eax	inc eax	1
+0x00413148	56	1	push   esi	push esi	1
+0x00413149	8d 4d a4	3	lea    ecx,[ebp-0x5c]	lea ecx, [ebp - 0x5c]	3
+0x0041314C	89 45 e8	3	mov    DWORD PTR [ebp-0x18],eax	mov dword ptr [ebp - 0x18], eax	3
+0x0041314F	88 55 a4	3	mov    BYTE PTR [ebp-0x5c],dl	mov byte ptr [ebp - 0x5c], dl	3
+0x00413152	ff 15 14 e5 4d 00	6	call   DWORD PTR ds:0x4de514	call dword ptr [0x4de514]	6
+0x00413158	83 c9 ff	3	or     ecx,0xffffffff	or ecx, -0x1	3
+0x0041315B	33 c0	2	xor    eax,eax	xor eax, eax	2
+0x0041315D	8d 7d 84	3	lea    edi,[ebp-0x7c]	lea edi, [ebp - 0x7c]	3
+0x00413160	f2 ae	2	repnz scas al,BYTE PTR es:[edi]	repne  scasb al, byte ptr es:[edi]	2
+0x00413162	f7 d1	2	not    ecx	not ecx	2
+0x00413164	49	1	dec    ecx	dec ecx	1
+0x00413165	8d 45 84	3	lea    eax,[ebp-0x7c]	lea eax, [ebp - 0x7c]	3
+0x00413168	8b d9	2	mov    ebx,ecx	mov ebx, ecx	2
+0x0041316A	50	1	push   eax	push eax	1
+0x0041316B	8d 4d a4	3	lea    ecx,[ebp-0x5c]	lea ecx, [ebp - 0x5c]	3
+0x0041316E	ff 15 00 e5 4d 00	6	call   DWORD PTR ds:0x4de500	call dword ptr [0x4de500]	6
+0x00413174	84 c0	2	test   al,al	test al, al	2
+0x00413176	74 19	2	je     0x413191	je 0x413191 <?InitializeODBC@Character@@SAXXZ+0x1e1>	2
+0x00413178	8b 75 a8	3	mov    esi,DWORD PTR [ebp-0x58]	mov esi, dword ptr [ebp - 0x58]	3
+0x0041317B	53	1	push   ebx	push ebx	1
+0x0041317C	8d 4d 84	3	lea    ecx,[ebp-0x7c]	lea ecx, [ebp - 0x7c]	3
+0x0041317F	2b ce	2	sub    ecx,esi	sub ecx, esi	2
+0x00413181	51	1	push   ecx	push ecx	1
+0x00413182	8d 55 a4	3	lea    edx,[ebp-0x5c]	lea edx, [ebp - 0x5c]	3
+0x00413185	52	1	push   edx	push edx	1
+0x00413186	8d 4d a4	3	lea    ecx,[ebp-0x5c]	lea ecx, [ebp - 0x5c]	3
+0x00413189	ff 15 fc e4 4d 00	6	call   DWORD PTR ds:0x4de4fc	call dword ptr [0x4de4fc]	6
+0x0041318F	eb 30	2	jmp    0x4131c1	jmp 0x4131c1 <?InitializeODBC@Character@@SAXXZ+0x211>	2
+0x00413191	6a 01	2	push   0x1	push 0x1	2
+0x00413193	53	1	push   ebx	push ebx	1
+0x00413194	8d 4d a4	3	lea    ecx,[ebp-0x5c]	lea ecx, [ebp - 0x5c]	3
+0x00413197	ff 15 e0 e4 4d 00	6	call   DWORD PTR ds:0x4de4e0	call dword ptr [0x4de4e0]	6
+0x0041319D	84 c0	2	test   al,al	test al, al	2
+0x0041319F	74 20	2	je     0x4131c1	je 0x4131c1 <?InitializeODBC@Character@@SAXXZ+0x211>	2
+0x004131A1	8b 7d a8	3	mov    edi,DWORD PTR [ebp-0x58]	mov edi, dword ptr [ebp - 0x58]	3
+0x004131A4	8b cb	2	mov    ecx,ebx	mov ecx, ebx	2
+0x004131A6	8b c1	2	mov    eax,ecx	mov eax, ecx	2
+0x004131A8	c1 e9 02	3	shr    ecx,0x2	shr ecx, 0x2	3
+0x004131AB	8d 75 84	3	lea    esi,[ebp-0x7c]	lea esi, [ebp - 0x7c]	3
+0x004131AE	f3 a5	2	rep movs DWORD PTR es:[edi],DWORD PTR ds:[esi]	rep  movsd dword ptr es:[edi], dword ptr [esi]	2
+0x004131B0	8b c8	2	mov    ecx,eax	mov ecx, eax	2
+0x004131B2	83 e1 03	3	and    ecx,0x3	and ecx, 0x3	3
+0x004131B5	f3 a4	2	rep movs BYTE PTR es:[edi],BYTE PTR ds:[esi]	rep  movsb byte ptr es:[edi], byte ptr [esi]	2
+0x004131B7	53	1	push   ebx	push ebx	1
+0x004131B8	8d 4d a4	3	lea    ecx,[ebp-0x5c]	lea ecx, [ebp - 0x5c]	3
+0x004131BB	ff 15 dc e4 4d 00	6	call   DWORD PTR ds:0x4de4dc	call dword ptr [0x4de4dc]	6
+0x004131C1	8d 4d a4	3	lea    ecx,[ebp-0x5c]	lea ecx, [ebp - 0x5c]	3
+0x004131C4	51	1	push   ecx	push ecx	1
+0x004131C5	8d 8d 70 ff ff ff	6	lea    ecx,[ebp-0x90]	lea ecx, [ebp - 0x90]	6
+0x004131CB	c6 45 fc 01	4	mov    BYTE PTR [ebp-0x4],0x1	mov byte ptr [ebp - 0x4], 0x1	4
+0x004131CF	ff 15 10 e5 4d 00	6	call   DWORD PTR ds:0x4de510	call dword ptr [0x4de510]	6
+0x004131D5	c7 45 80 00 00 00 00	7	mov    DWORD PTR [ebp-0x80],0x0	mov dword ptr [ebp - 0x80], 0x0	7
+0x004131DC	8d 95 70 ff ff ff	6	lea    edx,[ebp-0x90]	lea edx, [ebp - 0x90]	6
+0x004131E2	52	1	push   edx	push edx	1
+0x004131E3	8d 45 98	3	lea    eax,[ebp-0x68]	lea eax, [ebp - 0x68]	3
+0x004131E6	50	1	push   eax	push eax	1
+0x004131E7	8d 4d dc	3	lea    ecx,[ebp-0x24]	lea ecx, [ebp - 0x24]	3
+0x004131EA	c6 45 fc 02	4	mov    BYTE PTR [ebp-0x4],0x2	mov byte ptr [ebp - 0x4], 0x2	4
+0x004131EE	e8 2d fb 00 00	5	call   0x422d20	call 0x422d20 <?RemoveReferenceTo@Character@@UAEXPAVUnit@@@Z+0x4e0>	5
+0x004131F3	8b 30	2	mov    esi,DWORD PTR [eax]	mov esi, dword ptr [eax]	2
+0x004131F5	6a 01	2	push   0x1	push 0x1	2
+0x004131F7	8d 8d 70 ff ff ff	6	lea    ecx,[ebp-0x90]	lea ecx, [ebp - 0x90]	6
+0x004131FD	c6 45 fc 01	4	mov    BYTE PTR [ebp-0x4],0x1	mov byte ptr [ebp - 0x4], 0x1	4
+0x00413201	ff 15 14 e5 4d 00	6	call   DWORD PTR ds:0x4de514	call dword ptr [0x4de514]	6
+0x00413207	8b 7e 1c	3	mov    edi,DWORD PTR [esi+0x1c]	mov edi, dword ptr [esi + 0x1c]	3
+0x0041320A	47	1	inc    edi	inc edi	1
+0x0041320B	6a 01	2	push   0x1	push 0x1	2
+0x0041320D	8d 4d a4	3	lea    ecx,[ebp-0x5c]	lea ecx, [ebp - 0x5c]	3
+0x00413210	89 7e 1c	3	mov    DWORD PTR [esi+0x1c],edi	mov dword ptr [esi + 0x1c], edi	3
+0x00413213	c6 45 fc 00	4	mov    BYTE PTR [ebp-0x4],0x0	mov byte ptr [ebp - 0x4], 0x0	4
+0x00413217	ff 15 14 e5 4d 00	6	call   DWORD PTR ds:0x4de514	call dword ptr [0x4de514]	6
+0x0041321D	b9 78 16 51 00	5	mov    ecx,0x511678	mov ecx, 0x511678	5
+0x00413222	e8 39 bb 03 00	5	call   0x44ed60	call 0x44ed60 <?ObjectInList@ObjectTimer@@SAHK@Z+0xb80>	5
+0x00413227	85 c0	2	test   eax,eax	test eax, eax	2
+0x00413229	0f 85 7c fe ff ff	6	jne    0x4130ab	jne 0x4130ab <?InitializeODBC@Character@@SAXXZ+0xfb>	6
+0x0041322F	33 f6	2	xor    esi,esi	xor esi, esi	2
+0x00413231	8b 5d e4	3	mov    ebx,DWORD PTR [ebp-0x1c]	mov ebx, dword ptr [ebp - 0x1c]	3
+0x00413234	33 c0	2	xor    eax,eax	xor eax, eax	2
+0x00413236	3b de	2	cmp    ebx,esi	cmp ebx, esi	2
+0x00413238	74 07	2	je     0x413241	je 0x413241 <?InitializeODBC@Character@@SAXXZ+0x291>	2
+0x0041323A	8b 45 e8	3	mov    eax,DWORD PTR [ebp-0x18]	mov eax, dword ptr [ebp - 0x18]	3
+0x0041323D	33 d2	2	xor    edx,edx	xor edx, edx	2
+0x0041323F	f7 f3	2	div    ebx	div ebx	2
+0x00413241	83 ec 28	3	sub    esp,0x28	sub esp, 0x28	3
+0x00413244	8b fc	2	mov    edi,esp	mov edi, esp	2
+0x00413246	50	1	push   eax	push eax	1
+0x00413247	b9 0a 00 00 00	5	mov    ecx,0xa	mov ecx, 0xa	5
+0x0041324C	8d 75 b4	3	lea    esi,[ebp-0x4c]	lea esi, [ebp - 0x4c]	3
+0x0041324F	f3 a5	2	rep movs DWORD PTR es:[edi],DWORD PTR ds:[esi]	rep  movsd dword ptr es:[edi], dword ptr [esi]	2
+0x00413251	8b 4d e8	3	mov    ecx,DWORD PTR [ebp-0x18]	mov ecx, dword ptr [ebp - 0x18]	3
+0x00413254	53	1	push   ebx	push ebx	1
+0x00413255	51	1	push   ecx	push ecx	1
+0x00413256	e8 45 60 02 00	5	call   0x4392a0	call 0x4392a0 <?InSafeHaven@GAME_RULES@@SAHPAVUnit@@0@Z+0x110>	5
+0x0041325B	8b c8	2	mov    ecx,eax	mov ecx, eax	2
+0x0041325D	e8 fe 69 02 00	5	call   0x439c60	call 0x439c60 <?InSafeHaven@GAME_RULES@@SAHPAVUnit@@0@Z+0xad0>	5
+0x00413262	b9 78 16 51 00	5	mov    ecx,0x511678	mov ecx, 0x511678	5
+0x00413267	e8 04 bb 03 00	5	call   0x44ed70	call 0x44ed70 <?ObjectInList@ObjectTimer@@SAHK@Z+0xb90>	5
+0x0041326C	b9 78 16 51 00	5	mov    ecx,0x511678	mov ecx, 0x511678	5
+0x00413271	e8 5a b7 03 00	5	call   0x44e9d0	call 0x44e9d0 <?ObjectInList@ObjectTimer@@SAHK@Z+0x7f0>	5
+0x00413276	8b 75 e0	3	mov    esi,DWORD PTR [ebp-0x20]	mov esi, dword ptr [ebp - 0x20]	3
+0x00413279	8b 4d e4	3	mov    ecx,DWORD PTR [ebp-0x1c]	mov ecx, dword ptr [ebp - 0x1c]	3
+0x0041327C	85 c9	2	test   ecx,ecx	test ecx, ecx	2
+0x0041327E	8b 06	2	mov    eax,DWORD PTR [esi]	mov eax, dword ptr [esi]	2
+0x00413280	c7 45 fc ff ff ff ff	7	mov    DWORD PTR [ebp-0x4],0xffffffff	mov dword ptr [ebp - 0x4], 0xffffffff	7
+0x00413287	89 45 ec	3	mov    DWORD PTR [ebp-0x14],eax	mov dword ptr [ebp - 0x14], eax	3
+0x0041328A	74 2c	2	je     0x4132b8	je 0x4132b8 <?InitializeODBC@Character@@SAXXZ+0x308>	2
+0x0041328C	8b c8	2	mov    ecx,eax	mov ecx, eax	2
+0x0041328E	3b c1	2	cmp    eax,ecx	cmp eax, ecx	2
+0x00413290	75 26	2	jne    0x4132b8	jne 0x4132b8 <?InitializeODBC@Character@@SAXXZ+0x308>	2
+0x00413292	8b 56 04	3	mov    edx,DWORD PTR [esi+0x4]	mov edx, dword ptr [esi + 0x4]	3
+0x00413295	52	1	push   edx	push edx	1
+0x00413296	8d 4d dc	3	lea    ecx,[ebp-0x24]	lea ecx, [ebp - 0x24]	3
+0x00413299	e8 42 06 01 00	5	call   0x4238e0	call 0x4238e0 <?GetInvisibleQuery@Unit@@UAEPAVQueryInvisible@1@XZ+0x980>	5
+0x0041329E	8b 45 e0	3	mov    eax,DWORD PTR [ebp-0x20]	mov eax, dword ptr [ebp - 0x20]	3
+0x004132A1	89 40 04	3	mov    DWORD PTR [eax+0x4],eax	mov dword ptr [eax + 0x4], eax	3
+0x004132A4	8b 45 e0	3	mov    eax,DWORD PTR [ebp-0x20]	mov eax, dword ptr [ebp - 0x20]	3
+0x004132A7	c7 45 e4 00 00 00 00	7	mov    DWORD PTR [ebp-0x1c],0x0	mov dword ptr [ebp - 0x1c], 0x0	7
+0x004132AE	89 00	2	mov    DWORD PTR [eax],eax	mov dword ptr [eax], eax	2
+0x004132B0	8b 45 e0	3	mov    eax,DWORD PTR [ebp-0x20]	mov eax, dword ptr [ebp - 0x20]	3
+0x004132B3	89 40 08	3	mov    DWORD PTR [eax+0x8],eax	mov dword ptr [eax + 0x8], eax	3
+0x004132B6	eb 22	2	jmp    0x4132da	jmp 0x4132da <?InitializeODBC@Character@@SAXXZ+0x32a>	2
+0x004132B8	3b c6	2	cmp    eax,esi	cmp eax, esi	2
+0x004132BA	74 1e	2	je     0x4132da	je 0x4132da <?InitializeODBC@Character@@SAXXZ+0x32a>	2
+0x004132BC	8d 4d ec	3	lea    ecx,[ebp-0x14]	lea ecx, [ebp - 0x14]	3
+0x004132BF	8b f8	2	mov    edi,eax	mov edi, eax	2
+0x004132C1	e8 5a 0f 01 00	5	call   0x424220	call 0x424220 <?GetInvisibleQuery@Unit@@UAEPAVQueryInvisible@1@XZ+0x12c0>	5
+0x004132C6	57	1	push   edi	push edi	1
+0x004132C7	8d 45 9c	3	lea    eax,[ebp-0x64]	lea eax, [ebp - 0x64]	3
+0x004132CA	50	1	push   eax	push eax	1
+0x004132CB	8d 4d dc	3	lea    ecx,[ebp-0x24]	lea ecx, [ebp - 0x24]	3
+0x004132CE	e8 8d 01 01 00	5	call   0x423460	call 0x423460 <?GetInvisibleQuery@Unit@@UAEPAVQueryInvisible@1@XZ+0x500>	5
+0x004132D3	8b 45 ec	3	mov    eax,DWORD PTR [ebp-0x14]	mov eax, dword ptr [ebp - 0x14]	3
+0x004132D6	3b c6	2	cmp    eax,esi	cmp eax, esi	2
+0x004132D8	75 e2	2	jne    0x4132bc	jne 0x4132bc <?InitializeODBC@Character@@SAXXZ+0x30c>	2
+0x004132DA	8b 4d e0	3	mov    ecx,DWORD PTR [ebp-0x20]	mov ecx, dword ptr [ebp - 0x20]	3
+0x004132DD	51	1	push   ecx	push ecx	1
+0x004132DE	e8 7d ed 02 00	5	call   0x442060	call 0x442060 <??4SpellEffectManager@@QAEAAV0@ABV0@@Z+0x3fe0>	5
+0x004132E3	8b 4d f4	3	mov    ecx,DWORD PTR [ebp-0xc]	mov ecx, dword ptr [ebp - 0xc]	3
+0x004132E6	83 c4 04	3	add    esp,0x4	add esp, 0x4	3
+0x004132E9	5f	1	pop    edi	pop edi	1
+0x004132EA	5e	1	pop    esi	pop esi	1
+0x004132EB	64 89 0d 00 00 00 00	7	mov    DWORD PTR fs:0x0,ecx	mov dword ptr fs:[0x0], ecx	7
+0x004132F2	5b	1	pop    ebx	pop ebx	1
+0x004132F3	8b e5	2	mov    esp,ebp	mov esp, ebp	2
+0x004132F5	5d	1	pop    ebp	pop ebp	1
+0x004132F6	c3	1	ret	ret	1

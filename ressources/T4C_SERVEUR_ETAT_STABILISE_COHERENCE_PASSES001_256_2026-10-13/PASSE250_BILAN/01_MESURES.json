@@ -1,0 +1,16 @@
+{
+  "original_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "ff_raw_candidates": 14766,
+  "ff_candidate_counts_by_reg": {
+    "5": 3980,
+    "2": 9022,
+    "3": 531,
+    "4": 1233
+  },
+  "absolute_ff_15_ff_25_candidate_pointer_slots_inside_text": 0,
+  "push_mov_immediate_candidates_into_five_regions": 0,
+  "classified_bytes_unchanged": 850738,
+  "unknown_bytes_unchanged": 54379,
+  "newly_verified_code_bytes": 0,
+  "scope_limit": "Recherche brute de motifs sur des octets masqués, sans validation systématique des frontières d’instructions. Les comptes FF sont des candidats, pas des instructions confirmées."
+}

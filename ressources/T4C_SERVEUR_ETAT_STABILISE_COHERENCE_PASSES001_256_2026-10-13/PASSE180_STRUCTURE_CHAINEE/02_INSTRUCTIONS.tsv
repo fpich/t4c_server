@@ -1,0 +1,108 @@
+adresse	octets	taille	instruction_GNU	instruction_LLVM	nouveaux_octets
+0x0044F5C7	8b 46 24	3	mov    eax,DWORD PTR [esi+0x24]	mov eax, dword ptr [esi + 0x24]	0
+0x0044F5CA	89 46 20	3	mov    DWORD PTR [esi+0x20],eax	mov dword ptr [esi + 0x20], eax	1
+0x0044F5CD	89 7e 40	3	mov    DWORD PTR [esi+0x40],edi	mov dword ptr [esi + 0x40], edi	3
+0x0044F5D0	c6 46 34 08	4	mov    BYTE PTR [esi+0x34],0x8	mov byte ptr [esi + 0x34], 0x8	4
+0x0044F5D4	bb 01 00 00 00	5	mov    ebx,0x1	mov ebx, 0x1	5
+0x0044F5D9	39 7e 40	3	cmp    DWORD PTR [esi+0x40],edi	cmp dword ptr [esi + 0x40], edi	3
+0x0044F5DC	74 0a	2	je     0x44f5e8	je 0x44f5e8 <?ObjectInList@ObjectTimer@@SAHK@Z+0x1408>	2
+0x0044F5DE	8b 4e 20	3	mov    ecx,DWORD PTR [esi+0x20]	mov ecx, dword ptr [esi + 0x20]	3
+0x0044F5E1	8b 11	2	mov    edx,DWORD PTR [ecx]	mov edx, dword ptr [ecx]	2
+0x0044F5E3	89 56 20	3	mov    DWORD PTR [esi+0x20],edx	mov dword ptr [esi + 0x20], edx	3
+0x0044F5E6	eb 03	2	jmp    0x44f5eb	jmp 0x44f5eb <?ObjectInList@ObjectTimer@@SAHK@Z+0x140b>	2
+0x0044F5E8	89 5e 40	3	mov    DWORD PTR [esi+0x40],ebx	mov dword ptr [esi + 0x40], ebx	3
+0x0044F5EB	8b 46 20	3	mov    eax,DWORD PTR [esi+0x20]	mov eax, dword ptr [esi + 0x20]	3
+0x0044F5EE	3b c7	2	cmp    eax,edi	cmp eax, edi	2
+0x0044F5F0	0f 84 c9 00 00 00	6	je     0x44f6bf	je 0x44f6bf <?ObjectInList@ObjectTimer@@SAHK@Z+0x14df>	6
+0x0044F5F6	8b 4e 28	3	mov    ecx,DWORD PTR [esi+0x28]	mov ecx, dword ptr [esi + 0x28]	3
+0x0044F5F9	89 46 2c	3	mov    DWORD PTR [esi+0x2c],eax	mov dword ptr [esi + 0x2c], eax	3
+0x0044F5FC	ff 4e 38	3	dec    DWORD PTR [esi+0x38]	dec dword ptr [esi + 0x38]	3
+0x0044F5FF	8b 46 20	3	mov    eax,DWORD PTR [esi+0x20]	mov eax, dword ptr [esi + 0x20]	3
+0x0044F602	3b c1	2	cmp    eax,ecx	cmp eax, ecx	2
+0x0044F604	74 3c	2	je     0x44f642	je 0x44f642 <?ObjectInList@ObjectTimer@@SAHK@Z+0x1462>	2
+0x0044F606	3b 46 24	3	cmp    eax,DWORD PTR [esi+0x24]	cmp eax, dword ptr [esi + 0x24]	3
+0x0044F609	74 33	2	je     0x44f63e	je 0x44f63e <?ObjectInList@ObjectTimer@@SAHK@Z+0x145e>	2
+0x0044F60B	8b 08	2	mov    ecx,DWORD PTR [eax]	mov ecx, dword ptr [eax]	2
+0x0044F60D	8b 50 04	3	mov    edx,DWORD PTR [eax+0x4]	mov edx, dword ptr [eax + 0x4]	3
+0x0044F610	89 51 04	3	mov    DWORD PTR [ecx+0x4],edx	mov dword ptr [ecx + 0x4], edx	3
+0x0044F613	8b 46 20	3	mov    eax,DWORD PTR [esi+0x20]	mov eax, dword ptr [esi + 0x20]	3
+0x0044F616	8b 48 04	3	mov    ecx,DWORD PTR [eax+0x4]	mov ecx, dword ptr [eax + 0x4]	3
+0x0044F619	8b 10	2	mov    edx,DWORD PTR [eax]	mov edx, dword ptr [eax]	2
+0x0044F61B	89 11	2	mov    DWORD PTR [ecx],edx	mov dword ptr [ecx], edx	2
+0x0044F61D	8b 46 40	3	mov    eax,DWORD PTR [esi+0x40]	mov eax, dword ptr [esi + 0x40]	3
+0x0044F620	3b c3	2	cmp    eax,ebx	cmp eax, ebx	2
+0x0044F622	75 0b	2	jne    0x44f62f	jne 0x44f62f <?ObjectInList@ObjectTimer@@SAHK@Z+0x144f>	2
+0x0044F624	8b 46 20	3	mov    eax,DWORD PTR [esi+0x20]	mov eax, dword ptr [esi + 0x20]	3
+0x0044F627	8b 48 04	3	mov    ecx,DWORD PTR [eax+0x4]	mov ecx, dword ptr [eax + 0x4]	3
+0x0044F62A	89 4e 20	3	mov    DWORD PTR [esi+0x20],ecx	mov dword ptr [esi + 0x20], ecx	3
+0x0044F62D	eb 62	2	jmp    0x44f691	jmp 0x44f691 <?ObjectInList@ObjectTimer@@SAHK@Z+0x14b1>	2
+0x0044F62F	83 f8 02	3	cmp    eax,0x2	cmp eax, 0x2	3
+0x0044F632	75 5d	2	jne    0x44f691	jne 0x44f691 <?ObjectInList@ObjectTimer@@SAHK@Z+0x14b1>	2
+0x0044F634	8b 56 20	3	mov    edx,DWORD PTR [esi+0x20]	mov edx, dword ptr [esi + 0x20]	3
+0x0044F637	8b 02	2	mov    eax,DWORD PTR [edx]	mov eax, dword ptr [edx]	2
+0x0044F639	89 46 20	3	mov    DWORD PTR [esi+0x20],eax	mov dword ptr [esi + 0x20], eax	3
+0x0044F63C	eb 53	2	jmp    0x44f691	jmp 0x44f691 <?ObjectInList@ObjectTimer@@SAHK@Z+0x14b1>	2
+0x0044F63E	3b c1	2	cmp    eax,ecx	cmp eax, ecx	2
+0x0044F640	75 23	2	jne    0x44f665	jne 0x44f665 <?ObjectInList@ObjectTimer@@SAHK@Z+0x1485>	2
+0x0044F642	3b 46 24	3	cmp    eax,DWORD PTR [esi+0x24]	cmp eax, dword ptr [esi + 0x24]	3
+0x0044F645	74 23	2	je     0x44f66a	je 0x44f66a <?ObjectInList@ObjectTimer@@SAHK@Z+0x148a>	2
+0x0044F647	8b 48 04	3	mov    ecx,DWORD PTR [eax+0x4]	mov ecx, dword ptr [eax + 0x4]	3
+0x0044F64A	89 39	2	mov    DWORD PTR [ecx],edi	mov dword ptr [ecx], edi	2
+0x0044F64C	8b 56 20	3	mov    edx,DWORD PTR [esi+0x20]	mov edx, dword ptr [esi + 0x20]	3
+0x0044F64F	8b 42 04	3	mov    eax,DWORD PTR [edx+0x4]	mov eax, dword ptr [edx + 0x4]	3
+0x0044F652	89 46 28	3	mov    DWORD PTR [esi+0x28],eax	mov dword ptr [esi + 0x28], eax	3
+0x0044F655	83 7e 40 02	4	cmp    DWORD PTR [esi+0x40],0x2	cmp dword ptr [esi + 0x40], 0x2	4
+0x0044F659	8b ca	2	mov    ecx,edx	mov ecx, edx	2
+0x0044F65B	8b 51 04	3	mov    edx,DWORD PTR [ecx+0x4]	mov edx, dword ptr [ecx + 0x4]	3
+0x0044F65E	89 56 20	3	mov    DWORD PTR [esi+0x20],edx	mov dword ptr [esi + 0x20], edx	3
+0x0044F661	75 2e	2	jne    0x44f691	jne 0x44f691 <?ObjectInList@ObjectTimer@@SAHK@Z+0x14b1>	2
+0x0044F663	eb 29	2	jmp    0x44f68e	jmp 0x44f68e <?ObjectInList@ObjectTimer@@SAHK@Z+0x14ae>	2
+0x0044F665	3b 46 24	3	cmp    eax,DWORD PTR [esi+0x24]	cmp eax, dword ptr [esi + 0x24]	3
+0x0044F668	75 1b	2	jne    0x44f685	jne 0x44f685 <?ObjectInList@ObjectTimer@@SAHK@Z+0x14a5>	2
+0x0044F66A	3b c1	2	cmp    eax,ecx	cmp eax, ecx	2
+0x0044F66C	74 17	2	je     0x44f685	je 0x44f685 <?ObjectInList@ObjectTimer@@SAHK@Z+0x14a5>	2
+0x0044F66E	8b 00	2	mov    eax,DWORD PTR [eax]	mov eax, dword ptr [eax]	2
+0x0044F670	89 78 04	3	mov    DWORD PTR [eax+0x4],edi	mov dword ptr [eax + 0x4], edi	3
+0x0044F673	8b 4e 20	3	mov    ecx,DWORD PTR [esi+0x20]	mov ecx, dword ptr [esi + 0x20]	3
+0x0044F676	8b 01	2	mov    eax,DWORD PTR [ecx]	mov eax, dword ptr [ecx]	2
+0x0044F678	89 46 20	3	mov    DWORD PTR [esi+0x20],eax	mov dword ptr [esi + 0x20], eax	3
+0x0044F67B	89 46 24	3	mov    DWORD PTR [esi+0x24],eax	mov dword ptr [esi + 0x24], eax	3
+0x0044F67E	39 5e 40	3	cmp    DWORD PTR [esi+0x40],ebx	cmp dword ptr [esi + 0x40], ebx	3
+0x0044F681	75 0e	2	jne    0x44f691	jne 0x44f691 <?ObjectInList@ObjectTimer@@SAHK@Z+0x14b1>	2
+0x0044F683	eb 09	2	jmp    0x44f68e	jmp 0x44f68e <?ObjectInList@ObjectTimer@@SAHK@Z+0x14ae>	2
+0x0044F685	89 7e 20	3	mov    DWORD PTR [esi+0x20],edi	mov dword ptr [esi + 0x20], edi	3
+0x0044F688	89 7e 24	3	mov    DWORD PTR [esi+0x24],edi	mov dword ptr [esi + 0x24], edi	3
+0x0044F68B	89 7e 28	3	mov    DWORD PTR [esi+0x28],edi	mov dword ptr [esi + 0x28], edi	3
+0x0044F68E	89 7e 40	3	mov    DWORD PTR [esi+0x40],edi	mov dword ptr [esi + 0x40], edi	3
+0x0044F691	8b 56 2c	3	mov    edx,DWORD PTR [esi+0x2c]	mov edx, dword ptr [esi + 0x2c]	3
+0x0044F694	8b 7a 08	3	mov    edi,DWORD PTR [edx+0x8]	mov edi, dword ptr [edx + 0x8]	3
+0x0044F697	85 ff	2	test   edi,edi	test edi, edi	2
+0x0044F699	74 11	2	je     0x44f6ac	je 0x44f6ac <?ObjectInList@ObjectTimer@@SAHK@Z+0x14cc>	2
+0x0044F69B	8d 4f 04	3	lea    ecx,[edi+0x4]	lea ecx, [edi + 0x4]	3
+0x0044F69E	e8 9d 23 08 00	5	call   0x4d1a40	call 0x4d1a40 <ExpFltr_end+0x410>	5
+0x0044F6A3	57	1	push   edi	push edi	1
+0x0044F6A4	e8 b7 29 ff ff	5	call   0x442060	call 0x442060 <??4SpellEffectManager@@QAEAAV0@ABV0@@Z+0x3fe0>	5
+0x0044F6A9	83 c4 04	3	add    esp,0x4	add esp, 0x4	3
+0x0044F6AC	8b 46 2c	3	mov    eax,DWORD PTR [esi+0x2c]	mov eax, dword ptr [esi + 0x2c]	3
+0x0044F6AF	50	1	push   eax	push eax	1
+0x0044F6B0	e8 ab 29 ff ff	5	call   0x442060	call 0x442060 <??4SpellEffectManager@@QAEAAV0@ABV0@@Z+0x3fe0>	5
+0x0044F6B5	83 c4 04	3	add    esp,0x4	add esp, 0x4	3
+0x0044F6B8	33 ff	2	xor    edi,edi	xor edi, edi	2
+0x0044F6BA	e9 1a ff ff ff	5	jmp    0x44f5d9	jmp 0x44f5d9 <?ObjectInList@ObjectTimer@@SAHK@Z+0x13f9>	5
+0x0044F6BF	39 7e 40	3	cmp    DWORD PTR [esi+0x40],edi	cmp dword ptr [esi + 0x40], edi	3
+0x0044F6C2	74 04	2	je     0x44f6c8	je 0x44f6c8 <?ObjectInList@ObjectTimer@@SAHK@Z+0x14e8>	2
+0x0044F6C4	c6 46 34 07	4	mov    BYTE PTR [esi+0x34],0x7	mov byte ptr [esi + 0x34], 0x7	4
+0x0044F6C8	8b 4d 08	3	mov    ecx,DWORD PTR [ebp+0x8]	mov ecx, dword ptr [ebp + 0x8]	3
+0x0044F6CB	89 7e 40	3	mov    DWORD PTR [esi+0x40],edi	mov dword ptr [esi + 0x40], edi	3
+0x0044F6CE	e8 fd f2 ff ff	5	call   0x44e9d0	call 0x44e9d0 <?ObjectInList@ObjectTimer@@SAHK@Z+0x7f0>	5
+0x0044F6D3	3b f7	2	cmp    esi,edi	cmp esi, edi	2
+0x0044F6D5	74 07	2	je     0x44f6de	je 0x44f6de <?ObjectInList@ObjectTimer@@SAHK@Z+0x14fe>	2
+0x0044F6D7	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0044F6D9	53	1	push   ebx	push ebx	1
+0x0044F6DA	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0044F6DC	ff 12	2	call   DWORD PTR [edx]	call dword ptr [edx]	2
+0x0044F6DE	8b 45 e8	3	mov    eax,DWORD PTR [ebp-0x18]	mov eax, dword ptr [ebp - 0x18]	3
+0x0044F6E1	50	1	push   eax	push eax	1
+0x0044F6E2	e8 79 29 ff ff	5	call   0x442060	call 0x442060 <??4SpellEffectManager@@QAEAAV0@ABV0@@Z+0x3fe0>	5
+0x0044F6E7	8b 7d 08	3	mov    edi,DWORD PTR [ebp+0x8]	mov edi, dword ptr [ebp + 0x8]	3
+0x0044F6EA	83 c4 04	3	add    esp,0x4	add esp, 0x4	3

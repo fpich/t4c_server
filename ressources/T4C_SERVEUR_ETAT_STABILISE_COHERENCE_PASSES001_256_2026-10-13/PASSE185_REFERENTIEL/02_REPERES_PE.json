@@ -1,0 +1,115 @@
+{
+  "image_base": "0x400000",
+  "text_base": "0x401000",
+  "text_size": 905117,
+  "directories": {
+    "0": {
+      "rva": "0xf2a30",
+      "size": 52667
+    },
+    "1": {
+      "rva": "0xf0c98",
+      "size": 280
+    },
+    "2": {
+      "rva": "0x167000",
+      "size": 8576
+    },
+    "3": {
+      "rva": "0x0",
+      "size": 0
+    },
+    "4": {
+      "rva": "0x0",
+      "size": 0
+    },
+    "5": {
+      "rva": "0x16a000",
+      "size": 48648
+    },
+    "6": {
+      "rva": "0xde560",
+      "size": 28
+    },
+    "7": {
+      "rva": "0x0",
+      "size": 0
+    },
+    "8": {
+      "rva": "0x0",
+      "size": 0
+    },
+    "9": {
+      "rva": "0x0",
+      "size": 0
+    },
+    "10": {
+      "rva": "0x0",
+      "size": 0
+    },
+    "11": {
+      "rva": "0x0",
+      "size": 0
+    },
+    "12": {
+      "rva": "0xde000",
+      "size": 1364
+    },
+    "13": {
+      "rva": "0x0",
+      "size": 0
+    },
+    "14": {
+      "rva": "0x0",
+      "size": 0
+    },
+    "15": {
+      "rva": "0x0",
+      "size": 0
+    }
+  },
+  "sections": [
+    {
+      "name": ".text",
+      "vsize": 905117,
+      "rva": 4096,
+      "rawsz": 905216,
+      "rawptr": 4096
+    },
+    {
+      "name": ".rdata",
+      "vsize": 137195,
+      "rva": 909312,
+      "rawsz": 139264,
+      "rawptr": 909312
+    },
+    {
+      "name": ".data",
+      "vsize": 415532,
+      "rva": 1048576,
+      "rawsz": 73728,
+      "rawptr": 1048576
+    },
+    {
+      "name": "SHARED_I",
+      "vsize": 4,
+      "rva": 1466368,
+      "rawsz": 4096,
+      "rawptr": 1122304
+    },
+    {
+      "name": ".rsrc",
+      "vsize": 8576,
+      "rva": 1470464,
+      "rawsz": 12288,
+      "rawptr": 1126400
+    },
+    {
+      "name": ".reloc",
+      "vsize": 55936,
+      "rva": 1482752,
+      "rawsz": 57344,
+      "rawptr": 1138688
+    }
+  ]
+}

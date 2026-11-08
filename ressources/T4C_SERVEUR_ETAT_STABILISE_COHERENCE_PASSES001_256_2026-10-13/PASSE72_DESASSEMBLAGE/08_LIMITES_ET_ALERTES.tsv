@@ -1,0 +1,7 @@
+VA_fonction	VA_instruction_ou_cible	Raison
+0x004863F0	0x004864B0	hors_plage
+0x004864B0	0x00486540	hors_plage
+0x00486540	0x004865B0	hors_plage
+0x004865B0	0x00486670	hors_plage
+0x00486670	0x00486700	hors_plage
+0x00486700	0x00486770	hors_plage

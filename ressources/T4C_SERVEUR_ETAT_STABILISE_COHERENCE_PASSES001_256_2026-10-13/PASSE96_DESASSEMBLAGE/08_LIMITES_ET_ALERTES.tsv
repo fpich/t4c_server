@@ -1,0 +1,8 @@
+VA_entree	VA_adresse	Nature
+0x00405210	0x0040522D	invalid_or_padding
+0x004055E0	0x004055FD	invalid_or_padding
+0x004057E0	0x004057FD	invalid_or_padding
+0x00425470	0x00425473	jump_outside:00412A80
+0x00433200	0x00433203	jump_outside:004323F0
+0x0043C650	0x0043C653	jump_outside:0043BDA0
+0x0044C580	0x0044C583	jump_outside:0044BE10

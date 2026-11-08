@@ -1,0 +1,10 @@
+{
+  "binary_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "baseline": 161732,
+  "novel_bytes": 102754,
+  "cumulative": 264486,
+  "coverage_pct": 29.221194607989908,
+  "conflicting_instruction_boundaries": 0,
+  "all_delta_bytes_justified_by_matching_machine_code": true,
+  "all_masks_union_and_nonredundancy_verified": true
+}

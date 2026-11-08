@@ -1,0 +1,9 @@
+index	adresse_cible_brute	deplacement_candidat_observe	atteignable_depuis_entree_0x41E8A0	commentaire
+0	0x41E94B	x+0 / y-1	non dans flot d entree observe	table présente mais boucle non atteinte
+1	0x41E951	x+0 / y+1	non dans flot d entree observe	table présente mais boucle non atteinte
+2	0x41E956	x-1 / y+0	non dans flot d entree observe	0x41E92E saute vers 0x41E9D6 lorsque EDI==0; index 2 et 3 identiques
+3	0x41E956	x-1 / y+0	non dans flot d entree observe	0x41E92E saute vers 0x41E9D6 lorsque EDI==0; index 2 et 3 identiques
+4	0x41E959	x-1 / y-1	non dans flot d entree observe	table présente mais boucle non atteinte
+5	0x41E95D	x+1 / y-1	non dans flot d entree observe	table présente mais boucle non atteinte
+6	0x41E961	x-1 / y+1	non dans flot d entree observe	table présente mais boucle non atteinte
+7	0x41E964	x+1 / y+1	non dans flot d entree observe	table présente mais boucle non atteinte

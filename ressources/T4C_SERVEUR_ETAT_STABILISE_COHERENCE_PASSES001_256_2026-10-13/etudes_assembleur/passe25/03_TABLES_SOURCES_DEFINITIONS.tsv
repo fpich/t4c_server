@@ -1,0 +1,8 @@
+table_ou_requete	adresse_chaine	site_assembleur	interpretation	indices_de_champs	certitude
+Creatures_DeathFlags	0x50e704	0x494da8	lecture/table fournisseur; la requete est transmise a un objet lecteur	champs Flag, FlagValue, Increment (observés)	adresse+chaine CONFIRME; effets complets A VERIFIER
+Creatures_Items	0x50e6c4	0x494f23	lecture/table fournisseur; la requete est transmise a un objet lecteur	champs ItemID, DropPercentage (observés)	adresse+chaine CONFIRME; effets complets A VERIFIER
+Creatures_Attacks	0x50e77c	0x494b42	lecture/table fournisseur; la requete est transmise a un objet lecteur	liste des attaques, champs AttackSkill, AttackPercentage, AttackSpell, etc.	adresse+chaine CONFIRME; effets complets A VERIFIER
+Objects_ContainerGroups	0x50ef78	0x49f223	lecture/table fournisseur; la requete est transmise a un objet lecteur	groupes de contenants	adresse+chaine CONFIRME; effets complets A VERIFIER
+Objects_AttrBoosts	0x50ef24	0x49f41e	lecture/table fournisseur; la requete est transmise a un objet lecteur	bonus attributaires des objets	adresse+chaine CONFIRME; effets complets A VERIFIER
+Objects_Spells	0x50ef04	0x49f69d	lecture/table fournisseur; la requete est transmise a un objet lecteur	sorts associes aux objets	adresse+chaine CONFIRME; effets complets A VERIFIER
+Objects_ContainerItems	0x50f3ac	0x4a599d	lecture/table fournisseur; la requete est transmise a un objet lecteur	selection par ContainerGroupID; requete formatee	adresse+chaine CONFIRME; effets complets A VERIFIER

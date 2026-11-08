@@ -1,0 +1,23 @@
+{
+  "exe_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "text_bytes": 905117,
+  "prior_reported_bytes": 45764,
+  "old_verified_reconstructed": 45855,
+  "old_diagnostic_bad": 536,
+  "new_evidence_instructions": 659,
+  "new_evidence_invalid": 0,
+  "new_evidence_bytes": 1932,
+  "new_verified_unique_bytes": 1755,
+  "new_total_verified_bytes": 47610,
+  "new_pct": 5.26,
+  "report_31_pct": 5.056,
+  "baseline_old_matched": false,
+  "prior_evidence_files": 34,
+  "entry_exports_total": 1125,
+  "entry_exports_in_text": 955,
+  "entry_exports_documented": 128,
+  "prior_pct_recomputed": 5.066,
+  "new_delta_from_recomputed_pct": 0.194,
+  "new_delta_from_published_pct": 0.204,
+  "legacy_invalid_instruction_lines_excluded": 536
+}

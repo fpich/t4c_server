@@ -1,0 +1,19 @@
+{
+  "reference_text_size": 905117,
+  "reference_code_bytes": 828849,
+  "reference_code_pct": 91.573686,
+  "reference_data_bytes": 3052,
+  "new_lookup_table_bytes": 891,
+  "corrected_data_bytes": 3943,
+  "padding_probable_bytes": 17946,
+  "classified_bytes": 850738,
+  "classified_pct": 93.992047,
+  "unclassified_bytes": 54379,
+  "passes": "221-226",
+  "previous_zip_entries": 1724,
+  "new_instruction_bytes": 0,
+  "table_count": 18,
+  "decoder_GNU_LLVM_checks": 54,
+  "all_dispatch_targets_already_covered": true,
+  "note": "Les donnees retrouvées ne sont pas des instructions ; les autres classifications historiques restent provisoires."
+}

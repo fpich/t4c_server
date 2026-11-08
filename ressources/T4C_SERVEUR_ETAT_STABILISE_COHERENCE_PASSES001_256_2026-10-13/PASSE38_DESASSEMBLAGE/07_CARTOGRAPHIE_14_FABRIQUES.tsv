@@ -1,0 +1,15 @@
+identifiant_WORD_decimal	identifiant_HEX	site_appel	adresse_fabrique	appel_direct	statut
+1	0x0001	0x004C5F87	0x004C68E0	SpellEffectManager::RegisterSuperstructure	CONFIRME
+2	0x0002	0x004C32E7	0x004C3EC0	SpellEffectManager::RegisterSuperstructure	CONFIRME
+3	0x0003	0x004C5BB7	0x004C5EF0	SpellEffectManager::RegisterSuperstructure	CONFIRME
+6	0x0006	0x004C3FB7	0x004C4230	SpellEffectManager::RegisterSuperstructure	CONFIRME
+7	0x0007	0x004C7177	0x004C72D0	SpellEffectManager::RegisterSuperstructure	CONFIRME
+9	0x0009	0x004C7597	0x004C7910	SpellEffectManager::RegisterSuperstructure	CONFIRME
+10	0x000A	0x004C54A7	0x004C5630	SpellEffectManager::RegisterSuperstructure	CONFIRME
+11	0x000B	0x004C7397	0x004C7430	SpellEffectManager::RegisterSuperstructure	CONFIRME
+12	0x000C	0x004C7CA7	0x004C7DF0	SpellEffectManager::RegisterSuperstructure	CONFIRME
+13	0x000D	0x004C4FC7	0x004C52A0	SpellEffectManager::RegisterSuperstructure	CONFIRME
+14	0x000E	0x004C5877	0x004C5AD0	SpellEffectManager::RegisterSuperstructure	CONFIRME
+15	0x000F	0x004C6957	0x004C6FD0	SpellEffectManager::RegisterSuperstructure	CONFIRME
+16	0x0010	0x004C4727	0x004C4F30	SpellEffectManager::RegisterSuperstructure	CONFIRME
+17	0x0011	0x004C42E7	0x004C4690	SpellEffectManager::RegisterSuperstructure	CONFIRME

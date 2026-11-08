@@ -1,0 +1,12 @@
+id	fonction	operation	structure_cible	ordre_ou_transition	certitude	adresse_preuve
+UE-1	UnitEffectManager::RegisterEffect	allocation couple cle/callback 8 octets	0x556400	pas de recherche de doublon	CONFIRMÉ	0x490B10;0x490B2E
+UE-2	Liste UnitEffectManager / insertion	append en fin	+0x24 tete;+0x28 fin;+0x38 taille	tete inchangee si non vide	CONFIRMÉ	0x490F46;0x490FB5
+UE-3	UnitEffectManager::GetEffectProc	comparaison DWORD et premier match	0x556424	retour premier callback ou 0	CONFIRMÉ	0x490BC9;0x490BD0;0x490C0C
+UE-4	UnitEffectManager::GetEffectProc	verrou section critique	0x556408	EnterCriticalSection;LeaveCriticalSection	CONFIRMÉ	0x490B6A;0x490C02
+SE-1	SpellEffectManager::RegisterSuperstructure	allocation de couple fabrique/code WORD	0x514D60	aucune recherche de doublon dans cette entree	CONFIRMÉ	0x460BD0;0x460BF0
+SE-2	Liste SpellEffectManager / insertion	prepend en tete	+0x24 tete;+0x28 fin	insertion en tete si non vide	CONFIRMÉ	0x460E56;0x460EC0
+SE-3	SpellEffectManager::GetEffectObject	match de clé WORD puis appel de fabrique	0x514D60	continue apres correspondance	CONFIRMÉ	0x460C4E;0x460C57;0x460C68
+UE-5	Unit::SendGlobalEffectMessage	instantane de pointeurs sous verrou	Unit+0xF4 -> liste temporaire	callbacks apres deverrouillage	CONFIRMÉ	0x48CFF9;0x48D088;0x48D071
+UE-6	Unit::VerifyTimers	selection expiration par round	Unit+0xF4	retire avant callbacks 5 et 9	CONFIRMÉ	0x48D3FC;0x48D413;0x48D5C0;0x48D5D0
+L-1	Liste auxiliaire 0x490510	libere node	liste temporaire	ne libere pas valeur	CONFIRMÉ	0x4905ED
+L-2	Liste auxiliaire 0x490600	libere valeur puis node	liste temporaire	destruction apres callback	CONFIRMÉ	0x4906AA;0x4906B7

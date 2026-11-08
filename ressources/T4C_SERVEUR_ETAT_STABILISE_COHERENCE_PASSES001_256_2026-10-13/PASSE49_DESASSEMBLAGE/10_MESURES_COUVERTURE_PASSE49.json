@@ -1,0 +1,43 @@
+{
+  "passe": 49,
+  "serveur_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "base_archive": "T4C_SERVEUR_PASSE48_DESASSEMBLAGE_PUR_2026-10-09.zip",
+  "text_octets": 905117,
+  "base_octets": 96074,
+  "nouveaux_octets_nets": 2940,
+  "total_octets_verifies": 99014,
+  "couverture_pct": 10.939359,
+  "exports_documentes": 255,
+  "exports_total": 1125,
+  "nouvelles_instructions_verifiees": 1750,
+  "instructions_rejetees_passe49": 0,
+  "lignes_rejetees_historiques": 536,
+  "preuve_nouvelles": {
+    "PASSE49_DESASSEMBLAGE/02_PREUVES_MORT_CHARACTER.asm": {
+      "instructions": 678,
+      "validees": 678,
+      "rejetees": 0
+    },
+    "PASSE49_DESASSEMBLAGE/03_PREUVES_DEATHPENALTIES.asm": {
+      "instructions": 471,
+      "validees": 471,
+      "rejetees": 0
+    },
+    "PASSE49_DESASSEMBLAGE/04_PREUVES_DEATH_CREATURES.asm": {
+      "instructions": 351,
+      "validees": 351,
+      "rejetees": 0
+    },
+    "PASSE49_DESASSEMBLAGE/05_PREUVES_SPELL_ATTACK_MONSTRE.asm": {
+      "instructions": 197,
+      "validees": 197,
+      "rejetees": 0
+    },
+    "PASSE49_DESASSEMBLAGE/06_PREUVES_CORPSE_ET_FLAGS.asm": {
+      "instructions": 53,
+      "validees": 53,
+      "rejetees": 0
+    }
+  },
+  "methode": "Seules les instructions ayant le bon octet par adresse virtuelle dans la section PE .text, chaque octet compte une fois; archives anterieures identiques"
+}

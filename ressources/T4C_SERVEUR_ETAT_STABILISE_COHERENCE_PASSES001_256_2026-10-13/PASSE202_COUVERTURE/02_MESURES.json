@@ -1,0 +1,29 @@
+{
+  "passes": "197-202",
+  "pe_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "text_start_va": "0x00401000",
+  "text_size": 905117,
+  "previous_covered_bytes": 828027,
+  "new_unique_bytes": 1618,
+  "final_covered_bytes": 829645,
+  "coverage_percent": 91.66163048534057,
+  "uncovered_bytes": 75472,
+  "validated_regions": 7,
+  "double_disassembled_instructions": 826,
+  "instructions_with_at_least_one_new_byte": 474,
+  "new_intervals": 10,
+  "historical_mid_instruction_annotations": 24,
+  "previous_bitset_sha256": "57cc0442eb739557d0ce2a9f2067154a895eb00fb475c4c0b9e464c036c6f054",
+  "new_bitset_sha256": "1c14e9b7eb775180d8517e344e2fe1fbd2cbb613ccc48602247e178c520933ab",
+  "gain_by_region": {
+    "interruption_41b1b6": 7,
+    "interruption_41cc3e": 7,
+    "interruption_41e03e": 7,
+    "interruption_45acaa": 5,
+    "interruption_45ba38": 6,
+    "interruption_493a61": 1573,
+    "interruption_49ead6": 13
+  },
+  "historical_coverage_provisional": true,
+  "coverage_scope": "Number of bytes of static x86 instructions covered in PE .text; not complete runtime validation or 100% classification."
+}

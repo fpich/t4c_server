@@ -1,0 +1,257 @@
+zone	adresse	octets	taille	gnu	llvm	anciennement_couverts	statut
+0x4BAA90 — structure arborescente / allocation	0x004BAA90	55	1	push   ebp	push	ebp	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAA91	8b ec	2	mov    ebp,esp	mov	ebp, esp	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAA93	6a ff	2	push   0xffffffff	push	-0x1	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAA95	68 f2 d1 4d 00	5	push   0x4dd1f2	push	0x4dd1f2	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAA9A	64 a1 00 00 00 00	6	mov    eax,fs:0x0	mov	eax, dword ptr fs:[0x0]	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAA0	50	1	push   eax	push	eax	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAA1	64 89 25 00 00 00 00	7	mov    DWORD PTR fs:0x0,esp	mov	dword ptr fs:[0x0], esp	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAA8	83 ec 30	3	sub    esp,0x30	sub	esp, 0x30	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAAB	53	1	push   ebx	push	ebx	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAAC	56	1	push   esi	push	esi	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAAD	8b f1	2	mov    esi,ecx	mov	esi, ecx	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAAF	57	1	push   edi	push	edi	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAB0	89 75 e8	3	mov    DWORD PTR [ebp-0x18],esi	mov	dword ptr [ebp - 0x18], esi	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAB3	8d 45 18	3	lea    eax,[ebp+0x18]	lea	eax, [ebp + 0x18]	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAB6	50	1	push   eax	push	eax	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAB7	8d 4d f0	3	lea    ecx,[ebp-0x10]	lea	ecx, [ebp - 0x10]	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAABA	51	1	push   ecx	push	ecx	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAABB	8b ce	2	mov    ecx,esi	mov	ecx, esi	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAABD	c7 45 fc 01 00 00 00	7	mov    DWORD PTR [ebp-0x4],0x1	mov	dword ptr [ebp - 0x4], 0x1	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAC4	e8 a7 10 00 00	5	call   0x4bbb70	call	0x4bbb70 <?GetCollisionPos@WorldMap@@QAEHUWorldPos@@0PAU2@PAPAVUnit@@_N3@Z+0x9470>	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAC9	8b 46 04	3	mov    eax,DWORD PTR [esi+0x4]	mov	eax, dword ptr [esi + 0x4]	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAACC	8b 4d f0	3	mov    ecx,DWORD PTR [ebp-0x10]	mov	ecx, dword ptr [ebp - 0x10]	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAACF	3b c8	2	cmp    ecx,eax	cmp	ecx, eax	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAD1	74 1a	2	je     0x4baaed	je	0x4baaed <?GetCollisionPos@WorldMap@@QAEHUWorldPos@@0PAU2@PAPAVUnit@@_N3@Z+0x83ed>	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAD3	8d 41 0c	3	lea    eax,[ecx+0xc]	lea	eax, [ecx + 0xc]	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAD6	50	1	push   eax	push	eax	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAD7	8d 55 18	3	lea    edx,[ebp+0x18]	lea	edx, [ebp + 0x18]	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAADA	52	1	push   edx	push	edx	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAADB	ff 15 18 e5 4d 00	6	call   DWORD PTR ds:0x4de518	call	dword ptr [0x4de518]	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAE1	83 c4 08	3	add    esp,0x8	add	esp, 0x8	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAE4	84 c0	2	test   al,al	test	al, al	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAE6	75 05	2	jne    0x4baaed	jne	0x4baaed <?GetCollisionPos@WorldMap@@QAEHUWorldPos@@0PAU2@PAPAVUnit@@_N3@Z+0x83ed>	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAE8	8d 45 f0	3	lea    eax,[ebp-0x10]	lea	eax, [ebp - 0x10]	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAEB	eb 09	2	jmp    0x4baaf6	jmp	0x4baaf6 <?GetCollisionPos@WorldMap@@QAEHUWorldPos@@0PAU2@PAPAVUnit@@_N3@Z+0x83f6>	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAED	8b 46 04	3	mov    eax,DWORD PTR [esi+0x4]	mov	eax, dword ptr [esi + 0x4]	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAF0	89 45 ec	3	mov    DWORD PTR [ebp-0x14],eax	mov	dword ptr [ebp - 0x14], eax	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAF3	8d 45 ec	3	lea    eax,[ebp-0x14]	lea	eax, [ebp - 0x14]	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAF6	8b 00	2	mov    eax,DWORD PTR [eax]	mov	eax, dword ptr [eax]	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAF8	3b 46 04	3	cmp    eax,DWORD PTR [esi+0x4]	cmp	eax, dword ptr [esi + 0x4]	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAFB	74 0f	2	je     0x4bab0c	je	0x4bab0c <?GetCollisionPos@WorldMap@@QAEHUWorldPos@@0PAU2@PAPAVUnit@@_N3@Z+0x840c>	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAAFD	68 db ef 00 00	5	push   0xefdb	push	0xefdb	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB02	e8 19 1f 00 00	5	call   0x4bca20	call	0x4bca20 <?GetCollisionPos@WorldMap@@QAEHUWorldPos@@0PAU2@PAPAVUnit@@_N3@Z+0xa320>	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB07	e9 c6 02 00 00	5	jmp    0x4badd2	jmp	0x4badd2 <?GetCollisionPos@WorldMap@@QAEHUWorldPos@@0PAU2@PAPAVUnit@@_N3@Z+0x86d2>	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB0C	68 94 00 00 00	5	push   0x94	push	0x94	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB11	e8 da 74 f8 ff	5	call   0x441ff0	call	0x441ff0 <??4SpellEffectManager@@QAEAAV0@ABV0@@Z+0x3f70>	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB16	8b f8	2	mov    edi,eax	mov	edi, eax	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB18	83 c4 04	3	add    esp,0x4	add	esp, 0x4	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB1B	89 7d ec	3	mov    DWORD PTR [ebp-0x14],edi	mov	dword ptr [ebp - 0x14], edi	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB1E	85 ff	2	test   edi,edi	test	edi, edi	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB20	b3 02	2	mov    bl,0x2	mov	bl, 0x2	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB22	88 5d fc	3	mov    BYTE PTR [ebp-0x4],bl	mov	byte ptr [ebp - 0x4], bl	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB25	74 52	2	je     0x4bab79	je	0x4bab79 <?GetCollisionPos@WorldMap@@QAEHUWorldPos@@0PAU2@PAPAVUnit@@_N3@Z+0x8479>	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB27	8a 45 18	3	mov    al,BYTE PTR [ebp+0x18]	mov	al, byte ptr [ebp + 0x18]	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB2A	83 ec 10	3	sub    esp,0x10	sub	esp, 0x10	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB2D	8b f4	2	mov    esi,esp	mov	esi, esp	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB2F	89 65 f0	3	mov    DWORD PTR [ebp-0x10],esp	mov	dword ptr [ebp - 0x10], esp	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB32	6a 00	2	push   0x0	push	0x0	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB34	8b ce	2	mov    ecx,esi	mov	ecx, esi	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB36	88 06	2	mov    BYTE PTR [esi],al	mov	byte ptr [esi], al	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB38	ff 15 14 e5 4d 00	6	call   DWORD PTR ds:0x4de514	call	dword ptr [0x4de514]	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB3E	8b 0d ec e4 4d 00	6	mov    ecx,DWORD PTR ds:0x4de4ec	mov	ecx, dword ptr [0x4de4ec]	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB44	8b 11	2	mov    edx,DWORD PTR [ecx]	mov	edx, dword ptr [ecx]	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB46	52	1	push   edx	push	edx	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB47	6a 00	2	push   0x0	push	0x0	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB49	8d 45 18	3	lea    eax,[ebp+0x18]	lea	eax, [ebp + 0x18]	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB4C	50	1	push   eax	push	eax	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB4D	8b ce	2	mov    ecx,esi	mov	ecx, esi	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB4F	ff 15 fc e4 4d 00	6	call   DWORD PTR ds:0x4de4fc	call	dword ptr [0x4de4fc]	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB55	83 ec 10	3	sub    esp,0x10	sub	esp, 0x10	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB58	8d 55 08	3	lea    edx,[ebp+0x8]	lea	edx, [ebp + 0x8]	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB5B	8b cc	2	mov    ecx,esp	mov	ecx, esp	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB5D	89 65 e4	3	mov    DWORD PTR [ebp-0x1c],esp	mov	dword ptr [ebp - 0x1c], esp	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB60	52	1	push   edx	push	edx	0	candidat_non_comptabilise
+0x4BAA90 — structure arborescente / allocation	0x004BAB61	c6 45 fc 03	4	mov    BYTE PTR [ebp-0x4],0x3	mov	byte ptr [ebp - 0x4], 0x3	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434670	55	1	push   ebp	push	ebp	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434671	8b ec	2	mov    ebp,esp	mov	ebp, esp	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434673	64 a1 00 00 00 00	6	mov    eax,fs:0x0	mov	eax, dword ptr fs:[0x0]	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434679	6a ff	2	push   0xffffffff	push	-0x1	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x0043467B	68 68 53 4d 00	5	push   0x4d5368	push	0x4d5368	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434680	50	1	push   eax	push	eax	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434681	64 89 25 00 00 00 00	7	mov    DWORD PTR fs:0x0,esp	mov	dword ptr fs:[0x0], esp	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434688	56	1	push   esi	push	esi	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434689	8b f1	2	mov    esi,ecx	mov	esi, ecx	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x0043468B	8b 06	2	mov    eax,DWORD PTR [esi]	mov	eax, dword ptr [esi]	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x0043468D	ff 50 04	3	call   DWORD PTR [eax+0x4]	call	dword ptr [eax + 0x4]	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434690	8b 16	2	mov    edx,DWORD PTR [esi]	mov	edx, dword ptr [esi]	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434692	8b ce	2	mov    ecx,esi	mov	ecx, esi	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434694	ff 52 08	3	call   DWORD PTR [edx+0x8]	call	dword ptr [edx + 0x8]	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434697	8b 45 08	3	mov    eax,DWORD PTR [ebp+0x8]	mov	eax, dword ptr [ebp + 0x8]	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x0043469A	51	1	push   ecx	push	ecx	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x0043469B	8b cc	2	mov    ecx,esp	mov	ecx, esp	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x0043469D	89 65 08	3	mov    DWORD PTR [ebp+0x8],esp	mov	dword ptr [ebp + 0x8], esp	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346A0	68 58 13 51 00	5	push   0x511358	push	0x511358	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346A5	89 46 20	3	mov    DWORD PTR [esi+0x20],eax	mov	dword ptr [esi + 0x20], eax	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346A8	e8 b7 d3 09 00	5	call   0x4d1a64	call	0x4d1a64 <ExpFltr_end+0x434>	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346AD	8b ce	2	mov    ecx,esi	mov	ecx, esi	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346AF	c7 45 fc ff ff ff ff	7	mov    DWORD PTR [ebp-0x4],0xffffffff	mov	dword ptr [ebp - 0x4], 0xffffffff	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346B6	e8 25 00 00 00	5	call   0x4346e0	call	0x4346e0 <?GetInstance@CDebugLockManager@@SAPAV1@XZ+0x4e0>	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346BB	50	1	push   eax	push	eax	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346BC	8d 4e 24	3	lea    ecx,[esi+0x24]	lea	ecx, [esi + 0x24]	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346BF	e8 2c 00 00 00	5	call   0x4346f0	call	0x4346f0 <?GetInstance@CDebugLockManager@@SAPAV1@XZ+0x4f0>	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346C4	8b 4d f4	3	mov    ecx,DWORD PTR [ebp-0xc]	mov	ecx, dword ptr [ebp - 0xc]	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346C7	64 89 0d 00 00 00 00	7	mov    DWORD PTR fs:0x0,ecx	mov	dword ptr fs:[0x0], ecx	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346CE	5e	1	pop    esi	pop	esi	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346CF	8b e5	2	mov    esp,ebp	mov	esp, ebp	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346D1	5d	1	pop    ebp	pop	ebp	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346D2	c2 04 00	3	ret    0x4	ret	0x4	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346D5	90	1	nop	nop	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346D6	90	1	nop	nop	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346D7	90	1	nop	nop	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346D8	90	1	nop	nop	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346D9	90	1	nop	nop	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346DA	90	1	nop	nop	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346DB	90	1	nop	nop	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346DC	90	1	nop	nop	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346DD	90	1	nop	nop	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346DE	90	1	nop	nop	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346DF	90	1	nop	nop	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346E0	8b 41 20	3	mov    eax,DWORD PTR [ecx+0x20]	mov	eax, dword ptr [ecx + 0x20]	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346E3	c1 e8 02	3	shr    eax,0x2	shr	eax, 0x2	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346E6	8d 04 40	3	lea    eax,[eax+eax*2]	lea	eax, [eax + 2*eax]	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346E9	c3	1	ret	ret	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346EA	90	1	nop	nop	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346EB	90	1	nop	nop	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346EC	90	1	nop	nop	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346ED	90	1	nop	nop	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346EE	90	1	nop	nop	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346EF	90	1	nop	nop	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346F0	55	1	push   ebp	push	ebp	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346F1	8b ec	2	mov    ebp,esp	mov	ebp, esp	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346F3	6a ff	2	push   0xffffffff	push	-0x1	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346F5	68 98 53 4d 00	5	push   0x4d5398	push	0x4d5398	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x004346FA	64 a1 00 00 00 00	6	mov    eax,fs:0x0	mov	eax, dword ptr fs:[0x0]	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434700	50	1	push   eax	push	eax	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434701	64 89 25 00 00 00 00	7	mov    DWORD PTR fs:0x0,esp	mov	dword ptr fs:[0x0], esp	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434708	83 ec 30	3	sub    esp,0x30	sub	esp, 0x30	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x0043470B	53	1	push   ebx	push	ebx	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x0043470C	56	1	push   esi	push	esi	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x0043470D	57	1	push   edi	push	edi	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x0043470E	8b f1	2	mov    esi,ecx	mov	esi, ecx	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434710	8b 46 10	3	mov    eax,DWORD PTR [esi+0x10]	mov	eax, dword ptr [esi + 0x10]	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434713	8b 5d 08	3	mov    ebx,DWORD PTR [ebp+0x8]	mov	ebx, dword ptr [ebp + 0x8]	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434716	33 c9	2	xor    ecx,ecx	xor	ecx, ecx	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434718	3b d8	2	cmp    ebx,eax	cmp	ebx, eax	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x0043471A	89 4d fc	3	mov    DWORD PTR [ebp-0x4],ecx	mov	dword ptr [ebp - 0x4], ecx	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x0043471D	0f 86 3f 03 00 00	6	jbe    0x434a62	jbe	0x434a62 <?GetInstance@CDebugLockManager@@SAPAV1@XZ+0x862>	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434723	8b 7e 0c	3	mov    edi,DWORD PTR [esi+0xc]	mov	edi, dword ptr [esi + 0xc]	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434726	03 f8	2	add    edi,eax	add	edi, eax	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434728	2b d8	2	sub    ebx,eax	sub	ebx, eax	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x0043472A	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea	eax, [ebp - 0x1c]	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x0043472D	89 4d dc	3	mov    DWORD PTR [ebp-0x24],ecx	mov	dword ptr [ebp - 0x24], ecx	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434730	89 4d e0	3	mov    DWORD PTR [ebp-0x20],ecx	mov	dword ptr [ebp - 0x20], ecx	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434733	50	1	push   eax	push	eax	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434734	8b ce	2	mov    ecx,esi	mov	ecx, esi	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434736	e8 75 03 00 00	5	call   0x434ab0	call	0x434ab0 <?GetInstance@CDebugLockManager@@SAPAV1@XZ+0x8b0>	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x0043473B	2b 38	2	sub    edi,DWORD PTR [eax]	sub	edi, dword ptr [eax]	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x0043473D	8b c7	2	mov    eax,edi	mov	eax, edi	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x0043473F	8b 7e 10	3	mov    edi,DWORD PTR [esi+0x10]	mov	edi, dword ptr [esi + 0x10]	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434742	2b f8	2	sub    edi,eax	sub	edi, eax	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434744	3b c7	2	cmp    eax,edi	cmp	eax, edi	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434746	89 45 08	3	mov    DWORD PTR [ebp+0x8],eax	mov	dword ptr [ebp + 0x8], eax	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434749	0f 83 73 01 00 00	6	jae    0x4348c2	jae	0x4348c2 <?GetInstance@CDebugLockManager@@SAPAV1@XZ+0x6c2>	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x0043474F	3b c3	2	cmp    eax,ebx	cmp	eax, ebx	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434751	73 7d	2	jae    0x4347d0	jae	0x4347d0 <?GetInstance@CDebugLockManager@@SAPAV1@XZ+0x5d0>	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434753	8b cb	2	mov    ecx,ebx	mov	ecx, ebx	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434755	2b c8	2	sub    ecx,eax	sub	ecx, eax	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434757	74 13	2	je     0x43476c	je	0x43476c <?GetInstance@CDebugLockManager@@SAPAV1@XZ+0x56c>	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434759	8b f9	2	mov    edi,ecx	mov	edi, ecx	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x0043475B	8d 4d 0c	3	lea    ecx,[ebp+0xc]	lea	ecx, [ebp + 0xc]	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x0043475E	51	1	push   ecx	push	ecx	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x0043475F	8b ce	2	mov    ecx,esi	mov	ecx, esi	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434761	e8 ca 05 00 00	5	call   0x434d30	call	0x434d30 <?GetInstance@CDebugLockManager@@SAPAV1@XZ+0xb30>	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434766	4f	1	dec    edi	dec	edi	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434767	75 f2	2	jne    0x43475b	jne	0x43475b <?GetInstance@CDebugLockManager@@SAPAV1@XZ+0x55b>	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x00434769	8b 45 08	3	mov    eax,DWORD PTR [ebp+0x8]	mov	eax, dword ptr [ebp + 0x8]	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x0043476C	85 c0	2	test   eax,eax	test	eax, eax	0	candidat_non_comptabilise
+0x434670 — méthode à appels virtuels	0x0043476E	76 2e	2	jbe    0x43479e	jbe	0x43479e <?GetInstance@CDebugLockManager@@SAPAV1@XZ+0x59e>	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493A75	89 9d 5c ff ff ff	6	mov    DWORD PTR [ebp-0xa4],ebx	mov	dword ptr [ebp - 0xa4], ebx	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493A7B	89 9d 60 ff ff ff	6	mov    DWORD PTR [ebp-0xa0],ebx	mov	dword ptr [ebp - 0xa0], ebx	5	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493A81	89 9d 64 ff ff ff	6	mov    DWORD PTR [ebp-0x9c],ebx	mov	dword ptr [ebp - 0x9c], ebx	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493A87	89 9d 68 ff ff ff	6	mov    DWORD PTR [ebp-0x98],ebx	mov	dword ptr [ebp - 0x98], ebx	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493A8D	89 9d 6c ff ff ff	6	mov    DWORD PTR [ebp-0x94],ebx	mov	dword ptr [ebp - 0x94], ebx	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493A93	89 9d 70 ff ff ff	6	mov    DWORD PTR [ebp-0x90],ebx	mov	dword ptr [ebp - 0x90], ebx	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493A99	89 9d 74 ff ff ff	6	mov    DWORD PTR [ebp-0x8c],ebx	mov	dword ptr [ebp - 0x8c], ebx	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493A9F	89 9d 78 ff ff ff	6	mov    DWORD PTR [ebp-0x88],ebx	mov	dword ptr [ebp - 0x88], ebx	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493AA5	89 9d 7c ff ff ff	6	mov    DWORD PTR [ebp-0x84],ebx	mov	dword ptr [ebp - 0x84], ebx	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493AAB	89 5d 80	3	mov    DWORD PTR [ebp-0x80],ebx	mov	dword ptr [ebp - 0x80], ebx	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493AAE	89 5d 84	3	mov    DWORD PTR [ebp-0x7c],ebx	mov	dword ptr [ebp - 0x7c], ebx	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493AB1	89 5d 88	3	mov    DWORD PTR [ebp-0x78],ebx	mov	dword ptr [ebp - 0x78], ebx	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493AB4	c7 45 8c 00 00 00 00	7	mov    DWORD PTR [ebp-0x74],0x0	mov	dword ptr [ebp - 0x74], 0x0	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493ABB	c7 45 90 00 00 00 00	7	mov    DWORD PTR [ebp-0x70],0x0	mov	dword ptr [ebp - 0x70], 0x0	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493AC2	c7 45 94 00 00 00 00	7	mov    DWORD PTR [ebp-0x6c],0x0	mov	dword ptr [ebp - 0x6c], 0x0	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493AC9	c7 45 98 00 00 00 00	7	mov    DWORD PTR [ebp-0x68],0x0	mov	dword ptr [ebp - 0x68], 0x0	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493AD0	89 5d 9c	3	mov    DWORD PTR [ebp-0x64],ebx	mov	dword ptr [ebp - 0x64], ebx	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493AD3	89 5d a0	3	mov    DWORD PTR [ebp-0x60],ebx	mov	dword ptr [ebp - 0x60], ebx	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493AD6	c6 45 a4 01	4	mov    BYTE PTR [ebp-0x5c],0x1	mov	byte ptr [ebp - 0x5c], 0x1	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493ADA	8d 95 d8 fe ff ff	6	lea    edx,[ebp-0x128]	lea	edx, [ebp - 0x128]	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493AE0	52	1	push   edx	push	edx	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493AE1	8b ce	2	mov    ecx,esi	mov	ecx, esi	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493AE3	c7 45 fc 04 00 00 00	7	mov    DWORD PTR [ebp-0x4],0x4	mov	dword ptr [ebp - 0x4], 0x4	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493AEA	e8 91 60 00 00	5	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493AEF	8d 85 dc fe ff ff	6	lea    eax,[ebp-0x124]	lea	eax, [ebp - 0x124]	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493AF5	50	1	push   eax	push	eax	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493AF6	8b ce	2	mov    ecx,esi	mov	ecx, esi	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493AF8	e8 c3 60 00 00	5	call   0x499bc0	call	0x499bc0 <?Destroy@UnitEffectManager@@SAXXZ+0x8fa0>	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493AFD	8d 8d ec fe ff ff	6	lea    ecx,[ebp-0x114]	lea	ecx, [ebp - 0x114]	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B03	51	1	push   ecx	push	ecx	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B04	8b ce	2	mov    ecx,esi	mov	ecx, esi	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B06	e8 b5 60 00 00	5	call   0x499bc0	call	0x499bc0 <?Destroy@UnitEffectManager@@SAXXZ+0x8fa0>	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B0B	8d 95 fc fe ff ff	6	lea    edx,[ebp-0x104]	lea	edx, [ebp - 0x104]	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B11	52	1	push   edx	push	edx	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B12	8b ce	2	mov    ecx,esi	mov	ecx, esi	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B14	e8 67 60 00 00	5	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B19	8d 85 00 ff ff ff	6	lea    eax,[ebp-0x100]	lea	eax, [ebp - 0x100]	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B1F	50	1	push   eax	push	eax	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B20	8b ce	2	mov    ecx,esi	mov	ecx, esi	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B22	e8 59 60 00 00	5	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B27	8d 8d 04 ff ff ff	6	lea    ecx,[ebp-0xfc]	lea	ecx, [ebp - 0xfc]	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B2D	51	1	push   ecx	push	ecx	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B2E	8b ce	2	mov    ecx,esi	mov	ecx, esi	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B30	e8 4b 60 00 00	5	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B35	8d 95 08 ff ff ff	6	lea    edx,[ebp-0xf8]	lea	edx, [ebp - 0xf8]	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B3B	52	1	push   edx	push	edx	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B3C	8b ce	2	mov    ecx,esi	mov	ecx, esi	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B3E	e8 3d 60 00 00	5	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B43	8d 85 0c ff ff ff	6	lea    eax,[ebp-0xf4]	lea	eax, [ebp - 0xf4]	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B49	50	1	push   eax	push	eax	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B4A	8b ce	2	mov    ecx,esi	mov	ecx, esi	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B4C	e8 2f 60 00 00	5	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B51	8d 8d 10 ff ff ff	6	lea    ecx,[ebp-0xf0]	lea	ecx, [ebp - 0xf0]	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B57	51	1	push   ecx	push	ecx	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B58	8b ce	2	mov    ecx,esi	mov	ecx, esi	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B5A	e8 21 60 00 00	5	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B5F	8d 95 14 ff ff ff	6	lea    edx,[ebp-0xec]	lea	edx, [ebp - 0xec]	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B65	52	1	push   edx	push	edx	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B66	8b ce	2	mov    ecx,esi	mov	ecx, esi	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B68	e8 13 60 00 00	5	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B6D	8d 85 18 ff ff ff	6	lea    eax,[ebp-0xe8]	lea	eax, [ebp - 0xe8]	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B73	50	1	push   eax	push	eax	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B74	8b ce	2	mov    ecx,esi	mov	ecx, esi	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B76	e8 05 60 00 00	5	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B7B	8d 8d 1c ff ff ff	6	lea    ecx,[ebp-0xe4]	lea	ecx, [ebp - 0xe4]	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B81	51	1	push   ecx	push	ecx	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B82	8b ce	2	mov    ecx,esi	mov	ecx, esi	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B84	e8 f7 5f 00 00	5	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B89	8d 95 20 ff ff ff	6	lea    edx,[ebp-0xe0]	lea	edx, [ebp - 0xe0]	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B8F	52	1	push   edx	push	edx	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B90	8b ce	2	mov    ecx,esi	mov	ecx, esi	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B92	e8 e9 5f 00 00	5	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B97	8d 85 24 ff ff ff	6	lea    eax,[ebp-0xdc]	lea	eax, [ebp - 0xdc]	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B9D	50	1	push   eax	push	eax	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493B9E	8b ce	2	mov    ecx,esi	mov	ecx, esi	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493BA0	e8 db 5f 00 00	5	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493BA5	8d 8d 28 ff ff ff	6	lea    ecx,[ebp-0xd8]	lea	ecx, [ebp - 0xd8]	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493BAB	51	1	push   ecx	push	ecx	0	candidat_non_comptabilise
+0x493A75 — zone fragmentaire	0x00493BAC	8b ce	2	mov    ecx,esi	mov	ecx, esi	0	candidat_non_comptabilise

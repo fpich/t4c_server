@@ -1,0 +1,106 @@
+zone	adresse	octets	GNU	LLVM	nouveaux_octets_dans_cette_instruction
+internal_44eb1f	0x0044EB18	8b cb	mov    ecx,ebx	mov	ecx, ebx	0
+internal_44eb1f	0x0044EB1A	e8 41 f8 ff ff	call   0x44e360	call	0x44e360 <?ObjectInList@ObjectTimer@@SAHK@Z+0x180>	0
+internal_44eb1f	0x0044EB1F	8d 4d 0e	lea    ecx,[ebp+0xe]	lea	ecx, [ebp + 0xe]	2
+internal_44eb1f	0x0044EB22	51	push   ecx	push	ecx	1
+internal_44eb1f	0x0044EB23	68 c8 00 00 00	push   0xc8	push	0xc8	5
+internal_44eb1f	0x0044EB28	8d 95 70 fe ff ff	lea    edx,[ebp-0x190]	lea	edx, [ebp - 0x190]	6
+internal_44eb1f	0x0044EB2E	52	push   edx	push	edx	1
+internal_44eb1f	0x0044EB2F	8b 53 0c	mov    edx,DWORD PTR [ebx+0xc]	mov	edx, dword ptr [ebx + 0xc]	3
+internal_44eb1f	0x0044EB32	8d 45 08	lea    eax,[ebp+0x8]	lea	eax, [ebp + 0x8]	3
+internal_44eb1f	0x0044EB35	50	push   eax	push	eax	1
+internal_44eb1f	0x0044EB36	8b 43 08	mov    eax,DWORD PTR [ebx+0x8]	mov	eax, dword ptr [ebx + 0x8]	3
+internal_44eb1f	0x0044EB39	8d 8d 38 ff ff ff	lea    ecx,[ebp-0xc8]	lea	ecx, [ebp - 0xc8]	6
+internal_44eb1f	0x0044EB3F	51	push   ecx	push	ecx	1
+internal_44eb1f	0x0044EB40	8b 4b 04	mov    ecx,DWORD PTR [ebx+0x4]	mov	ecx, dword ptr [ebx + 0x4]	3
+internal_44eb1f	0x0044EB43	52	push   edx	push	edx	1
+internal_44eb1f	0x0044EB44	50	push   eax	push	eax	1
+internal_44eb1f	0x0044EB45	51	push   ecx	push	ecx	1
+internal_44eb1f	0x0044EB46	e8 e5 f8 07 00	call   0x4ce430	call	0x4ce430 <?GetCollisionPos@WorldMap@@QAEHUWorldPos@@0PAU2@PAPAVUnit@@_N3@Z+0x1bd30>	5
+internal_44eb1f	0x0044EB4B	66 83 fe ff	cmp    si,0xffff	cmp	si, -0x1	4
+internal_44eb1f	0x0044EB4F	74 06	je     0x44eb57	je	0x44eb57 <?ObjectInList@ObjectTimer@@SAHK@Z+0x977>	2
+internal_44eb1f	0x0044EB51	66 83 fe fe	cmp    si,0xfffe	cmp	si, -0x2	4
+internal_44eb1f	0x0044EB55	75 5a	jne    0x44ebb1	jne	0x44ebb1 <?ObjectInList@ObjectTimer@@SAHK@Z+0x9d1>	2
+internal_44eb1f	0x0044EB57	68 e0 5b 50 00	push   0x505be0	push	0x505be0	5
+internal_44eb1f	0x0044EB5C	68 00 02 00 00	push   0x200	push	0x200	5
+internal_44eb1f	0x0044EB61	e8 da 31 02 00	call   0x471d40	call	0x471d40 <?DebugLog@CT4CLog@@SAXGPBDZZ>	5
+internal_44eb1f	0x0044EB66	83 c4 08	add    esp,0x8	add	esp, 0x8	3
+internal_44eb1f	0x0044EB69	8d 95 38 ff ff ff	lea    edx,[ebp-0xc8]	lea	edx, [ebp - 0xc8]	6
+internal_44eb1f	0x0044EB6F	52	push   edx	push	edx	1
+internal_44eb1f	0x0044EB70	68 d0 5b 50 00	push   0x505bd0	push	0x505bd0	5
+internal_44eb1f	0x0044EB75	68 00 02 00 00	push   0x200	push	0x200	5
+internal_44eb1f	0x0044EB7A	e8 c1 31 02 00	call   0x471d40	call	0x471d40 <?DebugLog@CT4CLog@@SAXGPBDZZ>	5
+internal_44eb1f	0x0044EB7F	8b 45 08	mov    eax,DWORD PTR [ebp+0x8]	mov	eax, dword ptr [ebp + 0x8]	3
+internal_44eb1f	0x0044EB82	83 c4 0c	add    esp,0xc	add	esp, 0xc	3
+internal_44eb1f	0x0044EB85	50	push   eax	push	eax	1
+internal_44eb1f	0x0044EB86	68 bc 5b 50 00	push   0x505bbc	push	0x505bbc	5
+internal_44eb1f	0x0044EB8B	68 00 02 00 00	push   0x200	push	0x200	5
+internal_44eb1f	0x0044EB90	e8 ab 31 02 00	call   0x471d40	call	0x471d40 <?DebugLog@CT4CLog@@SAXGPBDZZ>	5
+internal_44eb1f	0x0044EB95	83 c4 0c	add    esp,0xc	add	esp, 0xc	3
+internal_44eb1f	0x0044EB98	8d 8d 70 fe ff ff	lea    ecx,[ebp-0x190]	lea	ecx, [ebp - 0x190]	6
+internal_44eb1f	0x0044EB9E	51	push   ecx	push	ecx	1
+internal_44eb1f	0x0044EB9F	68 a8 5b 50 00	push   0x505ba8	push	0x505ba8	5
+internal_44eb1f	0x0044EBA4	68 00 02 00 00	push   0x200	push	0x200	5
+internal_44eb1f	0x0044EBA9	e8 92 31 02 00	call   0x471d40	call	0x471d40 <?DebugLog@CT4CLog@@SAXGPBDZZ>	5
+internal_44eb1f	0x0044EBAE	83 c4 0c	add    esp,0xc	add	esp, 0xc	3
+internal_44eb1f	0x0044EBB1	66 83 fe 01	cmp    si,0x1	cmp	si, 0x1	4
+internal_44eb1f	0x0044EBB5	75 5a	jne    0x44ec11	jne	0x44ec11 <?ObjectInList@ObjectTimer@@SAHK@Z+0xa31>	2
+internal_44eb1f	0x0044EBB7	68 84 5b 50 00	push   0x505b84	push	0x505b84	5
+internal_44eb1f	0x0044EBBC	68 00 02 00 00	push   0x200	push	0x200	5
+internal_44eb1f	0x0044EBC1	e8 7a 31 02 00	call   0x471d40	call	0x471d40 <?DebugLog@CT4CLog@@SAXGPBDZZ>	5
+internal_44eb1f	0x0044EBC6	83 c4 08	add    esp,0x8	add	esp, 0x8	3
+internal_44eb1f	0x0044EBC9	8d 95 38 ff ff ff	lea    edx,[ebp-0xc8]	lea	edx, [ebp - 0xc8]	6
+internal_44eb1f	0x0044EBCF	52	push   edx	push	edx	1
+internal_44eb1f	0x0044EBD0	68 d0 5b 50 00	push   0x505bd0	push	0x505bd0	5
+internal_44eb1f	0x0044EBD5	68 00 02 00 00	push   0x200	push	0x200	5
+internal_44eb1f	0x0044EBDA	e8 61 31 02 00	call   0x471d40	call	0x471d40 <?DebugLog@CT4CLog@@SAXGPBDZZ>	5
+internal_44eb1f	0x0044EBDF	8b 45 08	mov    eax,DWORD PTR [ebp+0x8]	mov	eax, dword ptr [ebp + 0x8]	3
+internal_44eb1f	0x0044EBE2	83 c4 0c	add    esp,0xc	add	esp, 0xc	3
+internal_44eb1f	0x0044EBE5	50	push   eax	push	eax	1
+internal_44eb1f	0x0044EBE6	68 74 5b 50 00	push   0x505b74	push	0x505b74	5
+internal_44eb1f	0x0044EBEB	68 00 02 00 00	push   0x200	push	0x200	5
+internal_44eb1f	0x0044EBF0	e8 4b 31 02 00	call   0x471d40	call	0x471d40 <?DebugLog@CT4CLog@@SAXGPBDZZ>	5
+internal_44eb1f	0x0044EBF5	83 c4 0c	add    esp,0xc	add	esp, 0xc	3
+internal_44eb1f	0x0044EBF8	8d 8d 70 fe ff ff	lea    ecx,[ebp-0x190]	lea	ecx, [ebp - 0x190]	6
+internal_44eb1f	0x0044EBFE	51	push   ecx	push	ecx	1
+internal_44eb1f	0x0044EBFF	68 60 5b 50 00	push   0x505b60	push	0x505b60	5
+internal_44eb1f	0x0044EC04	68 00 02 00 00	push   0x200	push	0x200	5
+internal_44eb1f	0x0044EC09	e8 32 31 02 00	call   0x471d40	call	0x471d40 <?DebugLog@CT4CLog@@SAXGPBDZZ>	5
+internal_44eb1f	0x0044EC0E	83 c4 0c	add    esp,0xc	add	esp, 0xc	3
+internal_44eb1f	0x0044EC11	8a 43 10	mov    al,BYTE PTR [ebx+0x10]	mov	al, byte ptr [ebx + 0x10]	0
+internal_44eb1f	0x0044EC14	84 c0	test   al,al	test	al, al	0
+internal_44eb1f	0x0044EC16	75 11	jne    0x44ec29	jne	0x44ec29 <?ObjectInList@ObjectTimer@@SAHK@Z+0xa49>	0
+internal_44eb1f	0x0044EC18	8b 43 08	mov    eax,DWORD PTR [ebx+0x8]	mov	eax, dword ptr [ebx + 0x8]	0
+internal_44eb1f	0x0044EC1B	8d 53 0c	lea    edx,[ebx+0xc]	lea	edx, [ebx + 0xc]	0
+internal_44eb1f	0x0044EC1E	52	push   edx	push	edx	0
+internal_44eb1f	0x0044EC1F	50	push   eax	push	eax	0
+internal_44eb1f	0x0044EC20	c6 43 10 01	mov    BYTE PTR [ebx+0x10],0x1	mov	byte ptr [ebx + 0x10], 0x1	0
+internal_44eb1f	0x0044EC24	e8 25 f8 07 00	call   0x4ce44e	call	0x4ce44e <?GetCollisionPos@WorldMap@@QAEHUWorldPos@@0PAU2@PAPAVUnit@@_N3@Z+0x1bd4e>	0
+internal_44eb1f	0x0044EC29	8b cb	mov    ecx,ebx	mov	ecx, ebx	0
+internal_44eb1f	0x0044EC2B	e8 a0 fd ff ff	call   0x44e9d0	call	0x44e9d0 <?ObjectInList@ObjectTimer@@SAHK@Z+0x7f0>	0
+internal_44eb1f	0x0044EC30	5f	pop    edi	pop	edi	0
+internal_44eb1f	0x0044EC31	5e	pop    esi	pop	esi	0
+internal_44eb1f	0x0044EC32	5b	pop    ebx	pop	ebx	0
+internal_44eb1f	0x0044EC33	8b e5	mov    esp,ebp	mov	esp, ebp	0
+internal_44eb1f	0x0044EC35	5d	pop    ebp	pop	ebp	0
+internal_44eb1f	0x0044EC36	c2 0c 00	ret    0xc	ret	0xc	0
+clean_44f734	0x0044F728	e4 85	in     al,0x85	in	al, 0x85	0
+clean_44f734	0x0044F72A	c0 0f 84	ror    BYTE PTR [edi],0x84	ror	byte ptr [edi], 0x84	0
+clean_44f734	0x0044F72D	bc fb ff ff 8d	mov    esp,0x8dfffffb	mov	esp, 0x8dfffffb	0
+clean_44f734	0x0044F732	4d	dec    ebp	dec	ebp	0
+clean_44f734	0x0044F733	94	xchg   esp,eax	xchg	eax, esp	0
+clean_44f734	0x0044F734	e8 67 41 fe ff	call   0x4338a0	call	0x4338a0 <?XPtoLevel@Unit@@UAE_JXZ+0x680>	4
+clean_44f734	0x0044F739	8d 4d f0	lea    ecx,[ebp-0x10]	lea	ecx, [ebp - 0x10]	3
+clean_44f734	0x0044F73C	c6 45 fc 00	mov    BYTE PTR [ebp-0x4],0x0	mov	byte ptr [ebp - 0x4], 0x0	4
+clean_44f734	0x0044F740	e8 fb 22 08 00	call   0x4d1a40	call	0x4d1a40 <ExpFltr_end+0x410>	5
+clean_44f734	0x0044F745	8d 4d 94	lea    ecx,[ebp-0x6c]	lea	ecx, [ebp - 0x6c]	3
+clean_44f734	0x0044F748	c7 45 fc ff ff ff ff	mov    DWORD PTR [ebp-0x4],0xffffffff	mov	dword ptr [ebp - 0x4], 0xffffffff	7
+clean_44f734	0x0044F74F	e8 fc 3f fe ff	call   0x433750	call	0x433750 <?XPtoLevel@Unit@@UAE_JXZ+0x530>	5
+clean_44f734	0x0044F754	8b 4d f4	mov    ecx,DWORD PTR [ebp-0xc]	mov	ecx, dword ptr [ebp - 0xc]	3
+clean_44f734	0x0044F757	5f	pop    edi	pop	edi	1
+clean_44f734	0x0044F758	5e	pop    esi	pop	esi	1
+clean_44f734	0x0044F759	64 89 0d 00 00 00 00	mov    DWORD PTR fs:0x0,ecx	mov	dword ptr fs:[0x0], ecx	7
+clean_44f734	0x0044F760	5b	pop    ebx	pop	ebx	1
+clean_44f734	0x0044F761	8b e5	mov    esp,ebp	mov	esp, ebp	2
+clean_44f734	0x0044F763	5d	pop    ebp	pop	ebp	1
+clean_44f734	0x0044F764	c3	ret	ret	1

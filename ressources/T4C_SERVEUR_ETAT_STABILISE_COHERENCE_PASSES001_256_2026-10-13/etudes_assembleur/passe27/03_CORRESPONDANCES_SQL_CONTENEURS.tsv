@@ -1,0 +1,8 @@
+table	chaine_va	champ_ou_requete	site_principal	observations	certitude
+Objects_ContainerGroups	0x50EF78	SELECT * FROM Objects_ContainerGroups	0x49F223	lecture de groupes	octets_et_litteral
+Objects_ContainerGroups	0x50F300	ObjectID	0x49F277	identifiant associe a la definition	octets_et_litteral
+Objects_ContainerItems	0x50F378	ID	0x4A5945	identifiant de groupe recupere avant requete parametree	octets_et_litteral
+Objects_ContainerItems	0x50F3AC	SELECT * FROM Objects_ContainerItems WHERE ContainerGroupID=%u	0x4A599D	formatage a partir de ID	octets_et_litteral
+Objects_ContainerItems	0x50F400	ConjureID	0x4A6687	chaine recuperee dans chaque entree	octets_et_litteral
+Objects_ContainerItems	0x50F38C	WARNING: Container is empty!	0x4A5A59	branche sans contenu	octets_et_litteral
+Objects_AttrBoosts	0x50EF24	SELECT * FROM Objects_AttrBoosts	0x49F41E	requete suivante, hors conteneurs	octets_et_litteral

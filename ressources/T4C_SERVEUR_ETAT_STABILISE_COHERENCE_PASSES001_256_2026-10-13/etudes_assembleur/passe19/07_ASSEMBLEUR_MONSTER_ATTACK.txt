@@ -1,0 +1,20 @@
+
+/mnt/data/T4C Server(1).exe:     file format pei-i386
+
+
+Disassembly of section .text:
+
+00432eb0 <.text+0x31eb0>:
+  432eb0:	33 c0                	xor    eax,eax
+  432eb2:	c2 08 00             	ret    0x8
+  432eb5:	90                   	nop
+  432eb6:	90                   	nop
+  432eb7:	90                   	nop
+  432eb8:	90                   	nop
+  432eb9:	90                   	nop
+  432eba:	90                   	nop
+  432ebb:	90                   	nop
+  432ebc:	90                   	nop
+  432ebd:	90                   	nop
+  432ebe:	90                   	nop
+  432ebf:	90                   	nop

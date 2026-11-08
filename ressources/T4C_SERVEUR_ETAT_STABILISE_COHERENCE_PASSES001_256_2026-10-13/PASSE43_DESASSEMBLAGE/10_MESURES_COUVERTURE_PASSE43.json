@@ -1,0 +1,44 @@
+{
+  "sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "archive_source": "/mnt/data/_pass43work/stage43.zip",
+  "archive_fichiers": 345,
+  "code_section": ".text",
+  "section_va_debut": "0x401000",
+  "section_taille_octets": 905117,
+  "fichiers_preuves": 77,
+  "lignes_assembleur_detectees": 37781,
+  "lignes_octets_correspondants": 37245,
+  "lignes_exclues": 536,
+  "instructions_adresses_uniques": 28748,
+  "octets_uniques_directement_cites": 82630,
+  "pct_octets_directement_cites": 9.129,
+  "fonctions_exportees_uniques": 1125,
+  "fonctions_exportees_avec_entree_dans_preuves": 167,
+  "pct_entrees_exportees_avec_preuve": 14.844,
+  "passe": 43,
+  "ancien_total": 78146,
+  "gain_non_redondant": 4484,
+  "nouveaux_fichiers_preuves": {
+    "05_PREUVES_CONSTRUCTION_EFFETS.asm": {
+      "instructions_lues": 295,
+      "instructions_rejetees": 0,
+      "octets_locaux_avec_chevauchements": 799
+    },
+    "03_PREUVES_VOCABULAIRE_TYPE2.asm": {
+      "instructions_lues": 449,
+      "instructions_rejetees": 0,
+      "octets_locaux_avec_chevauchements": 1471
+    },
+    "04_PREUVES_PARSER_EXPRESSIONS.asm": {
+      "instructions_lues": 797,
+      "instructions_rejetees": 0,
+      "octets_locaux_avec_chevauchements": 2237
+    },
+    "02_PREUVES_TYPES_9_14_ASM.asm": {
+      "instructions_lues": 191,
+      "instructions_rejetees": 0,
+      "octets_locaux_avec_chevauchements": 599
+    }
+  },
+  "fichiers_historiques_preserves": 335
+}

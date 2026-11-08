@@ -1,0 +1,477 @@
+zone	adresse	opcodes	GNU	LLVM	octets_precedemment_non_couverts
+interruption_493a61	0x00493A61	c7 85 54 ff ff ff 00 00 00 00	mov    DWORD PTR [ebp-0xac],0x0	mov	dword ptr [ebp - 0xac], 0x0	0
+interruption_493a61	0x00493A6B	c7 85 58 ff ff ff 00 00 00 00	mov    DWORD PTR [ebp-0xa8],0x0	mov	dword ptr [ebp - 0xa8], 0x0	7
+interruption_493a61	0x00493A75	89 9d 5c ff ff ff	mov    DWORD PTR [ebp-0xa4],ebx	mov	dword ptr [ebp - 0xa4], ebx	6
+interruption_493a61	0x00493A7B	89 9d 60 ff ff ff	mov    DWORD PTR [ebp-0xa0],ebx	mov	dword ptr [ebp - 0xa0], ebx	1
+interruption_493a61	0x00493A81	89 9d 64 ff ff ff	mov    DWORD PTR [ebp-0x9c],ebx	mov	dword ptr [ebp - 0x9c], ebx	6
+interruption_493a61	0x00493A87	89 9d 68 ff ff ff	mov    DWORD PTR [ebp-0x98],ebx	mov	dword ptr [ebp - 0x98], ebx	6
+interruption_493a61	0x00493A8D	89 9d 6c ff ff ff	mov    DWORD PTR [ebp-0x94],ebx	mov	dword ptr [ebp - 0x94], ebx	6
+interruption_493a61	0x00493A93	89 9d 70 ff ff ff	mov    DWORD PTR [ebp-0x90],ebx	mov	dword ptr [ebp - 0x90], ebx	6
+interruption_493a61	0x00493A99	89 9d 74 ff ff ff	mov    DWORD PTR [ebp-0x8c],ebx	mov	dword ptr [ebp - 0x8c], ebx	6
+interruption_493a61	0x00493A9F	89 9d 78 ff ff ff	mov    DWORD PTR [ebp-0x88],ebx	mov	dword ptr [ebp - 0x88], ebx	6
+interruption_493a61	0x00493AA5	89 9d 7c ff ff ff	mov    DWORD PTR [ebp-0x84],ebx	mov	dword ptr [ebp - 0x84], ebx	6
+interruption_493a61	0x00493AAB	89 5d 80	mov    DWORD PTR [ebp-0x80],ebx	mov	dword ptr [ebp - 0x80], ebx	3
+interruption_493a61	0x00493AAE	89 5d 84	mov    DWORD PTR [ebp-0x7c],ebx	mov	dword ptr [ebp - 0x7c], ebx	3
+interruption_493a61	0x00493AB1	89 5d 88	mov    DWORD PTR [ebp-0x78],ebx	mov	dword ptr [ebp - 0x78], ebx	3
+interruption_493a61	0x00493AB4	c7 45 8c 00 00 00 00	mov    DWORD PTR [ebp-0x74],0x0	mov	dword ptr [ebp - 0x74], 0x0	7
+interruption_493a61	0x00493ABB	c7 45 90 00 00 00 00	mov    DWORD PTR [ebp-0x70],0x0	mov	dword ptr [ebp - 0x70], 0x0	7
+interruption_493a61	0x00493AC2	c7 45 94 00 00 00 00	mov    DWORD PTR [ebp-0x6c],0x0	mov	dword ptr [ebp - 0x6c], 0x0	7
+interruption_493a61	0x00493AC9	c7 45 98 00 00 00 00	mov    DWORD PTR [ebp-0x68],0x0	mov	dword ptr [ebp - 0x68], 0x0	7
+interruption_493a61	0x00493AD0	89 5d 9c	mov    DWORD PTR [ebp-0x64],ebx	mov	dword ptr [ebp - 0x64], ebx	3
+interruption_493a61	0x00493AD3	89 5d a0	mov    DWORD PTR [ebp-0x60],ebx	mov	dword ptr [ebp - 0x60], ebx	3
+interruption_493a61	0x00493AD6	c6 45 a4 01	mov    BYTE PTR [ebp-0x5c],0x1	mov	byte ptr [ebp - 0x5c], 0x1	4
+interruption_493a61	0x00493ADA	8d 95 d8 fe ff ff	lea    edx,[ebp-0x128]	lea	edx, [ebp - 0x128]	6
+interruption_493a61	0x00493AE0	52	push   edx	push	edx	1
+interruption_493a61	0x00493AE1	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493AE3	c7 45 fc 04 00 00 00	mov    DWORD PTR [ebp-0x4],0x4	mov	dword ptr [ebp - 0x4], 0x4	7
+interruption_493a61	0x00493AEA	e8 91 60 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493AEF	8d 85 dc fe ff ff	lea    eax,[ebp-0x124]	lea	eax, [ebp - 0x124]	6
+interruption_493a61	0x00493AF5	50	push   eax	push	eax	1
+interruption_493a61	0x00493AF6	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493AF8	e8 c3 60 00 00	call   0x499bc0	call	0x499bc0 <?Destroy@UnitEffectManager@@SAXXZ+0x8fa0>	5
+interruption_493a61	0x00493AFD	8d 8d ec fe ff ff	lea    ecx,[ebp-0x114]	lea	ecx, [ebp - 0x114]	6
+interruption_493a61	0x00493B03	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493B04	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493B06	e8 b5 60 00 00	call   0x499bc0	call	0x499bc0 <?Destroy@UnitEffectManager@@SAXXZ+0x8fa0>	5
+interruption_493a61	0x00493B0B	8d 95 fc fe ff ff	lea    edx,[ebp-0x104]	lea	edx, [ebp - 0x104]	6
+interruption_493a61	0x00493B11	52	push   edx	push	edx	1
+interruption_493a61	0x00493B12	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493B14	e8 67 60 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493B19	8d 85 00 ff ff ff	lea    eax,[ebp-0x100]	lea	eax, [ebp - 0x100]	6
+interruption_493a61	0x00493B1F	50	push   eax	push	eax	1
+interruption_493a61	0x00493B20	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493B22	e8 59 60 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493B27	8d 8d 04 ff ff ff	lea    ecx,[ebp-0xfc]	lea	ecx, [ebp - 0xfc]	6
+interruption_493a61	0x00493B2D	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493B2E	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493B30	e8 4b 60 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493B35	8d 95 08 ff ff ff	lea    edx,[ebp-0xf8]	lea	edx, [ebp - 0xf8]	6
+interruption_493a61	0x00493B3B	52	push   edx	push	edx	1
+interruption_493a61	0x00493B3C	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493B3E	e8 3d 60 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493B43	8d 85 0c ff ff ff	lea    eax,[ebp-0xf4]	lea	eax, [ebp - 0xf4]	6
+interruption_493a61	0x00493B49	50	push   eax	push	eax	1
+interruption_493a61	0x00493B4A	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493B4C	e8 2f 60 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493B51	8d 8d 10 ff ff ff	lea    ecx,[ebp-0xf0]	lea	ecx, [ebp - 0xf0]	6
+interruption_493a61	0x00493B57	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493B58	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493B5A	e8 21 60 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493B5F	8d 95 14 ff ff ff	lea    edx,[ebp-0xec]	lea	edx, [ebp - 0xec]	6
+interruption_493a61	0x00493B65	52	push   edx	push	edx	1
+interruption_493a61	0x00493B66	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493B68	e8 13 60 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493B6D	8d 85 18 ff ff ff	lea    eax,[ebp-0xe8]	lea	eax, [ebp - 0xe8]	6
+interruption_493a61	0x00493B73	50	push   eax	push	eax	1
+interruption_493a61	0x00493B74	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493B76	e8 05 60 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493B7B	8d 8d 1c ff ff ff	lea    ecx,[ebp-0xe4]	lea	ecx, [ebp - 0xe4]	6
+interruption_493a61	0x00493B81	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493B82	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493B84	e8 f7 5f 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493B89	8d 95 20 ff ff ff	lea    edx,[ebp-0xe0]	lea	edx, [ebp - 0xe0]	6
+interruption_493a61	0x00493B8F	52	push   edx	push	edx	1
+interruption_493a61	0x00493B90	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493B92	e8 e9 5f 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493B97	8d 85 24 ff ff ff	lea    eax,[ebp-0xdc]	lea	eax, [ebp - 0xdc]	6
+interruption_493a61	0x00493B9D	50	push   eax	push	eax	1
+interruption_493a61	0x00493B9E	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493BA0	e8 db 5f 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493BA5	8d 8d 28 ff ff ff	lea    ecx,[ebp-0xd8]	lea	ecx, [ebp - 0xd8]	6
+interruption_493a61	0x00493BAB	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493BAC	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493BAE	e8 cd 5f 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493BB3	8d 95 2c ff ff ff	lea    edx,[ebp-0xd4]	lea	edx, [ebp - 0xd4]	6
+interruption_493a61	0x00493BB9	52	push   edx	push	edx	1
+interruption_493a61	0x00493BBA	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493BBC	e8 bf 5f 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493BC1	8d 85 30 ff ff ff	lea    eax,[ebp-0xd0]	lea	eax, [ebp - 0xd0]	6
+interruption_493a61	0x00493BC7	50	push   eax	push	eax	1
+interruption_493a61	0x00493BC8	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493BCA	e8 b1 5f 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493BCF	8d 8d 34 ff ff ff	lea    ecx,[ebp-0xcc]	lea	ecx, [ebp - 0xcc]	6
+interruption_493a61	0x00493BD5	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493BD6	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493BD8	e8 a3 5f 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493BDD	8d 95 38 ff ff ff	lea    edx,[ebp-0xc8]	lea	edx, [ebp - 0xc8]	6
+interruption_493a61	0x00493BE3	52	push   edx	push	edx	1
+interruption_493a61	0x00493BE4	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493BE6	e8 95 5f 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493BEB	8d 85 3c ff ff ff	lea    eax,[ebp-0xc4]	lea	eax, [ebp - 0xc4]	6
+interruption_493a61	0x00493BF1	50	push   eax	push	eax	1
+interruption_493a61	0x00493BF2	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493BF4	e8 87 5f 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493BF9	8d 8d 40 ff ff ff	lea    ecx,[ebp-0xc0]	lea	ecx, [ebp - 0xc0]	6
+interruption_493a61	0x00493BFF	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493C00	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493C02	e8 79 5f 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493C07	8d 95 44 ff ff ff	lea    edx,[ebp-0xbc]	lea	edx, [ebp - 0xbc]	6
+interruption_493a61	0x00493C0D	52	push   edx	push	edx	1
+interruption_493a61	0x00493C0E	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493C10	e8 6b 5f 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493C15	8d 85 48 ff ff ff	lea    eax,[ebp-0xb8]	lea	eax, [ebp - 0xb8]	6
+interruption_493a61	0x00493C1B	50	push   eax	push	eax	1
+interruption_493a61	0x00493C1C	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493C1E	e8 5d 5f 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493C23	8d 8d 4c ff ff ff	lea    ecx,[ebp-0xb4]	lea	ecx, [ebp - 0xb4]	6
+interruption_493a61	0x00493C29	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493C2A	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493C2C	e8 4f 5f 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493C31	8d 95 50 ff ff ff	lea    edx,[ebp-0xb0]	lea	edx, [ebp - 0xb0]	6
+interruption_493a61	0x00493C37	52	push   edx	push	edx	1
+interruption_493a61	0x00493C38	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493C3A	e8 41 5f 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493C3F	8d 85 54 ff ff ff	lea    eax,[ebp-0xac]	lea	eax, [ebp - 0xac]	6
+interruption_493a61	0x00493C45	50	push   eax	push	eax	1
+interruption_493a61	0x00493C46	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493C48	e8 63 61 00 00	call   0x499db0	call	0x499db0 <?Destroy@UnitEffectManager@@SAXXZ+0x9190>	5
+interruption_493a61	0x00493C4D	8d 8d 5c ff ff ff	lea    ecx,[ebp-0xa4]	lea	ecx, [ebp - 0xa4]	6
+interruption_493a61	0x00493C53	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493C54	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493C56	e8 25 5f 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493C5B	8d 95 60 ff ff ff	lea    edx,[ebp-0xa0]	lea	edx, [ebp - 0xa0]	6
+interruption_493a61	0x00493C61	52	push   edx	push	edx	1
+interruption_493a61	0x00493C62	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493C64	e8 17 5f 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493C69	8d 85 64 ff ff ff	lea    eax,[ebp-0x9c]	lea	eax, [ebp - 0x9c]	6
+interruption_493a61	0x00493C6F	50	push   eax	push	eax	1
+interruption_493a61	0x00493C70	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493C72	e8 09 5f 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493C77	8d 8d 68 ff ff ff	lea    ecx,[ebp-0x98]	lea	ecx, [ebp - 0x98]	6
+interruption_493a61	0x00493C7D	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493C7E	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493C80	e8 fb 5e 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493C85	8d 95 6c ff ff ff	lea    edx,[ebp-0x94]	lea	edx, [ebp - 0x94]	6
+interruption_493a61	0x00493C8B	52	push   edx	push	edx	1
+interruption_493a61	0x00493C8C	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493C8E	e8 ed 5e 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493C93	8d 85 70 ff ff ff	lea    eax,[ebp-0x90]	lea	eax, [ebp - 0x90]	6
+interruption_493a61	0x00493C99	50	push   eax	push	eax	1
+interruption_493a61	0x00493C9A	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493C9C	e8 df 5e 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493CA1	8d 8d 74 ff ff ff	lea    ecx,[ebp-0x8c]	lea	ecx, [ebp - 0x8c]	6
+interruption_493a61	0x00493CA7	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493CA8	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493CAA	e8 d1 5e 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493CAF	8d 95 78 ff ff ff	lea    edx,[ebp-0x88]	lea	edx, [ebp - 0x88]	6
+interruption_493a61	0x00493CB5	52	push   edx	push	edx	1
+interruption_493a61	0x00493CB6	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493CB8	e8 c3 5e 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493CBD	8d 85 7c ff ff ff	lea    eax,[ebp-0x84]	lea	eax, [ebp - 0x84]	6
+interruption_493a61	0x00493CC3	50	push   eax	push	eax	1
+interruption_493a61	0x00493CC4	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493CC6	e8 b5 5e 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493CCB	8d 4d 80	lea    ecx,[ebp-0x80]	lea	ecx, [ebp - 0x80]	3
+interruption_493a61	0x00493CCE	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493CCF	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493CD1	e8 aa 5e 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493CD6	8d 55 84	lea    edx,[ebp-0x7c]	lea	edx, [ebp - 0x7c]	3
+interruption_493a61	0x00493CD9	52	push   edx	push	edx	1
+interruption_493a61	0x00493CDA	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493CDC	e8 9f 5e 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493CE1	8d 45 88	lea    eax,[ebp-0x78]	lea	eax, [ebp - 0x78]	3
+interruption_493a61	0x00493CE4	50	push   eax	push	eax	1
+interruption_493a61	0x00493CE5	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493CE7	e8 94 5e 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493CEC	8d 4d 8c	lea    ecx,[ebp-0x74]	lea	ecx, [ebp - 0x74]	3
+interruption_493a61	0x00493CEF	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493CF0	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493CF2	e8 b9 60 00 00	call   0x499db0	call	0x499db0 <?Destroy@UnitEffectManager@@SAXXZ+0x9190>	5
+interruption_493a61	0x00493CF7	8d 55 94	lea    edx,[ebp-0x6c]	lea	edx, [ebp - 0x6c]	3
+interruption_493a61	0x00493CFA	52	push   edx	push	edx	1
+interruption_493a61	0x00493CFB	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493CFD	e8 ae 60 00 00	call   0x499db0	call	0x499db0 <?Destroy@UnitEffectManager@@SAXXZ+0x9190>	5
+interruption_493a61	0x00493D02	8d 45 9c	lea    eax,[ebp-0x64]	lea	eax, [ebp - 0x64]	3
+interruption_493a61	0x00493D05	50	push   eax	push	eax	1
+interruption_493a61	0x00493D06	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493D08	e8 73 5e 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493D0D	8d 4d a0	lea    ecx,[ebp-0x60]	lea	ecx, [ebp - 0x60]	3
+interruption_493a61	0x00493D10	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493D11	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493D13	e8 68 5e 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493D18	8d 55 a4	lea    edx,[ebp-0x5c]	lea	edx, [ebp - 0x5c]	3
+interruption_493a61	0x00493D1B	52	push   edx	push	edx	1
+interruption_493a61	0x00493D1C	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493D1E	e8 dd 5f 00 00	call   0x499d00	call	0x499d00 <?Destroy@UnitEffectManager@@SAXXZ+0x90e0>	5
+interruption_493a61	0x00493D23	8a 85 ec fe ff ff	mov    al,BYTE PTR [ebp-0x114]	mov	al, byte ptr [ebp - 0x114]	6
+interruption_493a61	0x00493D29	83 ec 10	sub    esp,0x10	sub	esp, 0x10	3
+interruption_493a61	0x00493D2C	8b fc	mov    edi,esp	mov	edi, esp	2
+interruption_493a61	0x00493D2E	89 65 ec	mov    DWORD PTR [ebp-0x14],esp	mov	dword ptr [ebp - 0x14], esp	3
+interruption_493a61	0x00493D31	53	push   ebx	push	ebx	1
+interruption_493a61	0x00493D32	8b cf	mov    ecx,edi	mov	ecx, edi	2
+interruption_493a61	0x00493D34	88 07	mov    BYTE PTR [edi],al	mov	byte ptr [edi], al	2
+interruption_493a61	0x00493D36	ff 15 14 e5 4d 00	call   DWORD PTR ds:0x4de514	call	dword ptr [0x4de514]	6
+interruption_493a61	0x00493D3C	8b 0d ec e4 4d 00	mov    ecx,DWORD PTR ds:0x4de4ec	mov	ecx, dword ptr [0x4de4ec]	6
+interruption_493a61	0x00493D42	8b 11	mov    edx,DWORD PTR [ecx]	mov	edx, dword ptr [ecx]	2
+interruption_493a61	0x00493D44	52	push   edx	push	edx	1
+interruption_493a61	0x00493D45	53	push   ebx	push	ebx	1
+interruption_493a61	0x00493D46	8d 85 ec fe ff ff	lea    eax,[ebp-0x114]	lea	eax, [ebp - 0x114]	6
+interruption_493a61	0x00493D4C	50	push   eax	push	eax	1
+interruption_493a61	0x00493D4D	8b cf	mov    ecx,edi	mov	ecx, edi	2
+interruption_493a61	0x00493D4F	ff 15 fc e4 4d 00	call   DWORD PTR ds:0x4de4fc	call	dword ptr [0x4de4fc]	6
+interruption_493a61	0x00493D55	8d 8d 74 fe ff ff	lea    ecx,[ebp-0x18c]	lea	ecx, [ebp - 0x18c]	6
+interruption_493a61	0x00493D5B	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493D5C	8b 4d dc	mov    ecx,DWORD PTR [ebp-0x24]	mov	ecx, dword ptr [ebp - 0x24]	3
+interruption_493a61	0x00493D5F	e8 5c 9b 01 00	call   0x4ad8c0	call	0x4ad8c0 <?Destroy@UnitEffectManager@@SAXXZ+0x1cca0>	5
+interruption_493a61	0x00493D64	8b 15 ec e4 4d 00	mov    edx,DWORD PTR ds:0x4de4ec	mov	edx, dword ptr [0x4de4ec]	6
+interruption_493a61	0x00493D6A	8b 0a	mov    ecx,DWORD PTR [edx]	mov	ecx, dword ptr [edx]	2
+interruption_493a61	0x00493D6C	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493D6D	53	push   ebx	push	ebx	1
+interruption_493a61	0x00493D6E	50	push   eax	push	eax	1
+interruption_493a61	0x00493D6F	8d 8d ec fe ff ff	lea    ecx,[ebp-0x114]	lea	ecx, [ebp - 0x114]	6
+interruption_493a61	0x00493D75	c6 45 fc 05	mov    BYTE PTR [ebp-0x4],0x5	mov	byte ptr [ebp - 0x4], 0x5	4
+interruption_493a61	0x00493D79	ff 15 fc e4 4d 00	call   DWORD PTR ds:0x4de4fc	call	dword ptr [0x4de4fc]	6
+interruption_493a61	0x00493D7F	6a 01	push   0x1	push	0x1	2
+interruption_493a61	0x00493D81	8d 8d 74 fe ff ff	lea    ecx,[ebp-0x18c]	lea	ecx, [ebp - 0x18c]	6
+interruption_493a61	0x00493D87	c6 45 fc 04	mov    BYTE PTR [ebp-0x4],0x4	mov	byte ptr [ebp - 0x4], 0x4	4
+interruption_493a61	0x00493D8B	ff 15 14 e5 4d 00	call   DWORD PTR ds:0x4de514	call	dword ptr [0x4de514]	6
+interruption_493a61	0x00493D91	8d 55 08	lea    edx,[ebp+0x8]	lea	edx, [ebp + 0x8]	3
+interruption_493a61	0x00493D94	52	push   edx	push	edx	1
+interruption_493a61	0x00493D95	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493D97	e8 e4 5d 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493D9C	8b 45 08	mov    eax,DWORD PTR [ebp+0x8]	mov	eax, dword ptr [ebp + 0x8]	3
+interruption_493a61	0x00493D9F	33 ff	xor    edi,edi	xor	edi, edi	2
+interruption_493a61	0x00493DA1	3b c3	cmp    eax,ebx	cmp	eax, ebx	2
+interruption_493a61	0x00493DA3	0f 84 c4 00 00 00	je     0x493e6d	je	0x493e6d <?Destroy@UnitEffectManager@@SAXXZ+0x324d>	6
+interruption_493a61	0x00493DA9	8a 45 0f	mov    al,BYTE PTR [ebp+0xf]	mov	al, byte ptr [ebp + 0xf]	3
+interruption_493a61	0x00493DAC	53	push   ebx	push	ebx	1
+interruption_493a61	0x00493DAD	8d 4d ac	lea    ecx,[ebp-0x54]	lea	ecx, [ebp - 0x54]	3
+interruption_493a61	0x00493DB0	88 45 ac	mov    BYTE PTR [ebp-0x54],al	mov	byte ptr [ebp - 0x54], al	3
+interruption_493a61	0x00493DB3	ff 15 14 e5 4d 00	call   DWORD PTR ds:0x4de514	call	dword ptr [0x4de514]	6
+interruption_493a61	0x00493DB9	89 5d bc	mov    DWORD PTR [ebp-0x44],ebx	mov	dword ptr [ebp - 0x44], ebx	3
+interruption_493a61	0x00493DBC	89 5d c0	mov    DWORD PTR [ebp-0x40],ebx	mov	dword ptr [ebp - 0x40], ebx	3
+interruption_493a61	0x00493DBF	89 5d c4	mov    DWORD PTR [ebp-0x3c],ebx	mov	dword ptr [ebp - 0x3c], ebx	3
+interruption_493a61	0x00493DC2	89 5d c8	mov    DWORD PTR [ebp-0x38],ebx	mov	dword ptr [ebp - 0x38], ebx	3
+interruption_493a61	0x00493DC5	89 5d cc	mov    DWORD PTR [ebp-0x34],ebx	mov	dword ptr [ebp - 0x34], ebx	3
+interruption_493a61	0x00493DC8	8d 4d ac	lea    ecx,[ebp-0x54]	lea	ecx, [ebp - 0x54]	3
+interruption_493a61	0x00493DCB	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493DCC	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493DCE	c6 45 fc 06	mov    BYTE PTR [ebp-0x4],0x6	mov	byte ptr [ebp - 0x4], 0x6	4
+interruption_493a61	0x00493DD2	e8 e9 5d 00 00	call   0x499bc0	call	0x499bc0 <?Destroy@UnitEffectManager@@SAXXZ+0x8fa0>	5
+interruption_493a61	0x00493DD7	8d 55 bc	lea    edx,[ebp-0x44]	lea	edx, [ebp - 0x44]	3
+interruption_493a61	0x00493DDA	52	push   edx	push	edx	1
+interruption_493a61	0x00493DDB	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493DDD	e8 9e 5d 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493DE2	8d 45 c0	lea    eax,[ebp-0x40]	lea	eax, [ebp - 0x40]	3
+interruption_493a61	0x00493DE5	50	push   eax	push	eax	1
+interruption_493a61	0x00493DE6	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493DE8	e8 93 5d 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493DED	8d 4d c4	lea    ecx,[ebp-0x3c]	lea	ecx, [ebp - 0x3c]	3
+interruption_493a61	0x00493DF0	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493DF1	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493DF3	e8 88 5d 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493DF8	8d 55 c8	lea    edx,[ebp-0x38]	lea	edx, [ebp - 0x38]	3
+interruption_493a61	0x00493DFB	52	push   edx	push	edx	1
+interruption_493a61	0x00493DFC	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493DFE	e8 7d 5d 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493E03	8d 45 cc	lea    eax,[ebp-0x34]	lea	eax, [ebp - 0x34]	3
+interruption_493a61	0x00493E06	50	push   eax	push	eax	1
+interruption_493a61	0x00493E07	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493E09	e8 72 5d 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493E0E	8d 4d ac	lea    ecx,[ebp-0x54]	lea	ecx, [ebp - 0x54]	3
+interruption_493a61	0x00493E11	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493E12	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493E13	54	push   esp	push	esp	1
+interruption_493a61	0x00493E14	8d 8d a8 fe ff ff	lea    ecx,[ebp-0x158]	lea	ecx, [ebp - 0x158]	6
+interruption_493a61	0x00493E1A	e8 f1 13 00 00	call   0x495210	call	0x495210 <?Destroy@UnitEffectManager@@SAXXZ+0x45f0>	5
+interruption_493a61	0x00493E1F	8d 95 88 fe ff ff	lea    edx,[ebp-0x178]	lea	edx, [ebp - 0x178]	6
+interruption_493a61	0x00493E25	52	push   edx	push	edx	1
+interruption_493a61	0x00493E26	8d 8d a8 fe ff ff	lea    ecx,[ebp-0x158]	lea	ecx, [ebp - 0x158]	6
+interruption_493a61	0x00493E2C	e8 df 14 00 00	call   0x495310	call	0x495310 <?Destroy@UnitEffectManager@@SAXXZ+0x46f0>	5
+interruption_493a61	0x00493E31	8b 45 b0	mov    eax,DWORD PTR [ebp-0x50]	mov	eax, dword ptr [ebp - 0x50]	3
+interruption_493a61	0x00493E34	3b c3	cmp    eax,ebx	cmp	eax, ebx	2
+interruption_493a61	0x00493E36	c6 45 fc 04	mov    BYTE PTR [ebp-0x4],0x4	mov	byte ptr [ebp - 0x4], 0x4	4
+interruption_493a61	0x00493E3A	74 1c	je     0x493e58	je	0x493e58 <?Destroy@UnitEffectManager@@SAXXZ+0x3238>	2
+interruption_493a61	0x00493E3C	8d 48 ff	lea    ecx,[eax-0x1]	lea	ecx, [eax - 0x1]	3
+interruption_493a61	0x00493E3F	8a 01	mov    al,BYTE PTR [ecx]	mov	al, byte ptr [ecx]	2
+interruption_493a61	0x00493E41	3a c3	cmp    al,bl	cmp	al, bl	2
+interruption_493a61	0x00493E43	74 0a	je     0x493e4f	je	0x493e4f <?Destroy@UnitEffectManager@@SAXXZ+0x322f>	2
+interruption_493a61	0x00493E45	3c ff	cmp    al,0xff	cmp	al, -0x1	2
+interruption_493a61	0x00493E47	74 06	je     0x493e4f	je	0x493e4f <?Destroy@UnitEffectManager@@SAXXZ+0x322f>	2
+interruption_493a61	0x00493E49	fe c8	dec    al	dec	al	2
+interruption_493a61	0x00493E4B	88 01	mov    BYTE PTR [ecx],al	mov	byte ptr [ecx], al	2
+interruption_493a61	0x00493E4D	eb 09	jmp    0x493e58	jmp	0x493e58 <?Destroy@UnitEffectManager@@SAXXZ+0x3238>	2
+interruption_493a61	0x00493E4F	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493E50	e8 0b e2 fa ff	call   0x442060	call	0x442060 <??4SpellEffectManager@@QAEAAV0@ABV0@@Z+0x3fe0>	5
+interruption_493a61	0x00493E55	83 c4 04	add    esp,0x4	add	esp, 0x4	3
+interruption_493a61	0x00493E58	8b 45 08	mov    eax,DWORD PTR [ebp+0x8]	mov	eax, dword ptr [ebp + 0x8]	3
+interruption_493a61	0x00493E5B	47	inc    edi	inc	edi	1
+interruption_493a61	0x00493E5C	3b f8	cmp    edi,eax	cmp	edi, eax	2
+interruption_493a61	0x00493E5E	89 5d b0	mov    DWORD PTR [ebp-0x50],ebx	mov	dword ptr [ebp - 0x50], ebx	3
+interruption_493a61	0x00493E61	89 5d b4	mov    DWORD PTR [ebp-0x4c],ebx	mov	dword ptr [ebp - 0x4c], ebx	3
+interruption_493a61	0x00493E64	89 5d b8	mov    DWORD PTR [ebp-0x48],ebx	mov	dword ptr [ebp - 0x48], ebx	3
+interruption_493a61	0x00493E67	0f 85 3c ff ff ff	jne    0x493da9	jne	0x493da9 <?Destroy@UnitEffectManager@@SAXXZ+0x3189>	6
+interruption_493a61	0x00493E6D	8d 45 e4	lea    eax,[ebp-0x1c]	lea	eax, [ebp - 0x1c]	3
+interruption_493a61	0x00493E70	50	push   eax	push	eax	1
+interruption_493a61	0x00493E71	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493E73	e8 08 5d 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493E78	8b 45 e4	mov    eax,DWORD PTR [ebp-0x1c]	mov	eax, dword ptr [ebp - 0x1c]	3
+interruption_493a61	0x00493E7B	33 ff	xor    edi,edi	xor	edi, edi	2
+interruption_493a61	0x00493E7D	3b c3	cmp    eax,ebx	cmp	eax, ebx	2
+interruption_493a61	0x00493E7F	74 55	je     0x493ed6	je	0x493ed6 <?Destroy@UnitEffectManager@@SAXXZ+0x32b6>	2
+interruption_493a61	0x00493E81	8d 4d d0	lea    ecx,[ebp-0x30]	lea	ecx, [ebp - 0x30]	3
+interruption_493a61	0x00493E84	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493E85	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493E87	89 5d d0	mov    DWORD PTR [ebp-0x30],ebx	mov	dword ptr [ebp - 0x30], ebx	3
+interruption_493a61	0x00493E8A	89 5d d4	mov    DWORD PTR [ebp-0x2c],ebx	mov	dword ptr [ebp - 0x2c], ebx	3
+interruption_493a61	0x00493E8D	88 5d d8	mov    BYTE PTR [ebp-0x28],bl	mov	byte ptr [ebp - 0x28], bl	3
+interruption_493a61	0x00493E90	e8 eb 5c 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493E95	8d 55 d4	lea    edx,[ebp-0x2c]	lea	edx, [ebp - 0x2c]	3
+interruption_493a61	0x00493E98	52	push   edx	push	edx	1
+interruption_493a61	0x00493E99	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493E9B	e8 e0 5c 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493EA0	8d 45 d8	lea    eax,[ebp-0x28]	lea	eax, [ebp - 0x28]	3
+interruption_493a61	0x00493EA3	50	push   eax	push	eax	1
+interruption_493a61	0x00493EA4	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493EA6	e8 55 5e 00 00	call   0x499d00	call	0x499d00 <?Destroy@UnitEffectManager@@SAXXZ+0x90e0>	5
+interruption_493a61	0x00493EAB	8d 4d d0	lea    ecx,[ebp-0x30]	lea	ecx, [ebp - 0x30]	3
+interruption_493a61	0x00493EAE	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493EAF	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493EB0	54	push   esp	push	esp	1
+interruption_493a61	0x00493EB1	8d 8d c8 fe ff ff	lea    ecx,[ebp-0x138]	lea	ecx, [ebp - 0x138]	6
+interruption_493a61	0x00493EB7	e8 34 14 00 00	call   0x4952f0	call	0x4952f0 <?Destroy@UnitEffectManager@@SAXXZ+0x46d0>	5
+interruption_493a61	0x00493EBC	8d 95 90 fe ff ff	lea    edx,[ebp-0x170]	lea	edx, [ebp - 0x170]	6
+interruption_493a61	0x00493EC2	52	push   edx	push	edx	1
+interruption_493a61	0x00493EC3	8d 8d c8 fe ff ff	lea    ecx,[ebp-0x138]	lea	ecx, [ebp - 0x138]	6
+interruption_493a61	0x00493EC9	e8 52 16 00 00	call   0x495520	call	0x495520 <?Destroy@UnitEffectManager@@SAXXZ+0x4900>	5
+interruption_493a61	0x00493ECE	8b 45 e4	mov    eax,DWORD PTR [ebp-0x1c]	mov	eax, dword ptr [ebp - 0x1c]	3
+interruption_493a61	0x00493ED1	47	inc    edi	inc	edi	1
+interruption_493a61	0x00493ED2	3b f8	cmp    edi,eax	cmp	edi, eax	2
+interruption_493a61	0x00493ED4	75 ab	jne    0x493e81	jne	0x493e81 <?Destroy@UnitEffectManager@@SAXXZ+0x3261>	2
+interruption_493a61	0x00493ED6	8d 45 e8	lea    eax,[ebp-0x18]	lea	eax, [ebp - 0x18]	3
+interruption_493a61	0x00493ED9	50	push   eax	push	eax	1
+interruption_493a61	0x00493EDA	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493EDC	e8 9f 5c 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493EE1	8b 45 e8	mov    eax,DWORD PTR [ebp-0x18]	mov	eax, dword ptr [ebp - 0x18]	3
+interruption_493a61	0x00493EE4	33 ff	xor    edi,edi	xor	edi, edi	2
+interruption_493a61	0x00493EE6	3b c3	cmp    eax,ebx	cmp	eax, ebx	2
+interruption_493a61	0x00493EE8	74 64	je     0x493f4e	je	0x493f4e <?Destroy@UnitEffectManager@@SAXXZ+0x332e>	2
+interruption_493a61	0x00493EEA	8d 8d 94 fe ff ff	lea    ecx,[ebp-0x16c]	lea	ecx, [ebp - 0x16c]	6
+interruption_493a61	0x00493EF0	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493EF1	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493EF3	89 9d 94 fe ff ff	mov    DWORD PTR [ebp-0x16c],ebx	mov	dword ptr [ebp - 0x16c], ebx	6
+interruption_493a61	0x00493EF9	c7 85 9c fe ff ff 00 00 00 00	mov    DWORD PTR [ebp-0x164],0x0	mov	dword ptr [ebp - 0x164], 0x0	10
+interruption_493a61	0x00493F03	c7 85 a0 fe ff ff 00 00 00 00	mov    DWORD PTR [ebp-0x160],0x0	mov	dword ptr [ebp - 0x160], 0x0	10
+interruption_493a61	0x00493F0D	e8 6e 5c 00 00	call   0x499b80	call	0x499b80 <?Destroy@UnitEffectManager@@SAXXZ+0x8f60>	5
+interruption_493a61	0x00493F12	8d 95 9c fe ff ff	lea    edx,[ebp-0x164]	lea	edx, [ebp - 0x164]	6
+interruption_493a61	0x00493F18	52	push   edx	push	edx	1
+interruption_493a61	0x00493F19	8b ce	mov    ecx,esi	mov	ecx, esi	2
+interruption_493a61	0x00493F1B	e8 90 5e 00 00	call   0x499db0	call	0x499db0 <?Destroy@UnitEffectManager@@SAXXZ+0x9190>	5
+interruption_493a61	0x00493F20	8d 85 94 fe ff ff	lea    eax,[ebp-0x16c]	lea	eax, [ebp - 0x16c]	6
+interruption_493a61	0x00493F26	50	push   eax	push	eax	1
+interruption_493a61	0x00493F27	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493F28	54	push   esp	push	esp	1
+interruption_493a61	0x00493F29	8d 8d b8 fe ff ff	lea    ecx,[ebp-0x148]	lea	ecx, [ebp - 0x148]	6
+interruption_493a61	0x00493F2F	e8 4c 13 00 00	call   0x495280	call	0x495280 <?Destroy@UnitEffectManager@@SAXXZ+0x4660>	5
+interruption_493a61	0x00493F34	8d 8d 8c fe ff ff	lea    ecx,[ebp-0x174]	lea	ecx, [ebp - 0x174]	6
+interruption_493a61	0x00493F3A	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493F3B	8d 8d b8 fe ff ff	lea    ecx,[ebp-0x148]	lea	ecx, [ebp - 0x148]	6
+interruption_493a61	0x00493F41	e8 da 14 00 00	call   0x495420	call	0x495420 <?Destroy@UnitEffectManager@@SAXXZ+0x4800>	5
+interruption_493a61	0x00493F46	8b 45 e8	mov    eax,DWORD PTR [ebp-0x18]	mov	eax, dword ptr [ebp - 0x18]	3
+interruption_493a61	0x00493F49	47	inc    edi	inc	edi	1
+interruption_493a61	0x00493F4A	3b f8	cmp    edi,eax	cmp	edi, eax	2
+interruption_493a61	0x00493F4C	75 9c	jne    0x493eea	jne	0x493eea <?Destroy@UnitEffectManager@@SAXXZ+0x32ca>	2
+interruption_493a61	0x00493F4E	8b 45 dc	mov    eax,DWORD PTR [ebp-0x24]	mov	eax, dword ptr [ebp - 0x24]	3
+interruption_493a61	0x00493F51	8a 55 0c	mov    dl,BYTE PTR [ebp+0xc]	mov	dl, byte ptr [ebp + 0xc]	3
+interruption_493a61	0x00493F54	8d 8d a4 fe ff ff	lea    ecx,[ebp-0x15c]	lea	ecx, [ebp - 0x15c]	6
+interruption_493a61	0x00493F5A	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493F5B	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493F5C	8d 78 18	lea    edi,[eax+0x18]	lea	edi, [eax + 0x18]	3
+interruption_493a61	0x00493F5F	54	push   esp	push	esp	1
+interruption_493a61	0x00493F60	8b cf	mov    ecx,edi	mov	ecx, edi	2
+interruption_493a61	0x00493F62	88 95 a4 fe ff ff	mov    BYTE PTR [ebp-0x15c],dl	mov	byte ptr [ebp - 0x15c], dl	6
+interruption_493a61	0x00493F68	e8 93 13 00 00	call   0x495300	call	0x495300 <?Destroy@UnitEffectManager@@SAXXZ+0x46e0>	5
+interruption_493a61	0x00493F6D	8d 95 84 fe ff ff	lea    edx,[ebp-0x17c]	lea	edx, [ebp - 0x17c]	6
+interruption_493a61	0x00493F73	52	push   edx	push	edx	1
+interruption_493a61	0x00493F74	8b cf	mov    ecx,edi	mov	ecx, edi	2
+interruption_493a61	0x00493F76	e8 65 16 00 00	call   0x4955e0	call	0x4955e0 <?Destroy@UnitEffectManager@@SAXXZ+0x49c0>	5
+interruption_493a61	0x00493F7B	8b 85 f0 fe ff ff	mov    eax,DWORD PTR [ebp-0x110]	mov	eax, dword ptr [ebp - 0x110]	6
+interruption_493a61	0x00493F81	3b c3	cmp    eax,ebx	cmp	eax, ebx	2
+interruption_493a61	0x00493F83	c7 45 fc ff ff ff ff	mov    DWORD PTR [ebp-0x4],0xffffffff	mov	dword ptr [ebp - 0x4], 0xffffffff	7
+interruption_493a61	0x00493F8A	74 1c	je     0x493fa8	je	0x493fa8 <?Destroy@UnitEffectManager@@SAXXZ+0x3388>	2
+interruption_493a61	0x00493F8C	8d 48 ff	lea    ecx,[eax-0x1]	lea	ecx, [eax - 0x1]	3
+interruption_493a61	0x00493F8F	8a 01	mov    al,BYTE PTR [ecx]	mov	al, byte ptr [ecx]	2
+interruption_493a61	0x00493F91	3a c3	cmp    al,bl	cmp	al, bl	2
+interruption_493a61	0x00493F93	74 0a	je     0x493f9f	je	0x493f9f <?Destroy@UnitEffectManager@@SAXXZ+0x337f>	2
+interruption_493a61	0x00493F95	3c ff	cmp    al,0xff	cmp	al, -0x1	2
+interruption_493a61	0x00493F97	74 06	je     0x493f9f	je	0x493f9f <?Destroy@UnitEffectManager@@SAXXZ+0x337f>	2
+interruption_493a61	0x00493F99	fe c8	dec    al	dec	al	2
+interruption_493a61	0x00493F9B	88 01	mov    BYTE PTR [ecx],al	mov	byte ptr [ecx], al	2
+interruption_493a61	0x00493F9D	eb 09	jmp    0x493fa8	jmp	0x493fa8 <?Destroy@UnitEffectManager@@SAXXZ+0x3388>	2
+interruption_493a61	0x00493F9F	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493FA0	e8 bb e0 fa ff	call   0x442060	call	0x442060 <??4SpellEffectManager@@QAEAAV0@ABV0@@Z+0x3fe0>	5
+interruption_493a61	0x00493FA5	83 c4 04	add    esp,0x4	add	esp, 0x4	3
+interruption_493a61	0x00493FA8	8b 85 e0 fe ff ff	mov    eax,DWORD PTR [ebp-0x120]	mov	eax, dword ptr [ebp - 0x120]	6
+interruption_493a61	0x00493FAE	3b c3	cmp    eax,ebx	cmp	eax, ebx	2
+interruption_493a61	0x00493FB0	89 9d f0 fe ff ff	mov    DWORD PTR [ebp-0x110],ebx	mov	dword ptr [ebp - 0x110], ebx	6
+interruption_493a61	0x00493FB6	89 9d f4 fe ff ff	mov    DWORD PTR [ebp-0x10c],ebx	mov	dword ptr [ebp - 0x10c], ebx	6
+interruption_493a61	0x00493FBC	89 9d f8 fe ff ff	mov    DWORD PTR [ebp-0x108],ebx	mov	dword ptr [ebp - 0x108], ebx	6
+interruption_493a61	0x00493FC2	74 1c	je     0x493fe0	je	0x493fe0 <?Destroy@UnitEffectManager@@SAXXZ+0x33c0>	2
+interruption_493a61	0x00493FC4	8d 48 ff	lea    ecx,[eax-0x1]	lea	ecx, [eax - 0x1]	3
+interruption_493a61	0x00493FC7	8a 01	mov    al,BYTE PTR [ecx]	mov	al, byte ptr [ecx]	2
+interruption_493a61	0x00493FC9	3a c3	cmp    al,bl	cmp	al, bl	2
+interruption_493a61	0x00493FCB	74 0a	je     0x493fd7	je	0x493fd7 <?Destroy@UnitEffectManager@@SAXXZ+0x33b7>	2
+interruption_493a61	0x00493FCD	3c ff	cmp    al,0xff	cmp	al, -0x1	2
+interruption_493a61	0x00493FCF	74 06	je     0x493fd7	je	0x493fd7 <?Destroy@UnitEffectManager@@SAXXZ+0x33b7>	2
+interruption_493a61	0x00493FD1	fe c8	dec    al	dec	al	2
+interruption_493a61	0x00493FD3	88 01	mov    BYTE PTR [ecx],al	mov	byte ptr [ecx], al	2
+interruption_493a61	0x00493FD5	eb 09	jmp    0x493fe0	jmp	0x493fe0 <?Destroy@UnitEffectManager@@SAXXZ+0x33c0>	2
+interruption_493a61	0x00493FD7	51	push   ecx	push	ecx	1
+interruption_493a61	0x00493FD8	e8 83 e0 fa ff	call   0x442060	call	0x442060 <??4SpellEffectManager@@QAEAAV0@ABV0@@Z+0x3fe0>	5
+interruption_493a61	0x00493FDD	83 c4 04	add    esp,0x4	add	esp, 0x4	3
+interruption_493a61	0x00493FE0	8b 85 cc fe ff ff	mov    eax,DWORD PTR [ebp-0x134]	mov	eax, dword ptr [ebp - 0x134]	6
+interruption_493a61	0x00493FE6	3b c3	cmp    eax,ebx	cmp	eax, ebx	2
+interruption_493a61	0x00493FE8	89 9d e0 fe ff ff	mov    DWORD PTR [ebp-0x120],ebx	mov	dword ptr [ebp - 0x120], ebx	6
+interruption_493a61	0x00493FEE	89 9d e4 fe ff ff	mov    DWORD PTR [ebp-0x11c],ebx	mov	dword ptr [ebp - 0x11c], ebx	6
+interruption_493a61	0x00493FF4	89 9d e8 fe ff ff	mov    DWORD PTR [ebp-0x118],ebx	mov	dword ptr [ebp - 0x118], ebx	6
+interruption_493a61	0x00493FFA	74 09	je     0x494005	je	0x494005 <?Destroy@UnitEffectManager@@SAXXZ+0x33e5>	2
+interruption_493a61	0x00493FFC	50	push   eax	push	eax	1
+interruption_493a61	0x00493FFD	e8 5e e0 fa ff	call   0x442060	call	0x442060 <??4SpellEffectManager@@QAEAAV0@ABV0@@Z+0x3fe0>	5
+interruption_493a61	0x00494002	83 c4 04	add    esp,0x4	add	esp, 0x4	3
+interruption_493a61	0x00494005	8b 85 bc fe ff ff	mov    eax,DWORD PTR [ebp-0x144]	mov	eax, dword ptr [ebp - 0x144]	6
+interruption_493a61	0x0049400B	3b c3	cmp    eax,ebx	cmp	eax, ebx	2
+interruption_493a61	0x0049400D	89 9d cc fe ff ff	mov    DWORD PTR [ebp-0x134],ebx	mov	dword ptr [ebp - 0x134], ebx	6
+interruption_493a61	0x00494013	89 9d d0 fe ff ff	mov    DWORD PTR [ebp-0x130],ebx	mov	dword ptr [ebp - 0x130], ebx	6
+interruption_493a61	0x00494019	89 9d d4 fe ff ff	mov    DWORD PTR [ebp-0x12c],ebx	mov	dword ptr [ebp - 0x12c], ebx	6
+interruption_493a61	0x0049401F	74 09	je     0x49402a	je	0x49402a <?Destroy@UnitEffectManager@@SAXXZ+0x340a>	2
+interruption_493a61	0x00494021	50	push   eax	push	eax	1
+interruption_493a61	0x00494022	e8 39 e0 fa ff	call   0x442060	call	0x442060 <??4SpellEffectManager@@QAEAAV0@ABV0@@Z+0x3fe0>	5
+interruption_493a61	0x00494027	83 c4 04	add    esp,0x4	add	esp, 0x4	3
+interruption_493a61	0x0049402A	8b bd ac fe ff ff	mov    edi,DWORD PTR [ebp-0x154]	mov	edi, dword ptr [ebp - 0x154]	6
+interruption_493a61	0x00494030	3b fb	cmp    edi,ebx	cmp	edi, ebx	2
+interruption_493a61	0x00494032	89 9d bc fe ff ff	mov    DWORD PTR [ebp-0x144],ebx	mov	dword ptr [ebp - 0x144], ebx	6
+interruption_493a61	0x00494038	89 9d c0 fe ff ff	mov    DWORD PTR [ebp-0x140],ebx	mov	dword ptr [ebp - 0x140], ebx	6
+interruption_493a61	0x0049403E	89 9d c4 fe ff ff	mov    DWORD PTR [ebp-0x13c],ebx	mov	dword ptr [ebp - 0x13c], ebx	6
+interruption_493a61	0x00494044	74 2e	je     0x494074	je	0x494074 <?Destroy@UnitEffectManager@@SAXXZ+0x3454>	2
+interruption_493a61	0x00494046	8b 85 b0 fe ff ff	mov    eax,DWORD PTR [ebp-0x150]	mov	eax, dword ptr [ebp - 0x150]	6
+interruption_493a61	0x0049404C	3b f8	cmp    edi,eax	cmp	edi, eax	2
+interruption_493a61	0x0049404E	89 45 ec	mov    DWORD PTR [ebp-0x14],eax	mov	dword ptr [ebp - 0x14], eax	3
+interruption_493a61	0x00494051	74 18	je     0x49406b	je	0x49406b <?Destroy@UnitEffectManager@@SAXXZ+0x344b>	2
+interruption_493a61	0x00494053	53	push   ebx	push	ebx	1
+interruption_493a61	0x00494054	8b cf	mov    ecx,edi	mov	ecx, edi	2
+interruption_493a61	0x00494056	e8 85 4a 00 00	call   0x498ae0	call	0x498ae0 <?Destroy@UnitEffectManager@@SAXXZ+0x7ec0>	5
+interruption_493a61	0x0049405B	8b 45 ec	mov    eax,DWORD PTR [ebp-0x14]	mov	eax, dword ptr [ebp - 0x14]	3
+interruption_493a61	0x0049405E	83 c7 24	add    edi,0x24	add	edi, 0x24	3
+interruption_493a61	0x00494061	3b f8	cmp    edi,eax	cmp	edi, eax	2
+interruption_493a61	0x00494063	75 ee	jne    0x494053	jne	0x494053 <?Destroy@UnitEffectManager@@SAXXZ+0x3433>	2
+interruption_493a61	0x00494065	8b bd ac fe ff ff	mov    edi,DWORD PTR [ebp-0x154]	mov	edi, dword ptr [ebp - 0x154]	6
+interruption_493a61	0x0049406B	57	push   edi	push	edi	1
+interruption_493a61	0x0049406C	e8 ef df fa ff	call   0x442060	call	0x442060 <??4SpellEffectManager@@QAEAAV0@ABV0@@Z+0x3fe0>	5
+interruption_493a61	0x00494071	83 c4 04	add    esp,0x4	add	esp, 0x4	3
+interruption_493a61	0x00494074	8b 45 e0	mov    eax,DWORD PTR [ebp-0x20]	mov	eax, dword ptr [ebp - 0x20]	3
+interruption_493a61	0x00494077	8b 4d f0	mov    ecx,DWORD PTR [ebp-0x10]	mov	ecx, dword ptr [ebp - 0x10]	3
+interruption_493a61	0x0049407A	40	inc    eax	inc	eax	1
+interruption_493a61	0x0049407B	3b c1	cmp    eax,ecx	cmp	eax, ecx	2
+interruption_493a61	0x0049407D	89 9d ac fe ff ff	mov    DWORD PTR [ebp-0x154],ebx	mov	dword ptr [ebp - 0x154], ebx	6
+interruption_493a61	0x00494083	89 9d b0 fe ff ff	mov    DWORD PTR [ebp-0x150],ebx	mov	dword ptr [ebp - 0x150], ebx	6
+interruption_493a61	0x00494089	89 9d b4 fe ff ff	mov    DWORD PTR [ebp-0x14c],ebx	mov	dword ptr [ebp - 0x14c], ebx	6
+interruption_493a61	0x0049408F	89 45 e0	mov    DWORD PTR [ebp-0x20],eax	mov	dword ptr [ebp - 0x20], eax	3
+interruption_493a61	0x00494092	0f 85 dd f8 ff ff	jne    0x493975	jne	0x493975 <?Destroy@UnitEffectManager@@SAXXZ+0x2d55>	6
+interruption_493a61	0x00494098	8b 4d f4	mov    ecx,DWORD PTR [ebp-0xc]	mov	ecx, dword ptr [ebp - 0xc]	0
+interruption_493a61	0x0049409B	5f	pop    edi	pop	edi	0
+interruption_493a61	0x0049409C	5e	pop    esi	pop	esi	0
+interruption_493a61	0x0049409D	64 89 0d 00 00 00 00	mov    DWORD PTR fs:0x0,ecx	mov	dword ptr fs:[0x0], ecx	0
+interruption_493a61	0x004940A4	5b	pop    ebx	pop	ebx	0
+interruption_493a61	0x004940A5	8b e5	mov    esp,ebp	mov	esp, ebp	0
+interruption_493a61	0x004940A7	5d	pop    ebp	pop	ebp	0
+interruption_493a61	0x004940A8	c2 08 00	ret    0x8	ret	0x8	0

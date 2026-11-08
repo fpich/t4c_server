@@ -1,0 +1,7 @@
+adresse	motif_exclusion
+0x00413060	source historique partielle : l instruction effective à 0x41305F occupe plusieurs octets; frontière masquée non fiable
+0x0044F5CC	frontière au milieu du `mov [esi+0x20], eax` commençant à 0x44F5CA
+0x004D2A30	table de pointeurs de saut après retour; pas de code séquentiel
+0x004BAA8B	fin de routine puis alignement et fonction isolée 0x4BAA90; origine non démontrée
+0x004C2D55	alignement NOP après retour; nouvelle entrée candidate non justifiée
+0x0041E9E0	table de pointeurs déjà identifiée historiquement, exclue

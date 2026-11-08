@@ -1,0 +1,10 @@
+mecanisme	adresse_point_cle	entree	operation	statut	limite
+chargement_WDA	0x475A30	T4C Edit.WDA / T4C Worlds.WDA	0x475DDF -> 0x473610	CONFIRME	La routine de chargement contient les fichiers WDA et appelle la preparation; un chemin de lecture precis de chaque sous-table necessite investigation
+preparation_sort	0x473729	WORD source+0x24	definition+0x00	CONFIRME	Identifiant lu sur 16 bits
+preparation_compteur	0x473878	DWORD source+0x24	definition+0x3AC = value*1000 modulo 2^32	CONFIRME	Lacune: nature des 16 bits superieurs du DWORD
+registre_fabriques	0x460BD0	WORD de famille	14 enregistrements directs tous uniques	CONFIRME	Ni appels indirects ni chargements externes exclus
+rechargement_differe	0x48EA86	GetEffectProc(cle DWORD)	callback(code 0x18) en 0x48EB2C	CONFIRME	Cette famille d appels utilise code 0x18 pour reprise; pas universel
+retrait_effet	0x48C9BD	Unit::RemoveEffect	callback(code 9) avant deverrouillage 0x48CAC1	CONFIRME	Effet du rappel dans le meme verrou non etabli pour toutes implementions de verrou
+retirer_depuis_callback	0x4C7AB2	Callback 0x4C7990 (code 0x1B)	Unit::RemoveEffect	CONFIRME	Un chemin interne de retrait effectif
+notification_globale	0x48D088	Unit::SendGlobalEffectMessage	callbacks apres deverrouillage	CONFIRME	References temporaires non copieces profondement
+fin_timer	0x48D5C0	Unit::VerifyTimers	callbacks 5 puis 9 apres transfert	CONFIRME	Ordre et destruction deja documentes passes 32 a 37

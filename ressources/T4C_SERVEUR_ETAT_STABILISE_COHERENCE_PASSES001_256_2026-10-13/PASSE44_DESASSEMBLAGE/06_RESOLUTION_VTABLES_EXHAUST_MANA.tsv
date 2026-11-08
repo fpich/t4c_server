@@ -1,0 +1,25 @@
+classe	vtable	slot	cible	nom_export_Msvc	preuve
+Unit	0x4df658	0x70	0x48b9c0	?GetExhaust@Unit@@UAE?AU_EXHAUST@@XZ	pointer DWORD lu dans .rdata du PE; export MSVC quand present
+Unit	0x4df658	0x74	0x48b9f0	?SetExhaust@Unit@@UAEXU_EXHAUST@@@Z	pointer DWORD lu dans .rdata du PE; export MSVC quand present
+Unit	0x4df658	0x78	0x48f6a0	?DealExhaust@Unit@@UAEXKKK@Z	pointer DWORD lu dans .rdata du PE; export MSVC quand present
+Unit	0x4df658	0xe0	0x48be10	?GetMaxMana@Unit@@UAEGXZ	pointer DWORD lu dans .rdata du PE; export MSVC quand present
+Unit	0x4df658	0xec	0x48be60	?GetMana@Unit@@UAEGXZ	pointer DWORD lu dans .rdata du PE; export MSVC quand present
+Unit	0x4df658	0xf0	0x48be70	?SetMana@Unit@@UAEXGH@Z	pointer DWORD lu dans .rdata du PE; export MSVC quand present
+Character	0x4de68c	0x70	0x41dad0	?GetExhaust@Character@@UAE?AU_EXHAUST@@XZ	pointer DWORD lu dans .rdata du PE; export MSVC quand present
+Character	0x4de68c	0x74	0x41db00	?SetExhaust@Character@@UAEXU_EXHAUST@@@Z	pointer DWORD lu dans .rdata du PE; export MSVC quand present
+Character	0x4de68c	0x78	0x48f6a0	?DealExhaust@Unit@@UAEXKKK@Z	pointer DWORD lu dans .rdata du PE; export MSVC quand present
+Character	0x4de68c	0xe0	0x48be10	?GetMaxMana@Unit@@UAEGXZ	pointer DWORD lu dans .rdata du PE; export MSVC quand present
+Character	0x4de68c	0xec	0x41d7b0	?GetMana@Character@@UAEGXZ	pointer DWORD lu dans .rdata du PE; export MSVC quand present
+Character	0x4de68c	0xf0	0x41d7c0	?SetMana@Character@@UAEXGH@Z	pointer DWORD lu dans .rdata du PE; export MSVC quand present
+Creatures	0x4debb0	0x70	0x432990	?GetExhaust@Creatures@@UAE?AU_EXHAUST@@XZ	pointer DWORD lu dans .rdata du PE; export MSVC quand present
+Creatures	0x4debb0	0x74	0x4329c0	?SetExhaust@Creatures@@UAEXU_EXHAUST@@@Z	pointer DWORD lu dans .rdata du PE; export MSVC quand present
+Creatures	0x4debb0	0x78	0x48f6a0	?DealExhaust@Unit@@UAEXKKK@Z	pointer DWORD lu dans .rdata du PE; export MSVC quand present
+Creatures	0x4debb0	0xe0	0x48be10	?GetMaxMana@Unit@@UAEGXZ	pointer DWORD lu dans .rdata du PE; export MSVC quand present
+Creatures	0x4debb0	0xec	0x432b20	?GetMana@Creatures@@UAEGXZ	pointer DWORD lu dans .rdata du PE; export MSVC quand present
+Creatures	0x4debb0	0xf0	0x48be70	?SetMana@Unit@@UAEXGH@Z	pointer DWORD lu dans .rdata du PE; export MSVC quand present
+Objects	0x4df1e0	0x70	0x48b9c0	?GetExhaust@Unit@@UAE?AU_EXHAUST@@XZ	pointer DWORD lu dans .rdata du PE; export MSVC quand present
+Objects	0x4df1e0	0x74	0x48b9f0	?SetExhaust@Unit@@UAEXU_EXHAUST@@@Z	pointer DWORD lu dans .rdata du PE; export MSVC quand present
+Objects	0x4df1e0	0x78	0x48f6a0	?DealExhaust@Unit@@UAEXKKK@Z	pointer DWORD lu dans .rdata du PE; export MSVC quand present
+Objects	0x4df1e0	0xe0	0x48be10	?GetMaxMana@Unit@@UAEGXZ	pointer DWORD lu dans .rdata du PE; export MSVC quand present
+Objects	0x4df1e0	0xec	0x48be60	?GetMana@Unit@@UAEGXZ	pointer DWORD lu dans .rdata du PE; export MSVC quand present
+Objects	0x4df1e0	0xf0	0x48be70	?SetMana@Unit@@UAEXGH@Z	pointer DWORD lu dans .rdata du PE; export MSVC quand present

@@ -1,0 +1,21 @@
+adresse	octets_pe	taille	gnu	llvm	provenance
+0x0048D920	8b ce	2	mov    ecx,esi	"mov	ecx, esi"	source
+0x0048D922	50	1	push   eax	"push	eax"	0x48d920+2
+0x0048D923	8d 45 10	3	lea    eax,[ebp+0x10]	"lea	eax, [ebp + 0x10]"	0x48d922+1
+0x0048D926	50	1	push   eax	"push	eax"	0x48d923+3
+0x0048D927	ff 57 48	3	call   DWORD PTR [edi+0x48]	"call	dword ptr [edi + 0x48]"	0x48d926+1
+0x0048D92A	8b 00	2	mov    eax,DWORD PTR [eax]	"mov	eax, dword ptr [eax]"	0x48d927+3
+0x0048D92C	8b 4d 08	3	mov    ecx,DWORD PTR [ebp+0x8]	"mov	ecx, dword ptr [ebp + 0x8]"	0x48d92a+2
+0x0048D92F	8b 55 0c	3	mov    edx,DWORD PTR [ebp+0xc]	"mov	edx, dword ptr [ebp + 0xc]"	0x48d92c+3
+0x0048D932	50	1	push   eax	"push	eax"	0x48d92f+3
+0x0048D933	51	1	push   ecx	"push	ecx"	0x48d932+1
+0x0048D934	81 e2 ff ff 00 00	6	and    edx,0xffff	"and	edx, 0xffff"	0x48d933+1
+0x0048D93A	52	1	push   edx	"push	edx"	0x48d934+6
+0x0048D93B	68 74 de 50 00	5	push   0x50de74	"push	0x50de74"	0x48d93a+1
+0x0048D940	68 00 02 00 00	5	push   0x200	"push	0x200"	0x48d93b+5
+0x0048D945	c7 45 fc 01 00 00 00	7	mov    DWORD PTR [ebp-0x4],0x1	"mov	dword ptr [ebp - 0x4], 0x1"	0x48d940+5
+0x0048D94C	e8 ef 43 fe ff	5	call   0x471d40	"call	0x471d40 <?DebugLog@CT4CLog@@SAXGPBDZZ>"	0x48d945+7
+0x0048D951	83 c4 14	3	add    esp,0x14	"add	esp, 0x14"	0x48d94c+5
+0x0048D954	8d 4d 10	3	lea    ecx,[ebp+0x10]	"lea	ecx, [ebp + 0x10]"	0x48d951+3
+0x0048D957	c7 45 fc ff ff ff ff	7	mov    DWORD PTR [ebp-0x4],0xffffffff	"mov	dword ptr [ebp - 0x4], 0xffffffff"	0x48d954+3
+0x0048D95E	e8 dd 40 04 00	5	call   0x4d1a40	"call	0x4d1a40 <ExpFltr_end+0x410>"	0x48d957+7

@@ -1,0 +1,13 @@
+etat	vers	fonclet	objet	cible	conclusion
+0	-1	0x4D7770	[EBP-0x78], cinq éléments de 4 octets	0x4D1B90, callback 0x4D1A40	Nettoyage du tableau via 5 invocations inverses
+1	0	0x4D7783	[EBP-0x10]	0x4D1A40	MFC42.DLL ordinal 800, destructeur candidat, classe exacte inconnue
+2	1	0x4D778B	[EBP-0x2C]	0x4D1A40	MFC42.DLL ordinal 800, destructeur candidat, classe exacte inconnue
+3	2	0x4D7793	[EBP-0x30]	0x4D1A40	MFC42.DLL ordinal 800, destructeur candidat, classe exacte inconnue
+4	3	0x4D779B	[EBP+0x10]	0x4D1A40	MFC42.DLL ordinal 800, destructeur candidat, classe exacte inconnue
+5	3	0x4D77A3	[EBP-0x3C]	0x45D450	Arbre var, nettoyage exceptionnel établi en passe 67
+6	5	0x4D77AB	[EBP-0x1C]	0x45DC10	Liste temporaire
+7	6	0x4D77B3	[EBP-0xC4]	IAT 0x4DE4F0	std::basic_string<char>
+8	7	0x4D77BF	[EBP-0x94]	IAT 0x4DE4F0	std::basic_string<char>
+9	6	0x4D77CB	[EBP-0xA4]	IAT 0x4DE4F0	std::basic_string<char>
+10	9	0x4D77D7	[EBP-0xB4]	IAT 0x4DE4F0	std::basic_string<char>
+11	6	0x4D77E3	[EBP-0x28]	0x45E1D0	Liste temporaire avec chaînes

@@ -1,0 +1,3 @@
+Adresse	Indice	Toujours_hors_masque
+0x0043EF10	Prologue après sept NOP, aucun CALL direct trouvé	True
+0x004B9CE0	Prologue après dix NOP, aucun CALL direct trouvé	True

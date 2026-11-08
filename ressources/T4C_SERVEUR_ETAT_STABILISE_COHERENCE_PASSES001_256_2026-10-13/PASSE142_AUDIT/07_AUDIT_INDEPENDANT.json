@@ -1,0 +1,27 @@
+{
+  "source_archive": "T4C_SERVEUR_PASSES131_136_REAUDIT_STRUCTUREL_2026-10-10.zip",
+  "archives_historiques_preservees": 1360,
+  "sha256_binaire_original": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "octets_texte": 905117,
+  "precedent": 809620,
+  "nouveaux": 18,
+  "total": 809638,
+  "couverture_pct": 89.451198,
+  "instructions_ajoutees": 4,
+  "octets_donnees_reintroduits": 0,
+  "test_masque_non_redondance": true,
+  "comparaison_octets_PE": true,
+  "deux_decodeurs": true,
+  "maxstate": 2,
+  "funcinfo_reference": "0x004F0C30",
+  "fonctions_candidates_non_ajoutees": [
+    "0x0043EF10",
+    "0x004BAA90"
+  ],
+  "descripteurs_exception_candidates": 788,
+  "limites": [
+    "Plusieurs fonctions isolées n’ont pas de référence de contrôle suffisante.",
+    "Les données de la section .text ne sont pas toutes connues.",
+    "La couverture antérieure aux passes 131-136 est conservée et non ré-auditée exhaustivement à cette passe."
+  ]
+}

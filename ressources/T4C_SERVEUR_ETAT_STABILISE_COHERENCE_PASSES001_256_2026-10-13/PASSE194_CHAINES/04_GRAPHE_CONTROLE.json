@@ -1,0 +1,62 @@
+[
+  {
+    "name": "string_49f4ae",
+    "window": [
+      "0x49f490",
+      "0x49f6f0"
+    ],
+    "seeds": [
+      "0x49f490"
+    ],
+    "visited_count": 197,
+    "double_verified_instructions": 197,
+    "new_bytes": 448,
+    "new_spans": [
+      [
+        "0x49f4b0",
+        "0x49f670",
+        448
+      ]
+    ],
+    "covered_instructions_bytes": 160,
+    "branches": 17,
+    "errors": [],
+    "start_conflicts": [
+      [
+        "0x49f4ae",
+        "ff",
+        "ff1500e54d00"
+      ]
+    ]
+  },
+  {
+    "name": "string_49f728",
+    "window": [
+      "0x49f710",
+      "0x49f9c0"
+    ],
+    "seeds": [
+      "0x49f710"
+    ],
+    "visited_count": 216,
+    "double_verified_instructions": 216,
+    "new_bytes": 367,
+    "new_spans": [
+      [
+        "0x49f72a",
+        "0x49f899",
+        367
+      ]
+    ],
+    "covered_instructions_bytes": 321,
+    "branches": 17,
+    "errors": [],
+    "start_conflicts": [
+      [
+        "0x49f728",
+        "ff",
+        "ff15f4e44d00"
+      ]
+    ]
+  }
+]

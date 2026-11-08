@@ -1,0 +1,23 @@
+{
+  "passe": 103,
+  "theme": "RELOC_RDATA",
+  "description": "Relocations HIGHLOW de .rdata ciblant le code — groupe 2",
+  "sha256_binaire": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "base_text": "0x401000",
+  "taille_text": 905117,
+  "octets_avant": 536826,
+  "octets_nouveaux": 10990,
+  "octets_cumules": 547816,
+  "couverture_pourcent": 60.52433,
+  "entrees_examinees": 1111,
+  "instructions_documentees": 2645,
+  "octets_distincts_dans_preuves": 10990,
+  "nombre_intervalles_nouveaux": 173,
+  "appels_directs": 102,
+  "sauts_indirects": 59,
+  "cibles_hors_fenetre": 950,
+  "instructions_rejetees_conflit": 0,
+  "branches_incompletes": 1009,
+  "duree_s": 0.05,
+  "methode": "Parcours CFG local depuis cibles de relocations PE et appels directs, x86 objdump et octets PE controles. Limites des fonctions heuristiques; cibles indirectes non resolues; dedoublonnage bitset."
+}

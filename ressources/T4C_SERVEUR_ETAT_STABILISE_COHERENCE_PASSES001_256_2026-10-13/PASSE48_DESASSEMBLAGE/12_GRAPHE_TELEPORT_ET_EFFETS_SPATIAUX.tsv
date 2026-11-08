@@ -1,0 +1,8 @@
+source	adresse_appel	destination	condition_observee	preuve
+WorldMap::add_effect	0x4B03AF	AreaSensitiveEffect::AreaSensitiveEffect (0x405C60)	Allocation et construction	05B
+WorldMap::QueryEffects	0x4B052E	AreaSensitiveEffect::QueryEffect (0x405D00)	Entrée active dans bloc 0x44	05B
+AreaSensitiveEffect::QueryEffect	0x405D14	AreaSensitiveEffect::Execute (0x405D30)	Position dans plage	05
+AreaSensitiveEffect::Execute	0x405D45	Unit::GetType (0x48B670)	Code effet 0xA001	05
+AreaSensitiveEffect::Execute	0x405D69	Unit::Teleport (vtable+0x10C)	Type unite ==1	05 et 06
+Unit::Teleport	0x48BF1E	Service de journalisation 0x471D10	Branche conditionnelle	05B
+Unit::Teleport	0x48C092	SendPlayerMessage (vtable+0x14C)	Branche type de cible 1	05B et 06

@@ -1,0 +1,13 @@
+{
+  "original_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "source_asm_txt_files_with_verified_lines": 246,
+  "verified_unique_instruction_starts": 280062,
+  "rejected_or_incomplete_evidence_lines": 1649,
+  "direct_branch_instructions_decoded": 45869,
+  "direct_targets_outside_code_mask": 18,
+  "indirect_FF_instructions_at_verified_starts": 8347,
+  "new_code_bytes": 0,
+  "classified_bytes": 850738,
+  "unknown_bytes": 54379,
+  "limitations": "Exact match of archived instruction bytes; only canonical unprefixed branch opcodes handled; unverified indirect destinations remain unresolved."
+}

@@ -1,0 +1,7 @@
+adresse	observation	statut
+0x45BA83	mov [esi+0x20],edx	confirme
+0x45BA8B	mov [esi+0x24],eax	confirme
+0x45CB0D	constructeur 0x45E8A0 sur EBP-0x3C	confirme
+0x45CF90	appel 0x45E3D0 sur EBP-0x3C	confirme
+0x45D0ED	appel 0x45E3D0 sur EBP-0x3C	confirme
+0x4D77EB	metadonnees SEH a interpreter	ouvert

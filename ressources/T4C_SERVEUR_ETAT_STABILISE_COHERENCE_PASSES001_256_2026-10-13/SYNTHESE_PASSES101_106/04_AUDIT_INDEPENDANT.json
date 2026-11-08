@@ -1,0 +1,77 @@
+{
+  "exe_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "mask_reference_octets": 496937,
+  "novel_bytes_count": 184360,
+  "mask_final_octets": 681297,
+  "mask_final_pct": 75.271705,
+  "disjoint_and_exact_union": true,
+  "proof_bytes_match_original_PE": true,
+  "intervals_masks_equal": true,
+  "new_bytes_all_proved": true,
+  "relocation_provenance_verified": 7630,
+  "objdump_resample_count": 32,
+  "previous_known_claim_collisions": 0,
+  "new_vs_existing_boundary_overlap_count": 0,
+  "boundary_overlap_examples": [],
+  "passes": [
+    {
+      "passe": 101,
+      "octets_nouveaux": 4379,
+      "total": 501316,
+      "instructions": 1257,
+      "entrees": 198,
+      "alertes": 0,
+      "rejets_conflit": 0
+    },
+    {
+      "passe": 102,
+      "octets_nouveaux": 35510,
+      "total": 536826,
+      "instructions": 15605,
+      "entrees": 1111,
+      "alertes": 807,
+      "rejets_conflit": 0
+    },
+    {
+      "passe": 103,
+      "octets_nouveaux": 10990,
+      "total": 547816,
+      "instructions": 2645,
+      "entrees": 1111,
+      "alertes": 1009,
+      "rejets_conflit": 0
+    },
+    {
+      "passe": 104,
+      "octets_nouveaux": 11047,
+      "total": 558863,
+      "instructions": 2858,
+      "entrees": 1110,
+      "alertes": 985,
+      "rejets_conflit": 0
+    },
+    {
+      "passe": 105,
+      "octets_nouveaux": 21295,
+      "total": 580158,
+      "instructions": 7991,
+      "entrees": 332,
+      "alertes": 143,
+      "rejets_conflit": 0
+    },
+    {
+      "passe": 106,
+      "octets_nouveaux": 101139,
+      "total": 681297,
+      "instructions": 34039,
+      "entrees": 1495,
+      "alertes": 1212,
+      "rejets_conflit": 0
+    }
+  ],
+  "caveats": [
+    "Ce contrôle vérifie les octets et limites de chaque instruction de l’échantillon ; pas la totalité de la pertinence sémantique des cibles.",
+    "Les relocations de .text peuvent cibler des blocs internes, pas uniquement des entrées de fonction.",
+    "Les chemins indirects et les exceptions restent incomplets."
+  ]
+}

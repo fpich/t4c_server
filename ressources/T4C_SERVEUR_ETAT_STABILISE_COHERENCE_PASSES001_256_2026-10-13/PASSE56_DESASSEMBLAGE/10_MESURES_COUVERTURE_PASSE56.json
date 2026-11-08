@@ -1,0 +1,59 @@
+{
+  "passe": 56,
+  "archive_base": "T4C_SERVEUR_PASSE55_DESASSEMBLAGE_PUR_2026-10-09.zip",
+  "source_executable": "T4C Server(1).exe",
+  "sha256_executable": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "section_text_start_va": "0x00401000",
+  "section_text_octets": 905117,
+  "couverture_brute_ancienne_octets": 123365,
+  "couverture_publiee_passe55": 123248,
+  "ecart_recalcul_archives_passe55_octets": 117,
+  "couverture_brute_nouvelle_octets": 124846,
+  "gain_unique_octets": 1481,
+  "couverture_brute_pct": 13.793355,
+  "ecart_historique_octets_non_reconcilie": 91,
+  "mesure_historique_prolongee_octets": 124729,
+  "mesure_historique_prolongee_pct": 13.780428,
+  "mesure_prudente_octets": 124638,
+  "mesure_prudente_pct": 13.770374,
+  "instructions_nouvelles_preuves": 712,
+  "instructions_rejetees_dans_nouvelles_preuves": 0,
+  "instructions_historiques_non_correspondantes_exclues": 536,
+  "preuves_par_fichier": {
+    "02_PREUVES_DISPATCH_ECRITURES_VAR.asm": 203,
+    "03_PREUVES_ARBRE_CLE_ET_LECTURE.asm": 218,
+    "04_PREUVES_ALLOCATEUR_NETTOYAGE.asm": 139,
+    "05_PREUVES_STRUCTURES_ET_CONTEXTE.asm": 152
+  },
+  "detail_unites": [
+    {
+      "fichier": "02_PREUVES_DISPATCH_ECRITURES_VAR.asm",
+      "lignes_instruction": 203,
+      "octets_dans_fichier": 738,
+      "nouveaux_octets_vs_passe55": 738
+    },
+    {
+      "fichier": "03_PREUVES_ARBRE_CLE_ET_LECTURE.asm",
+      "lignes_instruction": 218,
+      "octets_dans_fichier": 601,
+      "nouveaux_octets_vs_passe55": 0
+    },
+    {
+      "fichier": "04_PREUVES_ALLOCATEUR_NETTOYAGE.asm",
+      "lignes_instruction": 139,
+      "octets_dans_fichier": 364,
+      "nouveaux_octets_vs_passe55": 364
+    },
+    {
+      "fichier": "05_PREUVES_STRUCTURES_ET_CONTEXTE.asm",
+      "lignes_instruction": 152,
+      "octets_dans_fichier": 430,
+      "nouveaux_octets_vs_passe55": 379
+    }
+  ],
+  "entrees_exportees_documentees_independantes": 258,
+  "entrees_exportees_precedemment_publiees": 259,
+  "entrees_exportees_totales": 1125,
+  "entrees_exportees_dans_text": 955,
+  "anciens_fichiers_conserves_octet_identique": 500
+}

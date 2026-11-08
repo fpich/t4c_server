@@ -1,0 +1,16 @@
+{
+  "source_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "targets": [
+    "0x004BAA90",
+    "0x00434670",
+    "0x0042AE80",
+    "0x004BA360",
+    "0x004B9CE0"
+  ],
+  "exact_absolute_pointer_occurrences": 0,
+  "covered_five_byte_E8_E9_candidates_targeting_five_regions": 0,
+  "new_confirmed_code_bytes": 0,
+  "classified_bytes_unchanged": 850738,
+  "unclassified_bytes_unchanged": 54379,
+  "caveat": "Recherche des valeurs absolues exactes et des E8/E9 dans le masque; pas une résolution exhaustive des appels indirects ni un décodage garanti des E8/E9."
+}

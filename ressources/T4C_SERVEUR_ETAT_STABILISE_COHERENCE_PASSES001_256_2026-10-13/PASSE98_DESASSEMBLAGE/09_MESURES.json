@@ -1,0 +1,23 @@
+{
+  "passe": 98,
+  "theme": "FRONTIERE_CALL",
+  "description": "Cibles des appels directs cumulées depuis les passes 89-97",
+  "sha256_binaire": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "base_text": "0x401000",
+  "taille_text": 905117,
+  "octets_avant": 419648,
+  "octets_nouveaux": 33373,
+  "octets_cumules": 453021,
+  "couverture_pourcent": 50.051098,
+  "entrees_examinees": 258,
+  "instructions_documentees": 12413,
+  "octets_distincts_dans_preuves": 33630,
+  "nombre_intervalles_nouveaux": 262,
+  "appels_directs": 465,
+  "sauts_indirects": 5,
+  "cibles_hors_fenetre": 23,
+  "instructions_rejetees_conflit": 0,
+  "branches_incompletes": 29,
+  "duree_s": 0.11,
+  "methode": "Parcours du graphe depuis entrees exportees et cibles de CALL imm multiples, instructions x86 GNU objdump controlees contre PE original. Exclusion padding/branches indirectes/sorties fenetre; verification non-redondance bitset."
+}

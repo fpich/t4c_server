@@ -1,0 +1,10 @@
+{
+  "passe": 144,
+  "description": "Graphe de l’initialisation",
+  "nouveaux_octets": 5479,
+  "octets_cumules": 815357,
+  "denominateur": 905117,
+  "couverture_pourcent": 90.08305,
+  "instructions_de_la_passe": 2151,
+  "pe_original_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc"
+}

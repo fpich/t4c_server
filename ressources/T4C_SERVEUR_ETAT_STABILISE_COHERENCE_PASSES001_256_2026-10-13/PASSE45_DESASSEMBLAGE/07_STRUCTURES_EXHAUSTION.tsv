@@ -1,0 +1,5 @@
+classe	vtable	get_exhaust	set_exhaust	offset_objet	charge_4_dword	persiste_ecriture
+Unit	0x4DF658	0x48B9C0	0x48B9F0	sans stockage	quatre zero	non
+Character	0x4DE68C	0x41DAD0	0x41DB00	+0x17C	oui	oui
+Creatures	0x4DEBB0	0x432990	0x4329C0	+0x124	oui	oui
+Objects	0x4DF1E0	0x48B9C0	0x48B9F0	héritée de Unit	quatre zero	non

@@ -1,0 +1,22 @@
+{
+  "sha256_executable": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "masque_148_total": 815752,
+  "masque_final_total": 818829,
+  "gain": 3077,
+  "couverture_percent": 90.466647,
+  "instr_gnu": 890,
+  "instr_llvm": 890,
+  "instruction_boundary_disagreement": 0,
+  "actual_byte_mismatches": 0,
+  "covered_conflicts": 0,
+  "instruction_overlap": 0,
+  "calls_total": 162,
+  "call_targets": {
+    "0x4d1a64": 81,
+    "0x48a2d0": 81
+  },
+  "alignment_excluded": 4,
+  "last_byte_ret": "0x44bd7b",
+  "historical_full_validation": false,
+  "new_mask_sha256": "ddc0be0a6d3e8e9dac6c41fc4f6d870a0a9245c4dbec58819da0f6c5bd4b7416"
+}

@@ -1,0 +1,14 @@
+source_VA	source_fonction	appel_VA	cible_VA	cible_mecanisme	status
+0x41B050	Character::attacked	0x41B189	vtable+0x168	GetAC polymorphe	CONFIRME
+0x41EA40	Character::GetAC	0x41EA49	0x48DE60	Unit::QueryBoost(20)	CONFIRME
+0x41EA40	Character::GetAC	0x41EA5B	0x41EA80	GetTrueAC	CONFIRME
+0x41EA80	Character::GetTrueAC	0x41EAA3	vtable+0x168	GetAC des objets equipés	CONFIRME
+0x421D80	Character::RangeAttack	0x421DA3	0x421620	Character::RangedAttack	CONFIRME
+0x421D80	Character::RangeAttack	0x421DB5	0x439190	GAME_RULES::InSafeHaven	CONFIRME
+0x421D80	Character::RangeAttack	0x422007	0x4218F0	paquet 95	CONFIRME
+0x421D80	Character::RangeAttack	0x4220D3	0x4218F0	paquet 95	CONFIRME
+0x421D80	Character::RangeAttack	0x422169	0x4219D0	traitement et paquet 96	CONFIRME
+0x421D80	Character::RangeAttack	0x422284	0x4218F0	paquet 95	CONFIRME
+0x4219D0	helper post-impact	0x421C95	vtable+0xCC	GetMaxHP	CONFIRME
+0x4219D0	helper post-impact	0x421C82	vtable+0xD8	GetHP	CONFIRME
+0x4219D0	helper post-impact	0x421CF0	0x421890	diffusion paquet 96	CONFIRME

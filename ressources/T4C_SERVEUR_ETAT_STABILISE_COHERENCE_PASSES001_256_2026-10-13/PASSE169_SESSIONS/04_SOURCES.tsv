@@ -1,0 +1,3 @@
+entree_lacune	instruction_source	assembleur_source	fichier_archive_precedente	taille_lacune
+0x00472B60	0x00472B5A	mov    eax,fs:0x0	etudes_assembleur/passe19/02_ASSEMBLEUR_TFCMAIN_ATTACK.txt	560
+0x00475E65	0x00475E60	push   0x50a4dc	PASSE36_DESASSEMBLAGE/06_PREUVES_APPEL_CHARGEMENT_SORTS.asm	609

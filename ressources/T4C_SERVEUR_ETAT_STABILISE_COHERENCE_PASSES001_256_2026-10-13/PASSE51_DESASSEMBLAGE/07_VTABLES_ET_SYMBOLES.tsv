@@ -1,0 +1,17 @@
+classe	vtable_VA	slot	cible_VA	symbole_decore_PE	preuve
+Unit	0x004DF658	+0xC	0x00435720	?ViewFlag@DynamicFlags@@UAEJKJ@Z	VTABLE_PE
+Unit	0x004DF658	+0x28	0x0048B720	?GetStaticReference@Unit@@UAEIXZ	VTABLE_PE
+Unit	0x004DF658	+0x60	0x0048B980	?GetBackpack@Unit@@UAEPAV?$TemplateList@VUnit@@@@XZ	VTABLE_PE
+Unit	0x004DF658	+0x170	0x0048C790	?GetSkill@Unit@@UAEPAVUSER_SKILL@@K@Z	VTABLE_PE
+Character	0x004DE68C	+0xC	0x00435720	?ViewFlag@DynamicFlags@@UAEJKJ@Z	VTABLE_PE
+Character	0x004DE68C	+0x28	0x0048B720	?GetStaticReference@Unit@@UAEIXZ	VTABLE_PE
+Character	0x004DE68C	+0x60	0x0041D230	?GetBackpack@Character@@UAEPAV?$TemplateList@VUnit@@@@XZ	VTABLE_PE
+Character	0x004DE68C	+0x170	0x0041E770	?GetSkill@Character@@UAEPAVUSER_SKILL@@K@Z	VTABLE_PE
+Creatures	0x004DEBB0	+0xC	0x00435720	?ViewFlag@DynamicFlags@@UAEJKJ@Z	VTABLE_PE
+Creatures	0x004DEBB0	+0x28	0x0048B720	?GetStaticReference@Unit@@UAEIXZ	VTABLE_PE
+Creatures	0x004DEBB0	+0x60	0x0048B980	?GetBackpack@Unit@@UAEPAV?$TemplateList@VUnit@@@@XZ	VTABLE_PE
+Creatures	0x004DEBB0	+0x170	0x0048C790	?GetSkill@Unit@@UAEPAVUSER_SKILL@@K@Z	VTABLE_PE
+Objects	0x004DF1E0	+0xC	0x0044C520	?ViewFlag@Objects@@UAEJKJ@Z	VTABLE_PE
+Objects	0x004DF1E0	+0x28	0x0048B720	?GetStaticReference@Unit@@UAEIXZ	VTABLE_PE
+Objects	0x004DF1E0	+0x60	0x0044C0B0	?GetBackpack@Objects@@UAEPAV?$TemplateList@VUnit@@@@XZ	VTABLE_PE
+Objects	0x004DF1E0	+0x170	0x0048C790	?GetSkill@Unit@@UAEPAVUSER_SKILL@@K@Z	VTABLE_PE

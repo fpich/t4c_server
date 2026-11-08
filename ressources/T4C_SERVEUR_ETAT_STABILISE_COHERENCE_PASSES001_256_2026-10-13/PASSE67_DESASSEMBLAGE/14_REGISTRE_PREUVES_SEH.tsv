@@ -1,0 +1,10 @@
+affirmation	localisation	preuve	statut
+handler de 0x45C950	0x45C955	push 0x4D77EB	machine
+func info	0x4D77EB	mov eax,0x4E6A10 ; jmp 0x4D1B8A	machine
+carte EH	0x4E6A10	0x19930520, 12 etats, pUnwindMap=0x4E6A30	rdata
+construction conteneur	0x45CB07..0x45CB1B	lea ecx,[ebp-0x3c]; call 0x45E8A0; etat 5	machine
+etat 5 -> 3	0x4E6A58	action 0x4D77A3	rdata
+fonclet	0x4D77A3	lea ecx,[ebp-0x3c]; jmp 0x45D450	machine
+destruction exceptionnelle	0x45D450..0x45D4FA	parcours; 0x45F4C0 et 0x442060; remise a zero	machine
+destruction normale A	0x45CF8C..0x45CF90	etat 3; call 0x45E3D0	machine
+destruction normale B	0x45D0E9..0x45D0ED	etat 3; call 0x45E3D0	machine

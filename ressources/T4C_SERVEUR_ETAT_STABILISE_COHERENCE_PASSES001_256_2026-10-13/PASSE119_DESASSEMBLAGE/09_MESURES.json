@@ -1,0 +1,23 @@
+{
+  "passe": 119,
+  "theme": "APPELS_DIRECTS_PREUVES",
+  "description": "Desassemblage des cibles APPELS_DIRECTS_PREUVES justifiees par des instructions sources",
+  "sha256_binaire": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "base_text": "0x401000",
+  "taille_text": 905117,
+  "octets_avant": 774024,
+  "octets_nouveaux": 5592,
+  "octets_cumules": 779616,
+  "couverture_pourcent": 86.134279,
+  "entrees_examinees": 29,
+  "instructions_documentees": 2212,
+  "octets_distincts_dans_preuves": 5937,
+  "nombre_intervalles_nouveaux": 27,
+  "appels_directs": 71,
+  "sauts_indirects": 4,
+  "cibles_hors_fenetre": 0,
+  "instructions_rejetees_conflit": 0,
+  "branches_incompletes": 4,
+  "duree_s": 0.02,
+  "methode": "Parcours CFG local depuis cibles de relocations PE et appels directs, x86 objdump et octets PE controles. Limites des fonctions heuristiques; cibles indirectes non resolues; dedoublonnage bitset."
+}

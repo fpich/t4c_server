@@ -1,0 +1,10 @@
+phase	VA	operation	champ	qualification
+lecteur_WDA	0x40A5C4	recherche_ou_creation	cle_chaine	CONFIRME
+lecteur_WDA	0x40A5DA	lecture_double	noeud+0x20	CONFIRME
+traitement_categorie_5	0x45ACCE	recherche_ou_creation	cle_chaine	CONFIRME
+traitement_categorie_5	0x45ACF5	ecriture_double	noeud+0x20	CONFIRME
+traitement_categorie_20	0x45BA5E	recherche_ou_creation	cle_chaine	CONFIRME
+traitement_categorie_20	0x45BA83	ecriture_partie_basse_double	noeud+0x20	CONFIRME
+traitement_categorie_20	0x45BA8B	ecriture_partie_haute_double	noeud+0x24	CONFIRME
+nettoyage_chaine_temporaire	0x40A5F9	decrement_octet_reference	ptr_temporaire-1	CONFIRME
+deallocation_generique	0x442060	liberation_bloc_ou_pool	argument_pointeur	CONFIRME

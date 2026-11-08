@@ -1,0 +1,9 @@
+condition_dans_le_binaire	famille	valeur_registre	adresse_string	adresse_instruction_push	niveau_preuve
+autre_type / MOB	XP	MOB_XP_LOSS	0x5033A0	0x438A51	CONFIRME
+autre_type / MOB	backpack	MOB_BACKPACK_LOSS	0x5033BC	0x438A6D	CONFIRME
+autre_type / MOB	equipment	MOB_EQUIP_LOSS	0x5033AC	0x438A8C	CONFIRME
+autre_type / MOB	gold	MOB_GOLD_LOSS	0x503390	0x438AA7	CONFIRME
+GetType()==1 / PC	XP	PC_XP_LOSS	0x503360	0x438AB5	CONFIRME
+GetType()==1 / PC	backpack	PC_BACKPACK_LOSS	0x50337C	0x438AD1	CONFIRME
+GetType()==1 / PC	equipment	PC_EQUIP_LOSS	0x50336C	0x438AF2	CONFIRME
+GetType()==1 / PC	gold	PC_GOLD_LOSS	0x503350	0x438B0B	CONFIRME

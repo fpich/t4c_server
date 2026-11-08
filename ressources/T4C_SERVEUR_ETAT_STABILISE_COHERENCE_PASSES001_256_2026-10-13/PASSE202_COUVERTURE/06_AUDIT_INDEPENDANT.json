@@ -1,0 +1,13 @@
+{
+  "previous_mask_popcount": 828027,
+  "new_mask_popcount": 829645,
+  "delta_mask_popcount": 1618,
+  "delta_intersects_old_mask": false,
+  "union_reconstructed_bit_for_bit": true,
+  "every_kept_instruction_matches_original_PE": true,
+  "every_kept_instruction_is_GNU_and_LLVM_consistent": true,
+  "all_ancres_from_historical_instructions": true,
+  "new_mask_sha256": "1c14e9b7eb775180d8517e344e2fe1fbd2cbb613ccc48602247e178c520933ab",
+  "original_exe_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "historical_mask_remains_provisional": true
+}

@@ -1,0 +1,169 @@
+adresse	octets_pe	taille	gnu	llvm	provenance
+0x004A8A6E	8a 85 10 ff ff ff	6	mov    al,BYTE PTR [ebp-0xf0]	"mov	al, byte ptr [ebp - 0xf0]"	source
+0x004A8A74	83 ec 10	3	sub    esp,0x10	"sub	esp, 0x10"	0x4a8a6e+6
+0x004A8A77	8b fc	2	mov    edi,esp	"mov	edi, esp"	0x4a8a74+3
+0x004A8A79	89 65 08	3	mov    DWORD PTR [ebp+0x8],esp	"mov	dword ptr [ebp + 0x8], esp"	0x4a8a77+2
+0x004A8A7C	53	1	push   ebx	"push	ebx"	0x4a8a79+3
+0x004A8A7D	8b cf	2	mov    ecx,edi	"mov	ecx, edi"	0x4a8a7c+1
+0x004A8A7F	88 07	2	mov    BYTE PTR [edi],al	"mov	byte ptr [edi], al"	0x4a8a7d+2
+0x004A8A81	ff 15 14 e5 4d 00	6	call   DWORD PTR ds:0x4de514	"call	dword ptr [0x4de514]"	0x4a8a7f+2
+0x004A8A87	8b 0d ec e4 4d 00	6	mov    ecx,DWORD PTR ds:0x4de4ec	"mov	ecx, dword ptr [0x4de4ec]"	0x4a8a81+6
+0x004A8A8D	8b 11	2	mov    edx,DWORD PTR [ecx]	"mov	edx, dword ptr [ecx]"	0x4a8a87+6
+0x004A8A8F	52	1	push   edx	"push	edx"	0x4a8a8d+2
+0x004A8A90	53	1	push   ebx	"push	ebx"	0x4a8a8f+1
+0x004A8A91	8d 85 10 ff ff ff	6	lea    eax,[ebp-0xf0]	"lea	eax, [ebp - 0xf0]"	0x4a8a90+1
+0x004A8A97	50	1	push   eax	"push	eax"	0x4a8a91+6
+0x004A8A98	8b cf	2	mov    ecx,edi	"mov	ecx, edi"	0x4a8a97+1
+0x004A8A9A	ff 15 fc e4 4d 00	6	call   DWORD PTR ds:0x4de4fc	"call	dword ptr [0x4de4fc]"	0x4a8a98+2
+0x004A8AA0	8d 8d a0 fe ff ff	6	lea    ecx,[ebp-0x160]	"lea	ecx, [ebp - 0x160]"	0x4a8a9a+6
+0x004A8AA6	51	1	push   ecx	"push	ecx"	0x4a8aa0+6
+0x004A8AA7	8b 4d f0	3	mov    ecx,DWORD PTR [ebp-0x10]	"mov	ecx, dword ptr [ebp - 0x10]"	0x4a8aa6+1
+0x004A8AAA	e8 11 4e 00 00	5	call   0x4ad8c0	"call	0x4ad8c0 <?Destroy@UnitEffectManager@@SAXXZ+0x1cca0>"	0x4a8aa7+3
+0x004A8AAF	8b 15 ec e4 4d 00	6	mov    edx,DWORD PTR ds:0x4de4ec	"mov	edx, dword ptr [0x4de4ec]"	0x4a8aaa+5
+0x004A8AB5	8b 0a	2	mov    ecx,DWORD PTR [edx]	"mov	ecx, dword ptr [edx]"	0x4a8aaf+6
+0x004A8AB7	51	1	push   ecx	"push	ecx"	0x4a8ab5+2
+0x004A8AB8	53	1	push   ebx	"push	ebx"	0x4a8ab7+1
+0x004A8AB9	50	1	push   eax	"push	eax"	0x4a8ab8+1
+0x004A8ABA	8d 8d 10 ff ff ff	6	lea    ecx,[ebp-0xf0]	"lea	ecx, [ebp - 0xf0]"	0x4a8ab9+1
+0x004A8AC0	c6 45 fc 0b	4	mov    BYTE PTR [ebp-0x4],0xb	"mov	byte ptr [ebp - 0x4], 0xb"	0x4a8aba+6
+0x004A8AC4	ff 15 fc e4 4d 00	6	call   DWORD PTR ds:0x4de4fc	"call	dword ptr [0x4de4fc]"	0x4a8ac0+4
+0x004A8ACA	6a 01	2	push   0x1	"push	0x1"	0x4a8ac4+6
+0x004A8ACC	8d 8d a0 fe ff ff	6	lea    ecx,[ebp-0x160]	"lea	ecx, [ebp - 0x160]"	0x4a8aca+2
+0x004A8AD2	c6 45 fc 0a	4	mov    BYTE PTR [ebp-0x4],0xa	"mov	byte ptr [ebp - 0x4], 0xa"	0x4a8acc+6
+0x004A8AD6	ff 15 14 e5 4d 00	6	call   DWORD PTR ds:0x4de514	"call	dword ptr [0x4de514]"	0x4a8ad2+4
+0x004A8ADC	8a 55 bc	3	mov    dl,BYTE PTR [ebp-0x44]	"mov	dl, byte ptr [ebp - 0x44]"	0x4a8ad6+6
+0x004A8ADF	83 ec 10	3	sub    esp,0x10	"sub	esp, 0x10"	0x4a8adc+3
+0x004A8AE2	8b fc	2	mov    edi,esp	"mov	edi, esp"	0x4a8adf+3
+0x004A8AE4	89 65 08	3	mov    DWORD PTR [ebp+0x8],esp	"mov	dword ptr [ebp + 0x8], esp"	0x4a8ae2+2
+0x004A8AE7	53	1	push   ebx	"push	ebx"	0x4a8ae4+3
+0x004A8AE8	8b cf	2	mov    ecx,edi	"mov	ecx, edi"	0x4a8ae7+1
+0x004A8AEA	88 17	2	mov    BYTE PTR [edi],dl	"mov	byte ptr [edi], dl"	0x4a8ae8+2
+0x004A8AEC	ff 15 14 e5 4d 00	6	call   DWORD PTR ds:0x4de514	"call	dword ptr [0x4de514]"	0x4a8aea+2
+0x004A8AF2	a1 ec e4 4d 00	5	mov    eax,ds:0x4de4ec	"mov	eax, dword ptr [0x4de4ec]"	0x4a8aec+6
+0x004A8AF7	8b 08	2	mov    ecx,DWORD PTR [eax]	"mov	ecx, dword ptr [eax]"	0x4a8af2+5
+0x004A8AF9	51	1	push   ecx	"push	ecx"	0x4a8af7+2
+0x004A8AFA	53	1	push   ebx	"push	ebx"	0x4a8af9+1
+0x004A8AFB	8d 55 bc	3	lea    edx,[ebp-0x44]	"lea	edx, [ebp - 0x44]"	0x4a8afa+1
+0x004A8AFE	52	1	push   edx	"push	edx"	0x4a8afb+3
+0x004A8AFF	8b cf	2	mov    ecx,edi	"mov	ecx, edi"	0x4a8afe+1
+0x004A8B01	ff 15 fc e4 4d 00	6	call   DWORD PTR ds:0x4de4fc	"call	dword ptr [0x4de4fc]"	0x4a8aff+2
+0x004A8B07	8b 7d f0	3	mov    edi,DWORD PTR [ebp-0x10]	"mov	edi, dword ptr [ebp - 0x10]"	0x4a8b01+6
+0x004A8B0A	8d 85 b0 fe ff ff	6	lea    eax,[ebp-0x150]	"lea	eax, [ebp - 0x150]"	0x4a8b07+3
+0x004A8B10	50	1	push   eax	"push	eax"	0x4a8b0a+6
+0x004A8B11	8b cf	2	mov    ecx,edi	"mov	ecx, edi"	0x4a8b10+1
+0x004A8B13	e8 a8 4d 00 00	5	call   0x4ad8c0	"call	0x4ad8c0 <?Destroy@UnitEffectManager@@SAXXZ+0x1cca0>"	0x4a8b11+2
+0x004A8B18	8b 0d ec e4 4d 00	6	mov    ecx,DWORD PTR ds:0x4de4ec	"mov	ecx, dword ptr [0x4de4ec]"	0x4a8b13+5
+0x004A8B1E	8b 11	2	mov    edx,DWORD PTR [ecx]	"mov	edx, dword ptr [ecx]"	0x4a8b18+6
+0x004A8B20	52	1	push   edx	"push	edx"	0x4a8b1e+2
+0x004A8B21	53	1	push   ebx	"push	ebx"	0x4a8b20+1
+0x004A8B22	50	1	push   eax	"push	eax"	0x4a8b21+1
+0x004A8B23	8d 4d bc	3	lea    ecx,[ebp-0x44]	"lea	ecx, [ebp - 0x44]"	0x4a8b22+1
+0x004A8B26	c6 45 fc 0c	4	mov    BYTE PTR [ebp-0x4],0xc	"mov	byte ptr [ebp - 0x4], 0xc"	0x4a8b23+3
+0x004A8B2A	ff 15 fc e4 4d 00	6	call   DWORD PTR ds:0x4de4fc	"call	dword ptr [0x4de4fc]"	0x4a8b26+4
+0x004A8B30	6a 01	2	push   0x1	"push	0x1"	0x4a8b2a+6
+0x004A8B32	8d 8d b0 fe ff ff	6	lea    ecx,[ebp-0x150]	"lea	ecx, [ebp - 0x150]"	0x4a8b30+2
+0x004A8B38	c6 45 fc 0a	4	mov    BYTE PTR [ebp-0x4],0xa	"mov	byte ptr [ebp - 0x4], 0xa"	0x4a8b32+6
+0x004A8B3C	ff 15 14 e5 4d 00	6	call   DWORD PTR ds:0x4de514	"call	dword ptr [0x4de514]"	0x4a8b38+4
+0x004A8B42	8b 85 14 ff ff ff	6	mov    eax,DWORD PTR [ebp-0xec]	"mov	eax, dword ptr [ebp - 0xec]"	0x4a8b3c+6
+0x004A8B48	3b c3	2	cmp    eax,ebx	"cmp	eax, ebx"	0x4a8b42+6
+0x004A8B4A	88 9d 74 f6 ff ff	6	mov    BYTE PTR [ebp-0x98c],bl	"mov	byte ptr [ebp - 0x98c], bl"	0x4a8b48+2
+0x004A8B50	75 05	2	jne    0x4a8b57	"jne	0x4a8b57 <?Destroy@UnitEffectManager@@SAXXZ+0x17f37>"	0x4a8b4a+6
+0x004A8B52	a1 d8 e4 4d 00	5	mov    eax,ds:0x4de4d8	"mov	eax, dword ptr [0x4de4d8]"	0x4a8b50+2
+0x004A8B57	8b 95 0c ff ff ff	6	mov    edx,DWORD PTR [ebp-0xf4]	"mov	edx, dword ptr [ebp - 0xf4]"	0x4a8b52+5
+0x004A8B5D	8b 4f 10	3	mov    ecx,DWORD PTR [edi+0x10]	"mov	ecx, dword ptr [edi + 0x10]"	0x4a8b57+6
+0x004A8B60	8b 39	2	mov    edi,DWORD PTR [ecx]	"mov	edi, dword ptr [ecx]"	0x4a8b5d+3
+0x004A8B62	52	1	push   edx	"push	edx"	0x4a8b60+2
+0x004A8B63	50	1	push   eax	"push	eax"	0x4a8b62+1
+0x004A8B64	8d 85 74 f6 ff ff	6	lea    eax,[ebp-0x98c]	"lea	eax, [ebp - 0x98c]"	0x4a8b63+1
+0x004A8B6A	68 d8 f7 50 00	5	push   0x50f7d8	"push	0x50f7d8"	0x4a8b64+6
+0x004A8B6F	50	1	push   eax	"push	eax"	0x4a8b6a+5
+0x004A8B70	e8 cb ad f5 ff	5	call   0x403940	"call	0x403940 <??4RegKeyHandler@@QAEAAV0@ABV0@@Z+0x1370>"	0x4a8b6f+1
+0x004A8B75	83 c4 10	3	add    esp,0x10	"add	esp, 0x10"	0x4a8b70+5
+0x004A8B78	8b d7	2	mov    edx,edi	"mov	edx, edi"	0x4a8b75+3
+0x004A8B7A	8b 7d f0	3	mov    edi,DWORD PTR [ebp-0x10]	"mov	edi, dword ptr [ebp - 0x10]"	0x4a8b78+2
+0x004A8B7D	8b 4f 08	3	mov    ecx,DWORD PTR [edi+0x8]	"mov	ecx, dword ptr [edi + 0x8]"	0x4a8b7a+3
+0x004A8B80	50	1	push   eax	"push	eax"	0x4a8b7d+3
+0x004A8B81	51	1	push   ecx	"push	ecx"	0x4a8b80+1
+0x004A8B82	8b 4f 10	3	mov    ecx,DWORD PTR [edi+0x10]	"mov	ecx, dword ptr [edi + 0x10]"	0x4a8b81+1
+0x004A8B85	ff 52 04	3	call   DWORD PTR [edx+0x4]	"call	dword ptr [edx + 0x4]"	0x4a8b82+3
+0x004A8B88	38 5d a5	3	cmp    BYTE PTR [ebp-0x5b],bl	"cmp	byte ptr [ebp - 0x5b], bl"	0x4a8b85+3
+0x004A8B8B	c7 45 08 90 f7 50 00	7	mov    DWORD PTR [ebp+0x8],0x50f790	"mov	dword ptr [ebp + 0x8], 0x50f790"	0x4a8b88+3
+0x004A8B92	75 07	2	jne    0x4a8b9b	"jne	0x4a8b9b <?Destroy@UnitEffectManager@@SAXXZ+0x17f7b>"	0x4a8b8b+7
+0x004A8B94	c7 45 08 88 f7 50 00	7	mov    DWORD PTR [ebp+0x8],0x50f788	"mov	dword ptr [ebp + 0x8], 0x50f788"	0x4a8b92+2
+0x004A8B9B	38 5d a4	3	cmp    BYTE PTR [ebp-0x5c],bl	"cmp	byte ptr [ebp - 0x5c], bl"	0x4a8b94+7
+0x004A8B9E	c7 45 cc 90 f7 50 00	7	mov    DWORD PTR [ebp-0x34],0x50f790	"mov	dword ptr [ebp - 0x34], 0x50f790"	0x4a8b9b+3
+0x004A8BA5	75 07	2	jne    0x4a8bae	"jne	0x4a8bae <?Destroy@UnitEffectManager@@SAXXZ+0x17f8e>"	0x4a8b9e+7
+0x004A8BA7	c7 45 cc 88 f7 50 00	7	mov    DWORD PTR [ebp-0x34],0x50f788	"mov	dword ptr [ebp - 0x34], 0x50f788"	0x4a8ba5+2
+0x004A8BAE	8b 8d 78 ff ff ff	6	mov    ecx,DWORD PTR [ebp-0x88]	"mov	ecx, dword ptr [ebp - 0x88]"	0x4a8ba7+7
+0x004A8BB4	3b cb	2	cmp    ecx,ebx	"cmp	ecx, ebx"	0x4a8bae+6
+0x004A8BB6	8b 15 d8 e4 4d 00	6	mov    edx,DWORD PTR ds:0x4de4d8	"mov	edx, dword ptr [0x4de4d8]"	0x4a8bb4+2
+0x004A8BBC	89 55 d0	3	mov    DWORD PTR [ebp-0x30],edx	"mov	dword ptr [ebp - 0x30], edx"	0x4a8bb6+6
+0x004A8BBF	74 03	2	je     0x4a8bc4	"je	0x4a8bc4 <?Destroy@UnitEffectManager@@SAXXZ+0x17fa4>"	0x4a8bbc+3
+0x004A8BC1	89 4d d0	3	mov    DWORD PTR [ebp-0x30],ecx	"mov	dword ptr [ebp - 0x30], ecx"	0x4a8bbf+2
+0x004A8BC4	8b 85 64 ff ff ff	6	mov    eax,DWORD PTR [ebp-0x9c]	"mov	eax, dword ptr [ebp - 0x9c]"	0x4a8bc1+3
+0x004A8BCA	3b c3	2	cmp    eax,ebx	"cmp	eax, ebx"	0x4a8bc4+6
+0x004A8BCC	89 55 dc	3	mov    DWORD PTR [ebp-0x24],edx	"mov	dword ptr [ebp - 0x24], edx"	0x4a8bca+2
+0x004A8BCF	74 03	2	je     0x4a8bd4	"je	0x4a8bd4 <?Destroy@UnitEffectManager@@SAXXZ+0x17fb4>"	0x4a8bcc+3
+0x004A8BD1	89 45 dc	3	mov    DWORD PTR [ebp-0x24],eax	"mov	dword ptr [ebp - 0x24], eax"	0x4a8bcf+2
+0x004A8BD4	8b 85 54 ff ff ff	6	mov    eax,DWORD PTR [ebp-0xac]	"mov	eax, dword ptr [ebp - 0xac]"	0x4a8bd1+3
+0x004A8BDA	3b c3	2	cmp    eax,ebx	"cmp	eax, ebx"	0x4a8bd4+6
+0x004A8BDC	89 55 d4	3	mov    DWORD PTR [ebp-0x2c],edx	"mov	dword ptr [ebp - 0x2c], edx"	0x4a8bda+2
+0x004A8BDF	74 03	2	je     0x4a8be4	"je	0x4a8be4 <?Destroy@UnitEffectManager@@SAXXZ+0x17fc4>"	0x4a8bdc+3
+0x004A8BE1	89 45 d4	3	mov    DWORD PTR [ebp-0x2c],eax	"mov	dword ptr [ebp - 0x2c], eax"	0x4a8bdf+2
+0x004A8BE4	8b 85 44 ff ff ff	6	mov    eax,DWORD PTR [ebp-0xbc]	"mov	eax, dword ptr [ebp - 0xbc]"	0x4a8be1+3
+0x004A8BEA	3b c3	2	cmp    eax,ebx	"cmp	eax, ebx"	0x4a8be4+6
+0x004A8BEC	89 55 e4	3	mov    DWORD PTR [ebp-0x1c],edx	"mov	dword ptr [ebp - 0x1c], edx"	0x4a8bea+2
+0x004A8BEF	74 03	2	je     0x4a8bf4	"je	0x4a8bf4 <?Destroy@UnitEffectManager@@SAXXZ+0x17fd4>"	0x4a8bec+3
+0x004A8BF1	89 45 e4	3	mov    DWORD PTR [ebp-0x1c],eax	"mov	dword ptr [ebp - 0x1c], eax"	0x4a8bef+2
+0x004A8BF4	8b 8d 34 ff ff ff	6	mov    ecx,DWORD PTR [ebp-0xcc]	"mov	ecx, dword ptr [ebp - 0xcc]"	0x4a8bf1+3
+0x004A8BFA	3b cb	2	cmp    ecx,ebx	"cmp	ecx, ebx"	0x4a8bf4+6
+0x004A8BFC	75 02	2	jne    0x4a8c00	"jne	0x4a8c00 <?Destroy@UnitEffectManager@@SAXXZ+0x17fe0>"	0x4a8bfa+2
+0x004A8BFE	8b ca	2	mov    ecx,edx	"mov	ecx, edx"	0x4a8bfc+2
+0x004A8C00	8b 85 24 ff ff ff	6	mov    eax,DWORD PTR [ebp-0xdc]	"mov	eax, dword ptr [ebp - 0xdc]"	0x4a8bfe+2
+0x004A8C06	3b c3	2	cmp    eax,ebx	"cmp	eax, ebx"	0x4a8c00+6
+0x004A8C08	75 02	2	jne    0x4a8c0c	"jne	0x4a8c0c <?Destroy@UnitEffectManager@@SAXXZ+0x17fec>"	0x4a8c06+2
+0x004A8C0A	8b c2	2	mov    eax,edx	"mov	eax, edx"	0x4a8c08+2
+0x004A8C0C	8b 57 10	3	mov    edx,DWORD PTR [edi+0x10]	"mov	edx, dword ptr [edi + 0x10]"	0x4a8c0a+2
+0x004A8C0F	8b 3a	2	mov    edi,DWORD PTR [edx]	"mov	edi, dword ptr [edx]"	0x4a8c0c+3
+0x004A8C11	8b 55 08	3	mov    edx,DWORD PTR [ebp+0x8]	"mov	edx, dword ptr [ebp + 0x8]"	0x4a8c0f+2
+0x004A8C14	52	1	push   edx	"push	edx"	0x4a8c11+3
+0x004A8C15	8b 55 cc	3	mov    edx,DWORD PTR [ebp-0x34]	"mov	edx, dword ptr [ebp - 0x34]"	0x4a8c14+1
+0x004A8C18	52	1	push   edx	"push	edx"	0x4a8c15+3
+0x004A8C19	8b 55 a0	3	mov    edx,DWORD PTR [ebp-0x60]	"mov	edx, dword ptr [ebp - 0x60]"	0x4a8c18+1
+0x004A8C1C	52	1	push   edx	"push	edx"	0x4a8c19+3
+0x004A8C1D	8b 55 9c	3	mov    edx,DWORD PTR [ebp-0x64]	"mov	edx, dword ptr [ebp - 0x64]"	0x4a8c1c+1
+0x004A8C20	52	1	push   edx	"push	edx"	0x4a8c1d+3
+0x004A8C21	8b 55 98	3	mov    edx,DWORD PTR [ebp-0x68]	"mov	edx, dword ptr [ebp - 0x68]"	0x4a8c20+1
+0x004A8C24	52	1	push   edx	"push	edx"	0x4a8c21+3
+0x004A8C25	8b 55 94	3	mov    edx,DWORD PTR [ebp-0x6c]	"mov	edx, dword ptr [ebp - 0x6c]"	0x4a8c24+1
+0x004A8C28	52	1	push   edx	"push	edx"	0x4a8c25+3
+0x004A8C29	8b 55 90	3	mov    edx,DWORD PTR [ebp-0x70]	"mov	edx, dword ptr [ebp - 0x70]"	0x4a8c28+1
+0x004A8C2C	52	1	push   edx	"push	edx"	0x4a8c29+3
+0x004A8C2D	8b 55 88	3	mov    edx,DWORD PTR [ebp-0x78]	"mov	edx, dword ptr [ebp - 0x78]"	0x4a8c2c+1
+0x004A8C30	52	1	push   edx	"push	edx"	0x4a8c2d+3
+0x004A8C31	8b 55 84	3	mov    edx,DWORD PTR [ebp-0x7c]	"mov	edx, dword ptr [ebp - 0x7c]"	0x4a8c30+1
+0x004A8C34	52	1	push   edx	"push	edx"	0x4a8c31+3
+0x004A8C35	8b 55 d0	3	mov    edx,DWORD PTR [ebp-0x30]	"mov	edx, dword ptr [ebp - 0x30]"	0x4a8c34+1
+0x004A8C38	52	1	push   edx	"push	edx"	0x4a8c35+3
+0x004A8C39	8b 95 70 ff ff ff	6	mov    edx,DWORD PTR [ebp-0x90]	"mov	edx, dword ptr [ebp - 0x90]"	0x4a8c38+1
+0x004A8C3F	52	1	push   edx	"push	edx"	0x4a8c39+6
+0x004A8C40	8b 55 dc	3	mov    edx,DWORD PTR [ebp-0x24]	"mov	edx, dword ptr [ebp - 0x24]"	0x4a8c3f+1
+0x004A8C43	52	1	push   edx	"push	edx"	0x4a8c40+3
+0x004A8C44	8b 55 d4	3	mov    edx,DWORD PTR [ebp-0x2c]	"mov	edx, dword ptr [ebp - 0x2c]"	0x4a8c43+1
+0x004A8C47	52	1	push   edx	"push	edx"	0x4a8c44+3
+0x004A8C48	8b 55 e4	3	mov    edx,DWORD PTR [ebp-0x1c]	"mov	edx, dword ptr [ebp - 0x1c]"	0x4a8c47+1
+0x004A8C4B	52	1	push   edx	"push	edx"	0x4a8c48+3
+0x004A8C4C	51	1	push   ecx	"push	ecx"	0x4a8c4b+1
+0x004A8C4D	50	1	push   eax	"push	eax"	0x4a8c4c+1
+0x004A8C4E	8d 85 74 f6 ff ff	6	lea    eax,[ebp-0x98c]	"lea	eax, [ebp - 0x98c]"	0x4a8c4d+1
+0x004A8C54	68 78 f6 50 00	5	push   0x50f678	"push	0x50f678"	0x4a8c4e+6
+0x004A8C59	50	1	push   eax	"push	eax"	0x4a8c54+5
+0x004A8C5A	e8 e1 ac f5 ff	5	call   0x403940	"call	0x403940 <??4RegKeyHandler@@QAEAAV0@ABV0@@Z+0x1370>"	0x4a8c59+1
+0x004A8C5F	83 c4 48	3	add    esp,0x48	"add	esp, 0x48"	0x4a8c5a+5
+0x004A8C62	8b d7	2	mov    edx,edi	"mov	edx, edi"	0x4a8c5f+3
+0x004A8C64	8b 7d f0	3	mov    edi,DWORD PTR [ebp-0x10]	"mov	edi, dword ptr [ebp - 0x10]"	0x4a8c62+2
+0x004A8C67	8b 4f 0c	3	mov    ecx,DWORD PTR [edi+0xc]	"mov	ecx, dword ptr [edi + 0xc]"	0x4a8c64+3
+0x004A8C6A	50	1	push   eax	"push	eax"	0x4a8c67+3
+0x004A8C6B	51	1	push   ecx	"push	ecx"	0x4a8c6a+1
+0x004A8C6C	8b 4f 10	3	mov    ecx,DWORD PTR [edi+0x10]	"mov	ecx, dword ptr [edi + 0x10]"	0x4a8c6b+1
+0x004A8C6F	ff 52 04	3	call   DWORD PTR [edx+0x4]	"call	dword ptr [edx + 0x4]"	0x4a8c6c+3

@@ -1,0 +1,15 @@
+étape	adresse	objet	appel_cible	interprétation	certitude	limite
+init	0x412FE8	0x511878	0x44EA30	Connexion d’un contexte ODBC	CONFIRMÉ	Connexions réelles non testées
+init	0x413021	0x511478	0x44EA30	Connexion contexte SaveCharacter	CONFIRMÉ	Connexions réelles non testées
+autocommit	0x41303A	0x511878	0x44ED00 -> ordinal50	SQL_AUTOCOMMIT(102)=OFF(0)	CORROBORÉ	Retour non testé
+autocommit	0x413047	0x511478	0x44ED00 -> ordinal50	SQL_AUTOCOMMIT(102)=OFF(0)	CORROBORÉ	Retour non testé
+save_submit	0x414B1A	0x511478	0x44F1F0	File SQL asynchrone	CONFIRMÉ	Branche de notification optionnelle
+sql_first	0x44ED98	ctx+0x0C	0x4CE472 -> ordinal11	SQLExecDirect #1	CORROBORÉ	AX==0 succès; !=0 reprise
+handles	0x44EDD1..0x44EDFB	ctx	ordinals 14/15/2/1/3	Libération et réallocation handles ODBC	CORROBORÉ	Seul chemin flag=0
+cursor	0x44EA4B	ctx+0x08	0x4CE45A -> ordinal50	SQL_ODBC_CURSORS(110)=SQL_CUR_USE_ODBC(1)	CORROBORÉ	Aucune garantie de succès
+connect	0x44EAFB	ctx+0x08	0x4CE454 -> ordinal7	SQLConnect sur les identifiants fournis	CORROBORÉ	Connexion réelle non testée
+sql_retry	0x44EE25	ctx+0x0C	0x4CE472 -> ordinal11	SQLExecDirect #2	CORROBORÉ	Une seconde tentative, pas de boucle
+abort_remaining	0x44F377	EBX	test puis saut vers 0x44F460	Arrêt du lot si erreur	CONFIRMÉ	N’exécute plus les statements suivants
+rollback	0x44F592	ctx	0x44ED40 -> ordinal23	Tentative SQL_ROLLBACK	CORROBORÉ	Retour non vérifié avant callback
+commit	0x44F5AC	ctx	0x44ED20 -> ordinal23	Tentative SQL_COMMIT	CORROBORÉ	Retour non vérifié avant callback
+callback	0x44F5C2	job+4	call eax	notification(0 ou 1, contexte)	CONFIRMÉ	Statut de branche ≠ preuve de commit

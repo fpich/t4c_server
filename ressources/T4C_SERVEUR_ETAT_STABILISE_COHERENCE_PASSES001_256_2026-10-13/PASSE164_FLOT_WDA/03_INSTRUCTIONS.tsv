@@ -1,0 +1,7 @@
+VA	octets	taille	GNU	LLVM	nouveaux_octets	provenance
+0x0040A621	dd d8	2	OK	OK	2	branche 0x409F64 -> 0x40A61F, continuite
+0x0040A623	8a 46 10	3	OK	OK	3	branche 0x409F64 -> 0x40A61F, continuite
+0x0040A626	48	1	OK	OK	1	branche 0x409F64 -> 0x40A61F, continuite
+0x0040A627	83 f8 70	3	OK	OK	3	branche 0x409F64 -> 0x40A61F, continuite
+0x0040A62A	0f 87 55 1a 00 00	6	OK	OK	6	branche 0x409F64 -> 0x40A61F, continuite
+0x0040A630	ff 24 85 8c c1 40 00	7	OK	OK	7	branche 0x409F64 -> 0x40A61F, continuite

@@ -1,0 +1,11 @@
+﻿priorite;chantier;risque_si_non_resolu;livrable_attendu;preuve_de_depart;statut
+P0;Graphe de démarrage/arrêt;Entrées PE, services, init/stop et handles;Diagramme sourcé, chemins erreur et cleanup listés;Voir volumes VII–IX et matrice de traçabilité;ouvert
+P0;Protocole entrant;Réception, demultiplexage, opcodes, taille, version;Table champ par champ ancrée en VA, ambiguïtés explicitement conservées;Voir volumes VII–IX et matrice de traçabilité;ouvert
+P0;Contrôle d’accès Sysop;Commande → test droit → effet → journal;Matrice des privilèges + cas refusés + contrôle dynamique en VM;Voir volumes VII–IX et matrice de traçabilité;ouvert
+P1;Persistance;Schéma SQL + DDL réel + reprise ODBC;Mapping bidirectionnel et simulations erreurs/commits;Voir volumes VII–IX et matrice de traçabilité;ouvert
+P1;Concurrence;Threads réseau, journal, SQL, maintenance, timers;Carte des verrous, ownership et dangers de race;Voir volumes VII–IX et matrice de traçabilité;ouvert
+P1;Configuration;Registre, types, défauts, invariants, clés inconnues;Export expurgé, validé en VM isolée;Voir volumes VII–IX et matrice de traçabilité;ouvert
+P1;Moteur de jeu;Formules de statistiques et d’effets avec limites;Tables d’exemples d’entrée-sortie corroborées;Voir volumes VII–IX et matrice de traçabilité;ouvert
+P2;WDA/monde;Formats de cartes et définitions par catégorie;Spécification avec jeux de fixtures et versions;Voir volumes VII–IX et matrice de traçabilité;ouvert
+P2;Couverture restante;18 cibles + 54 379 octets indéterminés;Preuves de classification ou raison de maintien en inconnue;Voir volumes VII–IX et matrice de traçabilité;ouvert
+P2;Référence éditoriale;Index croisés, doublons, contradictions, datation;Toute affirmation possède fichier et VA ou label hypothèse;Voir volumes VII–IX et matrice de traçabilité;ouvert

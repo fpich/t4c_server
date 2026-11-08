@@ -1,0 +1,25 @@
+{
+  "binaire_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "base_image": "0x400000",
+  "entry_point_rva": "0xD108E",
+  "entry_point_va": "0x4D208E",
+  "text_bytes": 905117,
+  "previous_mask_bytes": 809638,
+  "new_unique_bytes": 6114,
+  "cumulative": 815752,
+  "coverage_pct": 90.126691,
+  "instruction_starts_audited": 2359,
+  "objdump_concordant": true,
+  "llvm_objdump_concordant": true,
+  "differing_instruction_decodes": 0,
+  "overlapping_new_instructions": 0,
+  "direct_uncovered_branch_targets_in_historical_evidence": 0,
+  "relocations_to_uncovered_text_not_promoted": 77,
+  "mask_sha256": "2f4c31d3f3bb5ff2589b8976192afc1404c48fb746c6f83a3a813b74bb2f5b51",
+  "historical_reaudit_complete": false,
+  "caveats": [
+    "La couverture reste statique ; elle ne prouve pas l’exécution des instructions.",
+    "Les zones réexaminées ne valident pas toutes les sources historiques fondées sur des relocations.",
+    "Certaines tables et données partagent la section .text."
+  ]
+}

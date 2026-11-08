@@ -1,0 +1,30 @@
+{
+  "passe": 50,
+  "sha256_executable": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "base_archive": "T4C_SERVEUR_PASSE49_DESASSEMBLAGE_PUR_2026-10-09.zip",
+  "octets_text_total": 905117,
+  "couverture_passe49_octets": 99014,
+  "gain_net_octets": 3382,
+  "total_octets_verifies": 102396,
+  "couverture_pct": 11.313013,
+  "entrees_exportees_documentees": 256,
+  "entrees_exportees_totales": 1125,
+  "instructions_verifiees_nouvelles_preuves": 1162,
+  "instructions_rejetees_nouvelles_preuves": 0,
+  "erreurs_historiques_pour_serveur": 536,
+  "documents_preuves": {
+    "PASSE50_DESASSEMBLAGE/02_PREUVES_SUPERSTRUCTURE_TYPE1_ATTAQUE.asm": {
+      "validees": 286,
+      "rejetees": 0
+    },
+    "PASSE50_DESASSEMBLAGE/03_PREUVES_SUPERSTRUCTURE_TYPE1_PV.asm": {
+      "validees": 323,
+      "rejetees": 0
+    },
+    "PASSE50_DESASSEMBLAGE/04_PREUVES_DROPUNIT_ET_ACTION.asm": {
+      "validees": 553,
+      "rejetees": 0
+    }
+  },
+  "methode": "Confrontation exacte de chaque adresse et octets à la section .text PE, octets dédupliqués; client exclu"
+}

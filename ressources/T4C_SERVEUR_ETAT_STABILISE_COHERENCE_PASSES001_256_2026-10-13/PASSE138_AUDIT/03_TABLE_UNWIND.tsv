@@ -1,0 +1,3 @@
+FuncInfo	MaxState	UnwindMap	Etat	Vers_etat	Action	Action_couverte_p136
+0x004F0C30	2	0x004F0C50	0	-1	0x004DDF80	oui
+0x004F0C30	2	0x004F0C50	1	0	0x004DDF8B	non

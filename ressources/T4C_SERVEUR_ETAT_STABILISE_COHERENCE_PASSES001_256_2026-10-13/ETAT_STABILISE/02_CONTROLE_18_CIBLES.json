@@ -1,0 +1,146 @@
+[
+  {
+    "source": "0x45acbe",
+    "target": "0x45e9c0",
+    "kind": "call",
+    "target_in_unknown": true,
+    "opcode": "0xe8",
+    "computed_target_matches": true
+  },
+  {
+    "source": "0x475e7c",
+    "target": "0x49d480",
+    "kind": "call",
+    "target_in_unknown": true,
+    "opcode": "0xe8",
+    "computed_target_matches": true
+  },
+  {
+    "source": "0x475eba",
+    "target": "0x474080",
+    "kind": "call",
+    "target_in_unknown": true,
+    "opcode": "0xe8",
+    "computed_target_matches": true
+  },
+  {
+    "source": "0x475ee6",
+    "target": "0x4933f0",
+    "kind": "call",
+    "target_in_unknown": true,
+    "opcode": "0xe8",
+    "computed_target_matches": true
+  },
+  {
+    "source": "0x475f1b",
+    "target": "0x475100",
+    "kind": "call",
+    "target_in_unknown": true,
+    "opcode": "0xe8",
+    "computed_target_matches": true
+  },
+  {
+    "source": "0x475f31",
+    "target": "0x476300",
+    "kind": "call",
+    "target_in_unknown": true,
+    "opcode": "0xe8",
+    "computed_target_matches": true
+  },
+  {
+    "source": "0x475f4c",
+    "target": "0x499ec0",
+    "kind": "call",
+    "target_in_unknown": true,
+    "opcode": "0xe8",
+    "computed_target_matches": true
+  },
+  {
+    "source": "0x475f81",
+    "target": "0x475690",
+    "kind": "call",
+    "target_in_unknown": true,
+    "opcode": "0xe8",
+    "computed_target_matches": true
+  },
+  {
+    "source": "0x475faa",
+    "target": "0x491180",
+    "kind": "call",
+    "target_in_unknown": true,
+    "opcode": "0xe8",
+    "computed_target_matches": true
+  },
+  {
+    "source": "0x475fdf",
+    "target": "0x4758c0",
+    "kind": "call",
+    "target_in_unknown": true,
+    "opcode": "0xe8",
+    "computed_target_matches": true
+  },
+  {
+    "source": "0x47600b",
+    "target": "0x491c30",
+    "kind": "call",
+    "target_in_unknown": true,
+    "opcode": "0xe8",
+    "computed_target_matches": true
+  },
+  {
+    "source": "0x476049",
+    "target": "0x475940",
+    "kind": "call",
+    "target_in_unknown": true,
+    "opcode": "0xe8",
+    "computed_target_matches": true
+  },
+  {
+    "source": "0x45a993",
+    "target": "0x45a9fe",
+    "kind": "jcc-short",
+    "target_in_unknown": true,
+    "opcode": "0x74",
+    "computed_target_matches": true
+  },
+  {
+    "source": "0x45ac17",
+    "target": "0x45c740",
+    "kind": "call",
+    "target_in_unknown": true,
+    "opcode": "0xe8",
+    "computed_target_matches": true
+  },
+  {
+    "source": "0x45b9b8",
+    "target": "0x45c350",
+    "kind": "call",
+    "target_in_unknown": true,
+    "opcode": "0xe8",
+    "computed_target_matches": true
+  },
+  {
+    "source": "0x4131ee",
+    "target": "0x422d20",
+    "kind": "call",
+    "target_in_unknown": true,
+    "opcode": "0xe8",
+    "computed_target_matches": true
+  },
+  {
+    "source": "0x41325d",
+    "target": "0x439c60",
+    "kind": "call",
+    "target_in_unknown": true,
+    "opcode": "0xe8",
+    "computed_target_matches": true
+  },
+  {
+    "source": "0x49f128",
+    "target": "0x422d20",
+    "kind": "call",
+    "target_in_unknown": true,
+    "opcode": "0xe8",
+    "computed_target_matches": true
+  }
+]

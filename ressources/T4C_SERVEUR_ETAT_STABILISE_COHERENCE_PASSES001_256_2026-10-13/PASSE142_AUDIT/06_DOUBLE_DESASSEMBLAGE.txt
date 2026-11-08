@@ -1,0 +1,53 @@
+===== objdump 0x004D1900 =====
+
+/mnt/data/T4C Server(2).exe:     file format pei-i386
+
+
+Disassembly of section .text:
+
+004d1900 <.text+0xd0900>:
+  4d1900:	55                   	push   ebp
+  4d1901:	8b ec                	mov    ebp,esp
+  4d1903:	6a ff                	push   0xffffffff
+  4d1905:	68 93 df 4d 00       	push   0x4ddf93
+  4d190a:	64 a1 00 00 00 00    	mov    eax,fs:0x0
+  4d1910:	50                   	push   eax
+
+===== llvm-objdump 0x004D1900 =====
+
+/mnt/data/T4C Server(2).exe:	file format coff-i386
+
+Disassembly of section .text:
+
+004d1630 <ExpFltr_end>:
+  4d1900: 55                           	push	ebp
+  4d1901: 8b ec                        	mov	ebp, esp
+  4d1903: 6a ff                        	push	-0x1
+  4d1905: 68 93 df 4d 00               	push	0x4ddf93
+  4d190a: 64 a1 00 00 00 00            	mov	eax, dword ptr fs:[0x0]
+  4d1910: 50                           	push	eax
+
+===== objdump 0x004DDF8B =====
+
+/mnt/data/T4C Server(2).exe:     file format pei-i386
+
+
+Disassembly of section .text:
+
+004ddf8b <.text+0xdcf8b>:
+  4ddf8b:	8d 4d f0             	lea    ecx,[ebp-0x10]
+  4ddf8e:	e9 2d 19 ff ff       	jmp    0x4cf8c0
+  4ddf93:	b8 30 0c 4f 00       	mov    eax,0x4f0c30
+  4ddf98:	e9 ed 3b ff ff       	jmp    0x4d1b8a
+
+===== llvm-objdump 0x004DDF8B =====
+
+/mnt/data/T4C Server(2).exe:	file format coff-i386
+
+Disassembly of section .text:
+
+004d1630 <ExpFltr_end>:
+  4ddf8b: 8d 4d f0                     	lea	ecx, [ebp - 0x10]
+  4ddf8e: e9 2d 19 ff ff               	jmp	0x4cf8c0 <?Unlock@CLogger@@QAEXXZ+0x590>
+  4ddf93: b8 30 0c 4f 00               	mov	eax, 0x4f0c30
+  4ddf98: e9 ed 3b ff ff               	jmp	0x4d1b8a <ExpFltr_end+0x55a>

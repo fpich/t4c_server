@@ -1,0 +1,107 @@
+[
+  {
+    "gap": "0x48f066",
+    "new_bytes": 1,
+    "prior_verified_entry": "0x48f039",
+    "decoded_instructions": [
+      {
+        "address": "0x48f064",
+        "bytes": "c20800",
+        "gnu": "ret    0x8",
+        "llvm": "ret\t0x8",
+        "length": 3,
+        "added_bytes": 1
+      }
+    ]
+  },
+  {
+    "gap": "0x4af606",
+    "new_bytes": 1,
+    "prior_verified_entry": "0x4af600",
+    "decoded_instructions": [
+      {
+        "address": "0x4af604",
+        "bytes": "c21400",
+        "gnu": "ret    0x14",
+        "llvm": "ret\t0x14",
+        "length": 3,
+        "added_bytes": 1
+      }
+    ]
+  },
+  {
+    "gap": "0x4c3210",
+    "new_bytes": 1,
+    "prior_verified_entry": "0x4c3205",
+    "decoded_instructions": [
+      {
+        "address": "0x4c320e",
+        "bytes": "897e7c",
+        "gnu": "mov    DWORD PTR [esi+0x7c],edi",
+        "llvm": "mov\tdword ptr [esi + 0x7c], edi",
+        "length": 3,
+        "added_bytes": 1
+      }
+    ]
+  },
+  {
+    "gap": "0x4c3281",
+    "new_bytes": 2,
+    "prior_verified_entry": "0x4c3261",
+    "decoded_instructions": [
+      {
+        "address": "0x4c3281",
+        "bytes": "8bc6",
+        "gnu": "mov    eax,esi",
+        "llvm": "mov\teax, esi",
+        "length": 2,
+        "added_bytes": 2
+      }
+    ]
+  },
+  {
+    "gap": "0x4c3b6e",
+    "new_bytes": 1,
+    "prior_verified_entry": "0x4c3b42",
+    "decoded_instructions": [
+      {
+        "address": "0x4c3b6c",
+        "bytes": "c22000",
+        "gnu": "ret    0x20",
+        "llvm": "ret\t0x20",
+        "length": 3,
+        "added_bytes": 1
+      }
+    ]
+  },
+  {
+    "gap": "0x4c472f",
+    "new_bytes": 1,
+    "prior_verified_entry": "0x4c4720",
+    "decoded_instructions": [
+      {
+        "address": "0x4c472f",
+        "bytes": "c3",
+        "gnu": "ret",
+        "llvm": "ret",
+        "length": 1,
+        "added_bytes": 1
+      }
+    ]
+  },
+  {
+    "gap": "0x4c73b3",
+    "new_bytes": 1,
+    "prior_verified_entry": "0x4c73a1",
+    "decoded_instructions": [
+      {
+        "address": "0x4c73b1",
+        "bytes": "c20800",
+        "gnu": "ret    0x8",
+        "llvm": "ret\t0x8",
+        "length": 3,
+        "added_bytes": 1
+      }
+    ]
+  }
+]

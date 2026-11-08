@@ -1,0 +1,18 @@
+{
+  "sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "archive_source": "T4C_SERVEUR_PASSE28_DESASSEMBLAGE_SANS_DEV_PYTHON_2026-10-08.zip",
+  "archive_fichiers": 168,
+  "code_section": ".text",
+  "section_va_debut": "0x401000",
+  "section_taille_octets": 905117,
+  "fichiers_preuves": 31,
+  "lignes_assembleur_detectees": 16704,
+  "lignes_octets_correspondants": 16168,
+  "lignes_exclues": 536,
+  "instructions_adresses_uniques": 12315,
+  "octets_uniques_directement_cites": 35858,
+  "pct_octets_directement_cites": 3.962,
+  "fonctions_exportees_uniques": 1125,
+  "fonctions_exportees_avec_entree_dans_preuves": 97,
+  "pct_entrees_exportees_avec_preuve": 8.622
+}

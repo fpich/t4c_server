@@ -1,0 +1,44 @@
+{
+  "passe_de_reference": 130,
+  "passe_finale": 136,
+  "fichier_source": "T4C_SERVEUR_PASSES125_130_COUVERTURE_PRUDENTE_2026-10-10.zip",
+  "executable_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "taille_text": 905117,
+  "octets_historique_p130": 809652,
+  "octets_donnees_correctifs": 32,
+  "octets_ajoutes_code": 0,
+  "octets_cumules_corriges": 809620,
+  "pourcentage_corrige": 89.449209,
+  "octets_hors_masque_corrige": 95497,
+  "preuves_din_mapping": {
+    "lignes_asm_71_130": 253371,
+    "starts_uniques": 236329,
+    "source_octets_union": 700534,
+    "masque_p70": 129812,
+    "intersection": 20694,
+    "somme_reconstituee": 809652
+  },
+  "preuves_rejetees": {
+    "appels_directs_hors_masque": 0,
+    "exports_non_couverts": 0,
+    "import_throw_differentier_du_fallthrough": 5
+  },
+  "donnees_dans_text": {
+    "tables_de_pointeurs_relocalises": 47,
+    "octets_dans_les_tables": 3052,
+    "octets_tables_anciennement_comptes": 32,
+    "table_corrigee_va": "0x0041E9E0",
+    "instruction_reference_va": "0x0041E944"
+  },
+  "tests": {
+    "aucune_instruction_avec_octets_divergents": true,
+    "pas_de_conflit_meme_debut": true,
+    "aucune_collision_de_frontieres": true,
+    "masque_et_preuves_reconcilies": true
+  },
+  "limites": [
+    "La provenance des octets du masque passe 70 provient des archives précédentes; elle n’est pas ré-auditée exhaustivement ici.",
+    "Les relocations et prologues seuls ne prouvent pas une exécution réelle.",
+    "La section .text contient aussi des données et du remplissage : le dénominateur n’est pas une estimation exacte de la quantité de code exécutable."
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "invariants": {
+    "all_763_pointer_destinations_in_mask": true,
+    "data_mask_popcount": 3052,
+    "direct_branches_ending_in_padding": 0,
+    "mask_instruction_popcount": 829711,
+    "padding_mask_popcount": 15398,
+    "pairwise_disjoint": true,
+    "partition_total_text": true,
+    "source_zip_testzip": "OK",
+    "union_popcount": 848161
+  },
+  "original_binary_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc"
+}

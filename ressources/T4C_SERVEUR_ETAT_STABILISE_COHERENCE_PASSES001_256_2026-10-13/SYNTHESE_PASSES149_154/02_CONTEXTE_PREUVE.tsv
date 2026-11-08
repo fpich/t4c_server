@@ -1,0 +1,6 @@
+Adresse	Preuve	Portee
+0x0044AC00	Symbole de désassemblage NPCstructure::OnAttackHit	Rattachement symbolique de fonction
+0x0044B174	89 65 FC mov [ebp-4],esp	Predecesseur sans branchement et deja masque
+0x0044B177	68 58 58 50 00 push 0x505858	Premier octet nouveau
+0x0044BD7B	C3 ret	Dernier octet d instruction compte
+0x0044BD7C	90 nop x4	Alignement exclu

@@ -1,0 +1,13 @@
+étape	adresse	test ou condition	effet confirmé	certitude	point ouvert
+sélection visuelle	0x4AF5D0	GetType()==4	retour faux sans requête invisibilité	confirmé	sens fonctionnel du type 4
+sélection visuelle	0x4AF5E2	autre type	GetInvisibleQuery puis méthode virtuelle produisant booléen	confirmé sur flot	paramètres/métier de QueryInvisible
+sélection et référence	0x4B0DF8	test visuel positif	CreateVirtualUnit (+1 au compteur +0x5C)	confirmé	autres sites de rétention
+construction sous-paquet	0x4B0E93	count <= 0	ne sérialise ni u16(16) ni u16(count)	confirmé	compatibilité handler client
+construction sous-paquet	0x4B0EA3	count > 0	écrit u16(16), u16(count)	confirmé	nombre maximal pratique
+envoi spécial	0x4B0F0C	appearance 0x271B ou 0x271C	PacketPuppetInfo puis SendPlayerMessage sur paquet séparé	confirmé	format du message séparé
+information standard	0x4B0F5E	chaque unité retenue	PacketUnitInformation dans la liste	confirmé	aucun ajout spécial dans entrée fixe
+libération référence	0x4B0F68	après sérialisation	DeleteUnit: décrémente compteur +0x5C	confirmé	destruction seulement si compteur devient 0
+recherche hives	0x4B25F0	zone bornée x±15,y±30	traverse grille et invoque 0x410D30 puis 0x43BFE0 selon cases	confirmé partiel	sémantique des deux fonctions
+entrée en jeu	0x47B943	branche de session courte	écrit u16(46),u8(1) puis envoi	confirmé	lecture client sans payload long
+entrée en jeu	0x47B9B4	monde trouvé	appelle packet_inview_units et envoie le paquet46	confirmé	retour et exceptions non démontrés
+lecture client	0x4A2A98–0x4A2AAE	après opcode46	lit u8, u16, u16 avant le tableau	confirmé	réaction si octets manquants

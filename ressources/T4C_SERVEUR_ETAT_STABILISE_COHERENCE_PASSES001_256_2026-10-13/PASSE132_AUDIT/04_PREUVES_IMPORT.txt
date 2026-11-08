@@ -1,0 +1,3 @@
+0x004D1D56 : ff 25 68 e3 4d 00 : jmp dword ptr [0x004DE368]
+PE import IAT 0x004DE368 : MSVCRT!_CxxThrowException
+	000de368  <none>  0041  _CxxThrowException

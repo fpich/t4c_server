@@ -1,0 +1,17 @@
+source_VA	source_identite	cible_VA	cible_identite	adresse_appel	observation
+0x4722A0	TFCMAIN::Attack	0x471EC0	TFCMAIN::GetWorld	0x472337	selection_monde
+0x4722A0	TFCMAIN::Attack	0x4B2700	WorldMap::GetCollisionPos	0x472390	verifie_collision_positions
+0x4722A0	TFCMAIN::Attack	0x48B670	Unit::GetType	0x4723B0	verifie_type_unite
+0x4722A0	TFCMAIN::Attack	0x48F490	Unit::GetUnderBlock	0x47240C	verifie_etat_unite
+0x4722A0	TFCMAIN::Attack	0x41FE40	Character::StopAutoCombat	0x472465	stop_combat_conditionnel
+0x4722A0	TFCMAIN::Attack	0x48E210	Unit::GetDODGE	0x47254E	lecture_esquive
+0x4722A0	TFCMAIN::Attack	0x48E1F0	Unit::GetATTACK	0x47257F	lecture_attaque
+0x4722A0	TFCMAIN::Attack	0x48E1B0	Unit::GetAGI	0x4725B0	lecture_agilite
+0x4722A0	TFCMAIN::Attack	0x438620	GAME_RULES::GetBlowPrecision	0x4725CD	calcul_precision
+0x4722A0	TFCMAIN::Attack	0x40FD90	Broadcast::BCMiss	0x4726AF	diffuse_coup_manque
+0x4722A0	TFCMAIN::Attack	0x40FCA0	Broadcast::BCAttack	0x4729B6	diffuse_attaque_chemin_A
+0x4722A0	TFCMAIN::Attack	0x40FCA0	Broadcast::BCAttack	0x472A66	diffuse_attaque_chemin_B
+0x4722A0	TFCMAIN::Attack	0x40FB60	Broadcast::BCObjectChanged	0x472AD7	changement_conditionnel
+0x40FCA0	Broadcast::BCAttack	0x40FAF0	Broadcast::BCast	0x40FD61	diffusion
+0x40FD90	Broadcast::BCMiss	0x40FAF0	Broadcast::BCast	0x40FE31	diffusion
+0x40FE60	Broadcast::BCSkillUsed	0x40FAF0	Broadcast::BCast	0x40FECF	diffusion

@@ -1,0 +1,50 @@
+{
+  "sha256_binaire": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "taille_text": 905117,
+  "mask_reference": 767001,
+  "gain": 7023,
+  "mask_final": 774024,
+  "couverture_pourcent": 85.516458,
+  "preuves_instructions": 2511,
+  "octets_ajoutes_prouves": 7023,
+  "mask_exact_union": true,
+  "bytes_correspondent_au_PE": true,
+  "frontieres_sans_conflits_dans_preuves_historiques": true,
+  "passes": [
+    {
+      "passe": 113,
+      "ajout": 6396,
+      "total": 773397
+    },
+    {
+      "passe": 114,
+      "ajout": 178,
+      "total": 773575
+    },
+    {
+      "passe": 115,
+      "ajout": 336,
+      "total": 773911
+    },
+    {
+      "passe": 116,
+      "ajout": 113,
+      "total": 774024
+    },
+    {
+      "passe": 117,
+      "ajout": 0,
+      "total": 774024
+    },
+    {
+      "passe": 118,
+      "ajout": 0,
+      "total": 774024
+    }
+  ],
+  "limitations": [
+    "Les anciennes graines issues de relocations restent un référentiel statique et non une preuve d execution.",
+    "Les deux grandes lacunes non liées par un flot prouvé restent hors masque.",
+    "Les tables indirectes sont résolues statiquement mais la faisabilité dynamique des chemins reste à tester."
+  ]
+}

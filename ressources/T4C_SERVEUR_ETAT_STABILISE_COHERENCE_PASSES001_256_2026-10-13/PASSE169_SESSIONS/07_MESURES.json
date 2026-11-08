@@ -1,0 +1,12 @@
+{
+  "passe": 169,
+  "domaine": "Sessions et dialogues",
+  "avant": 821113,
+  "apres": 822269,
+  "gain_unique": 1156,
+  "nouvelles_instructions": 374,
+  "blocs": 2,
+  "pourcentage": 90.846708,
+  "sha256_masque": "4bb7f7e8ae7dd919d406cf37bef5f1e700ccf37bfd43ed7997fe8abf5c01cc45",
+  "sha256_ajout": "2b8f6c465c9e8be7e6b74c328ffa392d79e7e3e27ccede2dd2a1cd2576943d45"
+}

@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-08",
+  "binaire": "T4C Server(1).exe",
+  "sha256_executable": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "zone": "section .text, VA 0x00401000, longueur 905117 octets",
+  "total_code_octets": 905117,
+  "base_passe33_octets": 52789,
+  "base_passe33_pourcent": 5.832285,
+  "passe34_nouveaux_octets_uniques": 4198,
+  "total_octets_verifies": 56987,
+  "couverture_pct": 6.296092,
+  "lignes_instructions_nouvelles_verifiees": 1917,
+  "adresses_nouvelles_distinctes": 1577,
+  "exports_reperes": 1125,
+  "exports_entrees_avec_preuve_base": 142,
+  "exports_entrees_avec_preuve_nouveau_total": 158,
+  "total_fichiers_historiques": 233,
+  "lignes_historiques_ne_correspondant_pas_au_serveur": 536,
+  "preuves": [
+    {
+      "preuve": "02_PREUVES_TFCTIMERS.asm",
+      "lignes_instructions_verifiees": 1187,
+      "octets_preuve": 3024,
+      "nouveaux_octets_non_redondants": 3024
+    },
+    {
+      "preuve": "03_PREUVES_CALLBACKS_EFFETS.asm",
+      "lignes_instructions_verifiees": 351,
+      "octets_preuve": 1019,
+      "nouveaux_octets_non_redondants": 14
+    },
+    {
+      "preuve": "04_PREUVES_PLANIFICATION_RECURRENTE.asm",
+      "lignes_instructions_verifiees": 379,
+      "octets_preuve": 1189,
+      "nouveaux_octets_non_redondants": 1160
+    }
+  ]
+}

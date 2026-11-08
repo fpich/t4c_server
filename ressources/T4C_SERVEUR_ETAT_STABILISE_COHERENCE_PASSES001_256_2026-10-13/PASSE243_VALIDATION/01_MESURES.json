@@ -1,0 +1,16 @@
+{
+  "source_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "relocation_blocks_parsed": 248,
+  "relocation_sites_with_pointer_into_text": 7630,
+  "relocation_targets_unclassified_occurrences": 0,
+  "distinct_unclassified_relocation_targets": 0,
+  "target_class_counts": {
+    "C": 7553,
+    "D": 77
+  },
+  "new_verified_code_bytes": 0,
+  "new_classified_bytes": 0,
+  "classified_bytes_unchanged": 850738,
+  "unclassified_bytes_unchanged": 54379,
+  "caution": "Une relocation vers une adresse inconnue ne prouve ni le début d’une instruction ni son atteignabilité."
+}

@@ -1,0 +1,14 @@
+étape	fonction / référence	VA	comportement_obs	limite
+type vainqueur	Unit::GetType	0x438A42	GetType()==1 sélectionne la branche PC ; autre cas MOB	La nomenclature exacte de tous types n’est pas déduite
+pourcentage XP	registre Windows / +0.01	0x438A69–0x438B15	Entier des paramètres de perte XP multiplié par 0.01	Valeurs réelles du registre non fournies
+niveau courant	Unit::GetLevel	0x438B2A	Borne entre 1 et 199	Table de seuil en RAM non fournie dans PE
+seuil XP	0x511B10	0x438B4C	Sélection d’une entrée de 8 octets indexée par niveau	Contenu dynamique non reconstruit
+XP	Character::GetXP / SetXP	0x438B57–0x438BB1	Différence à un seuil, multiplication, perte bornée et écriture	Règles d’arrondi extrêmes non testées
+sac	Character::GetBackpack	0x438BB8	Liste parcourue selon quantité et seuil de perte	États des items et side effects encore partiels
+diminution de quantité	Objects::Remove / Objects::GetQty	0x438C54–0x438C60	Retire 1 unité puis vérifie la quantité	Destinations du transfert conditionnelles
+équipement	Character::GetEquipment	0x438E41	Boucle de 16 cases indexées de 0 à 15	Éligibilité de tous types non établie
+or	Character::GetGold / SetGold	0x438F7E–0x41BC8C	Montant perdable calculé et soustrait par appelant	Bornes types signés/unsigned à tester
+vie post-mortem	Character::GetHP / SetHP	0x438F9F–0x438FAE	GetHP >> 1 transmis à SetHP	Conditions d’appel et flags à détailler
+NPC OnDeath	NPCstructure::OnDeath	0x44A977–0x44AACC	Boucle sur 16 octets par entrée de table, chance double à +8	Sémantique exacte des 16 octets incomplète
+RNG loot	0x4590A0	0x44A9A1–0x44A9CC	Tirage avec borne haute 100000000, compare chance*1000000	Rounding / conditions exactes à corroborer
+objet drop	Objects constructor / slot +0x18	0x44A9D2–0x44AAB2	Création d’objet, init depuis donnée tableau, ajout à liste	Pas de test d’apparition au sol pour chaque objet

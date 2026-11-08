@@ -1,0 +1,1 @@
+Les octets des lignes de désassemblage sont validés contre la section .text du PE original, et dédoublonnés sur les adresses virtuelles. Le référentiel officiel historique ne peut être assimilé à la seule union des fichiers .asm; aucun taux accru n’est revendiqué.

@@ -1,0 +1,64 @@
+{
+  "binary_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "text_size": 905117,
+  "baseline": 264486,
+  "final": 343688,
+  "total_new": 79202,
+  "coverage_pct": 37.971666,
+  "instructions_checked": 29985,
+  "overlapping_instruction_bytes_among_new_passes": 0,
+  "passes": [
+    {
+      "passe": 83,
+      "new": 7296,
+      "cum": 271782,
+      "pct": 30.027278,
+      "instructions": 2380,
+      "evidence_bytes": 7296
+    },
+    {
+      "passe": 84,
+      "new": 39046,
+      "cum": 310828,
+      "pct": 34.341196,
+      "instructions": 15325,
+      "evidence_bytes": 53043
+    },
+    {
+      "passe": 85,
+      "new": 8206,
+      "cum": 319034,
+      "pct": 35.247819,
+      "instructions": 3172,
+      "evidence_bytes": 8206
+    },
+    {
+      "passe": 86,
+      "new": 2315,
+      "cum": 321349,
+      "pct": 35.503587,
+      "instructions": 851,
+      "evidence_bytes": 2315
+    },
+    {
+      "passe": 87,
+      "new": 8508,
+      "cum": 329857,
+      "pct": 36.443576,
+      "instructions": 3056,
+      "evidence_bytes": 8508
+    },
+    {
+      "passe": 88,
+      "new": 13831,
+      "cum": 343688,
+      "pct": 37.971666,
+      "instructions": 5201,
+      "evidence_bytes": 13831
+    }
+  ],
+  "nonredundant": true,
+  "machine_bytes_match": true,
+  "interval_masks_match": true,
+  "cumulative_masks_consistent": true
+}

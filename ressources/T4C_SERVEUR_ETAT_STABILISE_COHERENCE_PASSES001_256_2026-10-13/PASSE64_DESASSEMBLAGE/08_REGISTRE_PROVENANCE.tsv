@@ -1,0 +1,14 @@
+Adresse	Fonction	Instruction ou fait	Conclusion	Statut
+0x45CB07	0x45C950	LEA ECX,[EBP-0x3C]	adresse collection locale	direct
+0x45CB0D	0x45C950	CALL 0x45E8A0	construction locale	direct
+0x45C8B6	0x45C890	MOV EAX,[EBP+0x18]	conteneur wrapper	direct
+0x45C8C3	0x45C890	PUSH EAX (sixième empilement)	[EBP+0x1C] dans dispatcher	convention appel x86
+0x45AB4F	0x45A7A0	MOV EBX,[EBP+0x1C]	conteneur dispatcher vers EBX	direct
+0x45AB58	0x45A7A0	PUSH EBX premier des neuf	[EBP+0x28] dans 0x40C350	convention appel x86
+0x40C353	0x40C350	MOV EAX,[EBP+0x28]	retransmet le dernier des 9 arguments	direct
+0x40C377	0x40C350	LEA EDX,[ECX+8]; PUSH EDX	argument additionnel avant appel évaluateur	direct
+0x40C37B	0x40C350	CALL 0x409C10	cont. dans [EBP+0x2C] évaluateur	convention appel x86
+0x40A5B5	0x409C10	MOV ECX,[EBP+0x2C]	lecture var utilise conteneur transmis	direct
+0x40A5C4	0x409C10	CALL 0x40F230	recherche ou insertion var	direct
+0x45ACC8	0x45A7A0	MOV ECX,EBX	catégorie 5 : même conteneur	direct
+0x45ACCE	0x45A7A0	CALL 0x40F230	mutation du même conteneur	direct

@@ -1,0 +1,7 @@
+source_historique	ordinal	adresse_VA	classe_probable	nom_decore_Msvc	entree_avec_instruction_verifiee	fichiers_citant_entree	statut_comprehension
+passe24/INVENTAIRE_EXPORTS.tsv	564	0x00432EA0	Creatures	?IsPrivateTalk@Creatures@@UAEHXZ	non	0	a_evaluer
+passe24/INVENTAIRE_EXPORTS.tsv	565	0x0048F540	Unit	?IsPrivateTalk@Unit@@UAEHXZ	non	0	a_evaluer
+passe24/INVENTAIRE_EXPORTS.tsv	757	0x0041DD80	Character	?SendPlayerMessage@Character@@UAEXAAVTFCPacket@@@Z	oui	1	a_evaluer
+passe24/INVENTAIRE_EXPORTS.tsv	760	0x0041F8E0	Character	?SendPrivateMessage@Character@@UAEXAAVCString@@PAVUnit@@K@Z	non	0	a_evaluer
+passe24/INVENTAIRE_EXPORTS.tsv	761	0x0048F550	Unit	?SendPrivateMessage@Unit@@UAEXAAVCString@@PAV1@K@Z	non	0	a_evaluer
+passe24/INVENTAIRE_EXPORTS.tsv	903	0x0048C3E0	Unit	?Talk@Unit@@UAEXPBDKPAV1@@Z	non	0	a_evaluer

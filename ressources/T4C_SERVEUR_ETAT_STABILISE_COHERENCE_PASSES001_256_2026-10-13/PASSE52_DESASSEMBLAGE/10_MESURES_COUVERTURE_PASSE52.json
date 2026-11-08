@@ -1,0 +1,50 @@
+{
+  "passe": 52,
+  "date": "2026-10-09",
+  "binaire_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "base_archive": "T4C_SERVEUR_PASSE51_DESASSEMBLAGE_PUR_2026-10-09.zip",
+  "total_section_text": 905117,
+  "ancien_total_publie_passe51": 104863,
+  "ancien_total_recalcule_par_analyse_independante": 104954,
+  "ecart_historique_a_reconcilier_octets": 91,
+  "ajout_brut_nouveaux_octets_sans_chevauchement": 4001,
+  "total_recalcule_brut_octets": 108955,
+  "couverture_recalculee_brute_pourcent": 12.03767,
+  "total_conservateur_dans_continuite_historique": 108864,
+  "couverture_conservatrice_pourcent": 12.027616,
+  "entrees_exports_documentees_brut_independant": 258,
+  "entrees_exports_passe51_recalcule": 258,
+  "entrees_exports_passe51_publiees": 257,
+  "entrees_exports_dans_continuite_historique": 257,
+  "ecart_exports_brut_vs_publie": 1,
+  "entrees_exports_totales": 1125,
+  "instructions_nouvelles_verifiees": 1610,
+  "instructions_nouvelles_rejetees": 0,
+  "anciennes_instructions_verifiees_regex": 49800,
+  "anciennes_instructions_rejetees_client_ou_non_serveur": 536,
+  "nouvelles_preuves": {
+    "02_PREUVES_COMPETENCES_PARSER_ET_DISTANCE.asm": {
+      "instructions": 128,
+      "intervalles": 2
+    },
+    "03_PREUVES_RESISTANCES_FORMULES.asm": {
+      "instructions": 594,
+      "intervalles": 3
+    },
+    "04_PREUVES_FLAGS_SANS_BOOST.asm": {
+      "instructions": 504,
+      "intervalles": 3
+    },
+    "05_PREUVES_CARACTERISTIQUES_EFFECTIVES.asm": {
+      "instructions": 384,
+      "intervalles": 3
+    }
+  },
+  "table_operandes": {
+    "entrees": 113,
+    "destinations_uniques": 98,
+    "fallback_zero": 15
+  },
+  "interpretation": "couverture d octets documentes et compares au PE, pas pourcentage de fonctionnalites comprises",
+  "limites": "Aucun WDA reel execute; certains slots MFC inconnus. Divergence constante de 91 octets avec les suivis precedents non effacee."
+}

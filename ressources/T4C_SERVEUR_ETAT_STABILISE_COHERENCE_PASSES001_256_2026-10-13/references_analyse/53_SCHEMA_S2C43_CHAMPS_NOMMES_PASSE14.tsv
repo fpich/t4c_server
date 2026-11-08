@@ -1,0 +1,30 @@
+index_apres_opcode	offset_payload_hex	type_wire	source_valeur_serveur	nom_ou_interpretation	certitude	VA_ecriture_serveur	VA_lecture_client	fonction_resolue	interpretation_detaillee	certitude_fonction
+1	0x0	u32_be	virtual +0xD8	unknown virtual u32	confirmé type; sens inconnu	0x41f5df	0x498c6a	Character::GetHP	points de vie courants	confirmé: table virtuelle Character + export
+2	0x4	u32_be	virtual +0xCC	unknown virtual u32	confirmé type; sens inconnu	0x41f5f1	0x498c76	Unit::GetMaxHP	points de vie maximaux	confirmé: table virtuelle Character + export
+3	0x8	u16_be	virtual +0xEC	unknown virtual u16	confirmé type; sens inconnu	0x41f603	0x498c82	Character::GetMana	mana courant	confirmé: table virtuelle Character + export
+4	0xa	u16_be	virtual +0xE0	unknown virtual u16	confirmé type; sens inconnu	0x41f615	0x498c8e	Unit::GetMaxMana	mana maximal	confirmé: table virtuelle Character + export
+5	0xc	u32_be	virtual +0x54 : EDX	high 32 bits (same virtual call pair)	confirmé registre / sémantique 64-bit probable	0x41f629	0x498c99	Character::GetXP (EDX)	moitié haute de XP, 32 bits	confirmé: table virtuelle Character + export
+6	0x10	u32_be	virtual +0x54 : EAX	low 32 bits (second call)	confirmé registre / sémantique 64-bit probable	0x41f638	0x498ca4	Character::GetXP (EAX)	moitié basse de XP, 32 bits	confirmé: table virtuelle Character + export
+7	0x14	u16_be	virtual +0x168 / ftol	value converted from floating point	fonction virtuelle inconnue	0x41f64f	0x498cd1	Character::GetAC / conversion entier	classe armure, cast vers 16 bits	confirmé: table virtuelle Character + export
+8	0x16	u16_be	Character::GetTrueAC / ftol	true armour class, converted	nom exporté	0x41f663	0x498cdd	Character::GetTrueAC / conversion entier	classe armure effective, convertie en 16 bits	confirmé: appel direct + export
+9	0x18	u16_be	Unit::GetSTR	strength	nom exporté	0x41f672	0x498ce9	Unit::GetSTR	strength	confirmé: appel direct + export
+10	0x1a	u16_be	Unit::GetEND	endurance	nom exporté	0x41f681	0x498cf5	Unit::GetEND	endurance	confirmé: appel direct + export
+11	0x1c	u16_be	Unit::GetAGI	agility	nom exporté	0x41f690	0x498d01	Unit::GetAGI	agility	confirmé: appel direct + export
+12	0x1e	u16_be	literal 0	reserved/zero	constante confirmée	0x41f699	0x498d0d	constante 0	réservé / zéro	confirmé: littéral
+13	0x20	u16_be	Unit::GetWIS	wisdom	nom exporté	0x41f6a8	0x498d19	Unit::GetWIS	wisdom	confirmé: appel direct + export
+14	0x22	u16_be	Unit::GetINT	intelligence	nom exporté	0x41f6b7	0x498d25	Unit::GetINT	intelligence	confirmé: appel direct + export
+15	0x24	u16_be	literal 0	reserved/zero	constante confirmée	0x41f6c0	0x498d31	constante 0	réservé / zéro	confirmé: littéral
+16	0x26	u16_be	Character::GetStatPoints	stat points	nom exporté	0x41f6cf	0x498d3d	Character::GetStatPoints	stat points	confirmé: appel direct + export
+17	0x28	u16_be	Unit::GetTrueSTR	effective strength	nom exporté	0x41f6de	0x498d49	Unit::GetTrueSTR	effective strength	confirmé: appel direct + export
+18	0x2a	u16_be	Unit::GetTrueEND	effective endurance	nom exporté	0x41f6ed	0x498d55	Unit::GetTrueEND	effective endurance	confirmé: appel direct + export
+19	0x2c	u16_be	Unit::GetTrueAGI	effective agility	nom exporté	0x41f6fc	0x498d61	Unit::GetTrueAGI	effective agility	confirmé: appel direct + export
+20	0x2e	u16_be	literal 0	reserved/zero	constante confirmée	0x41f705	0x498d6d	constante 0	réservé / zéro	confirmé: littéral
+21	0x30	u16_be	Unit::GetTrueWIS	effective wisdom	nom exporté	0x41f714	0x498d79	Unit::GetTrueWIS	effective wisdom	confirmé: appel direct + export
+22	0x32	u16_be	Unit::GetTrueINT	effective intelligence	nom exporté	0x41f723	0x498d85	Unit::GetTrueINT	effective intelligence	confirmé: appel direct + export
+23	0x34	u16_be	literal 0	reserved/zero	constante confirmée	0x41f72c	0x498d91	constante 0	réservé / zéro	confirmé: littéral
+24	0x36	u16_be	virtual +0x13C	unknown u16	non identifié	0x41f73e	0x498d9d	Unit::GetLevel	niveau	confirmé: table virtuelle Character + export
+25	0x38	u16_be	virtual +0x174	unknown u16	non identifié	0x41f750	0x498da9	Character::GetSkillPoints	points de compétences	confirmé: table virtuelle Character + export
+26	0x3a	u16_be	virtual +0x198	unknown u16	non identifié	0x41f762	0x498db5	Character::GetWeight	poids, tronqué à 16 bits	confirmé: table virtuelle Character + export
+27	0x3c	u16_be	virtual +0x19C	unknown u16	non identifié	0x41f774	0x498dc1	Character::GetMaxWeight	poids maximal, tronqué à 16 bits	confirmé: table virtuelle Character + export
+28	0x3e	u16_be	virtual +0x1B8	unknown u16	non identifié	0x41f786	0x498dcd	Unit::GetKarma	karma, tronqué à 16 bits	confirmé: table virtuelle Character + export
+29	0x40	u16_be	virtual +0xD0	unknown u16	non identifié	0x41f798	0x498dd9	Character::GetTrueMaxHP	PV maximaux effectifs, tronqués à 16 bits	confirmé: table virtuelle Character + export

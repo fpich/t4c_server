@@ -1,0 +1,77 @@
+[
+  {
+    "gap": "0x41a5a2",
+    "new_bytes": 2,
+    "prior_verified_entry": "0x41a58c",
+    "decoded_instructions": [
+      {
+        "address": "0x41a5a2",
+        "bytes": "8b11",
+        "gnu": "mov    edx,DWORD PTR [ecx]",
+        "llvm": "mov\tedx, dword ptr [ecx]",
+        "length": 2,
+        "added_bytes": 2
+      }
+    ]
+  },
+  {
+    "gap": "0x432527",
+    "new_bytes": 7,
+    "prior_verified_entry": "0x4324fa",
+    "decoded_instructions": [
+      {
+        "address": "0x432527",
+        "bytes": "c74580ffffffff",
+        "gnu": "mov    DWORD PTR [ebp-0x80],0xffffffff",
+        "llvm": "mov\tdword ptr [ebp - 0x80], 0xffffffff",
+        "length": 7,
+        "added_bytes": 7
+      }
+    ]
+  },
+  {
+    "gap": "0x43254a",
+    "new_bytes": 3,
+    "prior_verified_entry": "0x43252e",
+    "decoded_instructions": [
+      {
+        "address": "0x43254a",
+        "bytes": "895dbc",
+        "gnu": "mov    DWORD PTR [ebp-0x44],ebx",
+        "llvm": "mov\tdword ptr [ebp - 0x44], ebx",
+        "length": 3,
+        "added_bytes": 3
+      }
+    ]
+  },
+  {
+    "gap": "0x4327d6",
+    "new_bytes": 3,
+    "prior_verified_entry": "0x4327aa",
+    "decoded_instructions": [
+      {
+        "address": "0x4327d6",
+        "bytes": "89459c",
+        "gnu": "mov    DWORD PTR [ebp-0x64],eax",
+        "llvm": "mov\tdword ptr [ebp - 0x64], eax",
+        "length": 3,
+        "added_bytes": 3
+      }
+    ]
+  },
+  {
+    "gap": "0x4328bf",
+    "new_bytes": 6,
+    "prior_verified_entry": "0x4328a6",
+    "decoded_instructions": [
+      {
+        "address": "0x4328bf",
+        "bytes": "ff15e0e04d00",
+        "gnu": "call   DWORD PTR ds:0x4de0e0",
+        "llvm": "call\tdword ptr [0x4de0e0]",
+        "length": 6,
+        "added_bytes": 6
+      }
+    ]
+  }
+]

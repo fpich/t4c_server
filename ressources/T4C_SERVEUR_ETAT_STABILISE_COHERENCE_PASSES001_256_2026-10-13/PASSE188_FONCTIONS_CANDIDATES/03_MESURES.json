@@ -1,0 +1,29 @@
+[
+  {
+    "window": "0x4BAA90 \u2014 structure arborescente / allocation",
+    "begin": "0x4baa90",
+    "end_exclusive": "0x4bab65",
+    "matched_instructions": 74,
+    "matched_bytes": 213,
+    "unmatched_starts": 0,
+    "counted_new": 0
+  },
+  {
+    "window": "0x434670 \u2014 m\u00e9thode \u00e0 appels virtuels",
+    "begin": "0x434670",
+    "end_exclusive": "0x434770",
+    "matched_instructions": 103,
+    "matched_bytes": 256,
+    "unmatched_starts": 0,
+    "counted_new": 0
+  },
+  {
+    "window": "0x493A75 \u2014 zone fragmentaire",
+    "begin": "0x493a75",
+    "end_exclusive": "0x493bb0",
+    "matched_instructions": 79,
+    "matched_bytes": 313,
+    "unmatched_starts": 1,
+    "counted_new": 0
+  }
+]

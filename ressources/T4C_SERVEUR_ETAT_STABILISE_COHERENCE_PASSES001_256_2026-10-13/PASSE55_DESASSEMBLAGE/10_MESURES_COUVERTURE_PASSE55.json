@@ -1,0 +1,26 @@
+{
+  "passe": 55,
+  "source_executable": "T4C Server(1).exe",
+  "sha256_executable": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "section_text_octets": 905117,
+  "ancienne_couverture_brute": 120518,
+  "nouvelle_couverture_brute": 123248,
+  "couverture_brute_pct": 13.616803,
+  "nouveaux_octets_uniques": 2730,
+  "instruction_preuves_passe55": 1973,
+  "instruction_rejetee_nouvelles_preuves": 0,
+  "preuves_par_fichier": {
+    "02_PREUVES_IF_EVALUATION_SELECTIVE.asm": 237,
+    "03_PREUVES_VARIABLES_ARBRE_MUTATIONS.asm": 157,
+    "04_PREUVES_SELF_TARGET_GETTERS.asm": 464,
+    "05_PREUVES_RESISTANCES_BRUTES_ET_DISTANCE.asm": 1115
+  },
+  "couverture_prudente_apres_soustraction_historique": 123157,
+  "couverture_prudente_pct": 13.606749,
+  "ecart_historique_octets": 91,
+  "exportations_couvertes_precedent": 259,
+  "exportations_couvertes_nouveau": 259,
+  "exportations_totales": 1125,
+  "fichiers_historique_identiques_attendus": 486,
+  "precedente_archive": "T4C_SERVEUR_PASSE54_DESASSEMBLAGE_PUR_2026-10-09.zip"
+}

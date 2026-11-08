@@ -1,0 +1,7 @@
+{
+  "files_scanned": 901,
+  "references_regex": 53989,
+  "distinct_targets": 19726,
+  "strikes": [],
+  "limitations": "This is a textual scan, not a complete machine-code call graph. Indirect branches may target candidate padding."
+}

@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-08",
+  "binaire": "T4C Server(1).exe",
+  "sha256_binaire": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "section": ".text",
+  "section_va_debut": "0x401000",
+  "section_octets": 905117,
+  "archive_source": "T4C_SERVEUR_PASSE36_DESASSEMBLAGE_PUR_2026-10-08.zip",
+  "fichiers_source": 264,
+  "base_octets_uniques": 66536,
+  "base_pct": 7.351094,
+  "passe37_octets_uniques": 67909,
+  "passe37_pct": 7.502787,
+  "nouveaux_octets_uniques": 1373,
+  "nouvelles_lignes_instructions_valides": 1169,
+  "nouvelles_lignes_instructions_rejetees": 0,
+  "exports_entrees_passe36": 160,
+  "exports_entrees_passe37": 160,
+  "exports_total": 1125,
+  "details_nouvelles_preuves": {
+    "02_PREUVES_REGISTRE_UNIT_EFFECT.asm": {
+      "lignes_verifiees": 263,
+      "lignes_rejetees": 0,
+      "octets_locaux_uniques": 799
+    },
+    "03_PREUVES_REGISTRE_SPELL_EFFECT.asm": {
+      "lignes_verifiees": 253,
+      "lignes_rejetees": 0,
+      "octets_locaux_uniques": 709
+    },
+    "04_PREUVES_COPIES_ET_CALLBACKS.asm": {
+      "lignes_verifiees": 472,
+      "lignes_rejetees": 0,
+      "octets_locaux_uniques": 1398
+    },
+    "05_PREUVES_OWNERSHIP_LISTES.asm": {
+      "lignes_verifiees": 181,
+      "lignes_rejetees": 0,
+      "octets_locaux_uniques": 480
+    }
+  },
+  "historique_client_exclu_de_couverture_serveur": 536,
+  "note": "La mesure exclut les instructions client déjà classées à la stabilisation et déduplique chaque octet de .text."
+}

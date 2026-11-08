@@ -1,0 +1,2 @@
+VA	Origine	Symbole_ou_cible	Instructions_CFG	Octets_CFG_locaux	Appels_directs	Alertes	Limite_exclusive
+0x00463E00	SysopCmd	?VerifySysopCommand@SysopCmd@@SAHPAVPlayers@@VCString@@@Z	15325	53043	2374	0	0x004715D0

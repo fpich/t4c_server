@@ -1,0 +1,5 @@
+classe	vtable_principale_VA	slot	cible_VA	nom_exporte	type_retour	statut
+Unit	0x004DF658	+0x1C	0x0048B680	Unit::GetWL	WorldPos (3 x DWORD)	RDATA_ET_ASM_CONFIRMES
+Character	0x004DE68C	+0x1C	0x0048B680	Unit::GetWL	WorldPos (3 x DWORD)	RDATA_ET_ASM_CONFIRMES
+Creatures	0x004DEBB0	+0x1C	0x0048B680	Unit::GetWL	WorldPos (3 x DWORD)	RDATA_ET_ASM_CONFIRMES
+Objects	0x004DF1E0	+0x1C	0x0048B680	Unit::GetWL	WorldPos (3 x DWORD)	RDATA_ET_ASM_CONFIRMES

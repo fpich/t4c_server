@@ -1,0 +1,15 @@
+fonction	adresse_debut	adresse_fin_exclue	instructions_prouvees	octets_prouves_locaux	objet
+SpellEffect::CreateEffectStatus	0x00460820	0x0046097B	124	347	S2C83, notification creation
+SpellEffect::DispellEffectStatus	0x00460980	0x00460A1D	50	153	S2C84, notification retrait
+SpellEffectManager::Destroy	0x00460A70	0x00460BD0	93	339	destruction registre effets
+SpellEffectManager::RegisterSuperstructure	0x00460BD0	0x00460BF7	14	39	ajout constructeur virtuel
+SpellEffectManager::GetEffectObject	0x00460C00	0x00460C84	44	132	recherche type et appel fabrique
+UnitEffectManager::RegisterEffect	0x00490B10	0x00490B35	14	37	enregistrement callback
+UnitEffectManager::GetEffectProc	0x00490B40	0x00490C1D	77	221	recherche callback et verrouillage
+Unit::AddEffect	0x0048C810	0x0048C926	99	278	liste des effets
+Unit::RemoveEffect	0x0048C930	0x0048CAC4	146	404	suppression effet par identifiant
+Unit::GetEffect	0x0048CCE0	0x0048CDA0	66	177	lecture effet
+Unit::SaveEffects (parcours initial)	0x0048E430	0x0048E660	197	560	parcours des effets et generation requetes SQL
+Unit::LoadEffects	0x0048E8A0	0x0048E9E0	102	320	chargement ODBC des effets et colonnes
+Unit::DeferredLoadEffects (branche initiale)	0x0048E9F0	0x0048ED40	274	848	transformation differée et callbacks
+Unit::QueryEffects (branche initiale)	0x0048D110	0x0048D300	159	496	enumeration des effets et appel de traitement

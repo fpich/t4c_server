@@ -1,0 +1,7 @@
+chemin	site	instruction	appel	origine	statut	preuve_archive
+lecteur	0x40A5B5	mov ecx,[ebp+0x2c]	0x40A5C4	argument fonction lecteur	CONFIRME_PAR_EXTRAIT	PASSE56_DESASSEMBLAGE/03_PREUVES_ARBRE_CLE_ET_LECTURE.asm
+ecriture_categorie_5	0x45AB4F ; 0x45ACC8	mov ebx,[ebp+0x1c] ; mov ecx,ebx	0x45ACCE	argument dispatcher +0x1c	CONFIRME_PAR_EXTRAITS	PASSE56_DESASSEMBLAGE/02_PREUVES_DISPATCH_ECRITURES_VAR.asm
+ecriture_categorie_20	0x45BA57	mov ecx,[ebp+0x1c]	0x45BA5E	argument dispatcher +0x1c	CONFIRME_PAR_EXTRAIT	PASSE56_DESASSEMBLAGE/02_PREUVES_DISPATCH_ECRITURES_VAR.asm
+helper	0x40F23C	mov edi,[ecx+0x4]	0x40F230	ecx pointe structure associative	CONFIRME_PAR_EXTRAIT	PASSE57_DESASSEMBLAGE/04_PREUVES_CHEMIN_VARIABLES_ET_ARBRE.asm
+allocation_noeud	0x40F383	push 0x30	0x441FF0	allocation 48 octets	CONFIRME_PAR_EXTRAIT	PASSE57_DESASSEMBLAGE/04_PREUVES_CHEMIN_VARIABLES_ET_ARBRE.asm
+alias_lecteur_ecritures	inconnu	aucune preuve alias	inconnu	identite concrete des pointeurs	NON_DEMONTRE	PASSE59_DESASSEMBLAGE/01_RAPPORT_PASSE59.md

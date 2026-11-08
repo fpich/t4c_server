@@ -1,0 +1,12 @@
+{
+  "mask_old_count_recalculated": 826773,
+  "mask_new_count_recalculated": 828027,
+  "mask_delta_xor_count": 1254,
+  "all_new_instructions_double_decoded": true,
+  "new_instructions": 410,
+  "all_instruction_bytes_match_pe": true,
+  "all_added_bytes_previously_uncovered": true,
+  "new_spans_count": 11,
+  "older_archived_files_kept_unchanged": true,
+  "original_pe_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc"
+}

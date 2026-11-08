@@ -1,0 +1,94 @@
+zone	adresse	octets	GNU	LLVM	nouveaux_octets_dans_cette_instruction
+alloc_4aff64	0x004AFF55	c1 ff 02	sar    edi,0x2	sar	edi, 0x2	0
+alloc_4aff64	0x004AFF58	c1 e7 02	shl    edi,0x2	shl	edi, 0x2	0
+alloc_4aff64	0x004AFF5B	83 3c 39 00	cmp    DWORD PTR [ecx+edi*1],0x0	cmp	dword ptr [ecx + edi], 0x0	0
+alloc_4aff64	0x004AFF5F	89 7d ec	mov    DWORD PTR [ebp-0x14],edi	mov	dword ptr [ebp - 0x14], edi	0
+alloc_4aff64	0x004AFF62	75 36	jne    0x4aff9a	jne	0x4aff9a <?create_world_unit@WorldMap@@QAEPAVUnit@@DIUWorldPos@@PAV2@H@Z+0x9a>	0
+alloc_4aff64	0x004AFF64	68 44 01 00 00	push   0x144	push	0x144	4
+alloc_4aff64	0x004AFF69	e8 82 20 f9 ff	call   0x441ff0	call	0x441ff0 <??4SpellEffectManager@@QAEAAV0@ABV0@@Z+0x3f70>	5
+alloc_4aff64	0x004AFF6E	83 c4 04	add    esp,0x4	add	esp, 0x4	3
+alloc_4aff64	0x004AFF71	89 45 f0	mov    DWORD PTR [ebp-0x10],eax	mov	dword ptr [ebp - 0x10], eax	3
+alloc_4aff64	0x004AFF74	85 c0	test   eax,eax	test	eax, eax	2
+alloc_4aff64	0x004AFF76	c7 45 fc 00 00 00 00	mov    DWORD PTR [ebp-0x4],0x0	mov	dword ptr [ebp - 0x4], 0x0	7
+alloc_4aff64	0x004AFF7D	74 09	je     0x4aff88	je	0x4aff88 <?create_world_unit@WorldMap@@QAEPAVUnit@@DIUWorldPos@@PAV2@H@Z+0x88>	2
+alloc_4aff64	0x004AFF7F	8b c8	mov    ecx,eax	mov	ecx, eax	2
+alloc_4aff64	0x004AFF81	e8 ba 07 f6 ff	call   0x410740	call	0x410740 <?BCServerMessage@Broadcast@@SAXUWorldPos@@EVCString@@PAVSendPacketVisitor@@@Z+0x750>	5
+alloc_4aff64	0x004AFF86	eb 02	jmp    0x4aff8a	jmp	0x4aff8a <?create_world_unit@WorldMap@@QAEPAVUnit@@DIUWorldPos@@PAV2@H@Z+0x8a>	2
+alloc_4aff64	0x004AFF88	33 c0	xor    eax,eax	xor	eax, eax	2
+alloc_4aff64	0x004AFF8A	8b 56 24	mov    edx,DWORD PTR [esi+0x24]	mov	edx, dword ptr [esi + 0x24]	3
+alloc_4aff64	0x004AFF8D	8b 0c 13	mov    ecx,DWORD PTR [ebx+edx*1]	mov	ecx, dword ptr [ebx + edx]	3
+alloc_4aff64	0x004AFF90	c7 45 fc ff ff ff ff	mov    DWORD PTR [ebp-0x4],0xffffffff	mov	dword ptr [ebp - 0x4], 0xffffffff	7
+alloc_4aff64	0x004AFF97	89 04 39	mov    DWORD PTR [ecx+edi*1],eax	mov	dword ptr [ecx + edi], eax	3
+alloc_4aff64	0x004AFF9A	8b 45 10	mov    eax,DWORD PTR [ebp+0x10]	mov	eax, dword ptr [ebp + 0x10]	0
+alloc_4aff64	0x004AFF9D	33 c9	xor    ecx,ecx	xor	ecx, ecx	0
+alloc_4aff64	0x004AFF9F	66 8b 4e 2c	mov    cx,WORD PTR [esi+0x2c]	mov	cx, word ptr [esi + 0x2c]	0
+alloc_4aff64	0x004AFFA3	99	cdq	cdq	0
+alloc_4aff64	0x004AFFA4	2b c2	sub    eax,edx	sub	eax, edx	0
+alloc_4aff64	0x004AFFA6	d1 f8	sar    eax,1	sar	eax	0
+alloc_4aff64	0x004AFFA8	89 4d f0	mov    DWORD PTR [ebp-0x10],ecx	mov	dword ptr [ebp - 0x10], ecx	0
+alloc_4aff64	0x004AFFAB	d1 e9	shr    ecx,1	shr	ecx	0
+alloc_4aff64	0x004AFFAD	0f af 4d 14	imul   ecx,DWORD PTR [ebp+0x14]	imul	ecx, dword ptr [ebp + 0x14]	0
+alloc_4aff64	0x004AFFB1	03 c8	add    ecx,eax	add	ecx, eax	0
+alloc_4aff64	0x004AFFB3	8b 45 10	mov    eax,DWORD PTR [ebp+0x10]	mov	eax, dword ptr [ebp + 0x10]	0
+alloc_4aff64	0x004AFFB6	8b d0	mov    edx,eax	mov	edx, eax	0
+alloc_4aff64	0x004AFFB8	81 e2 01 00 00 80	and    edx,0x80000001	and	edx, 0x80000001	0
+alloc_4aff64	0x004AFFBE	79 05	jns    0x4affc5	jns	0x4affc5 <?create_world_unit@WorldMap@@QAEPAVUnit@@DIUWorldPos@@PAV2@H@Z+0xc5>	0
+alloc_4aff64	0x004AFFC0	4a	dec    edx	dec	edx	0
+alloc_4aff64	0x004AFFC1	83 ca fe	or     edx,0xfffffffe	or	edx, -0x2	0
+alloc_4aff64	0x004AFFC4	42	inc    edx	inc	edx	0
+alloc_4aff64	0x004AFFC5	8b 56 30	mov    edx,DWORD PTR [esi+0x30]	mov	edx, dword ptr [esi + 0x30]	0
+alloc_4aff64	0x004AFFC8	8a 0c 0a	mov    cl,BYTE PTR [edx+ecx*1]	mov	cl, byte ptr [edx + ecx]	0
+alloc_4aff64	0x004AFFCB	75 05	jne    0x4affd2	jne	0x4affd2 <?create_world_unit@WorldMap@@QAEPAVUnit@@DIUWorldPos@@PAV2@H@Z+0xd2>	0
+alloc_4aff64	0x004AFFCD	c0 e9 04	shr    cl,0x4	shr	cl, 0x4	0
+cleanup_4c570c	0x004C56FC	89 75 f0	mov    DWORD PTR [ebp-0x10],esi	mov	dword ptr [ebp - 0x10], esi	0
+cleanup_4c570c	0x004C56FF	8d 8e 60 01 00 00	lea    ecx,[esi+0x160]	lea	ecx, [esi + 0x160]	0
+cleanup_4c570c	0x004C5705	c7 45 fc 00 00 00 00	mov    DWORD PTR [ebp-0x4],0x0	mov	dword ptr [ebp - 0x4], 0x0	0
+cleanup_4c570c	0x004C570C	e8 4f 40 f4 ff	call   0x409760	call	0x409760 <??1BoostFormula@@UAE@XZ>	1
+cleanup_4c570c	0x004C5711	8b ce	mov    ecx,esi	mov	ecx, esi	2
+cleanup_4c570c	0x004C5713	c7 45 fc ff ff ff ff	mov    DWORD PTR [ebp-0x4],0xffffffff	mov	dword ptr [ebp - 0x4], 0xffffffff	7
+cleanup_4c570c	0x004C571A	e8 11 09 00 00	call   0x4c6030	call	0x4c6030 <?GetCollisionPos@WorldMap@@QAEHUWorldPos@@0PAU2@PAPAVUnit@@_N3@Z+0x13930>	5
+cleanup_4c570c	0x004C571F	8b 4d f4	mov    ecx,DWORD PTR [ebp-0xc]	mov	ecx, dword ptr [ebp - 0xc]	3
+cleanup_4c570c	0x004C5722	5e	pop    esi	pop	esi	1
+cleanup_4c570c	0x004C5723	64 89 0d 00 00 00 00	mov    DWORD PTR fs:0x0,ecx	mov	dword ptr fs:[0x0], ecx	7
+cleanup_4c570c	0x004C572A	8b e5	mov    esp,ebp	mov	esp, ebp	2
+cleanup_4c570c	0x004C572C	5d	pop    ebp	pop	ebp	1
+cleanup_4c570c	0x004C572D	c3	ret	ret	1
+loop_460fce	0x00460FA3	39 7e 40	cmp    DWORD PTR [esi+0x40],edi	cmp	dword ptr [esi + 0x40], edi	0
+loop_460fce	0x00460FA6	74 04	je     0x460fac	je	0x460fac <?Destroy@SpellMessageHandler@@SAXXZ+0x9c>	0
+loop_460fce	0x00460FA8	c6 46 34 07	mov    BYTE PTR [esi+0x34],0x7	mov	byte ptr [esi + 0x34], 0x7	0
+loop_460fce	0x00460FAC	89 7e 40	mov    DWORD PTR [esi+0x40],edi	mov	dword ptr [esi + 0x40], edi	0
+loop_460fce	0x00460FAF	8b 33	mov    esi,DWORD PTR [ebx]	mov	esi, dword ptr [ebx]	0
+loop_460fce	0x00460FB1	3b f7	cmp    esi,edi	cmp	esi, edi	0
+loop_460fce	0x00460FB3	74 10	je     0x460fc5	je	0x460fc5 <?Destroy@SpellMessageHandler@@SAXXZ+0xb5>	0
+loop_460fce	0x00460FB5	8b ce	mov    ecx,esi	mov	ecx, esi	0
+loop_460fce	0x00460FB7	e8 24 00 00 00	call   0x460fe0	call	0x460fe0 <?Destroy@SpellMessageHandler@@SAXXZ+0xd0>	0
+loop_460fce	0x00460FBC	56	push   esi	push	esi	0
+loop_460fce	0x00460FBD	e8 9e 10 fe ff	call   0x442060	call	0x442060 <??4SpellEffectManager@@QAEAAV0@ABV0@@Z+0x3fe0>	0
+loop_460fce	0x00460FC2	83 c4 04	add    esp,0x4	add	esp, 0x4	0
+loop_460fce	0x00460FC5	83 c3 04	add    ebx,0x4	add	ebx, 0x4	0
+loop_460fce	0x00460FC8	81 fb a4 5d 51 00	cmp    ebx,0x515da4	cmp	ebx, 0x515da4	0
+loop_460fce	0x00460FCE	0f 8c 46 ff ff ff	jl     0x460f1a	jl	0x460f1a <?Destroy@SpellMessageHandler@@SAXXZ+0xa>	5
+loop_460fce	0x00460FD4	5f	pop    edi	pop	edi	1
+loop_460fce	0x00460FD5	5e	pop    esi	pop	esi	1
+loop_460fce	0x00460FD6	5b	pop    ebx	pop	ebx	1
+loop_460fce	0x00460FD7	c3	ret	ret	1
+indirect_4633a1	0x0046339C	68 49 4e 00 00	push   0x4e49	push	0x4e49	0
+indirect_4633a1	0x004633A1	ff 50 04	call   DWORD PTR [eax+0x4]	call	dword ptr [eax + 0x4]	3
+indirect_4633a1	0x004633A4	5d	pop    ebp	pop	ebp	1
+indirect_4633a1	0x004633A5	c2 04 00	ret    0x4	ret	0x4	3
+seh_4c507e	0x004C5071	e8 ca c9 00 00	call   0x4d1a40	call	0x4d1a40 <ExpFltr_end+0x410>	0
+seh_4c507e	0x004C5076	8b 4d f4	mov    ecx,DWORD PTR [ebp-0xc]	mov	ecx, dword ptr [ebp - 0xc]	0
+seh_4c507e	0x004C5079	b8 01 00 00 00	mov    eax,0x1	mov	eax, 0x1	0
+seh_4c507e	0x004C507E	64 89 0d 00 00 00 00	mov    DWORD PTR fs:0x0,ecx	mov	dword ptr fs:[0x0], ecx	5
+seh_4c507e	0x004C5085	5e	pop    esi	pop	esi	1
+seh_4c507e	0x004C5086	8b e5	mov    esp,ebp	mov	esp, ebp	2
+seh_4c507e	0x004C5088	5d	pop    ebp	pop	ebp	1
+seh_4c507e	0x004C5089	c2 08 00	ret    0x8	ret	0x8	3
+seh_4c618e	0x004C6188	8b 4d f4	mov    ecx,DWORD PTR [ebp-0xc]	mov	ecx, dword ptr [ebp - 0xc]	0
+seh_4c618e	0x004C618B	8b c7	mov    eax,edi	mov	eax, edi	0
+seh_4c618e	0x004C618D	5f	pop    edi	pop	edi	0
+seh_4c618e	0x004C618E	64 89 0d 00 00 00 00	mov    DWORD PTR fs:0x0,ecx	mov	dword ptr fs:[0x0], ecx	5
+seh_4c618e	0x004C6195	5e	pop    esi	pop	esi	1
+seh_4c618e	0x004C6196	8b e5	mov    esp,ebp	mov	esp, ebp	2
+seh_4c618e	0x004C6198	5d	pop    ebp	pop	ebp	1
+seh_4c618e	0x004C6199	c2 08 00	ret    0x8	ret	0x8	3

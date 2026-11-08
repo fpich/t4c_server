@@ -1,0 +1,7 @@
+element	flag	boost	selecteurs_composes	selecteurs_sans_boost	expression_verifiee	limite
+air	0x4e3e	12	0x23,0x29,0x31	0x4A,0x5F	100 + ViewFlag(flag) + QueryBoost(boost)	Formule de lecture, pas preuve de reduction de degats
+feu	0x4e40	13	0x2A,0x32	0x4B,0x60	100 + ViewFlag(flag) + QueryBoost(boost)	Formule de lecture, pas preuve de reduction de degats
+eau	0x4e3f	14	0x2B,0x33	0x4C,0x61	100 + ViewFlag(flag) + QueryBoost(boost)	Formule de lecture, pas preuve de reduction de degats
+terre	0x4e41	15	0x2C,0x34	0x4D,0x62	100 + ViewFlag(flag) + QueryBoost(boost)	Formule de lecture, pas preuve de reduction de degats
+lumiere	0x4e45	21	0x39,0x3D	0x4F,0x64	100 + ViewFlag(flag) + QueryBoost(boost)	Formule de lecture, pas preuve de reduction de degats
+tenebres	0x4e46	22	0x3A,0x3E	0x4E,0x63	100 + ViewFlag(flag) + QueryBoost(boost)	Formule de lecture, pas preuve de reduction de degats

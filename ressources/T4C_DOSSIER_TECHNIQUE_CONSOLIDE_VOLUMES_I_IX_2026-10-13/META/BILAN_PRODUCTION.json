@@ -1,0 +1,16 @@
+{
+  "binary_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "archive_source": "T4C_SERVEUR_ETAT_STABILISE_COHERENCE_PASSES001_256_2026-10-13.zip",
+  "import_dll": 13,
+  "import_symbols": 328,
+  "exported_operational_symbols": 230,
+  "startup_config_references": 56,
+  "admin_command_literals": 54,
+  "gameop_flag_literals": 40,
+  "log_filenames": 10,
+  "log_setting_literals": 18,
+  "import_call_sites_locally_checked": 26,
+  "archive_source_entries": 1801,
+  "volumes": 9,
+  "proof_scope": "static; no dynamic validation"
+}

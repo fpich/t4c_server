@@ -1,0 +1,23 @@
+{
+  "passe": 107,
+  "theme": "BRANCH_TARGET",
+  "description": "Cibles de JMP/Jcc directs signalées hors fenêtre par les passes précédentes",
+  "sha256_binaire": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "base_text": "0x401000",
+  "taille_text": 905117,
+  "octets_avant": 681297,
+  "octets_nouveaux": 7922,
+  "octets_cumules": 689219,
+  "couverture_pourcent": 76.146951,
+  "entrees_examinees": 73,
+  "instructions_documentees": 3787,
+  "octets_distincts_dans_preuves": 10879,
+  "nombre_intervalles_nouveaux": 74,
+  "appels_directs": 261,
+  "sauts_indirects": 8,
+  "cibles_hors_fenetre": 5,
+  "instructions_rejetees_conflit": 0,
+  "branches_incompletes": 13,
+  "duree_s": 0.05,
+  "methode": "Parcours CFG local depuis cibles de relocations PE et appels directs, x86 objdump et octets PE controles. Limites des fonctions heuristiques; cibles indirectes non resolues; dedoublonnage bitset."
+}

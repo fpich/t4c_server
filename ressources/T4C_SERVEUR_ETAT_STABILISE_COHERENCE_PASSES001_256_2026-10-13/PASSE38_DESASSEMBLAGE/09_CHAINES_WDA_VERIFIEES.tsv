@@ -1,0 +1,10 @@
+adresse_VA	chaine_litterale	origine
+0x0050A4F0	'\n- Charg. Worlds Data'	.data comparee dans PE
+0x0050A508	'\n- Charg. Spells'	.data comparee dans PE
+0x0050A51C	'\r\nThere is an error in the WDA file T4C Edit.WDA.'	.data comparee dans PE
+0x0050A550	'There was an error opening the WDA file T4C Edit.WDA'	.data comparee dans PE
+0x0050A588	'Wrong file version.'	.data comparee dans PE
+0x0050A59C	'\r\nThere is an error in the WDA file %s.'	.data comparee dans PE
+0x0050A5C4	'There was an error opening the WDA file %s'	.data comparee dans PE
+0x0050A5F0	'T4C Edit.WDA'	.data comparee dans PE
+0x0050A600	'T4C Worlds.WDA'	.data comparee dans PE

@@ -1,0 +1,5 @@
+fichier	lignes_identiques_au_client	lignes_ne_concordant_avec_ni_client_ni_serveur	interprétation
+references_analyse/48_PREUVES_ASSEMBLEUR_STATUT43_PASSE13.asm	118	0	preuve client croisée, exclue de la couverture serveur
+references_analyse/54_PREUVES_ASSEMBLEUR_PASSE14.asm	245	0	preuve client croisée, exclue de la couverture serveur
+references_analyse/58_PREUVES_ASSEMBLEUR_PASSE15.asm	91	0	preuve client croisée, exclue de la couverture serveur
+references_analyse/63_PREUVES_ASSEMBLEUR_PASSE16.asm	82	0	preuve client croisée, exclue de la couverture serveur

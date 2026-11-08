@@ -1,0 +1,13 @@
+fonction	adresse	observation	certitude	limite
+SpellEffect::CreateEffectStatus	0x4608D4	ecrit opcode 0x53 (S2C83); champs u32 et chaine associee; envoi virtuel +0x14C	confirme dans l assembleur	identite des champs partiellement inferée
+SpellEffect::DispellEffectStatus	0x4609D2	ecrit opcode 0x54 (S2C84) suivi du champ u32; envoi virtuel +0x14C	confirme dans l assembleur	champ identifie comme id effet par contexte
+SpellEffectManager::RegisterSuperstructure	0x460BD0	alloue 8 octets: pointeur factory et cle u16, ajout a liste globale 0x514d60	confirme	alloue ne prouve pas une utilisation effective
+SpellEffectManager::GetEffectObject	0x460C00	parcourt entrees, compare cle u16, appelle pointeur de fonction si egal	confirme	factory concrète inconnue; retour indirect
+UnitEffectManager::RegisterEffect	0x490B10	alloue 8 octets et enregistre paire cle u32, callback a 0x556400	confirme	ordre semantique inferé
+UnitEffectManager::GetEffectProc	0x490B40	parcourt liste a 0x556400 et renvoie callback ou 0, avec synchronisation	confirme	fonction de gestion de verrou nuancee
+Unit::AddEffect	0x48C810	liste pointee a Unit+0xF4; alloue sous-conteneur 0x44 et noeud 0x0C; lie une entree	confirme	absence gestion exhaustive des allocations
+Unit::RemoveEffect	0x48C930	cherche effet par comparaison id a entree+4; callback eventuel avec valeur 9, nettoie noeud	confirme	sens du code 9 non prouvé
+Unit::SaveEffects	0x48E430	parcours conteneur Unit+0xF4; appel callback type 0x17; prepare requetes de sauvegarde	partiellement confirmé	fin du chemin et transaction non couvertes dans cette passe
+Unit::LoadEffects	0x48E8A0	requete SQL generee avec champ Unit+0x78; colonnes 1-7 lues en boucle via ODBC	confirme pour la boucle	signification des champs non prouvee
+Unit::DeferredLoadEffects	0x48E9F0	parcours un premier conteneur a +0x98; recherche callback 0x490B40 et allocation 0x20	partiellement confirme	suite du chemin et variantes non analysees en totalite
+Unit::QueryEffects	0x48D110	filtre sur Unit+0x100 puis parcourt la liste Unit+0xF4	partiellement confirme	signification du garde +0x100 non prouvee

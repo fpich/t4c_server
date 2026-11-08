@@ -1,0 +1,10 @@
+{
+  "passe": 62,
+  "binaire_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "taille_text": 905117,
+  "octets_cumules_repris": 126431,
+  "octets_uniques_ajoutes": 0,
+  "couverture_pourcent": 13.968,
+  "appels_directs_identifies": 6,
+  "limite": "aucune union des plages historiques recalculée; nouveaux octets non revendiqués"
+}

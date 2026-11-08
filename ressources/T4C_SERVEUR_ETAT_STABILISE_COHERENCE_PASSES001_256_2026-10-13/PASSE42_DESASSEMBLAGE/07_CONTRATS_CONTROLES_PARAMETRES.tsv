@@ -1,0 +1,10 @@
+etape	adresse	source	regle	consequence	statut
+resolution_type	0x4739A7..0x4739BC	sous-objet WDA +0x2C	0x4A72E0 renvoie ID; 0x460C00 parcourt les registres, appelle leur pointeur usine	resultat nul => type non pris en charge	CONFIRME
+presence_collection	0x4739C2..0x4739F2	debut +0x4; fin +0x8 des parametres	test de la collection avant boucle	absence => rejet et diagnostic effect requires parameters	CONFIRME
+taille_parametre	0x4739E1..0x4739F2	pointeurs de parametres	division de la difference par 0x2C=44	nombre d elements calculé	CONFIRME
+validation_virtuelle	0x473A05..0x473A31	valeur texte et ID de paramètre	appel virtuel [vptr+0] avec 2 arguments	retour non nul => poursuite, zéro => flag erreur	CONFIRME
+validation_constante_type11	0x4C73A0	parametre fourni	destruction valeur temporaire, eax=1, ret 8	renvoie vrai, sans validation semantique locale	CONFIRME
+validation_constante_type12	0x4C7CB0	parametre fourni	destruction valeur temporaire, eax=1, ret 8	renvoie vrai, sans validation semantique locale	CONFIRME
+delegation_type10	0x4C54B0	type10 et ID de parametre	ID3 utilise chaine +0x160; sinon appelle 0x4C60A0	partage la logique du type1 pour plusieurs ID	CONFIRME
+conversions	0x4C3FC0;0x4C69C0	types 6,15	branche selon ID et conversion nombre / comparaison texte	la valeur est rejetee sur certaines branches	CONFIRME
+enregistrement_sort	0x473BC9..0x473BD5	objet runtime	seulement si flag erreur=0	appel 0x461360 sinon sort inactif	CONFIRME

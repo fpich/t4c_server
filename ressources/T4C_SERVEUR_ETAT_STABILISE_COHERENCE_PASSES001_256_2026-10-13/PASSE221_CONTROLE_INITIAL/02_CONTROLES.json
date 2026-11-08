@@ -1,0 +1,11 @@
+{
+  "sha256_pe": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "initial_counts": {
+    "code": 828849,
+    "data": 3052,
+    "padding_probable": 17946,
+    "classified": 849847
+  },
+  "text_size": 905117,
+  "invariant_disjoint": true
+}

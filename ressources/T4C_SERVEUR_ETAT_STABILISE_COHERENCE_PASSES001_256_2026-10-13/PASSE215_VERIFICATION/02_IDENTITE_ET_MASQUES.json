@@ -1,0 +1,10 @@
+{
+  "pe_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "text_start": "0x401000",
+  "text_bytes": 905117,
+  "reference_archive": "T4C_SERVEUR_PASSES209_214_CLASSIFICATION_TEXT_2026-10-13.zip",
+  "reference_mask_sha256": "1193e54737fc269fc9602a042ccf3acef827d8932b2ba4c9199e9c19ebe699fc",
+  "previous_code_count": 829711,
+  "previous_data_count": 3052,
+  "previous_padding_count": 15398
+}

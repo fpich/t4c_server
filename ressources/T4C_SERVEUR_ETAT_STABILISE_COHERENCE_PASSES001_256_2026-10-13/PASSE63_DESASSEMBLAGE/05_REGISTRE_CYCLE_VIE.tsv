@@ -1,0 +1,6 @@
+instruction_initiale	instruction_cible	role	preuve
+0x45CB07	0x45CB0D	construction	LEA ECX,[EBP-0x3C]; CALL 0x45E8A0
+0x45CF83	0x45CF90	destruction branche 1	LEA ECX,[EBP-0x3C]; CALL 0x45E3D0
+0x45D0E0	0x45D0ED	destruction branche 2	LEA ECX,[EBP-0x3C]; CALL 0x45E3D0
+0x45E8A0	0x45E8EA	constructeur	sentinelle 0x30; offset +4; compteur +8
+0x45E3D0	0x45E47A	destructeur	parcours noeuds et liberation sentinelle

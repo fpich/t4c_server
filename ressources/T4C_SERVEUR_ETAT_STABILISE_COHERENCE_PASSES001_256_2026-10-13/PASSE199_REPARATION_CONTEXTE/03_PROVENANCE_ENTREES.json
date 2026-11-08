@@ -1,0 +1,193 @@
+[
+  {
+    "name": "interruption_41b1b6",
+    "start": "0x41b1b6",
+    "end": "0x41b255",
+    "matched_instructions": 45,
+    "candidate_new_bytes": 7,
+    "visited_not_matched": [],
+    "old_instruction_conflicts": [],
+    "first_instructions": [
+      [
+        "0x41b1b6",
+        "c786ac02000000000000",
+        "mov    DWORD PTR [esi+0x2ac],0x0"
+      ],
+      [
+        "0x41b1c0",
+        "c686a002000008",
+        "mov    BYTE PTR [esi+0x2a0],0x8"
+      ],
+      [
+        "0x41b1c7",
+        "8b86ac020000",
+        "mov    eax,DWORD PTR [esi+0x2ac]"
+      ],
+      [
+        "0x41b1cd",
+        "85c0",
+        "test   eax,eax"
+      ],
+      [
+        "0x41b1cf",
+        "7410",
+        "je     0x41b1e1"
+      ]
+    ],
+    "last_instructions": [
+      [
+        "0x41b23c",
+        "5e",
+        "pop    esi"
+      ],
+      [
+        "0x41b23d",
+        "33c0",
+        "xor    eax,eax"
+      ],
+      [
+        "0x41b23f",
+        "5b",
+        "pop    ebx"
+      ],
+      [
+        "0x41b240",
+        "5d",
+        "pop    ebp"
+      ],
+      [
+        "0x41b241",
+        "c20800",
+        "ret    0x8"
+      ]
+    ]
+  },
+  {
+    "name": "interruption_41cc3e",
+    "start": "0x41cc3e",
+    "end": "0x41cd20",
+    "matched_instructions": 71,
+    "candidate_new_bytes": 7,
+    "visited_not_matched": [
+      "0x41cd1d"
+    ],
+    "old_instruction_conflicts": [],
+    "first_instructions": [
+      [
+        "0x41cc3e",
+        "c786f002000000000000",
+        "mov    DWORD PTR [esi+0x2f0],0x0"
+      ],
+      [
+        "0x41cc48",
+        "c686e402000008",
+        "mov    BYTE PTR [esi+0x2e4],0x8"
+      ],
+      [
+        "0x41cc4f",
+        "8b86f0020000",
+        "mov    eax,DWORD PTR [esi+0x2f0]"
+      ],
+      [
+        "0x41cc55",
+        "85c0",
+        "test   eax,eax"
+      ],
+      [
+        "0x41cc57",
+        "7410",
+        "je     0x41cc69"
+      ]
+    ],
+    "last_instructions": [
+      [
+        "0x41cd15",
+        "57",
+        "push   edi"
+      ],
+      [
+        "0x41cd16",
+        "56",
+        "push   esi"
+      ],
+      [
+        "0x41cd17",
+        "51",
+        "push   ecx"
+      ],
+      [
+        "0x41cd18",
+        "6a0e",
+        "push   0xe"
+      ],
+      [
+        "0x41cd1a",
+        "ff5024",
+        "call   DWORD PTR [eax+0x24]"
+      ]
+    ]
+  },
+  {
+    "name": "interruption_41e03e",
+    "start": "0x41e03e",
+    "end": "0x41e120",
+    "matched_instructions": 33,
+    "candidate_new_bytes": 7,
+    "visited_not_matched": [],
+    "old_instruction_conflicts": [],
+    "first_instructions": [
+      [
+        "0x41e03e",
+        "c786bc03000000000000",
+        "mov    DWORD PTR [esi+0x3bc],0x0"
+      ],
+      [
+        "0x41e048",
+        "c686b003000008",
+        "mov    BYTE PTR [esi+0x3b0],0x8"
+      ],
+      [
+        "0x41e04f",
+        "8b86bc030000",
+        "mov    eax,DWORD PTR [esi+0x3bc]"
+      ],
+      [
+        "0x41e055",
+        "85c0",
+        "test   eax,eax"
+      ],
+      [
+        "0x41e057",
+        "7410",
+        "je     0x41e069"
+      ]
+    ],
+    "last_instructions": [
+      [
+        "0x41e0a1",
+        "7407",
+        "je     0x41e0aa"
+      ],
+      [
+        "0x41e0a3",
+        "c686b003000007",
+        "mov    BYTE PTR [esi+0x3b0],0x7"
+      ],
+      [
+        "0x41e0aa",
+        "c786bc03000000000000",
+        "mov    DWORD PTR [esi+0x3bc],0x0"
+      ],
+      [
+        "0x41e0b4",
+        "5e",
+        "pop    esi"
+      ],
+      [
+        "0x41e0b5",
+        "c3",
+        "ret"
+      ]
+    ]
+  }
+]

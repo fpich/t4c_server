@@ -1,0 +1,8 @@
+fonction_thunk	adresse_IAT	module	ordinal	observation_dans_le_serveur	certitude
+0x4D1B5A	0x4DE1CC	MFC42.DLL	1572	appel depuis lecture colonne : fonction externe non nommée	confirmé pour module + ordinal ; nom exact inconnu
+0x4D1B60	0x4DE1C8	MFC42.DLL	4293	appel de parcours	confirmé pour module + ordinal ; nom exact inconnu
+0x4D1B66	0x4DE1C4	MFC42.DLL	4061	appel de test de résultat/fin	confirmé pour module + ordinal ; nom exact inconnu
+0x4D1B6C	0x4DE1B4	MFC42.DLL	629	appel de fermeture/libération	confirmé pour module + ordinal ; nom exact inconnu
+0x4D1B72	0x4DE1C0	MFC42.DLL	3167	appel d’accès à un champ nommé	confirmé pour module + ordinal ; nom exact inconnu
+0x4D1B78	0x4DE1BC	MFC42.DLL	5176	appel de préparation/lecture de jeu de résultats	confirmé pour module + ordinal ; nom exact inconnu
+0x4D1B7E	0x4DE1B8	MFC42.DLL	310	appel supplémentaire sur jeu de résultats	confirmé pour module + ordinal ; nom exact inconnu

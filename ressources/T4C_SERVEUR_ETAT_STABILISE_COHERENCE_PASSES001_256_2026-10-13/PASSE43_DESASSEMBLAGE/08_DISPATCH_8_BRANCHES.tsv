@@ -1,0 +1,9 @@
+type_WDA	id_parametre	jump_table	destination	traitement	sortie	qualification
+9	1	0x4c770c	0x4c7690	this+0x0c (atoi de valeur, non nul)	1 = traitement accepte / 0 = invalide	CONFIRME : table de 4 pointeurs + instructions de chaque branche
+9	2	0x4c770c	0x4c75e2	this+0x0e (recherche On*)	1 = traitement accepte / 0 = invalide	CONFIRME : table de 4 pointeurs + instructions de chaque branche
+9	3	0x4c770c	0x4c76a8	this+0x88 (analyse expression)	1 = traitement accepte / 0 = invalide	CONFIRME : table de 4 pointeurs + instructions de chaque branche
+9	4	0x4c770c	0x4c76c8	this+0x18 (analyse expression)	1 = traitement accepte / 0 = invalide	CONFIRME : table de 4 pointeurs + instructions de chaque branche
+14	1	0x4c5970	0x4c58b7	this+0x80 (analyse expression)	1 = traitement accepte / 0 = invalide	CONFIRME : table de 4 pointeurs + instructions de chaque branche
+14	2	0x4c5970	0x4c58d7	this+0x10 (analyse expression)	1 = traitement accepte / 0 = invalide	CONFIRME : table de 4 pointeurs + instructions de chaque branche
+14	3	0x4c5970	0x4c5914	this+0xf0 (analyse expression)	1 = traitement accepte / 0 = invalide	CONFIRME : table de 4 pointeurs + instructions de chaque branche
+14	4	0x4c5970	0x4c592b	this+0x160 (analyse expression)	1 = traitement accepte / 0 = invalide	CONFIRME : table de 4 pointeurs + instructions de chaque branche

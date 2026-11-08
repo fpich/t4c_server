@@ -1,0 +1,46 @@
+{
+  "sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "archive_source": "/mnt/data/_pass42work/stage.zip",
+  "archive_fichiers": 327,
+  "code_section": ".text",
+  "section_va_debut": "0x401000",
+  "section_taille_octets": 905117,
+  "fichiers_preuves": 73,
+  "lignes_assembleur_detectees": 36049,
+  "lignes_octets_correspondants": 35513,
+  "lignes_exclues": 536,
+  "instructions_adresses_uniques": 27212,
+  "octets_uniques_directement_cites": 78146,
+  "pct_octets_directement_cites": 8.634,
+  "fonctions_exportees_uniques": 1125,
+  "fonctions_exportees_avec_entree_dans_preuves": 162,
+  "pct_entrees_exportees_avec_preuve": 14.4,
+  "passe": 42,
+  "base_passe41_octets": 74669,
+  "gain_net_passe42_octets": 3477,
+  "nouveaux_fichiers_preuves": {
+    "02_PREUVES_DISPATCH_ET_PARAMETRES.asm": {
+      "instructions_verifiees": 204,
+      "octets_avec_chevauchements": 506,
+      "segments": 5
+    },
+    "03_PREUVES_14_FABRIQUES.asm": {
+      "instructions_verifiees": 511,
+      "octets_avec_chevauchements": 1498,
+      "segments": 14
+    },
+    "04_PREUVES_VALIDATEURS_VIRTUELS.asm": {
+      "instructions_verifiees": 772,
+      "octets_avec_chevauchements": 2334,
+      "segments": 14
+    },
+    "05_PREUVES_CONSTRUCTEURS_ET_VTABLES.asm": {
+      "instructions_verifiees": 220,
+      "octets_avec_chevauchements": 597,
+      "segments": 12
+    }
+  },
+  "vtable_entrees_validees": 14,
+  "rdata_pointeurs_valides": 14,
+  "ancien_zip_fichiers_conserves": 323
+}

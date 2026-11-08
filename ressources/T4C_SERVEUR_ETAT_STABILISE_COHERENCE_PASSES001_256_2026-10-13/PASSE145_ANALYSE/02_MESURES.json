@@ -1,0 +1,10 @@
+{
+  "passe": 145,
+  "description": "Appels directs issus du démarrage",
+  "nouveaux_octets": 389,
+  "octets_cumules": 815746,
+  "denominateur": 905117,
+  "couverture_pourcent": 90.126028,
+  "instructions_de_la_passe": 133,
+  "pe_original_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc"
+}

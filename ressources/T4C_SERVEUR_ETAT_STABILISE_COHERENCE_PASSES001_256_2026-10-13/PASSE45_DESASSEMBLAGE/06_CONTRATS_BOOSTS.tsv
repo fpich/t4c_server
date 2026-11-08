@@ -1,0 +1,10 @@
+fonction	VA	critere	resultat	preuve	limite
+AddBoost(id,stat,formula)	0x48D980	aucune recherche ID	ajout si formule validée	0x48D9E4-0x48DA92	collisions possibles non exclues
+SetBoost(id,stat,value)	0x48DF30	premier ID correspond	formule remplacée sinon insertion	0x48DFAD-0x48E093	Stat existante non modifiée
+GetBoost(id)	0x48DDC0	ID DWORD	renvoi pointeur correspondant	0x48DDC0	doublons non tranchés
+QueryBoost(stat)	0x48DE60	Stat WORD	somme formules et conversion	0x48DED4-0x48DF1F	règles numériques incomplètes
+RemoveBoost(id)	0x48DAF0	ID DWORD	retrait et libération	0x48DB52-0x48DBFF	multiples doublons non testés
+RemoveBoostFromStat(stat)	0x48DC60	Stat WORD	retraits pendant parcours	0x48DCC2-0x48DD99	sécurité concurrence inconnue
+GetSTR/INT/END/AGI/WIS	0x48E150	codes 3/1/2/6/4	base + QueryBoost avec borne basse	0x48E150-0x48E210	dépassements non audités
+SaveBoosts	0x48EEB0	collection + OwnerID	création de requêtes SQL	0x48EF3B-0x48EF67	pas preuve de COMMIT
+LoadBoosts	0x48F070	résultat SQL	vidage puis reconstruction	0x48F093-0x48F193	ordres et doublons SQL inconnus

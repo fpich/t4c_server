@@ -1,0 +1,33 @@
+champ_SQL	SELECT_PlayingCharacters_0x501ACC	UPDATE_SET_0x501354	UPDATE_WHERE_0x501354	observation
+UserID	oui	non	oui	Clé du WHERE dans UPDATE ; non affectée par SET
+AccountName	oui	non	non	Projection SELECT seule dans les deux requêtes comparées
+wlX	oui	oui	non	Présent dans la projection et dans SET
+wlY	oui	oui	non	Présent dans la projection et dans SET
+wlWorld	oui	oui	non	Présent dans la projection et dans SET
+nClass	oui	non	non	Projection SELECT seule dans les deux requêtes comparées
+CurrentHP	oui	oui	non	Présent dans la projection et dans SET
+MaxHP	oui	oui	non	Présent dans la projection et dans SET
+CurrentMana	oui	oui	non	Présent dans la projection et dans SET
+MaxMana	oui	oui	non	Présent dans la projection et dans SET
+Strength	oui	oui	non	Présent dans la projection et dans SET
+Endurance	oui	oui	non	Présent dans la projection et dans SET
+Agility	oui	oui	non	Présent dans la projection et dans SET
+Intelligence	oui	oui	non	Présent dans la projection et dans SET
+Wisdom	oui	oui	non	Présent dans la projection et dans SET
+CurrentLevel	oui	oui	non	Présent dans la projection et dans SET
+AttackSkill	oui	oui	non	Présent dans la projection et dans SET
+DodgeSkill	oui	oui	non	Présent dans la projection et dans SET
+Gold	oui	oui	non	Présent dans la projection et dans SET
+Appearance	oui	oui	non	Présent dans la projection et dans SET
+Corpse	oui	oui	non	Présent dans la projection et dans SET
+XP	oui	oui	non	Présent dans la projection et dans SET
+StatPnts	oui	oui	non	Présent dans la projection et dans SET
+SkillPnts	oui	oui	non	Présent dans la projection et dans SET
+Karma	oui	oui	non	Présent dans la projection et dans SET
+Gender	oui	oui	non	Présent dans la projection et dans SET
+ListingTitle	oui	oui	non	Présent dans la projection et dans SET
+ListingMisc	oui	oui	non	Présent dans la projection et dans SET
+MoveExhaust	oui	oui	non	Présent dans la projection et dans SET
+MentalExhaust	oui	oui	non	Présent dans la projection et dans SET
+AttackExhaust	oui	oui	non	Présent dans la projection et dans SET
+PlayerName	non	oui	non	Modification SET seule dans les deux requêtes comparées

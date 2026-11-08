@@ -1,0 +1,83 @@
+{
+  "sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "archive_source": "/mnt/data/_pass41_stage.zip",
+  "archive_fichiers": 321,
+  "code_section": ".text",
+  "section_va_debut": "0x401000",
+  "section_taille_octets": 905117,
+  "fichiers_preuves": 69,
+  "lignes_assembleur_detectees": 34342,
+  "lignes_octets_correspondants": 33806,
+  "lignes_exclues": 536,
+  "instructions_adresses_uniques": 25962,
+  "octets_uniques_directement_cites": 74669,
+  "pct_octets_directement_cites": 8.25,
+  "fonctions_exportees_uniques": 1125,
+  "fonctions_exportees_avec_entree_dans_preuves": 162,
+  "pct_entrees_exportees_avec_preuve": 14.4,
+  "passe": 41,
+  "base_passe40_octets": 73109,
+  "gain_net_passe41_octets": 1560,
+  "gain_points_pct": 0.173,
+  "preuves_nouvelles_details": {
+    "02_PREUVES_CONVERSION_ET_ENREGISTREMENT_SORTS.asm": {
+      "instructions": 834,
+      "bytes_including_overlaps": 2875,
+      "ranges": [
+        [
+          "0x473610",
+          "0x473f19"
+        ],
+        [
+          "0x461360",
+          "0x461555"
+        ],
+        [
+          "0x462230",
+          "0x46225c"
+        ],
+        [
+          "0x460ef0",
+          "0x460f01"
+        ]
+      ]
+    },
+    "03_PREUVES_INSERTION_PROFONDE_WDA.asm": {
+      "instructions": 625,
+      "bytes_including_overlaps": 1828,
+      "ranges": [
+        [
+          "0x4aa930",
+          "0x4aaecf"
+        ],
+        [
+          "0x4ab130",
+          "0x4ab1a6"
+        ],
+        [
+          "0x4ab1b0",
+          "0x4ab2bf"
+        ]
+      ]
+    },
+    "04_PREUVES_PONT_WDA_ET_GENERATEUR.asm": {
+      "instructions": 80,
+      "bytes_including_overlaps": 221,
+      "ranges": [
+        [
+          "0x475d9e",
+          "0x475de4"
+        ],
+        [
+          "0x4a8810",
+          "0x4a886c"
+        ],
+        [
+          "0x459064",
+          "0x45909f"
+        ]
+      ]
+    }
+  },
+  "nb_historique_files_conserves_identiques": 310
+}

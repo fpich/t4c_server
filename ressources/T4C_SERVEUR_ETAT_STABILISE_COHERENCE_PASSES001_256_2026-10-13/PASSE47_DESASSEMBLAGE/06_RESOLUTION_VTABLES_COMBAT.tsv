@@ -1,0 +1,33 @@
+classe	vtable	slot_virtuel	cible_VA	nom_export	preuve
+Unit	0x4df658	0x38	0x4d1c84	non exporté / inconnu	pointeur DWORD en .rdata PE32
+Unit	0x4df658	0x3c	0x48b7d0	?hit@Unit@@UAEHPAU_ATTACK_STRUCTURE@@PAV1@@Z	pointeur DWORD en .rdata PE32
+Unit	0x4df658	0x40	0x48b810	?attack_hit@Unit@@UAEHPAU_ATTACK_STRUCTURE@@PAV1@@Z	pointeur DWORD en .rdata PE32
+Unit	0x4df658	0x78	0x48f6a0	?DealExhaust@Unit@@UAEXKKK@Z	pointeur DWORD en .rdata PE32
+Unit	0x4df658	0xcc	0x48bda0	?GetMaxHP@Unit@@UAEKXZ	pointeur DWORD en .rdata PE32
+Unit	0x4df658	0xd8	0x48bde0	?GetHP@Unit@@UAEKXZ	pointeur DWORD en .rdata PE32
+Unit	0x4df658	0x14c	0x48c350	?SendPlayerMessage@Unit@@UAEXAAVTFCPacket@@@Z	pointeur DWORD en .rdata PE32
+Unit	0x4df658	0x168	0x48c6e0	?GetAC@Unit@@UAENXZ	pointeur DWORD en .rdata PE32
+Character	0x4de68c	0x38	0x41b050	?attacked@Character@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z	pointeur DWORD en .rdata PE32
+Character	0x4de68c	0x3c	0x41cc00	?hit@Character@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z	pointeur DWORD en .rdata PE32
+Character	0x4de68c	0x40	0x41dc10	?attack_hit@Character@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z	pointeur DWORD en .rdata PE32
+Character	0x4de68c	0x78	0x48f6a0	?DealExhaust@Unit@@UAEXKKK@Z	pointeur DWORD en .rdata PE32
+Character	0x4de68c	0xcc	0x48bda0	?GetMaxHP@Unit@@UAEKXZ	pointeur DWORD en .rdata PE32
+Character	0x4de68c	0xd8	0x41d6a0	?GetHP@Character@@UAEKXZ	pointeur DWORD en .rdata PE32
+Character	0x4de68c	0x14c	0x41dd80	?SendPlayerMessage@Character@@UAEXAAVTFCPacket@@@Z	pointeur DWORD en .rdata PE32
+Character	0x4de68c	0x168	0x41ea40	?GetAC@Character@@UAENXZ	pointeur DWORD en .rdata PE32
+Creatures	0x4debb0	0x38	0x401c00	?attacked@Creatures@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z	pointeur DWORD en .rdata PE32
+Creatures	0x4debb0	0x3c	0x432900	?hit@Creatures@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z	pointeur DWORD en .rdata PE32
+Creatures	0x4debb0	0x40	0x48b810	?attack_hit@Unit@@UAEHPAU_ATTACK_STRUCTURE@@PAV1@@Z	pointeur DWORD en .rdata PE32
+Creatures	0x4debb0	0x78	0x48f6a0	?DealExhaust@Unit@@UAEXKKK@Z	pointeur DWORD en .rdata PE32
+Creatures	0x4debb0	0xcc	0x48bda0	?GetMaxHP@Unit@@UAEKXZ	pointeur DWORD en .rdata PE32
+Creatures	0x4debb0	0xd8	0x432ad0	?GetHP@Creatures@@UAEKXZ	pointeur DWORD en .rdata PE32
+Creatures	0x4debb0	0x14c	0x48c350	?SendPlayerMessage@Unit@@UAEXAAVTFCPacket@@@Z	pointeur DWORD en .rdata PE32
+Creatures	0x4debb0	0x168	0x48c6e0	?GetAC@Unit@@UAENXZ	pointeur DWORD en .rdata PE32
+Objects	0x4df1e0	0x38	0x401000	?attacked@Objects@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z	pointeur DWORD en .rdata PE32
+Objects	0x4df1e0	0x3c	0x44c090	?hit@Objects@@UAEHPAU_ATTACK_STRUCTURE@@PAVUnit@@@Z	pointeur DWORD en .rdata PE32
+Objects	0x4df1e0	0x40	0x48b810	?attack_hit@Unit@@UAEHPAU_ATTACK_STRUCTURE@@PAV1@@Z	pointeur DWORD en .rdata PE32
+Objects	0x4df1e0	0x78	0x48f6a0	?DealExhaust@Unit@@UAEXKKK@Z	pointeur DWORD en .rdata PE32
+Objects	0x4df1e0	0xcc	0x48bda0	?GetMaxHP@Unit@@UAEKXZ	pointeur DWORD en .rdata PE32
+Objects	0x4df1e0	0xd8	0x48bde0	?GetHP@Unit@@UAEKXZ	pointeur DWORD en .rdata PE32
+Objects	0x4df1e0	0x14c	0x48c350	?SendPlayerMessage@Unit@@UAEXAAVTFCPacket@@@Z	pointeur DWORD en .rdata PE32
+Objects	0x4df1e0	0x168	0x48c6e0	?GetAC@Unit@@UAENXZ	pointeur DWORD en .rdata PE32

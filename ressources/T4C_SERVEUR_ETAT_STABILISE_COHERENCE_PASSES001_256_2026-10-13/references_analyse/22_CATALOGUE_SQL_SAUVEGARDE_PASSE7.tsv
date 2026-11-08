@@ -1,0 +1,12 @@
+identifiant	adresse_VA	table	operation	chaine_extraite_exacte	note
+UPDATE_CHARACTER	0x501354	PlayingCharacters	UPDATE	UPDATE PlayingCharacters SET PlayerName='%s',Strength=%u,Endurance=%u,Agility=%u,Intelligence=%u,Wisdom=%u,AttackSkill=%u,DodgeSkill=%u,XP=%f,CurrentLevel=%u,CurrentHP=%u,MaxHP=%u,CurrentMana=%u,MaxMana=%u,Gold=%u,wlX=%u,wlY=%u,wlWorld=%u,SkillPnts=%u,StatPnts=%u,Corpse=%u,Appearance=%u,Karma=%d,Gender=%u,ListingTitle='%s',ListingMisc='%s',MoveExhaust=%u,MentalExhaust=%u,AttackExhaust=%u WHERE UserID=%u	Main character attributes
+INSERT_SPELL	0x501514	PlayerSpells	INSERT	INSERT INTO PlayerSpells( OwnerID, SpellID ) VALUES ( %u,%u )	Spells
+DELETE_SPELL	0x501554	PlayerSpells	DELETE	DELETE FROM PlayerSpells WHERE OwnerID=%u	Spells
+INSERT_SKILL	0x5015b0	PlayerSkills	INSERT	INSERT INTO PlayerSkills( OwnerID, SkillID, SkillPnts ) VALUES ( %u,%u,%u )	Skills
+DELETE_SKILL	0x501630	PlayerSkills	DELETE	DELETE FROM PlayerSkills WHERE OwnerID=%u	Skills
+INSERT_EQUIP	0x50166c	PlayerItems	INSERT	INSERT INTO PlayerItems( ObjID, OwnerID, EquipPos, ObjType, Qty ) VALUES ( %u,%u,%u,'%s',%u)	Equipment; EquipPos dynamic
+INSERT_BACKPACK	0x5016e0	PlayerItems	INSERT	INSERT INTO PlayerItems( ObjID, OwnerID, EquipPos, ObjType, Qty ) VALUES ( %u,%u,0,'%s',%u )	Backpack; EquipPos=0
+DELETE_EFFECTS	0x501750	Effects	DELETE	DELETE FROM Effects WHERE BaseOwnerID=%d	Effects
+DELETE_BOOSTS	0x50177c	Boosts	DELETE	DELETE FROM Boosts WHERE BaseOwnerID=%d	Boosts
+DELETE_FLAGS	0x5017a4	Flags	DELETE	DELETE FROM Flags WHERE BaseOwnerID=%d	Flags
+DELETE_ITEMS	0x5017cc	PlayerItems	DELETE	DELETE FROM PlayerItems WHERE OwnerID=%u	Equipment and backpack

@@ -1,0 +1,13 @@
+etat	entree_rdata	to_state	action_fonclet	observation
+0	0x004E6A30	-1	0x004D7770	autre action de nettoyage; objet détaillé à auditer
+1	0x004E6A38	0	0x004D7783	autre action de nettoyage; objet détaillé à auditer
+2	0x004E6A40	1	0x004D778B	autre action de nettoyage; objet détaillé à auditer
+3	0x004E6A48	2	0x004D7793	autre action de nettoyage; objet détaillé à auditer
+4	0x004E6A50	3	0x004D779B	autre action de nettoyage; objet détaillé à auditer
+5	0x004E6A58	3	0x004D77A3	collection locale [EBP-0x3C] -> 0x45D450
+6	0x004E6A60	5	0x004D77AB	autre action de nettoyage; objet détaillé à auditer
+7	0x004E6A68	6	0x004D77B3	autre action de nettoyage; objet détaillé à auditer
+8	0x004E6A70	7	0x004D77BF	autre action de nettoyage; objet détaillé à auditer
+9	0x004E6A78	6	0x004D77CB	autre action de nettoyage; objet détaillé à auditer
+10	0x004E6A80	9	0x004D77D7	autre action de nettoyage; objet détaillé à auditer
+11	0x004E6A88	6	0x004D77E3	autre action de nettoyage; objet détaillé à auditer

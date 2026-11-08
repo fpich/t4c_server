@@ -1,0 +1,12 @@
+{
+  "passe": 170,
+  "domaine": "Dispatcher WDA",
+  "avant": 822269,
+  "apres": 822629,
+  "gain_unique": 360,
+  "nouvelles_instructions": 137,
+  "blocs": 3,
+  "pourcentage": 90.886482,
+  "sha256_masque": "ffcbb0c7e803f1ffb47dbd55c01d56970d2d3ee5ad1129c54eb95a41059a7f24",
+  "sha256_ajout": "1ba97298c29d4fa725e438a4903ad7ee46693abbf833376eaaf0a5e0b171d096"
+}

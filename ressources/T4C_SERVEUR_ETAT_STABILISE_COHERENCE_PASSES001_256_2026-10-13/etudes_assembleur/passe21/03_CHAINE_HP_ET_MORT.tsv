@@ -1,0 +1,11 @@
+objet	fonction_ou_methode	adresse_ou_slot	preuve	observation	statut
+attaque sur personnage	Character::attacked	0x41B050	0x41B185–0x41B1A8	Soustraction GetAC; borne 1 si <=0	CONFIRME chemin observé
+points de vie personnage	Character::hit	0x41CC00	0x41CCC5–0x41CD03	GetHP, GetMaxHP, conversion double, soustraction conditionnelle	CONFIRME
+mort personnage	Character::hit -> Character::Death	slot +0x44 -> 0x41B250	0x41CE84–0x41CEBF	Appel conditionnel, avec vérifications de flags	CONFIRME
+pénalités mort	Character::Death -> GAME_RULES::DeathPenalties	0x438A20	0x41BC58	Appel direct dans fonction mort	CONFIRME
+points de vie créature	Creatures::hit	0x432900	0x432939–0x432985	Traitement branche conditionnelle, HP-dégâts	CONFIRME
+mort créature	Creatures::hit -> Creatures::Death	slot +0x44 -> 0x4324B0	0x432960–0x432975	Quand HP calculés <=0	CONFIRME
+créature HP >0	Creatures::hit -> SetHP virtuel	slot +0xDC	0x432978–0x432985	Réécriture HP positifs	CONFIRME chemin
+xp groupe	Group::DistributeKillXP	0x439FA0	0x439FA0–0x43A1BE	membres à portée, bonus, pénalité niveau, GetXP SetXP	CONFIRME
+producteur xp	NPCstructure::OnDeath	0x44A964	0x44A955–0x44A969	Appel direct à DistributeKillXP	CONFIRME
+loot	Creatures::Death -> WorldMap::deposit_unit	0x432756	voir preuve passe20	Origine objets/drops non démontrée	A ETUDIER

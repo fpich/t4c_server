@@ -1,0 +1,14 @@
+entite	offset_ou_valeur	largeur	role_observe	preuve_va	niveau
+entree_source_WDA	pas 0xE4	228 octets	increment du pointeur source	0x473EF6	CONFIRME
+entree_source_WDA	+0x24	WORD identite; DWORD compteur	cle du sort sur 16 bits / valeur de base de compteur	0x473729;0x473878	CONFIRME
+entree_source_WDA	+0x04..+0x08	pointeurs	premiere collection a pas 0x2C	0x473997	CONFIRME
+entree_source_WDA	+0x14..+0x18	pointeurs	seconde collection a pas 0x1C	0x473953	CONFIRME
+definition_runtime	allocation 0x418	1048 octets	objet prepare pour RegisterSpell	0x47364F	CONFIRME
+definition_runtime	+0x00	WORD	ID de sort	0x47372D	CONFIRME
+definition_runtime	+0x248	chaine	pourcentage de succes teste et corrige a 100	0x473914	CONFIRME
+definition_runtime	+0x368	conteneur	sous-collection d elements issus de pas 0x1C	0x473973	CONFIRME
+definition_runtime	+0x3AC	DWORD	compteur d instance initialise base*1000	0x473887	CONFIRME
+registre_sorts	0x514DA4	1024 pointeurs 32b	table indexee par (ID16-10000)	0x4613A1	CONFIRME
+sous_entree_WDA	pas 0x2C	44 octets	collection d effets/parametres	0x473BB4	CONFIRME
+sous_entree_WDA	pas 0x1C	28 octets	autre sous-collection	0x47398D	CONFIRME
+masque_XOR	0x514CE0	DWORD	resultat precedent du generateur	0x459064	CONFIRME

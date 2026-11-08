@@ -1,0 +1,10 @@
+structure	decalage	taille	interpretation	preuve	statut
+TFCTimers	+0x04	4	pointeur conteneur de timers	0x488CAA,0x48936E	CONFIRME
+TFCTimers/timer-entry	+0x00	2	identifiant	0x488D23..0x488D2D	CONFIRME
+TFCTimers/timer-entry	+0x04	4	round échéance	0x488D10..0x488D20,0x489402	CONFIRME
+TFCTimers/timer-entry	+0x08	4	argument callback	0x488D30..0x488D36,0x489547	CONFIRME
+TFCTimers/timer-entry	+0x0C	4	pointeur callback	0x488D2A..0x488D36,0x489554	CONFIRME
+Unit	+0xF4	4	pointeur structure des effets de l unité	0x48D39D	CONFIRME
+Unit/unit-effect	+0x08	4	pointeur callback	0x48D59A..0x48D5D0	CONFIRME
+Unit/unit-effect	+0x10	4	round échéance	0x48D3F7..0x48D404	CONFIRME
+Unit	+0x30	4	structure de synchronisation (nature à vérifier)	0x48D34F	PARTIEL

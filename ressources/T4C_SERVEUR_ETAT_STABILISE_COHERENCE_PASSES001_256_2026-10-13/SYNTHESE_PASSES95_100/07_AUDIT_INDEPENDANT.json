@@ -1,0 +1,77 @@
+{
+  "origine_binaire_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "reference_passe94_octets": 364548,
+  "total_final_octets": 496937,
+  "gain_octets": 132389,
+  "section_text_octets": 905117,
+  "couverture_finale_pourcent": 54.903068,
+  "instructions_verifiees_sur_6_passes": 50541,
+  "masques_disjoints_et_cumuls_coherents": true,
+  "concordance_binaire_toutes_preuves": true,
+  "intervalles_identiques_aux_masques": true,
+  "octets_nouveaux_justifies_par_preuves": true,
+  "aucune_collision_avec_frontieres_connues_p71_p94": true,
+  "tables_de_saut_donnees_non_comptees": true,
+  "pointeurs_vers_code_verifies_en_rdata": 664,
+  "passes": [
+    {
+      "passe": 95,
+      "octets_nouveaux": 90,
+      "total": 364638,
+      "pourcentage": 40.286283,
+      "instructions_documentees": 2059,
+      "entrees": 2,
+      "alertes": 0
+    },
+    {
+      "passe": 96,
+      "octets_nouveaux": 14892,
+      "total": 379530,
+      "pourcentage": 41.931596,
+      "instructions_documentees": 5803,
+      "entrees": 181,
+      "alertes": 7
+    },
+    {
+      "passe": 97,
+      "octets_nouveaux": 40118,
+      "total": 419648,
+      "pourcentage": 46.363951,
+      "instructions_documentees": 14409,
+      "entrees": 180,
+      "alertes": 4
+    },
+    {
+      "passe": 98,
+      "octets_nouveaux": 33373,
+      "total": 453021,
+      "pourcentage": 50.051098,
+      "instructions_documentees": 12413,
+      "entrees": 258,
+      "alertes": 29
+    },
+    {
+      "passe": 99,
+      "octets_nouveaux": 26293,
+      "total": 479314,
+      "pourcentage": 52.956027,
+      "instructions_documentees": 9393,
+      "entrees": 69,
+      "alertes": 0
+    },
+    {
+      "passe": 100,
+      "octets_nouveaux": 17623,
+      "total": 496937,
+      "pourcentage": 54.903068,
+      "instructions_documentees": 6464,
+      "entrees": 128,
+      "alertes": 0
+    }
+  ],
+  "reservations": [
+    "Les sequences contigues de pointeurs .rdata ne sont pas toutes des vtables RTTI prouvees.",
+    "La verification statique x86 ne remplace pas la validation du CFG et des cas exceptionnels.",
+    "La couverture mesure des octets d instructions, pas la comprehension de la totalite du serveur."
+  ]
+}

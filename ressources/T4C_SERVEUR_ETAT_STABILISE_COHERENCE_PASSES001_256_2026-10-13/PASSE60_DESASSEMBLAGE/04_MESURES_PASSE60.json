@@ -1,0 +1,11 @@
+{
+  "passe": 60,
+  "type": "audit_documentaire_provenance_arguments",
+  "octets_cumules_verifies": 126431,
+  "taille_text_reference": 905117,
+  "couverture_pourcentage": 13.968,
+  "nouveaux_octets_verifies": 0,
+  "fichiers_herites": 537,
+  "fichiers_nouveaux": 6,
+  "sha256_executable_attendu": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc"
+}

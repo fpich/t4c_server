@@ -1,0 +1,17 @@
+site_VA	fonction	action_observee	details_assembleur	certitude
+0x0048D3FC	Unit::VerifyTimers	filtre échéance	[effet+0x10] vs GetRound; zéro ignoré	CONFIRME
+0x0048D5BE	Unit::VerifyTimers	callback 5	push 5 et call pointeur [effet+0x08]	CONFIRME
+0x0048D5CE	Unit::VerifyTimers	callback 9	push 9 et call pointeur [effet+0x08]	CONFIRME
+0x00488D10	TFCTimers::AddTimer	échéance relative	flag non nul : GetRound + paramètre; sinon échéance fournie	CONFIRME
+0x004893FC	TFCTimers::VerifyTimers	échéance	[entrée+0x04] comparée au GetRound; > repousse	CONFIRME
+0x00489415	TFCTimers::VerifyTimers	retire entrée	décrément compteur, détache entrée de liste avant callback	CONFIRME
+0x00489551	TFCTimers::VerifyTimers	callback 5	identifiant u16, arg [entrée+0x08], code 5, zéro ; call [entrée+0x0C]	CONFIRME
+0x004897B0	TFCTimerManager::VerifyTimers	délégation	jmp à TFCTimers::VerifyTimers via objet global 0x516358	CONFIRME
+0x00444DD7	BeforeNPCThread	vérifie ObjectTimer	call ObjectTimer::VerifyTimers	CONFIRME
+0x00444DDC	BeforeNPCThread	vérifie TFCTimers	call TFCTimerManager::VerifyTimers	CONFIRME
+0x00459764	routine 0x459750	programme ID 4	échéance GetRound() ; callback 0x459870	CONFIRME
+0x004597BB	routine 0x459770	annule ID 4	appel RemoveTimersByID(4)	CONFIRME
+0x004598E7	callback 0x459870	filtre code	compare argument à 5 et état global	CONFIRME
+0x00459B69	callback 0x459870	réprogramme ID 4	GetRound()+0x4B0 ; AddTimer(4, ... callback 0x459870)	CONFIRME
+0x004C925E	routine 0x4C92xx	programme callback	AddTimer(0x64,0xC8,callback 0x4C9620,...)	CONFIRME
+0x004C970A	routine 0x4C96xx	programme callback	AddTimer(0x64,0xC8,callback 0x4C9620,...)	CONFIRME

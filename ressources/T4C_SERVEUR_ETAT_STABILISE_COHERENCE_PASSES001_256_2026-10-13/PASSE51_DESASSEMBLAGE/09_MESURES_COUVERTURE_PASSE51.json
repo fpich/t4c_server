@@ -1,0 +1,30 @@
+{
+  "passe": 51,
+  "binaire_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "archive_precedente": "T4C_SERVEUR_PASSE50_DESASSEMBLAGE_PUR_2026-10-09.zip",
+  "octets_text_total": 905117,
+  "octets_passe50": 102396,
+  "nouveaux_octets_uniques": 2467,
+  "octets_verifies": 104863,
+  "couverture_pourcent": 11.585574,
+  "entrees_exportees_documentees": 257,
+  "entrees_exportees_totales": 1125,
+  "instructions_verifiees_nouvelles_preuves": 1560,
+  "instructions_rejetees_nouvelles_preuves": 0,
+  "rejets_historiques": 536,
+  "detail_nouvelles_preuves": {
+    "PASSE51_DESASSEMBLAGE/02_PREUVES_BOOSTFORMULA_OPERATEURS.asm": {
+      "instructions_verifiees": 435,
+      "instructions_rejetees": 0
+    },
+    "PASSE51_DESASSEMBLAGE/03_PREUVES_OPERANDES_COMPETENCES.asm": {
+      "instructions_verifiees": 557,
+      "instructions_rejetees": 0
+    },
+    "PASSE51_DESASSEMBLAGE/04_PREUVES_PARSER_ET_INVENTAIRE.asm": {
+      "instructions_verifiees": 568,
+      "instructions_rejetees": 0
+    }
+  },
+  "methode": "Exactitude octet pour octet section PE serveur .text, deduplication globale, sans preuves client"
+}

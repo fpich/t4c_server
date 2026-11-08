@@ -1,0 +1,19 @@
+domaine	classe	exports_identifies	statut	prochain_objectif
+Comptes et session	Players	61	inventorié, reconstruction partielle	Connexion->session->chargement->sauvegarde
+Comptes et session	CPlayerManager	30	inventorié, reconstruction partielle	Connexion->session->chargement->sauvegarde
+Personnages et monde	Character	142	inventorié, reconstruction partielle	Spawn, mouvement, vue, carte
+Personnages et monde	Unit	237	inventorié, reconstruction partielle	Spawn, mouvement, vue, carte
+Personnages et monde	WorldMap	37	inventorié, reconstruction partielle	Spawn, mouvement, vue, carte
+Personnages et monde	Creatures	37	inventorié, reconstruction partielle	Spawn, mouvement, vue, carte
+Combat et sorts	Spell	0	inventorié, reconstruction partielle	Mana, cibles, dégats, effets
+Combat et sorts	BoostFormula	9	inventorié, reconstruction partielle	Mana, cibles, dégats, effets
+Combat et sorts	AreaSensitiveEffect	6	inventorié, reconstruction partielle	Mana, cibles, dégats, effets
+Combat et sorts	GAME_RULES	14	inventorié, reconstruction partielle	Mana, cibles, dégats, effets
+Inventaire et commerce	Objects	20	inventorié, reconstruction partielle	Obtention/dépôt/vente/achat
+Inventaire et commerce	ObjectStructure	14	inventorié, reconstruction partielle	Obtention/dépôt/vente/achat
+Inventaire et commerce	NPCstructure	18	inventorié, reconstruction partielle	Obtention/dépôt/vente/achat
+Groupe et échanges	Group	21	inventorié, reconstruction partielle	Invitations, membres, HP, dissolution
+Réseau et moteur	TFCPacket	18	inventorié, reconstruction partielle	Opcode, dispatch, transport
+Réseau et moteur	TFCMAIN	13	inventorié, reconstruction partielle	Opcode, dispatch, transport
+Temps et localisation	TFCTime	25	inventorié, reconstruction partielle	Chronologie et messages localisés
+Temps et localisation	IntlText	19	inventorié, reconstruction partielle	Chronologie et messages localisés

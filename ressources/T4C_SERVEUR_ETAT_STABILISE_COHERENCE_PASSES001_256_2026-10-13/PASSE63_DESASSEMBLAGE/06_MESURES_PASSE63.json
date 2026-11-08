@@ -1,0 +1,12 @@
+{
+  "passe": 63,
+  "sha256_executable": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "taille_text": 905117,
+  "octets_cumules_conserves": 126431,
+  "nouveaux_uniques_comptabilises": 0,
+  "couverture_pct": 13.968,
+  "constructeur": "0x45E8A0",
+  "destructeur": "0x45E3D0",
+  "appels_directs_destructeur_identifies_dans_fonction": 2,
+  "note": "Pas de mesure d’union sur plages historiques; identité avec arbre var non établie."
+}

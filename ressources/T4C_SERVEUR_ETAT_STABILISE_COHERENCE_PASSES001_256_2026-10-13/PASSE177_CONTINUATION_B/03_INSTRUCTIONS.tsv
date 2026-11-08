@@ -1,0 +1,86 @@
+adresse	octets_pe	taille	gnu	llvm	provenance
+0x004A8DA8	6a 01	2	push   0x1	"push	0x1"	source
+0x004A8DAA	8d 4d ac	3	lea    ecx,[ebp-0x54]	"lea	ecx, [ebp - 0x54]"	0x4a8da8+2
+0x004A8DAD	c6 45 fc 17	4	mov    BYTE PTR [ebp-0x4],0x17	"mov	byte ptr [ebp - 0x4], 0x17"	0x4a8daa+3
+0x004A8DB1	ff 15 14 e5 4d 00	6	call   DWORD PTR ds:0x4de514	"call	dword ptr [0x4de514]"	0x4a8dad+4
+0x004A8DB7	6a 01	2	push   0x1	"push	0x1"	0x4a8db1+6
+0x004A8DB9	8d 8d 74 ff ff ff	6	lea    ecx,[ebp-0x8c]	"lea	ecx, [ebp - 0x8c]"	0x4a8db7+2
+0x004A8DBF	c6 45 fc 16	4	mov    BYTE PTR [ebp-0x4],0x16	"mov	byte ptr [ebp - 0x4], 0x16"	0x4a8db9+6
+0x004A8DC3	ff 15 14 e5 4d 00	6	call   DWORD PTR ds:0x4de514	"call	dword ptr [0x4de514]"	0x4a8dbf+4
+0x004A8DC9	6a 01	2	push   0x1	"push	0x1"	0x4a8dc3+6
+0x004A8DCB	8d 8d 60 ff ff ff	6	lea    ecx,[ebp-0xa0]	"lea	ecx, [ebp - 0xa0]"	0x4a8dc9+2
+0x004A8DD1	c6 45 fc 15	4	mov    BYTE PTR [ebp-0x4],0x15	"mov	byte ptr [ebp - 0x4], 0x15"	0x4a8dcb+6
+0x004A8DD5	ff 15 14 e5 4d 00	6	call   DWORD PTR ds:0x4de514	"call	dword ptr [0x4de514]"	0x4a8dd1+4
+0x004A8DDB	6a 01	2	push   0x1	"push	0x1"	0x4a8dd5+6
+0x004A8DDD	8d 8d 50 ff ff ff	6	lea    ecx,[ebp-0xb0]	"lea	ecx, [ebp - 0xb0]"	0x4a8ddb+2
+0x004A8DE3	c6 45 fc 14	4	mov    BYTE PTR [ebp-0x4],0x14	"mov	byte ptr [ebp - 0x4], 0x14"	0x4a8ddd+6
+0x004A8DE7	ff 15 14 e5 4d 00	6	call   DWORD PTR ds:0x4de514	"call	dword ptr [0x4de514]"	0x4a8de3+4
+0x004A8DED	8b 85 44 ff ff ff	6	mov    eax,DWORD PTR [ebp-0xbc]	"mov	eax, dword ptr [ebp - 0xbc]"	0x4a8de7+6
+0x004A8DF3	3b c3	2	cmp    eax,ebx	"cmp	eax, ebx"	0x4a8ded+6
+0x004A8DF5	74 1c	2	je     0x4a8e13	"je	0x4a8e13 <?Destroy@UnitEffectManager@@SAXXZ+0x181f3>"	0x4a8df3+2
+0x004A8DF7	8d 48 ff	3	lea    ecx,[eax-0x1]	"lea	ecx, [eax - 0x1]"	0x4a8df5+2
+0x004A8DFA	8a 01	2	mov    al,BYTE PTR [ecx]	"mov	al, byte ptr [ecx]"	0x4a8df7+3
+0x004A8DFC	3a c3	2	cmp    al,bl	"cmp	al, bl"	0x4a8dfa+2
+0x004A8DFE	74 0a	2	je     0x4a8e0a	"je	0x4a8e0a <?Destroy@UnitEffectManager@@SAXXZ+0x181ea>"	0x4a8dfc+2
+0x004A8E00	3c ff	2	cmp    al,0xff	"cmp	al, -0x1"	0x4a8dfe+2
+0x004A8E02	74 06	2	je     0x4a8e0a	"je	0x4a8e0a <?Destroy@UnitEffectManager@@SAXXZ+0x181ea>"	0x4a8e00+2
+0x004A8E04	fe c8	2	dec    al	"dec	al"	0x4a8e02+2
+0x004A8E06	88 01	2	mov    BYTE PTR [ecx],al	"mov	byte ptr [ecx], al"	0x4a8e04+2
+0x004A8E08	eb 09	2	jmp    0x4a8e13	"jmp	0x4a8e13 <?Destroy@UnitEffectManager@@SAXXZ+0x181f3>"	0x4a8e06+2
+0x004A8E0A	51	1	push   ecx	"push	ecx"	0x4a8e02:je
+0x004A8E0B	e8 50 92 f9 ff	5	call   0x442060	"call	0x442060 <??4SpellEffectManager@@QAEAAV0@ABV0@@Z+0x3fe0>"	0x4a8e0a+1
+0x004A8E10	83 c4 04	3	add    esp,0x4	"add	esp, 0x4"	0x4a8e0b+5
+0x004A8E13	8b 85 34 ff ff ff	6	mov    eax,DWORD PTR [ebp-0xcc]	"mov	eax, dword ptr [ebp - 0xcc]"	0x4a8e08:jmp
+0x004A8E19	3b c3	2	cmp    eax,ebx	"cmp	eax, ebx"	0x4a8e13+6
+0x004A8E1B	89 9d 44 ff ff ff	6	mov    DWORD PTR [ebp-0xbc],ebx	"mov	dword ptr [ebp - 0xbc], ebx"	0x4a8e19+2
+0x004A8E21	89 9d 48 ff ff ff	6	mov    DWORD PTR [ebp-0xb8],ebx	"mov	dword ptr [ebp - 0xb8], ebx"	0x4a8e1b+6
+0x004A8E27	89 9d 4c ff ff ff	6	mov    DWORD PTR [ebp-0xb4],ebx	"mov	dword ptr [ebp - 0xb4], ebx"	0x4a8e21+6
+0x004A8E2D	74 1c	2	je     0x4a8e4b	"je	0x4a8e4b <?Destroy@UnitEffectManager@@SAXXZ+0x1822b>"	0x4a8e27+6
+0x004A8E2F	8d 48 ff	3	lea    ecx,[eax-0x1]	"lea	ecx, [eax - 0x1]"	0x4a8e2d+2
+0x004A8E32	8a 01	2	mov    al,BYTE PTR [ecx]	"mov	al, byte ptr [ecx]"	0x4a8e2f+3
+0x004A8E34	3a c3	2	cmp    al,bl	"cmp	al, bl"	0x4a8e32+2
+0x004A8E36	74 0a	2	je     0x4a8e42	"je	0x4a8e42 <?Destroy@UnitEffectManager@@SAXXZ+0x18222>"	0x4a8e34+2
+0x004A8E38	3c ff	2	cmp    al,0xff	"cmp	al, -0x1"	0x4a8e36+2
+0x004A8E3A	74 06	2	je     0x4a8e42	"je	0x4a8e42 <?Destroy@UnitEffectManager@@SAXXZ+0x18222>"	0x4a8e38+2
+0x004A8E3C	fe c8	2	dec    al	"dec	al"	0x4a8e3a+2
+0x004A8E3E	88 01	2	mov    BYTE PTR [ecx],al	"mov	byte ptr [ecx], al"	0x4a8e3c+2
+0x004A8E40	eb 09	2	jmp    0x4a8e4b	"jmp	0x4a8e4b <?Destroy@UnitEffectManager@@SAXXZ+0x1822b>"	0x4a8e3e+2
+0x004A8E42	51	1	push   ecx	"push	ecx"	0x4a8e3a:je
+0x004A8E43	e8 18 92 f9 ff	5	call   0x442060	"call	0x442060 <??4SpellEffectManager@@QAEAAV0@ABV0@@Z+0x3fe0>"	0x4a8e42+1
+0x004A8E48	83 c4 04	3	add    esp,0x4	"add	esp, 0x4"	0x4a8e43+5
+0x004A8E4B	8b 85 24 ff ff ff	6	mov    eax,DWORD PTR [ebp-0xdc]	"mov	eax, dword ptr [ebp - 0xdc]"	0x4a8e40:jmp
+0x004A8E51	3b c3	2	cmp    eax,ebx	"cmp	eax, ebx"	0x4a8e4b+6
+0x004A8E53	89 9d 34 ff ff ff	6	mov    DWORD PTR [ebp-0xcc],ebx	"mov	dword ptr [ebp - 0xcc], ebx"	0x4a8e51+2
+0x004A8E59	89 9d 38 ff ff ff	6	mov    DWORD PTR [ebp-0xc8],ebx	"mov	dword ptr [ebp - 0xc8], ebx"	0x4a8e53+6
+0x004A8E5F	89 9d 3c ff ff ff	6	mov    DWORD PTR [ebp-0xc4],ebx	"mov	dword ptr [ebp - 0xc4], ebx"	0x4a8e59+6
+0x004A8E65	74 1c	2	je     0x4a8e83	"je	0x4a8e83 <?Destroy@UnitEffectManager@@SAXXZ+0x18263>"	0x4a8e5f+6
+0x004A8E67	8d 48 ff	3	lea    ecx,[eax-0x1]	"lea	ecx, [eax - 0x1]"	0x4a8e65+2
+0x004A8E6A	8a 01	2	mov    al,BYTE PTR [ecx]	"mov	al, byte ptr [ecx]"	0x4a8e67+3
+0x004A8E6C	3a c3	2	cmp    al,bl	"cmp	al, bl"	0x4a8e6a+2
+0x004A8E6E	74 0a	2	je     0x4a8e7a	"je	0x4a8e7a <?Destroy@UnitEffectManager@@SAXXZ+0x1825a>"	0x4a8e6c+2
+0x004A8E70	3c ff	2	cmp    al,0xff	"cmp	al, -0x1"	0x4a8e6e+2
+0x004A8E72	74 06	2	je     0x4a8e7a	"je	0x4a8e7a <?Destroy@UnitEffectManager@@SAXXZ+0x1825a>"	0x4a8e70+2
+0x004A8E74	fe c8	2	dec    al	"dec	al"	0x4a8e72+2
+0x004A8E76	88 01	2	mov    BYTE PTR [ecx],al	"mov	byte ptr [ecx], al"	0x4a8e74+2
+0x004A8E78	eb 09	2	jmp    0x4a8e83	"jmp	0x4a8e83 <?Destroy@UnitEffectManager@@SAXXZ+0x18263>"	0x4a8e76+2
+0x004A8E7A	51	1	push   ecx	"push	ecx"	0x4a8e72:je
+0x004A8E7B	e8 e0 91 f9 ff	5	call   0x442060	"call	0x442060 <??4SpellEffectManager@@QAEAAV0@ABV0@@Z+0x3fe0>"	0x4a8e7a+1
+0x004A8E80	83 c4 04	3	add    esp,0x4	"add	esp, 0x4"	0x4a8e7b+5
+0x004A8E83	8b 85 14 ff ff ff	6	mov    eax,DWORD PTR [ebp-0xec]	"mov	eax, dword ptr [ebp - 0xec]"	0x4a8e78:jmp
+0x004A8E89	3b c3	2	cmp    eax,ebx	"cmp	eax, ebx"	0x4a8e83+6
+0x004A8E8B	89 9d 24 ff ff ff	6	mov    DWORD PTR [ebp-0xdc],ebx	"mov	dword ptr [ebp - 0xdc], ebx"	0x4a8e89+2
+0x004A8E91	89 9d 28 ff ff ff	6	mov    DWORD PTR [ebp-0xd8],ebx	"mov	dword ptr [ebp - 0xd8], ebx"	0x4a8e8b+6
+0x004A8E97	89 9d 2c ff ff ff	6	mov    DWORD PTR [ebp-0xd4],ebx	"mov	dword ptr [ebp - 0xd4], ebx"	0x4a8e91+6
+0x004A8E9D	74 1c	2	je     0x4a8ebb	"je	0x4a8ebb <?Destroy@UnitEffectManager@@SAXXZ+0x1829b>"	0x4a8e97+6
+0x004A8E9F	8d 48 ff	3	lea    ecx,[eax-0x1]	"lea	ecx, [eax - 0x1]"	0x4a8e9d+2
+0x004A8EA2	8a 01	2	mov    al,BYTE PTR [ecx]	"mov	al, byte ptr [ecx]"	0x4a8e9f+3
+0x004A8EA4	3a c3	2	cmp    al,bl	"cmp	al, bl"	0x4a8ea2+2
+0x004A8EA6	74 0a	2	je     0x4a8eb2	"je	0x4a8eb2 <?Destroy@UnitEffectManager@@SAXXZ+0x18292>"	0x4a8ea4+2
+0x004A8EA8	3c ff	2	cmp    al,0xff	"cmp	al, -0x1"	0x4a8ea6+2
+0x004A8EAA	74 06	2	je     0x4a8eb2	"je	0x4a8eb2 <?Destroy@UnitEffectManager@@SAXXZ+0x18292>"	0x4a8ea8+2
+0x004A8EAC	fe c8	2	dec    al	"dec	al"	0x4a8eaa+2
+0x004A8EAE	88 01	2	mov    BYTE PTR [ecx],al	"mov	byte ptr [ecx], al"	0x4a8eac+2
+0x004A8EB0	eb 09	2	jmp    0x4a8ebb	"jmp	0x4a8ebb <?Destroy@UnitEffectManager@@SAXXZ+0x1829b>"	0x4a8eae+2
+0x004A8EB2	51	1	push   ecx	"push	ecx"	0x4a8eaa:je
+0x004A8EB3	e8 a8 91 f9 ff	5	call   0x442060	"call	0x442060 <??4SpellEffectManager@@QAEAAV0@ABV0@@Z+0x3fe0>"	0x4a8eb2+1
+0x004A8EB8	83 c4 04	3	add    esp,0x4	"add	esp, 0x4"	0x4a8eb3+5

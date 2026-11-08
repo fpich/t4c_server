@@ -1,0 +1,14 @@
+appelant_VA	source	callee_VA	cible_exportee	certitude	observation
+0x4725CD	TFCMAIN::Attack	0x438620	GAME_RULES::GetBlowPrecision	CONFIRME	4 arguments attack/dodge/agi attaquante/agi cible
+0x41AF24	Character::attack	0x4386A0	GAME_RULES::GetNaturalDamage	CONFIRME	retour ajouté à la structure d attaque
+0x41AF74	Character::attack	0x438620	GAME_RULES::GetBlowPrecision	CONFIRME	score écrit structure d attaque +0x10
+0x4386AC	GAME_RULES::GetNaturalDamage	0x48B670	Unit::GetType	CONFIRME	branche type 1
+0x4386B7	GAME_RULES::GetNaturalDamage	0x421620	Character::RangedAttack	CONFIRME	branche booléenne
+0x4386C2	GAME_RULES::GetNaturalDamage	0x48E150	Unit::GetSTR	CONFIRME	valeur 16 bits
+0x4386F7	GAME_RULES::GetNaturalDamage	0x48E1B0	Unit::GetAGI	CONFIRME	valeur 16 bits
+0x43257D	Creatures::Death	0x471EC0	TFCMAIN::GetWorld	CONFIRME	monde origine
+0x4325B2	Creatures::Death	0x4B1090	WorldMap::remove_world_unit	CONFIRME	retrait
+0x4326FA	Creatures::Death	0x4AF250	WorldMap::IsBlocking	CONFIRME	teste position
+0x432719	Creatures::Death	0x4B21A0	WorldMap::FindValidSpot	CONFIRME	position alternative
+0x432756	Creatures::Death	0x4AF110	WorldMap::deposit_unit	CONFIRME	dépôt unité
+0x43276D	Creatures::Death	0x48F7E0	Unit::BroadcastPopup	CONFIRME	notification

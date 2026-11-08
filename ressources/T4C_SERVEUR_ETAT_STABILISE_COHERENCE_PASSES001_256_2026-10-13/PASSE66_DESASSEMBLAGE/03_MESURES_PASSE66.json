@@ -1,0 +1,59 @@
+{
+  "passe": 66,
+  "executable_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "section_text_va": "0x401000",
+  "section_text_size": 905117,
+  "official_previously_reported_bytes": 126431,
+  "official_previously_reported_percent": 13.96847,
+  "verified_historical_asm_union": 122233,
+  "difference_historical_asm_vs_official": 4198,
+  "matching_instruction_records": 58463,
+  "rejected_mismatches_historical": 536,
+  "new_unique_bytes_vs_historical_asm": 1501,
+  "distribution": {
+    "58": {
+      "unique_bytes_in_passe": 109,
+      "new_vs_pre57_asm": 0,
+      "new_vs_predecessors": 0
+    },
+    "59": {
+      "unique_bytes_in_passe": 0,
+      "new_vs_pre57_asm": 0,
+      "new_vs_predecessors": 0
+    },
+    "60": {
+      "unique_bytes_in_passe": 36,
+      "new_vs_pre57_asm": 0,
+      "new_vs_predecessors": 0
+    },
+    "61": {
+      "unique_bytes_in_passe": 673,
+      "new_vs_pre57_asm": 14,
+      "new_vs_predecessors": 14
+    },
+    "62": {
+      "unique_bytes_in_passe": 132,
+      "new_vs_pre57_asm": 0,
+      "new_vs_predecessors": 0
+    },
+    "63": {
+      "unique_bytes_in_passe": 2872,
+      "new_vs_pre57_asm": 1487,
+      "new_vs_predecessors": 1487
+    },
+    "64": {
+      "unique_bytes_in_passe": 238,
+      "new_vs_pre57_asm": 0,
+      "new_vs_predecessors": 0
+    },
+    "65": {
+      "unique_bytes_in_passe": 1124,
+      "new_vs_pre57_asm": 84,
+      "new_vs_predecessors": 0
+    }
+  },
+  "candidate_combined_asm_union": 123734,
+  "candidate_upper_if_all_new_to_official": 127932,
+  "official_new_bytes_certified": 0,
+  "reason": "Historical official coverage includes 4198 bytes not reconstructed from .asm; cannot exclude overlap without full official provenance mask"
+}

@@ -1,0 +1,11 @@
+{
+  "passe": 61,
+  "type": "verification_ciblee_binaire",
+  "sha256_executable": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "octets_uniques_verifies_cumul": 126431,
+  "nouveaux_octets_uniques_comptabilises": 0,
+  "text_octets": 905117,
+  "couverture_pct": 13.968,
+  "zones_redesassemblees": 5,
+  "historique_ecart_octets": 233
+}

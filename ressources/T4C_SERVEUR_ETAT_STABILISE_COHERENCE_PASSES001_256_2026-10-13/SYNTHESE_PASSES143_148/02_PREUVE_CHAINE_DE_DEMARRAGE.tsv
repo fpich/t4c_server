@@ -1,0 +1,6 @@
+Adresse	Observation	Raison_de_confiance
+0x004D208E	Point entrée PE	OptionalHeader.AddressOfEntryPoint=0xD108E
+0x004D216C	E8 2f ce f6 ff: call 0x0043EFA0	Instruction issue du flot depuis 0x004D208E
+0x0043EFA0	Prologue et traitement initial	Cible immédiate de call E8 contrôlé
+0x0043F016	call 0x004D2556	Appel immédiat dans fonction atteinte
+0x0043F083	call 0x004100A0	Appel immédiat dans fonction atteinte

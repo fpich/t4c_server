@@ -1,0 +1,34 @@
+{
+  "passe": 68,
+  "sha256_executable": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "text_va_base": "0x401000",
+  "text_file_offset": "0x1000",
+  "text_octets": 905117,
+  "reference_passe67_octets": 128236,
+  "instructions_uniques_verifiees_passe68": 428,
+  "lignes_rejetees": 0,
+  "passe68_octets_nouveaux": 423,
+  "passe68_nouveaux_intervalles": 4,
+  "passe68_repartition_preuves": {
+    "02_TRACES_ETATS_WDA.asm": {
+      "instructions_dans_extraits": 147,
+      "adresses_instructions_uniques": 147
+    },
+    "03_FONCLETS_ETATS_6_11.asm": {
+      "instructions_dans_extraits": 12,
+      "adresses_instructions_uniques": 12
+    },
+    "04_DESTRUCTEURS_LISTES.asm": {
+      "instructions_dans_extraits": 88,
+      "adresses_instructions_uniques": 88
+    },
+    "05_CHAINES_ET_CONSTRUCTEURS.asm": {
+      "instructions_dans_extraits": 181,
+      "adresses_instructions_uniques": 181
+    }
+  },
+  "cumul_octets": 128659,
+  "cumul_pourcentage": 14.2146264,
+  "format_masque": "bit i%8 de octet i//8 de la section .text, offset VA-0x401000",
+  "rdata_hors_couverture": true
+}

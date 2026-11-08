@@ -1,0 +1,27 @@
+{
+  "passes": "215-220",
+  "sha256_pe": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "text_start": "0x401000",
+  "text_size": 905117,
+  "reference_instruction_bytes": 829711,
+  "reclassified_from_code_to_padding": 862,
+  "new_instructions_added": 0,
+  "corrected_instruction_bytes": 828849,
+  "corrected_instruction_percentage": 91.573686,
+  "pointer_table_bytes": 3052,
+  "previous_probable_padding": 15398,
+  "new_probable_padding": 1686,
+  "padding_reclassified_from_code": 862,
+  "corrected_probable_padding": 17946,
+  "corrected_total_classified_bytes": 849847,
+  "total_classified_percentage": 93.893607,
+  "unclassified_bytes": 55270,
+  "source_archive_files": 1702,
+  "new_documents": 22,
+  "limitations": [
+    "coverage historique restante provisoire",
+    "padding classé avec forte présomption structurelle seulement",
+    "aucun graphe indirect exhaustif",
+    "pas de nouveau code découvert dans le lot"
+  ]
+}

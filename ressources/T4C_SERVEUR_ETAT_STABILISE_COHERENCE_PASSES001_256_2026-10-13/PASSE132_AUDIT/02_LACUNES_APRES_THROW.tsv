@@ -1,0 +1,6 @@
+Appel_source	Debut_lacune	Fin_exclue	Octets_lacune	Import
+0x00431879	0x0043187E	0x004318D0	82	_CxxThrowException
+0x00434F68	0x00434F6D	0x00435165	504	_CxxThrowException
+0x004351A8	0x004351AD	0x00435380	467	_CxxThrowException
+0x0043EF04	0x0043EF09	0x004404E7	5598	_CxxThrowException
+0x004BBFC9	0x004BBFCE	0x004BC020	82	_CxxThrowException

@@ -1,0 +1,10 @@
+{
+  "passe": 147,
+  "description": "Audit des références restantes",
+  "nouveaux_octets": 0,
+  "octets_cumules": 815752,
+  "denominateur": 905117,
+  "couverture_pourcent": 90.126691,
+  "instructions_de_la_passe": 0,
+  "pe_original_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc"
+}

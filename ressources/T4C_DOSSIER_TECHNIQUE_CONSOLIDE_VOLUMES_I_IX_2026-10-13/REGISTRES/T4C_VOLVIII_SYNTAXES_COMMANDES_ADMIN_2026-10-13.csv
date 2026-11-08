@@ -1,0 +1,55 @@
+﻿instruction_va;chaine_va;modele_litteral;niveau;preuve
+0x00463ED5;0x00509A54;TELEPORT TO NPC $,$;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x004640E8;0x00509A08;TELEPORT TO NPC $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x004642E7;0x005099F4;TELEPORT TO LOC $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x004644EF;0x005099CC;TELEPORT TO $,$,$;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046461F;0x00509994;TELEPORT TO $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x00464819;0x00509960;TELEPORT USER $ TO $,$,$;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x00464B3D;0x00509904;COUNT NPC $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x00464CFD;0x005098A4;ZAP $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x004650A6;0x005097EC;UNSQUELCH $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046528B;0x005097AC;SQUELCH $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x00465596;0x00509734;RESTORE $'S SHOUTS;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046577B;0x005096EC;REMOVE $'S SHOUTS;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x00465A86;0x00509668;UNBLOCK PUBLIC CHANNELS;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x00465BF3;0x005095F4;BLOCK PUBLIC CHANNELS;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x00465D61;0x0050958C;VIEW TOTAL CHANNEL LIST;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x00465EE3;0x0050956C;RESTORE $'S PAGES;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x004660C8;0x00509528;REMOVE $'S PAGES;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x004663D3;0x005094A4;SET $'S SHOUT DELAY TO $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046677D;0x005093DC;SUMMON MONSTER $ AT $,$,$;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x00466B16;0x0050934C;SUMMON ITEM $ ON $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x00466F3A;0x005092E0;SUMMON ITEM $ AT $,$,$;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x004672D7;0x0050927C;SUMMON ITEM $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x004675A6;0x00509248;SET $'S FLAG $ TO $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x004677DF;0x00509208;REMOVE $'S FLAG $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x004679F8;0x005091D0;VIEW $'S FLAG $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x00467BF5;0x005091A4;SET $'S SKILL $ TO $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x00467FE2;0x00509118;SET $'S $ TO $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x004698FD;0x00508C18;VIEW $'S $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046A6E5;0x00508928;LOCKOUT $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046AA73;0x0050888C;SLAY $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046ACC1;0x00508850;QUERY BLOCK AT $,$,$;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046AED1;0x005087F0;DUMP PACKET LOG;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046AF1A;0x005087E0;QUERY $'S POS;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046B118;0x005087A4;QUERY ITEM $ DESCRIPTION;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046B59B;0x005086DC;SET CONTEXT TO $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046B6BA;0x005086CC;RESET CONTEXT;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046B720;0x005086B8;GIVE SKILL $ TO $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046BC0D;0x00508630;GIVE SPELL $ TO $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046BFFC;0x005085B0;REMOVE SPELL $ FROM $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046C331;0x0050857C;REMOVE LIGHT FROM $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046C3B7;0x00508570;SHUTDOWN $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046C748;0x0050844C;GIVE GAMEOP FLAG $ TO $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046D8CE;0x00507AAC;REMOVE GAMEOP FLAG $ FROM $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046EF07;0x005073B4;REMOVE $ FROM USER LISTING;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046F04B;0x0050735C;RESTORE $ TO USER LISTING;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046F240;0x00507310;REMOVE $'S RIGHT TO PVP;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046F432;0x005072C8;RESTORE $'S RIGHT TO PVP;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046F624;0x00507284;SET FULL PVP FOR $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046F816;0x00507244;REMOVE FULL PVP FROM $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046FA08;0x00507234;BOOST $ THREAD;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046FBD2;0x005071D8;SUPERBOOST $ THREAD;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046FDA0;0x005071C4;UNBOOST $ THREAD;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x0046FF6E;0x005071AC;VIEW THREAD PRIORITIES;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500
+0x004702EF;0x0050713C;EMULATE MONSTER $;"Chaîne référencée depuis la région SysopCmd ; autorisation et exécution non testées";binaire PE, désassemblage statique 0x463E00–0x471500

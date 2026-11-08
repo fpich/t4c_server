@@ -1,0 +1,24 @@
+source	site_VA	destination	precondition	comportement	statut
+Character::hit	0x41CEBC	Character::Death (virtuel +0x44)	PV apres dommage insuffisants et flags	Demarre traitement joueur	CONFIRME
+Creatures::hit	0x43296B	Creatures::Death (virtuel +0x44)	PV faibles / conditions	Demarre traitement creature	CONFIRME
+Character::Death	0x41B2DF	Character::StopAutoCombat	Reentree non detectee	Cesse auto-combat	CONFIRME
+Character::Death	0x41B771	Unit::SendGlobalEffectMessage(13)	Branche mort joueur	Annonce code 13 aux effets	CONFIRME
+Character::Death	0x41BC58	GAME_RULES::DeathPenalties	Conditions presentes avant branche	Calcule pertes et listes d objets	CONFIRME
+Character::Death	0x41BC64	GetGold (vtable +0x104)	Apres penalites	Lit or	CONFIRME
+Character::Death	0x41BC7D	SetGold (vtable +0x108)	Perte inferieure au stock	Modifie or	CONFIRME
+Character::Death	0x41C6D9	Broadcast::BCSpellEffect	Branche effet mort	Diffuse notification visuelle	CONFIRME
+Character::Death	0x41C6F7	Unit::Teleport (vtable +0x10C)	Branche apres effet monde	Deplace la cible	CONFIRME
+Creatures::Death	0x43256B	SendUnitMessage(13) (virtuel +0x24)	Declenchement mort creature	Message de destruction	CONFIRME
+Creatures::Death	0x4325B2	WorldMap::remove_world_unit	Monde trouve	Retrait carte	CONFIRME
+Creatures::Death	0x4326FA	WorldMap::IsBlocking	Position candidate aleatoire	Collision	CONFIRME
+Creatures::Death	0x432719	WorldMap::FindValidSpot	Collision	Cherche placement correct	CONFIRME
+Creatures::Death	0x432756	WorldMap::deposit_unit	Position valide	Depot dans le monde	CONFIRME
+Creatures::Death	0x432781	Unit::DeleteUnit (virtuel +0x1C4)	Position invalide	Suppression de l objet temporaire	CONFIRME
+GAME_RULES::DeathPenalties	0x438BB1	Unit::SetXP (vtable +0x50)	XP suffisante	Diminue XP	CONFIRME
+GAME_RULES::DeathPenalties	0x438C0A	RRandom(0,100)	Objet candidat	Selection par pourcentage	CONFIRME
+GAME_RULES::DeathPenalties	0x438C54	Objects::Remove(1)	Objet eligible	Diminue quantite	CONFIRME
+GAME_RULES::DeathPenalties	0x438D33	Objects::Add(1)	Quantite deja zero dans branche	Attribue unite a la sortie	CONFIRME
+GAME_RULES::DeathPenalties	0x438FAE	SetHP (virtuel +0xDC)	Sortie de fonction	Appelle SetHP avec GetHP >> 1	CONFIRME
+Unit::CleanCorpse	0x48B081	WorldMap::remove_world_unit	Monde disponible	Retire corps	CONFIRME
+Unit::CleanCorpse	0x48B0A4	Broadcast::BCObjectRemoved	Monde disponible	Notifie disparition	CONFIRME
+_MONSTER_SPELL_ATTACK::Attack	0x432FF7	SpellMessageHandler::ActivateSpell	Round >= seuil, autres arguments	Activation sort de monstre	CONFIRME

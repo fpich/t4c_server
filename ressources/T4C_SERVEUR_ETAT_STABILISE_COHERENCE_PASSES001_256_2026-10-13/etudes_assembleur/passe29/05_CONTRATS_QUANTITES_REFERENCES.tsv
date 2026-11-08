@@ -1,0 +1,6 @@
+fonction	adresse	champ	observation	limite
+Objects::GetQty	0x44C3F0	+0x104	Lecture dword / quantité	Type sémantique déduit du symbole
+Objects::Remove	0x44C4A0	+0x104	Soustrait la quantité ou remet à zéro	Comportement conditionnel à IsUnique et aux bornes
+Objects::IsUnique	0x44C500	+0x108	Lit un octet	Pas de signification métier supplémentaire démontrée
+Unit::DeleteUnit	0x48AF10	+0x5C	Décrémente le compteur de références	Destruction seulement dans le chemin zéro
+Unit::SendUnitMessage	0x48B150	+0x74	Consulte référence statique 16 bits dans table globale	La classe de définition varie selon unité

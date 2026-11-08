@@ -1,0 +1,414 @@
+zone	adresse	octets	GNU	LLVM	nouveaux_octets_dans_cette_instruction
+string_49f4ae	0x0049F490	88 55 e4	mov    BYTE PTR [ebp-0x1c],dl	mov	byte ptr [ebp - 0x1c], dl	0
+string_49f4ae	0x0049F493	ff 15 14 e5 4d 00	call   DWORD PTR ds:0x4de514	call	dword ptr [0x4de514]	0
+string_49f4ae	0x0049F499	83 c9 ff	or     ecx,0xffffffff	or	ecx, -0x1	0
+string_49f4ae	0x0049F49C	33 c0	xor    eax,eax	xor	eax, eax	0
+string_49f4ae	0x0049F49E	8b fe	mov    edi,esi	mov	edi, esi	0
+string_49f4ae	0x0049F4A0	f2 ae	repnz scas al,BYTE PTR es:[edi]	repne		scasb	al, byte ptr es:[edi]	0
+string_49f4ae	0x0049F4A2	f7 d1	not    ecx	not	ecx	0
+string_49f4ae	0x0049F4A4	49	dec    ecx	dec	ecx	0
+string_49f4ae	0x0049F4A5	8b f9	mov    edi,ecx	mov	edi, ecx	0
+string_49f4ae	0x0049F4A7	56	push   esi	push	esi	0
+string_49f4ae	0x0049F4A8	8d 4d e4	lea    ecx,[ebp-0x1c]	lea	ecx, [ebp - 0x1c]	0
+string_49f4ae	0x0049F4AB	89 7d e0	mov    DWORD PTR [ebp-0x20],edi	mov	dword ptr [ebp - 0x20], edi	0
+string_49f4ae	0x0049F4AE	ff 15 00 e5 4d 00	call   DWORD PTR ds:0x4de500	call	dword ptr [0x4de500]	4
+string_49f4ae	0x0049F4B4	84 c0	test   al,al	test	al, al	2
+string_49f4ae	0x0049F4B6	74 14	je     0x49f4cc	je	0x49f4cc <?Destroy@UnitEffectManager@@SAXXZ+0xe8ac>	2
+string_49f4ae	0x0049F4B8	57	push   edi	push	edi	1
+string_49f4ae	0x0049F4B9	2b 75 e8	sub    esi,DWORD PTR [ebp-0x18]	sub	esi, dword ptr [ebp - 0x18]	3
+string_49f4ae	0x0049F4BC	56	push   esi	push	esi	1
+string_49f4ae	0x0049F4BD	8d 45 e4	lea    eax,[ebp-0x1c]	lea	eax, [ebp - 0x1c]	3
+string_49f4ae	0x0049F4C0	50	push   eax	push	eax	1
+string_49f4ae	0x0049F4C1	8d 4d e4	lea    ecx,[ebp-0x1c]	lea	ecx, [ebp - 0x1c]	3
+string_49f4ae	0x0049F4C4	ff 15 fc e4 4d 00	call   DWORD PTR ds:0x4de4fc	call	dword ptr [0x4de4fc]	6
+string_49f4ae	0x0049F4CA	eb 30	jmp    0x49f4fc	jmp	0x49f4fc <?Destroy@UnitEffectManager@@SAXXZ+0xe8dc>	2
+string_49f4ae	0x0049F4CC	6a 01	push   0x1	push	0x1	2
+string_49f4ae	0x0049F4CE	57	push   edi	push	edi	1
+string_49f4ae	0x0049F4CF	8d 4d e4	lea    ecx,[ebp-0x1c]	lea	ecx, [ebp - 0x1c]	3
+string_49f4ae	0x0049F4D2	ff 15 e0 e4 4d 00	call   DWORD PTR ds:0x4de4e0	call	dword ptr [0x4de4e0]	6
+string_49f4ae	0x0049F4D8	84 c0	test   al,al	test	al, al	2
+string_49f4ae	0x0049F4DA	74 20	je     0x49f4fc	je	0x49f4fc <?Destroy@UnitEffectManager@@SAXXZ+0xe8dc>	2
+string_49f4ae	0x0049F4DC	8b 45 e0	mov    eax,DWORD PTR [ebp-0x20]	mov	eax, dword ptr [ebp - 0x20]	3
+string_49f4ae	0x0049F4DF	8b 7d e8	mov    edi,DWORD PTR [ebp-0x18]	mov	edi, dword ptr [ebp - 0x18]	3
+string_49f4ae	0x0049F4E2	8b c8	mov    ecx,eax	mov	ecx, eax	2
+string_49f4ae	0x0049F4E4	8b d1	mov    edx,ecx	mov	edx, ecx	2
+string_49f4ae	0x0049F4E6	c1 e9 02	shr    ecx,0x2	shr	ecx, 0x2	3
+string_49f4ae	0x0049F4E9	f3 a5	rep movs DWORD PTR es:[edi],DWORD PTR ds:[esi]	rep		movsd	dword ptr es:[edi], dword ptr [esi]	2
+string_49f4ae	0x0049F4EB	8b ca	mov    ecx,edx	mov	ecx, edx	2
+string_49f4ae	0x0049F4ED	83 e1 03	and    ecx,0x3	and	ecx, 0x3	3
+string_49f4ae	0x0049F4F0	f3 a4	rep movs BYTE PTR es:[edi],BYTE PTR ds:[esi]	rep		movsb	byte ptr es:[edi], byte ptr [esi]	2
+string_49f4ae	0x0049F4F2	50	push   eax	push	eax	1
+string_49f4ae	0x0049F4F3	8d 4d e4	lea    ecx,[ebp-0x1c]	lea	ecx, [ebp - 0x1c]	3
+string_49f4ae	0x0049F4F6	ff 15 dc e4 4d 00	call   DWORD PTR ds:0x4de4dc	call	dword ptr [0x4de4dc]	6
+string_49f4ae	0x0049F4FC	8d 45 e4	lea    eax,[ebp-0x1c]	lea	eax, [ebp - 0x1c]	3
+string_49f4ae	0x0049F4FF	50	push   eax	push	eax	1
+string_49f4ae	0x0049F500	8d 4d d0	lea    ecx,[ebp-0x30]	lea	ecx, [ebp - 0x30]	3
+string_49f4ae	0x0049F503	c6 45 fc 1c	mov    BYTE PTR [ebp-0x4],0x1c	mov	byte ptr [ebp - 0x4], 0x1c	4
+string_49f4ae	0x0049F507	e8 e4 24 00 00	call   0x4a19f0	call	0x4a19f0 <?Destroy@UnitEffectManager@@SAXXZ+0x10dd0>	5
+string_49f4ae	0x0049F50C	3b 45 d4	cmp    eax,DWORD PTR [ebp-0x2c]	cmp	eax, dword ptr [ebp - 0x2c]	3
+string_49f4ae	0x0049F50F	89 45 e0	mov    DWORD PTR [ebp-0x20],eax	mov	dword ptr [ebp - 0x20], eax	3
+string_49f4ae	0x0049F512	74 1a	je     0x49f52e	je	0x49f52e <?Destroy@UnitEffectManager@@SAXXZ+0xe90e>	2
+string_49f4ae	0x0049F514	83 c0 0c	add    eax,0xc	add	eax, 0xc	3
+string_49f4ae	0x0049F517	50	push   eax	push	eax	1
+string_49f4ae	0x0049F518	8d 4d e4	lea    ecx,[ebp-0x1c]	lea	ecx, [ebp - 0x1c]	3
+string_49f4ae	0x0049F51B	51	push   ecx	push	ecx	1
+string_49f4ae	0x0049F51C	ff 15 18 e5 4d 00	call   DWORD PTR ds:0x4de518	call	dword ptr [0x4de518]	6
+string_49f4ae	0x0049F522	83 c4 08	add    esp,0x8	add	esp, 0x8	3
+string_49f4ae	0x0049F525	84 c0	test   al,al	test	al, al	2
+string_49f4ae	0x0049F527	75 05	jne    0x49f52e	jne	0x49f52e <?Destroy@UnitEffectManager@@SAXXZ+0xe90e>	2
+string_49f4ae	0x0049F529	8d 45 e0	lea    eax,[ebp-0x20]	lea	eax, [ebp - 0x20]	3
+string_49f4ae	0x0049F52C	eb 09	jmp    0x49f537	jmp	0x49f537 <?Destroy@UnitEffectManager@@SAXXZ+0xe917>	2
+string_49f4ae	0x0049F52E	8b 55 d4	mov    edx,DWORD PTR [ebp-0x2c]	mov	edx, dword ptr [ebp - 0x2c]	3
+string_49f4ae	0x0049F531	89 55 dc	mov    DWORD PTR [ebp-0x24],edx	mov	dword ptr [ebp - 0x24], edx	3
+string_49f4ae	0x0049F534	8d 45 dc	lea    eax,[ebp-0x24]	lea	eax, [ebp - 0x24]	3
+string_49f4ae	0x0049F537	8b 38	mov    edi,DWORD PTR [eax]	mov	edi, dword ptr [eax]	2
+string_49f4ae	0x0049F539	3b 7d d4	cmp    edi,DWORD PTR [ebp-0x2c]	cmp	edi, dword ptr [ebp - 0x2c]	3
+string_49f4ae	0x0049F53C	89 7d e0	mov    DWORD PTR [ebp-0x20],edi	mov	dword ptr [ebp - 0x20], edi	3
+string_49f4ae	0x0049F53F	75 1c	jne    0x49f55d	jne	0x49f55d <?Destroy@UnitEffectManager@@SAXXZ+0xe93d>	2
+string_49f4ae	0x0049F541	6a 01	push   0x1	push	0x1	2
+string_49f4ae	0x0049F543	8d 4d e4	lea    ecx,[ebp-0x1c]	lea	ecx, [ebp - 0x1c]	3
+string_49f4ae	0x0049F546	c6 45 fc 1b	mov    BYTE PTR [ebp-0x4],0x1b	mov	byte ptr [ebp - 0x4], 0x1b	4
+string_49f4ae	0x0049F54A	ff 15 14 e5 4d 00	call   DWORD PTR ds:0x4de514	call	dword ptr [0x4de514]	6
+string_49f4ae	0x0049F550	8d 45 b8	lea    eax,[ebp-0x48]	lea	eax, [ebp - 0x48]	3
+string_49f4ae	0x0049F553	c6 45 fc 1a	mov    BYTE PTR [ebp-0x4],0x1a	mov	byte ptr [ebp - 0x4], 0x1a	4
+string_49f4ae	0x0049F557	50	push   eax	push	eax	1
+string_49f4ae	0x0049F558	e9 fe 00 00 00	jmp    0x49f65b	jmp	0x49f65b <?Destroy@UnitEffectManager@@SAXXZ+0xea3b>	5
+string_49f4ae	0x0049F55D	8b 4f 1c	mov    ecx,DWORD PTR [edi+0x1c]	mov	ecx, dword ptr [edi + 0x1c]	3
+string_49f4ae	0x0049F560	8b 75 cc	mov    esi,DWORD PTR [ebp-0x34]	mov	esi, dword ptr [ebp - 0x34]	3
+string_49f4ae	0x0049F563	8b 56 20	mov    edx,DWORD PTR [esi+0x20]	mov	edx, dword ptr [esi + 0x20]	3
+string_49f4ae	0x0049F566	8b c1	mov    eax,ecx	mov	eax, ecx	2
+string_49f4ae	0x0049F568	c1 e0 04	shl    eax,0x4	shl	eax, 0x4	3
+string_49f4ae	0x0049F56B	03 c1	add    eax,ecx	add	eax, ecx	2
+string_49f4ae	0x0049F56D	c1 e0 04	shl    eax,0x4	shl	eax, 0x4	3
+string_49f4ae	0x0049F570	03 c2	add    eax,edx	add	eax, edx	2
+string_49f4ae	0x0049F572	83 c0 34	add    eax,0x34	add	eax, 0x34	3
+string_49f4ae	0x0049F575	50	push   eax	push	eax	1
+string_49f4ae	0x0049F576	8d 4d e4	lea    ecx,[ebp-0x1c]	lea	ecx, [ebp - 0x1c]	3
+string_49f4ae	0x0049F579	51	push   ecx	push	ecx	1
+string_49f4ae	0x0049F57A	ff 15 28 e5 4d 00	call   DWORD PTR ds:0x4de528	call	dword ptr [0x4de528]	6
+string_49f4ae	0x0049F580	83 c4 08	add    esp,0x8	add	esp, 0x8	3
+string_49f4ae	0x0049F583	84 c0	test   al,al	test	al, al	2
+string_49f4ae	0x0049F585	74 34	je     0x49f5bb	je	0x49f5bb <?Destroy@UnitEffectManager@@SAXXZ+0xe99b>	2
+string_49f4ae	0x0049F587	8b 45 e8	mov    eax,DWORD PTR [ebp-0x18]	mov	eax, dword ptr [ebp - 0x18]	3
+string_49f4ae	0x0049F58A	3b c3	cmp    eax,ebx	cmp	eax, ebx	2
+string_49f4ae	0x0049F58C	75 05	jne    0x49f593	jne	0x49f593 <?Destroy@UnitEffectManager@@SAXXZ+0xe973>	2
+string_49f4ae	0x0049F58E	a1 d8 e4 4d 00	mov    eax,ds:0x4de4d8	mov	eax, dword ptr [0x4de4d8]	5
+string_49f4ae	0x0049F593	8b 56 10	mov    edx,DWORD PTR [esi+0x10]	mov	edx, dword ptr [esi + 0x10]	3
+string_49f4ae	0x0049F596	8b 3a	mov    edi,DWORD PTR [edx]	mov	edi, dword ptr [edx]	2
+string_49f4ae	0x0049F598	50	push   eax	push	eax	1
+string_49f4ae	0x0049F599	8d 85 6c f6 ff ff	lea    eax,[ebp-0x994]	lea	eax, [ebp - 0x994]	6
+string_49f4ae	0x0049F59F	68 48 ef 50 00	push   0x50ef48	push	0x50ef48	5
+string_49f4ae	0x0049F5A4	50	push   eax	push	eax	1
+string_49f4ae	0x0049F5A5	e8 96 43 f6 ff	call   0x403940	call	0x403940 <??4RegKeyHandler@@QAEAAV0@ABV0@@Z+0x1370>	5
+string_49f4ae	0x0049F5AA	8b 4e 08	mov    ecx,DWORD PTR [esi+0x8]	mov	ecx, dword ptr [esi + 0x8]	3
+string_49f4ae	0x0049F5AD	83 c4 0c	add    esp,0xc	add	esp, 0xc	3
+string_49f4ae	0x0049F5B0	50	push   eax	push	eax	1
+string_49f4ae	0x0049F5B1	51	push   ecx	push	ecx	1
+string_49f4ae	0x0049F5B2	8b 4e 10	mov    ecx,DWORD PTR [esi+0x10]	mov	ecx, dword ptr [esi + 0x10]	3
+string_49f4ae	0x0049F5B5	ff 57 04	call   DWORD PTR [edi+0x4]	call	dword ptr [edi + 0x4]	3
+string_49f4ae	0x0049F5B8	8b 7d e0	mov    edi,DWORD PTR [ebp-0x20]	mov	edi, dword ptr [ebp - 0x20]	3
+string_49f4ae	0x0049F5BB	8b 56 0c	mov    edx,DWORD PTR [esi+0xc]	mov	edx, dword ptr [esi + 0xc]	3
+string_49f4ae	0x0049F5BE	8b 46 10	mov    eax,DWORD PTR [esi+0x10]	mov	eax, dword ptr [esi + 0x10]	3
+string_49f4ae	0x0049F5C1	52	push   edx	push	edx	1
+string_49f4ae	0x0049F5C2	50	push   eax	push	eax	1
+string_49f4ae	0x0049F5C3	8d 8d 6c fe ff ff	lea    ecx,[ebp-0x194]	lea	ecx, [ebp - 0x194]	6
+string_49f4ae	0x0049F5C9	e8 22 5b 00 00	call   0x4a50f0	call	0x4a50f0 <?Destroy@UnitEffectManager@@SAXXZ+0x144d0>	5
+string_49f4ae	0x0049F5CE	8b 4d 0c	mov    ecx,DWORD PTR [ebp+0xc]	mov	ecx, dword ptr [ebp + 0xc]	3
+string_49f4ae	0x0049F5D1	51	push   ecx	push	ecx	1
+string_49f4ae	0x0049F5D2	8d 95 1c ff ff ff	lea    edx,[ebp-0xe4]	lea	edx, [ebp - 0xe4]	6
+string_49f4ae	0x0049F5D8	52	push   edx	push	edx	1
+string_49f4ae	0x0049F5D9	8d 8d 6c fe ff ff	lea    ecx,[ebp-0x194]	lea	ecx, [ebp - 0x194]	6
+string_49f4ae	0x0049F5DF	c6 45 fc 1d	mov    BYTE PTR [ebp-0x4],0x1d	mov	byte ptr [ebp - 0x4], 0x1d	4
+string_49f4ae	0x0049F5E3	e8 98 5e 00 00	call   0x4a5480	call	0x4a5480 <?Destroy@UnitEffectManager@@SAXXZ+0x14860>	5
+string_49f4ae	0x0049F5E8	8b 4f 1c	mov    ecx,DWORD PTR [edi+0x1c]	mov	ecx, dword ptr [edi + 0x1c]	3
+string_49f4ae	0x0049F5EB	8b 76 20	mov    esi,DWORD PTR [esi+0x20]	mov	esi, dword ptr [esi + 0x20]	3
+string_49f4ae	0x0049F5EE	8b c1	mov    eax,ecx	mov	eax, ecx	2
+string_49f4ae	0x0049F5F0	c1 e0 04	shl    eax,0x4	shl	eax, 0x4	3
+string_49f4ae	0x0049F5F3	03 c1	add    eax,ecx	add	eax, ecx	2
+string_49f4ae	0x0049F5F5	c1 e0 04	shl    eax,0x4	shl	eax, 0x4	3
+string_49f4ae	0x0049F5F8	03 c6	add    eax,esi	add	eax, esi	2
+string_49f4ae	0x0049F5FA	8d 70 10	lea    esi,[eax+0x10]	lea	esi, [eax + 0x10]	3
+string_49f4ae	0x0049F5FD	8d 85 6c fe ff ff	lea    eax,[ebp-0x194]	lea	eax, [ebp - 0x194]	6
+string_49f4ae	0x0049F603	50	push   eax	push	eax	1
+string_49f4ae	0x0049F604	51	push   ecx	push	ecx	1
+string_49f4ae	0x0049F605	54	push   esp	push	esp	1
+string_49f4ae	0x0049F606	8b ce	mov    ecx,esi	mov	ecx, esi	2
+string_49f4ae	0x0049F608	e8 e3 04 00 00	call   0x49faf0	call	0x49faf0 <?Destroy@UnitEffectManager@@SAXXZ+0xeed0>	5
+string_49f4ae	0x0049F60D	8d 4d c8	lea    ecx,[ebp-0x38]	lea	ecx, [ebp - 0x38]	3
+string_49f4ae	0x0049F610	51	push   ecx	push	ecx	1
+string_49f4ae	0x0049F611	8b ce	mov    ecx,esi	mov	ecx, esi	2
+string_49f4ae	0x0049F613	e8 d8 06 00 00	call   0x49fcf0	call	0x49fcf0 <?Destroy@UnitEffectManager@@SAXXZ+0xf0d0>	5
+string_49f4ae	0x0049F618	8d 8d 6c fe ff ff	lea    ecx,[ebp-0x194]	lea	ecx, [ebp - 0x194]	6
+string_49f4ae	0x0049F61E	c6 45 fc 1c	mov    BYTE PTR [ebp-0x4],0x1c	mov	byte ptr [ebp - 0x4], 0x1c	4
+string_49f4ae	0x0049F622	e8 39 5b 00 00	call   0x4a5160	call	0x4a5160 <?Destroy@UnitEffectManager@@SAXXZ+0x14540>	5
+string_49f4ae	0x0049F627	8b 45 e8	mov    eax,DWORD PTR [ebp-0x18]	mov	eax, dword ptr [ebp - 0x18]	3
+string_49f4ae	0x0049F62A	3b c3	cmp    eax,ebx	cmp	eax, ebx	2
+string_49f4ae	0x0049F62C	74 1c	je     0x49f64a	je	0x49f64a <?Destroy@UnitEffectManager@@SAXXZ+0xea2a>	2
+string_49f4ae	0x0049F62E	8d 48 ff	lea    ecx,[eax-0x1]	lea	ecx, [eax - 0x1]	3
+string_49f4ae	0x0049F631	8a 01	mov    al,BYTE PTR [ecx]	mov	al, byte ptr [ecx]	2
+string_49f4ae	0x0049F633	3a c3	cmp    al,bl	cmp	al, bl	2
+string_49f4ae	0x0049F635	74 0a	je     0x49f641	je	0x49f641 <?Destroy@UnitEffectManager@@SAXXZ+0xea21>	2
+string_49f4ae	0x0049F637	3c ff	cmp    al,0xff	cmp	al, -0x1	2
+string_49f4ae	0x0049F639	74 06	je     0x49f641	je	0x49f641 <?Destroy@UnitEffectManager@@SAXXZ+0xea21>	2
+string_49f4ae	0x0049F63B	fe c8	dec    al	dec	al	2
+string_49f4ae	0x0049F63D	88 01	mov    BYTE PTR [ecx],al	mov	byte ptr [ecx], al	2
+string_49f4ae	0x0049F63F	eb 09	jmp    0x49f64a	jmp	0x49f64a <?Destroy@UnitEffectManager@@SAXXZ+0xea2a>	2
+string_49f4ae	0x0049F641	51	push   ecx	push	ecx	1
+string_49f4ae	0x0049F642	e8 19 2a fa ff	call   0x442060	call	0x442060 <??4SpellEffectManager@@QAEAAV0@ABV0@@Z+0x3fe0>	5
+string_49f4ae	0x0049F647	83 c4 04	add    esp,0x4	add	esp, 0x4	3
+string_49f4ae	0x0049F64A	8d 55 b8	lea    edx,[ebp-0x48]	lea	edx, [ebp - 0x48]	3
+string_49f4ae	0x0049F64D	89 5d e8	mov    DWORD PTR [ebp-0x18],ebx	mov	dword ptr [ebp - 0x18], ebx	3
+string_49f4ae	0x0049F650	89 5d ec	mov    DWORD PTR [ebp-0x14],ebx	mov	dword ptr [ebp - 0x14], ebx	3
+string_49f4ae	0x0049F653	89 5d f0	mov    DWORD PTR [ebp-0x10],ebx	mov	dword ptr [ebp - 0x10], ebx	3
+string_49f4ae	0x0049F656	c6 45 fc 1a	mov    BYTE PTR [ebp-0x4],0x1a	mov	byte ptr [ebp - 0x4], 0x1a	4
+string_49f4ae	0x0049F65A	52	push   edx	push	edx	1
+string_49f4ae	0x0049F65B	ff 15 18 e4 4d 00	call   DWORD PTR ds:0x4de418	call	dword ptr [0x4de418]	6
+string_49f4ae	0x0049F661	8d 8d 1c ff ff ff	lea    ecx,[ebp-0xe4]	lea	ecx, [ebp - 0xe4]	6
+string_49f4ae	0x0049F667	e8 e8 24 03 00	call   0x4d1b54	call	0x4d1b54 <ExpFltr_end+0x524>	5
+string_49f4ae	0x0049F66C	8d 8d 1c ff ff ff	lea    ecx,[ebp-0xe4]	lea	ecx, [ebp - 0xe4]	4
+string_49f4ae	0x0049F672	e8 ef 24 03 00	call   0x4d1b66	call	0x4d1b66 <ExpFltr_end+0x536>	0
+string_49f4ae	0x0049F677	85 c0	test   eax,eax	test	eax, eax	0
+string_49f4ae	0x0049F679	0f 84 e6 fd ff ff	je     0x49f465	je	0x49f465 <?Destroy@UnitEffectManager@@SAXXZ+0xe845>	0
+string_49f4ae	0x0049F67F	8d 8d 1c ff ff ff	lea    ecx,[ebp-0xe4]	lea	ecx, [ebp - 0xe4]	0
+string_49f4ae	0x0049F685	88 5d fc	mov    BYTE PTR [ebp-0x4],bl	mov	byte ptr [ebp - 0x4], bl	0
+string_49f4ae	0x0049F688	e8 df 24 03 00	call   0x4d1b6c	call	0x4d1b6c <ExpFltr_end+0x53c>	0
+string_49f4ae	0x0049F68D	8b 45 0c	mov    eax,DWORD PTR [ebp+0xc]	mov	eax, dword ptr [ebp + 0xc]	0
+string_49f4ae	0x0049F690	50	push   eax	push	eax	0
+string_49f4ae	0x0049F691	8d 8d 1c ff ff ff	lea    ecx,[ebp-0xe4]	lea	ecx, [ebp - 0xe4]	0
+string_49f4ae	0x0049F697	e8 e2 24 03 00	call   0x4d1b7e	call	0x4d1b7e <ExpFltr_end+0x54e>	0
+string_49f4ae	0x0049F69C	53	push   ebx	push	ebx	0
+string_49f4ae	0x0049F69D	68 04 ef 50 00	push   0x50ef04	push	0x50ef04	0
+string_49f4ae	0x0049F6A2	6a 04	push   0x4	push	0x4	0
+string_49f4ae	0x0049F6A4	8d 8d 1c ff ff ff	lea    ecx,[ebp-0xe4]	lea	ecx, [ebp - 0xe4]	0
+string_49f4ae	0x0049F6AA	c6 45 fc 1e	mov    BYTE PTR [ebp-0x4],0x1e	mov	byte ptr [ebp - 0x4], 0x1e	0
+string_49f4ae	0x0049F6AE	e8 c5 24 03 00	call   0x4d1b78	call	0x4d1b78 <ExpFltr_end+0x548>	0
+string_49f4ae	0x0049F6B3	8d 8d 1c ff ff ff	lea    ecx,[ebp-0xe4]	lea	ecx, [ebp - 0xe4]	0
+string_49f4ae	0x0049F6B9	e8 a8 24 03 00	call   0x4d1b66	call	0x4d1b66 <ExpFltr_end+0x536>	0
+string_49f4ae	0x0049F6BE	85 c0	test   eax,eax	test	eax, eax	0
+string_49f4ae	0x0049F6C0	0f 85 d3 01 00 00	jne    0x49f899	jne	0x49f899 <?Destroy@UnitEffectManager@@SAXXZ+0xec79>	0
+string_49f4ae	0x0049F6C6	8d 8d 1c ff ff ff	lea    ecx,[ebp-0xe4]	lea	ecx, [ebp - 0xe4]	0
+string_49f4ae	0x0049F6CC	e8 8f 24 03 00	call   0x4d1b60	call	0x4d1b60 <ExpFltr_end+0x530>	0
+string_49f4ae	0x0049F6D1	8d 8d 1c ff ff ff	lea    ecx,[ebp-0xe4]	lea	ecx, [ebp - 0xe4]	0
+string_49f4ae	0x0049F6D7	e8 8a 24 03 00	call   0x4d1b66	call	0x4d1b66 <ExpFltr_end+0x536>	0
+string_49f4ae	0x0049F6DC	85 c0	test   eax,eax	test	eax, eax	0
+string_49f4ae	0x0049F6DE	0f 85 b5 01 00 00	jne    0x49f899	jne	0x49f899 <?Destroy@UnitEffectManager@@SAXXZ+0xec79>	0
+string_49f4ae	0x0049F6E4	8d 4d b8	lea    ecx,[ebp-0x48]	lea	ecx, [ebp - 0x48]	0
+string_49f4ae	0x0049F6E7	51	push   ecx	push	ecx	0
+string_49f4ae	0x0049F6E8	e8 6d 24 03 00	call   0x4d1b5a	call	0x4d1b5a <ExpFltr_end+0x52a>	0
+string_49f4ae	0x0049F6ED	8d 55 b8	lea    edx,[ebp-0x48]	lea	edx, [ebp - 0x48]	0
+string_49f728	0x0049F710	e4 33	in     al,0x33	in	al, 0x33	0
+string_49f728	0x0049F712	c0 8b fa 89 5d e8 89	ror    BYTE PTR [ebx-0x17a27606],0x89	ror	byte ptr [ebx - 0x17a27606], 0x89	0
+string_49f728	0x0049F719	5d	pop    ebp	pop	ebp	0
+string_49f728	0x0049F71A	ec	in     al,dx	in	al, dx	0
+string_49f728	0x0049F71B	89 5d f0	mov    DWORD PTR [ebp-0x10],ebx	mov	dword ptr [ebp - 0x10], ebx	0
+string_49f728	0x0049F71E	f2 ae	repnz scas al,BYTE PTR es:[edi]	repne		scasb	al, byte ptr es:[edi]	0
+string_49f728	0x0049F720	f7 d1	not    ecx	not	ecx	0
+string_49f728	0x0049F722	49	dec    ecx	dec	ecx	0
+string_49f728	0x0049F723	51	push   ecx	push	ecx	0
+string_49f728	0x0049F724	52	push   edx	push	edx	0
+string_49f728	0x0049F725	8d 4d e4	lea    ecx,[ebp-0x1c]	lea	ecx, [ebp - 0x1c]	0
+string_49f728	0x0049F728	ff 15 f4 e4 4d 00	call   DWORD PTR ds:0x4de4f4	call	dword ptr [0x4de4f4]	4
+string_49f728	0x0049F72E	8d 4d e4	lea    ecx,[ebp-0x1c]	lea	ecx, [ebp - 0x1c]	3
+string_49f728	0x0049F731	51	push   ecx	push	ecx	1
+string_49f728	0x0049F732	8d 4d d0	lea    ecx,[ebp-0x30]	lea	ecx, [ebp - 0x30]	3
+string_49f728	0x0049F735	c6 45 fc 20	mov    BYTE PTR [ebp-0x4],0x20	mov	byte ptr [ebp - 0x4], 0x20	4
+string_49f728	0x0049F739	e8 b2 22 00 00	call   0x4a19f0	call	0x4a19f0 <?Destroy@UnitEffectManager@@SAXXZ+0x10dd0>	5
+string_49f728	0x0049F73E	3b 45 d4	cmp    eax,DWORD PTR [ebp-0x2c]	cmp	eax, dword ptr [ebp - 0x2c]	3
+string_49f728	0x0049F741	89 45 e0	mov    DWORD PTR [ebp-0x20],eax	mov	dword ptr [ebp - 0x20], eax	3
+string_49f728	0x0049F744	74 1a	je     0x49f760	je	0x49f760 <?Destroy@UnitEffectManager@@SAXXZ+0xeb40>	2
+string_49f728	0x0049F746	83 c0 0c	add    eax,0xc	add	eax, 0xc	3
+string_49f728	0x0049F749	50	push   eax	push	eax	1
+string_49f728	0x0049F74A	8d 55 e4	lea    edx,[ebp-0x1c]	lea	edx, [ebp - 0x1c]	3
+string_49f728	0x0049F74D	52	push   edx	push	edx	1
+string_49f728	0x0049F74E	ff 15 18 e5 4d 00	call   DWORD PTR ds:0x4de518	call	dword ptr [0x4de518]	6
+string_49f728	0x0049F754	83 c4 08	add    esp,0x8	add	esp, 0x8	3
+string_49f728	0x0049F757	84 c0	test   al,al	test	al, al	2
+string_49f728	0x0049F759	75 05	jne    0x49f760	jne	0x49f760 <?Destroy@UnitEffectManager@@SAXXZ+0xeb40>	2
+string_49f728	0x0049F75B	8d 45 e0	lea    eax,[ebp-0x20]	lea	eax, [ebp - 0x20]	3
+string_49f728	0x0049F75E	eb 09	jmp    0x49f769	jmp	0x49f769 <?Destroy@UnitEffectManager@@SAXXZ+0xeb49>	2
+string_49f728	0x0049F760	8b 45 d4	mov    eax,DWORD PTR [ebp-0x2c]	mov	eax, dword ptr [ebp - 0x2c]	3
+string_49f728	0x0049F763	89 45 dc	mov    DWORD PTR [ebp-0x24],eax	mov	dword ptr [ebp - 0x24], eax	3
+string_49f728	0x0049F766	8d 45 dc	lea    eax,[ebp-0x24]	lea	eax, [ebp - 0x24]	3
+string_49f728	0x0049F769	8b 38	mov    edi,DWORD PTR [eax]	mov	edi, dword ptr [eax]	2
+string_49f728	0x0049F76B	3b 7d d4	cmp    edi,DWORD PTR [ebp-0x2c]	cmp	edi, dword ptr [ebp - 0x2c]	3
+string_49f728	0x0049F76E	89 7d e0	mov    DWORD PTR [ebp-0x20],edi	mov	dword ptr [ebp - 0x20], edi	3
+string_49f728	0x0049F771	0f 84 ca 00 00 00	je     0x49f841	je	0x49f841 <?Destroy@UnitEffectManager@@SAXXZ+0xec21>	6
+string_49f728	0x0049F777	8b 4f 1c	mov    ecx,DWORD PTR [edi+0x1c]	mov	ecx, dword ptr [edi + 0x1c]	3
+string_49f728	0x0049F77A	8b 75 cc	mov    esi,DWORD PTR [ebp-0x34]	mov	esi, dword ptr [ebp - 0x34]	3
+string_49f728	0x0049F77D	8b 56 20	mov    edx,DWORD PTR [esi+0x20]	mov	edx, dword ptr [esi + 0x20]	3
+string_49f728	0x0049F780	8b c1	mov    eax,ecx	mov	eax, ecx	2
+string_49f728	0x0049F782	c1 e0 04	shl    eax,0x4	shl	eax, 0x4	3
+string_49f728	0x0049F785	03 c1	add    eax,ecx	add	eax, ecx	2
+string_49f728	0x0049F787	c1 e0 04	shl    eax,0x4	shl	eax, 0x4	3
+string_49f728	0x0049F78A	03 c2	add    eax,edx	add	eax, edx	2
+string_49f728	0x0049F78C	83 c0 34	add    eax,0x34	add	eax, 0x34	3
+string_49f728	0x0049F78F	50	push   eax	push	eax	1
+string_49f728	0x0049F790	8d 55 e4	lea    edx,[ebp-0x1c]	lea	edx, [ebp - 0x1c]	3
+string_49f728	0x0049F793	52	push   edx	push	edx	1
+string_49f728	0x0049F794	ff 15 28 e5 4d 00	call   DWORD PTR ds:0x4de528	call	dword ptr [0x4de528]	6
+string_49f728	0x0049F79A	83 c4 08	add    esp,0x8	add	esp, 0x8	3
+string_49f728	0x0049F79D	84 c0	test   al,al	test	al, al	2
+string_49f728	0x0049F79F	74 34	je     0x49f7d5	je	0x49f7d5 <?Destroy@UnitEffectManager@@SAXXZ+0xebb5>	2
+string_49f728	0x0049F7A1	8b 45 e8	mov    eax,DWORD PTR [ebp-0x18]	mov	eax, dword ptr [ebp - 0x18]	3
+string_49f728	0x0049F7A4	3b c3	cmp    eax,ebx	cmp	eax, ebx	2
+string_49f728	0x0049F7A6	75 05	jne    0x49f7ad	jne	0x49f7ad <?Destroy@UnitEffectManager@@SAXXZ+0xeb8d>	2
+string_49f728	0x0049F7A8	a1 d8 e4 4d 00	mov    eax,ds:0x4de4d8	mov	eax, dword ptr [0x4de4d8]	5
+string_49f728	0x0049F7AD	8b 4e 10	mov    ecx,DWORD PTR [esi+0x10]	mov	ecx, dword ptr [esi + 0x10]	3
+string_49f728	0x0049F7B0	8b 39	mov    edi,DWORD PTR [ecx]	mov	edi, dword ptr [ecx]	2
+string_49f728	0x0049F7B2	50	push   eax	push	eax	1
+string_49f728	0x0049F7B3	8d 95 6c f6 ff ff	lea    edx,[ebp-0x994]	lea	edx, [ebp - 0x994]	6
+string_49f728	0x0049F7B9	68 dc ee 50 00	push   0x50eedc	push	0x50eedc	5
+string_49f728	0x0049F7BE	52	push   edx	push	edx	1
+string_49f728	0x0049F7BF	e8 7c 41 f6 ff	call   0x403940	call	0x403940 <??4RegKeyHandler@@QAEAAV0@ABV0@@Z+0x1370>	5
+string_49f728	0x0049F7C4	8b 4e 10	mov    ecx,DWORD PTR [esi+0x10]	mov	ecx, dword ptr [esi + 0x10]	3
+string_49f728	0x0049F7C7	83 c4 0c	add    esp,0xc	add	esp, 0xc	3
+string_49f728	0x0049F7CA	50	push   eax	push	eax	1
+string_49f728	0x0049F7CB	8b 46 08	mov    eax,DWORD PTR [esi+0x8]	mov	eax, dword ptr [esi + 0x8]	3
+string_49f728	0x0049F7CE	50	push   eax	push	eax	1
+string_49f728	0x0049F7CF	ff 57 04	call   DWORD PTR [edi+0x4]	call	dword ptr [edi + 0x4]	3
+string_49f728	0x0049F7D2	8b 7d e0	mov    edi,DWORD PTR [ebp-0x20]	mov	edi, dword ptr [ebp - 0x20]	3
+string_49f728	0x0049F7D5	8b 4e 0c	mov    ecx,DWORD PTR [esi+0xc]	mov	ecx, dword ptr [esi + 0xc]	3
+string_49f728	0x0049F7D8	8b 56 10	mov    edx,DWORD PTR [esi+0x10]	mov	edx, dword ptr [esi + 0x10]	3
+string_49f728	0x0049F7DB	51	push   ecx	push	ecx	1
+string_49f728	0x0049F7DC	52	push   edx	push	edx	1
+string_49f728	0x0049F7DD	8d 8d 80 fe ff ff	lea    ecx,[ebp-0x180]	lea	ecx, [ebp - 0x180]	6
+string_49f728	0x0049F7E3	e8 78 6f 00 00	call   0x4a6760	call	0x4a6760 <?Destroy@UnitEffectManager@@SAXXZ+0x15b40>	5
+string_49f728	0x0049F7E8	8b 45 0c	mov    eax,DWORD PTR [ebp+0xc]	mov	eax, dword ptr [ebp + 0xc]	3
+string_49f728	0x0049F7EB	50	push   eax	push	eax	1
+string_49f728	0x0049F7EC	8d 8d 1c ff ff ff	lea    ecx,[ebp-0xe4]	lea	ecx, [ebp - 0xe4]	6
+string_49f728	0x0049F7F2	51	push   ecx	push	ecx	1
+string_49f728	0x0049F7F3	8d 8d 80 fe ff ff	lea    ecx,[ebp-0x180]	lea	ecx, [ebp - 0x180]	6
+string_49f728	0x0049F7F9	c6 45 fc 21	mov    BYTE PTR [ebp-0x4],0x21	mov	byte ptr [ebp - 0x4], 0x21	4
+string_49f728	0x0049F7FD	e8 ee 70 00 00	call   0x4a68f0	call	0x4a68f0 <?Destroy@UnitEffectManager@@SAXXZ+0x15cd0>	5
+string_49f728	0x0049F802	8b 4f 1c	mov    ecx,DWORD PTR [edi+0x1c]	mov	ecx, dword ptr [edi + 0x1c]	3
+string_49f728	0x0049F805	8b 76 20	mov    esi,DWORD PTR [esi+0x20]	mov	esi, dword ptr [esi + 0x20]	3
+string_49f728	0x0049F808	8b c1	mov    eax,ecx	mov	eax, ecx	2
+string_49f728	0x0049F80A	c1 e0 04	shl    eax,0x4	shl	eax, 0x4	3
+string_49f728	0x0049F80D	03 c1	add    eax,ecx	add	eax, ecx	2
+string_49f728	0x0049F80F	c1 e0 04	shl    eax,0x4	shl	eax, 0x4	3
+string_49f728	0x0049F812	8d 95 80 fe ff ff	lea    edx,[ebp-0x180]	lea	edx, [ebp - 0x180]	6
+string_49f728	0x0049F818	52	push   edx	push	edx	1
+string_49f728	0x0049F819	03 c6	add    eax,esi	add	eax, esi	2
+string_49f728	0x0049F81B	51	push   ecx	push	ecx	1
+string_49f728	0x0049F81C	8d 70 20	lea    esi,[eax+0x20]	lea	esi, [eax + 0x20]	3
+string_49f728	0x0049F81F	54	push   esp	push	esp	1
+string_49f728	0x0049F820	8b ce	mov    ecx,esi	mov	ecx, esi	2
+string_49f728	0x0049F822	e8 39 03 00 00	call   0x49fb60	call	0x49fb60 <?Destroy@UnitEffectManager@@SAXXZ+0xef40>	5
+string_49f728	0x0049F827	8d 45 c8	lea    eax,[ebp-0x38]	lea	eax, [ebp - 0x38]	3
+string_49f728	0x0049F82A	50	push   eax	push	eax	1
+string_49f728	0x0049F82B	8b ce	mov    ecx,esi	mov	ecx, esi	2
+string_49f728	0x0049F82D	e8 de 05 00 00	call   0x49fe10	call	0x49fe10 <?Destroy@UnitEffectManager@@SAXXZ+0xf1f0>	5
+string_49f728	0x0049F832	8d 8d 80 fe ff ff	lea    ecx,[ebp-0x180]	lea	ecx, [ebp - 0x180]	6
+string_49f728	0x0049F838	c6 45 fc 20	mov    BYTE PTR [ebp-0x4],0x20	mov	byte ptr [ebp - 0x4], 0x20	4
+string_49f728	0x0049F83C	e8 7f 6f 00 00	call   0x4a67c0	call	0x4a67c0 <?Destroy@UnitEffectManager@@SAXXZ+0x15ba0>	5
+string_49f728	0x0049F841	8b 45 e8	mov    eax,DWORD PTR [ebp-0x18]	mov	eax, dword ptr [ebp - 0x18]	3
+string_49f728	0x0049F844	3b c3	cmp    eax,ebx	cmp	eax, ebx	2
+string_49f728	0x0049F846	74 1c	je     0x49f864	je	0x49f864 <?Destroy@UnitEffectManager@@SAXXZ+0xec44>	2
+string_49f728	0x0049F848	8d 48 ff	lea    ecx,[eax-0x1]	lea	ecx, [eax - 0x1]	3
+string_49f728	0x0049F84B	8a 01	mov    al,BYTE PTR [ecx]	mov	al, byte ptr [ecx]	2
+string_49f728	0x0049F84D	3a c3	cmp    al,bl	cmp	al, bl	2
+string_49f728	0x0049F84F	74 0a	je     0x49f85b	je	0x49f85b <?Destroy@UnitEffectManager@@SAXXZ+0xec3b>	2
+string_49f728	0x0049F851	3c ff	cmp    al,0xff	cmp	al, -0x1	2
+string_49f728	0x0049F853	74 06	je     0x49f85b	je	0x49f85b <?Destroy@UnitEffectManager@@SAXXZ+0xec3b>	2
+string_49f728	0x0049F855	fe c8	dec    al	dec	al	2
+string_49f728	0x0049F857	88 01	mov    BYTE PTR [ecx],al	mov	byte ptr [ecx], al	2
+string_49f728	0x0049F859	eb 09	jmp    0x49f864	jmp	0x49f864 <?Destroy@UnitEffectManager@@SAXXZ+0xec44>	2
+string_49f728	0x0049F85B	51	push   ecx	push	ecx	1
+string_49f728	0x0049F85C	e8 ff 27 fa ff	call   0x442060	call	0x442060 <??4SpellEffectManager@@QAEAAV0@ABV0@@Z+0x3fe0>	5
+string_49f728	0x0049F861	83 c4 04	add    esp,0x4	add	esp, 0x4	3
+string_49f728	0x0049F864	8d 4d b8	lea    ecx,[ebp-0x48]	lea	ecx, [ebp - 0x48]	3
+string_49f728	0x0049F867	51	push   ecx	push	ecx	1
+string_49f728	0x0049F868	89 5d e8	mov    DWORD PTR [ebp-0x18],ebx	mov	dword ptr [ebp - 0x18], ebx	3
+string_49f728	0x0049F86B	89 5d ec	mov    DWORD PTR [ebp-0x14],ebx	mov	dword ptr [ebp - 0x14], ebx	3
+string_49f728	0x0049F86E	89 5d f0	mov    DWORD PTR [ebp-0x10],ebx	mov	dword ptr [ebp - 0x10], ebx	3
+string_49f728	0x0049F871	c6 45 fc 1e	mov    BYTE PTR [ebp-0x4],0x1e	mov	byte ptr [ebp - 0x4], 0x1e	4
+string_49f728	0x0049F875	ff 15 18 e4 4d 00	call   DWORD PTR ds:0x4de418	call	dword ptr [0x4de418]	6
+string_49f728	0x0049F87B	8d 8d 1c ff ff ff	lea    ecx,[ebp-0xe4]	lea	ecx, [ebp - 0xe4]	6
+string_49f728	0x0049F881	e8 ce 22 03 00	call   0x4d1b54	call	0x4d1b54 <ExpFltr_end+0x524>	5
+string_49f728	0x0049F886	8d 8d 1c ff ff ff	lea    ecx,[ebp-0xe4]	lea	ecx, [ebp - 0xe4]	6
+string_49f728	0x0049F88C	e8 d5 22 03 00	call   0x4d1b66	call	0x4d1b66 <ExpFltr_end+0x536>	5
+string_49f728	0x0049F891	85 c0	test   eax,eax	test	eax, eax	2
+string_49f728	0x0049F893	0f 84 4b fe ff ff	je     0x49f6e4	je	0x49f6e4 <?Destroy@UnitEffectManager@@SAXXZ+0xeac4>	6
+string_49f728	0x0049F899	8d 8d 1c ff ff ff	lea    ecx,[ebp-0xe4]	lea	ecx, [ebp - 0xe4]	0
+string_49f728	0x0049F89F	88 5d fc	mov    BYTE PTR [ebp-0x4],bl	mov	byte ptr [ebp - 0x4], bl	0
+string_49f728	0x0049F8A2	e8 c5 22 03 00	call   0x4d1b6c	call	0x4d1b6c <ExpFltr_end+0x53c>	0
+string_49f728	0x0049F8A7	8b 75 cc	mov    esi,DWORD PTR [ebp-0x34]	mov	esi, dword ptr [ebp - 0x34]	0
+string_49f728	0x0049F8AA	8b 4e 10	mov    ecx,DWORD PTR [esi+0x10]	mov	ecx, dword ptr [esi + 0x10]	0
+string_49f728	0x0049F8AD	8b 46 04	mov    eax,DWORD PTR [esi+0x4]	mov	eax, dword ptr [esi + 0x4]	0
+string_49f728	0x0049F8B0	8b 11	mov    edx,DWORD PTR [ecx]	mov	edx, dword ptr [ecx]	0
+string_49f728	0x0049F8B2	68 ac ee 50 00	push   0x50eeac	push	0x50eeac	0
+string_49f728	0x0049F8B7	50	push   eax	push	eax	0
+string_49f728	0x0049F8B8	ff 52 04	call   DWORD PTR [edx+0x4]	call	dword ptr [edx + 0x4]	0
+string_49f728	0x0049F8BB	8b 4d 0c	mov    ecx,DWORD PTR [ebp+0xc]	mov	ecx, dword ptr [ebp + 0xc]	0
+string_49f728	0x0049F8BE	51	push   ecx	push	ecx	0
+string_49f728	0x0049F8BF	8d 8d 1c ff ff ff	lea    ecx,[ebp-0xe4]	lea	ecx, [ebp - 0xe4]	0
+string_49f728	0x0049F8C5	e8 b4 22 03 00	call   0x4d1b7e	call	0x4d1b7e <ExpFltr_end+0x54e>	0
+string_49f728	0x0049F8CA	53	push   ebx	push	ebx	0
+string_49f728	0x0049F8CB	68 90 ee 50 00	push   0x50ee90	push	0x50ee90	0
+string_49f728	0x0049F8D0	6a 04	push   0x4	push	0x4	0
+string_49f728	0x0049F8D2	8d 8d 1c ff ff ff	lea    ecx,[ebp-0xe4]	lea	ecx, [ebp - 0xe4]	0
+string_49f728	0x0049F8D8	c6 45 fc 22	mov    BYTE PTR [ebp-0x4],0x22	mov	byte ptr [ebp - 0x4], 0x22	0
+string_49f728	0x0049F8DC	e8 97 22 03 00	call   0x4d1b78	call	0x4d1b78 <ExpFltr_end+0x548>	0
+string_49f728	0x0049F8E1	8d 8d 1c ff ff ff	lea    ecx,[ebp-0xe4]	lea	ecx, [ebp - 0xe4]	0
+string_49f728	0x0049F8E7	e8 7a 22 03 00	call   0x4d1b66	call	0x4d1b66 <ExpFltr_end+0x536>	0
+string_49f728	0x0049F8EC	85 c0	test   eax,eax	test	eax, eax	0
+string_49f728	0x0049F8EE	0f 85 8e 00 00 00	jne    0x49f982	jne	0x49f982 <?Destroy@UnitEffectManager@@SAXXZ+0xed62>	0
+string_49f728	0x0049F8F4	8d 8d 1c ff ff ff	lea    ecx,[ebp-0xe4]	lea	ecx, [ebp - 0xe4]	0
+string_49f728	0x0049F8FA	e8 61 22 03 00	call   0x4d1b60	call	0x4d1b60 <ExpFltr_end+0x530>	0
+string_49f728	0x0049F8FF	8d 8d 1c ff ff ff	lea    ecx,[ebp-0xe4]	lea	ecx, [ebp - 0xe4]	0
+string_49f728	0x0049F905	e8 5c 22 03 00	call   0x4d1b66	call	0x4d1b66 <ExpFltr_end+0x536>	0
+string_49f728	0x0049F90A	85 c0	test   eax,eax	test	eax, eax	0
+string_49f728	0x0049F90C	75 74	jne    0x49f982	jne	0x49f982 <?Destroy@UnitEffectManager@@SAXXZ+0xed62>	0
+string_49f728	0x0049F90E	8d 7e 2c	lea    edi,[esi+0x2c]	lea	edi, [esi + 0x2c]	0
+string_49f728	0x0049F911	8b 56 0c	mov    edx,DWORD PTR [esi+0xc]	mov	edx, dword ptr [esi + 0xc]	0
+string_49f728	0x0049F914	8b 46 10	mov    eax,DWORD PTR [esi+0x10]	mov	eax, dword ptr [esi + 0x10]	0
+string_49f728	0x0049F917	52	push   edx	push	edx	0
+string_49f728	0x0049F918	50	push   eax	push	eax	0
+string_49f728	0x0049F919	8d 8d 6c fe ff ff	lea    ecx,[ebp-0x194]	lea	ecx, [ebp - 0x194]	0
+string_49f728	0x0049F91F	e8 ac 70 00 00	call   0x4a69d0	call	0x4a69d0 <?Destroy@UnitEffectManager@@SAXXZ+0x15db0>	0
+string_49f728	0x0049F924	8b 4d 0c	mov    ecx,DWORD PTR [ebp+0xc]	mov	ecx, dword ptr [ebp + 0xc]	0
+string_49f728	0x0049F927	51	push   ecx	push	ecx	0
+string_49f728	0x0049F928	8d 95 1c ff ff ff	lea    edx,[ebp-0xe4]	lea	edx, [ebp - 0xe4]	0
+string_49f728	0x0049F92E	52	push   edx	push	edx	0
+string_49f728	0x0049F92F	8d 8d 6c fe ff ff	lea    ecx,[ebp-0x194]	lea	ecx, [ebp - 0x194]	0
+string_49f728	0x0049F935	c6 45 fc 23	mov    BYTE PTR [ebp-0x4],0x23	mov	byte ptr [ebp - 0x4], 0x23	0
+string_49f728	0x0049F939	e8 c2 72 00 00	call   0x4a6c00	call	0x4a6c00 <?Destroy@UnitEffectManager@@SAXXZ+0x15fe0>	0
+string_49f728	0x0049F93E	8d 85 6c fe ff ff	lea    eax,[ebp-0x194]	lea	eax, [ebp - 0x194]	0
+string_49f728	0x0049F944	50	push   eax	push	eax	0
+string_49f728	0x0049F945	51	push   ecx	push	ecx	0
+string_49f728	0x0049F946	54	push   esp	push	esp	0
+string_49f728	0x0049F947	8b cf	mov    ecx,edi	mov	ecx, edi	0
+string_49f728	0x0049F949	e8 82 02 00 00	call   0x49fbd0	call	0x49fbd0 <?Destroy@UnitEffectManager@@SAXXZ+0xefb0>	0
+string_49f728	0x0049F94E	8d 4d c8	lea    ecx,[ebp-0x38]	lea	ecx, [ebp - 0x38]	0
+string_49f728	0x0049F951	51	push   ecx	push	ecx	0
+string_49f728	0x0049F952	8b cf	mov    ecx,edi	mov	ecx, edi	0
+string_49f728	0x0049F954	e8 07 06 00 00	call   0x49ff60	call	0x49ff60 <?Destroy@UnitEffectManager@@SAXXZ+0xf340>	0
+string_49f728	0x0049F959	8d 8d 1c ff ff ff	lea    ecx,[ebp-0xe4]	lea	ecx, [ebp - 0xe4]	0
+string_49f728	0x0049F95F	e8 f0 21 03 00	call   0x4d1b54	call	0x4d1b54 <ExpFltr_end+0x524>	0
+string_49f728	0x0049F964	8d 8d 6c fe ff ff	lea    ecx,[ebp-0x194]	lea	ecx, [ebp - 0x194]	0
+string_49f728	0x0049F96A	c6 45 fc 22	mov    BYTE PTR [ebp-0x4],0x22	mov	byte ptr [ebp - 0x4], 0x22	0
+string_49f728	0x0049F96E	e8 cd 70 00 00	call   0x4a6a40	call	0x4a6a40 <?Destroy@UnitEffectManager@@SAXXZ+0x15e20>	0
+string_49f728	0x0049F973	8d 8d 1c ff ff ff	lea    ecx,[ebp-0xe4]	lea	ecx, [ebp - 0xe4]	0
+string_49f728	0x0049F979	e8 e8 21 03 00	call   0x4d1b66	call	0x4d1b66 <ExpFltr_end+0x536>	0
+string_49f728	0x0049F97E	85 c0	test   eax,eax	test	eax, eax	0
+string_49f728	0x0049F980	74 8f	je     0x49f911	je	0x49f911 <?Destroy@UnitEffectManager@@SAXXZ+0xecf1>	0
+string_49f728	0x0049F982	8d 8d 1c ff ff ff	lea    ecx,[ebp-0xe4]	lea	ecx, [ebp - 0xe4]	0
+string_49f728	0x0049F988	88 5d fc	mov    BYTE PTR [ebp-0x4],bl	mov	byte ptr [ebp - 0x4], bl	0
+string_49f728	0x0049F98B	e8 dc 21 03 00	call   0x4d1b6c	call	0x4d1b6c <ExpFltr_end+0x53c>	0
+string_49f728	0x0049F990	8b ce	mov    ecx,esi	mov	ecx, esi	0
+string_49f728	0x0049F992	e8 99 ec ff ff	call   0x49e630	call	0x49e630 <?Destroy@UnitEffectManager@@SAXXZ+0xda10>	0
+string_49f728	0x0049F997	8b 4d d4	mov    ecx,DWORD PTR [ebp-0x2c]	mov	ecx, dword ptr [ebp - 0x2c]	0
+string_49f728	0x0049F99A	39 5d d8	cmp    DWORD PTR [ebp-0x28],ebx	cmp	dword ptr [ebp - 0x28], ebx	0
+string_49f728	0x0049F99D	8b f1	mov    esi,ecx	mov	esi, ecx	0
+string_49f728	0x0049F99F	8b 06	mov    eax,DWORD PTR [esi]	mov	eax, dword ptr [esi]	0
+string_49f728	0x0049F9A1	c7 45 fc ff ff ff ff	mov    DWORD PTR [ebp-0x4],0xffffffff	mov	dword ptr [ebp - 0x4], 0xffffffff	0
+string_49f728	0x0049F9A8	89 45 0c	mov    DWORD PTR [ebp+0xc],eax	mov	dword ptr [ebp + 0xc], eax	0
+string_49f728	0x0049F9AB	74 4f	je     0x49f9fc	je	0x49f9fc <?Destroy@UnitEffectManager@@SAXXZ+0xeddc>	0
+string_49f728	0x0049F9AD	8b d0	mov    edx,eax	mov	edx, eax	0
+string_49f728	0x0049F9AF	3b c2	cmp    eax,edx	cmp	eax, edx	0
+string_49f728	0x0049F9B1	75 49	jne    0x49f9fc	jne	0x49f9fc <?Destroy@UnitEffectManager@@SAXXZ+0xeddc>	0
+string_49f728	0x0049F9B3	8b 79 04	mov    edi,DWORD PTR [ecx+0x4]	mov	edi, dword ptr [ecx + 0x4]	0
+string_49f728	0x0049F9B6	38 5f 21	cmp    BYTE PTR [edi+0x21],bl	cmp	byte ptr [edi + 0x21], bl	0
+string_49f728	0x0049F9B9	8b f7	mov    esi,edi	mov	esi, edi	0
+string_49f728	0x0049F9BB	75 2c	jne    0x49f9e9	jne	0x49f9e9 <?Destroy@UnitEffectManager@@SAXXZ+0xedc9>	0
+string_49f728	0x0049F9BD	8b 56 08	mov    edx,DWORD PTR [esi+0x8]	mov	edx, dword ptr [esi + 0x8]	0

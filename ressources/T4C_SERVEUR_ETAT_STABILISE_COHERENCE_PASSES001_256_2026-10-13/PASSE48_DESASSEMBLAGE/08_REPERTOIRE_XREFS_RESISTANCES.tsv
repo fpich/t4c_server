@@ -1,0 +1,9 @@
+methode	adresse_VA	nombre_appels_directs_rel32	sites	interpretation
+Unit::GetAirResist	0x462fd0	0	aucun	N exclut ni l usage indirect ni les autres operations sur ViewFlag/QueryBoost
+Unit::GetWaterResist	0x463000	0	aucun	N exclut ni l usage indirect ni les autres operations sur ViewFlag/QueryBoost
+Unit::GetFireResist	0x463030	0	aucun	N exclut ni l usage indirect ni les autres operations sur ViewFlag/QueryBoost
+Unit::GetEarthResist	0x463060	0	aucun	N exclut ni l usage indirect ni les autres operations sur ViewFlag/QueryBoost
+Unit::GetLightResist	0x463090	0	aucun	N exclut ni l usage indirect ni les autres operations sur ViewFlag/QueryBoost
+Unit::GetDarkResist	0x4630c0	0	aucun	N exclut ni l usage indirect ni les autres operations sur ViewFlag/QueryBoost
+Unit::GetLightPower	0x4632d0	0	aucun	Appels identifies dans traitement 0x46A3xx; ne les suppose pas mecanisme combat
+Unit::GetDarkPower	0x463300	0	aucun	Appels identifies dans traitement 0x46A3xx; ne les suppose pas mecanisme combat

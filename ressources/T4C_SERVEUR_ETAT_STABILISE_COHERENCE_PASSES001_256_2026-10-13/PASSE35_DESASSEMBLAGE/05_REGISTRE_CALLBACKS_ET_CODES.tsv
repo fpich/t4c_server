@@ -1,0 +1,9 @@
+site_register	code_source	callback	codes_evenement_observes	effets_appels_observes	statut
+0x4BD93A	constant 0x11	0x4BD970	aucun test explicite	appel virtuel offset +0x08 argument 0x4E4D	CONFIRME
+0x4C2D3A	constant 1	0x4C2E60	2 dans chemin étudié	GetLevel, QueryBoost, RemoveEffect dans différentes branches	CONFIRME/PARTIEL
+0x4C3EE8	[structure+0x3AC]	0x4C3B70	5; 0x1B; 0x17; 0x18; 9	GetBoost, RemoveBoost, RemoveEffect, notification S2C84	CONFIRME
+0x4C46B8	[structure+0x3AC]	0x4C43C0	5; 0x1B; 0x17; 0x18; 9	S2C84, RemoveEffect, AddEffect	CONFIRME
+0x4C4F58	[structure+0x3AC]	0x4C4C60	5; 0x1B; 0x17; 0x18; 9	S2C84, RemoveEffect, AddEffect	CONFIRME
+0x4C5F18	[structure+0x3AC]	0x4C5C90	5; 0x1B; 0x17; 0x18; 9	S2C84, RemoveEffect, AddEffect	CONFIRME
+0x4C6FF8	[structure+0x3AC]	0x4C6BE0	5; 0x1B; 0x17; 0x18; 9	S2C84, RemoveEffect, GetNextGlobalEffectID	CONFIRME
+0x4C7938	[structure+0x3AC]	0x4C7990	5; 0x1B; 0x17; 0x18; 9; 0x0D	GetRound, AddEffect, RemoveEffect, ActivateSpell, S2C84	CONFIRME

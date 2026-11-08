@@ -1,0 +1,13 @@
+indice_dispatch	branche_VA	classe_operatoire	preuve	confiance
+index0	0x409CD4	ADD	fadd + deux valeurs	CONFIRME
+index1	0x409CED	SUB	fsub	CONFIRME
+index2	0x409D06	MUL	fmul	CONFIRME
+index3	0x409D1F	DIV	fdiv apres controle zero / diagnostic	CONFIRME
+index4	0x409DF1	OPERATEUR_EXTERNE	x87 + appel thunk 0x4D1D80	APPEL_CONFIRME_SEMANTIQUE_INCONNUE
+index5	0x409E0F	RANDOM	arrondi des deux operandes, appel Random::operator(dice)	CONFIRME
+index6	0x409E4F	COMPARE_A	fcomp, resultat 0 ou 1	CONFIRME_SENS_A_VERIFIER
+index7	0x409E7C	COMPARE_B	fcomp, resultat 0 ou 1	CONFIRME_SENS_A_VERIFIER
+index8	0x409EA9	COMPARE_C	fcomp, resultat 0 ou 1	CONFIRME_SENS_A_VERIFIER
+index9	0x409ED6	COMPARE_D	fcomp, resultat 0 ou 1	CONFIRME_SENS_A_VERIFIER
+index10	0x409F03	COMPARE_E	fcomp, resultat 0 ou 1	CONFIRME_SENS_A_VERIFIER
+index11	0x409F30	COMPARE_F	fcomp, resultat 0 ou 1	CONFIRME_SENS_A_VERIFIER

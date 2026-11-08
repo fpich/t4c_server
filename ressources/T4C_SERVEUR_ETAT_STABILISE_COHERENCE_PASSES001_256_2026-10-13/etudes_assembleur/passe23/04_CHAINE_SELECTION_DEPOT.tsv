@@ -1,0 +1,14 @@
+ordre	fonction	adresse	action_obs	branche_ou_condition	certitude
+1	MonsterStructure::MonsterStructure	0x442559	initialise les pointeurs du tableau à zéro	construction initiale	CONFIRMÉ
+2	MonsterStructure::MonsterStructure(copie)	0x4118C9–0x411928	copie profonde de N entrées de 16 octets	N=(end-begin)/16	CONFIRMÉ
+3	NPCstructure::OnDeath	0x44A977–0x44A9A1	lit begin et end, itère par blocs de 16	table présente et index valide	CONFIRMÉ
+4	NPCstructure::OnDeath	0x44A9A1–0x44A9CC	RNG puis comparaison avec double(entry+8)*1000000	branche de succès conditionnelle	CONFIRMÉ
+5	NPCstructure::OnDeath	0x44A9D2–0x44AA17	alloue Objects(0x120), appelle Create(3,entry[0])	seulement si seuil franchi; échec crée objet à libérer	CONFIRMÉ
+6	Objects::Create	0x44C070–0x44C087	délègue à 0x48B0C0, retourne succès booléen	table globale de modèles à 0x5163F4	CONFIRMÉ
+7	NPCstructure::OnDeath	0x44AA22–0x44AAB0	ajoute objets construits dans conteneur de sortie	Create vrai	CONFIRMÉ
+8	Creatures::Death	0x432559–0x43256B	transmet conteneur local à callback virtuel +0x24	chemin de mort actif	CONFIRMÉ
+9	Creatures::Death	0x4325E6–0x432610	extrait élément du conteneur et prépare positions	mondes et éléments présents	CONFIRMÉ
+10	Creatures::Death	0x4326D3–0x43275B	choisit positions valides, tente alternative de collision	positions dans monde et critères de validation	CONFIRMÉ
+11	Creatures::Death	0x432756	appelle WorldMap::deposit_unit pour objet courant	position retenue	CONFIRMÉ
+12	Creatures::Death	0x43276D	appelle Unit::BroadcastPopup	après dépôt sur chemin observé	CONFIRMÉ
+13	Creatures::Death	0x43277C	appel virtuel de libération si position invalide	branche de non-dépôt	CONFIRMÉ

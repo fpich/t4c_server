@@ -1,0 +1,8 @@
+{
+  "descripteurs_structurellement_valides": 788,
+  "trampolines_confirmant_la_reference_au_descripteur": 788,
+  "actions_absentes_du_masque_p136": 1,
+  "actions_absentes": [
+    "0x004DDF8B"
+  ]
+}

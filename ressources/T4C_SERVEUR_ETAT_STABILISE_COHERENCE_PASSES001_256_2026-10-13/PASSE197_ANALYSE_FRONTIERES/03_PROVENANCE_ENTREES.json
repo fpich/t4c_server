@@ -1,0 +1,65 @@
+[
+  {
+    "name": "interruption_493a61",
+    "start": "0x493a61",
+    "end": "0x494140",
+    "matched_instructions": 476,
+    "candidate_new_bytes": 1573,
+    "visited_not_matched": [],
+    "old_instruction_conflicts": [],
+    "first_instructions": [
+      [
+        "0x493a61",
+        "c78554ffffff00000000",
+        "mov    DWORD PTR [ebp-0xac],0x0"
+      ],
+      [
+        "0x493a6b",
+        "c78558ffffff00000000",
+        "mov    DWORD PTR [ebp-0xa8],0x0"
+      ],
+      [
+        "0x493a75",
+        "899d5cffffff",
+        "mov    DWORD PTR [ebp-0xa4],ebx"
+      ],
+      [
+        "0x493a7b",
+        "899d60ffffff",
+        "mov    DWORD PTR [ebp-0xa0],ebx"
+      ],
+      [
+        "0x493a81",
+        "899d64ffffff",
+        "mov    DWORD PTR [ebp-0x9c],ebx"
+      ]
+    ],
+    "last_instructions": [
+      [
+        "0x49409d",
+        "64890d00000000",
+        "mov    DWORD PTR fs:0x0,ecx"
+      ],
+      [
+        "0x4940a4",
+        "5b",
+        "pop    ebx"
+      ],
+      [
+        "0x4940a5",
+        "8be5",
+        "mov    esp,ebp"
+      ],
+      [
+        "0x4940a7",
+        "5d",
+        "pop    ebp"
+      ],
+      [
+        "0x4940a8",
+        "c20800",
+        "ret    0x8"
+      ]
+    ]
+  }
+]

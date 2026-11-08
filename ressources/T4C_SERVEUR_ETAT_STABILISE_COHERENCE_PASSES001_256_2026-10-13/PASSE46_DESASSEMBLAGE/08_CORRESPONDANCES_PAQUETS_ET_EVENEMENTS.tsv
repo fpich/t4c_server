@@ -1,0 +1,12 @@
+evenement	code_decimal	code_hex	chemin_observe	portee
+message objet lors attaque	1	0x01	Character::attack equipements	interne
+message objet lors attacked	2	0x02	Character::attacked equipements	interne
+message effet sur reacted	4	0x04	Character::attacked dispatcher 0x460000	interne
+message effet lors hit	8	0x08	Character::hit dispatcher 0x460000	interne
+message objet lors hit	14	0x0E	Character::hit equipements	interne
+message RangedAttack	20	0x14	Character::RangedAttack equipement	interne
+message regeneration	64	0x40	Character::Regenerate dispatcher 0x460000	interne
+paquet hit conditionnel	33	0x21	Character::hit	S2C sur chemin observe
+paquet tir	95	0x5F	helper interne 0x4218F0	S2C sur chemin observe
+paquet combat autre	96	0x60	helper interne 0x4219D0	S2C sur chemin observe
+paquet status	43	0x2B	Character::PacketStatus via equip/unequip	S2C selon recherches anterieures

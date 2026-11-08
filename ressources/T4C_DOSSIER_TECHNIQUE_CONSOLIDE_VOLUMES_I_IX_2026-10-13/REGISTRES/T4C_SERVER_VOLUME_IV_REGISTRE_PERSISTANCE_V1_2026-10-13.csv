@@ -1,0 +1,57 @@
+﻿type;index_ou_adresse;objet;detail;source
+colonne_select;1;UserID;Unit::SetID @0x48B710;references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;2;AccountName;"local buffer 0x14; comparison to account name";references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;3;wlX;"local word of WorldPos (x); passed to vtable+0x20";references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;4;wlY;"local word of WorldPos (y); passed to vtable+0x20";references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;5;wlWorld;"local word of WorldPos (world); passed to vtable+0x20";references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;6;nClass;BYTE [this+0x58] (read after col 24);references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;7;CurrentHP;vtable+0xDC;references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;8;MaxHP;vtable+0xD4;references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;9;CurrentMana;vtable+0xF0;references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;10;MaxMana;vtable+0xE8;references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;11;Strength;0x48E2C0 writes WORD [ECX+0x64];references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;12;Endurance;0x48E2B0 writes WORD [ECX+0x62];references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;13;Agility;0x48E2D0 writes WORD [ECX+0x66];references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;14;Intelligence;0x48E2A0 writes WORD [ECX+0x60];references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;15;Wisdom;0x48E2E0 writes WORD [ECX+0x6A];references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;16;CurrentLevel;vtable+0x140;references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;17;AttackSkill;0x48E2F0 writes WORD [ECX+0x70];references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;18;DodgeSkill;0x48E300 writes WORD [ECX+0x6E];references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;19;Gold;local [EBP-0x28] / further checks;references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;20;Appearance;WORD [this+0x7C];references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;21;Corpse;WORD [this+0x84];references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;22;XP;QWORD, x87 conversion, vtable+0x50;references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;23;StatPnts;WORD [this+0x1E2];references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;24;SkillPnts;WORD [this+0x1E0];references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;25;Karma;DWORD [this+0x80];references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;26;Gender;BYTE [this+0x7E];references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;27;ListingTitle;string buffer size arg 0x400 -> this+0x164;references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;28;ListingMisc;string buffer size arg 0x400 -> this+0x168;references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;29;MoveExhaust;DWORD [this+0x8C];references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;30;MentalExhaust;DWORD [this+0x88];references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+colonne_select;31;AttackExhaust;DWORD [this+0x90];references_analyse/38_CORRESPONDANCES_31_COLONNES_LOAD_VS_SAVE_PASSE11.tsv
+requete_sql;0x501354;PlayingCharacters;UPDATE UPDATE PlayingCharacters SET PlayerName='%s',Strength=%u,Endurance=%u,Agility=%u,Intelligence=%u,Wisdom=%u,AttackSkill=%u,DodgeSkill=%u,XP=%f,CurrentLevel=%u,CurrentHP=%u,MaxHP=%u,CurrentMana=%u,MaxMana=%u,Gold=%u,wlX=%u,wlY=%u,wlWorld=%u,SkillPnts=%u,StatPnts=%u,Corpse=%u,Appearance=%u,Karma=%d,Gender=%u,ListingTitle='%s',ListingMisc='%s',MoveExhaust=%u,MentalExhaust=%u,AttackExhaust=%u WHERE UserID=%u;references_analyse/22_CATALOGUE_SQL_SAUVEGARDE_PASSE7.tsv
+requete_sql;0x501514;PlayerSpells;INSERT INSERT INTO PlayerSpells( OwnerID, SpellID ) VALUES ( %u,%u );references_analyse/22_CATALOGUE_SQL_SAUVEGARDE_PASSE7.tsv
+requete_sql;0x501554;PlayerSpells;DELETE DELETE FROM PlayerSpells WHERE OwnerID=%u;references_analyse/22_CATALOGUE_SQL_SAUVEGARDE_PASSE7.tsv
+requete_sql;0x5015b0;PlayerSkills;INSERT INSERT INTO PlayerSkills( OwnerID, SkillID, SkillPnts ) VALUES ( %u,%u,%u );references_analyse/22_CATALOGUE_SQL_SAUVEGARDE_PASSE7.tsv
+requete_sql;0x501630;PlayerSkills;DELETE DELETE FROM PlayerSkills WHERE OwnerID=%u;references_analyse/22_CATALOGUE_SQL_SAUVEGARDE_PASSE7.tsv
+requete_sql;0x50166c;PlayerItems;INSERT INSERT INTO PlayerItems( ObjID, OwnerID, EquipPos, ObjType, Qty ) VALUES ( %u,%u,%u,'%s',%u);references_analyse/22_CATALOGUE_SQL_SAUVEGARDE_PASSE7.tsv
+requete_sql;0x5016e0;PlayerItems;INSERT INSERT INTO PlayerItems( ObjID, OwnerID, EquipPos, ObjType, Qty ) VALUES ( %u,%u,0,'%s',%u );references_analyse/22_CATALOGUE_SQL_SAUVEGARDE_PASSE7.tsv
+requete_sql;0x501750;Effects;DELETE DELETE FROM Effects WHERE BaseOwnerID=%d;references_analyse/22_CATALOGUE_SQL_SAUVEGARDE_PASSE7.tsv
+requete_sql;0x50177c;Boosts;DELETE DELETE FROM Boosts WHERE BaseOwnerID=%d;references_analyse/22_CATALOGUE_SQL_SAUVEGARDE_PASSE7.tsv
+requete_sql;0x5017a4;Flags;DELETE DELETE FROM Flags WHERE BaseOwnerID=%d;references_analyse/22_CATALOGUE_SQL_SAUVEGARDE_PASSE7.tsv
+requete_sql;0x5017cc;PlayerItems;DELETE DELETE FROM PlayerItems WHERE OwnerID=%u;references_analyse/22_CATALOGUE_SQL_SAUVEGARDE_PASSE7.tsv
+etape_odbc;0x412FE8;0x511878;Connexion d’un contexte ODBC | CONFIRMÉ;references_analyse/36_CARTOGRAPHIE_SQL_ET_REPRISE_PASSE10.tsv
+etape_odbc;0x413021;0x511478;Connexion contexte SaveCharacter | CONFIRMÉ;references_analyse/36_CARTOGRAPHIE_SQL_ET_REPRISE_PASSE10.tsv
+etape_odbc;0x41303A;0x511878;SQL_AUTOCOMMIT(102)=OFF(0) | CORROBORÉ;references_analyse/36_CARTOGRAPHIE_SQL_ET_REPRISE_PASSE10.tsv
+etape_odbc;0x413047;0x511478;SQL_AUTOCOMMIT(102)=OFF(0) | CORROBORÉ;references_analyse/36_CARTOGRAPHIE_SQL_ET_REPRISE_PASSE10.tsv
+etape_odbc;0x414B1A;0x511478;File SQL asynchrone | CONFIRMÉ;references_analyse/36_CARTOGRAPHIE_SQL_ET_REPRISE_PASSE10.tsv
+etape_odbc;0x44ED98;ctx+0x0C;SQLExecDirect #1 | CORROBORÉ;references_analyse/36_CARTOGRAPHIE_SQL_ET_REPRISE_PASSE10.tsv
+etape_odbc;0x44EDD1..0x44EDFB;ctx;Libération et réallocation handles ODBC | CORROBORÉ;references_analyse/36_CARTOGRAPHIE_SQL_ET_REPRISE_PASSE10.tsv
+etape_odbc;0x44EA4B;ctx+0x08;SQL_ODBC_CURSORS(110)=SQL_CUR_USE_ODBC(1) | CORROBORÉ;references_analyse/36_CARTOGRAPHIE_SQL_ET_REPRISE_PASSE10.tsv
+etape_odbc;0x44EAFB;ctx+0x08;SQLConnect sur les identifiants fournis | CORROBORÉ;references_analyse/36_CARTOGRAPHIE_SQL_ET_REPRISE_PASSE10.tsv
+etape_odbc;0x44EE25;ctx+0x0C;SQLExecDirect #2 | CORROBORÉ;references_analyse/36_CARTOGRAPHIE_SQL_ET_REPRISE_PASSE10.tsv
+etape_odbc;0x44F377;EBX;Arrêt du lot si erreur | CONFIRMÉ;references_analyse/36_CARTOGRAPHIE_SQL_ET_REPRISE_PASSE10.tsv
+etape_odbc;0x44F592;ctx;Tentative SQL_ROLLBACK | CORROBORÉ;references_analyse/36_CARTOGRAPHIE_SQL_ET_REPRISE_PASSE10.tsv
+etape_odbc;0x44F5AC;ctx;Tentative SQL_COMMIT | CORROBORÉ;references_analyse/36_CARTOGRAPHIE_SQL_ET_REPRISE_PASSE10.tsv
+etape_odbc;0x44F5C2;job+4;notification(0 ou 1, contexte) | CONFIRMÉ;references_analyse/36_CARTOGRAPHIE_SQL_ET_REPRISE_PASSE10.tsv

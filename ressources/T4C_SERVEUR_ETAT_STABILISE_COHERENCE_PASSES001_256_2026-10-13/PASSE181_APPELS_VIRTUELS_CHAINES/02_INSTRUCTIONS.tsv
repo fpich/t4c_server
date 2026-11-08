@@ -1,0 +1,516 @@
+adresse	octets	taille	instruction_GNU	instruction_LLVM	nouveaux_octets
+0x0049EBCD	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	0
+0x0049EBCF	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	2
+0x0049EBD2	50	1	push   eax	push eax	1
+0x0049EBD3	89 8d e8 fe ff ff	6	mov    DWORD PTR [ebp-0x118],ecx	mov dword ptr [ebp - 0x118], ecx	6
+0x0049EBD9	68 f0 f2 50 00	5	push   0x50f2f0	push 0x50f2f0	5
+0x0049EBDE	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049EBE0	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049EBE3	8b 4d ec	3	mov    ecx,DWORD PTR [ebp-0x14]	mov ecx, dword ptr [ebp - 0x14]	3
+0x0049EBE6	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049EBE8	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049EBEB	50	1	push   eax	push eax	1
+0x0049EBEC	89 8d ec fe ff ff	6	mov    DWORD PTR [ebp-0x114],ecx	mov dword ptr [ebp - 0x114], ecx	6
+0x0049EBF2	68 18 e9 50 00	5	push   0x50e918	push 0x50e918	5
+0x0049EBF7	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049EBF9	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049EBFC	8b 55 ec	3	mov    edx,DWORD PTR [ebp-0x14]	mov edx, dword ptr [ebp - 0x14]	3
+0x0049EBFF	83 c9 ff	3	or     ecx,0xffffffff	or ecx, -0x1	3
+0x0049EC02	33 c0	2	xor    eax,eax	xor eax, eax	2
+0x0049EC04	8b fa	2	mov    edi,edx	mov edi, edx	2
+0x0049EC06	f2 ae	2	repnz scas al,BYTE PTR es:[edi]	repne  scasb al, byte ptr es:[edi]	2
+0x0049EC08	f7 d1	2	not    ecx	not ecx	2
+0x0049EC0A	49	1	dec    ecx	dec ecx	1
+0x0049EC0B	51	1	push   ecx	push ecx	1
+0x0049EC0C	52	1	push   edx	push edx	1
+0x0049EC0D	8d 8d f0 fe ff ff	6	lea    ecx,[ebp-0x110]	lea ecx, [ebp - 0x110]	6
+0x0049EC13	ff 15 f4 e4 4d 00	6	call   DWORD PTR ds:0x4de4f4	call dword ptr [0x4de4f4]	6
+0x0049EC19	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049EC1B	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049EC1E	50	1	push   eax	push eax	1
+0x0049EC1F	68 64 e8 50 00	5	push   0x50e864	push 0x50e864	5
+0x0049EC24	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049EC26	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049EC29	8b 4d ec	3	mov    ecx,DWORD PTR [ebp-0x14]	mov ecx, dword ptr [ebp - 0x14]	3
+0x0049EC2C	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049EC2E	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049EC31	50	1	push   eax	push eax	1
+0x0049EC32	89 8d 00 ff ff ff	6	mov    DWORD PTR [ebp-0x100],ecx	mov dword ptr [ebp - 0x100], ecx	6
+0x0049EC38	68 e4 f2 50 00	5	push   0x50f2e4	push 0x50f2e4	5
+0x0049EC3D	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049EC3F	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049EC42	8b 4d ec	3	mov    ecx,DWORD PTR [ebp-0x14]	mov ecx, dword ptr [ebp - 0x14]	3
+0x0049EC45	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049EC47	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049EC4A	50	1	push   eax	push eax	1
+0x0049EC4B	89 8d 04 ff ff ff	6	mov    DWORD PTR [ebp-0xfc],ecx	mov dword ptr [ebp - 0xfc], ecx	6
+0x0049EC51	68 d4 f2 50 00	5	push   0x50f2d4	push 0x50f2d4	5
+0x0049EC56	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049EC58	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049EC5B	8b 4d ec	3	mov    ecx,DWORD PTR [ebp-0x14]	mov ecx, dword ptr [ebp - 0x14]	3
+0x0049EC5E	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049EC60	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049EC63	50	1	push   eax	push eax	1
+0x0049EC64	89 8d 08 ff ff ff	6	mov    DWORD PTR [ebp-0xf8],ecx	mov dword ptr [ebp - 0xf8], ecx	6
+0x0049EC6A	68 c4 f2 50 00	5	push   0x50f2c4	push 0x50f2c4	5
+0x0049EC6F	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049EC71	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049EC74	8b 4d ec	3	mov    ecx,DWORD PTR [ebp-0x14]	mov ecx, dword ptr [ebp - 0x14]	3
+0x0049EC77	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049EC79	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049EC7C	89 8d 0c ff ff ff	6	mov    DWORD PTR [ebp-0xf4],ecx	mov dword ptr [ebp - 0xf4], ecx	6
+0x0049EC82	50	1	push   eax	push eax	1
+0x0049EC83	68 bc f2 50 00	5	push   0x50f2bc	push 0x50f2bc	5
+0x0049EC88	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049EC8A	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049EC8D	8b 4d ec	3	mov    ecx,DWORD PTR [ebp-0x14]	mov ecx, dword ptr [ebp - 0x14]	3
+0x0049EC90	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049EC92	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049EC95	50	1	push   eax	push eax	1
+0x0049EC96	89 8d 10 ff ff ff	6	mov    DWORD PTR [ebp-0xf0],ecx	mov dword ptr [ebp - 0xf0], ecx	6
+0x0049EC9C	68 b0 f2 50 00	5	push   0x50f2b0	push 0x50f2b0	5
+0x0049ECA1	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049ECA3	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049ECA6	8b 4d ec	3	mov    ecx,DWORD PTR [ebp-0x14]	mov ecx, dword ptr [ebp - 0x14]	3
+0x0049ECA9	8b 55 f0	3	mov    edx,DWORD PTR [ebp-0x10]	mov edx, dword ptr [ebp - 0x10]	3
+0x0049ECAC	8b 06	2	mov    eax,DWORD PTR [esi]	mov eax, dword ptr [esi]	2
+0x0049ECAE	89 8d 14 ff ff ff	6	mov    DWORD PTR [ebp-0xec],ecx	mov dword ptr [ebp - 0xec], ecx	6
+0x0049ECB4	8d 4d e4	3	lea    ecx,[ebp-0x1c]	lea ecx, [ebp - 0x1c]	3
+0x0049ECB7	51	1	push   ecx	push ecx	1
+0x0049ECB8	68 9c f2 50 00	5	push   0x50f29c	push 0x50f29c	5
+0x0049ECBD	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049ECBF	89 95 18 ff ff ff	6	mov    DWORD PTR [ebp-0xe8],edx	mov dword ptr [ebp - 0xe8], edx	6
+0x0049ECC5	ff 50 4c	3	call   DWORD PTR [eax+0x4c]	call dword ptr [eax + 0x4c]	3
+0x0049ECC8	8b 55 ec	3	mov    edx,DWORD PTR [ebp-0x14]	mov edx, dword ptr [ebp - 0x14]	3
+0x0049ECCB	8b 06	2	mov    eax,DWORD PTR [esi]	mov eax, dword ptr [esi]	2
+0x0049ECCD	8d 4d e4	3	lea    ecx,[ebp-0x1c]	lea ecx, [ebp - 0x1c]	3
+0x0049ECD0	51	1	push   ecx	push ecx	1
+0x0049ECD1	68 8c f2 50 00	5	push   0x50f28c	push 0x50f28c	5
+0x0049ECD6	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049ECD8	89 95 1c ff ff ff	6	mov    DWORD PTR [ebp-0xe4],edx	mov dword ptr [ebp - 0xe4], edx	6
+0x0049ECDE	ff 50 4c	3	call   DWORD PTR [eax+0x4c]	call dword ptr [eax + 0x4c]	3
+0x0049ECE1	8b 55 ec	3	mov    edx,DWORD PTR [ebp-0x14]	mov edx, dword ptr [ebp - 0x14]	3
+0x0049ECE4	8b 06	2	mov    eax,DWORD PTR [esi]	mov eax, dword ptr [esi]	2
+0x0049ECE6	8d 4d e4	3	lea    ecx,[ebp-0x1c]	lea ecx, [ebp - 0x1c]	3
+0x0049ECE9	51	1	push   ecx	push ecx	1
+0x0049ECEA	68 7c f2 50 00	5	push   0x50f27c	push 0x50f27c	5
+0x0049ECEF	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049ECF1	89 95 20 ff ff ff	6	mov    DWORD PTR [ebp-0xe0],edx	mov dword ptr [ebp - 0xe0], edx	6
+0x0049ECF7	ff 50 4c	3	call   DWORD PTR [eax+0x4c]	call dword ptr [eax + 0x4c]	3
+0x0049ECFA	8b 55 ec	3	mov    edx,DWORD PTR [ebp-0x14]	mov edx, dword ptr [ebp - 0x14]	3
+0x0049ECFD	83 c9 ff	3	or     ecx,0xffffffff	or ecx, -0x1	3
+0x0049ED00	33 c0	2	xor    eax,eax	xor eax, eax	2
+0x0049ED02	8b fa	2	mov    edi,edx	mov edi, edx	2
+0x0049ED04	f2 ae	2	repnz scas al,BYTE PTR es:[edi]	repne  scasb al, byte ptr es:[edi]	2
+0x0049ED06	f7 d1	2	not    ecx	not ecx	2
+0x0049ED08	49	1	dec    ecx	dec ecx	1
+0x0049ED09	51	1	push   ecx	push ecx	1
+0x0049ED0A	52	1	push   edx	push edx	1
+0x0049ED0B	8d 8d 24 ff ff ff	6	lea    ecx,[ebp-0xdc]	lea ecx, [ebp - 0xdc]	6
+0x0049ED11	ff 15 f4 e4 4d 00	6	call   DWORD PTR ds:0x4de4f4	call dword ptr [0x4de4f4]	6
+0x0049ED17	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049ED19	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049ED1C	50	1	push   eax	push eax	1
+0x0049ED1D	68 70 f2 50 00	5	push   0x50f270	push 0x50f270	5
+0x0049ED22	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049ED24	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049ED27	8b 4d ec	3	mov    ecx,DWORD PTR [ebp-0x14]	mov ecx, dword ptr [ebp - 0x14]	3
+0x0049ED2A	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049ED2C	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049ED2F	50	1	push   eax	push eax	1
+0x0049ED30	89 8d 34 ff ff ff	6	mov    DWORD PTR [ebp-0xcc],ecx	mov dword ptr [ebp - 0xcc], ecx	6
+0x0049ED36	68 64 f2 50 00	5	push   0x50f264	push 0x50f264	5
+0x0049ED3B	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049ED3D	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049ED40	8b 4d ec	3	mov    ecx,DWORD PTR [ebp-0x14]	mov ecx, dword ptr [ebp - 0x14]	3
+0x0049ED43	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049ED45	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049ED48	50	1	push   eax	push eax	1
+0x0049ED49	89 8d 38 ff ff ff	6	mov    DWORD PTR [ebp-0xc8],ecx	mov dword ptr [ebp - 0xc8], ecx	6
+0x0049ED4F	68 58 f2 50 00	5	push   0x50f258	push 0x50f258	5
+0x0049ED54	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049ED56	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049ED59	8b 4d ec	3	mov    ecx,DWORD PTR [ebp-0x14]	mov ecx, dword ptr [ebp - 0x14]	3
+0x0049ED5C	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049ED5E	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049ED61	50	1	push   eax	push eax	1
+0x0049ED62	89 8d 3c ff ff ff	6	mov    DWORD PTR [ebp-0xc4],ecx	mov dword ptr [ebp - 0xc4], ecx	6
+0x0049ED68	68 4c f2 50 00	5	push   0x50f24c	push 0x50f24c	5
+0x0049ED6D	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049ED6F	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049ED72	8b 55 ec	3	mov    edx,DWORD PTR [ebp-0x14]	mov edx, dword ptr [ebp - 0x14]	3
+0x0049ED75	8b fa	2	mov    edi,edx	mov edi, edx	2
+0x0049ED77	83 c9 ff	3	or     ecx,0xffffffff	or ecx, -0x1	3
+0x0049ED7A	33 c0	2	xor    eax,eax	xor eax, eax	2
+0x0049ED7C	f2 ae	2	repnz scas al,BYTE PTR es:[edi]	repne  scasb al, byte ptr es:[edi]	2
+0x0049ED7E	f7 d1	2	not    ecx	not ecx	2
+0x0049ED80	49	1	dec    ecx	dec ecx	1
+0x0049ED81	51	1	push   ecx	push ecx	1
+0x0049ED82	52	1	push   edx	push edx	1
+0x0049ED83	8d 8d 40 ff ff ff	6	lea    ecx,[ebp-0xc0]	lea ecx, [ebp - 0xc0]	6
+0x0049ED89	ff 15 f4 e4 4d 00	6	call   DWORD PTR ds:0x4de4f4	call dword ptr [0x4de4f4]	6
+0x0049ED8F	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049ED91	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049ED94	50	1	push   eax	push eax	1
+0x0049ED95	68 3c f2 50 00	5	push   0x50f23c	push 0x50f23c	5
+0x0049ED9A	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049ED9C	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049ED9F	8b 4d ec	3	mov    ecx,DWORD PTR [ebp-0x14]	mov ecx, dword ptr [ebp - 0x14]	3
+0x0049EDA2	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049EDA4	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049EDA7	50	1	push   eax	push eax	1
+0x0049EDA8	89 8d 50 ff ff ff	6	mov    DWORD PTR [ebp-0xb0],ecx	mov dword ptr [ebp - 0xb0], ecx	6
+0x0049EDAE	68 30 f2 50 00	5	push   0x50f230	push 0x50f230	5
+0x0049EDB3	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049EDB5	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049EDB8	8b 55 ec	3	mov    edx,DWORD PTR [ebp-0x14]	mov edx, dword ptr [ebp - 0x14]	3
+0x0049EDBB	83 c9 ff	3	or     ecx,0xffffffff	or ecx, -0x1	3
+0x0049EDBE	33 c0	2	xor    eax,eax	xor eax, eax	2
+0x0049EDC0	8b fa	2	mov    edi,edx	mov edi, edx	2
+0x0049EDC2	f2 ae	2	repnz scas al,BYTE PTR es:[edi]	repne  scasb al, byte ptr es:[edi]	2
+0x0049EDC4	f7 d1	2	not    ecx	not ecx	2
+0x0049EDC6	49	1	dec    ecx	dec ecx	1
+0x0049EDC7	51	1	push   ecx	push ecx	1
+0x0049EDC8	52	1	push   edx	push edx	1
+0x0049EDC9	8d 8d 54 ff ff ff	6	lea    ecx,[ebp-0xac]	lea ecx, [ebp - 0xac]	6
+0x0049EDCF	ff 15 f4 e4 4d 00	6	call   DWORD PTR ds:0x4de4f4	call dword ptr [0x4de4f4]	6
+0x0049EDD5	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049EDD7	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049EDDA	50	1	push   eax	push eax	1
+0x0049EDDB	68 20 f2 50 00	5	push   0x50f220	push 0x50f220	5
+0x0049EDE0	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049EDE2	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049EDE5	8b 4d ec	3	mov    ecx,DWORD PTR [ebp-0x14]	mov ecx, dword ptr [ebp - 0x14]	3
+0x0049EDE8	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049EDEA	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049EDED	50	1	push   eax	push eax	1
+0x0049EDEE	89 8d 64 ff ff ff	6	mov    DWORD PTR [ebp-0x9c],ecx	mov dword ptr [ebp - 0x9c], ecx	6
+0x0049EDF4	68 08 f2 50 00	5	push   0x50f208	push 0x50f208	5
+0x0049EDF9	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049EDFB	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049EDFE	8b 4d ec	3	mov    ecx,DWORD PTR [ebp-0x14]	mov ecx, dword ptr [ebp - 0x14]	3
+0x0049EE01	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049EE03	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049EE06	50	1	push   eax	push eax	1
+0x0049EE07	89 8d 68 ff ff ff	6	mov    DWORD PTR [ebp-0x98],ecx	mov dword ptr [ebp - 0x98], ecx	6
+0x0049EE0D	68 f0 f1 50 00	5	push   0x50f1f0	push 0x50f1f0	5
+0x0049EE12	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049EE14	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049EE17	8b 4d ec	3	mov    ecx,DWORD PTR [ebp-0x14]	mov ecx, dword ptr [ebp - 0x14]	3
+0x0049EE1A	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049EE1C	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049EE1F	50	1	push   eax	push eax	1
+0x0049EE20	89 8d 6c ff ff ff	6	mov    DWORD PTR [ebp-0x94],ecx	mov dword ptr [ebp - 0x94], ecx	6
+0x0049EE26	68 e0 f1 50 00	5	push   0x50f1e0	push 0x50f1e0	5
+0x0049EE2B	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049EE2D	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049EE30	8b 55 ec	3	mov    edx,DWORD PTR [ebp-0x14]	mov edx, dword ptr [ebp - 0x14]	3
+0x0049EE33	83 c9 ff	3	or     ecx,0xffffffff	or ecx, -0x1	3
+0x0049EE36	33 c0	2	xor    eax,eax	xor eax, eax	2
+0x0049EE38	8b fa	2	mov    edi,edx	mov edi, edx	2
+0x0049EE3A	f2 ae	2	repnz scas al,BYTE PTR es:[edi]	repne  scasb al, byte ptr es:[edi]	2
+0x0049EE3C	f7 d1	2	not    ecx	not ecx	2
+0x0049EE3E	49	1	dec    ecx	dec ecx	1
+0x0049EE3F	51	1	push   ecx	push ecx	1
+0x0049EE40	52	1	push   edx	push edx	1
+0x0049EE41	8d 8d 70 ff ff ff	6	lea    ecx,[ebp-0x90]	lea ecx, [ebp - 0x90]	6
+0x0049EE47	ff 15 f4 e4 4d 00	6	call   DWORD PTR ds:0x4de4f4	call dword ptr [0x4de4f4]	6
+0x0049EE4D	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049EE4F	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049EE52	50	1	push   eax	push eax	1
+0x0049EE53	68 d0 f1 50 00	5	push   0x50f1d0	push 0x50f1d0	5
+0x0049EE58	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049EE5A	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049EE5D	39 5d ec	3	cmp    DWORD PTR [ebp-0x14],ebx	cmp dword ptr [ebp - 0x14], ebx	3
+0x0049EE60	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049EE62	0f 95 c1	3	setne  cl	setne cl	3
+0x0049EE65	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049EE68	50	1	push   eax	push eax	1
+0x0049EE69	88 4d ad	3	mov    BYTE PTR [ebp-0x53],cl	mov byte ptr [ebp - 0x53], cl	3
+0x0049EE6C	68 b4 f1 50 00	5	push   0x50f1b4	push 0x50f1b4	5
+0x0049EE71	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049EE73	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049EE76	39 5d ec	3	cmp    DWORD PTR [ebp-0x14],ebx	cmp dword ptr [ebp - 0x14], ebx	3
+0x0049EE79	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049EE7B	0f 95 c1	3	setne  cl	setne cl	3
+0x0049EE7E	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049EE81	50	1	push   eax	push eax	1
+0x0049EE82	88 4d ae	3	mov    BYTE PTR [ebp-0x52],cl	mov byte ptr [ebp - 0x52], cl	3
+0x0049EE85	68 a8 f1 50 00	5	push   0x50f1a8	push 0x50f1a8	5
+0x0049EE8A	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049EE8C	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049EE8F	8b 4d ec	3	mov    ecx,DWORD PTR [ebp-0x14]	mov ecx, dword ptr [ebp - 0x14]	3
+0x0049EE92	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049EE94	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049EE97	50	1	push   eax	push eax	1
+0x0049EE98	89 4d 80	3	mov    DWORD PTR [ebp-0x80],ecx	mov dword ptr [ebp - 0x80], ecx	3
+0x0049EE9B	68 a0 f1 50 00	5	push   0x50f1a0	push 0x50f1a0	5
+0x0049EEA0	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049EEA2	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049EEA5	8b 4d ec	3	mov    ecx,DWORD PTR [ebp-0x14]	mov ecx, dword ptr [ebp - 0x14]	3
+0x0049EEA8	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049EEAA	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049EEAD	50	1	push   eax	push eax	1
+0x0049EEAE	89 4d 84	3	mov    DWORD PTR [ebp-0x7c],ecx	mov dword ptr [ebp - 0x7c], ecx	3
+0x0049EEB1	68 98 f1 50 00	5	push   0x50f198	push 0x50f198	5
+0x0049EEB6	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049EEB8	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049EEBB	8b 4d ec	3	mov    ecx,DWORD PTR [ebp-0x14]	mov ecx, dword ptr [ebp - 0x14]	3
+0x0049EEBE	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049EEC0	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049EEC3	50	1	push   eax	push eax	1
+0x0049EEC4	89 4d 88	3	mov    DWORD PTR [ebp-0x78],ecx	mov dword ptr [ebp - 0x78], ecx	3
+0x0049EEC7	68 90 f1 50 00	5	push   0x50f190	push 0x50f190	5
+0x0049EECC	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049EECE	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049EED1	8b 4d ec	3	mov    ecx,DWORD PTR [ebp-0x14]	mov ecx, dword ptr [ebp - 0x14]	3
+0x0049EED4	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049EED6	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049EED9	50	1	push   eax	push eax	1
+0x0049EEDA	89 4d 8c	3	mov    DWORD PTR [ebp-0x74],ecx	mov dword ptr [ebp - 0x74], ecx	3
+0x0049EEDD	68 88 f1 50 00	5	push   0x50f188	push 0x50f188	5
+0x0049EEE2	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049EEE4	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049EEE7	8b 4d ec	3	mov    ecx,DWORD PTR [ebp-0x14]	mov ecx, dword ptr [ebp - 0x14]	3
+0x0049EEEA	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049EEEC	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049EEEF	50	1	push   eax	push eax	1
+0x0049EEF0	89 4d 90	3	mov    DWORD PTR [ebp-0x70],ecx	mov dword ptr [ebp - 0x70], ecx	3
+0x0049EEF3	68 7c f1 50 00	5	push   0x50f17c	push 0x50f17c	5
+0x0049EEF8	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049EEFA	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049EEFD	8b 4d ec	3	mov    ecx,DWORD PTR [ebp-0x14]	mov ecx, dword ptr [ebp - 0x14]	3
+0x0049EF00	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049EF02	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049EF05	50	1	push   eax	push eax	1
+0x0049EF06	89 4d 94	3	mov    DWORD PTR [ebp-0x6c],ecx	mov dword ptr [ebp - 0x6c], ecx	3
+0x0049EF09	68 74 f1 50 00	5	push   0x50f174	push 0x50f174	5
+0x0049EF0E	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049EF10	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049EF13	8b 45 ec	3	mov    eax,DWORD PTR [ebp-0x14]	mov eax, dword ptr [ebp - 0x14]	3
+0x0049EF16	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049EF18	3b c3	2	cmp    eax,ebx	cmp eax, ebx	2
+0x0049EF1A	0f 95 c1	3	setne  cl	setne cl	3
+0x0049EF1D	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049EF20	50	1	push   eax	push eax	1
+0x0049EF21	88 4d 98	3	mov    BYTE PTR [ebp-0x68],cl	mov byte ptr [ebp - 0x68], cl	3
+0x0049EF24	68 64 f1 50 00	5	push   0x50f164	push 0x50f164	5
+0x0049EF29	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049EF2B	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049EF2E	8b 55 ec	3	mov    edx,DWORD PTR [ebp-0x14]	mov edx, dword ptr [ebp - 0x14]	3
+0x0049EF31	83 c9 ff	3	or     ecx,0xffffffff	or ecx, -0x1	3
+0x0049EF34	8b fa	2	mov    edi,edx	mov edi, edx	2
+0x0049EF36	33 c0	2	xor    eax,eax	xor eax, eax	2
+0x0049EF38	f2 ae	2	repnz scas al,BYTE PTR es:[edi]	repne  scasb al, byte ptr es:[edi]	2
+0x0049EF3A	f7 d1	2	not    ecx	not ecx	2
+0x0049EF3C	49	1	dec    ecx	dec ecx	1
+0x0049EF3D	51	1	push   ecx	push ecx	1
+0x0049EF3E	52	1	push   edx	push edx	1
+0x0049EF3F	8d 4d 9c	3	lea    ecx,[ebp-0x64]	lea ecx, [ebp - 0x64]	3
+0x0049EF42	ff 15 f4 e4 4d 00	6	call   DWORD PTR ds:0x4de4f4	call dword ptr [0x4de4f4]	6
+0x0049EF48	8b 16	2	mov    edx,DWORD PTR [esi]	mov edx, dword ptr [esi]	2
+0x0049EF4A	8d 45 e4	3	lea    eax,[ebp-0x1c]	lea eax, [ebp - 0x1c]	3
+0x0049EF4D	50	1	push   eax	push eax	1
+0x0049EF4E	68 58 f1 50 00	5	push   0x50f158	push 0x50f158	5
+0x0049EF53	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049EF55	ff 52 4c	3	call   DWORD PTR [edx+0x4c]	call dword ptr [edx + 0x4c]	3
+0x0049EF58	8b 55 ec	3	mov    edx,DWORD PTR [ebp-0x14]	mov edx, dword ptr [ebp - 0x14]	3
+0x0049EF5B	8b 85 dc fe ff ff	6	mov    eax,DWORD PTR [ebp-0x124]	mov eax, dword ptr [ebp - 0x124]	6
+0x0049EF61	3b d3	2	cmp    edx,ebx	cmp edx, ebx	2
+0x0049EF63	0f 95 c1	3	setne  cl	setne cl	3
+0x0049EF66	3b c3	2	cmp    eax,ebx	cmp eax, ebx	2
+0x0049EF68	88 4d ac	3	mov    BYTE PTR [ebp-0x54],cl	mov byte ptr [ebp - 0x54], cl	3
+0x0049EF6B	75 05	2	jne    0x49ef72	jne 0x49ef72 <?Destroy@UnitEffectManager@@SAXXZ+0xe352>	2
+0x0049EF6D	a1 d8 e4 4d 00	5	mov    eax,ds:0x4de4d8	mov eax, dword ptr [0x4de4d8]	5
+0x0049EF72	8b 55 cc	3	mov    edx,DWORD PTR [ebp-0x34]	mov edx, dword ptr [ebp - 0x34]	3
+0x0049EF75	8b 4a 10	3	mov    ecx,DWORD PTR [edx+0x10]	mov ecx, dword ptr [edx + 0x10]	3
+0x0049EF78	8b 39	2	mov    edi,DWORD PTR [ecx]	mov edi, dword ptr [ecx]	2
+0x0049EF7A	50	1	push   eax	push eax	1
+0x0049EF7B	8d 95 6c f6 ff ff	6	lea    edx,[ebp-0x994]	lea edx, [ebp - 0x994]	6
+0x0049EF81	68 80 ee 50 00	5	push   0x50ee80	push 0x50ee80	5
+0x0049EF86	52	1	push   edx	push edx	1
+0x0049EF87	e8 b4 49 f6 ff	5	call   0x403940	call 0x403940 <??4RegKeyHandler@@QAEAAV0@ABV0@@Z+0x1370>	5
+0x0049EF8C	83 c4 0c	3	add    esp,0xc	add esp, 0xc	3
+0x0049EF8F	8b d7	2	mov    edx,edi	mov edx, edi	2
+0x0049EF91	8b 7d cc	3	mov    edi,DWORD PTR [ebp-0x34]	mov edi, dword ptr [ebp - 0x34]	3
+0x0049EF94	8b 4f 10	3	mov    ecx,DWORD PTR [edi+0x10]	mov ecx, dword ptr [edi + 0x10]	3
+0x0049EF97	50	1	push   eax	push eax	1
+0x0049EF98	8b 47 08	3	mov    eax,DWORD PTR [edi+0x8]	mov eax, dword ptr [edi + 0x8]	3
+0x0049EF9B	50	1	push   eax	push eax	1
+0x0049EF9C	ff 52 04	3	call   DWORD PTR [edx+0x4]	call dword ptr [edx + 0x4]	3
+0x0049EF9F	8b 8d 74 ff ff ff	6	mov    ecx,DWORD PTR [ebp-0x8c]	mov ecx, dword ptr [ebp - 0x8c]	6
+0x0049EFA5	3b cb	2	cmp    ecx,ebx	cmp ecx, ebx	2
+0x0049EFA7	8b 15 d8 e4 4d 00	6	mov    edx,DWORD PTR ds:0x4de4d8	mov edx, dword ptr [0x4de4d8]	6
+0x0049EFAD	89 55 b4	3	mov    DWORD PTR [ebp-0x4c],edx	mov dword ptr [ebp - 0x4c], edx	3
+0x0049EFB0	74 03	2	je     0x49efb5	je 0x49efb5 <?Destroy@UnitEffectManager@@SAXXZ+0xe395>	2
+0x0049EFB2	89 4d b4	3	mov    DWORD PTR [ebp-0x4c],ecx	mov dword ptr [ebp - 0x4c], ecx	3
+0x0049EFB5	8b 85 58 ff ff ff	6	mov    eax,DWORD PTR [ebp-0xa8]	mov eax, dword ptr [ebp - 0xa8]	6
+0x0049EFBB	3b c3	2	cmp    eax,ebx	cmp eax, ebx	2
+0x0049EFBD	89 55 dc	3	mov    DWORD PTR [ebp-0x24],edx	mov dword ptr [ebp - 0x24], edx	3
+0x0049EFC0	74 03	2	je     0x49efc5	je 0x49efc5 <?Destroy@UnitEffectManager@@SAXXZ+0xe3a5>	2
+0x0049EFC2	89 45 dc	3	mov    DWORD PTR [ebp-0x24],eax	mov dword ptr [ebp - 0x24], eax	3
+0x0049EFC5	8b 85 44 ff ff ff	6	mov    eax,DWORD PTR [ebp-0xbc]	mov eax, dword ptr [ebp - 0xbc]	6
+0x0049EFCB	3b c3	2	cmp    eax,ebx	cmp eax, ebx	2
+0x0049EFCD	89 55 e0	3	mov    DWORD PTR [ebp-0x20],edx	mov dword ptr [ebp - 0x20], edx	3
+0x0049EFD0	74 03	2	je     0x49efd5	je 0x49efd5 <?Destroy@UnitEffectManager@@SAXXZ+0xe3b5>	2
+0x0049EFD2	89 45 e0	3	mov    DWORD PTR [ebp-0x20],eax	mov dword ptr [ebp - 0x20], eax	3
+0x0049EFD5	8b 8d 28 ff ff ff	6	mov    ecx,DWORD PTR [ebp-0xd8]	mov ecx, dword ptr [ebp - 0xd8]	6
+0x0049EFDB	3b cb	2	cmp    ecx,ebx	cmp ecx, ebx	2
+0x0049EFDD	75 02	2	jne    0x49efe1	jne 0x49efe1 <?Destroy@UnitEffectManager@@SAXXZ+0xe3c1>	2
+0x0049EFDF	8b ca	2	mov    ecx,edx	mov ecx, edx	2
+0x0049EFE1	8b 85 f4 fe ff ff	6	mov    eax,DWORD PTR [ebp-0x10c]	mov eax, dword ptr [ebp - 0x10c]	6
+0x0049EFE7	3b c3	2	cmp    eax,ebx	cmp eax, ebx	2
+0x0049EFE9	75 02	2	jne    0x49efed	jne 0x49efed <?Destroy@UnitEffectManager@@SAXXZ+0xe3cd>	2
+0x0049EFEB	8b c2	2	mov    eax,edx	mov eax, edx	2
+0x0049EFED	8b 57 10	3	mov    edx,DWORD PTR [edi+0x10]	mov edx, dword ptr [edi + 0x10]	3
+0x0049EFF0	8b 3a	2	mov    edi,DWORD PTR [edx]	mov edi, dword ptr [edx]	2
+0x0049EFF2	8b 55 90	3	mov    edx,DWORD PTR [ebp-0x70]	mov edx, dword ptr [ebp - 0x70]	3
+0x0049EFF5	52	1	push   edx	push edx	1
+0x0049EFF6	8b 55 8c	3	mov    edx,DWORD PTR [ebp-0x74]	mov edx, dword ptr [ebp - 0x74]	3
+0x0049EFF9	52	1	push   edx	push edx	1
+0x0049EFFA	8b 55 88	3	mov    edx,DWORD PTR [ebp-0x78]	mov edx, dword ptr [ebp - 0x78]	3
+0x0049EFFD	52	1	push   edx	push edx	1
+0x0049EFFE	8b 55 84	3	mov    edx,DWORD PTR [ebp-0x7c]	mov edx, dword ptr [ebp - 0x7c]	3
+0x0049F001	52	1	push   edx	push edx	1
+0x0049F002	8b 55 80	3	mov    edx,DWORD PTR [ebp-0x80]	mov edx, dword ptr [ebp - 0x80]	3
+0x0049F005	52	1	push   edx	push edx	1
+0x0049F006	8b 55 b4	3	mov    edx,DWORD PTR [ebp-0x4c]	mov edx, dword ptr [ebp - 0x4c]	3
+0x0049F009	52	1	push   edx	push edx	1
+0x0049F00A	8b 95 6c ff ff ff	6	mov    edx,DWORD PTR [ebp-0x94]	mov edx, dword ptr [ebp - 0x94]	6
+0x0049F010	52	1	push   edx	push edx	1
+0x0049F011	8b 95 68 ff ff ff	6	mov    edx,DWORD PTR [ebp-0x98]	mov edx, dword ptr [ebp - 0x98]	6
+0x0049F017	52	1	push   edx	push edx	1
+0x0049F018	8b 95 64 ff ff ff	6	mov    edx,DWORD PTR [ebp-0x9c]	mov edx, dword ptr [ebp - 0x9c]	6
+0x0049F01E	52	1	push   edx	push edx	1
+0x0049F01F	8b 55 dc	3	mov    edx,DWORD PTR [ebp-0x24]	mov edx, dword ptr [ebp - 0x24]	3
+0x0049F022	52	1	push   edx	push edx	1
+0x0049F023	8b 95 50 ff ff ff	6	mov    edx,DWORD PTR [ebp-0xb0]	mov edx, dword ptr [ebp - 0xb0]	6
+0x0049F029	52	1	push   edx	push edx	1
+0x0049F02A	8b 55 e0	3	mov    edx,DWORD PTR [ebp-0x20]	mov edx, dword ptr [ebp - 0x20]	3
+0x0049F02D	52	1	push   edx	push edx	1
+0x0049F02E	8b 95 3c ff ff ff	6	mov    edx,DWORD PTR [ebp-0xc4]	mov edx, dword ptr [ebp - 0xc4]	6
+0x0049F034	52	1	push   edx	push edx	1
+0x0049F035	8b 95 38 ff ff ff	6	mov    edx,DWORD PTR [ebp-0xc8]	mov edx, dword ptr [ebp - 0xc8]	6
+0x0049F03B	52	1	push   edx	push edx	1
+0x0049F03C	8b 95 34 ff ff ff	6	mov    edx,DWORD PTR [ebp-0xcc]	mov edx, dword ptr [ebp - 0xcc]	6
+0x0049F042	52	1	push   edx	push edx	1
+0x0049F043	8b 95 1c ff ff ff	6	mov    edx,DWORD PTR [ebp-0xe4]	mov edx, dword ptr [ebp - 0xe4]	6
+0x0049F049	51	1	push   ecx	push ecx	1
+0x0049F04A	8b 8d 20 ff ff ff	6	mov    ecx,DWORD PTR [ebp-0xe0]	mov ecx, dword ptr [ebp - 0xe0]	6
+0x0049F050	51	1	push   ecx	push ecx	1
+0x0049F051	8b 8d 18 ff ff ff	6	mov    ecx,DWORD PTR [ebp-0xe8]	mov ecx, dword ptr [ebp - 0xe8]	6
+0x0049F057	52	1	push   edx	push edx	1
+0x0049F058	8b 95 14 ff ff ff	6	mov    edx,DWORD PTR [ebp-0xec]	mov edx, dword ptr [ebp - 0xec]	6
+0x0049F05E	51	1	push   ecx	push ecx	1
+0x0049F05F	8b 8d 10 ff ff ff	6	mov    ecx,DWORD PTR [ebp-0xf0]	mov ecx, dword ptr [ebp - 0xf0]	6
+0x0049F065	52	1	push   edx	push edx	1
+0x0049F066	8b 95 0c ff ff ff	6	mov    edx,DWORD PTR [ebp-0xf4]	mov edx, dword ptr [ebp - 0xf4]	6
+0x0049F06C	51	1	push   ecx	push ecx	1
+0x0049F06D	8b 8d 08 ff ff ff	6	mov    ecx,DWORD PTR [ebp-0xf8]	mov ecx, dword ptr [ebp - 0xf8]	6
+0x0049F073	52	1	push   edx	push edx	1
+0x0049F074	8b 95 04 ff ff ff	6	mov    edx,DWORD PTR [ebp-0xfc]	mov edx, dword ptr [ebp - 0xfc]	6
+0x0049F07A	51	1	push   ecx	push ecx	1
+0x0049F07B	8b 8d 00 ff ff ff	6	mov    ecx,DWORD PTR [ebp-0x100]	mov ecx, dword ptr [ebp - 0x100]	6
+0x0049F081	52	1	push   edx	push edx	1
+0x0049F082	8b 95 ec fe ff ff	6	mov    edx,DWORD PTR [ebp-0x114]	mov edx, dword ptr [ebp - 0x114]	6
+0x0049F088	51	1	push   ecx	push ecx	1
+0x0049F089	50	1	push   eax	push eax	1
+0x0049F08A	8b 85 e8 fe ff ff	6	mov    eax,DWORD PTR [ebp-0x118]	mov eax, dword ptr [ebp - 0x118]	6
+0x0049F090	52	1	push   edx	push edx	1
+0x0049F091	50	1	push   eax	push eax	1
+0x0049F092	8d 8d 6c f6 ff ff	6	lea    ecx,[ebp-0x994]	lea ecx, [ebp - 0x994]	6
+0x0049F098	68 a0 ef 50 00	5	push   0x50efa0	push 0x50efa0	5
+0x0049F09D	51	1	push   ecx	push ecx	1
+0x0049F09E	e8 9d 48 f6 ff	5	call   0x403940	call 0x403940 <??4RegKeyHandler@@QAEAAV0@ABV0@@Z+0x1370>	5
+0x0049F0A3	83 c4 78	3	add    esp,0x78	add esp, 0x78	3
+0x0049F0A6	89 7d e0	3	mov    DWORD PTR [ebp-0x20],edi	mov dword ptr [ebp - 0x20], edi	3
+0x0049F0A9	8b 7d cc	3	mov    edi,DWORD PTR [ebp-0x34]	mov edi, dword ptr [ebp - 0x34]	3
+0x0049F0AC	8b 57 0c	3	mov    edx,DWORD PTR [edi+0xc]	mov edx, dword ptr [edi + 0xc]	3
+0x0049F0AF	8b 4f 10	3	mov    ecx,DWORD PTR [edi+0x10]	mov ecx, dword ptr [edi + 0x10]	3
+0x0049F0B2	50	1	push   eax	push eax	1
+0x0049F0B3	8b 45 e0	3	mov    eax,DWORD PTR [ebp-0x20]	mov eax, dword ptr [ebp - 0x20]	3
+0x0049F0B6	52	1	push   edx	push edx	1
+0x0049F0B7	ff 50 04	3	call   DWORD PTR [eax+0x4]	call dword ptr [eax + 0x4]	3
+0x0049F0BA	8d 8d a4 fe ff ff	6	lea    ecx,[ebp-0x15c]	lea ecx, [ebp - 0x15c]	6
+0x0049F0C0	51	1	push   ecx	push ecx	1
+0x0049F0C1	51	1	push   ecx	push ecx	1
+0x0049F0C2	83 c7 1c	3	add    edi,0x1c	add edi, 0x1c	3
+0x0049F0C5	54	1	push   esp	push esp	1
+0x0049F0C6	8b cf	2	mov    ecx,edi	mov ecx, edi	2
+0x0049F0C8	e8 f3 0a 00 00	5	call   0x49fbc0	call 0x49fbc0 <?Destroy@UnitEffectManager@@SAXXZ+0xefa0>	5
+0x0049F0CD	8d 55 c8	3	lea    edx,[ebp-0x38]	lea edx, [ebp - 0x38]	3
+0x0049F0D0	52	1	push   edx	push edx	1
+0x0049F0D1	8b cf	2	mov    ecx,edi	mov ecx, edi	2
+0x0049F0D3	e8 f8 0d 00 00	5	call   0x49fed0	call 0x49fed0 <?Destroy@UnitEffectManager@@SAXXZ+0xf2b0>	5
+0x0049F0D8	8b 47 04	3	mov    eax,DWORD PTR [edi+0x4]	mov eax, dword ptr [edi + 0x4]	3
+0x0049F0DB	3b c3	2	cmp    eax,ebx	cmp eax, ebx	2
+0x0049F0DD	75 05	2	jne    0x49f0e4	jne 0x49f0e4 <?Destroy@UnitEffectManager@@SAXXZ+0xe4c4>	2
+0x0049F0DF	89 5d e0	3	mov    DWORD PTR [ebp-0x20],ebx	mov dword ptr [ebp - 0x20], ebx	3
+0x0049F0E2	eb 19	2	jmp    0x49f0fd	jmp 0x49f0fd <?Destroy@UnitEffectManager@@SAXXZ+0xe4dd>	2
+0x0049F0E4	8b 7f 08	3	mov    edi,DWORD PTR [edi+0x8]	mov edi, dword ptr [edi + 0x8]	3
+0x0049F0E7	2b f8	2	sub    edi,eax	sub edi, eax	2
+0x0049F0E9	b8 79 78 78 78	5	mov    eax,0x78787879	mov eax, 0x78787879	5
+0x0049F0EE	f7 ef	2	imul   edi	imul edi	2
+0x0049F0F0	c1 fa 07	3	sar    edx,0x7	sar edx, 0x7	3
+0x0049F0F3	8b c2	2	mov    eax,edx	mov eax, edx	2
+0x0049F0F5	c1 e8 1f	3	shr    eax,0x1f	shr eax, 0x1f	3
+0x0049F0F8	03 d0	2	add    edx,eax	add edx, eax	2
+0x0049F0FA	89 55 e0	3	mov    DWORD PTR [ebp-0x20],edx	mov dword ptr [ebp - 0x20], edx	3
+0x0049F0FD	8d 8d d8 fe ff ff	6	lea    ecx,[ebp-0x128]	lea ecx, [ebp - 0x128]	6
+0x0049F103	51	1	push   ecx	push ecx	1
+0x0049F104	8d 8d 90 fe ff ff	6	lea    ecx,[ebp-0x170]	lea ecx, [ebp - 0x170]	6
+0x0049F10A	ff 15 10 e5 4d 00	6	call   DWORD PTR ds:0x4de510	call dword ptr [0x4de510]	6
+0x0049F110	89 9d a0 fe ff ff	6	mov    DWORD PTR [ebp-0x160],ebx	mov dword ptr [ebp - 0x160], ebx	6
+0x0049F116	8d 95 90 fe ff ff	6	lea    edx,[ebp-0x170]	lea edx, [ebp - 0x170]	6
+0x0049F11C	52	1	push   edx	push edx	1
+0x0049F11D	8d 45 c0	3	lea    eax,[ebp-0x40]	lea eax, [ebp - 0x40]	3
+0x0049F120	50	1	push   eax	push eax	1
+0x0049F121	8d 4d d0	3	lea    ecx,[ebp-0x30]	lea ecx, [ebp - 0x30]	3
+0x0049F124	c6 45 fc 0c	4	mov    BYTE PTR [ebp-0x4],0xc	mov byte ptr [ebp - 0x4], 0xc	4
+0x0049F128	e8 f3 3b f8 ff	5	call   0x422d20	call 0x422d20 <?RemoveReferenceTo@Character@@UAEXPAVUnit@@@Z+0x4e0>	5
+0x0049F12D	8b 38	2	mov    edi,DWORD PTR [eax]	mov edi, dword ptr [eax]	2
+0x0049F12F	6a 01	2	push   0x1	push 0x1	2
+0x0049F131	8d 8d 90 fe ff ff	6	lea    ecx,[ebp-0x170]	lea ecx, [ebp - 0x170]	6
+0x0049F137	c6 45 fc 0b	4	mov    BYTE PTR [ebp-0x4],0xb	mov byte ptr [ebp - 0x4], 0xb	4
+0x0049F13B	ff 15 14 e5 4d 00	6	call   DWORD PTR ds:0x4de514	call dword ptr [0x4de514]	6
+0x0049F141	8b 4d e0	3	mov    ecx,DWORD PTR [ebp-0x20]	mov ecx, dword ptr [ebp - 0x20]	3
+0x0049F144	49	1	dec    ecx	dec ecx	1
+0x0049F145	89 4f 1c	3	mov    DWORD PTR [edi+0x1c],ecx	mov dword ptr [edi + 0x1c], ecx	3
+0x0049F148	8b ce	2	mov    ecx,esi	mov ecx, esi	2
+0x0049F14A	e8 05 2a 03 00	5	call   0x4d1b54	call 0x4d1b54 <ExpFltr_end+0x524>	5
+0x0049F14F	6a 01	2	push   0x1	push 0x1	2
+0x0049F151	8d 4d 9c	3	lea    ecx,[ebp-0x64]	lea ecx, [ebp - 0x64]	3
+0x0049F154	c6 45 fc 15	4	mov    BYTE PTR [ebp-0x4],0x15	mov byte ptr [ebp - 0x4], 0x15	4
+0x0049F158	ff 15 14 e5 4d 00	6	call   DWORD PTR ds:0x4de514	call dword ptr [0x4de514]	6
+0x0049F15E	6a 01	2	push   0x1	push 0x1	2
+0x0049F160	8d 8d 70 ff ff ff	6	lea    ecx,[ebp-0x90]	lea ecx, [ebp - 0x90]	6
+0x0049F166	c6 45 fc 14	4	mov    BYTE PTR [ebp-0x4],0x14	mov byte ptr [ebp - 0x4], 0x14	4
+0x0049F16A	ff 15 14 e5 4d 00	6	call   DWORD PTR ds:0x4de514	call dword ptr [0x4de514]	6
+0x0049F170	6a 01	2	push   0x1	push 0x1	2
+0x0049F172	8d 8d 54 ff ff ff	6	lea    ecx,[ebp-0xac]	lea ecx, [ebp - 0xac]	6
+0x0049F178	c6 45 fc 13	4	mov    BYTE PTR [ebp-0x4],0x13	mov byte ptr [ebp - 0x4], 0x13	4
+0x0049F17C	ff 15 14 e5 4d 00	6	call   DWORD PTR ds:0x4de514	call dword ptr [0x4de514]	6
+0x0049F182	6a 01	2	push   0x1	push 0x1	2
+0x0049F184	8d 8d 40 ff ff ff	6	lea    ecx,[ebp-0xc0]	lea ecx, [ebp - 0xc0]	6
+0x0049F18A	c6 45 fc 12	4	mov    BYTE PTR [ebp-0x4],0x12	mov byte ptr [ebp - 0x4], 0x12	4
+0x0049F18E	ff 15 14 e5 4d 00	6	call   DWORD PTR ds:0x4de514	call dword ptr [0x4de514]	6
+0x0049F194	6a 01	2	push   0x1	push 0x1	2
+0x0049F196	8d 8d 24 ff ff ff	6	lea    ecx,[ebp-0xdc]	lea ecx, [ebp - 0xdc]	6
+0x0049F19C	c6 45 fc 11	4	mov    BYTE PTR [ebp-0x4],0x11	mov byte ptr [ebp - 0x4], 0x11	4
+0x0049F1A0	ff 15 14 e5 4d 00	6	call   DWORD PTR ds:0x4de514	call dword ptr [0x4de514]	6
+0x0049F1A6	6a 01	2	push   0x1	push 0x1	2
+0x0049F1A8	8d 8d f0 fe ff ff	6	lea    ecx,[ebp-0x110]	lea ecx, [ebp - 0x110]	6
+0x0049F1AE	c6 45 fc 10	4	mov    BYTE PTR [ebp-0x4],0x10	mov byte ptr [ebp - 0x4], 0x10	4
+0x0049F1B2	ff 15 14 e5 4d 00	6	call   DWORD PTR ds:0x4de514	call dword ptr [0x4de514]	6
+0x0049F1B8	6a 01	2	push   0x1	push 0x1	2
+0x0049F1BA	8d 8d d8 fe ff ff	6	lea    ecx,[ebp-0x128]	lea ecx, [ebp - 0x128]	6
+0x0049F1C0	c6 45 fc 0f	4	mov    BYTE PTR [ebp-0x4],0xf	mov byte ptr [ebp - 0x4], 0xf	4
+0x0049F1C4	ff 15 14 e5 4d 00	6	call   DWORD PTR ds:0x4de514	call dword ptr [0x4de514]	6
+0x0049F1CA	8d 8d c4 fe ff ff	6	lea    ecx,[ebp-0x13c]	lea ecx, [ebp - 0x13c]	6
+0x0049F1D0	c6 45 fc 0e	4	mov    BYTE PTR [ebp-0x4],0xe	mov byte ptr [ebp - 0x4], 0xe	4
+0x0049F1D4	e8 a7 0c 00 00	5	call   0x49fe80	call 0x49fe80 <?Destroy@UnitEffectManager@@SAXXZ+0xf260>	5
+0x0049F1D9	8d 8d b4 fe ff ff	6	lea    ecx,[ebp-0x14c]	lea ecx, [ebp - 0x14c]	6
+0x0049F1DF	c6 45 fc 0d	4	mov    BYTE PTR [ebp-0x4],0xd	mov byte ptr [ebp - 0x4], 0xd	4
+0x0049F1E3	e8 d8 0b 00 00	5	call   0x49fdc0	call 0x49fdc0 <?Destroy@UnitEffectManager@@SAXXZ+0xf1a0>	5
+0x0049F1E8	8d 8d a4 fe ff ff	6	lea    ecx,[ebp-0x15c]	lea ecx, [ebp - 0x15c]	6
+0x0049F1EE	c6 45 fc 01	4	mov    BYTE PTR [ebp-0x4],0x1	mov byte ptr [ebp - 0x4], 0x1	2

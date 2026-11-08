@@ -1,0 +1,6 @@
+chemin_emission	opcode_decimal	octets_opcodes	elements_observes	condition_observee	limite
+helper 0x4218F0	95	0x5F	GetID 32 bits; deux WORD; octet booléen	appel depuis branches de RangeAttack et autres	ne prouve pas toutes les animations possibles
+helper 0x4219D0	96	0x60	GetID cible et attaquant 32 bits; calcul HPcourant*100/HPmaximum et coordonnées; diffusion 0x421890	appel 0x422169 dans RangeAttack	semantique detaillee des flags non reconstruite
+Character::RangeAttack	63	0x3F	0x1E puis 0x03 et chaine	branche InSafeHaven 0x421DBD selon code	valeurs source non disponibles
+helper 0x422E90	63	0x3F	0x1E puis 0x03; CString	appel GetPlayerMessage +0x14c	message textuel variable
+Character::PacketStatus	43	0x2B	statistiques effectives	mise a jour suite equipement	pas d emission universelle apres chaque boost

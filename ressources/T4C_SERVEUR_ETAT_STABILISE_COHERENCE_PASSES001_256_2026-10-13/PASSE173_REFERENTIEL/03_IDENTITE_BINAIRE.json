@@ -1,0 +1,8 @@
+{
+  "sha256_pe": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "text_base": "0x401000",
+  "text_size": 905117,
+  "old_mask_sha256": "52a66b3d93b2757705e6f5c6a4e570506ddf3de8e5bbc80791df65a3891356e4",
+  "old_mask_popcount": 823141,
+  "old_entries": 1528
+}

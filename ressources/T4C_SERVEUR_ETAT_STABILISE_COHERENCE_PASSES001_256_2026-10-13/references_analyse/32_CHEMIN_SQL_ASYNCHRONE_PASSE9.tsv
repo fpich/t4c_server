@@ -1,0 +1,13 @@
+étape	adresse	preuve	interprétation	certitude	limite
+SaveCharacter	0x414ACC	push 0x413CA0	Callback non nul	CONFIRME	Branche [ebp+8] != 0
+SaveCharacter	0x414B1F	call 0x44F1F0	Soumission du lot et du callback	CONFIRME	Branche avec/sans callback
+IOCP_INIT	0x44F1C5	IAT 0x4DE108	CreateIoCompletionPort	CONFIRME	Thread démarré à 0x44F1D9
+IOCP_POST	0x44F228	IAT 0x4DE10C	PostQueuedCompletionStatus	CONFIRME	Valeur de retour non vérifiée ici
+IOCP_RECV	0x44F30D	IAT 0x4DE110	GetQueuedCompletionStatus	CONFIRME	Présence de chemins erreurs
+SQL_EXEC	0x44ED98	ODBC32 ordinal 11 via 0x4CE472	SQLExecDirect	CORROBORE	SQL_NTS = -3; handle SQLHSTMT +0xC
+SQL_COMMIT	0x44ED2A	ODBC32 ordinal 23 via 0x4CE478	SQLTransact(...,0)	CORROBORE	Retour converti en booléen dans wrapper
+SQL_ROLLBACK	0x44ED4A	ODBC32 ordinal 23 via 0x4CE478	SQLTransact(...,1)	CORROBORE	Retour converti en booléen dans wrapper
+CALLBACK_OK	0x44F5C1	push 0; call eax @0x44F5C2	callback(0, contexte)	CONFIRME	Pas de vérification SQLTransact avant callback
+CALLBACK_ERROR	0x44F5A5	push 1; call eax @0x44F5C2	callback(1, contexte)	CONFIRME	Erreur de lot / tentative rollback
+CALLBACK_EVENT	0x413D2D	IAT 0x4DE12C	SetEvent(personnage+0x120)	CONFIRME	Statut ignoré dans callback
+CHARACTER_NAME	0x41DA58	this+0x15C; call 0x4D1A4C	copie de chaîne	CONFIRME	Aucun COMMIT ici

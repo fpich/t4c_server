@@ -1,0 +1,6 @@
+IAT	DLL	Nom importé	Chemins étudiés	Résolution
+0x4DE294	MSVCRT.dll	malloc	0x442009, 0x442303, 0x44233B, 0x442362	nom PE explicite
+0x4DE308	MSVCRT.dll	free	0x442060, 0x4423D0	nom PE explicite
+0x4DE28C	MFC42.DLL	ordinal 800	0x4D1A40 / états 0-4	nom source non disponible
+0x4DE274	MFC42.DLL	ordinal 540	0x4D1A5E / constructeur tableau	nom source non disponible
+0x4DE270	MFC42.DLL	ordinal 537	0x4D1A64 / construction temporaire	nom source non disponible

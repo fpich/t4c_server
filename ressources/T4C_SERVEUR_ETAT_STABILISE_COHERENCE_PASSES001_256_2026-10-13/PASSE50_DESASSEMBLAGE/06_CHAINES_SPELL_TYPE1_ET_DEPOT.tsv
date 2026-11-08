@@ -1,0 +1,19 @@
+circuit	source	site_VA	cible_ou_action	condition_demontree	qualification
+magie	fabrique type 1 (cle WDA 1)	0x4C68E0	table virtuelle 0x4DFDCC	instanciation par RegisterSuperstructure(1)	CONFIRME
+magie	methode runtime type 1	0x4C6871	0x4C61A0	branche basee sur un test x87	CONFIRME
+magie	methode runtime type 1	0x4C687F	0x4C64F0	branche alternative de comparaison x87	CONFIRME
+attaque magique	0x4C61A0	0x4C6225	GAME_RULES::InPVP	filtre conditionnel selon source et cible	CONFIRME
+attaque magique	0x4C61A0	0x4C628D	attacked vtable +0x38	drapeau 0x239 et branches	CONFIRME
+attaque magique	0x4C61A0	0x4C6402	hit vtable +0x3C	structure attaque prealablement calculee	CONFIRME
+attaque magique	0x4C61A0	0x4C6479	PacketUnitInformation vtable +0x1AC	branche conditionnelle	CONFIRME
+PV	0x4C64F0	0x4C652E	GetHP vtable +0xD8	evaluation de resultats d expression	CONFIRME
+PV	0x4C64F0	0x4C6681	GetMaxHP vtable +0xCC	limite superieure des PV	CONFIRME
+PV	0x4C64F0	0x4C669A et 0x4C66A9	SetHP vtable +0xDC	nouvelle valeur et flag notify=1	CONFIRME
+PV	0x4C64F0	0x4C66CC	TFCPacket code 33	apres calcul et SetHP	CONFIRME
+PV	0x4C64F0	0x4C6712	TFCPacket code 69	branche distincte	CONFIRME
+depot	0x47AA71	0x47AA71	Character::DropUnit	appel direct dans routine d action	CONFIRME
+depot	Character::DropUnit	0x4174CF	WorldMap::IsBlocking	coordonnees verifiees	CONFIRME
+depot	Character::DropUnit	0x41751E	WorldMap::GetCollisionPos	controle de placement	CONFIRME
+depot	Character::DropUnit	0x417590	Constructeur Objects	quantite source >1	CONFIRME
+mort	GAME_RULES::DeathPenalties	0x438C54	Objects::Remove(1)	filtre aleatoire et flags	CONFIRME
+mort-vers-depot	Character::Death	AUCUNE_XREF_DIRECTE	Character::DropUnit	pas de preuve de chainage direct; autres voies possibles	NON_DEMONTRE

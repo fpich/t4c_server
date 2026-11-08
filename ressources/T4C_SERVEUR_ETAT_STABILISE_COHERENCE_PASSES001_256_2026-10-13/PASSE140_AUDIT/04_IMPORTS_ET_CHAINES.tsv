@@ -1,0 +1,7 @@
+Adresse	Preuve	Statut
+0x0043EF54	call [0x4DE334] = MSVCRT.fopen	hors_compteur
+0x0043EF69	call [0x4DE338] = MSVCRT.fprintf	hors_compteur
+0x0043EF70	call [0x4DE33C] = MSVCRT.fclose	hors_compteur
+0x00503950	chaine ab (mode append binaire)	donnees
+0x00503954	chaine exit.txt	donnees
+0x00503ADC	message de terminaison exceptionnelle	donnees

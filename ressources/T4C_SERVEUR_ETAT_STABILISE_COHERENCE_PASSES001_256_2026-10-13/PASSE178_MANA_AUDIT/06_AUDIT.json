@@ -1,0 +1,19 @@
+{
+  "passes": "173–178",
+  "old_population": 823141,
+  "added_population": 1112,
+  "new_instruction_count": 360,
+  "new_intervals": 5,
+  "final_population": 824253,
+  "text_size": 905117,
+  "final_percentage": 91.06590639663159,
+  "remaining": 80864,
+  "sha256_pe": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "sha256_mask_old": "52a66b3d93b2757705e6f5c6a4e570506ddf3de8e5bbc80791df65a3891356e4",
+  "sha256_mask_add": "281021941067a628ef6bfedef1b640516af7f5a97003f70de527d44ce9527d46",
+  "sha256_mask_final": "a25b2b7551326b00fa537fcfa18dfea661cedd0a417a26d80bd57d7f3a988190",
+  "mask_intersection_popcount": 0,
+  "all_new_instructions_match_pe": true,
+  "gnu_llvm_boundary_mismatches": 0,
+  "historical_mask_fully_certified": false
+}

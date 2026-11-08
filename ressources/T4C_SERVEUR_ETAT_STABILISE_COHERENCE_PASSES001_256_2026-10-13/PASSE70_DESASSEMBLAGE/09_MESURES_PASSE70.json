@@ -1,0 +1,35 @@
+{
+  "passe": 70,
+  "executable_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "text_va_base": "0x00401000",
+  "text_file_offset": "0x1000",
+  "text_octets": 905117,
+  "octets_certifies_passe69": 129770,
+  "octets_nouveaux_passe70": 42,
+  "octets_certifies_passe70": 129812,
+  "couverture_passe70_pourcent": 14.342013242,
+  "instructions_verifiees_passe70": 277,
+  "octets_preuves_revérifiés_doublons_historiques_inclus": 688,
+  "instructions_divergentes_rejetees": 0,
+  "instructions_padding_ignores": 0,
+  "nouvelles_plages_contigues": 4,
+  "repartition_preuves": {
+    "02_VERROUS_WIN32.asm": {
+      "instructions": 16,
+      "octets_dans_preuves": 33,
+      "octets_nouveaux": 33
+    },
+    "03_SUIVI_LIBERATION_POOL.asm": {
+      "instructions": 101,
+      "octets_dans_preuves": 250,
+      "octets_nouveaux": 9
+    },
+    "04_ECHECS_ALLOCATION_POOL.asm": {
+      "instructions": 160,
+      "octets_dans_preuves": 405,
+      "octets_nouveaux": 0
+    }
+  },
+  "format_masque": "1 bit par octet .text; bit=offset%8 de octet offset//8",
+  "statut": "analyse statique vérifiée contre PE; pas de test de défaillance malloc"
+}

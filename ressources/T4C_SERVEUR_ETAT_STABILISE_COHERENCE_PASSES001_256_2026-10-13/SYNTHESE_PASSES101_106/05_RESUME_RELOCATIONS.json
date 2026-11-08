@@ -1,0 +1,15 @@
+{
+  "blocs": 248,
+  "types": {
+    "3": 23191,
+    "0": 141
+  },
+  "relocations_vers_code": 7630,
+  "cibles_uniques": 6140,
+  "non_couvertes_par_zone": {
+    "TEXT": 1503,
+    "RDATA": 3332,
+    "DATA": 198
+  },
+  "rejets": 78
+}

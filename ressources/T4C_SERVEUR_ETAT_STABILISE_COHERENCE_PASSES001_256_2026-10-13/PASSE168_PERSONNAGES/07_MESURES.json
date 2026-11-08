@@ -1,0 +1,12 @@
+{
+  "passe": 168,
+  "domaine": "Personnages et objets",
+  "avant": 820159,
+  "apres": 821113,
+  "gain_unique": 954,
+  "nouvelles_instructions": 277,
+  "blocs": 3,
+  "pourcentage": 90.71899,
+  "sha256_masque": "03b60d2b90975ba5ce5ad8d2e3c38350006706ed078586dbb73b94b7118fc87c",
+  "sha256_ajout": "bdcea558c410372b0817238426a9a5167aace7c0300c5c5961e4df0a8bf5079a"
+}

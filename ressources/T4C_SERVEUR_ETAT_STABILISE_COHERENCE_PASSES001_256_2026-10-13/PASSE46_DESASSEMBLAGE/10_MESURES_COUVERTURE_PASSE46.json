@@ -1,0 +1,46 @@
+{
+  "passe": 46,
+  "sha256_exe": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "source_archive": "T4C_SERVEUR_PASSE45_DESASSEMBLAGE_PUR_2026-10-08.zip",
+  "taille_section_text": 905117,
+  "base_octets_verifies": 87616,
+  "nouveaux_octets_non_redondants": 3933,
+  "total_octets_verifies": 91549,
+  "couverture_pourcent": 10.1146,
+  "instructions_preuves_ajoutees": 2095,
+  "instructions_rejetees_nouvelles": 0,
+  "entrees_exportees_documentees": 202,
+  "total_exports": 1125,
+  "total_lignes_archive": 42866,
+  "lignes_correspondantes": 42330,
+  "lignes_archive_exclues": 536,
+  "note_exclusions": "anciennes preuves client non conformes au binaire serveur exclues du calcul; tous les nouveaux extraits sont valides",
+  "fichiers_preuves_ajoutes": {
+    "02_PREUVES_REGLES_COMBAT.asm": {
+      "instructions": 413,
+      "valides": 413,
+      "rejetees": 0
+    },
+    "03_PREUVES_ATTAQUE_ET_REACTION.asm": {
+      "instructions": 668,
+      "valides": 668,
+      "rejetees": 0
+    },
+    "04_PREUVES_TIR_ET_PAQUETS.asm": {
+      "instructions": 717,
+      "valides": 717,
+      "rejetees": 0
+    },
+    "05_PREUVES_REGENERATION_CHARACTER.asm": {
+      "instructions": 42,
+      "valides": 42,
+      "rejetees": 0
+    },
+    "06_PREUVES_EQUIPEMENT_STATUT.asm": {
+      "instructions": 255,
+      "valides": 255,
+      "rejetees": 0
+    }
+  },
+  "ancien_fichiers": 371
+}

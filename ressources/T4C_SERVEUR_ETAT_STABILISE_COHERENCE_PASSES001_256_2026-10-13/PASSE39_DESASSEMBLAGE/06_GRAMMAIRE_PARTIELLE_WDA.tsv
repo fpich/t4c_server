@@ -1,0 +1,22 @@
+operation	adresse	taille_sur_flux	type	destination_ou_effet	dependance	certitude	reserve
+ouverture_file	0x4994B0	fonction fopen	nom chaine	flux FILE*	0x4DE334	CONFIRME	Le mode dans les donnees 0x50E968 n est pas reanalyse
+read_key_init	0x4993A0	0x5B7E, 0	parametres generateur	table 0xD5A octets	0x459100, 0x4590A0	CONFIRME	Le generateur complet reste a decrire
+read_xor	0x499A30	position ftell	octet fgetc	XOR table[pos % 3418]	0x4993E0	CONFIRME	Erreur EOF branche distincte
+entete_magic	0x499E8B	2 octets	WORD 	0x0CA7	0x499BA0	CONFIRME	Objet en-tete +0x0A
+entete_version	0x499EB0	2 octets	WORD 	1	0x499BA0	CONFIRME	Objet en-tete +0x06
+bool	0x499D00	1 octet	BYTE	valeur == 1	0x499A30	CONFIRME	Retour booleen normalise
+DWORD	0x499B80	4 octets	DWORD	destination 4 octets	0x499A30	CONFIRME	Little endian x86 en memoire
+WORD	0x499BA0	2 octets	WORD	destination 2 octets	0x499A30	CONFIRME	Little endian x86 en memoire
+string	0x499BC0	4 + N octets	taille DWORD puis octets	taille+1, NUL	0x499B80, 0x499A30	CONFIRME	Aucun encodage texte universel etabli
+collection_spells	0x4A8857	4 octets	nombre entrees DWORD	boucle d entrees	0x499B80	CONFIRME	Aucun WDA reel fourni
+record_string	0x4A896D	4 + N octets	chaine 1	construction source	0x499BC0	CONFIRME	Offset disque variable
+record_scalars	0x4A89BF	4 octets	DWORD	source runtime	0x499B80	CONFIRME	Nom semantique du champ inconnu
+record_bool_1	0x4A8A32	1 octet	bool	source+?	0x499D00	CONFIRME	Offset pile temporaire -0x5C
+record_bool_2	0x4A8A3D	1 octet	bool	source+?	0x499D00	CONFIRME	Offset pile temporaire -0x5B
+record_bool_3	0x4A8A48	1 octet	bool	source+?	0x499D00	CONFIRME	Offset pile temporaire -0x5A
+sous_liste_1	0x4A8C78	4 octets puis elements	nombre elements DWORD	elements lus par helper	0x4A73A0	CONFIRME	Taille des elements sur disque non etablie
+sous_liste_2	0x4A8CF5	4 octets puis elements	nombre elements DWORD	elements lus par helper	0x4A8210	CONFIRME	Taille des elements sur disque non etablie
+stride_src	0x4A845F	0 octet (memoire)	pas de 0xE4	structure C++	0x4A8370	CONFIRME	PAS une taille de record sur disque
+allocation_def	0x47364F	0 octet (memoire)	allocation 0x418	definition preparee	0x441FF0	CONFIRME	Taille en memoire
+id_prepared	0x473729	0 octet (memoire)	WORD source+0x24	def+0x00	direct	CONFIRME	Offset source memoire
+compteur	0x473878	0 octet (memoire)	DWORD source+0x24 * 1000	def+0x3AC	direct	CONFIRME	Offset memoire et arithmetique modulo 2^32

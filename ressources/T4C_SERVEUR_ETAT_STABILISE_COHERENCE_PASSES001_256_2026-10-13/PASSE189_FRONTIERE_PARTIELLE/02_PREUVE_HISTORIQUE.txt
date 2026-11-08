@@ -1,0 +1,6 @@
+  493a75:	89 9d 5c ff ff ff    	mov    DWORD PTR [ebp-0xa4],ebx
+  493a7b:	89                   	.byte 0x89
+  493a7c:	9d                   	popf
+  493a7d:	60                   	pusha
+  493a7e:	ff                   	(bad)
+  493a7f:	ff                   	.byte 0xff

@@ -1,0 +1,14 @@
+{
+  "previous_popcount": 829645,
+  "delta_popcount": 66,
+  "final_popcount": 829711,
+  "no_overlap": true,
+  "union_reconstructed_bit_for_bit": true,
+  "all_additions_in_original_PE": true,
+  "both_disassemblers_agree_on_instruction_bytes": true,
+  "gain_from_data_or_padding": 0,
+  "original_exe_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "old_mask_sha256": "1c14e9b7eb775180d8517e344e2fe1fbd2cbb613ccc48602247e178c520933ab",
+  "new_mask_sha256": "1193e54737fc269fc9602a042ccf3acef827d8932b2ba4c9199e9c19ebe699fc",
+  "not_claimed": "Exhaustive code-data discrimination or full runtime control flow"
+}

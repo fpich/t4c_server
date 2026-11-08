@@ -1,0 +1,11 @@
+{
+  "targets": [
+    "0x004BAA90",
+    "0x00434670",
+    "0x0042AE80",
+    "0x004BA360",
+    "0x004B9CE0"
+  ],
+  "hits": [],
+  "scope": "Recherche brute des repr\u00e9sentations little-endian sur tous les octets du fichier"
+}

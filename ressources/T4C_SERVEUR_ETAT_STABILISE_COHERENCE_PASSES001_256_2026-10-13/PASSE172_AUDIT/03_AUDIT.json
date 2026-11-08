@@ -1,0 +1,15 @@
+{
+  "sha256_exe": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "old_bytes": 820159,
+  "added_bytes": 2982,
+  "final_bytes": 823141,
+  "final_percentage": 90.943049,
+  "remaining_bytes": 81976,
+  "byte_overlap_count": 0,
+  "boundary_collision_count": 0,
+  "gnu_llvm_instruction_byte_disagreement": 0,
+  "added_instruction_count": 954,
+  "source_block_count": 19,
+  "historical_static_coverage_not_fully_reaudited": true,
+  "final_mask_sha256": "52a66b3d93b2757705e6f5c6a4e570506ddf3de8e5bbc80791df65a3891356e4"
+}

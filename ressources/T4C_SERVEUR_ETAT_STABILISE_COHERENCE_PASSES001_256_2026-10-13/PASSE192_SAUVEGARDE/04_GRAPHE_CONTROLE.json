@@ -1,0 +1,32 @@
+[
+  {
+    "name": "SaveCharacter_41444f",
+    "window": [
+      "0x41443e",
+      "0x414490"
+    ],
+    "seeds": [
+      "0x41443e"
+    ],
+    "visited_count": 16,
+    "double_verified_instructions": 16,
+    "new_bytes": 27,
+    "new_spans": [
+      [
+        "0x414450",
+        "0x41446b",
+        27
+      ]
+    ],
+    "covered_instructions_bytes": 18,
+    "branches": 3,
+    "errors": [],
+    "start_conflicts": [
+      [
+        "0x41444f",
+        "89",
+        "894724"
+      ]
+    ]
+  }
+]

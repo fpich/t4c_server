@@ -1,0 +1,7 @@
+élément	GetResist_VA	identifiant_virtuel_arg	indice_bonus_arg	GetTrueResist_VA	GetResist_expression	GetTrueResist_expression	preuve
+Air	0x462FD0	0x4E3E	0x0C	0x4630F0	100 + virtual(+0x0C,id) + helper_0x48DE60(index)	100 + virtual(+0x0C,id)	CONFIRME instructions; utilisation dans dégâts à vérifier
+Water	0x463000	0x4E3F	0x0E	0x463100	100 + virtual(+0x0C,id) + helper_0x48DE60(index)	100 + virtual(+0x0C,id)	CONFIRME instructions; utilisation dans dégâts à vérifier
+Fire	0x463030	0x4E40	0x0D	0x463110	100 + virtual(+0x0C,id) + helper_0x48DE60(index)	100 + virtual(+0x0C,id)	CONFIRME instructions; utilisation dans dégâts à vérifier
+Earth	0x463060	0x4E41	0x0F	0x463120	100 + virtual(+0x0C,id) + helper_0x48DE60(index)	100 + virtual(+0x0C,id)	CONFIRME instructions; utilisation dans dégâts à vérifier
+Light	0x463090	0x4E45	0x15	0x463130	100 + virtual(+0x0C,id) + helper_0x48DE60(index)	100 + virtual(+0x0C,id)	CONFIRME instructions; utilisation dans dégâts à vérifier
+Dark	0x4630C0	0x4E46	0x16	0x463140	100 + virtual(+0x0C,id) + helper_0x48DE60(index)	100 + virtual(+0x0C,id)	CONFIRME instructions; utilisation dans dégâts à vérifier

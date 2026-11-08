@@ -1,0 +1,10 @@
+{
+  "passe": 132,
+  "domaine": "Exceptions C++ et faux chemins continus",
+  "reference_initiale_octets": 809652,
+  "octets_nouveaux": 0,
+  "retrait_donnees_cumule": 0,
+  "octets_cumules_corriges": 809652,
+  "pourcentage_cumule_corrige": 89.45274478327111,
+  "sha256_executable": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc"
+}

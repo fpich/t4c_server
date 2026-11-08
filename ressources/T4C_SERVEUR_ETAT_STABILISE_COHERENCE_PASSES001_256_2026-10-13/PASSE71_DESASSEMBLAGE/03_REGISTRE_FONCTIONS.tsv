@@ -1,0 +1,12 @@
+VA_entree	Symbole	Instructions_CFG	Octets_CFG_uniques_locaux	Sorties_directes_hors_fenetre	Alertes_cibles
+0x004420B0	fonction_non_exportee_004420B0	14	51	0	0
+0x004422C0	fonction_non_exportee_004422C0	7	18	0	0
+0x00442490	MonsterStructure::??0MonsterStructure	96	441	0	0
+0x0041F8E0	Character::?SendPrivateMessage@Character	156	444	0	0
+0x0048C3E0	Unit::?Talk@Unit	175	505	0	0
+0x0041DD80	Character::?SendPlayerMessage@Character	38	93	0	0
+0x0048F540	Unit::?IsPrivateTalk@Unit	2	3	0	0
+0x0048F550	Unit::?SendPrivateMessage@Unit	1	3	0	0
+0x00432EA0	Creatures::?IsPrivateTalk@Creatures	2	7	0	0
+0x0048B670	Unit::?GetType@Unit	2	4	0	0
+0x0048B700	Unit::?GetID@Unit	2	4	0	0

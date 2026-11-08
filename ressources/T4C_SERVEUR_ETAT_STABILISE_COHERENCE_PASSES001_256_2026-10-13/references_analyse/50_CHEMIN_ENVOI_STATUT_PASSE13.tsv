@@ -1,0 +1,8 @@
+adresse_VA	preuve	certitude
+0x47B82B	preparation de TFCPacket local	confirme
+0x47B837	appel direct Character::PacketStatus	confirme
+0x47B845	appel virtuel personnage +0x14C avec TFCPacket	confirme, methode pas identifiee
+0x47B91B	construction paquet u16 opcode 46 (0x002E)	confirme
+0x47B92C	ecriture d'un u8 dans paquet 46	confirme
+0x47B9B4	WorldMap::packet_inview_units, voie conditionnelle	confirme appel, sens sous-branches partiel
+0x47B9C2	appel virtuel +0x14C avec paquet construit	confirme, methode pas identifiee

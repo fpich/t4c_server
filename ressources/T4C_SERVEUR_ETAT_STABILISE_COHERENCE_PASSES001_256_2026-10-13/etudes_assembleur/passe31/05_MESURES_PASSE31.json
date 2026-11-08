@@ -1,0 +1,27 @@
+{
+  "executable_sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "text_bytes_total": 905117,
+  "previous_bytes_verified": 41424,
+  "new_pass_evidence_instructions": 1459,
+  "new_pass_evidence_bytes_unique": 4340,
+  "new_non_overlapping_text_bytes": 4340,
+  "verified_text_bytes_total": 45764,
+  "previous_pct": 4.577,
+  "new_pct": 5.056,
+  "delta_percentage_points": 0.479,
+  "exports_total_all_symbols": 1125,
+  "exports_in_text": 955,
+  "export_entries_documented_prior": 107,
+  "export_entries_documented_current": 121,
+  "new_export_entries_documented": 14,
+  "new_file_verification_failures": 0,
+  "files_retained": 193,
+  "removed_python_artifacts": [
+    "etudes_assembleur/passe24/suivi/mesurer_assembleur_passe24.py",
+    "references_analyse/72_RESULTATS_TESTS_CODEC_PASSE17.txt",
+    "suivi_assembleur/__pycache__/mesurer_assembleur_passe30.cpython-313.pyc",
+    "suivi_assembleur/mesurer_assembleur.py",
+    "suivi_assembleur/mesurer_assembleur_passe30.py"
+  ],
+  "new_sections": 14
+}

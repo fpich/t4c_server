@@ -1,0 +1,78 @@
+{
+  "passe": 38,
+  "section": ".text",
+  "taille_text": 905117,
+  "sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "archive_source": "T4C_SERVEUR_PASSE37_DESASSEMBLAGE_PUR_2026-10-08.zip",
+  "baseline_octs": 67909,
+  "baseline_pct": 7.503,
+  "octets_couverts": 69281,
+  "pourcentage": 7.654,
+  "octets_gagnes": 1372,
+  "instructions_nouvelles_verifiees": 1071,
+  "instructions_rejetees": 0,
+  "fonctions_exportees_entrees": 160,
+  "fonctions_exportees_total": 1125,
+  "preuve_par_fichier": {
+    "02_PREUVES_WDA_CHARGEMENT_SORTS.asm": {
+      "instructions_validees": 355,
+      "instructions_rejetees": 0,
+      "octets_locaux_uniques": 1061
+    },
+    "03_PREUVES_14_ENREGISTREMENTS_FABRIQUES.asm": {
+      "instructions_validees": 58,
+      "instructions_rejetees": 0,
+      "octets_locaux_uniques": 210
+    },
+    "04_PREUVES_FABRIQUES_CIBLES.asm": {
+      "instructions_validees": 140,
+      "instructions_rejetees": 0,
+      "octets_locaux_uniques": 432
+    },
+    "05_PREUVES_RECHARGEMENT_DIFFERE.asm": {
+      "instructions_validees": 286,
+      "instructions_rejetees": 0,
+      "octets_locaux_uniques": 860
+    },
+    "06_PREUVES_REENTRANCE_ET_DESTRUCTION.asm": {
+      "instructions_validees": 232,
+      "instructions_rejetees": 0,
+      "octets_locaux_uniques": 607
+    }
+  },
+  "clefs_stat_definies": [
+    1,
+    2,
+    3,
+    6,
+    7,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "nombre_fabriques_enregistrement_direct": 14,
+  "exactitude_recalc_from_stage": {
+    "sha256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+    "archive_source": "/mnt/data/_pass38work/stage.zip",
+    "archive_fichiers": 281,
+    "code_section": ".text",
+    "section_va_debut": "0x401000",
+    "section_taille_octets": 905117,
+    "fichiers_preuves": 59,
+    "lignes_assembleur_detectees": 30934,
+    "lignes_octets_correspondants": 30398,
+    "lignes_exclues": 536,
+    "instructions_adresses_uniques": 24065,
+    "octets_uniques_directement_cites": 69281,
+    "pct_octets_directement_cites": 7.654,
+    "fonctions_exportees_uniques": 1125,
+    "fonctions_exportees_avec_entree_dans_preuves": 160,
+    "pct_entrees_exportees_avec_preuve": 14.222
+  }
+}

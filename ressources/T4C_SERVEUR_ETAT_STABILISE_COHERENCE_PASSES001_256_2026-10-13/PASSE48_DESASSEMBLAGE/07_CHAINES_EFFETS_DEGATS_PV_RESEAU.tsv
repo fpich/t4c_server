@@ -1,0 +1,21 @@
+etape	adresse_source	cible	condition	observation	statut
+Character::hit	0x41CC8F	Skills::ExecuteSkill(8)	Objet entre dans hit	Traite skill conditionnel de la cible	CONFIRME
+Character::hit	0x41CCBE	Unit::QueryEffects(14)	Cible differente de la source	Declenche les effets lies au coup	CONFIRME
+Character::hit	0x41CD1A et suivants	SendUnitMessage(14) objets equipes	Objet present dans emplacements	13 emplacements et dedoublonnage 2 mains	CONFIRME
+Character::hit	0x41CE3E	TFCPacket(0x21)	Chemin hit apres tests	Serialise degats puis max HP au destinataire	CONFIRME
+Character::hit	0x41CEBC	Vtable+0x44 / Death	HP actuel insuffisant et checks flags	Peut declencher le traitement mort	CONFIRME
+Character::hit	0x41CEF6	Vtable+0xDC / SetHP	Chemin alternatif	Ecrit HP avec parametre notification 0	CONFIRME
+Character::SetHP	0x41D6DD	<this+0x13C>	Valeur differente	Met a jour HP du personnage	CONFIRME
+Character::SetHP	0x41D6F2	TFCPacket(0x21)	Flag notification vrai	Envoie HP et max HP	CONFIRME
+Character::SetHP	0x41D74C	Group::SendHpUpdate	Groupe associe non nul	Synchronise des membres du groupe	CONFIRME
+Group::SendHpUpdate	0x43B0CA	TFCPacket(0x57)	Groupe non vide	Calcul HP*100/GetMaxHP	CONFIRME
+Creatures::hit	0x432936	SendUnitMessage(20)	Message 14 precedent	Condition structurelle puis HP/death	CONFIRME
+Creatures::hit	0x43296B	Vtable+0x44 / Death	Nouveaux HP <=0 et conditions	Declenche Death	CONFIRME
+Creatures::hit	0x43297F	Vtable+0xDC / SetHP	Nouveaux HP >0 et conditions	Ecrit HP sans broadcast de Character	CONFIRME
+Objects::hit	0x44C0A2	Vtable+0x24 / SendUnitMessage(2)	Objet atteint	Pas de chemin SetHP dans cette fonction	CONFIRME
+AreaSensitiveEffect::Execute	0x405D69	Vtable+0x10C / Unit::Teleport	Code 0xA001 et cible type 1	Deplacement apres critere spatial	CONFIRME
+WorldMap::QueryEffects	0x4B052E	AreaSensitiveEffect::QueryEffect	Effets presents dans bloc selectionne	Parcourt une collection de pas 0x44	CONFIRME
+AreaSensitiveEffect::QueryEffect	0x405D14	AreaSensitiveEffect::Execute	Coordonnee dans plage semi-ouverte	Declenche branche du type code	CONFIRME
+AreaSensitiveEffect::Execute	0x405D69	Unit::Teleport	Code 0xA001 et Unit::GetType==1	Transmet WorldPos compose de trois DWORD	CONFIRME
+Unit::Teleport	0x48BFD4	Vtable+0x178 + WorldMap et diffusions	Bornes des cartes validees	Traitement d entree/sortie de monde et messages	CONFIRME
+Unit::Teleport	0x48C05B	TFCPacket(0x39)	Cible type Character	Envoie position cible via slot 0x14c	CONFIRME

@@ -1,0 +1,9 @@
+VA_chaine	chaine_exacte_binaire	VA_ou_region_declenchante	condition	interpretation
+0x506E34	Found duplicate spell ID %u, unregistering previous one. (overriding it)	0x4613B0..0x4613B8	slot runtime occupe	remplace ancienne definition
+0x506DE4	Tried to register the spell ID %u which is beyond the maximum number of spells	0x4614BC..0x4614EA	index >= 1024	hors table
+0x506D88	Tried to register the spell ID %u which is below the lowest available spell ID	0x4614FC..0x461530	ID16 < 10000	hors table
+0x509F04	Spell %s ID#%u uses an unsupported effect type %u.	0x473BDD..0x473C10	superstructure inexistante	invalide
+0x509F38	Spell %s ID#%u uses an effect type %u. This effect requires parameters and none have been set.	0x473AED..0x473B3D	type present, parametres manquants	invalide
+0x509F98	Spell %s ID#%u uses an effect type %u. This effect has a parameter ID#%u which is set to an invalid value '%s'.	0x473A33..0x473A7E	validation virtuelle en echec	invalide
+0x509EBC	An error occured while loading spell %s ID#%u. Spell will be inactive.	0x473C1A..0x473C37	au moins un echec	pas de RegisterSpell sur branche
+0x50A00C	Spell %s ID#%u uses an invalid success percentage. It has been reset to 100%.	0x47391D..0x473946	champ de pourcentage invalide	correction par chaine 100

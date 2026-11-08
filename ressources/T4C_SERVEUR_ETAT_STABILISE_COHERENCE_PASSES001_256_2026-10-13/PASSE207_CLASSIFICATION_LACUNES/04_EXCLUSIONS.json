@@ -1,0 +1,58 @@
+[
+  {
+    "gap": "0x0041E9E0",
+    "explanation": "Table de saut de huit adresses, donnée intégrée à .text."
+  },
+  {
+    "gap": "0x004C5970",
+    "explanation": "Table de quatre pointeurs 32 bits sous forme de données immédiatement après un préfixe de fonction ; le désassemblage linéaire est trompeur."
+  },
+  {
+    "gap": "0x004C2D55",
+    "explanation": "Alignement NOP puis routine non prouvée par continuation depuis une entrée précédente."
+  },
+  {
+    "gap": "0x004BD955",
+    "explanation": "NOPs de remplissage et RET isolé ; absence de preuve d’exécution d’une nouvelle fonction."
+  },
+  {
+    "gap": "0x00476185",
+    "explanation": "NOP après appel indirect importé, ne prouve pas un passage par la zone."
+  },
+  {
+    "gap": "0x004900A3",
+    "explanation": "NOPs d’alignement avant entrée distincte."
+  },
+  {
+    "gap": "0x004BD983",
+    "explanation": "NOPs d’alignement avant nouvelle fonction."
+  },
+  {
+    "gap": "0x004C3286",
+    "explanation": "NOPs d’alignement avant nouvelle fonction."
+  },
+  {
+    "gap": "0x004C3F35",
+    "explanation": "NOPs avant fonction distincte."
+  },
+  {
+    "gap": "0x004C5F65",
+    "explanation": "NOPs d’alignement ; saut final, pas une nouvelle chaîne de code."
+  },
+  {
+    "gap": "0x004C7985",
+    "explanation": "NOPs d’alignement avant fonction distincte."
+  },
+  {
+    "gap": "0x004C2D60",
+    "explanation": "Routine x86 cohérente mais sans source d’appel entrant démontrée dans cette passe."
+  },
+  {
+    "gap": "0x004BAA90",
+    "explanation": "Grande fonction candidate encore sans appelant prouvé."
+  },
+  {
+    "gap": "0x00434670",
+    "explanation": "Grande fonction candidate encore sans appelant prouvé."
+  }
+]

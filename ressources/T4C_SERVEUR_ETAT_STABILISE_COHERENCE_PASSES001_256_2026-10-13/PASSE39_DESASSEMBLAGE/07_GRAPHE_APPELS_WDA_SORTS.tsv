@@ -1,0 +1,20 @@
+site_appel	destination	mecanisme	statut	commentaire
+0x475A30	0x4994B0	ouvrir flux WDA principal	CONFIRME	Chemin principal puis facultatif
+0x475CB3	0x499E60	valider entete principal	CONFIRME	Test retour
+0x475D3B	0x499E60	valider entete second flux	CONFIRME	branche optionnelle
+0x475DBC	0x4A8810	charger collection principal	CONFIRME	arg 1
+0x475DD3	0x4A8810	charger collection secondaire	CONFIRME	si present
+0x475DDF	0x473610	preparer definition runtime	CONFIRME	appel direct
+0x499E70	0x499BA0	lecture champ WORD du magic	CONFIRME	marqueur compare 0xCA7
+0x499E7B	0x499BA0	lecture champ WORD de version	CONFIRME	version 1
+0x499E86	0x499D00	lecture boolean header	CONFIRME	valeur 1 => true
+0x499B8E	0x499A30	lecture DWORD	CONFIRME	4 octets
+0x499BAE	0x499A30	lecture WORD	CONFIRME	2 octets
+0x499BC0	0x499B80	lecture longueur de chaine	CONFIRME	DWORD
+0x499C15	0x499A30	lecture contenu de chaine	CONFIRME	N octets
+0x499AAE	0x4993E0	obtenir cle a position absolue	CONFIRME	position modulo 3418
+0x4A8C78	0x499B80	compteur sous-collection numero 1	CONFIRME	separer de taille en memoire
+0x4A8CA7	0x4A73A0	remplissage element sous-collection 1	CONFIRME	regles structurelles partielles
+0x4A8CF5	0x499B80	compteur sous-collection numero 2	CONFIRME	separer de taille en memoire
+0x4A8D24	0x4A8210	remplissage element sous-collection 2	CONFIRME	regles structurelles partielles
+0x473878	def+0x3AC	initialisation compteur eff	CONFIRME	DWORD * 1000

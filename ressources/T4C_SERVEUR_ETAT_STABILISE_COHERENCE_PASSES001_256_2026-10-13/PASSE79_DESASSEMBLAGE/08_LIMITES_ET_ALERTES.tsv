@@ -1,0 +1,3 @@
+VA_export	VA_adresse	Type
+0x0048BA50	0x0048BAAB	indirect_jmp
+0x0048F4C0	0x0048F4C0	direct_jmp_out_of_window:0043DA60

@@ -1,0 +1,43 @@
+{
+  "passe": 48,
+  "serveur_SHA256": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "archive_source": "T4C_SERVEUR_PASSE47_DESASSEMBLAGE_PUR_2026-10-09.zip",
+  "taille_text_octets": 905117,
+  "octets_base": 94068,
+  "octets_nouveaux_non_redondants": 2006,
+  "octets_verifies": 96074,
+  "couverture_pct": 10.614539,
+  "exports_doc": 248,
+  "exports_total": 1125,
+  "instructions_nouvelles": 1252,
+  "instructions_nouvelles_rejetees": 0,
+  "lignes_historiques_rejetees": 536,
+  "preuves_nouvelles": {
+    "PASSE48_DESASSEMBLAGE/02_PREUVES_HIT_PERSONNAGE.asm": [
+      303,
+      303,
+      0
+    ],
+    "PASSE48_DESASSEMBLAGE/03_PREUVES_HIT_CREATURES_OBJETS.asm": [
+      136,
+      136,
+      0
+    ],
+    "PASSE48_DESASSEMBLAGE/04_PREUVES_PV_SYNCHRONISATION.asm": [
+      274,
+      274,
+      0
+    ],
+    "PASSE48_DESASSEMBLAGE/05B_PREUVES_CIRCUIT_MONDE_TELEPORT.asm": [
+      454,
+      454,
+      0
+    ],
+    "PASSE48_DESASSEMBLAGE/05_PREUVES_EFFETS_DE_ZONE.asm": [
+      85,
+      85,
+      0
+    ]
+  },
+  "methode": "Unions d octets de la section PE .text exclusivement, comparaisons exactes; excludes doubles et preuves historiques client"
+}

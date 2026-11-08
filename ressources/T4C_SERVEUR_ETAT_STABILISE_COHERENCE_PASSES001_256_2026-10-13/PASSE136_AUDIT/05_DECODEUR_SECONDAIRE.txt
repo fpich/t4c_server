@@ -1,0 +1,62 @@
+--- 0x0041E944 ---
+
+/mnt/data/T4C Server(2).exe:	file format coff-i386
+
+Disassembly of section .text:
+
+0041e8a0 <?PutPlayerInGame@Character@@QAEDXZ>:
+  41e944: ff 24 9d e0 e9 41 00         	jmp	dword ptr [4*ebx + 0x41e9e0]
+  41e94b: 8b 45 f0                     	mov	eax, dword ptr [ebp - 0x10]
+  41e94e: 48                           	dec	eax
+  41e94f: eb 15                        	jmp	0x41e966 <?PutPlayerInGame@Character@@QAEDXZ+0xc6>
+  41e951: 8b 45 f0                     	mov	eax, dword ptr [ebp - 0x10]
+
+--- 0x0043EF10 ---
+
+/mnt/data/T4C Server(2).exe:	file format coff-i386
+
+Disassembly of section .text:
+
+0043e080 <??4SpellEffectManager@@QAEAAV0@ABV0@@Z>:
+  43ef10: 55                           	push	ebp
+  43ef11: 8b ec                        	mov	ebp, esp
+  43ef13: 6a ff                        	push	-0x1
+  43ef15: 68 e8 5e 4d 00               	push	0x4d5ee8
+  43ef1a: 64 a1 00 00 00 00            	mov	eax, dword ptr fs:[0x0]
+
+--- 0x004BAA90 ---
+
+/mnt/data/T4C Server(2).exe:	file format coff-i386
+
+Disassembly of section .text:
+
+004b2700 <?GetCollisionPos@WorldMap@@QAEHUWorldPos@@0PAU2@PAPAVUnit@@_N3@Z>:
+  4baa90: 55                           	push	ebp
+  4baa91: 8b ec                        	mov	ebp, esp
+  4baa93: 6a ff                        	push	-0x1
+  4baa95: 68 f2 d1 4d 00               	push	0x4dd1f2
+  4baa9a: 64 a1 00 00 00 00            	mov	eax, dword ptr fs:[0x0]
+
+--- 0x00434670 ---
+
+/mnt/data/T4C Server(2).exe:	file format coff-i386
+
+Disassembly of section .text:
+
+00434200 <?GetInstance@CDebugLockManager@@SAPAV1@XZ>:
+  434670: 55                           	push	ebp
+  434671: 8b ec                        	mov	ebp, esp
+  434673: 64 a1 00 00 00 00            	mov	eax, dword ptr fs:[0x0]
+  434679: 6a ff                        	push	-0x1
+  43467b: 68 68 53 4d 00               	push	0x4d5368
+
+--- 0x004D1D56 ---
+
+/mnt/data/T4C Server(2).exe:	file format coff-i386
+
+Disassembly of section .text:
+
+004d1630 <ExpFltr_end>:
+  4d1d56: ff 25 68 e3 4d 00            	jmp	dword ptr [0x4de368]
+  4d1d5c: ff 25 64 e3 4d 00            	jmp	dword ptr [0x4de364]
+  4d1d62: ff 25 60 e3 4d 00            	jmp	dword ptr [0x4de360]

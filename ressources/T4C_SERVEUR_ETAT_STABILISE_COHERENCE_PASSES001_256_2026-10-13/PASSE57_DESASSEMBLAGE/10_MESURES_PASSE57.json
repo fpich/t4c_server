@@ -1,0 +1,43 @@
+{
+  "passe": 57,
+  "origine": "T4C Server(1).exe",
+  "sha256_executable": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "section_text_adresse": "0x401000",
+  "section_text_octets": 905117,
+  "archive_reference": "T4C_SERVEUR_PASSE56_DESASSEMBLAGE_PUR_2026-10-10.zip",
+  "recalcul_independant_p56_octets": 124613,
+  "recalcul_independant_p57_octets": 126431,
+  "gain_octets_non_redondants": 1818,
+  "couverture_independante_pct": 13.96847,
+  "historique_p56_octets": 124729,
+  "independant_p56_anciennement_publie": 124846,
+  "ecart_reaudit_vs_independant_publie": -233,
+  "ecart_reaudit_vs_historique": -116,
+  "historique_p57_prolonge_octets": 126547,
+  "historique_p57_prolonge_pct": 13.981286,
+  "instructions_nouvelles_preuves": 846,
+  "instructions_nouvelles_rejetees": 0,
+  "instructions_historiques_exclues": 536,
+  "export_entrees_documentees_independant": 258,
+  "exports_total": 1125,
+  "exports_dans_text": 955,
+  "preuves_par_fichier": {
+    "02_PREUVES_APPELANTS_VIRTUELS.asm": {
+      "instructions_verifiees": 484,
+      "nouveaux_octets_uniques": 1344,
+      "rejets": 0
+    },
+    "03_PREUVES_ARBRE_TEMPORAIRE_DESTRUCTION.asm": {
+      "instructions_verifiees": 147,
+      "nouveaux_octets_uniques": 327,
+      "rejets": 0
+    },
+    "04_PREUVES_CHEMIN_VARIABLES_ET_ARBRE.asm": {
+      "instructions_verifiees": 215,
+      "nouveaux_octets_uniques": 147,
+      "rejets": 0
+    }
+  },
+  "historique_conserve_identique": 513,
+  "rapport_pur_pas_de_sources_serveur_python": true
+}

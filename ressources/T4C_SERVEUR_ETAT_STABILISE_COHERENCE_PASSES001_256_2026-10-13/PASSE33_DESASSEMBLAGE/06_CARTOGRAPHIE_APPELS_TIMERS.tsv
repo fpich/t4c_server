@@ -1,0 +1,13 @@
+adresse_appel	appelant	cible	adresse_cible	contexte	niveau_certitude
+0x00443282	BeforeNPCThread (chemin local observé)	Unit::VerifyTimers	0x0048D330	sur une unité traitée; contrôle suivant conditionnel	CONFIRMÉ - appel direct
+0x0044CCB9	ObjectStructure::OnAttack	Unit::VerifyTimers	0x0048D330	événement d’attaque	CONFIRMÉ - appel direct
+0x0044CE09	ObjectStructure::OnAttacked	Unit::VerifyTimers	0x0048D330	événement de réception d’attaque	CONFIRMÉ - appel direct
+0x0044CF59	ObjectStructure::OnHit	Unit::VerifyTimers	0x0048D330	événement de coup reçu	CONFIRMÉ - appel direct
+0x0044D0A9	ObjectStructure::OnAttackHit	Unit::VerifyTimers	0x0048D330	événement d’impact réussi	CONFIRMÉ - appel direct
+0x0044D1D5	ObjectStructure::OnDisturbed	Unit::VerifyTimers	0x0048D330	événement de perturbation	CONFIRMÉ - appel direct
+0x0044E0BE	ObjectTimer::VerifyTimers	Unit::VerifyTimers	0x0048D330	parcours d’unités suivies dans la liste globale	CONFIRMÉ - appel direct
+0x00452C44	CPlayerManager::PlayerMaintenance	Unit::VerifyTimers	0x0048D330	maintenance d’une unité/personnage	CONFIRMÉ - appel direct
+0x00444DD7	BeforeNPCThread	ObjectTimer::VerifyTimers	0x0044E040	chemin de maintenance dans thread PNJ	CONFIRMÉ - appel direct
+0x00441344	routine d’initialisation (nom interne à vérifier)	TFCMAIN::StartBeat	0x00472250	démarrage du moteur d’horloge	CONFIRMÉ - appel direct
+0x00472200	TFCMAIN worker 0x4721F0	Sleep via import kernel32.dll	0x004DE120	push 0x32 (=50 ms), sommeil demandé	CONFIRMÉ - import résolu
+0x0047223E	TFCMAIN worker 0x4721F0	InterlockedExchange via import kernel32.dll	0x004DE0B4	publie nouvelle valeur de round	CONFIRMÉ - import résolu

@@ -1,0 +1,9 @@
+{
+  "passe": 65,
+  "sha256_executable": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "octets_text_reference": 905117,
+  "octets_cumules_conserves": 126431,
+  "couverture_pourcent": 13.968,
+  "nouveaux_octets_uniques_comptabilises": 0,
+  "raison": "union des plages historiques non recalculée"
+}

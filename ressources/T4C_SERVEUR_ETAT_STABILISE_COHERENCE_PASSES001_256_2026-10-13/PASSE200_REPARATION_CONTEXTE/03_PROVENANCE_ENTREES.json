@@ -1,0 +1,130 @@
+[
+  {
+    "name": "interruption_45ba38",
+    "start": "0x45ba38",
+    "end": "0x45bab0",
+    "matched_instructions": 30,
+    "candidate_new_bytes": 6,
+    "visited_not_matched": [],
+    "old_instruction_conflicts": [],
+    "first_instructions": [
+      [
+        "0x45ba38",
+        "c785f8feffff00000000",
+        "mov    DWORD PTR [ebp-0x108],0x0"
+      ],
+      [
+        "0x45ba42",
+        "c785fcfeffff00000000",
+        "mov    DWORD PTR [ebp-0x104],0x0"
+      ],
+      [
+        "0x45ba4c",
+        "8d85e8feffff",
+        "lea    eax,[ebp-0x118]"
+      ],
+      [
+        "0x45ba52",
+        "50",
+        "push   eax"
+      ],
+      [
+        "0x45ba53",
+        "8d4ddc",
+        "lea    ecx,[ebp-0x24]"
+      ]
+    ],
+    "last_instructions": [
+      [
+        "0x45baa6",
+        "5e",
+        "pop    esi"
+      ],
+      [
+        "0x45baa7",
+        "5b",
+        "pop    ebx"
+      ],
+      [
+        "0x45baa8",
+        "8be5",
+        "mov    esp,ebp"
+      ],
+      [
+        "0x45baaa",
+        "5d",
+        "pop    ebp"
+      ],
+      [
+        "0x45baab",
+        "c3",
+        "ret"
+      ]
+    ]
+  },
+  {
+    "name": "interruption_45acaa",
+    "start": "0x45acaa",
+    "end": "0x45acf1",
+    "matched_instructions": 16,
+    "candidate_new_bytes": 5,
+    "visited_not_matched": [
+      "0x45acf0"
+    ],
+    "old_instruction_conflicts": [],
+    "first_instructions": [
+      [
+        "0x45acaa",
+        "c78570ffffff00000000",
+        "mov    DWORD PTR [ebp-0x90],0x0"
+      ],
+      [
+        "0x45acb4",
+        "c78574ffffff00000000",
+        "mov    DWORD PTR [ebp-0x8c],0x0"
+      ],
+      [
+        "0x45acbe",
+        "e8fd3c0000",
+        "call   0x45e9c0"
+      ],
+      [
+        "0x45acc3",
+        "50",
+        "push   eax"
+      ],
+      [
+        "0x45acc4",
+        "8d55dc",
+        "lea    edx,[ebp-0x24]"
+      ]
+    ],
+    "last_instructions": [
+      [
+        "0x45acd7",
+        "8d8de8feffff",
+        "lea    ecx,[ebp-0x118]"
+      ],
+      [
+        "0x45acdd",
+        "89451c",
+        "mov    DWORD PTR [ebp+0x1c],eax"
+      ],
+      [
+        "0x45ace0",
+        "c645fc0a",
+        "mov    BYTE PTR [ebp-0x4],0xa"
+      ],
+      [
+        "0x45ace4",
+        "ff1514e54d00",
+        "call   DWORD PTR ds:0x4de514"
+      ],
+      [
+        "0x45acea",
+        "dd8578ffffff",
+        "fld    QWORD PTR [ebp-0x88]"
+      ]
+    ]
+  }
+]

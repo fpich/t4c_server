@@ -1,0 +1,1 @@
+Poursuivre en priorité les cibles indirectes réellement utilisées et les fonctions isolées dont l’adresse d’entrée est prouvée par un site de code couvert. En parallèle, établir un inventaire distinct des fonctions plausibles sans provenance forte, dont la routine de journalisation `0x43EF10`. Ne pas additionner de code sur simple prologue, padding ou relocation.

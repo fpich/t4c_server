@@ -1,0 +1,10 @@
+phase	emplacement	entrée	calcul_observé	certitude	réserve
+collecte	0x439FD3–0x439FEE	Group, acteur	GetRangeGroupMembers; stop si tableau vide	CONFIRME	Eligibilité géographique interne à approfondir
+bonus	0x43A004–0x43A035	n membres	M=min(1+0.5*(n-1),3.0)	CONFIRME	Floating point x87
+partage	0x43A035–0x43A053	XP 64 bits, M, n	part=int64_convert(XP*M)/n	CORROBORE	Règles exactes de conversion/arrondi à tester
+niveau max	0x43A05C–0x43A08E	niveaux membres	Lmax=max(GetLevel(membre))	CONFIRME	Utilise slot virtuel +0x13C
+échelle niveau	0x43A0A3–0x43A0F6	L, Lmax	pas=4*(1+floor(L/25));k=floor((Lmax-L)/pas)	CONFIRME	Arithmétique signée/non signée en 32 bits
+réduction	0x43A0F8–0x43A11B	k, part	si k>=1 part*=0.5*(0.2**(k-1))	CONFIRME	conversion entière 64 bits
+écriture	0x43A11D–0x43A135	XP membre, part	SetXP(GetXP()+part)	CONFIRME	Pas de preuve de transaction atomique
+retour visible	0x43A137–0x43A17B	flag du compte	message de gain conditionnel	CONFIRME	Affichage n’est pas une garantie gameplay
+site appelant	0x44A964	NPCstructure::OnDeath	DistributeKillXP	CONFIRME	Ne pas généraliser à toutes morts

@@ -1,0 +1,23 @@
+{
+  "passe": 95,
+  "theme": "TABLES_SAUT",
+  "description": "Décodage des deux tables de saut bornées, sans désassembler leurs données",
+  "sha256_binaire": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "base_text": "0x401000",
+  "taille_text": 905117,
+  "octets_avant": 364548,
+  "octets_nouveaux": 90,
+  "octets_cumules": 364638,
+  "couverture_pourcent": 40.286283,
+  "entrees_examinees": 2,
+  "instructions_documentees": 2059,
+  "octets_distincts_dans_preuves": 6655,
+  "nombre_intervalles_nouveaux": 1,
+  "appels_directs": 182,
+  "sauts_indirects": 0,
+  "cibles_hors_fenetre": 0,
+  "instructions_rejetees_conflit": 0,
+  "branches_incompletes": 0,
+  "duree_s": 0.03,
+  "methode": "Parcours du graphe depuis entrees exportees et cibles de CALL imm multiples, instructions x86 GNU objdump controlees contre PE original. Exclusion padding/branches indirectes/sorties fenetre; verification non-redondance bitset."
+}

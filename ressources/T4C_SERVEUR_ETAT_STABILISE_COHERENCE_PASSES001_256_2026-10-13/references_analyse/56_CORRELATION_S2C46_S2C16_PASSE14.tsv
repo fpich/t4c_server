@@ -1,0 +1,13 @@
+adresse_serveur	adresse_client	champ	type	certitude	condition
+0x47B91B	(dispatch opcode)	opcode extérieur 46	u16 big-endian	confirmé	branche de session
+0x47B92C	0x4A2A98	flag après opcode46	u8	confirmé	voie longue
+0x4B0EA3	0x4A2AA3	opcode interne 16	u16 big-endian	confirmé pour branche avec données	compteur de visibilité > 0
+0x4B0EAC	0x4A2AAE	count	u16 big-endian	confirmé pour branche avec données	compteur de visibilité > 0
+0x4B0EF5	0x4A2AFB	x de unité	u16 big-endian	confirmé pour branche avec données	répetition par unité
+0x4B0F00	0x4A2B06	y de unité	u16 big-endian	confirmé pour branche avec données	répetition par unité
+0x48F573	0x4A2B11	appearance	u16 big-endian	confirmé ordre	appel Unit::PacketUnitInformation
+0x48F57E	0x4A2B1C	unitId	u32 big-endian	confirmé ordre	appel Unit::PacketUnitInformation
+0x48F5AE	0x4A2B27	radiance (clamp)	i8	confirmé ordre	appel Unit::PacketUnitInformation
+0x48F5BD	0x4A2B32	status	u8	confirmé ordre	appel Unit::PacketUnitInformation
+0x48F607	0x4A2B3D	hpPercent	u8	confirmé ordre	appel Unit::PacketUnitInformation
+0x47B948	0x4A2AA3	variante courte: code 1 sans sous-paquet	u8	confirmé côté émission seulement	chemin alternatif, réaction client non vérifiée

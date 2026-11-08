@@ -1,0 +1,77 @@
+[
+  {
+    "gap": "0x44bda3",
+    "new_bytes": 6,
+    "prior_verified_entry": "0x44bd81",
+    "decoded_instructions": [
+      {
+        "address": "0x44bda3",
+        "bytes": "888610010000",
+        "gnu": "mov    BYTE PTR [esi+0x110],al",
+        "llvm": "mov\tbyte ptr [esi + 0x110], al",
+        "length": 6,
+        "added_bytes": 6
+      }
+    ]
+  },
+  {
+    "gap": "0x44bddc",
+    "new_bytes": 1,
+    "prior_verified_entry": "0x44bdaf",
+    "decoded_instructions": [
+      {
+        "address": "0x44bddc",
+        "bytes": "c3",
+        "gnu": "ret",
+        "llvm": "ret",
+        "length": 1,
+        "added_bytes": 1
+      }
+    ]
+  },
+  {
+    "gap": "0x44e0e5",
+    "new_bytes": 5,
+    "prior_verified_entry": "0x44e0d0",
+    "decoded_instructions": [
+      {
+        "address": "0x44e0e5",
+        "bytes": "e81661feff",
+        "gnu": "call   0x434200",
+        "llvm": "call\t0x434200 <?GetInstance@CDebugLockManager@@SAPAV1@XZ>",
+        "length": 5,
+        "added_bytes": 5
+      }
+    ]
+  },
+  {
+    "gap": "0x44f1e9",
+    "new_bytes": 1,
+    "prior_verified_entry": "0x44f1bd",
+    "decoded_instructions": [
+      {
+        "address": "0x44f1e9",
+        "bytes": "c3",
+        "gnu": "ret",
+        "llvm": "ret",
+        "length": 1,
+        "added_bytes": 1
+      }
+    ]
+  },
+  {
+    "gap": "0x459a98",
+    "new_bytes": 5,
+    "prior_verified_entry": "0x459a6b",
+    "decoded_instructions": [
+      {
+        "address": "0x459a98",
+        "bytes": "e8f3870100",
+        "gnu": "call   0x472290",
+        "llvm": "call\t0x472290 <?GetRound@TFCMAIN@@SAKXZ>",
+        "length": 5,
+        "added_bytes": 5
+      }
+    ]
+  }
+]

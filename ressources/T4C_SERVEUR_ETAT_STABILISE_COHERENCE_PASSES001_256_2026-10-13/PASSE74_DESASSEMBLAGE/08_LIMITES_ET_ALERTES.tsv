@@ -1,0 +1,5 @@
+VA_fonction	VA_instruction_ou_cible	Raison
+0x00418340	0x004183AB	indirect_jmp
+0x00418340	0x0041845B	indirect_jmp
+0x00418590	0x00418D43	indirect_jmp
+0x004194D0	0x0041955B	indirect_jmp

@@ -1,0 +1,24 @@
+{
+  "passes_couvertes": [
+    71,
+    72,
+    73,
+    74,
+    75,
+    76
+  ],
+  "text_total": 905117,
+  "octets_certifies_passe70": 129812,
+  "octets_uniques_ajoutes": 31920,
+  "octets_certifies_passe76": 161732,
+  "couverture_passe76_pct": 17.868629139,
+  "proportion_augmente_points": 3.526615896,
+  "nombre_entrees_desassemblees": 115,
+  "nombre_instructions_uniques_par_passe_total": 13946,
+  "instructions_distinctes_pour_six_passes": 13946,
+  "sha256_executable": "13cf4903da2b7c4548f9347f806ac7d379b1fc72bc7cbab5296f3e464ea9f7fc",
+  "sha256_masque_final": "7fb17b2bdad9ce6b3742b3ccd8278901b8e4a70928df94f9c55a8147c10951b5",
+  "verification_binaire": "toutes les lignes d’instructions de six passes concordent octet par octet",
+  "verification_masques": "6 unions et intersections indépendamment reconstruites",
+  "audit_frontieres": "faux départ 0x4424A0 exclu; vrai constructeur 0x442490 confirmé"
+}

@@ -1,0 +1,62 @@
+[
+  {
+    "name": "internal_44eb1f",
+    "window": [
+      "0x44eb18",
+      "0x44ec50"
+    ],
+    "seeds": [
+      "0x44eb18"
+    ],
+    "visited_count": 85,
+    "double_verified_instructions": 85,
+    "new_bytes": 241,
+    "new_spans": [
+      [
+        "0x44eb20",
+        "0x44ec11",
+        241
+      ]
+    ],
+    "covered_instructions_bytes": 48,
+    "branches": 4,
+    "errors": [],
+    "start_conflicts": [
+      [
+        "0x44eb1f",
+        "8d",
+        "8d4d0e"
+      ]
+    ]
+  },
+  {
+    "name": "clean_44f734",
+    "window": [
+      "0x44f728",
+      "0x44f770"
+    ],
+    "seeds": [
+      "0x44f728"
+    ],
+    "visited_count": 20,
+    "double_verified_instructions": 20,
+    "new_bytes": 48,
+    "new_spans": [
+      [
+        "0x44f735",
+        "0x44f765",
+        48
+      ]
+    ],
+    "covered_instructions_bytes": 13,
+    "branches": 0,
+    "errors": [],
+    "start_conflicts": [
+      [
+        "0x44f734",
+        "e8",
+        "e86741feff"
+      ]
+    ]
+  }
+]

@@ -1,0 +1,9 @@
+classe_ou_mecanisme	adresse	prefixe	payload_ou_comportement	octets_payload_hors_opcode	confirmation	limite
+Character::PacketPuppetInfo	0x41FB70	u16(68)	u32 GetID + 8*u16 refs +0x1A0,+0x1A4,+0x1A8,+0x1AC,+0x1B0,+0x1C0,+0x1C4,+0x1DC	20	confirmé statiquement	les 8 noms métier sont inconnus
+Creatures::PacketPuppetInfo - objet trouvé	0x433020	u16(68)	u32 GetID + 8*u16 aux offsets +0x10C..+0x11A	20	confirmé statiquement	chemin contingent sur une structure auxiliaire
+Creatures::PacketPuppetInfo - fallback	0x43310A	via Unit::PacketPuppetInfo	appelle la version générique Unit	24	confirmé statiquement	reste 4 octets de plus que le lecteur client
+Unit::PacketPuppetInfo	0x48F620	u16(68)	u32 idAt+0x78 + 10*u16(0)	24	confirmé statiquement	framing/traitement des 4 octets supplémentaires non démontrés
+Client Handle S2C68	0x49E0AF	opcode déjà dispatché	lit u32 + 8*u16	20	confirmé statiquement	ne démontre pas le traitement du reliquat
+WorldMap::packet_peripheral_units	0x4AF770	si count>0: u16(16),u16(count)	count * (u16 x,u16 y,UnitInformation 9 octets)	13 par unité	confirmé statiquement	calcul exact des bandes à formaliser
+WorldMap::move_world_unit	0x4B1451	u16(1) conditionnel	u16 x,u16 y,PacketUnitInformation	13 après opcode	confirmé statiquement	diffusion seulement sous drapeau/branche
+Broadcast::BCast	0x4B1499	n/a	argument 0x16 comme portée, pas opcode	n/a	confirmé sur assemblage des paramètres	portée exacte en unités à confirmer

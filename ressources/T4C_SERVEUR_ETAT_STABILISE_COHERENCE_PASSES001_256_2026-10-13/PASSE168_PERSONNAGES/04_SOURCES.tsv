@@ -1,0 +1,4 @@
+entree_lacune	instruction_source	assembleur_source	fichier_archive_precedente	taille_lacune
+0x00417829	0x00417823	lea    edx,[ebp-0x194]	PASSE50_DESASSEMBLAGE/04_PREUVES_DROPUNIT_ET_ACTION.asm	663
+0x0044984C	0x00449845	mov    cx,word ptr [edi+0x138]	etudes_assembleur/passe23/02_PREUVES_ASSEMBLEUR_PASSE23.asm	196
+0x00449AB8	0x00449AB7	push   eax	etudes_assembleur/passe23/02_PREUVES_ASSEMBLEUR_PASSE23.asm	104

@@ -1,0 +1,17 @@
+zone	adresse	octets	GNU	LLVM	nouveaux_octets_dans_cette_instruction
+SaveCharacter_41444f	0x0041443E	74 07	je     0x414447	je	0x414447 <?SaveCharacter@Character@@QAEHH@Z+0x6f7>	0
+SaveCharacter_41444f	0x00414440	89 18	mov    DWORD PTR [eax],ebx	mov	dword ptr [eax], ebx	0
+SaveCharacter_41444f	0x00414442	89 58 04	mov    DWORD PTR [eax+0x4],ebx	mov	dword ptr [eax + 0x4], ebx	0
+SaveCharacter_41444f	0x00414445	eb 02	jmp    0x414449	jmp	0x414449 <?SaveCharacter@Character@@QAEHH@Z+0x6f9>	0
+SaveCharacter_41444f	0x00414447	33 c0	xor    eax,eax	xor	eax, eax	0
+SaveCharacter_41444f	0x00414449	89 47 20	mov    DWORD PTR [edi+0x20],eax	mov	dword ptr [edi + 0x20], eax	0
+SaveCharacter_41444f	0x0041444C	89 47 28	mov    DWORD PTR [edi+0x28],eax	mov	dword ptr [edi + 0x28], eax	0
+SaveCharacter_41444f	0x0041444F	89 47 24	mov    DWORD PTR [edi+0x24],eax	mov	dword ptr [edi + 0x24], eax	2
+SaveCharacter_41444f	0x00414452	89 18	mov    DWORD PTR [eax],ebx	mov	dword ptr [eax], ebx	2
+SaveCharacter_41444f	0x00414454	8b 57 20	mov    edx,DWORD PTR [edi+0x20]	mov	edx, dword ptr [edi + 0x20]	3
+SaveCharacter_41444f	0x00414457	89 5a 04	mov    DWORD PTR [edx+0x4],ebx	mov	dword ptr [edx + 0x4], ebx	3
+SaveCharacter_41444f	0x0041445A	8b 4f 20	mov    ecx,DWORD PTR [edi+0x20]	mov	ecx, dword ptr [edi + 0x20]	3
+SaveCharacter_41444f	0x0041445D	8b 55 f0	mov    edx,DWORD PTR [ebp-0x10]	mov	edx, dword ptr [ebp - 0x10]	3
+SaveCharacter_41444f	0x00414460	8b 5d d4	mov    ebx,DWORD PTR [ebp-0x2c]	mov	ebx, dword ptr [ebp - 0x2c]	3
+SaveCharacter_41444f	0x00414463	89 51 08	mov    DWORD PTR [ecx+0x8],edx	mov	dword ptr [ecx + 0x8], edx	3
+SaveCharacter_41444f	0x00414466	e9 d2 fe ff ff	jmp    0x41433d	jmp	0x41433d <?SaveCharacter@Character@@QAEHH@Z+0x5ed>	5

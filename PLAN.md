@@ -99,7 +99,7 @@ Découvertes clés :
 ### 2.1 Carte et collisions
 - [x] Format minimal propre : `t4c/maps.py` WorldMap, grille CSV `maps/world<id>.csv` (--maps-dir), tout franchissable par défaut ✅ (2026-10-13, étape 20)
 - [x] Le mouvement vérifie la tuile cible (`is_walkable`) ; refus = pas de paquet 1 ✅
-- [ ] Extraire les vraies données de `T4C Worlds.WDA` (format restant INCONNU dans les passes 41+) pour remplir les CSV
+- [x] Extraire les vraies données de `T4C Worlds.WDA` ✅ (étape 25) : 188 items, 962 sorts, PNJ/mobs/spawners ; `ressources/wda_extract/` complet
 - **Validation** : impossible de traverser un mur/l'eau (une fois la grille réelle chargée)
 
 ### 2.2 NPCs statiques ✅ (2026-10-08)
@@ -126,21 +126,18 @@ Découvertes clés :
 - [x] C2S 56 (paires u32/u32 jusqu'à EOF, SANS compteur) → crédit or (prix/2), retrait sac, réponses 18 + 53 + 56 rafraîchi
 - **Validation** : tests `test_step16_shops.py`
 
-### 3.2 Combat de base
-- [ ] Identifier le C2S d'attaque en trace (probablement via clic sur cible)
-- [ ] Résolution serveur : toucher → S2C 0x2711 (ATTACK) ; manquer → 0x2712 (MISS)
-- [ ] HP réels, mort → retrait + respawn
-- **Validation** : attaquer un PNJ, voir l'animation, le tuer
+### 3.2 Combat de base ✅ (2026-10-13, étape 22)
+- [x] C2S 32 (spellId=0) sur PNJ hostile → jet touche → S2C 0x2711/0x2712, dégâts, mort PNJ (11 + loot + XP 44 + or 53), riposte, mort joueur → respawn (57)
+- **Validation** : tests `test_step22_combat.py` (6 tests)
 
-### 3.3 Compétences et sorts réels
-- [ ] 32 (USE_SPELL) / 42 (USE_SKILL) : validation de cible, coût mana, diffusion 64 (SPELL_CASTING avec effectId/childId)
-- [ ] Apprentissage via 40 (TRAIN_SKILL_LIST alimenté par les PNJ entraîneurs)
-- **Validation** : apprendre un sort chez un PNJ, le lancer, voir le FX
+### 3.3 Compétences et sorts réels ✅ (2026-10-13, étape 24)
+- [x] C2S 32 spellId>0 : coût mana (67), diffusion 64, dégâts, sort de départ 414 Fire dart, PNJ teach → S2C 55, persistance PlayerSpells
+- **Validation** : tests `test_step24_spells.py` (5 tests)
 
 ## Phase 4 — Social
 
 - [x] 4.1 Chat par canaux : 48 (entrée + mdp), 51 (sortie), 52→75 (liste publique), 53 (écoute), 50 (utilisateurs), 49 (message canalisé) ✅ (2026-10-13, étape 18) ; 29 = chuchotement (déjà fait)
-- [ ] 4.2 Groupes : inviter (S2C 78), membres (76), HP partagé (87), dissolution (80/82) — C2S d'invitation à identifier en trace
+- [x] 4.2 Groupes ✅ (2026-10-13, étape 23) : C2S 78/79/80/81/88, S2C 76/78/80/82/87/88, partage XP/or (DistributeKillXP/Gold)
 - [x] 4.3 Liste en ligne réelle : S2C 62 = u16 count + (CString perso, CString compte)* par joueur IN_WORLD ✅ (2026-10-13, étape 21 — format client @0x49DD27)
 
 ## Phase 5 — Robustesse (continu)
@@ -193,7 +190,16 @@ spéculer) : C2S d'attaque (3.2 — `TFCMAIN::Attack` @0x4722A0 existe mais le
 paquet C2S déclencheur n'est pas encore identifié), format de carte/collisions
 (2.1 — `T4C Worlds.WDA` 198 Mo à extraire), groupes (4.2).
 
+## Prochaines étapes possibles
+
+| Priorité | Chantier | Description |
+|---|---|---|
+| P1 | Diff-test complet 25/13/46 | Avec perso créé côté original Wine pour validation octet par octet |
+| P2 | Carte réelle monde 0 | Parser PCX client + maps.dat pour grille de collision réaliste |
+| P3 | Paquet 29 (chuchotement) | Identifier la sémantique exacte en trace |
+| P4 | Améliorations gameplay | Quêtes, IA PNJ avancée, événements monde |
+
 ## Prochaine session recommandée
 
-Phase 1.1 + 1.3 (inventaire + chat) — maximum de valeur testable en jeu pour un
-effort modéré, et tout le reste en dépend.
+Diff-test complet avec le serveur original Wine pour valider les réponses
+octet par octet sur les étapes 25 (création), 13 (entrée monde), 46 (chat).

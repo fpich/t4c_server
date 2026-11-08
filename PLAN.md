@@ -39,8 +39,8 @@ Découvertes clés :
 | 32 | Chuchotement (paquet 29) | C2S 29 : CString targetName, CString text → S2C 27 (Unit::Talk) au destinataire + accusé à l'émetteur ; recherche insensible à la casse | ✅ 2026-10-13 (3 tests) |
 | 30 | Serveur original sous Wine | ✅ **FONCTIONNEL** (port 11677, Wine 10 local) : causes racines = MFC42, winbind, ODBC i386+MachineName, NPCDLL1=NPCs.dll. Doc : `docs/SERVEUR_ORIGINAL_WINE_LOCAL.md`. Diff-test vs Python OK (66/91/65/45/14/26/46) | ✅ 2026-10-13 |
 | 31 | Validation de bout en bout | Harnais multi-clients (fait étape 19, étendu groupe/combat/sort) + diff-test contre l'original (fait étape 30) ; reste : diff-test 25/13/46 complet avec perso créé côté original | 🔄 |
-| 33 | Carte réelle monde 0 | Parser PCX client (640x480 8-bit palette) + maps.dat (CSV 67 rectangles) pour grille de collision ; chaque octet = 2 tuiles (nibble haut/bas), valeurs 0-9 walkable, >9 blocking | ⏳ |
-| 34 | Spawns réels | Charger spawns.json (extrait WDA) + maps.dat pour positionner PNJ/mobs/créatures dans le monde | ⏳ |
+| 33 | Carte réelle monde 0 | Parser PCX client (640x480 8-bit palette) + maps.dat (CSV 67 rectangles) pour grille de collision ; chaque octet = 2 tuiles (nibble haut/bas), valeurs 0-9 walkable, >9 blocking | ✅ 2026-11-08 |
+| 34 | Spawns réels | Charger spawns.json (extrait WDA) + maps.dat pour positionner PNJ/mobs/créatures dans le monde | ✅ 2026-11-08 |
 
 ## Hors périmètre réaliste (à documenter comme limitations connues)
 

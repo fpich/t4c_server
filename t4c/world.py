@@ -1070,14 +1070,81 @@ def npc_counterattack(
         respawn_player(server, target, character)
 
 
+def apply_death_penalties(
+    server: "T4CServerProtocol", session: ClientSession, character
+) -> dict[str, int]:
+    """Applique les pénalités de mort selon GAME_RULES::DeathPenalties (PASSE49).
+
+    Formules confirmées par le désassemblage :
+      - Perte XP : pourcentage basé sur le niveau (tableau 0x511B10)
+      - Perte or : GetGold * pourcentage // 100
+      - Perte objets : RRandom(0,100) sélectionne des candidats
+      - HP remis à GetHP >> 1 (pas max_hp / 2)
+
+    Valeurs par défaut (config non fournie) :
+      - XP_LOSS = 10% (base) + 1% par niveau au-delà de 10
+      - GOLD_LOSS = 5%
+      - BACKPACK_LOSS = 20% (chance)
+    """
+    import random
+
+    penalties = {"xp_lost": 0, "gold_lost": 0, "items_lost": []}
+
+    # Perte XP : formule simplifiée basée sur le niveau
+    # Le serveur original utilise un tableau à 0x511B10 indexé par niveau borné [1,199]
+    level = max(1, min(199, character.level))
+    xp_loss_pct = min(50, 10 + (level - 10) if level > 10 else 10)
+    xp_to_lose = int(character.xp * xp_loss_pct // 100)
+    character.xp = max(0, character.xp - xp_to_lose)
+    penalties["xp_lost"] = xp_to_lose
+    send_xp_update(server, session, character.xp)
+
+    # Perte or : GetGold * pourcentage // 100
+    gold_loss_pct = 5  # PC_GOLD_LOSS par défaut
+    gold_to_lose = int(character.gold * gold_loss_pct // 100)
+    character.gold = max(0, character.gold - gold_to_lose)
+    penalties["gold_lost"] = gold_to_lose
+    send_gold_update(server, session, character.gold)
+
+    # Perte objets : RRandom(0,100) < BACKPACK_LOSS (20%)
+    # On simule la sélection d'objets aléatoires dans le sac
+    if random.randint(0, 100) < 20:  # PC_BACKPACK_LOSS = 20%
+        # Retirer un objet aléatoire du sac (backpack uniquement)
+        inventory = session.inventory
+        if inventory and inventory.backpack:
+            item = random.choice(inventory.backpack)
+            inventory.backpack.remove(item)
+            penalties["items_lost"].append(item.template.name)
+            log.info(
+                "Pénalité mort %s : objet perdu (%s)",
+                character.name, item.template.name,
+            )
+
+    # HP remis à GetHP >> 1 (pas max_hp / 2)
+    # Note: le RE confirme que c'est HP actuel divisé par 2, pas max_hp
+    character.hp = max(1, character.hp // 2)
+
+    log.info(
+        "Pénalités mort %s : XP -%d (%d%%), or -%d (%d%%), objets %s, HP -> %d",
+        character.name,
+        xp_to_lose, xp_loss_pct,
+        gold_to_lose, gold_loss_pct,
+        penalties["items_lost"],
+        character.hp,
+    )
+    return penalties
+
+
 def respawn_player(
     server: "T4CServerProtocol", session: ClientSession, character
 ) -> None:
-    """Mort du joueur : respawn à la position de départ avec HP/2 (S2C 57 + 43)."""
+    """Mort du joueur : respawn à la position de départ avec pénalités (S2C 57 + 43)."""
     from .characters import START_POS
 
+    # Appliquer les pénalités de mort avant le respawn
+    apply_death_penalties(server, session, character)
+
     session.pos_x, session.pos_y, session.pos_world = START_POS
-    character.hp = max(1, character.max_hp // 2)
     if server.persistence is not None:
         server.persistence.save_position(character.name, *START_POS)
     teleport = PacketWriter(EVENT_TELEPORT)

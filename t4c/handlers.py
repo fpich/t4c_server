@@ -102,6 +102,11 @@ class PacketDispatcher:
         self.register(PacketID.GROUP_DISBAND, handle_group_disband)
         self.register(PacketID.GROUP_AUTOSPLIT, handle_group_autosplit)
         self.register(35, handle_npc_name_request)
+        self.register(PacketID.RETURN_TO_MENU, handle_return_to_menu)
+        self.register(PacketID.ATTACK_RANGE, handle_attack_range)
+        # Handlers stub pour les paquets C2S identifiés RE mais non décodés
+        for op in UNKNOWN_C2S_OPCODES:
+            self.register(op, handle_unknown_packet)
 
     def register(self, packet_id: int, handler: PacketHandler) -> None:
         packet_id = int(packet_id)
@@ -2201,4 +2206,80 @@ async def handle_sell_items(
     log.info(
         "VENTE perso=%r marchand=%s gain=%d or total=%d ventes=%s client=%s",
         character.name, npc.name, gain, character.gold, ventes, session.address,
+    )
+
+
+async def handle_return_to_menu(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """C2S 38 : retour au menu (aucun payload).
+
+    Similaire au paquet 20 (EXIT_GAME) : diffusion de la disparition aux
+    autres joueurs, persistance, remise à zéro de la session.
+    """
+    if session.state is not SessionState.IN_WORLD:
+        return
+    world.broadcast_object_removed(server, session)
+    _persist_character_stats(server, session)
+    session.active_character = None
+    session.state = SessionState.CHARACTER_MENU
+    log.info("RETURN_TO_MENU perso=%r client=%s", session.active_character, session.address)
+
+
+async def handle_attack_range(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """C2S 24 : attaque à distance (StartAutoCombat).
+
+    Similaire au C2S 32 mais pour les attaques à distance.
+    Format supposé : u16 x, u16 y, u32 targetUnitId
+    """
+    if session.state is not SessionState.IN_WORLD:
+        return
+    reader = PacketReader(packet.body)
+    try:
+        x = reader.read_u16()
+        y = reader.read_u16()
+        target_unit_id = reader.read_u32()
+    except T4CProtocolError as exc:
+        log.warning("requête 24 malformée de %s : %s", session.address, exc)
+        return
+
+    character = _find_active_character(server, session)
+    if character is None:
+        return
+
+    target = world.find_unit(target_unit_id)
+    if target is None:
+        world.send_action_failure(server, session, target_unit_id, 24)
+        return
+
+    # Vérifier la portée
+    if not world.npc_in_reach(session, target):
+        world.send_server_message(server, session, "Cible hors de portée.")
+        return
+
+    # Simuler une attaque à distance (même logique que 32)
+    await handle_use_spell_unit(server, session, packet)
+
+
+# -----------------------------------------------------------------------------
+# Handlers stub pour les paquets C2S identifiés RE mais non encore décodés.
+# Chaque handler loggue la réception et sera enrichi au fur et à mesure des
+# captures client / analyses binaires.
+# -----------------------------------------------------------------------------
+
+UNKNOWN_C2S_OPCODES = (10, 16, 17, 28, 31, 33, 34, 36, 54, 58, 71, 72, 74, 77, 85, 86, 93)
+
+
+async def handle_unknown_packet(
+    server: "T4CServerProtocol", session: "ClientSession", packet: DecodedPacket
+) -> None:
+    """Handler générique pour les paquets C2S identifiés mais non décodés."""
+    log.info(
+        "C2S non implémenté opcode=%d body=%d octets client=%s state=%s",
+        packet.packet_id,
+        len(packet.body),
+        session.address,
+        session.state.name if session.state else "NONE",
     )

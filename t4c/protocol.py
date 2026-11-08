@@ -69,6 +69,29 @@ class PacketID(IntEnum):
     GET_TIME = 45
     FROM_PREINGAME_TO_INGAME = 46
 
+    # Paquets manquants identifiés RE (priorité par usage client)
+    UNKNOWN_10 = 10               # ? (à identifier)
+    UNKNOWN_16 = 16               # ? (vue dynamique?)
+    UNKNOWN_17 = 17               # ? (à identifier)
+    ATTACK_RANGE = 24             # client @0x47EB30 : StartAutoCombat distance
+    UNKNOWN_28 = 28               # ? (à identifier)
+    UNKNOWN_31 = 31               # ? (à identifier)
+    UNKNOWN_33 = 33               # ? (à identifier)
+    UNKNOWN_34 = 34               # ? (à identifier)
+    UNKNOWN_36 = 36               # ? (à identifier)
+    XP_UPDATE = 44                # serveur -> client : u64 xp (hi/lo)
+    UNKNOWN_54 = 54               # ? (à identifier)
+    SKILL_TEACH = 55              # serveur -> client : u16 skillId, CString name
+    UNKNOWN_58 = 58               # ? (à identifier)
+    UNKNOWN_71 = 71               # ? (à identifier)
+    UNKNOWN_72 = 72               # ? (à identifier)
+    UNKNOWN_74 = 74               # ? (à identifier)
+    GROUP_MEMBERS = 76            # serveur -> client : membres groupe
+    UNKNOWN_77 = 77               # ? (à identifier)
+    UNKNOWN_85 = 85               # ? (à identifier)
+    UNKNOWN_86 = 86               # ? (à identifier)
+    UNKNOWN_93 = 93               # ? (à identifier)
+
     # Pre-session/bootstrap requests.
     QUERY_SERVER_VERSION = 65
     MESSAGE_OF_THE_DAY = 66

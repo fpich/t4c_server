@@ -249,5 +249,32 @@ octet par octet sur les étapes 25 (création), 13 (entrée monde), 46 (chat).
 ### Statut actuel
 - **180 tests OK** sur toutes les étapes 1-34
 - Serveur fonctionnel avec cartes réelles et spawns WDA
+- **60 handlers C2S implémentés** (sur 79 identifiés RE)
+- Nouveaux handlers : 24 (attaque distance), 38 (RETURN_TO_MENU)
 - Prochaine priorité : diff-test complet vs serveur original Wine
+
+## Session 2026-11-08 — Suite (étapes 35-36)
+
+### Étapes complétées
+- **Étape 35** : Handlers manquants prioritaires
+  - C2S 24 (ATTACK_RANGE) : attaque à distance via StartAutoCombat
+  - C2S 38 (RETURN_TO_MENU) : retour au menu avec nettoyage session
+  - Ajout PacketID dans `t4c/protocol.py` pour les paquets identifiés RE
+  - 60 handlers implémentés sur 79 identifiés
+
+### Fichiers modifiés
+- `t4c/protocol.py` — Ajout des PacketID manquants (24, 38, 44, 55, 76, etc.)
+- `t4c/handlers.py` — Ajout handlers 24 et 38, enregistrement dans dispatcher
+
+### Statut actuel
+- **188 tests OK** sur toutes les étapes 1-36
+- Serveur fonctionnel avec cartes réelles, spawns WDA, et handlers étendus
+- **77 handlers C2S enregistrés** (60 réels + 17 stubs pour paquets non décodés)
+- Prochaine priorité : diff-test complet vs serveur original Wine (port 11677)
+
+### Étape 36 complétée
+- C2S 24 (ATTACK_RANGE) : handler attaque distance
+- C2S 38 (RETURN_TO_MENU) : retour menu avec broadcast disparition + persistance
+- 17 handlers stub pour opcodes non décodés (10,16,17,28,31,33,34,36,54,58,71,72,74,77,85,86,93)
+- 8 tests, 188 tests OK total
 

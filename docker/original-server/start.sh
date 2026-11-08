@@ -107,7 +107,7 @@ for i in $(seq 1 240); do
             if [ -f "$f" ]; then echo "--- $f ($(stat -c%s "$f") octets) ---"; cat "$f"; echo; fi
         done
         echo "=== APPELS ODBC (retval de chaque SQL* : SQL_ERROR = cause de l'exit 111) ==="
-        grep -E "Call odbc32\.|Ret  odbc32\." /captures/trace.log | tail -120 || echo "aucun appel ODBC tracé"
+        grep -E "trace:odbc:SQL(ExecDirect|Connect|Fetch) |SQLError  (SqlState|MessageText)" /captures/trace.log | tail -160 || echo "aucun appel ODBC tracé"
         echo "=== ExitProcess(0x6f=111) : 120 lignes AVANT dans la trace = cause ==="
         grep -n "ExitProcess" /captures/trace.log | head -5
         LINE=$(grep -n "ExitProcess(0000006f)" /captures/trace.log | head -1 | cut -d: -f1)
